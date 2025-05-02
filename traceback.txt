@@ -1,0 +1,32 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/day.rpy", line 39, in script call
+    $ renpy.call(random_event_label)
+  File "game/day.rpy", line 39, in script call
+    $ renpy.call(random_event_label)
+ScriptError: could not find label 'day_event_paul_demure_johnson'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "C:\Users\ryanz\OneDrive\Documents\renpy-8.3.7-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\ryanz\OneDrive\Documents\renpy-8.3.7-sdk\renpy\main.py", line 652, in main
+    run(restart)
+  File "C:\Users\ryanz\OneDrive\Documents\renpy-8.3.7-sdk\renpy\main.py", line 148, in run
+    renpy.execution.run_context(True)
+  File "C:\Users\ryanz\OneDrive\Documents\renpy-8.3.7-sdk\renpy\execution.py", line 958, in run_context
+    context.run()
+  File "game/day.rpy", line 39, in script call
+    $ renpy.call(random_event_label)
+  File "game/day.rpy", line 39, in script call
+    $ renpy.call(random_event_label)
+  File "C:\Users\ryanz\OneDrive\Documents\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'day_event_paul_demure_johnson'.
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.3.7.25031702
+prototype 1.0
+Thu May  1 23:21:30 2025

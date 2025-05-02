@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/day_events/paul demure johnson.rpy", line 17: choice menuitem expects a non-empty block.
+    "Breakdance":
+                 ^
+
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Thu May  1 23:27:08 2025
