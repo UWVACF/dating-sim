@@ -1,8 +1,12 @@
 # This file is for defining and styling custom screens, separate from the built-in ones
 
 
-screen honing_survey(question, answer1, action1, answer2, action2, answer3, action3, answer4, action4):
-    default selected_answer = 0
+screen honing_survey(question, answers_and_actions):
+    default selected_answer = -1
+
+    $ answers = [item["answer"] for item in answers_and_actions]
+    $ actions = [Function(update_honing_points, [(key, value)]) for item in answers_and_actions for key, value in item["personnel"].items()]
+
     frame:
         padding (20, 20)
         xalign 0.3 yalign 0.3
@@ -12,26 +16,26 @@ screen honing_survey(question, answer1, action1, answer2, action2, answer3, acti
             xfill True
             text question:
                 size 50
-            textbutton answer1:
+            textbutton answers[0]:
                 style "honing_survey_answer_button"
-                action [action1, SetScreenVariable("selected_answer", 1), Return(1)]
+                action [actions[0], SetScreenVariable("selected_answer", 0), Return(0)]
+                selected (selected_answer == 0)
+                sensitive (selected_answer == -1)
+            textbutton answers[1]:
+                style "honing_survey_answer_button"
+                action [actions[1], SetScreenVariable("selected_answer", 1), Return(1)]
                 selected (selected_answer == 1)
-                sensitive (selected_answer == 0)
-            textbutton answer2:
+                sensitive (selected_answer == -1)
+            textbutton answers[2]:
                 style "honing_survey_answer_button"
-                action [action2, SetScreenVariable("selected_answer", 2), Return(2)]
+                action [actions[2], SetScreenVariable("selected_answer", 2), Return(2)]
                 selected (selected_answer == 2)
-                sensitive (selected_answer == 0)
-            textbutton answer3:
+                sensitive (selected_answer == -1)
+            textbutton answers[3]:
                 style "honing_survey_answer_button"
-                action [action3, SetScreenVariable("selected_answer", 3), Return(3)]
+                action [actions[3], SetScreenVariable("selected_answer", 3), Return(3)]
                 selected (selected_answer == 3)
-                sensitive (selected_answer == 0)
-            textbutton answer4:
-                style "honing_survey_answer_button"
-                action [action4, SetScreenVariable("selected_answer", 4), Return(4)]
-                selected (selected_answer == 4)
-                sensitive (selected_answer == 0)
+                sensitive (selected_answer == -1)
 
 style honing_survey_answer_button:
     xfill True

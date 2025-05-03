@@ -3,6 +3,10 @@
 # Constants
 
 init python:
+    import copy
+    import random
+    random.seed()
+
     # the pause times after certain punctuation marks
     comma_pause = 0.2
     period_pause = 0.4
@@ -31,7 +35,26 @@ init python:
         "alex": 0,
         "chan": 0
     }
+
+    # should include only who's romanceable/has a route
+    honing_points = {
+        "syg": 0,
+        "alex": 0,
+        "helco": 0,
+        "aikha": 0,
+        "firewal": 0,
+        "venture": 0,
+        "uriel": 0,
+        "ryz": 0,
+        "deceased": 0,
+        "chan": 0,
+        "bad end": 0
+    }
+
     day_number = 1
+    day_threshold = 7 # max number of days
+
+    honing_survey_questions_threshold = 7 # max number of honing survey questions to be taken
 
 
 # Player pronouns and names

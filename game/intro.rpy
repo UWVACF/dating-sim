@@ -1,13 +1,4 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define e = Character("Eileen")
-
-# The game starts here.
-
-label start:
+﻿label start:
     scene bg room
     "As I walk past the..."
     "Dancing...rainbow mushroom...?"
@@ -84,91 +75,28 @@ label honing_survey:
 
     # TODO - add a pool of honing questions: expand this into a while loop and throw question-answer tuples into a list 
 
-    $ returned_answer = 0
+    python: 
+        returned_answer = 0
+        question_number = 1
+        remaining_honing_survey_questions = copy.deepcopy(honing_suvey_questions)
 
-    show screen honing_survey(
-        question="What do you do on a typical Friday night?",
-        answer1="Partying! Clubbing! Drinking!", action1=Function(update_closeness, [("firewal", 1)]),
-        answer2="Snuggle in a blanket and binge three seasons of House MD", action2=Function(update_closeness, [("firewal", 1)]),
-        answer3="Accidentally doomscroll for seven hours", action3=Function(update_closeness, [("firewal", 1)]),
-        answer4="Stay at the office until dawn, because there's always more to be done", action4=Function(update_closeness, [("firewal", 1)])
-    )
+    while question_number < honing_survey_questions_threshold:
+        $ question_index = random.randint(0, len(remaining_honing_survey_questions) - 1)
+        show screen honing_survey(
+            question=remaining_honing_survey_questions[question_index]["question"],
+            answers_and_actions=remaining_honing_survey_questions[question_index]["answers"]
+        )
 
-    $ returned_answer = ui.interact() # force a ui interaction (that being an interaction with the screen) in order to proceed
+        python:
+            returned_answer = ui.interact()
+            reply = remaining_honing_survey_questions[question_index]["answers"][returned_answer]["reply"]
+            if reply == "":
+                reply = random.choice(default_jessie_replies)
+        
+        jessie "[reply]"
 
-    if returned_answer == 2:
-        jessie "Cozy!"
-    else:
-        jessie "Okay!"
-
-    show screen honing_survey(
-        question="In the event of a containment breach...",
-        answer1="Carry on as usual", action1=Function(update_closeness, [("firewal", 1)]),
-        answer2="Look to Section J-3: Handing Anomaly Breaches", action2=Function(update_closeness, [("firewal", 1)]),
-        answer3="Sleep", action3=Function(update_closeness, [("firewal", 1)]),
-        answer4="Destroy all evidence of personal involvement", action4=Function(update_closeness, [("firewal", 1)])
-    )
-
-    $ returned_answer = ui.interact()
-
-    if returned_answer == 3:
-        jessie "Sure..."
-    elif returned_answer == 4:
-        jessie "Oh..."
-    else:
-        jessie "Sure!"
-
-    show screen honing_survey(
-        question="How would you resolve a conflict with a coworker?",
-        answer1="Wait until both sides have cooled down before hosting a mature and respectful discussion with them", action1=Function(update_closeness, [("firewal", 1)]),
-        answer2="Separate their body from their head", action2=Function(update_closeness, [("firewal", 1)]),
-        answer3="Run to HR", action3=Function(update_closeness, [("firewal", 1)]),
-        answer4="Calmly threaten them with eternal damnation should they disrespect you again", action4=Function(update_closeness, [("firewal", 1)])
-    )
-
-    $ returned_answer = ui.interact()
-
-    if returned_answer == 2 or returned_answer == 4:
-        show jessie sad
-        jessie "Huh??"
-        show jessie neutral
-    else:
-        jessie "Mhm!"
-
-    show screen honing_survey(
-        question="Which of the following is an appropriate employee interaction?",
-        answer1="Prolonged eye contact", action1=Function(update_closeness, [("firewal", 1)]),
-        answer2="Ankle biting! (consensual or otherwise)", action2=Function(update_closeness, [("firewal", 1)]),
-        answer3="Group brainrot session!", action3=Function(update_closeness, [("firewal", 1)]),
-        answer4="Opioid shot", action4=Function(update_closeness, [("firewal", 1)])
-    )
-
-    $ returned_answer = ui.interact()
-
-    "The pulsating rainbow mushroom cheers."
-    jessie "Don't mind Plutoes!"
-
-    show screen honing_survey(
-        question="Where would you go on vacation with your coworkers?",
-        answer1="Somewhere in Europe! Barcelona? Or maybe Paris...", action1=Function(update_closeness, [("firewal", 1)]),
-        answer2="Anomaly reconnaissance with the gang!!!", action2=Function(update_closeness, [("firewal", 1)]),
-        answer3="Hell", action3=Function(update_closeness, [("firewal", 1)]),
-        answer4="Do I really have to go...?", action4=Function(update_closeness, [("firewal", 1)])
-    )
-
-    $ returned_answer = ui.interact()
-
-    jessie "Last question!"
-
-    show screen honing_survey(
-        question="You have a meeting at 7 am. When do you show up?",
-        answer1="6:45 should be good!", action1=Function(update_closeness, [("firewal", 1)]),
-        answer2="Accounting for my morning routine, traffic and miscellaneous catastrophic anomalies, I'll aim for 5:15", action2=Function(update_closeness, [("firewal", 1)]),
-        answer3="Set an alarm for 6 but snooze it until 10", action3=Function(update_closeness, [("firewal", 1)]),
-        answer4="Show up?", action4=Function(update_closeness, [("firewal", 1)])
-    )
-
-    $ returned_answer = ui.interact()
+        $ remaining_honing_survey_questions.pop(question_index)
+        $ question_number += 1
 
     window show
 
@@ -180,19 +108,366 @@ label honing_survey:
         linear default_move_time xalign 0.5
 
     # toggleable option
-    jessie "According to the survey, the personnel you would get along with the best are:"
-    
+    jessie "Congrats on finishing the survey!"
+
+    if honing_points["bad end"] > 5:
+        jessie "..."
+        jessie "Uh, one second..."
+        show jessie neutral at left
+        with move
+        jessie "..."
+        jessie "...okay..."
+        show jessie neutral:
+            linear default_move_time xalign 0.5
+        jessie "..."
+        jessie "So, um..."
+        jessie "According to the founder, your results were..."
+        jessie "\"Abysmal. Appalling. Inhumane.\""
+        jessie "He said he would \"recommend you to see a therapist,\" but he'd be \"scared for the therapist.\""
+        jessie "He said you \"somehow chose the very obviously worst answer over 90%% of the time.\""
+        jessie "So we're...revoking your position at the company."
+        jessie "Sorry about that..."
+        jessie "..."
+        jessie "{size=-15}Don't kill me...{/size}"
+        return
+
 
     menu:
         jessie "Are you satisfied with your results?"
         "Yes":
             jessie "Excellent!"
         "No":
-            show jessie sad
-            jessie "womp womp go reload your save" # add loop back to beginning of survey
-            show jessie neutral
+            jessie sad "womp womp go reload your save" # add loop back to beginning of survey
     
     jessie "Now that the survey's out of the way, let me introduce you to the personnel at VACF!"
     "And thus began my journey at VACF."
     "lItTlE dId I kNoW wHaT wAs WaItInG fOr Me In ThE cOmInG wEeK..."
     jump day_init
+
+
+init python:
+    default_jessie_replies = [
+        "Mhm!",
+        "Yup!",
+        "Keep going!",
+        "Just a few more!",
+        "Yep!",
+        "Great!"
+    ]
+
+
+    # if you guys REALLY want to add onto the reply system, i can add support for multiple lines and characters speaking in each reply
+
+    # array of honing survey questions
+    # the format is as such:
+    # - array
+    #   - dictionary
+    #       - "question": string
+    #       - "answers": list
+    #           - dictionary
+    #               - "answer": string
+    #               - "personnel": dictionary
+    #                       - "person name": num of points (int)
+    #               - "reply": string
+    honing_suvey_questions = [
+        {
+            "question": "What do you do on a typical Friday night?",
+            "answers": [
+                {
+                    "answer": "Partying! Clubbing! Drinking!",
+                    "personnel": {"plutoes": 1, "aikha": -1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Snuggle in a blanket and binge three seasons of House MD",
+                    "personnel": {"helco": 1},
+                    "reply": "Real!"
+                },
+                {
+                    "answer": "Accidentally doomscroll for seven hours",
+                    "personnel": {"aikha": 1},
+                    "reply": "REAL!"
+                },
+                {
+                    "answer": "Stay at the office until dawn, because there's always more to be done",
+                    "personnel": {"aikha": 1},
+                    "reply": "Oh my..."
+                }
+            ]
+        },
+        {
+            "question": "In the event of a containment breach...",
+            "answers": [
+                {
+                    "answer": "Carry on as usual",
+                    "personnel": {"firewal": 1},
+                    "reply": "Sure!"
+                },
+                {
+                    "answer": "Look to Section J-3: Handing Anomaly Breaches",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Sleep",
+                    "personnel": {"firewal": 1},
+                    "reply": "Sure..."
+                },
+                {
+                    "answer": "Destroy all evidence of personal involvement",
+                    "personnel": {"bad end": 1},
+                    "reply": "Oh..."
+                }
+            ]
+        },
+        {
+            "question": "How would you resolve a conflict with a coworker?",
+            "answers": [
+                {
+                    "answer": "Wait until both sides have cooled down before hosting a mature and respectful discussion with them",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Separate their body from their head",
+                    "personnel": {"bad end": 1},
+                    "reply": "Huh??"
+                },
+                {
+                    "answer": "Run to HR",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Calmly threaten them with eternal damnation should they disrespect you again",
+                    "personnel": {"firewal": 1},
+                    "reply": "Huh??"
+                }
+            ]
+        },
+        {
+            "question": "Which of the following is an appropriate employee interaction?",
+            "answers": [
+                {
+                    "answer": "Prolonged eye contact",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Ankle biting! (consensual or otherwise)",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Group brainrot session!",
+                    "personnel": {"firewal": 1},
+                    "reply": "Yippee!!"
+                },
+                {
+                    "answer": "Opioid shot",
+                    "personnel": {"bad end": 1},
+                    "reply": "..."
+                }
+            ]
+        },
+        {
+            "question": "Where would you go on vacation with your coworkers?",
+            "answers": [
+                {
+                    "answer": "Somewhere in Europe! Barcelona? Or maybe Paris...",
+                    "personnel": {"firewal": 1},
+                    "reply": "Ooh! Classic!"
+                },
+                {
+                    "answer": "Anomaly reconnaissance with the gang!!!",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Hell",
+                    "personnel": {"bad end": 1},
+                    "reply": "Whuh-"
+                },
+                {
+                    "answer": "Do I really have to go...?",
+                    "personnel": {"firewal": 1},
+                    "reply": "Yes..."
+                }
+            ]
+        },
+        {
+            "question": "You have a meeting at 7 am. When do you show up?",
+            "answers": [
+                {
+                    "answer": "6:45 should be good!",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Accounting for my morning routine, traffic and miscellaneous catastrophic anomalies, I'll aim for 4:15",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Set an alarm for 6 but snooze it until 10",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Show up?",
+                    "personnel": {"bad end": 1},
+                    "reply": "..."
+                }
+            ]
+        },
+        {
+            "question": "What do you do when an employee takes your lunch?",
+            "answers": [
+                {
+                    "answer": "It's fine! I'll just starve :'D",
+                    "personnel": {"firewal": 1}, 
+                    "reply": ":'D"
+                },
+                {
+                    "answer": "This facility isn't big enough for the two of us.",
+                    "personnel": {"bad end": 1},
+                    "reply": "We duel at dawn."
+                },
+                {
+                    "answer": "Steal theirs back",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Interpret this as a sign that the universe is against you",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                }
+            ]
+        },
+        {
+            "question": "Live, laugh and...",
+            "answers": [
+                {
+                    "answer": "Love",
+                    "personnel": {"firewal": 1},
+                    "reply": "Yay!"
+                },
+                {
+                    "answer": "Lacerate",
+                    "personnel": {"bad end": 1},
+                    "reply": "...huh???"
+                },
+                {
+                    "answer": "Lament",
+                    "personnel": {"firewal": 1},
+                    "reply": "Oh."
+                },
+                {
+                    "answer": "Leave",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                }
+            ]
+        },
+        {
+            "question": "How well can you cook?",
+            "answers": [
+                {
+                    "answer": "I mean, I'm okay",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "They call me Gordon Ramsay",
+                    "personnel": {"firewal": 1},
+                    "reply": "Ooh!"
+                },
+                {
+                    "answer": "Food is a social construct from which I have escaped",
+                    "personnel": {"firewal": 1},
+                    "reply": "...sure."
+                },
+                {
+                    "answer": "Where do you think my fingers went?",
+                    "personnel": {"firewal": 1},
+                    "reply": "God, are you okay?"
+                }
+            ]
+        },
+        {
+            "question": "What's your favourite thing to do with friends?",
+            "answers": [
+                {
+                    "answer": "Invite them over for snacks and tea! We'll chill on the couch and just talk",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Hold a meeting to discuss our budget and future prospects",
+                    "personnel": {"firewal": 1},
+                    "reply": "Yay..."
+                },
+                {
+                    "answer": "Plan a heist and/or murder",
+                    "personnel": {"bad end": 1},
+                    "reply": "..."
+                },
+                {
+                    "answer": "I have no friends. I'm so alone.",
+                    "personnel": {"bad end": 1},
+                    "reply": "Oh..."
+                }
+            ]
+        },
+        {
+            "question": "How's your work life balance?",
+            "answers": [
+                {
+                    "answer": "Pretty solid!",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "I'm a bit of a workaholic",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Work?",
+                    "personnel": {"bad end": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Life?",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                }
+            ]
+        },
+        {
+            "question": "What traits in other people are important to you?",
+            "answers": [
+                {
+                    "answer": "Confidence",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Empathy",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Ambition",
+                    "personnel": {"firewal": 1},
+                    "reply": ""
+                },
+                {
+                    "answer": "Evident lack of moral compass",
+                    "personnel": {"bad end": 1},
+                    "reply": "..."
+                }
+            ]
+        }
+    ]

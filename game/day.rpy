@@ -1,6 +1,4 @@
 init python:
-    import random
-    random.seed()
     event_labels = ["fire", "paul_demure_johnson", "helco_coffee"]
     # remaining_event_labels = event_labels.copy()
     remaining_event_labels = ["paul_demure_johnson"]
@@ -43,14 +41,14 @@ label day_init:
     with default_fade
     
     # randomly choose a remark from a pool
-    $ random_day_complete_remark = day_complete_remarks[random.randint(0, len(day_complete_remarks) - 1)]
+    $ random_day_complete_remark = random.choice(day_complete_remarks)
     player "[random_day_complete_remark]"
 
     # randomly choose another remark from a pool
-    $ random_heading_home_remark = heading_home_remarks[random.randint(0, len(heading_home_remarks) - 1)]
+    $ random_heading_home_remark = random.choice(heading_home_remarks)
     player "[random_heading_home_remark]"
 
     $ day_number += 1
     # add threshold checker
-    if day_number < 7:
+    if day_number < day_threshold:
         jump day_init

@@ -15,6 +15,14 @@ init python:
             closeness[person[0]] += person[1]
         return True
 
+    # Raise the honing survey points of personnel at indices
+    # takes in a LIST of TWO-TUPLES - that is, [(id, amount), (id, amount) etc]
+    # example usage: update_closeness([("helco", 3), ("plutoes", -1)])
+    def update_honing_points(personnel):
+        for person in personnel:
+            honing_points[person[0]] += person[1]
+        return True
+
     # Automatically adds pauses after commas and periods
     # this is some really weird ass reg-ex shit please do not ask me i will not remember - ryan
     def auto_pause(text):
