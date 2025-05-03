@@ -1,15 +1,15 @@
 ﻿label start:
     scene bg room
-    "As I walk past the..."
-    "Dancing...rainbow mushroom...?"
-    "I hear a girl's voice behind me."
+    n "As I walk past the..."
+    n "Dancing...rainbow mushroom...?"
+    n "I hear a girl's voice behind me."
 
     show jessie neutral at appear
 
     jessie_unknown "Oh, hey!"
     jessie_unknown "The Founder told me you were coming today."
     jessie "I'm Dr. Jessie. What's your name?"
-
+    jessie "{nw}" (cb_name = None) # force unhighlight jessie
     python:
         player_name = renpy.input("My name is...", default=default_name)
         while len(player_name) > 15 or len(player_name) < 1 or not player_name.strip():
@@ -137,11 +137,11 @@ label honing_survey:
         "Yes":
             jessie "Excellent!"
         "No":
-            jessie sad "womp womp go reload your save" # add loop back to beginning of survey
+            jessie sad "womp womp go reload your save"
     
-    jessie "Now that the survey's out of the way, let me introduce you to the personnel at VACF!"
-    "And thus began my journey at VACF."
-    "lItTlE dId I kNoW wHaT wAs WaItInG fOr Me In ThE cOmInG wEeK..."
+    jessie neutral "Now that the survey's out of the way, let me introduce you to the personnel at VACF!"
+    n "And thus began my journey at VACF."
+    n "lItTlE dId I kNoW wHaT wAs WaItInG fOr Me In ThE cOmInG wEeK..."
     jump day_init
 
 

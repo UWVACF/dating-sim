@@ -3,7 +3,7 @@
 # Constants
 
 init python:
-    # STATEMENTS
+    # ----- STATEMENTS -----
     import copy
     import random
     random.seed() # makes a new seed to ensure randomness
@@ -13,7 +13,8 @@ init python:
     config.rollback_enabled = True
 
     # ----- CONSTANTS -----
-    # the pause times after certain punctuation marks
+    # the default pause times after certain punctuation marks
+    # note to developers: prefix a dialogue line with {no_pause} to disable these pauses for that line
     comma_pause = 0.2
     period_pause = 0.4
     elipsis_pause = 0.133
@@ -30,14 +31,6 @@ init python:
     # must be <= 0
     helco_text_downsize = -15
 
-    # TODO: determine this value procedurally
-    # array of top three personnel from honing survey, in no particular order
-    top_three_honed = [
-        "aikha",
-        "firewal",
-        "plutoes"
-    ]
-
     # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
     # the multiplier of weight given to events with the top three
     top_three_weight_factor = 2
@@ -48,7 +41,15 @@ init python:
     honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
 
     # ----- VARIABLES -----
-    ending_reached = False # set to True if a second ending event has been seen
+    ending_reached = False # set to True if a final ending event has been seen
+
+    # TODO: determine this value procedurally
+    # array of top three personnel from honing survey, in no particular order
+    top_three_honed = [
+        "aikha",
+        "firewal",
+        "plutoes"
+    ]
 
     intimacy_points = {
         "helco": 0,
@@ -87,6 +88,7 @@ define player_pos_adj = "their" # possessive adjective  (his, her, their)
 define player_pos_pro = "theirs" # possessive pronoun (his, hers, theirs)
 define player_ref = "themself" # reflexive pronoun (himself, herself, themself)
 
+
 # Personnel images
 
 image jessie neutral = At("images/jessie neutral.png", sprite_highlight("jessie"))
@@ -119,6 +121,8 @@ define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes")
 
 define player = Character("[player_name]", kind=base_char, color="#c9c9c9", cb_name="player")
+
+define n = Character("", kind=base_char) # narrator, required to render characters as unhighlighted whenever narration is occurring
 
 # Transitions and transformations
 

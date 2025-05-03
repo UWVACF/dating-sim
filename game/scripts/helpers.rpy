@@ -24,8 +24,11 @@ init python:
         return True
 
     # Automatically adds pauses after commas and periods
-    # this is some really weird ass reg-ex shit please do not ask me i will not remember - ryan
+    # this is some really weird ass reg-ex shit please do not ask me what it means i will not know - ryan
     def auto_pause(text):
+        if text[0:9] == "{no_pause}":
+            return text[10:]
+        
         # adds pause after commas
         text = re.sub(
             r',(?!\s*{[^}]*}|[0-9])', 

@@ -98,7 +98,6 @@ style frame:
 screen say(who, what):
     window:
         id "window"
-
         if who is not None:
 
             window:
