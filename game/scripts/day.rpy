@@ -77,7 +77,7 @@ label day_init:
             total_weight += event_weights[event["label"]]
         
         # randomly select an event
-        random_event_label = "not_found"
+        random_event_label = "not_found" # default value
         remaining_weight = random.randint(0, total_weight)
         for event_label, weight in event_weights.items():
             remaining_weight -= weight
@@ -107,5 +107,5 @@ label day_init:
 
     $ day_number += 1
     # add threshold checker
-    if day_number < day_threshold:
+    if day_number < day_threshold and not ending_reached:
         jump day_init

@@ -6,10 +6,4 @@ label day_event_paul_demure_johnson:
     show plutoes neutral at appear
     show firewal neutral at appear(x_align=0.75)
 
-    aikha "hip"
-    plutoes "hip"
-    firewal "HOORAY!!!!!"
-    plutoes "testing"
-    firewal "testinggg"
-    plutoes "TESTINGSIGNSIGNSG"
-    firewal "TSET"
+    

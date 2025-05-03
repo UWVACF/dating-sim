@@ -7,7 +7,7 @@ label day_event_fire:
     show aikha neutral at appear(x_align = 0.33)
     show firewal neutral at appear(x_align = 0.66)
 
-    aikha "It was all worth it in the end when - oh! Hey, new recruit! Whatcha doing here?"
+    aikha "It was all worth it in the end when-{w=[comma_pause]} oh! Hey, new recruit! Whatcha doing here?"
     firewal "I invited [player_obj] here to show [player_obj] around my department."
     firewal "It is 4:30 am as of writing this dialogue"
     firewal "I have no fucking clue what to write"
@@ -20,7 +20,7 @@ label day_event_fire:
         "What do you do?"
         "Put your full faith in Dr. Aikha and do absolutely nothing":
             jump do_nothing
-        "I think there was a fire extinguisher down the hall...right?":
+        "Grab the fire extinguisher that you (probably) saw earlier before":
             jump find_extinguisher
     
     label do_nothing:
@@ -83,14 +83,14 @@ label day_event_fire:
         with move
         firewal "You guys okay?"
         aikha "Yup! We're all good!"
-        "You see a group of janitors already begin to repair the demolished office."
+        "You see a group of janitors already beginning to repair the demolished office."
         "It seems they're used to this kind of thing happening regularly."
         "..."
         "Is that a moon?"
         firewal "Anyways, [player_name],"
         firewal "We'll have to do the tour some other day."
         firewal "I need to write another incident report..."
-        "The absurdity of the situation hits you, and you feel closer with the two of them."
+        "The absurdity of the situation hits you, and you feel a bit closer with the two of them."
         $ update_intimacy_points({"firewal": 1, "aikha": 1})
         return
         

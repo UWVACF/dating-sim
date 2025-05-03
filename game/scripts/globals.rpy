@@ -3,10 +3,16 @@
 # Constants
 
 init python:
+    # STATEMENTS
     import copy
     import random
-    random.seed()
+    random.seed() # makes a new seed to ensure randomness
 
+    # disables the option of moving back in text
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SET TO FALSE WHEN SHIPPING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    config.rollback_enabled = True
+
+    # ----- CONSTANTS -----
     # the pause times after certain punctuation marks
     comma_pause = 0.2
     period_pause = 0.4
@@ -24,7 +30,25 @@ init python:
     # must be <= 0
     helco_text_downsize = -15
 
-    # variables
+    # TODO: determine this value procedurally
+    # array of top three personnel from honing survey, in no particular order
+    top_three_honed = [
+        "aikha",
+        "firewal",
+        "plutoes"
+    ]
+
+    # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
+    # the multiplier of weight given to events with the top three
+    top_three_weight_factor = 2
+
+    day_number = 1
+    day_threshold = 7 # max number of days
+
+    honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
+
+    # ----- VARIABLES -----
+    ending_reached = False # set to True if a second ending event has been seen
 
     intimacy_points = {
         "helco": 0,
@@ -51,23 +75,6 @@ init python:
         "chan": 0,
         "bad end": 0
     }
-
-    # TODO: determine this value procedurally
-    # array of top three personnel from honing survey, in no particular order
-    top_three_honed = [
-        "aikha",
-        "firewal",
-        "plutoes"
-    ]
-
-    # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
-    # the multiplier of weight given to events with the top three
-    top_three_weight_factor = 2
-
-    day_number = 1
-    day_threshold = 7 # max number of days
-
-    honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
 
 
 # Player pronouns and names
