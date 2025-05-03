@@ -1,7 +1,40 @@
 init python:
-    event_labels = ["fire", "paul_demure_johnson", "helco_coffee"]
-    # remaining_event_labels = event_labels.copy()
-    remaining_event_labels = ["paul_demure_johnson"]
+    # where the day events are stored
+    # format:
+    # array of dictionaries
+    #   - dictionary
+    #       - "label": string
+    #       - "personnel": array of strings
+    #           - person (string)
+    #       - "prereq": string (empty or another label)
+    # for labels:
+    #   - in renpy, write "label day_event_(label)", but in the array, do NOT include the "day_event_" prefix
+    #   - labels should be snake_case
+    day_events = [
+        {
+            "label": "fire",
+            "personnel": ["aikha", "firewal"],
+            "prereq": ""
+        },
+        {
+            "label": "helco_coffee",
+            "personnel": ["helco"],
+            "prereq": ""
+        },
+        {
+            "label": "paul_demure_johnson",
+            "personnel": ["paul", "firewal", "aikha"],
+            "prereq": ""
+        }
+    ]
+    # remaining_day_events = copy.deep_copy(event_labels)
+    remaining_day_events = [
+        {
+            "label": "fire",
+            "personnel": ["aikha", "firewal"],
+            "prereq": ""
+        },
+    ]
 
     day_complete_remarks = [
         "Another day survived at this crazy place.",
@@ -29,12 +62,36 @@ label day_init:
     #   sum of the total weights and generate a random number between 1 and that
     #   then go through the remaining events once more, subtracting each weight from the random number
     #   if weight <= 0, choose that event
-    $ random_event_index = random.randint(0, len(remaining_event_labels) - 1)
-    $ random_event_label = "day_event_" + remaining_event_labels[random_event_index]
-    $ remaining_event_labels.pop(random_event_index)
 
-    # call random event
-    $ renpy.call(random_event_label)
+    python:
+        # assign weights to events to allow honed personnel to appear more often
+        total_weight = 0
+        event_weights = {}
+        for event in remaining_day_events:
+            if event["prereq"] in remaining_day_events: # prereq is still in the possible events, so it was not seen yet
+                continue
+            if len(set(event["personnel"]) & set(top_three_honed)) > 0:
+                event_weights[event["label"]] = top_three_weight_factor
+            else:
+                event_weights[event["label"]] = 1
+            total_weight += event_weights[event["label"]]
+        
+        # randomly select an event
+        random_event_label = "not_found"
+        remaining_weight = random.randint(0, total_weight)
+        for event_label, weight in event_weights.items():
+            remaining_weight -= weight
+            if remaining_weight <= 0:
+                random_event_label = event_label
+                break
+
+        for i, event in enumerate(remaining_day_events):
+            if event["label"] == random_event_label:
+                remaining_day_events.pop(i)
+                break
+
+        # call random event
+        renpy.call("day_event_" + random_event_label)
 
     # after event has finished
     scene bg room

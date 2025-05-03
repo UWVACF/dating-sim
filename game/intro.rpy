@@ -77,10 +77,10 @@ label honing_survey:
 
     python: 
         returned_answer = 0
-        question_number = 1
+        questions_answered = 0
         remaining_honing_survey_questions = copy.deepcopy(honing_suvey_questions)
 
-    while question_number < honing_survey_questions_threshold:
+    while questions_answered < honing_survey_questions_threshold:
         $ question_index = random.randint(0, len(remaining_honing_survey_questions) - 1)
         show screen honing_survey(
             question=remaining_honing_survey_questions[question_index]["question"],
@@ -96,7 +96,7 @@ label honing_survey:
         jessie "[reply]"
 
         $ remaining_honing_survey_questions.pop(question_index)
-        $ question_number += 1
+        $ questions_answered += 1
 
     window show
 
@@ -149,8 +149,7 @@ init python:
     default_jessie_replies = [
         "Mhm!",
         "Yup!",
-        "Keep going!",
-        "Just a few more!",
+        "Nice!",
         "Yep!",
         "Great!"
     ]

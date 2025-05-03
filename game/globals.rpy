@@ -26,14 +26,15 @@ init python:
 
     # variables
 
-    closeness = {
+    intimacy_points = {
         "helco": 0,
         "aikha": 0,
         "firewal": 0,
         "jessie": 0,
         "plutoes": 0,
         "alex": 0,
-        "chan": 0
+        "chan": 0,
+        "paul": 0
     }
 
     # should include only who's romanceable/has a route
@@ -51,10 +52,22 @@ init python:
         "bad end": 0
     }
 
+    # TODO: determine this value procedurally
+    # array of top three personnel from honing survey, in no particular order
+    top_three_honed = [
+        "aikha",
+        "firewal",
+        "plutoes"
+    ]
+
+    # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
+    # the multiplier of weight given to events with the top three
+    top_three_weight_factor = 2
+
     day_number = 1
     day_threshold = 7 # max number of days
 
-    honing_survey_questions_threshold = 7 # max number of honing survey questions to be taken
+    honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
 
 
 # Player pronouns and names

@@ -7,20 +7,20 @@ init python:
     def cap_first(s):
         return s[0].upper() + s[1:] if s else s
 
-    # Raise the closeness of personnel at indices
-    # takes in a LIST of TWO-TUPLES - that is, [(id, amount), (id, amount) etc]
-    # example usage: update_closeness([("helco", 3), ("plutoes", -1)])
-    def update_closeness(personnel):
-        for person in personnel:
-            closeness[person[0]] += person[1]
+    # Raise the intimacy points of personnel
+    # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
+    # example usage: update_intimacy_points({"helco": 1, "plutoes", -2})
+    def update_intimacy_points(personnel):
+        for person, points in personnel.items():
+            intimacy_points[person] += points
         return True
 
-    # Raise the honing survey points of personnel at indices
-    # takes in a LIST of TWO-TUPLES - that is, [(id, amount), (id, amount) etc]
-    # example usage: update_closeness([("helco", 3), ("plutoes", -1)])
+    # Raise the honing survey points of personnel
+    # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
+    # example usage: update_honing_points({"helco": 1, "plutoes", -2})
     def update_honing_points(personnel):
-        for person in personnel:
-            honing_points[person[0]] += person[1]
+        for person, points in personnel.items():
+            honing_points[person] += points
         return True
 
     # Automatically adds pauses after commas and periods

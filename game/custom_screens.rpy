@@ -5,7 +5,7 @@ screen honing_survey(question, answers_and_actions):
     default selected_answer = -1
 
     $ answers = [item["answer"] for item in answers_and_actions]
-    $ actions = [Function(update_honing_points, [(key, value)]) for item in answers_and_actions for key, value in item["personnel"].items()]
+    $ actions = [Function(update_honing_points, {key: value}) for item in answers_and_actions for key, value in item["personnel"].items()]
 
     frame:
         padding (20, 20)
