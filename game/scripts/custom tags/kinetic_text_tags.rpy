@@ -57,7 +57,7 @@ init python:
         #   - Self-closing tags should not be added here and should be handled
         #     in the text tag function.
         # usage: {tag=<parameter>}text{/tag}
-        # omega: nothing
+        # omega: allows composite tags
         # bt: bounce up and down
         # fi: fade in from right
         # sc: scare shake - around 2 should be good

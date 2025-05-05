@@ -27,22 +27,25 @@ init python:
     # the default time for a standard sprite movement
     default_move_time = 0.7
 
-    # the amount helco's text size will decrease when he's thinking
-    # must be <= 0
-    helco_text_downsize = -15
-
     # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
     # the multiplier of weight given to events with the top three
     top_three_weight_factor = 2
 
     day_number = 1
-    day_threshold = 7 # max number of days
+    day_threshold = 10 # max number of days
 
     honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
 
-    # ----- VARIABLES -----
-    ending_reached = False # set to True if a final ending event has been seen
+    # the amount helco's text size will decrease when he's thinking
+    # must be <= 0
+    helco_text_downsize = -15
 
+    # the chance of getting an ending event instead of a day event
+    ending_chance = 1.0 
+
+
+    # ----- VARIABLES -----
+    
     # TODO: determine this value procedurally
     # array of top three personnel from honing survey, in no particular order
     top_three_honed = [
@@ -50,17 +53,6 @@ init python:
         "firewal",
         "plutoes"
     ]
-
-    intimacy_points = {
-        "helco": 0,
-        "aikha": 0,
-        "firewal": 0,
-        "jessie": 0,
-        "plutoes": 0,
-        "alex": 0,
-        "chan": 0,
-        "paul": 0
-    }
 
     # should include only who's romanceable/has a route
     honing_points = {
@@ -76,6 +68,30 @@ init python:
         "chan": 0,
         "bad end": 0
     }
+    
+    current_ending = None # set to a string if in the process of reaching an ending
+
+    character_point_threshold = 6
+
+    # dictionary for number of  r points the player has achieved with each personnel
+    # each entry should be a tuple: (cur num of points, threshold for points)
+    # TODO: rename to CHARACTER POINTS
+    character_points = {
+        "syg": 0,
+        "alex": 0,
+        "helco": 0,
+        "aikha": 0,
+        "firewal": 0,
+        "venture": 0,
+        "uriel": 0,
+        "ryz": 0,
+        "deceased": 0,
+        "chan": 0,
+    }
+
+
+
+    
 
 
 # Player pronouns and names
@@ -137,5 +153,11 @@ transform appear(y_offset = 70, duration = 0.5, x_align = 0.5, y_align = 1.0):
         easein duration yoffset 0
     parallel:
         linear duration matrixcolor BrightnessMatrix(0.0)
+
+transform disappear(y_offset = 70, duration = 0.5):
+    parallel:
+        easein duration yoffset y_offset
+    parallel:
+        linear duration matrixcolor BrightnessMatrix(-1.0)
 
 define default_fade = Fade(1.0, 1.0, 1.0)

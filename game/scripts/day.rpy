@@ -27,6 +27,7 @@ init python:
             "prereq": ""
         }
     ]
+
     # remaining_day_events = copy.deep_copy(event_labels)
     remaining_day_events = [
         {
@@ -57,41 +58,45 @@ init python:
     ]
 
 label day_init:
-    # TODO:
-    #   to give additional weight to events with more honed-in personnel, go through the entire remaining events and assign a weight value 
-    #   sum of the total weights and generate a random number between 1 and that
-    #   then go through the remaining events once more, subtracting each weight from the random number
-    #   if weight <= 0, choose that event
+    scene bg intro
+    with default_fade
+    player "Intro sequence!!!!!!"
+    player "aughaghaghagh"
 
     python:
-        # assign weights to events to allow honed personnel to appear more often
-        total_weight = 0
-        event_weights = {}
-        for event in remaining_day_events:
-            if event["prereq"] in remaining_day_events: # prereq is still in the possible events, so it was not seen yet
-                continue
-            if len(set(event["personnel"]) & set(top_three_honed)) > 0:
-                event_weights[event["label"]] = top_three_weight_factor
-            else:
-                event_weights[event["label"]] = 1
-            total_weight += event_weights[event["label"]]
-        
-        # randomly select an event
-        random_event_label = "not_found" # default value
-        remaining_weight = random.randint(0, total_weight)
-        for event_label, weight in event_weights.items():
-            remaining_weight -= weight
-            if remaining_weight <= 0:
-                random_event_label = event_label
-                break
+        if current_ending is not None and random.random() < ending_chance:
+            # call the ending event instead of a day event
+            renpy.call("ending_event_" + current_ending)
 
-        for i, event in enumerate(remaining_day_events):
-            if event["label"] == random_event_label:
-                remaining_day_events.pop(i)
-                break
+        else:
+            # assign weights to events to allow honed personnel to appear more often
+            total_weight = 0
+            event_weights = {}
+            for event in remaining_day_events:
+                if event["prereq"] in remaining_day_events: # prereq is still in the possible events, so it was not seen yet
+                    continue
+                if len(set(event["personnel"]) & set(top_three_honed)) > 0:
+                    event_weights[event["label"]] = top_three_weight_factor
+                else:
+                    event_weights[event["label"]] = 1
+                total_weight += event_weights[event["label"]]
+            
+            # randomly select an event
+            random_event_label = "not_found" # default value
+            remaining_weight = random.randint(0, total_weight)
+            for event_label, weight in event_weights.items():
+                remaining_weight -= weight
+                if remaining_weight <= 0:
+                    random_event_label = event_label
+                    break
 
-        # call random event
-        renpy.call("day_event_" + random_event_label)
+            for i, event in enumerate(remaining_day_events):
+                if event["label"] == random_event_label:
+                    remaining_day_events.pop(i)
+                    break
+
+            # call random event
+            renpy.call("day_event_" + random_event_label)
 
     # after event has finished
     scene bg room
@@ -106,6 +111,17 @@ label day_init:
     player "[random_heading_home_remark]"
 
     $ day_number += 1
-    # add threshold checker
-    if day_number < day_threshold and not ending_reached:
+
+    # check if an ending has been reached
+    python:
+        if current_ending is None:
+            for person, points in character_points.items():
+                if points >= character_point_threshold:
+                    # first ending label should be ending_event_(person)_1
+                    current_ending = person + "_1"
+                    character_points[person] = -100
+                    break
+
+    
+    if day_number < day_threshold:
         jump day_init

@@ -73,8 +73,6 @@ label honing_survey:
     show jessie neutral at right
     with move
 
-    # TODO - add a pool of honing questions: expand this into a while loop and throw question-answer tuples into a list 
-
     python: 
         returned_answer = 0
         questions_answered = 0
@@ -86,6 +84,8 @@ label honing_survey:
             question=remaining_honing_survey_questions[question_index]["question"],
             answers_and_actions=remaining_honing_survey_questions[question_index]["answers"]
         )
+
+        # TODO: increment honing points depending on the question
 
         python:
             returned_answer = ui.interact()
@@ -110,7 +110,7 @@ label honing_survey:
     # toggleable option
     jessie "Congrats on finishing the survey!"
 
-    if honing_points["bad end"] > 5:
+    if honing_points["bad end"] > 10:
         jessie "..."
         jessie "Uh, one second..."
         show jessie neutral at left
@@ -125,10 +125,8 @@ label honing_survey:
         jessie "\"Abysmal. Appalling. Inhumane.\""
         jessie "He said he would \"recommend you to see a therapist,\" but he'd be \"scared for the therapist.\""
         jessie "He said you \"somehow chose the very obviously worst answer over 90%% of the time.\""
-        jessie "So we're...revoking your position at the company."
+        jessie "So we're revoking your position at the company."
         jessie "Sorry about that..."
-        jessie "..."
-        jessie "{size=-15}Don't kill me...{/size}"
         return
 
 
@@ -141,7 +139,6 @@ label honing_survey:
     
     jessie neutral "Now that the survey's out of the way, let me introduce you to the personnel at VACF!"
     n "And thus began my journey at VACF."
-    n "lItTlE dId I kNoW wHaT wAs WaItInG fOr Me In ThE cOmInG wEeK..."
     jump day_init
 
 
@@ -188,7 +185,7 @@ init python:
                     "reply": "REAL!"
                 },
                 {
-                    "answer": "Stay at the office until dawn, because there's always more to be done",
+                    "answer": "Stay at the office until dawn: there's always more to be done",
                     "personnel": {"aikha": 1},
                     "reply": "Oh my..."
                 }
@@ -258,7 +255,7 @@ init python:
                     "reply": ""
                 },
                 {
-                    "answer": "Group brainrot session!",
+                    "answer": "Spew brainrot",
                     "personnel": {"firewal": 1},
                     "reply": "Yippee!!"
                 },
@@ -328,9 +325,9 @@ init python:
                     "reply": ":'D"
                 },
                 {
-                    "answer": "This facility isn't big enough for the two of us.",
+                    "answer": "Challenge them to a duel at high noon",
                     "personnel": {"bad end": 1},
-                    "reply": "We duel at dawn."
+                    "reply": "Hmm..."
                 },
                 {
                     "answer": "Steal theirs back",
@@ -338,7 +335,7 @@ init python:
                     "reply": ""
                 },
                 {
-                    "answer": "Interpret this as a sign that the universe is against you",
+                    "answer": "Fall into a state of depression",
                     "personnel": {"firewal": 1},
                     "reply": ""
                 }
@@ -383,9 +380,9 @@ init python:
                     "reply": "Ooh!"
                 },
                 {
-                    "answer": "Food is a social construct from which I have escaped",
+                    "answer": "I starve",
                     "personnel": {"firewal": 1},
-                    "reply": "...sure."
+                    "reply": ""
                 },
                 {
                     "answer": "Where do you think my fingers went?",
@@ -398,7 +395,7 @@ init python:
             "question": "What's your favourite thing to do with friends?",
             "answers": [
                 {
-                    "answer": "Invite them over for snacks and tea! We'll chill on the couch and just talk",
+                    "answer": "Chill on the couch with snacks and tea",
                     "personnel": {"firewal": 1},
                     "reply": ""
                 },
@@ -448,17 +445,17 @@ init python:
             "question": "What traits in other people are important to you?",
             "answers": [
                 {
-                    "answer": "Confidence",
+                    "answer": "Confidence and respect",
                     "personnel": {"firewal": 1},
                     "reply": ""
                 },
                 {
-                    "answer": "Empathy",
+                    "answer": "Compassion and generosity",
                     "personnel": {"firewal": 1},
                     "reply": ""
                 },
                 {
-                    "answer": "Ambition",
+                    "answer": "Ambition and open-mindedness",
                     "personnel": {"firewal": 1},
                     "reply": ""
                 },
@@ -468,5 +465,30 @@ init python:
                     "reply": "..."
                 }
             ]
-        }
+        },
+        # {
+        #     "question": "",
+        #     "answers": [
+        #         {
+        #             "answer": "",
+        #             "personnel": {"firewal": 1},
+        #             "reply": ""
+        #         },
+        #         {
+        #             "answer": "Empathy",
+        #             "personnel": {"firewal": 1},
+        #             "reply": ""
+        #         },
+        #         {
+        #             "answer": "Ambition",
+        #             "personnel": {"firewal": 1},
+        #             "reply": ""
+        #         },
+        #         {
+        #             "answer": "Evident lack of moral compass",
+        #             "personnel": {"bad end": 1},
+        #             "reply": "..."
+        #         }
+        #     ]
+        # }
     ]

@@ -7,12 +7,12 @@ init python:
     def cap_first(s):
         return s[0].upper() + s[1:] if s else s
 
-    # Raise the intimacy points of personnel
+    # Raise the character points of personnel
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
-    # example usage: update_intimacy_points({"helco": 1, "plutoes", -2})
-    def update_intimacy_points(personnel):
+    # example usage: update_character_points({"helco": 1, "plutoes", -2})
+    def update_character_points(personnel):
         for person, points in personnel.items():
-            intimacy_points[person] += points
+            character_points[person] += points
         return True
 
     # Raise the honing survey points of personnel

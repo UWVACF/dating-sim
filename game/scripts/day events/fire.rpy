@@ -9,9 +9,10 @@ label day_event_fire:
 
     aikha "It was all worth it in the end when-{w=[comma_pause]} oh! Hey, new recruit! Whatcha doing here?"
     firewal "I invited [player_obj] here to show [player_obj] around my department."
-    firewal "It is 4:30 am as of writing this dialogue"
-    firewal "I have no fucking clue what to write"
-    aikha "I'm just gonna write whatever so I can work on implementation"
+    firewal "Hello founder Alex"
+    firewal "I have no clue what to write"
+    aikha "So I will write whatever and our writers will surely fill this with excellent high quality dialogue later down the line"
+    firewal "Ahem"
     firewal "Holy shit look at that [[thing]"
     firewal "That [[thing] is making me stressed I'm going to spontaneously combust"
     aikha "Oh no Dr. Firewal is spontaneously combusting"
@@ -61,7 +62,7 @@ label day_event_fire:
         player "..."
         n "You feel grateful that Dr. Firewal checked up on you."
         n "You feel closer with him."
-        $ update_intimacy_points({"firewal": 2})
+        $ update_character_points({"firewal": 2})
         return # NECESSARY (at least for first label)
     
     label find_extinguisher:
@@ -69,10 +70,10 @@ label day_event_fire:
         n "Unfortunately, it seems Dr. Aikha is too busy being on fire to hear you."
         hide aikha
         hide firewal
-        n "You rush out into the hall, beelining for the fire extinguisher"
-        n "Right after you break the glass and grab it, you hear a massive explosion coming from Dr. Firewal's office."
+        n "You rush out into the hall, heading straight for the fire extinguisher."
+        n "Right after you grab it, you hear a massive explosion coming from Dr. Firewal's office."
         n "When the smoke clears, you see Dr. Aikha covered in ash, surrounded by debris."
-        show aikha neutral at appear(x_align = 0.5)
+        show aikha neutral at appear()
         aikha "Hey, new recruit! What's that in your hands?"
         aikha "A fire extinguisher? Good thinking!"
         n "Dr. Aikha takes the fire extinguisher and smashes it into whatever remains of the ceiling."
@@ -86,11 +87,13 @@ label day_event_fire:
         n "You see a group of janitors already beginning to repair the demolished office."
         n "It seems they're used to this kind of thing happening regularly."
         n "..."
-        n "Is that a moon?"
+        n "Is that the moon?"
         firewal "Anyways, [player_name],"
         firewal "We'll have to do the tour some other day."
         firewal "I need to write another incident report..."
-        n "The absurdity of the situation hits you, and you feel a bit closer with the two of them."
-        $ update_intimacy_points({"firewal": 1, "aikha": 1})
+        n "Witnessing such an absurd situation makes you feel a bit closer with the two of them."
+        $ update_character_points({"firewal": 1, "aikha": 10}) # CHANGE AIKHA'S POINT VALUE TO 1
         return
+
+    aikha "{no_pause} this text will not have auto pause"
         
