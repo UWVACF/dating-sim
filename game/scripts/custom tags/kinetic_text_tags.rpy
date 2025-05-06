@@ -136,7 +136,7 @@ init python:
     ### TEXT WRAPPER CLASSES ###
     # Basic text displacement demonstration
     class BounceText(renpy.Displayable):
-        def __init__(self, child, char_offset, amp=20, period=4.0, speed = 1.0, **kwargs):
+        def __init__(self, child, char_offset, amp=20, period=4.0, speed = 1.5, **kwargs):
 
             # Pass additional properties on to the renpy.Displayable
             # constructor.
@@ -494,7 +494,7 @@ init python:
     # Example: {bt=10}Text{/bt}
     def bounce_tag(tag, argument, contents):
         new_list = [ ] # The list we will be appending our displayables into
-        amp, period, speed = 20, 4.0, 1.0
+        amp, period, speed = 20, 2.0, 1.0
         if argument == "": # If the argument received is blank, insert a default value
             amp = 20
         else:
@@ -743,61 +743,64 @@ init python:
     # All tag arguments are seperated by @.
     # Example: {omega=BT=[bt_arg]@SC=[sc_arg]@FI=[fi_arg1]-[fi_arg2]@ROT=[rot_arg]@CH}Text{/omega}
     def omega_tag(tag, argument, contents):
-        new_list = [ ]
-        if argument == "": # This tag must have arguments
+        new_list = []
+        if argument == "":
             return contents
-        # Variable for each of our tags. None if it takes one argument.
-        # Boolean if 0 or many arguments.
+
+        # Initialize effect variables
         bt_tag = None
         sc_tag = None
         fi_tag = False
         rot_tag = None
         chao_tag = False
+        rb_tag = False
         fi_arg_1 = None
         fi_arg_2 = None
 
-        args = [ ]
-        arg_count = argument.count('@') # Count how many partitions we will need to make
-        for x in range(arg_count):      # Extract all the tags and arguments with them
-            new_arg, _, argument = argument.partition('@')
-            args.append(new_arg)
-        args.append(argument)
-        # Determine what tags we'll need to apply and the arguments associated with them
+        # Parse arguments
+        args = argument.split('@')
         for arg in args:
-            tag, _, value = arg.partition('=')
-            if tag == "BT":
-                if value is not "":
-                    bt_tag = value
-                else:
-                    bt_tag = 10
-            elif tag == "SC":
-                if value is not "":
-                    bt_tag = value
-                else:
-                    bt_tag = 5
-            # Multiargument tag example. Be sure to use different partitions for these
-            elif tag == "FI":
+            tag_part, _, value = arg.partition('=')
+            if tag_part == "BT":
+                # the omega tag can only take the most basic of arguments 
+                # in the case of bt tag, that's only the amp
+                # so change the default value in BounceText (NOT bounce_tag) and adjust other default bounce properties using 
+                #   special arguments (see bounce_text)
+                bt_tag = int(value) if value else 10 
+            elif tag_part == "SC":
+                sc_tag = int(value) if value else 5
+            elif tag_part == "FI":
                 fi_tag = True
-                str1, _, str2 = value.partition('-')
-                fi_arg_1 = int(str1)
-                fi_arg_2 = float(str2)
-            elif tag == "ROT":
+                if value:
+                    parts = value.split('-')
+                    fi_arg_1 = int(parts[0]) if len(parts) > 0 else 0
+                    fi_arg_2 = float(parts[1]) if len(parts) > 1 else 0.1
+            elif tag_part == "ROT":
                 rot_tag = value
-            elif tag == "CH":
+            elif tag_part == "CH":
                 chao_tag = True
+            elif tag_part == "RB":
+                rb_tag = True
 
         my_style = DispTextStyle()
-        my_index = 0 # Some Classes will need an index
-        for kind,text in contents:
+        my_index = 0
+
+        # Process contents through rainbow_tag if needed
+        if rb_tag:
+            processed_contents = rainbow_tag(tag, "", contents)
+        else:
+            processed_contents = contents
+
+        # Process all contents
+        for kind, text in processed_contents:
             if kind == renpy.TEXT_TEXT:
                 for char in text:
-                    # Apply base Wrappers to letter
+                    # Create base displayable
                     if chao_tag:
                         char_disp = ChaosText(my_style.apply_style(char))
                     else:
                         char_disp = Text(my_style.apply_style(char))
-                    # Apply further Wraps
-                        # Be sure to consider if the order will be important to you
+                    # Apply effects
                     if bt_tag is not None:
                         char_disp = BounceText(char_disp, my_index, bt_tag)
                     if sc_tag is not None:
@@ -806,12 +809,27 @@ init python:
                         char_disp = FadeInText(char_disp, my_index + fi_arg_1, fi_arg_2)
                     if rot_tag is not None:
                         char_disp = RotateText(char_disp, rot_tag)
+
                     new_list.append((renpy.TEXT_DISPLAYABLE, char_disp))
+                    my_index += 1
+            elif kind == renpy.TEXT_DISPLAYABLE:
+                char_disp = text
+                if bt_tag is not None:
+                    char_disp = BounceText(char_disp, my_index, bt_tag)
+                if sc_tag is not None:
+                    char_disp = ScareText(char_disp, sc_tag)
+                if fi_tag:
+                    char_disp = FadeInText(char_disp, my_index + fi_arg_1, fi_arg_2)
+                if rot_tag is not None:
+                    char_disp = RotateText(char_disp, rot_tag)
+                
+                new_list.append((renpy.TEXT_DISPLAYABLE, char_disp))
+                my_index += 1
             elif kind == renpy.TEXT_TAG:
                 if not my_style.add_tags(text):
                     new_list.append((kind, text))
             else:
-                new_list.append((kind,text))
+                new_list.append((kind, text))
 
         return new_list
 

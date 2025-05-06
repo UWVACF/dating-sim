@@ -204,5 +204,23 @@ init python:
                 new_list.append((kind,text))
         return new_list
 
+    def rainbow_tag(tag, argument, contents):
+        new_list = [ ]
+        col_list = [
+            "#dc3030",
+            "#fca73f",
+            "#fff34d",
+            "#227f3e",
+            "#437bff",
+            "#73397e"
+        ]
+        chars_span = 15
+        args = [str(len(col_list))]
+        for i, col in enumerate(col_list):
+            next_col = col_list[(i + 1) % len(col_list)]
+            args.append(f"{col}-{next_col}-{chars_span}")
+        return gradient2_tag(tag, "-".join(args), contents)
+
     config.custom_text_tags["gradient"] = gradient_tag
     config.custom_text_tags["gradient2"] = gradient2_tag
+    config.custom_text_tags["rainbow"] = rainbow_tag

@@ -1,31 +1,40 @@
 init python:
-    # where the day events are stored
-    # format:
-    # array of dictionaries
-    #   - dictionary
-    #       - "label": string
-    #       - "personnel": array of strings
-    #           - person (string)
-    #       - "prereq": string (empty or another label)
-    # for labels:
-    #   - in renpy, write "label day_event_(label)", but in the array, do NOT include the "day_event_" prefix
-    #   - labels should be snake_case
+    # day event class declaration just to hold values easily
+    class DayEvent():
+        def __init__(
+            self,
+            label = "not_found", # the label of the event WITHOUT day_event_
+            personnel = None, # an array of personnel names
+            see_before = 0, # the day during and after which the event can be viewed
+            see_after = 0, # the day before (not during) the event can be viewed
+            prereqs = None, # an array of prerequisite labels
+            prereq_tags = None, # a dictionary of prereq tags {tag: min_count_to_see_event}
+            antireqs = None, # an array of antirequisite labels
+            antireq_tags = None, # a dictionary of antireq tags: if you see x or more, you are locked out {tag: x}
+            chain = "", # a SINGLE label indicating the event that MUST PRECEDE this one
+            intro_label = "", # the label of the custom intro, if any
+            outro_label = "", # the label of the custom outro, if any 
+            tags = None # an array of tags used for categorization for prereq tags and antireq tags
+        ):
+            self.label = str(label)
+            self.see_before = see_before
+            self.see_after = see_after
+            self.chain = str(chain)
+            self.intro_label = str(intro_label)
+            self.outro_label = str(outro_label)
+
+            self.personnel = list(personnel) if personnel is not None else []
+            self.prereqs = list(prereqs) if prereqs is not None else []
+            self.antireqs = list(antireqs) if antireqs is not None else []
+            self.tags = list(tags) if tags is not None else []
+
+            self.prereq_tags = dict(prereq_tags) if prereq_tags is not None else {}
+            self.antireq_tags = dict(antireq_tags) if antireq_tags is not None else {}
+            
+    
+    # arrays
     day_events = [
-        {
-            "label": "fire",
-            "personnel": ["aikha", "firewal"],
-            "prereq": ""
-        },
-        {
-            "label": "helco_coffee",
-            "personnel": ["helco"],
-            "prereq": ""
-        },
-        {
-            "label": "paul_demure_johnson",
-            "personnel": ["paul", "firewal", "aikha"],
-            "prereq": ""
-        }
+        
     ]
 
     # remaining_day_events = copy.deep_copy(event_labels)
@@ -56,6 +65,19 @@ init python:
         "Welp, let's go.",
         "At least I'm free now."
     ]
+
+
+    # helper functions
+
+    # returns an array of day events that is a subarray of the provided containing ALL personnel listed
+    # takes in an array of personnel 
+    def get_day_event_with_all_personnel(events = None, personnel = None):
+        if personnel is None or events is None:
+            return []
+        
+        
+
+
 
 label day_init:
     scene bg intro
