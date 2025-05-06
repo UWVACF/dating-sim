@@ -99,10 +99,9 @@ label day_init:
             # chat im not doing set theory im going to commit a programming sin and repeat code
             total_weight = 0
             event_weights = [] # tuple with event, weight
-            print("day", day_number)
             for event in filter_events(viewable_on_day = day_number):
                 fail = False # failure flag
-                # check it's compatible via prereqs
+                # check it's compatible via prereqs and antireqs
                 if any(prereq not in seen_events for prereq in event.prereqs):
                     fail = True # missing prereq
                 elif any(antireq in seen_events for antireq in event.antireqs):
@@ -110,12 +109,12 @@ label day_init:
                 else:
                     for key, val in enumerate(event.prereq_tags):
                         if key in current_tags and val < current_tags[key]:
-                            fail = True # prereq too low
+                            fail = True # prereq tag count too low
                             break
                     
                     for key, val in enumerate(event.antireq_tags):
                         if key in current_tags and val >= current_tags[key]:
-                            fail = True # antireq tag too high
+                            fail = True # antireq tag count too high
                             break
                 
                 if fail:
@@ -130,7 +129,6 @@ label day_init:
             
             # randomly choose an event based on weight
             remaining_weight = random.randint(0, total_weight)
-            print(total_weight)
             for event, weight in event_weights:
                 remaining_weight -= weight
                 if remaining_weight <= 0:
@@ -143,10 +141,6 @@ label day_init:
                     break
         
         today_event_label = today_event_label.replace(" ", "_").lower() # just in case someone uses spaces or capitals
-
-        print(today_intro_label)
-        print(today_event_label)
-        print(today_outro_label)
 
     # call the events (in renpy cuz call jumps to the next renpy statement, not python statement)
     $ renpy.call(today_intro_label)
