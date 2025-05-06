@@ -66,16 +66,11 @@ init python:
         "At least I'm free now."
     ]
 
-
     # helper functions
 
-    # returns an array of day events that is a subarray of the provided containing ALL personnel listed
-    # takes in an array of personnel 
-    def get_day_event_with_all_personnel(events = None, personnel = None):
-        if personnel is None or events is None:
-            return []
-        
-        
+    # returns an array of day events with the following properties
+    # def get_day_events_with
+                
 
 
 
