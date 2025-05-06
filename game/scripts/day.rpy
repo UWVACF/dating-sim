@@ -142,18 +142,18 @@ label day_init:
                     today_event = event
                     break
         
-        today_event_label = today_event_label.replace(" ", "_") # just in case someone uses spaces
+        today_event_label = today_event_label.replace(" ", "_").lower() # just in case someone uses spaces or capitals
 
         print(today_intro_label)
         print(today_event_label)
         print(today_outro_label)
 
-    # call the events (in renpy cuz call jumps to the next renpy statement instead of python)
+    # call the events (in renpy cuz call jumps to the next renpy statement, not python statement)
     $ renpy.call(today_intro_label)
     $ renpy.call(today_event_label)
     $ renpy.call(today_outro_label)
 
-    "" "{nw}"
+    "{nw}" # again, .call jumps to next renpy statement so we place a pseudo renpy statement here
     
     python:
         day_number += 1
