@@ -30,7 +30,7 @@ label day_event_helco_coffee:
     show helco neutral at appear
     n "He jolts awake at the sound of your voice."
     helco "Oh, hi!"
-    if closeness["helco"] < 1:
+    if character_points["helco"] < 1:
         helco "[misremember_name()], right?"
         player "It's [player_name], actually."
         helco "Oh! Sorry!"
@@ -58,9 +58,12 @@ label day_event_helco_coffee:
     
     label personally:
         n "You're human! Surely you could teach him a thing or two about human activity."
+        return
 
     label jessie_firewal:
         n "You decide to gather the help of other human personnel to give Dr. Helco a group lesson."
+        return
 
     label aikha_plutoes:
         n "Perhaps Dr. Helco would best relate to other non-humans struggling to fit in."
+        return

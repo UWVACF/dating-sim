@@ -1,121 +1,188 @@
 init python:
-    # day event class declaration just to hold values easily
-    class DayEvent():
-        def __init__(
-            self,
-            label = "not_found", # the label of the event WITHOUT day_event_
-            personnel = None, # an array of personnel names
-            see_before = 0, # the day during and after which the event can be viewed
-            see_after = 0, # the day before (not during) the event can be viewed
-            prereqs = None, # an array of prerequisite labels
-            prereq_tags = None, # a dictionary of prereq tags {tag: min_count_to_see_event}
-            antireqs = None, # an array of antirequisite labels
-            antireq_tags = None, # a dictionary of antireq tags: if you see x or more, you are locked out {tag: x}
-            chain = "", # a SINGLE label indicating the event that MUST PRECEDE this one
-            intro_label = "", # the label of the custom intro, if any
-            outro_label = "", # the label of the custom outro, if any 
-            tags = None # an array of tags used for categorization for prereq tags and antireq tags
-        ):
-            self.label = str(label)
-            self.see_before = see_before
-            self.see_after = see_after
-            self.chain = str(chain)
-            self.intro_label = str(intro_label)
-            self.outro_label = str(outro_label)
-
-            self.personnel = list(personnel) if personnel is not None else []
-            self.prereqs = list(prereqs) if prereqs is not None else []
-            self.antireqs = list(antireqs) if antireqs is not None else []
-            self.tags = list(tags) if tags is not None else []
-
-            self.prereq_tags = dict(prereq_tags) if prereq_tags is not None else {}
-            self.antireq_tags = dict(antireq_tags) if antireq_tags is not None else {}
-            
-    
-    # arrays
-    day_events = [
-        
-    ]
-
-    # remaining_day_events = copy.deep_copy(event_labels)
-    remaining_day_events = [
-        {
-            "label": "fire",
-            "personnel": ["aikha", "firewal"],
-            "prereq": ""
-        },
-    ]
-
-    day_complete_remarks = [
-        "Another day survived at this crazy place.",
-        "Check that day off.",
-        "Phew. Tough day.",
-        "aughhhhHHHHHHHHHhhhh",
-        "Not a bad day, I suppose.",
-        "Could've been worse.",
-        "At least it's over.",
-        "..."
-    ]
-
-    heading_home_remarks = [
-        "Well, I should get going.",
-        "Home time!",
-        "I'm off the clock.",
-        "Signing off.",
-        "Welp, let's go.",
-        "At least I'm free now."
-    ]
 
     # helper functions
 
-    # returns an array of day events with the following properties
-    # def get_day_events_with
+    # returns an array of events with the following properties
+    # all parameters are optional - you probably only want to use one or two filters at a time, MAYBE three
+    def filter_events(
+        events = None, # can also specify it to be day_events (instead of remaining day events) or character_events
+        label = "", # should probably only be used for character_events
+        personnel = None, # array, finds event with ALL listed personnel
+        viewable_on_day = 0, # finds events viewable on this day, according to see_before and see_after
+        prereqs = None, # array, finds events with ALL listed prerequisite labels
+        prereq_tags = None, # dictionary, finds events with ALL listed prereq tags of value at LEAST x
+        antireqs = None, # array, finds events with ANY listed antireq labels
+        antireq_tags = None, # dictionary, finds events with ANY listed antireq tags of value GREATER THAN x
+        chain = "", # finds the UNIQUE event with that chain
+        tags = None # array, finds events with ALL listed tags
+    ):
+        if events is None:
+            events = remaining_day_events
+        
+        filtered = []
+        
+        for event in events:
+            if label and event.label != label:
+                continue
+
+            if personnel and not all(p in event.personnel for p in personnel):
+                continue
                 
-
-
-
+            if viewable_on_day > 0:
+                if event.see_before != 0 and viewable_on_day > event.see_before:
+                    continue
+                if event.see_after != 0 and viewable_on_day < event.see_after:
+                    continue
+            
+            if prereqs and not all(req in event.prereqs for req in prereqs):
+                continue
+                
+            if prereq_tags:
+                if not event.prereq_tags:
+                    continue
+                if not all(tag in event.prereq_tags for tag in prereq_tags):
+                    continue
+            
+            if antireqs and any(antireq in event.antireqs for antireq in antireqs):
+                continue
+                
+            if antireq_tags:
+                if any(tag in event.antireq_tags for tag in antireq_tags):
+                    continue
+            
+            if chain and event.chain != chain:
+                continue
+                
+            if tags and not all(tag in event.tags for tag in tags):
+                continue
+                
+            filtered.append(event)
+        
+        return filtered
+            
 label day_init:
+    # priority of calling events:
+    # chain event
+    # ending event
+    # standard event
+
+    python:
+        today_intro_label = "default_intro"
+        today_event_label = "day_event_not_found"
+        today_event = None
+        today_outro_label = "default_outro"
+
+        # call a chain event
+        # assumptions: all prerequisites of the chain event are satisfied/are placed under the head of the chain
+        filtered = filter_events(chain = seen_events[-1]) if seen_events else None
+        if filtered:
+            event = filtered[0]
+            today_event = event
+            today_event_label = "day_event_" + event.label
+            if event.intro_label:
+                today_intro_label = event.intro_label
+            if event.outro_label:
+                today_outro_label = event.outro_label
+        
+        # call the ending event instead of a day event
+        elif current_ending is not None and random.random() < ending_chance:
+            today_event_label = "ending_event_" + current_ending
+            event = filter_events(events = ending_events, label = current_ending)[0]
+            today_event = event
+            if event.intro_label:
+                today_intro_label = event.intro_label
+            if event.outro_label:
+                today_outro_label = event.outro_label
+        
+        # find standard events
+        else:
+            # chat im not doing set theory im going to commit a programming sin and repeat code
+            total_weight = 0
+            event_weights = [] # tuple with event, weight
+            print("day", day_number)
+            for event in filter_events(viewable_on_day = day_number):
+                fail = False # failure flag
+                # check it's compatible via prereqs
+                if any(prereq not in seen_events for prereq in event.prereqs):
+                    fail = True # missing prereq
+                elif any(antireq in seen_events for antireq in event.antireqs):
+                    fail = True # any antireq present
+                else:
+                    for key, val in enumerate(event.prereq_tags):
+                        if key in current_tags and val < current_tags[key]:
+                            fail = True # prereq too low
+                            break
+                    
+                    for key, val in enumerate(event.antireq_tags):
+                        if key in current_tags and val >= current_tags[key]:
+                            fail = True # antireq tag too high
+                            break
+                
+                if fail:
+                    continue
+                
+                weight = 1
+                if any(person in event.personnel for person in top_three_honed):
+                    weight *= honed_weight_factor
+                
+                event_weights.append((event, weight))
+                total_weight += weight
+            
+            # randomly choose an event based on weight
+            remaining_weight = random.randint(0, total_weight)
+            print(total_weight)
+            for event, weight in event_weights:
+                remaining_weight -= weight
+                if remaining_weight <= 0:
+                    if event.intro_label:
+                        today_intro_label = event.intro_label
+                    if event.outro_label:
+                        today_outro_label = event.outro_label
+                    today_event_label = "day_event_" + event.label
+                    today_event = event
+                    break
+        
+        today_event_label = today_event_label.replace(" ", "_") # just in case someone uses spaces
+
+        print(today_intro_label)
+        print(today_event_label)
+        print(today_outro_label)
+
+    # call the events (in renpy cuz call jumps to the next renpy statement instead of python)
+    $ renpy.call(today_intro_label)
+    $ renpy.call(today_event_label)
+    $ renpy.call(today_outro_label)
+
+    "" "{nw}"
+    
+    python:
+        day_number += 1
+        seen_events.append(today_event_label)
+        for tag in today_event.tags:
+            current_tags[tag] += 1
+
+        # check if an ending has been reached
+        if current_ending is None:
+            for person, points in character_points.items():
+                if points >= character_point_threshold:
+                    # first ending label should be ending_event_(person)_1
+                    current_ending = person + "_1"
+                    break
+    
+    if day_number < day_threshold:
+        $ print("jumped")
+        jump day_init
+
+
+
+label default_intro:
     scene bg intro
     with default_fade
     player "Intro sequence!!!!!!"
     player "aughaghaghagh"
+    return
 
-    python:
-        if current_ending is not None and random.random() < ending_chance:
-            # call the ending event instead of a day event
-            renpy.call("ending_event_" + current_ending)
-
-        else:
-            # assign weights to events to allow honed personnel to appear more often
-            total_weight = 0
-            event_weights = {}
-            for event in remaining_day_events:
-                if event["prereq"] in remaining_day_events: # prereq is still in the possible events, so it was not seen yet
-                    continue
-                if len(set(event["personnel"]) & set(top_three_honed)) > 0:
-                    event_weights[event["label"]] = top_three_weight_factor
-                else:
-                    event_weights[event["label"]] = 1
-                total_weight += event_weights[event["label"]]
-            
-            # randomly select an event
-            random_event_label = "not_found" # default value
-            remaining_weight = random.randint(0, total_weight)
-            for event_label, weight in event_weights.items():
-                remaining_weight -= weight
-                if remaining_weight <= 0:
-                    random_event_label = event_label
-                    break
-
-            for i, event in enumerate(remaining_day_events):
-                if event["label"] == random_event_label:
-                    remaining_day_events.pop(i)
-                    break
-
-            # call random event
-            renpy.call("day_event_" + random_event_label)
-
-    # after event has finished
+label default_outro:
     scene bg room
     with default_fade
     
@@ -126,19 +193,4 @@ label day_init:
     # randomly choose another remark from a pool
     $ random_heading_home_remark = random.choice(heading_home_remarks)
     player "[random_heading_home_remark]"
-
-    $ day_number += 1
-
-    # check if an ending has been reached
-    python:
-        if current_ending is None:
-            for person, points in character_points.items():
-                if points >= character_point_threshold:
-                    # first ending label should be ending_event_(person)_1
-                    current_ending = person + "_1"
-                    character_points[person] = -100
-                    break
-
-    
-    if day_number < day_threshold:
-        jump day_init
+    return

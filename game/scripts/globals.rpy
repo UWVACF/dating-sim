@@ -12,6 +12,9 @@ init python:
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SET TO FALSE WHEN SHIPPING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     config.rollback_enabled = True
 
+    # set to True to skip the intro sequence (so you can test dialogue faster)
+    skip_intro = True
+
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks
     # note to developers: prefix a dialogue line with {no_pause} to disable these pauses for that line
@@ -29,19 +32,13 @@ init python:
 
     # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
     # the multiplier of weight given to events with the top three
-    top_three_weight_factor = 2
-
-    day_number = 1
-    day_threshold = 10 # max number of days
+    honed_weight_factor = 2
 
     honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
 
     # the amount helco's text size will decrease when he's thinking
     # must be <= 0
     helco_text_downsize = -15
-
-    # the chance of getting an ending event instead of a day event
-    ending_chance = 1.0 
 
 
     # ----- VARIABLES -----
@@ -68,14 +65,9 @@ init python:
         "chan": 0,
         "bad end": 0
     }
-    
-    current_ending = None # set to a string if in the process of reaching an ending
 
-    character_point_threshold = 6
-
-    # dictionary for number of  r points the player has achieved with each personnel
-    # each entry should be a tuple: (cur num of points, threshold for points)
-    # TODO: rename to CHARACTER POINTS
+    # dictionary for number of character points the player has achieved with each personnel
+    # {personnel, points}
     character_points = {
         "syg": 0,
         "alex": 0,
@@ -88,9 +80,6 @@ init python:
         "deceased": 0,
         "chan": 0,
     }
-
-
-
     
 
 

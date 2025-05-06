@@ -1,4 +1,6 @@
 ﻿label start:
+    if skip_intro:
+        jump day_init
     scene bg room
     n "As I walk past the..."
     n "Dancing...rainbow mushroom...?"
