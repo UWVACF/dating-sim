@@ -15,6 +15,7 @@ screen honing_survey(question, answers_and_actions):
             yfill True
             xfill True
             text question:
+                color "#ffffff"
                 size 50
             textbutton answers[0]:
                 style "honing_survey_answer_button"

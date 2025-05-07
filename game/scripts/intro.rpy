@@ -22,21 +22,21 @@
     # 
     menu:
         player "My pronouns are..."
-        "He/him":
+        "He, him":
             $ player_sub = "he"
             $ player_sub_be = "he's"
             $ player_obj = "him"
             $ player_pos_adj = "his"
             $ player_pos_pro = "his"
             $ player_ref = "himself"
-        "She/her":
+        "She, her":
             $ player_sub = "she"
             $ player_sub_be = "she's"
             $ player_obj = "her"
             $ player_pos_adj = "her"
             $ player_pos_pro = "hers"
             $ player_ref = "herself"
-        "They/them\ntest\ntest":
+        "They, them":
             # assignments technically redundant since they/them is the default
             $ player_sub = "they"
             $ player_sub_be = "they're"
