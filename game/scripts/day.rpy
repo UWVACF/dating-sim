@@ -120,10 +120,14 @@ label day_init:
                 if fail:
                     continue
                 
-                weight = 1
+                weight = base_weight
+                # award bonus weight for events with at least one honed personnel
                 if any(person in event.personnel for person in top_three_honed):
-                    weight *= honed_weight_factor
+                    weight += bonus_weight_for_honed
                 
+                # award bonus weight for events depending on points of characters
+                for person in event.personnel:
+                    weight += bonus_weight_per_point * character_points[person][0]
                 event_weights.append((event, weight))
                 total_weight += weight
             
@@ -152,8 +156,11 @@ label day_init:
     python:
         day_number += 1
         seen_events.append(today_event_label)
+        print(today_event_label)
         for tag in today_event.tags:
             current_tags[tag] += 1
+        for person in today_event.personnel:
+            character_points[person][0] += 1
 
         # check if an ending has been reached
         if current_ending is None:

@@ -30,10 +30,6 @@ init python:
     # the default time for a standard sprite movement
     default_move_time = 0.7
 
-    # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
-    # the multiplier of weight given to events with the top three
-    honed_weight_factor = 2
-
     honing_survey_questions_threshold = 7 # number of honing survey questions that need to be taken
 
     # the amount helco's text size will decrease when he's thinking

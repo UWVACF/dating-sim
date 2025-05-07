@@ -12,7 +12,12 @@ init python:
     
     current_ending = None # set to a string if in the process of reaching an ending
 
-    character_point_threshold = 6
+    character_point_threshold = 6 # required amount of points to see an ending gate
+
+    # TBD: determine if we just want a fixed chance of having an event with one of the three (e.g. 75% the event guaranteed has one of them)
+    base_weight = 10 # the base weight value of an event
+    bonus_weight_for_honed = 2 # the bonus weight given to events with honed personnel
+    bonus_weight_per_point = 1 # the bonus weight per point given to events with certain personnel
 
     current_tags = {} # dictionary of how many tags have been gotten
 
