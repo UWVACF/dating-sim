@@ -12,8 +12,10 @@ init python:
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SET TO FALSE WHEN SHIPPING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     config.rollback_enabled = True
 
-    # set to True to skip the intro sequence (so you can test dialogue faster)
-    skip_intro = False
+    # when enabled,
+    #   - skips intro
+    #   - provides prompt to choose a specific event
+    debug_mode = False
 
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks
@@ -62,34 +64,89 @@ init python:
         "bad end": 0
     }
 
-    # dictionary for number of character points the player has achieved with each personnel, npc or otherwise
-    # {personnel, (points, is_romanceable)}
-    character_points = {
-        "syg": (0, True),
-        "alex": (0, True),
-        "helco": (0, True),
-        "aikha": (0, True),
-        "firewal": (0, True),
-        "venture": (0, True),
-        "uriel": (0, True),
-        "ryz": (0, True),
-        "deceased": (0, True),
-        "chan": (0, True),
-        "hampter": (0, True),
-        "caffi": (0, False),
-        "jessie": (0, False),
-        "leechee": (0, False),
-        "meem": (0, False),
-        "plutoes": (0, False),
-        "b6": (0, False),
-        "egg": (0, False),
+    # dictionary for number of character points the player has achieved with each personnel, npc or otherwise, and if they have a route
+    # {personnel, {"points": number, "has_route": boolean}}
+    # to access a personnel's points, do characters["personnel"][0]
+    characters = {
+        "syg": {
+            "points": 0,
+            "has_route": True
+        },
+        "alex": {
+            "points": 0,
+            "has_route": True
+        },
+        "helco": {
+            "points": 0,
+            "has_route": True
+        },
+        "aikha": {
+            "points": 0,
+            "has_route": True
+        },
+        "firewal": {
+            "points": 0,
+            "has_route": True
+        },
+        "venture": {
+            "points": 0,
+            "has_route": True
+        },
+        "uriel": {
+            "points": 0,
+            "has_route": True
+        },
+        "ryz": {
+            "points": 0,
+            "has_route": True
+        },
+        "deceased": {
+            "points": 0,
+            "has_route": True
+        },
+        "chan": {
+            "points": 0,
+            "has_route": True
+        },
+        "hampter": {
+            "points": 0,
+            "has_route": True
+        },
+        "caffi": {
+            "points": 0,
+            "has_route": False
+        },
+        "jessie": {
+            "points": 0,
+            "has_route": False
+        },
+        "leechee": {
+            "points": 0,
+            "has_route": False
+        },
+        "meem": {
+            "points": 0,
+            "has_route": False
+        },
+        "plutoes": {
+            "points": 0,
+            "has_route": False
+        },
+        "b6": {
+            "points": 0,
+            "has_route": False
+        },
+        "egg": {
+            "points": 0,
+            "has_route": False
+        },
     }
     
 
 
 # Player pronouns and names
 define default_name = "Jakob"
-define player_name = ""
+define player_name = default_name
 define player_sub = "they" # subject pronoun (he, she, they)
 define player_sub_be = "they're" # subject pronoun + to be (he's, she's, they're)
 define player_obj = "them" # object pronoun (him, her, them)
@@ -129,7 +186,7 @@ define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="
 
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes")
 
-define player = Character("[player_name]", kind=base_char, color="#c9c9c9", cb_name="player")
+define player = Character("[player_name]", kind=base_char, color="#000000", cb_name="player")
 
 define n = Character("", kind=base_char) # narrator, required to render characters as unhighlighted whenever narration is occurring
 

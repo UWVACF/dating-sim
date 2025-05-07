@@ -72,13 +72,18 @@ init python:
         Event(
             label="paul_demure_johnson",
             personnel=["paul"]
-        )
+        ),
+
     ]
+
+    # replace all spaces in labels with underscores
+    for event in day_events:
+        event.label = event.label.replace(" ", "_")
 
     ################################# DAY EVENTS #################################
 
     remaining_day_events = copy.deepcopy(day_events) # this is the real code, it's commented out so you can choose what events you want to test
-    # remaining_day_events = [
+    # remaining_day_events = [ # you can also pick and choose which events you want; keep in mind you must copy paste them exactly from above
 
     # ]
 

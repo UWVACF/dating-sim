@@ -20,6 +20,8 @@ init python:
             events = remaining_day_events
         
         filtered = []
+
+        label = label.replace(" ", "_")
         
         for event in events:
             if label and event.label != label:
@@ -61,89 +63,119 @@ init python:
         return filtered
             
 label day_init:
+
     # priority of calling events:
     # chain event
     # ending event
     # standard event
-
     python:
         today_intro_label = "default_intro"
         today_event_label = "day_event_not_found"
         today_event = None
         today_outro_label = "default_outro"
 
-        # call a chain event
-        # assumptions: all prerequisites of the chain event are satisfied/are placed under the head of the chain
-        filtered = filter_events(chain = seen_events[-1]) if seen_events else None
-        if filtered:
-            event = filtered[0]
-            today_event = event
-            today_event_label = "day_event_" + event.label
-            if event.intro_label:
-                today_intro_label = event.intro_label
-            if event.outro_label:
-                today_outro_label = event.outro_label
-        
-        # call the ending event instead of a day event
-        elif current_ending is not None and random.random() < ending_chance:
-            today_event_label = "ending_event_" + current_ending
-            event = filter_events(events = ending_events, label = current_ending)[0]
-            today_event = event
-            if event.intro_label:
-                today_intro_label = event.intro_label
-            if event.outro_label:
-                today_outro_label = event.outro_label
-        
-        # find standard events
+
+        if debug_mode:
+            type_of_event = renpy.input("Choose either day or ending (for day and ending event respectively)").lower()
+            while type_of_event != "day" and type_of_event != "ending":
+                renpy.notify("Type either \"day\" or \"event\"!")
+                type_of_event = renpy.input("Choose either day or ending (for day and ending event respectively)").lower()
+
+            if type_of_event == "day":
+                today_event_label = renpy.input("Choose a day event label to see:")
+                while not today_event_label or not filter_events(label = today_event_label):
+                    renpy.notify("Event not found (don't include \"day_event_\")")
+                    today_event_label = renpy.input("Choose a day event label to see:")
+                
+                today_event = filter_events(label = today_event_label)[0]
+                today_event_label = "day_event_" + today_event_label
+                if today_event.intro_label:
+                    today_intro_label = today_event.intro_label
+                if today_event.outro_label:
+                    today_outro_label = today_event.outro_label
+            else:
+                today_event_label = renpy.input("Choose an ending event label to see:")
+                while not today_event_label or not filter_events(events = ending_events, label = today_event_label):
+                    renpy.notify("Event not found (don't include \"day_event_\")")
+                    today_event_label = renpy.input("Choose an ending event label to see:")
+                
+                today_event = filter_events(label = today_event_label)[0]
+                today_event_label = "ending_event_" + today_event_label
+                if today_event.intro_label:
+                    today_intro_label = today_event.intro_label
+                if today_event.outro_label:
+                    today_outro_label = today_event.outro_label
         else:
-            # chat im not doing set theory im going to commit a programming sin and repeat code
-            total_weight = 0
-            event_weights = [] # tuple with event, weight
-            for event in filter_events(viewable_on_day = day_number):
-                fail = False # failure flag
-                # check it's compatible via prereqs and antireqs
-                if any(prereq not in seen_events for prereq in event.prereqs):
-                    fail = True # missing prereq
-                elif any(antireq in seen_events for antireq in event.antireqs):
-                    fail = True # any antireq present
-                else:
-                    for key, val in enumerate(event.prereq_tags):
-                        if key in current_tags and val < current_tags[key]:
-                            fail = True # prereq tag count too low
-                            break
-                    
-                    for key, val in enumerate(event.antireq_tags):
-                        if key in current_tags and val >= current_tags[key]:
-                            fail = True # antireq tag count too high
-                            break
-                
-                if fail:
-                    continue
-                
-                weight = base_weight
-                # award bonus weight for events with at least one honed personnel
-                if any(person in event.personnel for person in top_three_honed):
-                    weight += bonus_weight_for_honed
-                
-                # award bonus weight for events depending on points of characters
-                for person in event.personnel:
-                    weight += bonus_weight_per_point * character_points[person][0]
-                event_weights.append((event, weight))
-                total_weight += weight
+            # call a chain event
+            # assumptions: all prerequisites of the chain event are satisfied/are placed under the head of the chain
+            filtered = filter_events(chain = seen_events[-1]) if seen_events else None
+            if filtered:
+                today_event = filtered[0]
+                today_event_label = "day_event_" + today_event.label
+                if today_event.intro_label:
+                    today_intro_label = today_event.intro_label
+                if today_event.outro_label:
+                    today_outro_label = today_event.outro_label
             
-            # randomly choose an event based on weight
-            remaining_weight = random.randint(0, total_weight)
-            for event, weight in event_weights:
-                remaining_weight -= weight
-                if remaining_weight <= 0:
-                    if event.intro_label:
-                        today_intro_label = event.intro_label
-                    if event.outro_label:
-                        today_outro_label = event.outro_label
-                    today_event_label = "day_event_" + event.label
-                    today_event = event
-                    break
-        
+            # call the ending event instead of a day event
+            elif current_ending is not None and random.random() < ending_chance:
+                today_event_label = "ending_event_" + current_ending
+                today_event = filter_events(events = ending_events, label = current_ending)[0]
+                if today_event.intro_label:
+                    today_intro_label = today_event.intro_label
+                if today_event.outro_label:
+                    today_outro_label = today_event.outro_label
+            
+            # find standard events
+            else:
+                # chat im not doing set theory im going to commit a programming sin and repeat code
+                total_weight = 0
+                event_weights = [] # tuple with event, weight
+                for event in filter_events(viewable_on_day = day_number):
+                    fail = False # failure flag
+                    # check it's compatible via prereqs and antireqs
+                    if any(prereq not in seen_events for prereq in event.prereqs):
+                        fail = True # missing prereq
+                    elif any(antireq in seen_events for antireq in event.antireqs):
+                        fail = True # any antireq present
+                    else:
+                        for key, val in enumerate(event.prereq_tags):
+                            if key in current_tags and val < current_tags[key]:
+                                fail = True # prereq tag count too low
+                                break
+                        
+                        for key, val in enumerate(event.antireq_tags):
+                            if key in current_tags and val >= current_tags[key]:
+                                fail = True # antireq tag count too high
+                                break
+                    
+                    if fail:
+                        continue
+                    
+                    weight = base_weight
+                    # award bonus weight for events with at least one honed personnel
+                    if any(person in event.personnel for person in top_three_honed):
+                        weight += bonus_weight_for_honed
+                    
+                    # award bonus weight for events depending on points of characters
+                    for person in event.personnel:
+                        weight += bonus_weight_per_point * characters[person][0]
+                    event_weights.append((event, weight))
+                    total_weight += weight
+                
+                # randomly choose an event based on weight
+                remaining_weight = random.randint(0, total_weight)
+                for event, weight in event_weights:
+                    remaining_weight -= weight
+                    if remaining_weight <= 0:
+                        if event.intro_label:
+                            today_intro_label = event.intro_label
+                        if event.outro_label:
+                            today_outro_label = event.outro_label
+                        today_event_label = "day_event_" + event.label
+                        today_event = event
+                        break
+            
         today_event_label = today_event_label.replace(" ", "_").lower() # just in case someone uses spaces or capitals
 
     # call the events (in renpy cuz call jumps to the next renpy statement, not python statement)
@@ -160,13 +192,13 @@ label day_init:
         for tag in today_event.tags:
             current_tags[tag] += 1
         for person in today_event.personnel:
-            character_points[person][0] += 1
+            characters[person]["points"] += 1
 
         # check if an ending has been reached
         if current_ending is None:
-            for person, (points, romanceable) in character_points.items():
+            for person, dic in characters.items():
                 first_label = person + "_1"
-                if first_label not in seen_events and romanceable and points >= character_point_threshold:
+                if first_label not in seen_events and characters[person]["has_route"] and characters[person]["points"] >= character_point_threshold:
                     # first ending label should be ending_event_(person)_1
                     current_ending = first_label
                     break

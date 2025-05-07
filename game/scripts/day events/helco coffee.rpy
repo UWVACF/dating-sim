@@ -30,7 +30,7 @@ label day_event_helco_coffee:
     show helco neutral at appear
     n "He jolts awake at the sound of your voice."
     helco "Oh, hi!"
-    if character_points["helco"] < 1:
+    if characters["helco"]["points"] < 1:
         helco "[misremember_name()], right?"
         player "It's [player_name], actually."
         helco "Oh! Sorry!"

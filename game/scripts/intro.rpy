@@ -1,6 +1,7 @@
 ﻿label start:
-    if skip_intro:
+    if debug_mode:
         jump day_init
+    
     scene bg room
     n "As I walk past the..."
     n "Dancing...rainbow mushroom...?"
@@ -18,7 +19,7 @@
             renpy.notify("Invalid name: must be between 1-15 characters")
             player_name = renpy.input("My name is...", default=player_name)
         player_name = player_name.strip() or default_name
-    
+    # 
     menu:
         player "My pronouns are..."
         "He/him":
@@ -35,7 +36,7 @@
             $ player_pos_adj = "her"
             $ player_pos_pro = "hers"
             $ player_ref = "herself"
-        "They/them":
+        "They/them\ntest\ntest":
             # assignments technically redundant since they/them is the default
             $ player_sub = "they"
             $ player_sub_be = "they're"
