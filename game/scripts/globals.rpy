@@ -13,7 +13,7 @@ init python:
     config.rollback_enabled = True
 
     # set to True to skip the intro sequence (so you can test dialogue faster)
-    skip_intro = True
+    skip_intro = False
 
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks
@@ -66,19 +66,27 @@ init python:
         "bad end": 0
     }
 
-    # dictionary for number of character points the player has achieved with each personnel
-    # {personnel, points}
+    # dictionary for number of character points the player has achieved with each personnel, npc or otherwise
+    # {personnel, (points, is_romanceable)}
     character_points = {
-        "syg": 0,
-        "alex": 0,
-        "helco": 0,
-        "aikha": 0,
-        "firewal": 0,
-        "venture": 0,
-        "uriel": 0,
-        "ryz": 0,
-        "deceased": 0,
-        "chan": 0,
+        "syg": (0, True),
+        "alex": (0, True),
+        "helco": (0, True),
+        "aikha": (0, True),
+        "firewal": (0, True),
+        "venture": (0, True),
+        "uriel": (0, True),
+        "ryz": (0, True),
+        "deceased": (0, True),
+        "chan": (0, True),
+        "hampter": (0, True),
+        "caffi": (0, False),
+        "jessie": (0, False),
+        "leechee": (0, False),
+        "meem": (0, False),
+        "plutoes": (0, False),
+        "b6": (0, False),
+        "egg": (0, False),
     }
     
 

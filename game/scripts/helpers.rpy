@@ -11,8 +11,8 @@ init python:
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
     # example usage: update_character_points({"helco": 1, "plutoes", -2})
     def update_character_points(personnel):
-        for person, points in personnel.items():
-            character_points[person] += points
+        for person, tuple in personnel.items():
+            character_points[person][0] += points
         return True
 
     # Raise the honing survey points of personnel

@@ -157,14 +157,14 @@ label day_init:
 
         # check if an ending has been reached
         if current_ending is None:
-            for person, points in character_points.items():
-                if points >= character_point_threshold:
+            for person, (points, romanceable) in character_points.items():
+                first_label = person + "_1"
+                if first_label not in seen_events and romanceable and points >= character_point_threshold:
                     # first ending label should be ending_event_(person)_1
-                    current_ending = person + "_1"
+                    current_ending = first_label
                     break
     
     if day_number < day_threshold:
-        $ print("jumped")
         jump day_init
 
 

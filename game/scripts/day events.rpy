@@ -24,7 +24,7 @@ init python:
         def __init__(
             self,
             label = "not_found", # the label of the event WITHOUT day_event_: MUST BE snake_cased
-            personnel = None, # an array of personnel names
+            personnel = None, # an array of personnel names involved in the event, route-able or not
             see_before = 0, # the day during and before which the event can be viewed
             see_after = 0, # the day during and after which the event can be viewed
             prereqs = None, # an array of prerequisite labels
