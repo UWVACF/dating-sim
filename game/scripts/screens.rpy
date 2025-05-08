@@ -145,6 +145,9 @@ style namebox:
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
+style namebox_label:
+    yalign 0.5
+
 style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
@@ -158,6 +161,8 @@ style say_dialogue:
     ypos gui.dialogue_ypos
 
     adjust_spacing False
+
+
 
 ## Input screen ################################################################
 ##

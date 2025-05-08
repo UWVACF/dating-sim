@@ -9,9 +9,9 @@ init python:
 
     # Raise the character points of personnel
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
-    # example usage: update_characters({"helco": 1, "plutoes", -2})
+    # example usage: update_character_points({"helco": 1, "plutoes", -2})
     def update_character_points(personnel):
-        for person, dic in personnel.items():
+        for person, points in personnel.items():
             characters[person]["points"] += points
         return True
 
@@ -23,11 +23,12 @@ init python:
             honing_points[person] += points
         return True
 
-    # Automatically adds pauses after commas and periods
+    # Automatically adds pauses after punctuations
     # this is some really weird ass reg-ex shit please do not ask me what it means i will not know - ryan
     def auto_pause(text):
-        if text[0:9] == "{no_pause}":
-            return text[10:]
+        print(text[0:9])
+        if text[0:9] == "/no_pause":
+            return text[9:]
         
         # adds pause after commas
         text = re.sub(
@@ -76,6 +77,13 @@ init python:
         text = re.sub(
             r'" (?!\s*{[^}]*}|[0-9])', 
             f'" {{w={semicolon_pause}}}', 
+            text
+        )
+
+        # adds pause after hyphen
+        text = re.sub(
+            r'- (?!\s*{[^}]*}|[0-9])', 
+            f'- {{w={hyphen_pause}}}', 
             text
         )
 
