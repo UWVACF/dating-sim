@@ -83,7 +83,13 @@ init python:
             personnel=["alex"],
             tags=["work"],
             prereq_tags={"incident": 1},
-        )
+        ),
+        Event(
+            label="the_big_chase",
+            personnel=["plutoes", "syg", "chan", "hamp"],
+            tags=["anomaly encounter"],
+        ),
+        
     ]
 
     # replace all spaces in labels with underscores
