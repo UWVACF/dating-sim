@@ -61,7 +61,7 @@ label day_event_the_big_chase:
             n "You decide to prove your worth by kicking Pochi off your leg towards Dr Syg."
             show plutoes at appear(x_align = 0.5)
             n "Pochi's trajectory was stopped as it was caught mid-air by Plutoes, who appeared out of seemly nowhere."
-            n "He towers over you and took out a red sharpie."
+            n "He towers over you and takes out a red sharpie."
             plutoes "{cps=*0.75}{b}{color=#ff2d00}Thank you for finding my dog :) \n {i} -Signed Plutoes {/i}{/color}{/b}{/cps}"
             hide plutoes
             n "Plutoes tosses his marker aside and leaves with Pochi."
@@ -104,13 +104,13 @@ label day_event_the_big_chase:
             player "I'm not sure, it teleported away to chase Hampter."
             #render ethy graphic at 0.5 transparancy
             show chan pensive
-            ethy "{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}"
+            chan unique "{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}"
             n "You hear confused screaming in your head. Chan must be hearing it too, because he stares at you suspeciously."
             player "Or maybe he wasn't going after Hampter?"
             n "The screaming stops."
             hide plutoes
             chan "Hm. It's alright, I've attached a tracker to my hard drive."
-            n "You see Dr Chan take out his device, then swiftly turns around. Only then you both realize that Plutoes is no longer there."
+            n "You see Dr Chan takes out his device, then swiftly turns around. Only then you both realize that Plutoes is no longer there."
             chan fury "Dammit. Plutoes."
             hide chan
             $ update_character_points({"plutoes": 1})
@@ -126,18 +126,18 @@ label day_event_the_big_chase:
             chan panic "{i}cough cough cough{/i}"
             #^ chan and player if possible?
             chan "{i}cough- {/i}What was that?!"
-            n "Unsurpricingly, Plutoes and Pochi are gone."
+            n "Unsurprisingly, Plutoes and Pochi are gone."
             chan fury "Why is this happening to me."
-            ethy "{size=+3}{b}AAA.{/b}{/size}"
+            chan unique "{size=+3}{b}AAA.{/b}{/size}"
             hide chan
-            n "You watch as Dr Chan trudge away. At this point it might be easier for him to just rewrite whatever is in that harddrive."
-            n "You turn around to contine on your way, only to see your disorted reflection on a glass door. {w=0.7}Someone has left a disapproving message in red sharpie on your face of {cps=*0.75}{b}{color=#ff2d00}:({/color}{/b}{/cps}."
+            n "You watch as Dr Chan trudges away. At this point it might be easier for him to just rewrite whatever is in that hard drive."
+            n "You turn around to contine on your way, only to see your disorted reflection on a glass door. {w=0.7}Someone has left a disapproving message in red sharpie on your face of {cps=*0.75}{b}{color=#ff2d00}:({/color}{/b}{/cps}"
             n "You debate whether to report this as workplace harassment."
             $ update_character_points({"chan": 1})
             return
 
     label ignore_hampter:
-        n "You watch as Hampter get sucked into the black hole. The full beast burps in satisfaction. Did you just witness murder?"
+        n "You watch as Hampter gets sucked into the black hole. The full beast burps in satisfaction. Did you just witness murder?"
         n "The two people in lab coats get closer and you can make out that they are Dr Syg and Plutoes. What an odd combination."
         n "Pochi ducks behind you like a toodler playing hide and seek."
         show plutoes happy at appear(x_align = 0.33)
@@ -153,10 +153,10 @@ label day_event_the_big_chase:
                 jump spear_pochi
             
         label grab_pochi:
-            n "You grab the struggling Pochi from behind you. It wags its tail to try to hit you, but you athletically dodged its attempts and quickly hands it to Dr Syg."
+            n "You grab the struggling Pochi from behind you. It wags its tail to try to hit you, but you athletically dodges its attempts and quickly hands it to Dr Syg."
             show plutoes upset
-            n "Just as Dr Syg touches Pochi, it teleports away, leaving behind a soaking, miserable Hampter in Dr Dyg's palm."
-            show hampter depressed at appear(x_align = 0.5)
+            n "Just as Dr Syg touches Pochi, it teleports away, leaving behind a soaking, miserable Hampter in Dr Syg's palm."
+            show hampter sad at appear(x_align = 0.5)
             plutoes "{i}scribbles on wall{/i} {cps=*0.75}{b}{color=#ff2d00} [player_name] is a hairy loser. {i}-signed [player_name] {/i}{/color}{/b}{/cps}"
             n "Plutoes leaves. You hope Dr Syg would vouch for you when the janitors report vandalism."
             hide plutoes
@@ -172,12 +172,12 @@ label day_event_the_big_chase:
             syg upset "I will have to report this as an incident if we don't recover Hampter."
             plutoes happy "{i}scribbles on his coat{/i} {cps=*0.75}{b}{color=#ff2d00} And I will give you a {i}clean {/i}haircut if you do grab Pochi.{/color}{/b}{/cps}"
             n "Okay, you are in trouble either way. It's so hard being an intern."
-            n 'Just as you were about to  drop to your knees and beg for forgiveness, Pochi teleports away with a loud "POP!". Perhaps it does have a tiny bit of sympathy in its non-existent heart.'
+            n 'Just as you are about to drop to your knees and beg for forgiveness, Pochi teleports away with a loud "POP!". Perhaps it does have a tiny bit of sympathy in its non-existent heart.'
             syg "Hmph."
             hide syg
-            n "Plutoes walks over to you and pat you on your shoulder in approval before leaving."
+            n "Plutoes walks over to you and pats you on your shoulder in approval before leaving."
             hide plutoes
-            n "You feel a small itch on your shoulder. A very colorful mushroom was planted. You better get it checked out and removed at the bio-hazard infirmary."
+            n "You feel a small itch on your shoulder. A very colorful mushroom is planted. You better get it checked out and removed at the bio-hazard infirmary."
             $ update_character_points({"syg": -1})
             $ update_character_points({"plutoes": 1})
             return
