@@ -48,16 +48,14 @@
     jessie "Nice to meet you, [player_name]!"
     jessie "Let me just call the founder to let him know you've come!"
     
-    show jessie neutral:
-        linear default_move_time xalign 0.0
+    show jessie neutral at move_to(x_align = 0.0)
     jessie "Hello, Mr. Founder?"
     jessie "The new recruit..."
     jessie "Yup, I've met up with [player_obj]."
     jessie "[cap_first(player_sub_be)] right here!"
     jessie "Of course! I'll do that right away."
 
-    show jessie neutral:
-        linear default_move_time xalign 0.5
+    show jessie neutral at move_to(0.5)
     jessie "The founder has prepared a quick onboarding survey to determine the most suitable department for you to join!"
     jessie "Follow me into Plutoes' backyard!"
 

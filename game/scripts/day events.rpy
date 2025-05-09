@@ -73,7 +73,17 @@ init python:
             label="paul_demure_johnson",
             personnel=["paul"]
         ),
-
+        Event(
+            label="ethics_presentation",
+            personnel=["chan"],
+            tags=["foundation event", "personnel"], 
+        ),
+        Event(
+            label="filing_incident_report",
+            personnel=["alex"],
+            tags=["work"],
+            prereq_tags={"incident": 1},
+        )
     ]
 
     # replace all spaces in labels with underscores
