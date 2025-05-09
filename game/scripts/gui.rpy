@@ -10,6 +10,10 @@ init offset = -2
 ## width and height of the game.
 init python:
     gui.init(1920, 1080)
+    # override bold and italic with custom fonts
+    config.font_replacement_map["fonts/Aikhandy-Regular.ttf", False, True] = ("fonts/Aikhandy-Italic.ttf", False, False)
+    config.font_replacement_map["fonts/Aikhandy-Regular.ttf", True, False] = ("fonts/Aikhandy-Bold.ttf", False, False)
+    config.font_replacement_map["fonts/Aikhandy-Regular.ttf", True, True] = ("fonts/Aikhandy-BoldItalic.ttf", False, False)
 
 ## Enable checks for invalid or unstable properties in screens or transforms
 define config.check_conflicting_properties = True
