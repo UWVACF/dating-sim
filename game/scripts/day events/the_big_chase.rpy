@@ -4,7 +4,8 @@ label day_event_the_big_chase:
     n "You are on your way back from the restroom when you hear commotion from behind you. {w=0.5} You turn around to see a blue hampster sprinting down the hallway towards you." 
     n "Behind Hampter, a dark sphere with four legs closely follows it, its large mouth threatening to inhale Hampter."
     n "Behind the creature, two more pairs of legs run after the them, albeit with less elegance and slower speed."
-    hampter panic "Help me!"
+    show hampter panic
+    hampter "Help me!"
     # render in graphic of hampter(?) and pochi
     hide hampter
 
@@ -61,7 +62,7 @@ label day_event_the_big_chase:
             show plutoes at appear(x_align = 0.5)
             n "Pochi's trajectory was stopped as it was caught mid-air by Plutoes, who appeared out of seemly nowhere."
             n "He towers over you and took out a red sharpie."
-            plutoes "{cps=*0.75}{b}{color=ff2d00}Thank you for finding my dog :) \n {i} -Signed Plutoes [/i]{/color}{/b}{/cps}"
+            plutoes "{cps=*0.75}{b}{color=#ff2d00}Thank you for finding my dog :) \n {i} -Signed Plutoes [/i]{/color}{/b}{/cps}"
             hide plutoes
             n "Plutoes toss his marker aside and leave with Pochi."
             syg "...I'll get it next time."
@@ -90,7 +91,7 @@ label day_event_the_big_chase:
         n "Dr Chan stops in front of you and looks around bewilderedly. {w=0.7} Out of the corner of your eye, you see Pochi reappeared behind Plutoes, who purposely stopped a few steps behind Dr Chan."
         Chan fury "Hey {player_name}, did you see where Pochi went? That damn thing ate my hard drive."
         n "You see Plutoes take out a huge white notepad and begin writing on it with his red sharpie."
-        Plutoes "{cps=*0.75}{b}{color=ff2d00}Don't tell him :){/color}{/b}{/cps}"
+        Plutoes "{cps=*0.75}{b}{color=#ff2d00}Don't tell him :){/color}{/b}{/cps}"
         
         menu:
             n "Should you cover for Pochi?"
@@ -103,7 +104,7 @@ label day_event_the_big_chase:
             player "I'm not sure, it teleported away to chase Hampter."
             #render ethy graphic at 0.5 transparancy
             show chan pensive
-            Ethy "{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}"
+            ethy "{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}"
             n "You hear confused screaming in your head. Chan must be hearing it too, because he stares at you suspeciously."
             player "Or maybe he wasn't going after Hampter?"
             n "The screaming stops."
@@ -127,10 +128,10 @@ label day_event_the_big_chase:
             chan "{i}cough- {/i}What was that?!"
             n "Unsurpricingly, Plutoes and Pochi are gone."
             chan fury "Why is this happening to me."
-            Ethy "{size=+3}{b}AAA.{/b}{/size}"
+            ethy "{size=+3}{b}AAA.{/b}{/size}"
             hide chan
             n "You watch as Dr Chan trudge away. At this point it might be easier for him to just rewrite whatever is in that harddrive."
-            n "You turn around to contine on your way, only to see your disorted reflection on a glass door. {w=0.7}Someone has left a disapproving message in red sharpie on your face of {cps=*0.75}{b}{color=ff2d00}:({/color}{/b}{/cps}."
+            n "You turn around to contine on your way, only to see your disorted reflection on a glass door. {w=0.7}Someone has left a disapproving message in red sharpie on your face of {cps=*0.75}{b}{color=#ff2d00}:({/color}{/b}{/cps}."
             n "You debate whether to report this as workplace harassment."
             $ update_character_points({"chan": 1})
             return
@@ -142,7 +143,7 @@ label day_event_the_big_chase:
         show plutoes happy at appear(x_align = 0.33)
         show syg natural at appear(x_align = 0.66)
         syg "Please grab Pochi for me, {player_name}. I need to recover Hampter, they are supposed to overlook my department temporarily."
-        plutoes "{i}scribbles on floor{/i} {cps=*0.75}{b}{color=ff2d00}Don't grab my dog :( I told him to kidnap Hampter, to free them from dangerous work at the Demonic department.{/color}{/b}{/cps}"
+        plutoes "{i}scribbles on floor{/i} {cps=*0.75}{b}{color=#ff2d00}Don't grab my dog :( I told him to kidnap Hampter, to free them from dangerous work at the Demonic department.{/color}{/b}{/cps}"
 
         menu:
             n "Who should you listen to?"
@@ -156,7 +157,7 @@ label day_event_the_big_chase:
             show plutoes upset
             n "Just as Dr Syg touches Pochi, it teleports away, leaving behind a soaking, miserable Hampter in Dr Dyg's palm."
             show hampter depressed at appear(x_align = 0.5)
-            plutoes "{i}scribbles on wall{/i} {cps=*0.75}{b}{color=ff2d00} {player_name} is a hairy loser. {i}-signed {player_name} {/i}{/color}{/b}{/cps}"
+            plutoes "{i}scribbles on wall{/i} {cps=*0.75}{b}{color=#ff2d00} {player_name} is a hairy loser. {i}-signed {player_name} {/i}{/color}{/b}{/cps}"
             n "Plutoes leaves. You hope Dr Syg would vouch for you when the janitors report vandalism."
             hide plutoes
             syg pensive "Too bad I couldn't take its tail to sample..."
@@ -169,7 +170,7 @@ label day_event_the_big_chase:
         label spear_pochi:
             n "You do not do anything. Hold on, Dr Syg's level is technically above Plutoes'. Would this get you in trouble?"
             syg upset "I will have to report this as an incident if we don't recover Hampter."
-            plutoes happy "{i}scribbles on his coat{/i} {cps=*0.75}{b}{color=ff2d00} And I will give you a {i}clean {/i}haircut if you do grab Pochi.{/color}{/b}{/cps}"
+            plutoes happy "{i}scribbles on his coat{/i} {cps=*0.75}{b}{color=#ff2d00} And I will give you a {i}clean {/i}haircut if you do grab Pochi.{/color}{/b}{/cps}"
             n "Okay, you are in trouble either way. It's so hard being an intern."
             n 'Just as you were about to  drop to your knees and beg for forgiveness, Pochi teleports away with a loud "POP!". Perhaps it does have a tiny bit of sympathy in its non-existent heart.'
             syg "Hmph."
