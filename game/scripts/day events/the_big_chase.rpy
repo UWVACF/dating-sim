@@ -11,7 +11,7 @@ label day_event_the_big_chase:
 
     menu: 
         n "What should you do?"
-        "Help Hampter by scoping them up with your hands.":
+        "Help Hampter by scooping them up with your hands.":
             jump help_hampter
         "Remind Hampter that they can teleport, but stay well out of the way. You've seen what happened last time when Kacy tried to pet Hampter.":
             jump hamp_tele

@@ -422,8 +422,10 @@ define deceased = Character("Dr. Deceased", kind=base_char, color="#894bb2", cb_
 define syg = Character("Dr. Sygviii", kind=base_char, color="#6e7384", cb_name="syg", image="syg")
 
 define chan = Character("Dr. Chan", kind=base_char, color="#46bdc6", cb_name="chan", image="chan")
+define ethy = Character("Ethy", kind=chan, color="#000000")
 
 define leechee = Character("Dr. Leechee", kind=base_char, color="#ff0000", cb_name="leechee", image="leechee")
+define leechee_unknown = Character("???", kind=leechee)
 
 define b6 = Character("b6c5b6", kind=base_char, color="#364036", cb_name="b6", image="b6")
 
@@ -449,6 +451,9 @@ define player = Character("[player_name]", kind=base_char, color="#444444", cb_n
 
 
 define n = Character("", kind=base_char) # narrator, required to unhighlight characters whenever narration is occurring
+
+# other images we need
+image black_screen = Image("images/day events/black screen.png", zorder=50) # for fade to black 
 
 # Transitions and transformations
 
