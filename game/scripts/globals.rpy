@@ -453,7 +453,7 @@ define player = Character("[player_name]", kind=base_char, color="#444444", cb_n
 define n = Character("", kind=base_char) # narrator, required to unhighlight characters whenever narration is occurring
 
 # other images we need
-image black_screen = Image("images/day events/black screen.png", zorder=50) # for fade to black 
+image black_screen = Solid("#000000", xsize = 2120, ysize = 1280, xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0) # for fade to black 
 
 # Transitions and transformations
 

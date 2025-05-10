@@ -79,10 +79,9 @@ init python:
             tags=["foundation event", "personnel"], 
         ),
         Event(
-            label="filing_incident_report",
-            personnel=["alex"],
-            tags=["work"],
-            prereq_tags={"incident": 1},
+            label="staring_contest",
+            personnel=["leechee", "aikha", "deceased"],
+            tags=["break"],
         ),
         Event(
             label="the_big_chase",
