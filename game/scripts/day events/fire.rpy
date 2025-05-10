@@ -1,6 +1,16 @@
 label day_event_fire:
     scene bg office
     with default_fade
+
+    show aikha at appear(x_align)
+    show aikha at disappear
+    hide aikha 
+    n "some dialogue"
+    hide aikha
+    
+
+
+
     aikha "...so anyways, that's why I killed 1700 axolotls."
     firewal "Mmm."
 

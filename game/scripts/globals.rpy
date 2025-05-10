@@ -462,7 +462,6 @@ transform appear(y_offset = 70, duration = 0.5, x_align = 0.5, y_align = 1.0):
     yalign y_align
     yoffset y_offset
     matrixcolor BrightnessMatrix(-1.0)
-    # alpha 0.0
 
     parallel:
         easein duration yoffset 0

@@ -48,6 +48,8 @@ label day_event_staring_contest:
             jump grow_more
         "Let Dr. Leechee douse your eyes in radiation":
             jump irradiate
+        "Ask to just be the judge":
+            jump judge:
     
     label grow_more:
         n "Surely having more eyes is always a good thing."
@@ -103,6 +105,7 @@ label day_event_staring_contest:
         pause 2.0 
         
         if battle_fiercely:
+            n "..."
             n "That was pathetic."
         
         show black_screen zorder 50:
@@ -118,8 +121,8 @@ label day_event_staring_contest:
         show aikha at move_to(x_align = 0.33)
         show leechee at appear(x_align = 0.66)
         leechee "How are you feeling?"
-        aikha "[cap_first(player_sub)]'ll be fine. They won't suffer any lasting damage."
-        aikha "Or at least they shouldn't..."
+        aikha "[cap_first(player_sub)]'ll be fine. [player_sub] won't suffer any lasting damage."
+        aikha "Or at least  shouldn't..."
         n "You try to laugh it off but end up in a coughing fit."
         leechee "Uh oh."
         
@@ -202,6 +205,9 @@ label day_event_staring_contest:
             with hpunch
             n "You succumb to the pain and collapse."
             n "Oops!"
+            return
 
+    label judge:
+        return
 
 
