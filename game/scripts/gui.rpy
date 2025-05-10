@@ -155,7 +155,7 @@ define gui.button_width = None
 define gui.button_height = None
 
 ## The borders on each side of the button, in left, top, right, bottom order.
-define gui.button_borders = Borders(6, 6, 6, 6)
+define gui.button_borders = Borders(0, 0, 0, 0)
 
 ## If True, the background image will be tiled. If False, the background image
 ## will be linearly scaled.
@@ -209,9 +209,9 @@ define gui.quick_button_text_selected_color = gui.accent_color
 ## Choice buttons are used in the in-game menus.
 
 define gui.choice_button_width = 800
-define gui.choice_button_height = None
+define gui.choice_button_height = 170
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(0, 15, 0, 15)
+# define gui.choice_button_ypadding = 0
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
@@ -262,7 +262,7 @@ define gui.skip_ypos = 15
 define gui.notify_ypos = 68
 
 ## The spacing between menu choices.
-define gui.choice_spacing = 33
+define gui.choice_spacing = 24
 
 ## Buttons in the navigation section of the main and game menus.
 define gui.navigation_spacing = 6
