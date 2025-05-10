@@ -49,7 +49,7 @@ label day_event_staring_contest:
         "Let Dr. Leechee douse your eyes in radiation":
             jump irradiate
         "Ask to just be the judge":
-            jump judge:
+            jump judge
     
     label grow_more:
         n "Surely having more eyes is always a good thing."
@@ -208,6 +208,7 @@ label day_event_staring_contest:
             return
 
     label judge:
+        n "yip"
         return
 
 
