@@ -22,7 +22,7 @@ label day_event_the_big_chase:
         n "You pick up Hampter without hesitation just as they reach you. {w=5} Thankfully, your hands remain intact, unlike Kacy's arm."
         n "Pochi growls at you and starts biting your ankles. Its bite hurts a lot, as expected."
         # un-render graphic, so just back to the hallway
-        n "The two figures with lab coats finally catch up close enough for you to identify them. It is Dr. Chan and Dr. Syg."
+        n "The two figures in lab coats finally catch up close enough for you to identify them. It is Dr. Chan and Dr. Syg."
         show chan panic at appear(x_align = 0.33)
         show syg neutral at appear(x_align = 0.66)
         chan "Finally caught up...please hand me Pochi...it ate my hard drive."
@@ -39,7 +39,7 @@ label day_event_the_big_chase:
             player "For sure, Dr. Chan!"
             n "You swing your leg in Dr. Chan's direction, flinging Pochi from your ankle, slamming into the ceiling halfway between you and Dr. Chan. It squeaks like a rubber duck."
             chan "..."
-            player "Sorry. The last time I did sports was in grade 9."
+            player "Sorry. The last time I did sports was in grade nine."
             n "Just as Dr. Chan makes his way towards his hard drive, you see a mushroom pop up around the corner."
             n "Pochi must have seen it too, because it drops down from the ceiling suddenly and sprints towards it"
             show plutoes at appear(x_align = 0.5)
@@ -146,13 +146,13 @@ label day_event_the_big_chase:
 
         menu:
             n "Who should you listen to?"
-            "Grab Pochi - right your previous wrong of not helping poor Hampter.":
+            "Grab Pochi. Right your previous wrong of not helping poor Hampter.":
                 jump grab_pochi
             "Do not grab Pochi. This cross-department conflict is out of your pay range.":
                 jump spare_pochi
             
         label grab_pochi:
-            n "You grab the struggling Pochi from behind you. It wags its tail to try to hit you, but you athletically dodges its attempts and quickly hands it to Dr. Syg."
+            n "You grab the struggling Pochi from behind you. It wags its tail to try to hit you, but you athletically dodge its attempts and quickly hand it to Dr. Syg."
             show plutoes upset
             n "Just as Dr. Syg touches Pochi, it teleports away, leaving behind a soaking, miserable Hampter in Dr. Syg's palm."
             show hampter sad at appear(x_align = 0.5)
