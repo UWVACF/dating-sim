@@ -2,7 +2,7 @@ label day_event_the_big_chase:
     scene hallway
     with default_fade
     n "You are on your way back from the restroom when you hear commotion from behind you. {w=0.5} You turn around to see a blue hamster sprinting down the hallway towards you." 
-    n "Behind Hampter, a dark sphere with four legs closely follows it, its large mouth threatening to inhale Hampter."
+    n "Behind Hampter, a dark sphere with four legs closely follows it, his large mouth threatening to inhale Hampter."
     n "Behind the creature, two more pairs of legs run after them, albeit with less elegance and slower speed."
     show hampter panic
     hampter "Help me!"
@@ -20,13 +20,13 @@ label day_event_the_big_chase:
 
     label help_hampter:
         n "You pick up Hampter without hesitation just as they reach you. {w=5} Thankfully, your hands remain intact, unlike Kacy's arm."
-        n "Pochi growls at you and starts biting your ankles. Its bite hurts a lot, as expected."
+        n "Pochi growls at you and starts biting your ankles. His bite hurts a lot, as expected."
         # un-render graphic, so just back to the hallway
-        n "The two figures with lab coats finally catch up close enough for you to identify them. It is Dr. Chan and Dr. Syg."
+        n "The two figures in lab coats finally catch up close enough for you to identify them. It is Dr. Chan and Dr. Syg."
         show chan panic at appear(x_align = 0.33)
         show syg neutral at appear(x_align = 0.66)
-        chan "Finally caught up...please hand me Pochi...it ate my hard drive."
-        syg "I would like Pochi instead. I've been trying to catch it to sample it for my research."
+        chan "Finally caught up...please hand me Pochi...he ate my hard drive."
+        syg "I would like Pochi instead. I've been trying to catch him to sample it for my research."
 
         menu:
             n "Who do you hand Pochi to? (Pochi is still nibbling at your ankles.)"
@@ -37,11 +37,11 @@ label day_event_the_big_chase:
 
         label chan_hard_drive:
             player "For sure, Dr. Chan!"
-            n "You swing your leg in Dr. Chan's direction, flinging Pochi from your ankle, slamming into the ceiling halfway between you and Dr. Chan. It squeaks like a rubber duck."
+            n "You swing your leg in Dr. Chan's direction, flinging Pochi from your ankle, slamming into the ceiling halfway between you and Dr. Chan. He squeaks like a rubber duck."
             chan "..."
-            player "Sorry. The last time I did sports was in grade 9."
+            player "Sorry. The last time I did sports was in grade nine."
             n "Just as Dr. Chan makes his way towards his hard drive, you see a mushroom pop up around the corner."
-            n "Pochi must have seen it too, because it drops down from the ceiling suddenly and sprints towards it"
+            n "Pochi must have seen it too, because he drops down from the ceiling suddenly and sprints towards it"
             show plutoes at appear(x_align = 0.5)
             n "Plutoes picks up Pochi, flashes everyone his enigmatic smile and leaves."
             hide plutoes
@@ -75,7 +75,7 @@ label day_event_the_big_chase:
             hampter happy "Thank you for helping me!"
             n "Hampter nuzzles against your palm before teleporting away."
             hide hampter
-            n "...Why didn't they just teleport away from Pochi just now?"
+            n "...Why didn't she just teleport away from Pochi just now?"
             $ update_character_points({"hampter": 1})
             return
 
@@ -83,9 +83,9 @@ label day_event_the_big_chase:
         player "Teleport, Hampter!"
         hampter surprise "!!!"
         n "You watch as Hampter disappears into thin air."
-        n "Pochi stops running and stands in front of you. It doesn't have eyes, but you feel as if it is staring daggers at you."
+        n "Pochi stops running and stands in front of you. He doesn't have eyes, but you feel as if he is staring daggers at you."
         n "The sound of footsteps draws closer and you can see who it is. It's Dr. Chan and Plutoes."
-        n "Pochi growls and teleports away, perhaps to go after Hampter, or to escape its chasers."
+        n "Pochi growls and teleports away, perhaps to go after Hampter, or to escape his chasers."
         show syg at appear(x_align = 0.33)
         show chan at appear(x_align = 0.66)
         n "Dr. Chan stops in front of you and looks around bewilderedly. {w=0.7} Out of the corner of your eye, you see Pochi reappear behind Plutoes, who has purposely stopped a few steps behind Dr. Chan."
@@ -101,7 +101,7 @@ label day_event_the_big_chase:
                 jump expose_plutoes
             
         label chan_lie:
-            player "I'm not sure, it teleported away to chase Hampter."
+            player "I'm not sure, he teleported away to chase Hampter."
             #render ethy graphic at 0.5 alpha
             chan unique "{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}"
             n "You hear confused screaming in your head. Chan must be hearing it too, because he stares at you suspiciously."
@@ -117,7 +117,7 @@ label day_event_the_big_chase:
             return
 
         label expose_plutoes:
-            player "It's behind Plutoes!"
+            player "He's behind Plutoes!"
             show plutoes upset
             #render green smog/spore/gas/whatever the heck plutoes releases across the screen
             hide plutoes
@@ -142,27 +142,27 @@ label day_event_the_big_chase:
         show plutoes happy at appear(x_align = 0.33)
         show syg neutral at appear(x_align = 0.66)
         syg "Please grab Pochi for me, [player_name]. I need to recover Hampter, they're supposed to oversee my department temporarily."
-        plutoes "{i}scribbles on floor{/i} {cps=*0.75}{b}{color=#ff2d00}Don't grab my dog :( I told him to kidnap Hampter, to free them from the dangerous work in the Demonic department.{/color}{/b}{/cps}"
+        plutoes "{i}scribbles on floor{/i} {cps=*0.75}{b}{color=#ff2d00}Don't grab my dog :( I told him to kidnap Hampter, to free her from the dangerous work in the Demonic department.{/color}{/b}{/cps}"
 
         menu:
             n "Who should you listen to?"
-            "Grab Pochi - right your previous wrong of not helping poor Hampter.":
+            "Grab Pochi. Right your previous wrong of not helping poor Hampter.":
                 jump grab_pochi
             "Do not grab Pochi. This cross-department conflict is out of your pay range.":
                 jump spare_pochi
             
         label grab_pochi:
-            n "You grab the struggling Pochi from behind you. It wags its tail to try to hit you, but you athletically dodges its attempts and quickly hands it to Dr. Syg."
+            n "You grab the struggling Pochi from behind you. He wags his tail to try to hit you, but you athletically dodge his attempts and quickly hand he to Dr. Syg."
             show plutoes upset
-            n "Just as Dr. Syg touches Pochi, it teleports away, leaving behind a soaking, miserable Hampter in Dr. Syg's palm."
+            n "Just as Dr. Syg touches Pochi, he teleports away, leaving behind a soaking, miserable Hampter in Dr. Syg's palm."
             show hampter sad at appear(x_align = 0.5)
             plutoes "{i}scribbles on wall{/i} {cps=*0.75}{b}{color=#ff2d00} [player_name] is a hairy loser. {i}-signed [player_name] {/i}{/color}{/b}{/cps}"
             n "Plutoes leaves. You hope Dr. Syg will vouch for you when the janitors report vandalism."
             hide plutoes
-            syg pensive "Too bad I couldn't take its tail to sample..."
+            syg pensive "Too bad I couldn't take his tail to sample..."
             hide hampter
             hide syg
-            n "You watch Dr. Syg walk away with a drained Hampter. You silently pray that Hampter's work at the Demonic department is easy and won't add to their exhaustion."
+            n "You watch Dr. Syg walks away with a drained Hampter. You silently pray that Hampter's work at the Demonic department is easy and won't add to her exhaustion."
             $ update_character_points({"syg": 1})
             return
 
@@ -171,7 +171,7 @@ label day_event_the_big_chase:
             syg upset "I will have to report this as an incident if we don't recover Hampter."
             plutoes happy "{i}scribbles on his coat{/i} {cps=*0.75}{b}{color=#ff2d00} And I will give you a {i}clean {/i}haircut if you do grab Pochi.{/color}{/b}{/cps}"
             n "Okay, you are in trouble either way. It's so hard being an intern."
-            n 'Just as you are about to drop to your knees and beg for forgiveness, Pochi teleports away with a loud "POP!". Perhaps it does have a tiny bit of sympathy in its non-existent heart.'
+            n 'Just as you are about to drop to your knees and beg for forgiveness, Pochi teleports away with a loud "POP!". Perhaps he does have a tiny bit of sympathy in his non-existent heart.'
             syg "Hmph."
             hide syg
             n "Plutoes walks over to you and pats you on your shoulder in approval before leaving."
