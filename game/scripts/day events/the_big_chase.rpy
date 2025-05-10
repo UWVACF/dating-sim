@@ -156,13 +156,19 @@ label day_event_the_big_chase:
             show plutoes upset
             n "Just as Dr. Syg touches Pochi, he teleports away, leaving behind a soaking, miserable Hampter in Dr. Syg's palm."
             show hampter sad at appear(x_align = 0.5)
-            plutoes "{i}scribbles on wall{/i} {cps=*0.75}{b}{color=#ff2d00} [player_name] is a hairy loser. {i}-signed [player_name] {/i}{/color}{/b}{/cps}"
-            n "Plutoes leaves. You hope Dr. Syg will vouch for you when the janitors report vandalism."
-            hide plutoes
+            show plutoes fury 
+            n "Plutoes smiles at you, then leaves. You feel an itch near your ear and scratch it."
+            show plutoes at disappears(x_align)
             syg pensive "Too bad I couldn't take his tail to sample..."
+            n "{i}*GALATIC PROFANITIES*{/i}"
+            n "A voice rings at your ear."
+            syg '...'
+            syg "You shold get that checked out. I think Plutoes planted something in your ear."
+            n "{i}*MORE SEVERE GALATIC PROFANITIES*{/i}"
+            hide plutoes
             hide hampter
             hide syg
-            n "You watch Dr. Syg walks away with a drained Hampter. You silently pray that Hampter's work at the Demonic department is easy and won't add to her exhaustion."
+            n "You watch Dr. Syg walks away with a drained Hampter. You contemplate whether removing your ear or going deaf can get you more company compensation claims."
             $ update_character_points({"syg": 1})
             return
 
