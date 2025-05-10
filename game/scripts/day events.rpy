@@ -80,7 +80,7 @@ init python:
         ),
         Event(
             label="staring_contest",
-            personnel=["leechee", "aikha", "deceased"],
+            personnel=["lee", "aikha", "deceased"],
             tags=["break"],
         ),
         Event(

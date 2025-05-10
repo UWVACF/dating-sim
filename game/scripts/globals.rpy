@@ -121,7 +121,7 @@ init python:
             "points": 0,
             "has_route": False
         },
-        "leechee": {
+        "lee": {
             "points": 0,
             "has_route": False
         },
@@ -245,17 +245,17 @@ image deceased fury = At("images/deceased/deceased fury.png", sprite_highlight("
 image deceased pensive = At("images/deceased/deceased pensive.png", sprite_highlight("deceased"))
 image deceased unique = At("images/deceased/deceased unique.png", sprite_highlight("deceased"))
 
-image leechee = At("images/leechee/leechee neutral.png", sprite_highlight("leechee"))
-image leechee neutral = At("images/leechee/leechee neutral.png", sprite_highlight("leechee"))
-image leechee talk = At("images/leechee/leechee talk.png", sprite_highlight("leechee"))
-image leechee happy = At("images/leechee/leechee happy.png", sprite_highlight("leechee"))
-image leechee sad = At("images/leechee/leechee sad.png", sprite_highlight("leechee"))
-image leechee upset = At("images/leechee/leechee upset.png", sprite_highlight("leechee"))
-image leechee surprise = At("images/leechee/leechee surprise.png", sprite_highlight("leechee"))
-image leechee panic = At("images/leechee/leechee panic.png", sprite_highlight("leechee"))
-image leechee fury = At("images/leechee/leechee fury.png", sprite_highlight("leechee"))
-image leechee pensive = At("images/leechee/leechee pensive.png", sprite_highlight("leechee"))
-image leechee unique = At("images/leechee/leechee unique.png", sprite_highlight("leechee"))
+image lee = At("images/lee/lee neutral.png", sprite_highlight("lee"))
+image lee neutral = At("images/lee/lee neutral.png", sprite_highlight("lee"))
+image lee talk = At("images/lee/lee talk.png", sprite_highlight("lee"))
+image lee happy = At("images/lee/lee happy.png", sprite_highlight("lee"))
+image lee sad = At("images/lee/lee sad.png", sprite_highlight("lee"))
+image lee upset = At("images/lee/lee upset.png", sprite_highlight("lee"))
+image lee surprise = At("images/lee/lee surprise.png", sprite_highlight("lee"))
+image lee panic = At("images/lee/lee panic.png", sprite_highlight("lee"))
+image lee fury = At("images/lee/lee fury.png", sprite_highlight("lee"))
+image lee pensive = At("images/lee/lee pensive.png", sprite_highlight("lee"))
+image lee unique = At("images/lee/lee unique.png", sprite_highlight("lee"))
 
 image firewal = At("images/firewal/firewal neutral.png", sprite_highlight("firewal"))
 image firewal neutral = At("images/firewal/firewal neutral.png", sprite_highlight("firewal"))
@@ -419,13 +419,13 @@ define alex = Character("Dr. Alex", kind=base_char, color="#000000", cb_name="al
 
 define deceased = Character("Dr. Deceased", kind=base_char, color="#894bb2", cb_name="deceased", image="deceased")
 
-define syg = Character("Dr. Sygviii", kind=base_char, color="#6e7384", cb_name="syg", image="syg")
+define syg = Character("Dr. Syg", kind=base_char, color="#6e7384", cb_name="syg", image="syg")
 
 define chan = Character("Dr. Chan", kind=base_char, color="#46bdc6", cb_name="chan", image="chan")
 define ethy = Character("Ethy", kind=chan, color="#000000")
 
-define leechee = Character("Dr. Leechee", kind=base_char, color="#ff0000", cb_name="leechee", image="leechee")
-define leechee_unknown = Character("???", kind=leechee)
+define lee = Character("Dr. Lee", kind=base_char, color="#ff0000", cb_name="lee", image="lee")
+define lee_unknown = Character("???", kind=lee)
 
 define b6 = Character("b6c5b6", kind=base_char, color="#364036", cb_name="b6", image="b6")
 
