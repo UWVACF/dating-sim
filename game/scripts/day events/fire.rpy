@@ -19,7 +19,7 @@ label day_event_fire:
 
     aikha "It was all worth it in the end when-{w=[comma_pause]} oh! Hey, new recruit! Whatcha doing here?"
     firewal "I invited [player_obj] here to show [player_obj] around my department."
-    firewal "Hello founder Alex"
+    firewal "Hello founder Alex."
     firewal "I have no clue what to write"
     aikha "So I will write whatever and our writers will surely fill this with excellent high quality dialogue later down the line"
     firewal "Ahem"
