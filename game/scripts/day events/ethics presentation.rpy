@@ -1,5 +1,3 @@
-image black_screen = "images/day events/black screen.png"
-
 image ethics_slide 1 = "images/day events/ethics slide 1.png"    
 image ethics_slide 2 = "images/day events/ethics slide 2.png" 
 image ethics_slide 3 = "images/day events/ethics slide 3.png" 
@@ -93,7 +91,7 @@ label day_event_ethics_presentation:
         xalign 1.5
     show aikha at move_to(x_align = 0.5, duration = 0.5)
 
-    extend " contacted us about-{w=0.15}{nw}"
+    extend " contacted us about- {nw}"
 
     show aikha:
         xzoom -1.0

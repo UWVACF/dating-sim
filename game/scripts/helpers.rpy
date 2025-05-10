@@ -50,40 +50,40 @@ init python:
         )
         # adds pause after exclamation mark
         text = re.sub(
-            r'! (?!\s*{[^}]*}|[0-9])', 
+            r'! (?!\s*[0-9])', 
             f'! {{w={exclamation_pause}}}', 
             text
         )
         # adds pause after question mark
         text = re.sub(
-            r'\? (?!\s*{[^}]*}|[0-9])', 
+            r'\? (?!\s*[0-9])', 
             f'? {{w={comma_pause}}}', 
             text
         )
         # adds pause after colon
         text = re.sub(
-            r': (?!\s*{[^}]*}|[0-9])', 
+            r': (?!\s*[0-9])', 
             f': {{w={colon_pause}}}', 
             text
         )
         # adds pause after semi colon
         text = re.sub(
-            r'; (?!\s*{[^}]*}|[0-9])', 
+            r'; (?!\s*[0-9])', 
             f'; {{w={semicolon_pause}}}', 
             text
         )
 
         # adds pause after quotation mark
         text = re.sub(
-            r'" (?!\s*{[^}]*}|[0-9])', 
+            r'" (?!\s*[0-9])', 
             f'" {{w={semicolon_pause}}}', 
             text
         )
 
         # adds pause after hyphen
         text = re.sub(
-            r'- (?!\s*{[^}]*}|[0-9])', 
-            f'- {{w={hyphen_pause}}}', 
+            r'- (?!\s*[0-9])', 
+            f'- {{w={comma_pause}}}', 
             text
         )
 
