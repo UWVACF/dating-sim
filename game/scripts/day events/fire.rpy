@@ -13,7 +13,7 @@ label day_event_fire:
     show aikha neutral at appear(x_align = 0.33)
     show firewal neutral at appear(x_align = 0.66)
 
-    aikha "It was all worth it in the end when-{w=[comma_pause]} oh! Hey, new recruit! Whatcha doing here?"
+    aikha "It was all worth it in the end when- oh! Hey, new recruit! Whatcha doing here?"
     firewal "I invited [player_obj] here to show [player_obj] around my department."
     firewal "Hello founder Alex."
     firewal "I have no clue what to write"
@@ -49,26 +49,12 @@ label day_event_fire:
         n "...but it seems your vocal chords have been burned off."
         aikha "I'm sure [player_sub_be] fine!"
         aikha "That was nothing someone like [player_obj] can't handle, yeah?"
-        n "You fail to make any sort of sound in acknowledgement."
+        player "{sc=1.5}{size=-10}*euuuuuuuuughhhhh*{/size}{/sc}"
         jessie "Haha...yeah...nothing [player_sub] can't handle..."
         aikha "You'll be back on your feet in no time, [player_name]!"
         aikha "Just..."
         aikha "Stay away from mirrors for the time being..."
-        n "You make one last attempt at producing a sound before losing consciousness once more."
-        scene bg hospital
-        with default_fade
-        n "The bright eyes of the hospital ceiling blind your eyes yet again."
-        n "But miraculously...your body feels as good as new."
-        show firewal neutral at appear
-        firewal "Hey, [player_name], how're you feeling?"
-        player "I feel great, but..."
-        player "How did I recover so quickly?"
-        firewal "You see...we used this little thing called:"
-        firewal "\"Plot armour.\""
-        player "..."
-        n "You feel grateful that Dr. Firewal checked up on you."
-        n "You feel closer with him."
-        $ update_character_points({"firewal": 2})
+        $ update_character_points({"aikha": 2})
         return # NECESSARY (at least for first label)
     
     label find_extinguisher:
@@ -97,9 +83,6 @@ label day_event_fire:
         firewal "Anyways, [player_name],"
         firewal "We'll have to do the tour some other day."
         firewal "I need to write another incident report..."
-        n "Witnessing such an absurd situation makes you feel a bit closer with the two of them."
-        $ update_character_points({"firewal": 1, "aikha": 10}) # CHANGE AIKHA'S POINT VALUE TO 1
+        $ update_character_points({"firewal": 1, "aikha": 1})
         return
-
-    aikha "{no_pause} this text will not have auto pause"
         

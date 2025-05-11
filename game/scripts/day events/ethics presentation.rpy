@@ -14,7 +14,7 @@ transform run_right(duration = 1.1):
     move_to(1.5, duration)
 
 label day_event_ethics_presentation:
-    scene meeting_room
+    scene bg venue
     with default_fade
     chan "Quiet down, everyone!"
     show chan neutral at appear

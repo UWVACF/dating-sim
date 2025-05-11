@@ -29,57 +29,57 @@ init python:
         # adds pause after commas
         text = re.sub(
             r',(?!\s*{[^}]*}|[0-9])', 
-            f',{{w={comma_pause}}}', 
+            f',{{w={punctuation_pauses["comma"]}}}', 
             text
         )
         # adds pause after periods
         text = re.sub(
             r'(?<!\bMr)(?<!\bMrs)(?<!\bDr)(?<!\.)\. (?!\s*{[^}]*}|\s*$|\.|[0-9])', 
-            f'. {{w={period_pause}}}', 
+            f'. {{w={punctuation_pauses["period"]}}}', 
             text
         )
         # adds pause after elipses
         text = re.sub(
             r'\.{3}(?!\s*{[^}]*})', 
-            f'.{{w={elipsis_pause}}}.{{w={elipsis_pause}}}.{{w={elipsis_pause}}}', 
+            f'.{{w={punctuation_pauses["elipsis"]}}}.{{w={punctuation_pauses["elipsis"]}}}.{{w={punctuation_pauses["elipsis"]}}}', 
             text
         )
         # adds pause after exclamation mark
         text = re.sub(
             r'! (?!\s*[0-9])', 
-            f'! {{w={exclamation_pause}}}', 
+            f'! {{w={punctuation_pauses["exclamation"]}}}', 
             text
         )
         # adds pause after question mark
         text = re.sub(
             r'\? (?!\s*[0-9])', 
-            f'? {{w={comma_pause}}}', 
+            f'? {{w={punctuation_pauses["question"]}}}', 
             text
         )
         # adds pause after colon
         text = re.sub(
             r': (?!\s*[0-9])', 
-            f': {{w={colon_pause}}}', 
+            f': {{w={punctuation_pauses["colon"]}}}', 
             text
         )
         # adds pause after semi colon
         text = re.sub(
             r'; (?!\s*[0-9])', 
-            f'; {{w={semicolon_pause}}}', 
+            f'; {{w={punctuation_pauses["semicolon"]}}}', 
             text
         )
 
         # adds pause after quotation mark
         text = re.sub(
             r'" (?!\s*[0-9])', 
-            f'" {{w={semicolon_pause}}}', 
+            f'" {{w={punctuation_pauses["quotation"]}}}', 
             text
         )
 
         # adds pause after hyphen
         text = re.sub(
             r'- (?!\s*[0-9])', 
-            f'- {{w={comma_pause}}}', 
+            f'- {{w={punctuation_pauses["hyphen"]}}}', 
             text
         )
 

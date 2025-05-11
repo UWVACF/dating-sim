@@ -24,7 +24,7 @@ label day_event_staring_contest:
     aikha "Hm? Oh, yeah! [player_name], wanna join us?"
     player "\"Us\" being...you and the wall?"
     aikha "Not just any wall! Dr. Lee's behind this one. We're having a staring contest!"
-    player "...through the wall?"
+    player "...Through the wall?"
     lee "Through the wall! Come!"
     n "You make your way over to the wall and admire its...wall-like qualities."
     player "Am I supposed to be seeing them, or..."
@@ -34,24 +34,25 @@ label day_event_staring_contest:
     n "/no_pause.{w=0.5}.{w=0.5}.{w=0.5}"
     n "You calmly take a sip of coffee- {nw}"
     lee "YOU BLINKED! I SAW THAT!"
-    aikha "NOPE! DID NOT!"
-    player "...so I should go-"
+    aikha "NUH UH!"
+    lee "YUH HUH!"
+    player "...So I should go-"
     aikha "Wait, no, join us!"
     lee "Yessss! Join us!"
     player "But I can't just see through walls."
     aikha "Not a problem. I can give you some eyes to do just that!"
     player "\"Give me eyes\"...?"
     lee "I can help too! I could make your eyes like mine!"
-    player "...or I could leave-"
-    aikha "What will it be?"
-    n "...it really doesn't seem like you have a choice in the matter."
+    player "...Or I could leave-"
+    aikha "So what will it be?"
+    n "...It really doesn't seem like you have a choice in the matter."
     menu:
         n "Well?"
-        "Let Dr. Aikha grow you a fresh pair of eyes":
+        "Let Dr. Aikha grow you a fresh pair of eyes.":
             jump grow_more
-        "Let Dr. Lee douse your eyes in radiation":
+        "Let Dr. Lee douse your eyes in radiation.":
             jump irradiate
-        "Ask to judge":
+        "Ask to judge.":
             jump judge
     
     label grow_more:
@@ -69,10 +70,9 @@ label day_event_staring_contest:
         n "Twice."
         show overlay_ai_1 onlayer top:
             alpha 1.0
-            blur 6
         show layer master:
             block:
-                linear 2.0 blur 4
+                linear 2.0 blur 6
                 linear 2.0 blur 0
                 repeat
         with hpunch
@@ -98,16 +98,14 @@ label day_event_staring_contest:
         n "You throw up onto the floor."
         aikha "Don't mind the adverse side effects. Go! Staring contest!"
         player "..."
-        show aikha at move_to(x_align = 0.0)
-        show lee at move_to(x_align = 0.5)
         $ battle_fiercely = False
         menu:
             n "What's your game plan?"
-            "Battle valiantly for honour, with no regard for your personal wellbeing":
+            "Battle valiantly for honour, with no regard for your personal wellbeing.":
                 $ battle_fiercely = True
                 n "You stare fiercely at Dr. Lee."
                 n "Fueled by the insurmountable desire to win..."
-            "Pretend to put up a fight but lose so you can get these eyes out faster":
+            "Pretend to put up a fight but lose so you can get these eyes out faster.":
                 n "You stare half-heartedly at Dr. Lee."
                 n "They stare back through the wall, smiling."
                 lee "I'm gonna- {nw}"
@@ -184,9 +182,9 @@ label day_event_staring_contest:
         lee "Ready up!"
         menu:
             n "What's your game plan?"
-            "Battle valiantly for honour, with no regard for your personal wellbeing":
+            "Battle valiantly for honour, with no regard for your personal wellbeing.":
                 jump fight
-            "Pretend to put up a fight but lose so you can get these eyes out faster":
+            "Pretend to put up a fight but lose so you can go back to normal faster.":
                 jump give_up
         
         label fight:
@@ -257,7 +255,7 @@ label day_event_staring_contest:
             n "You find yourself sprawled on the floor. Aside from slightly swollen eyes, you feel surprisingly normal."
             aikha "How're you doing?"
             player "Better. A lot better. What did you guys do?"
-            aikha "Hehe!"
+            aikha "Heheh!"
             lee "..."
             aikha "You don't wanna know."
             n "You decide it's not worth questioning further. At least you lived."
@@ -309,9 +307,9 @@ label day_event_staring_contest:
         n "Do you even get paid at all...?"
         menu:
             n "How do you break out of this stalemate?"
-            "Persuade them they both blinked at the same time":
+            "Persuade them they both blinked at the same time.":
                 jump persuasion_check
-            "Try to leave":
+            "Try to leave.":
                 jump try_to_leave
         
         label persuasion_check:
@@ -359,8 +357,7 @@ label day_event_staring_contest:
                     linear 0.4 alpha 0.7
                     repeat
             n "At the same time, you feel an overwhelming amount of radiation emanating from the wall."
-            n "{color=#ff0000}{cps=12}{b}Looks like they want you to stay. :){b}{/cps}{/color}"
-            lee "Where are you going, [player_name]?"
+            n "{cps=12}{sc}{color=#ff0000}{b}Looks like they want you to stay. :){b}{/color}{/sc}{/cps}"
             show black_screen zorder 50
             hide red_blur_2 onlayer top
             hide overlay_ai_1 onlayer top

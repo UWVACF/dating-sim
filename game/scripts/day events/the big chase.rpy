@@ -83,7 +83,6 @@ label day_event_the_big_chase:
             hampter happy "Thank you for helping me!"
             n "Hampter nuzzles against your palm before teleporting away."
             hide hampter
-            n "...She can teleport?!"
             $ update_character_points({"hampter": 1})
             return
 
@@ -113,13 +112,13 @@ label day_event_the_big_chase:
             player "I'm not sure. I think he teleported away."
             #render ethy graphic at 0.5 alpha
             show chan unique
-            ethy "{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}"
+            ethy "{sc}{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}{sc}"
             n "You hear confused screaming in your head. Dr. Chan must be hearing it too, because he stares at you suspiciously."
             player "Or maybe he wasn't going after Hampter?"
             n "Plutoes nods at you, grinning."
             chan "Hm. It's alright, I've attached a tracker to the hard drive. I'll find him eventually."
             show plutoes at disappear
-            n "You see Dr. Chan take out his device, then swiftly turn around. Only then you both realize that Plutoes is no longer there."
+            n "You see Dr. Chan take out his device, then swiftly turn around. Only then do you both realize that Plutoes is no longer there."
             chan fury "Dammit, Plutoes!"
             show chan at disappear
             n "Well. That's that. Go get a coffee or something. You need it."
@@ -149,7 +148,7 @@ label day_event_the_big_chase:
             n "Unsurprisingly, Plutoes and Pochi are gone."
             chan fury "What the hell's happening?!"
             show chan unique
-            ethy "{size=+3}{b}AAA.{/b}{/size}"
+            ethy "{sc}{size=+3}{b}AAA.{/b}{/size}{sc}"
             show chan at disappear
             n "You watch as Dr. Chan trudges away. At this point, it might be easier for him to just rewrite whatever was in that hard drive."
             $ update_character_points({"chan": 1})
@@ -185,12 +184,12 @@ label day_event_the_big_chase:
             show plutoes at disappear
             syg pensive "One day..."
             n "Your own voice rings in your ear, spewing slurs."
-            n "{sc}{color=#00ff00}%%&*(@#&$%%!@#(*&(@%%%%*&!@$!*&*#*$!&%%!*&$$*!@&{/color}{/sc}"
+            n "{sc}{color=#009900}%%&*(@#&$%%!@#(*&(@%%%%*&!@$!*&*#*$!&%%!*&$$*!@&{/color}{/sc}"
             syg '...'
             syg "You should get that checked out. I think Plutoes planted something in your ear."
-            n "{i}{color=#00ff00}\"Babe, i just\ni jus dont think its working out\nEngine 3 failure abort ship abort ship\nI just dont think we r meant for each other\nBeep BEEP BEEP\nOverheat OVERHEAT\"{/color}{/i}"
+            n "{sc=1.5}{i}{color=#009900}\"Babe, i just\ni jus dont think its working out\nEngine 3 failure abort ship abort ship\nI just dont think we r meant for each other\nBeep BEEP BEEP\nOverheat OVERHEAT\"{/color}{/i}{sc}"
             show hampter at disappear
-            show syg at disappear
+            show syg pensive at disappear
             n "You watch Dr. Syg walk away with a drained Hampter. You contemplate whether removing your ear or going deaf would get you more company compensation claims."
             $ update_character_points({"syg": 1})
             return
@@ -212,7 +211,7 @@ label day_event_the_big_chase:
                 ])
                 alpha 0.0
                 linear 0.2 alpha 1.0
-            player "{sc}{color=#00ff00}F!&*@%%#! YOU $%%&*!%%@&*#%%@%%#${/color}{/sc}"
+            player "{sc}{color=#009900}F!&*@%%#! YOU $%%&*!%%@&*#%%@%%#${/color}{/sc}"
             n "You feel the spontaneous urge to skateboard away."
             n "But before you get the chance..."
             hide red_blur_1 onlayer top
