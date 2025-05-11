@@ -24,6 +24,10 @@ label day_event_fire:
     n "Hampter shuffles to hide something behind her back."
 show hampter happy 
     hampter "It's my snack time!"
+    n "..."
+    n "I guess you can't judge other personnel for where they decide to take their lunch breaks."
+    n "I mean... you were supposed to be on break before this meeting anyways."
+    n "You continue 
 # make it ??? for names
     aikha "...So anyways, that's why I infected 1700 axolotls."
     firewal "Mmm. Understandable."
@@ -40,9 +44,7 @@ show hampter happy
     n "You hear an explosion from down the hall."
 # Please make the screen shake
     n "You might have a hunch where your tour guide went..."
-    firewal "Holy shit look at that [[thing]"
-    firewal "That [[thing] is making me stressed I'm going to spontaneously combust"
-    aikha "Oh no Dr. Firewal is spontaneously combusting"
+
 
     menu: 
         n "What do you do?"
