@@ -1,7 +1,7 @@
 image red_blur_1= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 
 label day_event_the_big_chase:
-    scene hallway
+    scene bg hallway
     with default_fade
     n "You're on your way back from the restroom when you hear a commotion from behind you. You turn around to see a blue hamster sprinting down the hallway towards you." 
     show hampter panic
