@@ -1,7 +1,7 @@
 label day_event_the_bingo_card_1:
     scene bg lounge
     with default_fade
-    n "As you walk into the lounge, you notice the vibe feels...off."
+    n "As you walk into the lounge for the fifth coffee of the day, you notice the vibe feels...off."
     show 
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
     n ""
@@ -10,19 +10,44 @@ label day_event_the_bingo_card_1:
 # player walks into room, everyone is stressed
 # asks what's going on, no one replies
 # 
+# characterization:
+# Dr. Ryz - bingo card creator, moral competitive
+# Dr. Aikha - auditor, casual player. stress about the competitive players
+# Dr. Firewal 387 - immoral competitive game winner
+# Founder Alex - immoral compettitve for the #1 bingo winner mug, 
+# Plutoes - wild card, spontaneous 
+# player - not playing 
 # 
+# intro:
+# extreme tension
+# everyone stares at you
+# aikha "please stop moving" with all eyes closed. "everyone's really closed to getting bingo"
+# you see the #1 bingo player mug. Ah, so that's why. 
+# ... x3
 # 
+# you coninue to do your own thing, although a bit uncomfortable 
+# choice:
+# - open the fridge and pochi is inside, Dr Ryz yells "yes!", plutoes does plutoes thing, firewal "80% completion"
+# - (attempt to) take a power nap on the couch, Founder Alex pushes you off the couch then cross off grid (employee unsuccessfully take nap and gives up within 15 minutes), Dr firewal is pissed
 # 
+# quiet gasping, aikha wisphers "oh gosh everyone's one away now"
+# competitive players shout for final
+# choice: +1 for intended winner, +1 for accidental winner, -1 for losers
+# DR. RYZ - do a backflip
+    # - in the attempt, knowck youself out (firewal). wake up in the infirmary w dr ryz and dr ai standing over you. at least it's over now.
+# FOUNDER - keep drinking! (your coffee) it's almost done (it's completely full), might as well finish it! (pours you more coffee)
+    # - chucks coffee, drips on the floor, backsteps and accidentally do a backflip, Ryz yells bingo 
+    # 387 self destruct, ai -1
+# PLUTOES - consult pluto for what he wants to make the player do (no even on the bingo card) eat your own wallet, you struggle to swallow it, so you wash it down with all the coffee (Founder Alex wins)
+    # - aikha "that wasn't even on his bingo card..."
+    # - 387 self destruct, ai -1
+# DR FIREWAL 387 - my initiative is to win bingo, i will be terminated if i fail to complete my objective; please move 2 steps forward (holds out fist on fire), you will be fine. There will be no lasting consequences
+    # - take the punch. what's one punch to save one wal. but founder alex tackles 387 before the fire could reach you. 
+    # - the wal did not self-destruct due to interferrence, sends appreciation email: feed wall corp will remember this (positive)
+    # - plutoes win (alex tackles wal), plutoes/pochi eats the mug
 # 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+#
+#
 # 
 # 
 # 
