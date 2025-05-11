@@ -105,29 +105,31 @@ label day_event_staring_contest:
             n "What's your game plan?"
             "Battle valiantly for honour, with no regard for your personal wellbeing":
                 $ battle_fiercely = True
-                n "You stare fiercely- {nw}"
+                n "You stare fiercely at Dr. Lee."
+                n "Fueled by the insurmountable desire to win..."
             "Pretend to put up a fight but lose so you can get these eyes out faster":
                 n "You stare half-heartedly at Dr. Lee."
                 n "They stare back through the wall, smiling."
                 lee "I'm gonna- {nw}"
 
-        hide overlay_ai
+        show layer master:
+            blur 0.0
+        hide overlay_ai_2 onlayer top
         show black_screen zorder 50
         with hpunch
+        show aikha neutral at center
         hide lee
         window hide
         pause 2.0 
         
         if battle_fiercely:
             n "..."
-            n "That was pathetic."
+            n "You collapse."
         
         show black_screen zorder 50:
             alpha 1.0
             delay 2.0
             linear 5.0 alpha 0.0
-        show aikha at center:
-            blur 0.0
         aikha "You awake yet?"
         aikha "Hello? [cap_first(player_name)]?"
         n "You wake up and find yourself sprawled on the floor. Your head is pounding, but it seems your vision is back to normal."
@@ -228,18 +230,37 @@ label day_event_staring_contest:
             jump lee_conclusion
             
         label give_up:
-            return
+            n "You gaze halfheartedly at Dr. Lee through the wall. They do the same back."
+            lee "Heya!"
+            n "After a minute passes, you decide it's about time to call it and blink."
+            show black_screen zorder 50:
+                matrixcolor ColorizeMatrix("#ff0000",   "#000000")
+                linear 5.0 matrixcolor ColorizeMatrix("#000000", "#ff0000")
+            hide red_blur_1 onlayer top
+            n "Terrible idea."
+            n "The burning feeling in your eyes spreads throughout your body, and you succumb to the pain."
+            show black_screen zorder 50:
+                matrixcolor ColorizeMatrix("#000000",   "#ff0000")
+                alpha 1.0
+                linear 2.0 alpha 0.0
+            hide aikha
+            hide lee
 
         label lee_conclusion:
-            show aikha neutral
-            show lee neutral
+            show aikha neutral:
+                xalign 0.33
+                yalign 1.0
+            show lee neutral:
+                xalign 0.66
+                yalign 1.0
             lee "Hey, I think [player_sub_be] up!"
             n "You find yourself sprawled on the floor. Aside from slightly swollen eyes, you feel surprisingly normal."
             aikha "How're you doing?"
             player "Better. A lot better. What did you guys do?"
-            aikha "You don't want to know!"
-            player "...Okay."
-            n "You decide it's not worth investigating. At least you survived."
+            aikha "Hehe!"
+            lee "..."
+            aikha "You don't wanna know."
+            n "You decide it's not worth questioning further. At least you lived."
             lee "By the way, [player_name]!"
             player "Hm?"
             lee "I won!"
@@ -277,7 +298,7 @@ label day_event_staring_contest:
         hide chan
         with default_fade
         n "Another 3 hours pass."
-        n "You're really not sure what you're doing with your life before you hear the door open behind you."
+        n "You wonder what you're doing with your life when you hear the door open behind you."
         show alex at appear(x_align = 0.66)
         n "Founder Alex barely even glances in your direction as he fills his \"#1 BOSS\" mug with coffee."
         aikha "Hi Mr. Founder!"
@@ -295,8 +316,8 @@ label day_event_staring_contest:
                 jump try_to_leave
         
         label persuasion_check:
-            n "You search your pockets for a d20 but come up empty-handed."
-            n "Well, here goes nothing."
+            n "You pull out your trusty d20 to do a persuasion check."
+            n "You roll a Nat 1. Oops."
             player "Wait, hang on. You both just blinked."
             aikha "Huh?"
             n "Shocked by your sudden comment, you see Dr. Aikha's eyes blink. All 20 of them."
@@ -304,7 +325,7 @@ label day_event_staring_contest:
             n "Somehow, by sheer dumb luck, they both just blinked simultaneously."
             aikha "Shit. Guess we tied."
             n "You're free. You're finally free- {nw}"
-            lee "We can have a rematch tomorrow."
+            lee "We can have a rematch tomorrow!"
             aikha "Sure! Same time?"
             lee "Yesss! [player_name], join us tomorrow!"
             n "NONONONONONONONONONO{nw}"
@@ -314,7 +335,7 @@ label day_event_staring_contest:
                 linear 1.0 alpha 1.0
                 pause 2.0
                 alpha 0.0
-            n "NONONONONONONONONONONONONONONO{nw}"
+            n "{cps=24}NONONONONONONONONONONONONONONO{/cps}{nw}"
             $ update_character_points({"aikha": 2, "lee": 2})
             return
         
@@ -323,19 +344,27 @@ label day_event_staring_contest:
             aikha "..."
             lee "..."
             n "They're too invested in their staring contest to notice, so you turn to leave."
-            n "...Could you have done this the entire time?"
+            n "...Was it that easy the entire time?"
             show aikha unique
+            show overlay_ai_1 onlayer top:
+                alpha 0.0
+                linear 0.4 alpha 1.0
             n "Dr. Aikha starts splitting open, revealing an amalgamation of eyes and teeth."
             show lee at appear(x_align = 0.66):
                 alpha 0.5
-            show red_blur_1 onlayer top:
+                matrixcolor TintMatrix("#ff000088")
+            show red_blur_2 onlayer top:
                 alpha 0.0
-                linear 0.4 alpha 0.7
-            n "You also notice a faint red glow emanating from through the wall."
-            n "{color=#ff0000}Looks like they want you to stay. :D{/color}"
+                block:
+                    linear 0.4 alpha 1.0
+                    linear 0.4 alpha 0.7
+                    repeat
+            n "At the same time, you feel an overwhelming amount of radiation emanating from the wall."
+            n "{color=#ff0000}{cps=12}{b}Looks like they want you to stay. :){b}{/cps}{/color}"
             lee "Where are you going, [player_name]?"
             show black_screen zorder 50
-            hide red_blur_1 onlayer top
+            hide red_blur_2 onlayer top
+            hide overlay_ai_1 onlayer top
             n "You decide that's enough for today and black out."
             window hide
             hide aikha

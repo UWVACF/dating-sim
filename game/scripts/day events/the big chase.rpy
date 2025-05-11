@@ -70,9 +70,7 @@ label day_event_the_big_chase:
             hide chan
             show plutoes at appear(x_align = 0.5)
             n "Out of nowhere, Plutoes appears and catches Pochi as he's sailing through the air."
-            n "He towers over you and takes out a red sharpie."
-            plutoes "{cps=*0.75}{b}{color=#ff2d00}Thank you for finding my dog :) \n {i} -Signed Plutoes {/i}{/color}{/b}{/cps}"
-            n "Plutoes tosses his marker aside and leaves with Pochi."
+            n "He promptly leaves without saying a word."
             show plutoes at disappear
             syg "...I'll get him next time. Thanks for the help, anyway."
             n "Dr. Syg gives you a nod before turning to leave."
@@ -101,8 +99,8 @@ label day_event_the_big_chase:
         n "Dr. Chan stops in front of you and looks around, bewildered."
         n "Out of the corner of your eye, you see Pochi reappear behind Plutoes, standing a few steps behind Dr. Chan."
         chan fury "Hey [player_name], did you see where Pochi went? That damn thing ate my hard drive."
-        n "You see Plutoes take out a huge white notepad and begin writing on it with a red sharpie."
-        plutoes "{cps=*0.75}{b}{color=#ff2d00}Don't tell him :){/color}{/b}{/cps}"
+        n "You see Plutoes take out a sign."
+        plutoes "{b}{color=#ff2d00}dont tell him -signed plutoes{fast}{/color}{/b}"
         
         menu:
             n "Should you cover for Pochi?"
@@ -133,17 +131,20 @@ label day_event_the_big_chase:
             player "He's behind Plutoes!"
             show plutoes upset
             show red_blur_1 onlayer top:
-                alpha 0.5
                 matrixcolor Matrix([
                     0.0, 1.0, 0.0, 0.0,
                     1.0, 0.0, 0.0, 0.0,
                     0.0, 0.0, 1.0, 0.0,
                     0.0, 0.0, 0.0, 1.0
                 ])
+                alpha 0.0
+                linear 0.2 alpha 1.0
             show plutoes at disappear
             n "Suddenly, you and Dr. Chan are hit with a wave of noxious fumes."
             show chan panic
             chan panic "{i}cough cough cough{/i}"
+            show red_blur_1 onlayer top:
+                linear 1.5 alpha 0.0
             chan "{i}cough- {/i}What was that?!"
             n "Unsurprisingly, Plutoes and Pochi are gone."
             chan fury "What the hell's happening?!"
@@ -151,9 +152,6 @@ label day_event_the_big_chase:
             ethy "{size=+3}{b}AAA.{/b}{/size}"
             show chan at disappear
             n "You watch as Dr. Chan trudges away. At this point, it might be easier for him to just rewrite whatever was in that hard drive."
-            n "You turn around to continue on your way, only to see your distorted reflection on a glass door. {w=0.7}Someone has left a disapproving message in red sharpie: {cps=*0.75}{b}{color=#ff2d00}:({/color}{/b}{/cps}"
-            n "You debate whether or not to report this to HR as workplace harassment."
-            n "You decide it's not worth the extra headache."
             $ update_character_points({"chan": 1})
             hide red_blur_1 onlayer top
             return
@@ -167,8 +165,8 @@ label day_event_the_big_chase:
         show plutoes happy at appear(x_align = 0.33)
         show syg neutral at appear(x_align = 0.66)
         syg "Please grab Pochi for me, [player_name]. I need to recover Hampter. She's supposed to oversee my department temporarily."
-        n "Plutoes scribbles something on the floor."
-        plutoes "{cps=*0.75}{b}{color=#ff2d00}Don't grab my dog :( I told him to kidnap Hampter, to free her from the dangerous work in the Demonic department.{/color}{/b}{/cps}"
+        n "Plutoes pulls out a sign from behind his back."
+        plutoes "{b}{color=#ff2d00}hey bud gimme my dog back i was just tryna save the hairball from the demonis demon department -signed plutoes{fast}{/color}{/b}"
 
         menu:
             n "No time for questions. Who should you listen to?"
@@ -186,31 +184,41 @@ label day_event_the_big_chase:
             n "Plutoes smiles menacingly at you, then leaves. You feel an itch near your ear and scratch it."
             show plutoes at disappear
             syg pensive "One day..."
-            n "{i}*GALACTIC PROFANITIES*{/i}"
-            n "A voice rings in your ear."
+            n "Your own voice rings in your ear, spewing slurs."
+            n "{sc}{color=#00ff00}%%&*(@#&$%%!@#(*&(@%%%%*&!@$!*&*#*$!&%%!*&$$*!@&{/color}{/sc}"
             syg '...'
             syg "You should get that checked out. I think Plutoes planted something in your ear."
-            n "{i}*MORE SEVERE GALACTIC PROFANITIES*{/i}"
+            n "{i}{color=#00ff00}\"Babe, i just\ni jus dont think its working out\nEngine 3 failure abort ship abort ship\nI just dont think we r meant for each other\nBeep BEEP BEEP\nOverheat OVERHEAT\"{/color}{/i}"
             show hampter at disappear
             show syg at disappear
-            n "You watch Dr. Syg walks away with a drained Hampter. You contemplate whether removing your ear or going deaf would get you more company compensation claims."
+            n "You watch Dr. Syg walk away with a drained Hampter. You contemplate whether removing your ear or going deaf would get you more company compensation claims."
             $ update_character_points({"syg": 1})
             return
 
         label spare_pochi:
-            n "You don't do anything. "
+            n "You don't do anything."
             n "Hold on, Dr. Syg's clearance level is technically above Plutoes'. Wouldn't this get you in trouble?"
             syg upset "I'll have to report this as an incident if we don't recover Hampter."
-            n "Plutoes scribbles on his coat."
-            plutoes happy "{cps=*0.75}{b}{color=#ff2d00} And I will give you a {i}clean {/i}haircut if you do grab Pochi.{/color}{/b}{/cps}"
-            n "Okay, great. You're in trouble either way. It's so hard being an intern."
-            n "Just as you're about to drop to your knees and beg for forgiveness, Pochi teleports away with a loud \"POP!\". Perhaps he does have a tiny bit of sympathy in his non-existent heart."
-            syg "Hmph."
-            show syg upset at disappear
-            n "Plutoes walks over to you and pats you on the shoulder approvingly before leaving."
-            show plutoes happy at disappear
-            n "You feel a small itch on your shoulder. A very colorful mushroom has appeared." 
-            n "That's sweet! You better get it checked out and removed at the bio-hazard infirmary before it consumes your flesh, though."
+            n "Plutoes sneezes before skateboarding away. Pochi is nowhere to be found."
+            n "...Was that was your imagination? Either way, you feel an itch in your ear."
+            player "What the-"
+            syg neutral "What happened, [player_name]?"
+            show red_blur_1 onlayer top:
+                matrixcolor Matrix([
+                    0.0, 1.0, 0.0, 0.0,
+                    1.0, 0.0, 0.0, 0.0,
+                    0.0, 0.0, 1.0, 0.0,
+                    0.0, 0.0, 0.0, 1.0
+                ])
+                alpha 0.0
+                linear 0.2 alpha 1.0
+            player "{sc}{color=#00ff00}F!&*@%%#! YOU $%%&*!%%@&*#%%@%%#${/color}{/sc}"
+            n "You feel the spontaneous urge to skateboard away."
+            n "But before you get the chance..."
+            hide red_blur_1 onlayer top
+            show black_screen zorder 50
+            with hpunch
+            n "...Dr. Syg sucker-punches you in the face."
             $ update_character_points({"syg": -1})
             $ update_character_points({"plutoes": 1})
             return
