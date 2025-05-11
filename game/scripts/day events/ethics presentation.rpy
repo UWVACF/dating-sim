@@ -71,32 +71,32 @@ label day_event_ethics_presentation:
         xalign -0.5
     show aikha at run_right
     
-    aikha "Stawp! STAWP!!!{w=0.3}{nw}"
+    aikha "Stawp! STAWP!!!{w=0.3}"
     chan "Furthermore- Dr. Aikha, do you mind?"
     
     show aikha:
         xalign 1.5
     show aikha at run_left
 
-    aikha "Sorry! One second! POCH{w=0.15}IIIIIIIIIIIIIIIII{nw}"
+    aikha "Sorry! One second! POCHIIIIIIIIIIIIIIIII!!!"
 
     show aikha:
         xalign -0.5
     show aikha at run_right
 
-    chan "On that note, the IRS have{nw}"
+    chan "On that note, the IRS have"
 
     show aikha:
         xzoom 1.0
         xalign 1.5
     show aikha at move_to(x_align = 0.5, duration = 0.5)
 
-    extend " contacted us about- {nw}"
+    extend " contacted us about- "
 
     show aikha:
         xzoom -1.0
     aikha "GOT YOU! Fucking FINALLY!"
-    aikha "Hehe, {nw}"
+    aikha "Hehe, "
 
     show aikha at run_left(duration = 2.0)
 
@@ -104,8 +104,9 @@ label day_event_ethics_presentation:
     hide aikha
     chan "..."
     chan "As I was saying, one of our units is under investigation by the IRS due to-"
-    aikha "POCHI! NOOOOOOOOO{nw}"
+    aikha "POCHI! NOOOOOOOOO-"
     hide ethics_slide 
+    with hpunch
     n "You hear the sound of a projector crashing onto the floor."
     chan "..."
     chan "/no_pause.{w=0.5}.{w=0.5}.{w=0.5}.{w=0.5}.{w=0.5}.{w=0.5}"

@@ -4,7 +4,7 @@ label day_event_dr_ryz_and_the_goose:
     player "So I just need to deliver this box of samples to Dr. Ryz? Should be simple."
     n "As you approach the door to Dr. Ryz's office, you hear the sounds of shouting and furious honking."
     show caffi at appear(x_align = 0.33)
-    show roose at appear(x_align = 0.66)
+    show roose upset at appear(x_align = 0.66)
     caffi "RIZZ!"
     roose "HISSSSS!"
     caffi "IT'S DR. \"RIZZ\"!"
@@ -14,10 +14,10 @@ label day_event_dr_ryz_and_the_goose:
     player "Have you seen Dr. Ryz?"
     n "Your question was directed at Caffi, but for some reason, the goose turns to you. His beady eyes lock onto the box in your hands, and he gets excited."
     n "You now recall that this goose was Dr. Ryz's."
-    roose "Honk! Honk!"
+    roose talk "Honk! Honk!"
     n "He runs out the door and pulls you out towards the hallway. Seems like he wants you to follow."
     player "See you then, Caffi."
-    caffi "IT'S PRONOUNCED RIZZ! IT'S PRONOUNCED- {nw}"
+    caffi "IT'S PRONOUNCED RIZZ! IT'S PRONOUNCED- "
     hide caffi
     n "You calmly shut the door and follow the goose."
     

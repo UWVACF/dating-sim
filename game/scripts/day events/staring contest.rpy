@@ -29,17 +29,17 @@ label day_event_staring_contest:
     n "You make your way over to the wall and admire its...wall-like qualities."
     player "Am I supposed to be seeing them, or..."
     aikha "Shh! I'm about to win..."
-    n "..."
-    n "..."
-    n "/no_pause.{w=0.5}.{w=0.5}.{w=0.5}"
-    n "You calmly take a sip of coffee- {nw}"
+    aikha "..."
+    lee "..."
+    player "..."
+    n "You calmly take a sip of coffee- "
     lee "YOU BLINKED! I SAW THAT!"
     aikha "NUH UH!"
     lee "YUH HUH!"
     player "...So I should go-"
     aikha "Wait, no, join us!"
     lee "Yessss! Join us!"
-    player "But I can't just see through walls."
+    player "But I can't just...see through walls."
     aikha "Not a problem. I can give you some eyes to do just that!"
     player "\"Give me eyes\"...?"
     lee "I can help too! I could make your eyes like mine!"
@@ -108,7 +108,7 @@ label day_event_staring_contest:
             "Pretend to put up a fight but lose so you can get these eyes out faster.":
                 n "You stare half-heartedly at Dr. Lee."
                 n "They stare back through the wall, smiling."
-                lee "I'm gonna- {nw}"
+                lee "I'm gonna- "
 
         show layer master:
             blur 0.0
@@ -146,7 +146,7 @@ label day_event_staring_contest:
 
     label irradiate:
         n "Surely blasting your eyes with a lethal dose of radiation won't be detrimental to your health."
-        n "Wait. Lethal?{w=0.2}{nw}"
+        n "Wait. Lethal?{w=0.2}"
         lee "Here goes!"
         n "..."
 
@@ -157,7 +157,7 @@ label day_event_staring_contest:
             alpha 0.0
             linear 0.6 alpha 0.3
         
-        n "It doesn't seem like anything's ha- {nw}"
+        n "It doesn't seem like anything's ha- "
         
         show aikha:
             linear 0.3 matrixcolor TintMatrix("#ff000033")
@@ -321,18 +321,18 @@ label day_event_staring_contest:
             lee "Oops. I just blinked."
             n "Somehow, by sheer dumb luck, they both just blinked simultaneously."
             aikha "Shit. Guess we tied."
-            n "You're free. You're finally free- {nw}"
+            n "You're free. You're finally free- "
             lee "We can have a rematch tomorrow!"
             aikha "Sure! Same time?"
             lee "Yesss! [player_name], join us tomorrow!"
-            n "NONONONONONONONONONO{nw}"
+            n "NONONONONONONONONONO"
             player "Sure!"
             show black_screen onlayer top:
                 alpha 0.0
                 linear 1.0 alpha 1.0
                 pause 2.0
                 alpha 0.0
-            n "{cps=24}NONONONONONONONONONONONONONONO{/cps}{nw}"
+            n "{cps=24}NONONONONONONONONONONONONONONO{nw}{/cps}"
             $ update_character_points({"aikha": 2, "lee": 2})
             return
         

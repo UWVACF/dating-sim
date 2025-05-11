@@ -34,7 +34,7 @@ init python:
         )
         # adds pause after periods
         text = re.sub(
-            r'(?<!\bMr)(?<!\bMrs)(?<!\bDr)(?<!\.)\. (?!\s*{[^}]*}|\s*$|\.|[0-9])', 
+            r'(?<!\bMr)(?<!\bMrs)(?<!\bDr)(?<!\bMRS)(?<!\bMR)(?<!\bDR)(?<!\.)\. (?!\s*{[^}]*}|\s*$|\.|[0-9])', 
             f'. {{w={punctuation_pauses["period"]}}}', 
             text
         )
