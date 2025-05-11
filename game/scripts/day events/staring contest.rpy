@@ -51,7 +51,7 @@ label day_event_staring_contest:
             jump grow_more
         "Let Dr. Lee douse your eyes in radiation":
             jump irradiate
-        "Ask to just be the judge":
+        "Ask to judge":
             jump judge
     
     label grow_more:
@@ -131,15 +131,15 @@ label day_event_staring_contest:
             delay 2.0
             linear 5.0 alpha 0.0
         aikha "You awake yet?"
-        aikha "Hello? [cap_first(player_name)]?"
+        aikha "Hello? [player_name]?"
         n "You wake up and find yourself sprawled on the floor. Your head is pounding, but it seems your vision is back to normal."
         aikha "Oh, you're up!"
         show aikha at move_to(x_align = 0.33)
         show lee at appear(x_align = 0.66)
         lee "How are you feeling?"
-        aikha "[cap_first(player_sub)]'ll be fine. [player_sub!c] probably won't suffer any lasting damage."
+        aikha "[player_sub!c]'ll be fine. [player_sub!c] probably won't suffer any lasting damage."
         n "You throw up over yourself."
-        aikha "Or at least shouldn't..."
+        aikha "Probably."
         n "You try to play it off but end up in a coughing fit."
         lee "Uh oh."
         n "You should probably head to the infirmary."
@@ -268,8 +268,8 @@ label day_event_staring_contest:
             return
 
     label judge:
-        player "What if I just be the judge?"
-        aikha "nnenhethnernhnernhFIIIIINE"
+        player "What if I just judged?"
+        aikha "nrgehnrngnhegnhnFIIIIIIIIINE."
         aikha "Is that alright with you, CT?"
         lee "Yep! Ready?"
         aikha "Mhm!"
@@ -286,7 +286,6 @@ label day_event_staring_contest:
         lee "There aren't a lot of radiological entities that need to be taken care of, anyway."
         aikha "Besides, I can see my staff from here!"
         n "The eye goes back staring at the wall."
-        n "...So that's a no."
         n "You reckon it's about time to leave, when Dr. Chan walks into the room."
         show chan fury at appear(x_align = 0.66)
         chan "What the fuck are you guys doing."

@@ -211,12 +211,12 @@ define gui.quick_button_text_selected_color = gui.accent_color
 define gui.choice_button_width = 800
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(0, 10, 0, 10)
+define gui.choice_button_borders = Borders(20, 30, 20, 30)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
 # define gui.choice_button_text_yalign = 0.5
-define gui.choice_button_text_idle_color = '#888888'
+define gui.choice_button_text_idle_color = '#ffffff'
 define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_insensitive_color = '#8888887f'
 

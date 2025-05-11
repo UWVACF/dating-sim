@@ -185,10 +185,13 @@ label day_init:
     "{nw}" # again, .call jumps to next renpy statement so we place a pseudo renpy statement here
     
     python:
+
         day_number += 1
         seen_events.append(today_event_label)
-        print(today_event_label)
+
         for tag in today_event.tags:
+            if tag not in current_tags:
+                current_tags[tag] = 0
             current_tags[tag] += 1
         for person in today_event.personnel:
             characters[person]["points"] += 1

@@ -3,10 +3,6 @@
 init python:
     import re
     
-    # Capitalize the first letter of the passed string
-    def cap_first(s):
-        return s[0].upper() + s[1:] if s else s
-
     # Raise the character points of personnel
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
     # example usage: update_character_points({"helco": 1, "plutoes", -2})
