@@ -7,7 +7,7 @@ label day_event_fire:
     n "..."
     n "You're pretty sure this is an automated message but it's not within your pay grade to question invitations from superiors."
 
-    n "You're making your way to the designated location when you notice rummaging through the vent by the ground."
+    n "You're making your way to the designated location when you notice the sound of rummaging through the vents."
 # make screen black and white if possible? i assume its not so maybe black overlay
     n "Oh god."
     n "Is this the fated containment breach you negligently skimmed over the instructions for in your employee manual?"
@@ -27,7 +27,7 @@ show hampter happy
     n "..."
     n "I guess you can't judge other personnel for where they decide to take their lunch breaks."
     n "I mean... you were supposed to be on break before this meeting anyways."
-    n "You continue 
+    n "As you continue to your designated meeting spot, you hear a conversation."
 # make it ??? for names
     aikha "...So anyways, that's why I infected 1700 axolotls."
     firewal "Mmm. Understandable."
