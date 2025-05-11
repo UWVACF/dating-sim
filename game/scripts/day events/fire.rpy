@@ -1,27 +1,45 @@
 label day_event_fire:
-    scene bg office
+    scene bg hallway
     with default_fade
 
-    hide aikha 
     n "You're about to take your lunch break before you receive a notification on your work phone."
     n "\"HELLO [[INTERN], PLEASE REPORT TO [[HALLWAY 7B, OFFICE 16] FOR A GUIDED TOUR. FIREWAL MANAGEMENT.\""
     n "..."
-    n "Honestly, it seems like an automated message somehow but it's not within your pay grade to question invitations from superiors."
-    hide aikha
+    n "You're pretty sure this is an automated message but it's not within your pay grade to question invitations from superiors."
 
+    n "You're making your way to the designated location when you notice rummaging through the vent by the ground."
+# make screen black and white if possible? i assume its not so maybe black overlay
+    n "Oh god."
+    n "Is this the fated containment breach you negligently skimmed over the instructions for in your employee manual?"
+    n "You're not equipped for this!"
 
-    aikha "...so anyways, that's why I infected 1700 axolotls."
+# make this next dialogue dependant on the company gun event in the future
+    n "You've yet to receive company-issued gun!"
+
+    show hampter happy 
+    hampter "Hiiii [player_name]!"
+    n "Oh good... it's just Hampter."
+    player "What are you doing in there, Hampter?"
+    show hampter panic
+    n "Hampter shuffles to hide something behind her back."
+show hampter happy 
+    hampter "It's my snack time!"
+# make it ??? for names
+    aikha "...So anyways, that's why I infected 1700 axolotls."
     firewal "Mmm. Understandable."
 
     show aikha neutral at appear(x_align = 0.33)
     show firewal neutral at appear(x_align = 0.66)
 
     aikha "It was all worth it in the end when- oh! Hey, new recruit! Whatcha doing here?"
+# show firewal pensive
     n "Dr. Firewal checks his wrist cuff."
-    firewal "...Apparently Wal No.1 invited [player_obj] here to show [player_obj] around."
-    n "Wal... No.1?"
-    aikha "Huh? Then where is he?"
-    firewal "Ahem"
+    firewal "...Apparently Wal No.927 invited [player_obj] here to show [player_obj] around."
+    n "Wal... No.927?"
+    aikha "Huh? Then where is he-"
+    n "You hear an explosion from down the hall."
+# Please make the screen shake
+    n "You might have a hunch where your tour guide went..."
     firewal "Holy shit look at that [[thing]"
     firewal "That [[thing] is making me stressed I'm going to spontaneously combust"
     aikha "Oh no Dr. Firewal is spontaneously combusting"
