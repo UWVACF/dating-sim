@@ -98,6 +98,11 @@ init python:
             personnel=["ryz"],
             tags=["personnel"],
         ),
+        Event(
+            label="company_issued_gun",
+            personnel=["alex"],
+            tags=["work"],
+        ),
     ]
 
     # replace all spaces in labels with underscores

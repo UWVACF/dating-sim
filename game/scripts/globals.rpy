@@ -423,10 +423,12 @@ define jessie = Character("Dr. Jessie", kind=base_char, color="#ff6dcf", cb_name
 define jessie_unknown = Character("???", kind=jessie)
 
 define firewal = Character("Dr. Firewal", kind=base_char, color="#961e44", cb_name="firewal", image="firewal")
+define firewal_unknown = Character("???", kind=firewal)
 
 define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="helco", image="helco")
 
 define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="aikha", image="aikha")
+define aikha_unknown = Character("???", kind=aikha)
 
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes")
 
