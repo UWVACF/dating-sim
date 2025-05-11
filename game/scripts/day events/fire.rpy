@@ -3,21 +3,25 @@ label day_event_fire:
     with default_fade
 
     hide aikha 
-    n "some dialogue"
+    n "You're about to take your lunch break before you receive a notification on your work phone."
+    n "\"HELLO [INTERN], PLEASE REPORT TO [HALLWAY 7B, OFFICE 16] FOR A GUIDED TOUR. FIREWAL MANAGEMENT.\""
+    n "..."
+    n "Honestly, it seems like an automated message somehow but it's not within your pay grade to question invitations from superiors."
     hide aikha
 
 
-    aikha "...so anyways, that's why I killed 1700 axolotls."
-    firewal "Mmm."
+    aikha "...so anyways, that's why I infected 1700 axolotls."
+    firewal "Mmm. Understandable."
 
     show aikha neutral at appear(x_align = 0.33)
     show firewal neutral at appear(x_align = 0.66)
 
     aikha "It was all worth it in the end when- oh! Hey, new recruit! Whatcha doing here?"
-    firewal "I invited [player_obj] here to show [player_obj] around my department."
-    firewal "Hello founder Alex."
-    firewal "I have no clue what to write"
-    aikha "So I will write whatever and our writers will surely fill this with excellent high quality dialogue later down the line"
+    n "Dr. Firewal checks his wrist cuff."
+    firewal "...Apparently Wal No.1 invited [player_obj] here to show [player_obj] around."
+    n "Wal... No.1?"
+    aikha "Huh? Then where is he?"
+    n 
     firewal "Ahem"
     firewal "Holy shit look at that [[thing]"
     firewal "That [[thing] is making me stressed I'm going to spontaneously combust"
