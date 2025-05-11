@@ -7,8 +7,6 @@ label day_event_fire:
     hide aikha 
     n "some dialogue"
     hide aikha
-    
-
 
 
     aikha "...so anyways, that's why I killed 1700 axolotls."

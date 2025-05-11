@@ -116,16 +116,16 @@ label day_event_staring_contest:
             blur 0.0
         aikha "Hey, wake up!"
         aikha "Wake up! [cap_first(player_name)]!"
-        n "Your head is pounding, but it seems like you're back to having only two eyes."
+        n "You wake up and find yourself sprawled on the floor. Your head is pounding, but it seems your vision is back to normal."
         aikha "Oh, you're up!"
         show aikha at move_to(x_align = 0.33)
         show lee at appear(x_align = 0.66)
         lee "How are you feeling?"
         aikha "[cap_first(player_sub)]'ll be fine. [player_sub] won't suffer any lasting damage."
-        aikha "Or at least  shouldn't..."
-        n "You try to laugh it off but end up in a coughing fit."
+        n "You throw up over yourself."
+        aikha "Or at least shouldn't..."
+        n "You try to play it off but end up in a coughing fit."
         lee "Uh oh."
-        
         $ update_character_points({"aikha": 2, "lee": 1})
         return
 
@@ -199,16 +199,139 @@ label day_event_staring_contest:
             n "And finally..."
             hide red_blur_1 onlayer top
             hide red_blur_2 onlayer top
+            hide aikha
+            hide lee
             show black_screen zorder 50:
                 matrixcolor ColorizeMatrix("#ff0000",   "#000000")
                 linear 2.0 matrixcolor ColorizeMatrix("#000000", "#ff0000")
             with hpunch
             n "You succumb to the pain and collapse."
             n "Oops!"
+            show black_screen zorder 50:
+                alpha 1.0
+                linear 2.0 alpha 0.0
+            jump lee_conclusion
+            
+        label give_up:
+            return
+
+        label lee_conclusion:
+            show aikha neutral
+            show lee neutral
+            lee "Hey, I think [player_sub_be] up!"
+            n "You find yourself sprawled on the floor. Aside from slightly swollen eyes, you feel surprisingly normal."
+            aikha "How're you doing?"
+            player "Better. A lot better. What did you guys do?"
+            aikha "You don't want to know!"
+            player "...Okay."
+            n "You decide it's not worth investigating. At least you survived."
+            lee "By the way, [player_name]!"
+            player "Hm?"
+            lee "I won!"
+            $ update_character_points({"lee": 2, "aikha": 1})
             return
 
     label judge:
-        n "yip"
-        return
-
-
+        player "What if I just be the judge?"
+        aikha "nnenhethnernhnernhFIIIIINE"
+        aikha "Is that alright with you, CT?"
+        lee "Yep! Ready?"
+        aikha "Mhm!"
+        n "Dr. Aikha goes back to gazing intensely at the wall. It only just hits you that you can't actually see Dr. Lee behind it."
+        player "..."
+        aikha "..."
+        lee "..."
+        with default_fade
+        n "It's been 4 hours."
+        n "Your coffee has long since gone cold."
+        player "Don't you two have anything else to do?"
+        n "An eye on Dr. Aikha's neck turns to stare at you."
+        aikha "Nope!"
+        lee "There aren't a lot of radiological entities that need to be taken care of, anyway."
+        aikha "Besides, I can see my staff from here!"
+        n "The eye goes back staring at the wall."
+        n "...So that's a no."
+        n "You reckon it's about time to leave, when Dr. Chan walks into the room."
+        show chan fury at appear(x_align = 0.66)
+        chan "What the fuck are you guys doing."
+        aikha "Hi Chan!"
+        lee "We're having a staring contest!"
+        chan "..."
+        show chan fury at disappear
+        chan "My coworkers are all idiots."
+        hide chan
+        with default_fade
+        n "Another 3 hours pass."
+        n "You're really not sure what you're doing with your life before you hear the door open behind you."
+        show alex at appear(x_align = 0.66)
+        n "Founder Alex barely even glances in your direction as he fills his \"#1 BOSS\" mug with coffee."
+        aikha "Hi Mr. Founder!"
+        alex happy "Hello!"
+        n "He walks away."
+        show alex happy at disappear
+        
+        n "You should really be heading home. You don't get paid for overtime."
+        n "Do you even get paid at all...?"
+        menu:
+            n "How do you break out of this stalemate?"
+            "Persuade them they both blinked at the same time":
+                jump persuasion_check
+            "Try to leave":
+                jump try_to_leave
+        
+        label persuasion_check:
+            n "You search your pockets for a d20 but come up empty-handed."
+            n "Well, here goes nothing."
+            player "Wait, hang on. You both just blinked."
+            aikha "Huh?"
+            n "Shocked by your sudden comment, you see Dr. Aikha's eyes blink. All 20 of them."
+            lee "Oops. I just blinked."
+            n "Somehow, by sheer dumb luck, they both just blinked simultaneously."
+            aikha "Shit. Guess we tied."
+            n "You're free. You're finally free- {nw}"
+            lee "We can have a rematch tomorrow."
+            aikha "Sure! Same time?"
+            lee "Yesss! [player_name], join us tomorrow!"
+            n "NONONONONONONONONONO{nw}"
+            player "Sure!"
+            show black_screen onlayer top:
+                alpha 0.0
+                linear 1.0 alpha 1.0
+                pause 2.0
+                alpha 0.0
+            n "NONONONONONONONONONONONONONONO{nw}"
+            $ update_character_points({"aikha": 2, "lee": 2})
+            return
+        
+        label try_to_leave:
+            player "So I should really get going now..."
+            aikha "..."
+            lee "..."
+            n "They're too invested in their staring contest to notice, so you turn to leave."
+            n "...Could you have done this the entire time?"
+            show aikha unique
+            n "Dr. Aikha starts splitting open, revealing an amalgamation of eyes and teeth."
+            show lee at appear(x_align = 0.66):
+                alpha 0.5
+            show red_blur_1 onlayer top:
+                alpha 0.0
+                linear 0.4 alpha 0.7
+            n "You also notice a faint red glow emanating from through the wall."
+            n "{color=#ff0000}Looks like they want you to stay. :D{/color}"
+            lee "Where are you going, [player_name]?"
+            show black_screen zorder 50
+            hide red_blur_1 onlayer top
+            n "You decide that's enough for today and black out."
+            window hide
+            hide aikha
+            hide lee
+            pause 2.0
+            show black_screen zorder 50:
+                alpha 1.0
+                linear 2.0 alpha 0.0
+            window auto
+            n "You wake up and find yourself lying on the floor of the lounge."
+            n "The events of the staring contest slowly come back to you."
+            n "Maybe you should avoid Dr. Aikha and Dr. Lee for the time being..."
+            $ update_character_points({"aikha": -1, "lee": -1})
+            return
