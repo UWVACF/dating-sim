@@ -228,12 +228,12 @@ style choice_vbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
-    yfill True
-    yalign 0.5
+    # yfill True
+    # yalign 0.5
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
-    yalign 0.5
+    # yalign 0.5
 
 
 ## Quick Menu screen ###########################################################

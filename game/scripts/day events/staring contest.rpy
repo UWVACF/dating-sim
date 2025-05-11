@@ -1,8 +1,11 @@
 image red_blur_1= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image red_blur_2 = Image("images/day events/red blur 2.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image overlay_ai_2 = Image("images/day events/overlay ai 2.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 
 label day_event_staring_contest:
     scene bg lounge
+    with default_fade
     player "Ugh, I need a coffee."
     show aikha at appear(x_align = 0.33)
     n "You open the door to the lounge and see Dr. Aikha staring intensely at a wall."
@@ -54,29 +57,39 @@ label day_event_staring_contest:
     label grow_more:
         n "Surely having more eyes is always a good thing."
         aikha "Ready? Here goes!"
-        n "Dr. Aikha stretches out her hand and conjures a pair of grotesque eyes."
+        n "Dr. Aikha stretches out her arm and conjures a pair of grotesque eyes."
         n "Before you can react, she slaps you."
-        show aikha neutral:
+        show overlay_ai_1 onlayer top:
+            alpha 0.6
+            blur 2
+        show layer master:
             blur 2
         with hpunch
         pause 0.5
         n "Twice."
-        show aikha neutral:
-            linear 2.0 blur 4
-            linear 2.0 blur 0
-            repeat
-        with hpunch
-        pause 0.5
-        aikha "How is it?"
-        n "Your head is pounding. Shivers run through your body, and you resist the urge to throw up."
-        show lee at appear(x_align = 0.66):
-            alpha 0.5
-            matrixcolor TintMatrix("#ff000088")
+        show overlay_ai_1 onlayer top:
+            alpha 1.0
+            blur 6
+        show layer master:
             block:
                 linear 2.0 blur 4
                 linear 2.0 blur 0
                 repeat
+        with hpunch
+        pause 0.5
+        aikha "How is it?"
+        n "Your head is pounding. Shivers run through your body, and you resist the urge to throw up."
+        show overlay_ai_1 onlayer top:
+            linear 0.5 alpha 0.0
+        show overlay_ai_2 onlayer top:
+            blur 6
+            alpha 0.0
+            linear 0.5 alpha 1.0
+        show lee at appear(x_align = 0.66):
+            alpha 0.5
+            matrixcolor TintMatrix("#ff000088")
         n "But..."
+        hide overlay_ai_1 onlayer top
         n "You can faintly see Dr. Lee through the wall."
         lee "Heya! Can you see me?"
         player "Yeah..."
@@ -98,6 +111,7 @@ label day_event_staring_contest:
                 n "They stare back through the wall, smiling."
                 lee "I'm gonna- {nw}"
 
+        hide overlay_ai
         show black_screen zorder 50
         with hpunch
         hide lee
@@ -114,18 +128,19 @@ label day_event_staring_contest:
             linear 5.0 alpha 0.0
         show aikha at center:
             blur 0.0
-        aikha "Hey, wake up!"
-        aikha "Wake up! [cap_first(player_name)]!"
+        aikha "You awake yet?"
+        aikha "Hello? [cap_first(player_name)]?"
         n "You wake up and find yourself sprawled on the floor. Your head is pounding, but it seems your vision is back to normal."
         aikha "Oh, you're up!"
         show aikha at move_to(x_align = 0.33)
         show lee at appear(x_align = 0.66)
         lee "How are you feeling?"
-        aikha "[cap_first(player_sub)]'ll be fine. [player_sub] won't suffer any lasting damage."
+        aikha "[cap_first(player_sub)]'ll be fine. [player_sub!c] probably won't suffer any lasting damage."
         n "You throw up over yourself."
         aikha "Or at least shouldn't..."
         n "You try to play it off but end up in a coughing fit."
         lee "Uh oh."
+        n "You should probably head to the infirmary."
         $ update_character_points({"aikha": 2, "lee": 1})
         return
 
@@ -267,7 +282,7 @@ label day_event_staring_contest:
         n "Founder Alex barely even glances in your direction as he fills his \"#1 BOSS\" mug with coffee."
         aikha "Hi Mr. Founder!"
         alex happy "Hello!"
-        n "He walks away."
+        n "He walks away nonchalantly."
         show alex happy at disappear
         
         n "You should really be heading home. You don't get paid for overtime."

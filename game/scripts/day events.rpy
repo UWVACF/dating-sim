@@ -93,6 +93,11 @@ init python:
             personnel=["lee", "helco"],
             tags=["anomaly encounter"],
         ),
+        Event(
+            label="dr_ryz_and_the_goose",
+            personnel=["ryz"],
+            tags=["personnel"],
+        ),
     ]
 
     # replace all spaces in labels with underscores

@@ -5,7 +5,6 @@
 init python:
     # ----- STATEMENTS -----
     import copy
-    import random
     random.seed() # makes a new seed to ensure randomness
 
     # disables the option of moving back in text
@@ -159,6 +158,12 @@ define player_pos_adj = "their" # possessive adjective  (his, her, their)
 define player_pos_pro = "theirs" # possessive pronoun (his, hers, theirs)
 define player_ref = "themself" # reflexive pronoun (himself, herself, themself)
 
+# Image transform
+transform base_char_transform(x = 666, y = 1000, xoff = 0, yoff = 0):
+    xsize x
+    ysize y
+    xoffset xoff
+    yoffset yoff
 
 # Personnel images
 image jessie = At("images/jessie/jessie neutral.png", sprite_highlight("jessie"))
@@ -220,6 +225,11 @@ image ryz panic = At("images/ryz/ryz panic.png", sprite_highlight("ryz"))
 image ryz fury = At("images/ryz/ryz fury.png", sprite_highlight("ryz"))
 image ryz pensive = At("images/ryz/ryz pensive.png", sprite_highlight("ryz"))
 image ryz unique = At("images/ryz/ryz unique.png", sprite_highlight("ryz"))
+
+image roose = At("images/ryz/roose neutral.png", sprite_highlight("roose"), base_char_transform(x = 400, y = 600, yoff = -100))
+image roose neutral = At("images/ryz/roose neutral.png", sprite_highlight("roose"), base_char_transform(x = 400, y = 600, yoff = -100))
+image roose talk = At("images/ryz/roose talk.png", sprite_highlight("roose"), base_char_transform(x = 400, y = 600, yoff = -100))
+image roose upset = At("images/ryz/roose upset.png", sprite_highlight("roose"), base_char_transform(x = 400, y = 600, yoff = -100))
 
 image uriel = At("images/uriel/uriel neutral.png", sprite_highlight("uriel"))
 image uriel neutral = At("images/uriel/uriel neutral.png", sprite_highlight("uriel"))
@@ -444,6 +454,7 @@ define hampter = Character("Hampter", kind=base_char, color="#6b78ac", cb_name="
 define meem = Character("Meme", kind=base_char, color="#e4f8fe", cb_name="meem", image="meem") # change colour
 
 define ryz = Character("Dr. Ryz", kind=base_char, color="#f9be82", cb_name="ryz", image="ryz")
+define roose = Character("Roose", kind=ryz, image="roose", cb_name="roose")
 
 define venture = Character("Dr. Wayne Venture", kind=base_char, color="#8f7557", cb_name="venture", image="venture") # change colour
 

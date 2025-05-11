@@ -162,7 +162,7 @@ init -10 python:
                 # Unless we're in rollback or are skipping. In which case, we'll want to just snap to the new status
                 if renpy.is_skipping() or renpy.in_rollback():
                     sprite_focus[char_name] = is_talking
-
+            
             #### Determine Time and Position in Animation ####
             # - Figure out the current time of the animation
             # - This will still work, even if our entry in sprite_focus is currently a boolean.

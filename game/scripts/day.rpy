@@ -118,7 +118,7 @@ label day_init:
                     today_outro_label = today_event.outro_label
             
             # call the ending event instead of a day event
-            elif current_ending is not None and random.random() < ending_chance:
+            elif current_ending is not None and renpy.random.random() < ending_chance:
                 today_event_label = "ending_event_" + current_ending
                 today_event = filter_events(events = ending_events, label = current_ending)[0]
                 if today_event.intro_label:
@@ -164,7 +164,7 @@ label day_init:
                     total_weight += weight
                 
                 # randomly choose an event based on weight
-                remaining_weight = random.randint(0, total_weight)
+                remaining_weight = renpy.random.randint(0, total_weight)
                 for event, weight in event_weights:
                     remaining_weight -= weight
                     if remaining_weight <= 0:
@@ -220,10 +220,10 @@ label default_outro:
     with default_fade
     
     # randomly choose a remark from a pool
-    $ random_day_complete_remark = random.choice(day_complete_remarks)
+    $ random_day_complete_remark = renpy.random.choice(day_complete_remarks)
     player "[random_day_complete_remark]"
 
     # randomly choose another remark from a pool
-    $ random_heading_home_remark = random.choice(heading_home_remarks)
+    $ random_heading_home_remark = renpy.random.choice(heading_home_remarks)
     player "[random_heading_home_remark]"
     return
