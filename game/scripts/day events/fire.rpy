@@ -15,7 +15,13 @@ label day_event_fire:
 
 # make this next dialogue dependant on the company gun event in the future
     n "You've yet to receive company-issued gun!"
+# screen shake for pep talks! WHERE IS YOUR ANGER RAHHHHHH!!!!!!!!
+    n "Okay."
+    n "You got this!"
+    n "You've been working here for [[N] days!"
+    n "Surely whatever horrific anomaly this is must be harmless if there's no alarms going off!"
 
+    n "You muster up the courage to look into the vent."
     show hampter happy 
     hampter "Hiiii [player_name]!"
     n "Oh good... it's just Hampter."
