@@ -78,7 +78,7 @@ label day_event_ethics_presentation:
         xalign 1.5
     show aikha at run_left
 
-    aikha "Sorry! One second! POCHIIIIIIIIIIIIIIIII!!!"
+    aikha "Sure. One moment. POCHIIIIIIIIIIIIIIIII!!!"
 
     show aikha:
         xalign -0.5
@@ -95,8 +95,8 @@ label day_event_ethics_presentation:
 
     show aikha:
         xzoom -1.0
-    aikha "GOT YOU! Fucking FINALLY!"
-    aikha "Hehe, "
+    aikha "GOTCHA! FINALLY!"
+    aikha "Heh, "
 
     show aikha at run_left(duration = 2.0)
 
@@ -104,7 +104,7 @@ label day_event_ethics_presentation:
     hide aikha
     chan "..."
     chan "As I was saying, one of our units is under investigation by the IRS due to-"
-    aikha "POCHI! NOOOOOOOOO-"
+    aikha "POCHI! A-"
     hide ethics_slide 
     with hpunch
     n "You hear the sound of a projector crashing onto the floor."
