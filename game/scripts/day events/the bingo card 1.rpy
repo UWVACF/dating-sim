@@ -46,7 +46,7 @@ label day_event_the_bingo_card_1:
         aikha "Have you not been listeni-"
         firewal "Reminder: in the event that Wal NO.387 fails to complete mission \"Win Bingo Game,\" it will initiate SELF_DESTRUCT_SEQUENCE."
         player "...Oh."
-        n ""Oh" indeed."
+        n "\"Oh\" indeed."
         n "Despite the initial stakes of upsetting the founder himself, the edition of a self-destructing Wal has definitely upped the ante."
 
 
