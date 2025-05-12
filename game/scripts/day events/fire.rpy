@@ -35,6 +35,7 @@ label day_event_fire:
     show hampter happy 
     hampter "Hiiii [player_name]!"
     show layer master:
+        matrixcolor SaturationMatrix(0.0)
         linear 1.0 matrixcolor SaturationMatrix(1.0) 
     n "Oh good... it's just Hampter."
     player "What are you doing in there, Hampter?"
@@ -61,10 +62,10 @@ label day_event_fire:
     firewal "...Apparently Wal No.927 invited [player_obj] here to show [player_obj] around."
     n "Wal... No.927?"
     aikha "Huh? Then where is he-"
-    with vpunch
+    with hpunch
     n "You hear an explosion from down the hall."
 # Please make the screen shake
-    n "You might have a hunch where your tour guide went..."
+    n "You might have a hunch as to where your tour guide went..."
 
     menu: 
         n "What do you do?"

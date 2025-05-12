@@ -1,16 +1,53 @@
 label day_event_the_bingo_card_1:
     scene bg lounge
     with default_fade
-    n "As you walk into the lounge for the fifth coffee of the day, you notice the vibe feels...off."
+    n "As you walk into the lounge for your break, you notice that the vibe feels...off."
     # have characters not facing the player (center)
     show aikha panic at appear(x_align = 0.8)
     show alex pensive at appear(x_align = 0.5)
     show ryz pensive at appear(x_align = 0.2)
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
     # all character turn and face you (center)
-    aikha "Please stop moving, [player_name]."
-    aikha "We're playing bingo that Dr. Ryz made. and everyone's really close to winning."
-    n "You pass a glance at Dr. Alex's bingo sheet. Boxes are filled with odd phrases such as 'Employee takes nap unsuccessfully and gives up within 15 minutes' and 'an anomaly outbreak become contained '."
+    aikha "Wait wait wait, [player_name]."
+    aikha "We're playing Dr. Ryz's bingo, but everyone's being really competitive about it."
+    aikha "One wrong move could result in mass pandemonium among the players."
+    n "You pass a glance at Founder Alex's bingo sheet. The sheet is filled with random objectives, such as \"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
+    n "...How often does someone do a backflip here?"
+    n "You see Founder Alex's eyes fixated on a mug in the corner that reads, \"#1 BINGO Player.\" So that's why he's in this."
+    n "You decide to act nonchanlant and carry on with what you were doing. Everyone's eyes follow you as you make your way across the room."
+    menu:
+        n "...What exactly were you up to again?"
+        "Check the fridge for lunch":
+            jump fridge
+        "Power nap":
+            jump power_nap
+    
+    label fridge:
+        n "You make your way towards the fridge and hear someone inhale sharply."
+        n "You decide to ignore it. Lunch time waits for nobody!"
+        n "You open the fridge door...are greeted by Pochi."
+        n "He's napping on a plate like a basted turkey."
+        n "His face is covered with crumbs of the sandwich you were just about to eat...His gluttony knows no bounds."
+        n "Startled by the sound of the fridge door opening, Pochi wakes up. He takes one look at you before bouncing out of the fridge."
+        n "Just as he does that, you hear the room erupt from behind you."
+        ryz "YES! \"Pochi escapes from fridge\", check that off!"
+        firewal "Objective [[Pochi escapes from fridge] has been completed. Column 2 now has 4/5 boxes checked."
+        # plutoes does his thing
+        jump middle
+    
+    label power_nap:
+        n "That's right! You were going to take a power nap. It's been a long day, after all."
+        n "You make your way towards the couch, pushing through the small crowd of people watching your every move."
+        n ""
+
+    label middle:
+        aikha "Why? Why would you do that?!"
+        player "I was just trying to get my lunch. What's the big deal?"
+        aikha "You don't underst-"
+        firewal "Reminder: in the event that Firewal 387 fails to complete mission \"Win Bingo Game,\" it will initiate SELF_DESTRUCT_SEQUENCE."
+        player "...Oh."
+
+
 
 # bingo card 1 
 # player walks into room, everyone is stressed
