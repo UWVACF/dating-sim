@@ -66,7 +66,22 @@ label day_event_fire:
     n "You hear an explosion from down the hall."
 # Please make the screen shake
     n "You might have a hunch as to where your tour guide went..."
+    n "You rush to the source of the sound!"
+    n "Dr. Aikha and Dr. Firewal casually trail behind... guess this is somewhat common."
 
+# a crowd has gathered around the fire, uriel and helco added
+# seems like a charred hampter is the culprit
+# firewal presses a few buttons on his cuff, a wall splits open showing a vast lab narrator "huh thats not in the emergency escape route floor plan", drags Dr. aikha by the collar and leaves with them aikha shouts while being dragged away "CALL MOON CALL MOON!!!" the narrator is like... "call the moon? or a person named moon? What?"
+# something something helco is staring at the fire
+# wal no.1 shows up to "manage" the fire which is actually just throwing wal bots into the fire, causing a stress fire loop. "it seems like wal no.927 combusted after seeing a whole server destroyed by hampter. do not worry! we have wal bots working to put out the fire. we calculate that it will take 118098 wals to completely extinguish the fire."
+# have the three options as call... moon?, convince everyone to help, let the wals manage it
+# call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
+# convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
+# pleases uriel and helco, puts wals out of a job
+# let the wals manage it, wal no1: OK THE FIRE IS PUT DOWN: casualty 100290 wals estimate damage to the area: 200 Million narrator: au-AUGH maybe dont let chan see this one… helco: who's writing the incident report... Chan exits one of the charred offices: Just put in the pile with the rest of them... I'll get to it eventually...
+# pleases wal, disappoints aikha
+
+# Past this is a scrap...
     menu: 
         n "What do you do?"
         "Put your full faith in Dr. Aikha and do absolutely nothing":
@@ -91,13 +106,13 @@ label day_event_fire:
         jessie "Are you hurting anywhere?"
         n "You attempt to joke about how suffering an explosion point-blank does, in fact, hurt..."
         n "...but it seems your vocal chords have been burned off."
-        aikha "I'm sure [player_sub_be] fine!"
+        aikha "I'm sure [player_sub_be] fine."
         aikha "That was nothing someone like [player_obj] can't handle, yeah?"
         player "{sc=1.5}{size=-10}*euuuuuuuuughhhhh*{/size}{/sc}"
         jessie "Haha...yeah...nothing [player_sub] can't handle..."
-        aikha "You'll be back on your feet in no time, [player_name]!"
+        aikha "You'll bounce back in no time, [player_name]."
         aikha "Just..."
-        aikha "Stay away from mirrors for the time being..."
+        aikha "Check in to change your wrappings from time-to-time."
         $ update_character_points({"aikha": 2})
         return # NECESSARY (at least for first label)
     
