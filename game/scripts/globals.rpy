@@ -19,18 +19,18 @@ init python:
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks
     # note to developers: prefix a dialogue line with {no_pause} to disable these pauses for that line
-    default_text_speed = 30
+    # default_text_speed = 30
 
     punctuation_pauses = {
-        "comma": 0.2 * default_text_speed / preferences.text_cps,
-        "period": 0.4 * default_text_speed / preferences.text_cps,
-        "elipsis": 0.133 * default_text_speed / preferences.text_cps,
-        "exclamation": 0.4 * default_text_speed / preferences.text_cps,
-        "question": 0.4 * default_text_speed / preferences.text_cps,
-        "colon": 0.2 * default_text_speed / preferences.text_cps,
-        "semicolon": 0.2 * default_text_speed / preferences.text_cps,
-        "quotation": 0.2 * default_text_speed / preferences.text_cps,
-        "hyphen": 0.2 * default_text_speed / preferences.text_cps,
+        "comma": 0.2,
+        "period": 0.4,
+        "elipsis": 0.133,
+        "exclamation": 0.4,
+        "question": 0.4,
+        "colon": 0.2,
+        "semicolon": 0.2,
+        "quotation": 0.2,
+        "hyphen": 0.2,
     }
     
 
