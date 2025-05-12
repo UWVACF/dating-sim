@@ -9,7 +9,7 @@ label day_event_the_bingo_card_1:
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
     # all character turn and face you (center)
     aikha "Hold on, [player_name]."
-    aikha "We're playing Ryz's bingo. Everyone's really into it."
+    aikha "We're playing Ryz's bingo. Everyone's... uh... really into it, heh..."
     aikha "One wrong move could result in mass pandemonium among the players."
     n "You pass a glance at Founder Alex's bingo sheet. The sheet is filled with random objectives, such as \"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
     n "...How often does someone do a backflip here?"
