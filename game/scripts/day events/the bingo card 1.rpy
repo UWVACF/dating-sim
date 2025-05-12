@@ -2,9 +2,15 @@ label day_event_the_bingo_card_1:
     scene bg lounge
     with default_fade
     n "As you walk into the lounge for the fifth coffee of the day, you notice the vibe feels...off."
-    show 
+    # have characters not facing the player (center)
+    show aikha panic at appear(x_align = 0.8)
+    show alex pensive at appear(x_align = 0.5)
+    show ryz pensive at appear(x_align = 0.2)
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
-    n ""
+    # all character turn and face you (center)
+    aikha "Please stop moving, [player_name]."
+    aikha "We're playing bingo that Dr. Ryz made. and everyone's really close to winning."
+    n "You pass a glance at Dr. Alex's bingo sheet. Boxes are filled with odd phrases such as 'Employee takes nap unsuccessfully and gives up within 15 minutes' and 'an anomaly outbreak become contained '."
 
 # bingo card 1 
 # player walks into room, everyone is stressed
