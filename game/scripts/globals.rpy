@@ -5,7 +5,6 @@
 init python:
     # ----- STATEMENTS -----
     import copy
-    random.seed() # makes a new seed to ensure randomness
 
     # disables the option of moving back in text
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SET TO FALSE WHEN SHIPPING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -424,13 +423,14 @@ define jessie_unknown = Character("???", kind=jessie)
 
 define firewal = Character("Dr. Firewal", kind=base_char, color="#961e44", cb_name="firewal", image="firewal")
 define firewal_unknown = Character("???", kind=firewal)
+define wal387 = Character("Wal No.387", kind=firewal) # used in the bingo card 1
 
 define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="helco", image="helco")
 
 define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="aikha", image="aikha")
 define aikha_unknown = Character("???", kind=aikha)
 
-define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes")
+define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes", what_color="#ff2d00", what_bold = True)
 
 define alex = Character("Dr. Alex", kind=base_char, color="#000000", cb_name="alex", image="alex")
 
@@ -484,6 +484,11 @@ image bg venue = "images/bgs/venue.png"
 # other images
 
 image black_screen = Solid("#000000", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0) # for fade to black 
+
+# return a Wal No. XX
+# init python early:
+#     def get_wal_num(no):
+#         return Character(name=f"Wal No.{no}", kind=firewal)
 
 # Transitions and transformations
 

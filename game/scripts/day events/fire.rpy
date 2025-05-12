@@ -11,14 +11,14 @@ label day_event_fire:
     show layer master:
         matrixcolor SaturationMatrix(1.0)
         linear 1.0 matrixcolor SaturationMatrix(0.0) 
-# make screen black and white if possible? i assume its not so maybe black overlay
     n "Oh god."
     n "Is this the fated containment breach you negligently skimmed over the instructions for in your employee manual?"
     n "You're not equipped for this!"
 
 # make this next dialogue dependant on the company gun event in the future
+# this dialogue is now dependant on the company gun event in the future - signed ryan
     if "company_issued_gun" not in seen_events:
-        n "You've yet to receive company-issued gun!"
+        n "You've yet to receive your company-issued gun!"
 # screen shake for pep talks! WHERE IS YOUR ANGER RAHHHHHH!!!!!!!!
 
     n "Okay."
@@ -48,7 +48,6 @@ label day_event_fire:
     n "I mean... you were supposed to be on break before this meeting anyways."
     show hampter happy at disappear
     n "As you continue to your designated meeting spot, you hear a conversation."
-# make it ??? for names
     aikha_unknown "...So anyways, that's why I infected 1700 axolotls."
     firewal_unknown "Mmm. Understandable."
 
@@ -56,7 +55,6 @@ label day_event_fire:
     show firewal neutral at appear(x_align = 0.66)
 
     aikha "It was all worth it in the end when- oh! Hey, new recruit! Whatcha doing here?"
-# show firewal pensive
     show firewal pensive
     n "Dr. Firewal checks his wrist cuff."
     firewal "...Apparently Wal No.927 invited [player_obj] here to show [player_obj] around."
@@ -65,6 +63,7 @@ label day_event_fire:
     with hpunch
     n "You hear an explosion from down the hall."
 # Please make the screen shake
+# the screen has been shook, lord ai
     n "You might have a hunch as to where your tour guide went..."
     n "You rush to the source of the sound!"
     n "Dr. Aikha and Dr. Firewal casually trail behind... guess this is somewhat common."
