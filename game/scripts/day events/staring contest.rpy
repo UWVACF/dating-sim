@@ -21,7 +21,7 @@ label day_event_staring_contest:
     n "A talking wall. Huh."
     n "You decide it's best for your sanity to ignore it. You continue pouring your coffee."
     lee_unknown "Oh hey! Is that the intern?"
-    aikha "Hm? Oh, yeah! [player_name], wanna join us?"
+    aikha "Hm? Oh, yeah! Recruit, would you like to join us?"
     player "\"Us\" being...you and the wall?"
     aikha "Not just any wall! Dr. Lee's behind this one. We're having a staring contest!"
     player "...Through the wall?"
@@ -37,11 +37,11 @@ label day_event_staring_contest:
     aikha "NUH UH!"
     lee "YUH HUH!"
     player "...So I should go-"
-    aikha "Wait, no, join us!"
+    aikha "No no, join!"
     lee "Yessss! Join us!"
     player "But I can't just...see through walls."
-    aikha "Not a problem. I can give you some eyes to do just that!"
-    player "\"Give me eyes\"...?"
+    aikha "Not a problem. I'll just give you some eyes!"
+    player "\"Give me some eyes\"...?"
     lee "I can help too! I could make your eyes like mine!"
     player "...Or I could leave-"
     aikha "So what will it be?"
@@ -58,7 +58,7 @@ label day_event_staring_contest:
     label grow_more:
         n "Surely having more eyes is always a good thing."
         aikha "Ready? Here goes!"
-        n "Dr. Aikha stretches out her arm and conjures a pair of grotesque eyes."
+        n "Dr. Aikha holds out her hand and conjures a pair of grotesque eyes."
         n "Before you can react, she slaps you."
         show overlay_ai_1 onlayer top:
             alpha 0.6
@@ -93,10 +93,10 @@ label day_event_staring_contest:
         n "You can faintly see Dr. Lee through the wall."
         lee "Heya! Can you see me?"
         player "Yeah..."
-        aikha "How do you feel?"
+        aikha "How you feelin'?"
         player "Just peachy..."
         n "You throw up onto the floor."
-        aikha "Don't mind the adverse side effects. Go! Staring contest!"
+        aikha "Disregard any adverse side effects. Go! Staring contest!"
         player "..."
         $ battle_fiercely = False
         menu:
@@ -135,9 +135,9 @@ label day_event_staring_contest:
         show aikha at move_to(x_align = 0.33)
         show lee at appear(x_align = 0.66)
         lee "How are you feeling?"
-        aikha "[player_sub!c]'ll be fine. [player_sub!c] probably won't suffer any lasting damage."
+        aikha "[player_sub!c]'ll be fine. [player_sub!c] shouldn't suffer any lasting damage."
         n "You throw up over yourself."
-        aikha "Probably."
+        aikha "I said lasting."
         n "You try to play it off but end up in a coughing fit."
         lee "Uh oh."
         n "You should probably head to the infirmary."
@@ -208,7 +208,7 @@ label day_event_staring_contest:
                     linear 0.5 alpha 1.0
                     repeat
             n "The both of you reach the four minute mark."
-            aikha "Woah, [player_name]'s a prodigy at this!"
+            aikha "Wow, [player_name]. You're good!"
             n "Dr. Lee just keeps smiling, unwavering."
             n "Your eyes beg for mercy, but your hubris drowns out their cries."
             n "And finally..."
@@ -253,11 +253,11 @@ label day_event_staring_contest:
                 yalign 1.0
             lee "Hey, I think [player_sub_be] up!"
             n "You find yourself sprawled on the floor. Aside from slightly swollen eyes, you feel surprisingly normal."
-            aikha "How're you doing?"
+            aikha "How you doing?"
             player "Better. A lot better. What did you guys do?"
-            aikha "Heheh!"
+            aikha "Heh."
             lee "..."
-            aikha "You don't wanna know."
+            aikha "That's classified."
             n "You decide it's not worth questioning further. At least you lived."
             lee "By the way, [player_name]!"
             player "Hm?"
@@ -267,10 +267,10 @@ label day_event_staring_contest:
 
     label judge:
         player "What if I just judged?"
-        aikha "nrgehnrngnhegnhnFIIIIIIIIINE."
-        aikha "Is that alright with you, CT?"
+        aikha "Mmmmmmmmm FIIIIIIIIINE."
+        aikha "'Alright with you, CT?"
         lee "Yep! Ready?"
-        aikha "Mhm!"
+        aikha "Mm!"
         n "Dr. Aikha goes back to gazing intensely at the wall. It only just hits you that you can't actually see Dr. Lee behind it."
         player "..."
         aikha "..."
@@ -282,7 +282,7 @@ label day_event_staring_contest:
         n "An eye on Dr. Aikha's neck turns to stare at you."
         aikha "Nope!"
         lee "There aren't a lot of radiological entities that need to be taken care of, anyway."
-        aikha "Besides, I can see my staff from here!"
+        aikha "I can monitor my staff from here anyways!"
         n "The eye goes back staring at the wall."
         n "You reckon it's about time to leave, when Dr. Chan walks into the room."
         show chan fury at appear(x_align = 0.66)
@@ -291,17 +291,18 @@ label day_event_staring_contest:
         lee "We're having a staring contest!"
         chan "..."
         show chan fury at disappear
-        chan "My coworkers are all idiots."
+        chan "My colleagues are all idiots."
         hide chan
         with default_fade
         n "Another 3 hours pass."
         n "You wonder what you're doing with your life when you hear the door open behind you."
         show alex at appear(x_align = 0.66)
         n "Founder Alex barely even glances in your direction as he fills his \"#1 BOSS\" mug with coffee."
-        aikha "Hi Mr. Founder!"
+        aikha "Hiya Mr. Founder!"
         alex happy "Hello!"
         n "He walks away nonchalantly."
         show alex happy at disappear
+        n "Does he not... forget it."
         
         n "You should really be heading home. You don't get paid for overtime."
         n "Do you even get paid at all...?"
@@ -316,8 +317,8 @@ label day_event_staring_contest:
             n "You pull out your trusty d20 to do a persuasion check."
             n "You roll a Nat 1. Oops."
             player "Wait, hang on. You both just blinked."
-            aikha "Huh?"
-            n "Shocked by your sudden comment, you see Dr. Aikha's eyes blink. All 20 of them."
+            aikha "Pardon?"
+            n "Shocked by your sudden comment, you see Dr. Aikha's eyes blink. All 23 of them."
             lee "Oops. I just blinked."
             n "Somehow, by sheer dumb luck, they both just blinked simultaneously."
             aikha "Shit. Guess we tied."
@@ -346,7 +347,7 @@ label day_event_staring_contest:
             show overlay_ai_1 onlayer top:
                 alpha 0.0
                 linear 0.4 alpha 1.0
-            n "Dr. Aikha starts splitting open, revealing an amalgamation of eyes and teeth."
+            n "Dr. Aikha starts splitting open by {i}its{/i} seams, revealing an amalgamation of eyes and teeth."
             show lee at appear(x_align = 0.66):
                 alpha 0.5
                 matrixcolor TintMatrix("#ff000088")
@@ -361,7 +362,7 @@ label day_event_staring_contest:
             show black_screen zorder 50
             hide red_blur_2 onlayer top
             hide overlay_ai_1 onlayer top
-            n "You decide that's enough for today and black out."
+            n "Your body decides that's enough for today and black out."
             window hide
             hide aikha
             hide lee
