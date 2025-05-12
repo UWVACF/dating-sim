@@ -2,49 +2,69 @@ label day_event_fire:
     scene bg hallway
     with default_fade
 
-    n "You're about to take your lunch break before you receive a notification on your work phone."
-    n "\"HELLO [[INTERN], PLEASE REPORT TO [[HALLWAY 7B, OFFICE 16] FOR A GUIDED TOUR. FIREWAL MANAGEMENT.\""
+    n "You're about to take your lunch break when you receive a notification on your work phone."
+    n "{i}\"HELLO [[INTERN], PLEASE REPORT TO [[HALLWAY 7B, OFFICE 16] FOR A GUIDED TOUR. FIREWAL MANAGEMENT.\"{i}"
     n "..."
     n "You're pretty sure this is an automated message but it's not within your pay grade to question invitations from superiors."
 
-    n "You're making your way to the designated location when you notice rummaging through the vent by the ground."
+    n "You're making your way to the designated location when you notice the sound of rummaging in the vents."
+    show layer master:
+        matrixcolor SaturationMatrix(1.0)
+        linear 1.0 matrixcolor SaturationMatrix(0.0) 
 # make screen black and white if possible? i assume its not so maybe black overlay
     n "Oh god."
     n "Is this the fated containment breach you negligently skimmed over the instructions for in your employee manual?"
     n "You're not equipped for this!"
 
 # make this next dialogue dependant on the company gun event in the future
-    n "You've yet to receive company-issued gun!"
+    if "company_issued_gun" not in seen_events:
+        n "You've yet to receive company-issued gun!"
+# screen shake for pep talks! WHERE IS YOUR ANGER RAHHHHHH!!!!!!!!
 
+    n "Okay."
+    n "You got this!"
+    if day_number == 0:
+        n "Nevermind that it's your first day!"
+    elif day_number == 1:
+        n "You've been working here for [day_number] day!"
+    else:
+        n "You've been working here for [day_number] days!"
+
+    n "Surely whatever horrific anomaly this is must be harmless if there's no alarms going off!"
+    n "You muster up the courage to look into the vent."
     show hampter happy 
     hampter "Hiiii [player_name]!"
+    show layer master:
+        linear 1.0 matrixcolor SaturationMatrix(1.0) 
     n "Oh good... it's just Hampter."
     player "What are you doing in there, Hampter?"
     show hampter panic
     n "Hampter shuffles to hide something behind her back."
-show hampter happy 
+    show hampter happy 
     hampter "It's my snack time!"
     n "..."
     n "I guess you can't judge other personnel for where they decide to take their lunch breaks."
     n "I mean... you were supposed to be on break before this meeting anyways."
-    n "You continue 
+    show hampter happy at disappear
+    n "As you continue to your designated meeting spot, you hear a conversation."
 # make it ??? for names
-    aikha "...So anyways, that's why I infected 1700 axolotls."
-    firewal "Mmm. Understandable."
+    aikha_unknown "...So anyways, that's why I infected 1700 axolotls."
+    firewal_unknown "Mmm. Understandable."
 
     show aikha neutral at appear(x_align = 0.33)
     show firewal neutral at appear(x_align = 0.66)
 
     aikha "It was all worth it in the end when- oh! Hey, new recruit! Whatcha doing here?"
 # show firewal pensive
+    show firewal pensive
     n "Dr. Firewal checks his wrist cuff."
     firewal "...Apparently Wal No.927 invited [player_obj] here to show [player_obj] around."
     n "Wal... No.927?"
     aikha "Huh? Then where is he-"
+    with vpunch
     n "You hear an explosion from down the hall."
 # Please make the screen shake
     n "You might have a hunch where your tour guide went..."
-
 
     menu: 
         n "What do you do?"
