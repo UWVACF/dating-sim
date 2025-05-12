@@ -41,7 +41,7 @@ label day_event_the_bingo_card_1:
         n ""
 
     label middle:
-        aikha "What's wrong with you?!"
+        aikha "Bastard! What's wrong with you?!"
         player "I was just trying to get my lunch. What's the big deal?"
         aikha "Have you not been listeni-"
         firewal "Reminder: in the event that Wal NO.387 fails to complete mission \"Win Bingo Game,\" it will initiate SELF_DESTRUCT_SEQUENCE."
