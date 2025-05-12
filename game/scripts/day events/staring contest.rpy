@@ -11,9 +11,9 @@ label day_event_staring_contest:
     n "You open the door to the lounge and see Dr. Aikha staring intensely at a wall."
 
     if characters["aikha"]["points"] > 2:
-        n "You don't really pay her any mind. You're used to this kind of stuff by now."
+        n "You don't really pay them any mind. You're used to this kind of stuff by now."
     else:
-        n "Looks like the 9-5 got to her."
+        n "Looks like the 9-5 got to them."
 
     n "You make your way over to the coffee machine."
     aikha "Do it. You won't."
@@ -58,8 +58,8 @@ label day_event_staring_contest:
     label grow_more:
         n "Surely having more eyes is always a good thing."
         aikha "Ready? Here goes!"
-        n "Dr. Aikha holds out her hand and conjures a pair of grotesque eyes."
-        n "Before you can react, she slaps you."
+        n "Dr. Aikha holds out their hand and conjures a pair of grotesque eyes."
+        n "Before you can react, they slaps you."
         show overlay_ai_1 onlayer top:
             alpha 0.6
             blur 2
