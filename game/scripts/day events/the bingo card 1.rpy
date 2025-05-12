@@ -8,8 +8,8 @@ label day_event_the_bingo_card_1:
     show ryz pensive at appear(x_align = 0.2)
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
     # all character turn and face you (center)
-    aikha "Wait wait wait, [player_name]."
-    aikha "We're playing Dr. Ryz's bingo, but everyone's being really competitive about it."
+    aikha "Hold on, [player_name]."
+    aikha "We're playing Ryz's bingo. Everyone's really into it."
     aikha "One wrong move could result in mass pandemonium among the players."
     n "You pass a glance at Founder Alex's bingo sheet. The sheet is filled with random objectives, such as \"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
     n "...How often does someone do a backflip here?"
@@ -41,12 +41,13 @@ label day_event_the_bingo_card_1:
         n ""
 
     label middle:
-        aikha "Why? Why would you do that?!"
+        aikha "What's wrong with you?!"
         player "I was just trying to get my lunch. What's the big deal?"
-        aikha "You don't underst-"
-        firewal "Reminder: in the event that Firewal 387 fails to complete mission \"Win Bingo Game,\" it will initiate SELF_DESTRUCT_SEQUENCE."
+        aikha "Have you not been listeni-"
+        firewal "Reminder: in the event that Wal NO.387 fails to complete mission \"Win Bingo Game,\" it will initiate SELF_DESTRUCT_SEQUENCE."
         player "...Oh."
-
+        n ""Oh" indeed."
+        n "Despite the initial stakes of upsetting the founder himself, the edition of a self-destructing Wal has definitely upped the ante."
 
 
 # bingo card 1 
