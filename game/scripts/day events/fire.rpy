@@ -99,7 +99,7 @@ label day_event_fire:
     with hpunch
     n "The wall closes. Call... the moon? Is that a person? Is that a code for something?"
 # ADD WAL NO.1
-    n "A Wal bot sporting the tag, {i}"\Manager Wal\"{i}, appears with a clipboard."
+    n "A Wal bot sporting the tag, {i}\"Manager Wal\"{i}, appears with a clipboard."
 # ADD WAL NO.1: "it seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter. Do not worry! We have Wals working to put out the fire. We calculate that it will take 118098 Wals to completely extinguish the fire."
 # CREATE SCENE WHERE WALS KEEP RUSHING IN AND DISAPPEARING 
     n "You see a Wal run into the fire, attempt to punch it out, and combust due to stress."
