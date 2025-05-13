@@ -11,13 +11,13 @@ label day_event_yuri:
     n "You slowly slink towards the coffee machine."
     deceased "So how was your day, Dr Ai?"
     aikha "It's been fine. My patients have been doing pretty well lately."
-    aikha "Maybe you could come over to the Path-Para department to meet them some time."
+    aikha "Maybe you could come over to Path-Para to meet them some time?"
     deceased "Yeah! That would be..."
     deceased "..."
     aikha "..."
     player "..."
     n "...Is this some sad attempt at office romance?"
-    n "Well! You have no clue what's going on, and you suspect those two don't either."
+    n "Well! You have no clue what's going on, and you suspect those two don't either." 
     
     menu:
         n "Maybe you can help them out?"
@@ -42,7 +42,7 @@ label wing_dece:
     deceased neutral "...all that being said, I'm basically half an expert in anomalous pathologies myself!"
     deceased "Although not as much as you, certainly. Ha. Ha."
     n "You wish for a commically large piano to drop on your head right about now. Unforunately, it doesn't come."
-    aikha "Well, if you ever have time, you're free to come by and take a peak! I'm sure Aran would be happy to see you."
+    aikha "Well, if you ever have time, you're free to come by and take a peak! I mean, I'm sure Aran would be happy to see you."
     deceased "Haha, yeah! Aran..."
     aikha "Unless you're preoccupied. You've been out a lot on field studies lately, so-"
     deceased "No!"
@@ -61,27 +61,41 @@ label wing_dece:
         n "Or maybe the lights are too bright in here? Anyway, you feel like you've done something right, so you take credit for it."
     else:
         deceased pensive "Wait, who is that?"
-        n "No one important! Please leave us alone."
-    aikha "Alright then! Meet at the Path-Para department at 1?"
+        n "No one important! Please leave [player_name] alone."
+    aikha "Alrighty then! Meet at Path-Para at 1?"
     deceased happy "Sure thing!"    
-    n "The two skip away, hand in hand."
-    n "Well, sort of. Dr. Deceased is holding the coat sleeve of Dr. Aikha's, but it's the thought that counts right?"
+    n "The two skip away, hand-in-hand."
+    n "Well, sort of. Dr. Deceased is holding Dr. Aikha's coat sleeve, but it's the thought that counts right?"
     return
     
 label wing_aikha: 
-    player "Dr. Deceased! "
-# Maybe mention omni? or do something really wild like shoot aikha to get deceased invested into the anomaly might be funny sob
-# against all ethics and occupational preservation, you decide to shoot dr. aikha to create an almost fanfic esque scenario. its also a good way to break your frustration over this tension
+    n "You whip your head around to look for something- anything- to help."
+    n "There's a fully loaded military-grade shotgun in an emergency glass case. Perfect!"
+    player "Dr. Deceased! Watch this!"
+    n "You smash it open, and- against all ethics and occupation preservation- open-fire on Dr Aikha."
+    show aikha unique 
+    aikha "AA- eughghghhhgh..."
+    n "Is this working?"
+    aikha "My spleen... MY EYES..."
+    player "Which ones?!"
+    deceased "Oh no! Dr. Aikha, it seems that 26 out of 57 of your surface level peepers have been shot!"
+    n "Dr. Aikha is still convulsing on the ground. A couple layers of skin peel off as they melt to the floor."
+    n "...{i}Did{/i} this work?!"
+    deceased "It seems as a response to the external trauma, your body has compensated by turning into an amorphous entity!"
+    deceased pensive "...Can this form be injured? Hold on."
+    n "Dr. Deceased pulls out their company gun and shoots them."
+    aikha "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII{nw}"
+    n "You aren't sure if this is supposed to be how this goes."
+    deceased "Wow! The bullet is completely absorbed! Dr. Aikha, you never told me what a fascinating biological structure you possess!"
+    aikha_unknown "IIIIIIIIIIIIIIIIIIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA{nw}"
+    n "At this point, you're not really sure what your plan was." 
+    n "If you're honest to yourself, this was mostly an excuse to vent your hatred of office romcoms." 
+    deceased "Oh, this is wonderful. There's so much data to be collected!"
+    deceased "Dr. Aikha, would you perhaps be free to run some more tests in my office?"
+    aikha_unknown "EEIAUAGHEAGAUUGAGH??"
+    deceased "Alright, great! Man, I've been looking forward to this opportunity for weeks!"
+    n "You watch as Dr. Deceased scrubs what's left of Dr. Aikha(?) off the floor and carries it out of the lounge area."
+    n "You're not sure, but from this angle, you think you can see a hint of a blush coming from the pile of eyes and flesh."
+    player "..."
+    player "In front of my coffee?!"
     return
-
-# deleted
-        # player "Well, if you guys are preoccupied, I'll just-"
-        # deceased "Wait! You should come with, [player_name]!"
-        # n "???"
-        # deceased "You know! The more the merrier."
-        # n "Does this guy know what a date is?!"
-        
-        # menu: 
-        #     player "O-oh. Well..."
-
-        # n "You've already had your coffee but you can't think of an excuse to leave."
