@@ -4,6 +4,10 @@
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
 ## may want to uncomment them when appropriate.
 
+init python:
+    config.layers = [ 'backdrop', 'master', 'transient', 'screens', 'top' ]
+
+
 define config.developer = True
 
 ## Basics ######################################################################

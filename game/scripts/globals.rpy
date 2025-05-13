@@ -128,7 +128,7 @@ init python:
             "points": 0,
             "has_route": False
         },
-        "meem": {
+        "meme": {
             "points": 0,
             "has_route": False
         },
@@ -367,17 +367,17 @@ image b6 fury = At("images/personnel/b6/b6 fury.png", sprite_highlight("b6"))
 image b6 pensive = At("images/personnel/b6/b6 pensive.png", sprite_highlight("b6"))
 image b6 unique = At("images/personnel/b6/b6 unique.png", sprite_highlight("b6"))
 
-image meem = At("images/personnel/meem/meem neutral.png", sprite_highlight("meem"))
-image meem neutral = At("images/personnel/meem/meem neutral.png", sprite_highlight("meem"))
-image meem talk = At("images/personnel/meem/meem talk.png", sprite_highlight("meem"))
-image meem happy = At("images/personnel/meem/meem happy.png", sprite_highlight("meem"))
-image meem sad = At("images/personnel/meem/meem sad.png", sprite_highlight("meem"))
-image meem upset = At("images/personnel/meem/meem upset.png", sprite_highlight("meem"))
-image meem surprise = At("images/personnel/meem/meem surprise.png", sprite_highlight("meem"))
-image meem panic = At("images/personnel/meem/meem panic.png", sprite_highlight("meem"))
-image meem fury = At("images/personnel/meem/meem fury.png", sprite_highlight("meem"))
-image meem pensive = At("images/personnel/meem/meem pensive.png", sprite_highlight("meem"))
-image meem unique = At("images/personnel/meem/meem unique.png", sprite_highlight("meem"))
+image meme = At("images/personnel/meme/meme neutral.png", sprite_highlight("meme"))
+image meme neutral = At("images/personnel/meme/meme neutral.png", sprite_highlight("meme"))
+image meme talk = At("images/personnel/meme/meme talk.png", sprite_highlight("meme"))
+image meme happy = At("images/personnel/meme/meme happy.png", sprite_highlight("meme"))
+image meme sad = At("images/personnel/meme/meme sad.png", sprite_highlight("meme"))
+image meme upset = At("images/personnel/meme/meme upset.png", sprite_highlight("meme"))
+image meme surprise = At("images/personnel/meme/meme surprise.png", sprite_highlight("meme"))
+image meme panic = At("images/personnel/meme/meme panic.png", sprite_highlight("meme"))
+image meme fury = At("images/personnel/meme/meme fury.png", sprite_highlight("meme"))
+image meme pensive = At("images/personnel/meme/meme pensive.png", sprite_highlight("meme"))
+image meme unique = At("images/personnel/meme/meme unique.png", sprite_highlight("meme"))
 
 image moon = At("images/personnel/moon/moon neutral.png", sprite_highlight("moon"))
 image moon neutral = At("images/personnel/moon/moon neutral.png", sprite_highlight("moon"))
@@ -423,47 +423,65 @@ define jessie_unknown = Character("???", kind=jessie)
 
 define firewal = Character("Dr. Firewal", kind=base_char, color="#961e44", cb_name="firewal", image="firewal")
 define firewal_unknown = Character("???", kind=firewal)
+define wal1 = Character("Wal No.1", kind=firewal) # used in fire
 define wal387 = Character("Wal No.387", kind=firewal) # used in the bingo card 1
 
 define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="helco", image="helco")
+define helco_unknown = Character("???", kind=helco)
 
 define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="aikha", image="aikha")
 define aikha_unknown = Character("???", kind=aikha)
 
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes", what_color="#ff2d00", what_bold = True)
+define plutoes_unknown = Character("???", kind=plutoes)
 
 define alex = Character("Dr. Alex", kind=base_char, color="#000000", cb_name="alex", image="alex")
+define alex_unknown = Character("???", kind=alex)
 
 define deceased = Character("Dr. Deceased", kind=base_char, color="#894bb2", cb_name="deceased", image="deceased")
+define deceased_unknown = Character("???", kind=deceased)
 
 define syg = Character("Dr. Syg", kind=base_char, color="#6e7384", cb_name="syg", image="syg")
+define syg_unknown = Character("???", kind=syg)
 
 define chan = Character("Dr. Chan", kind=base_char, color="#46bdc6", cb_name="chan", image="chan")
+define chan_unknown = Character("???", kind=chan)
 define ethy = Character("Ethy", kind=chan, color="#000000")
 
 define lee = Character("Dr. Lee", kind=base_char, color="#ff0000", cb_name="lee", image="lee")
 define lee_unknown = Character("???", kind=lee)
 
 define b6 = Character("b6c5b6", kind=base_char, color="#364036", cb_name="b6", image="b6")
+define b6_unknown = Character("???", kind=b6)
 
 define paul = Character("Paul Demure Johnson", kind=base_char, color="#6e7f55", cb_name="paul", image="paul")
+define paul_unknown = Character("???", kind=paul)
 
 define uriel = Character("Uriel", kind=base_char, color="#acced2", cb_name="uriel", image="uriel")
+define uriel_unknown = Character("???", kind=uriel)
 
 define egg = Character("Harvard Egg", kind=base_char, color="#ff8561", cb_name="egg", image="egg")
+define egg_unknown = Character("???", kind=egg)
 
 define caffi = Character("\"Dr\" Caffi", kind=base_char, color="#000000", cb_name="caffi", image="caffi") # change colour
+define caffi_unknown = Character("???", kind=caffi)
 
 define moon = Character("Hustlemoon", kind=base_char, color="#caff85", cb_name="moon", image="moon")
+define moon_unknown = Character("???", kind=moon)
 
 define hampter = Character("Hampter", kind=base_char, color="#6b78ac", cb_name="hampter", image="hampter")
+define hampter_unknown = Character("???", kind=hampter)
 
-define meem = Character("Meme", kind=base_char, color="#e4f8fe", cb_name="meem", image="meem") # change colour
+define meme = Character("Meme", kind=base_char, color="#e4f8fe", cb_name="meme", image="meme") # change colour
+define meme_unknown = Character("???", kind=meme)
 
 define ryz = Character("Dr. Ryz", kind=base_char, color="#f9be82", cb_name="ryz", image="ryz")
+define ryz_unknown = Character("???", kind=ryz)
 define roose = Character("Roose", kind=ryz, image="roose", cb_name="roose")
+define roose_unknown = Character("???", kind=roose)
 
 define venture = Character("Dr. Wayne Venture", kind=base_char, color="#8f7557", cb_name="venture", image="venture") # change colour
+define venture_unknown = Character("???", kind=venture)
 
 define player = Character("[player_name]", kind=base_char, color="#444444", cb_name="player")
 
@@ -512,5 +530,23 @@ transform disappear(y_offset = 70, duration = 0.5):
         easein duration yoffset y_offset
     parallel:
         linear duration alpha 0.0
+
+# TODO: make this a function with intensity and randomness
+transform shake:
+    xoffset 8 yoffset -8
+    0.05
+    xoffset -6 yoffset 6
+    0.05
+    xoffset 5 yoffset -5
+    0.05
+    xoffset -4 yoffset 4
+    0.05
+    xoffset 3 yoffset -3
+    0.05
+    xoffset -2 yoffset 2
+    0.05
+    xoffset 1 yoffset -1
+    0.05
+    xoffset 0 yoffset 0
 
 define default_fade = Fade(1.0, 1.0, 1.0)

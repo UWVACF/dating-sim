@@ -79,7 +79,7 @@ label day_event_fire:
     show helco neutral
     n "You glance over to the nearby conference room and see a frustrated Uriel and confused Dr. Helco."
     n "I guess it's not too worrying."
-# scene bg hallway
+    scene bg hallway
     n "A charred Hampter walks through the flames."
     show hampter panic
     hampter "It wasn't me!!! A Wal found me and just combusted!"
@@ -94,17 +94,53 @@ label day_event_fire:
     aikha "Huh? Nono not again!"
     n "Well, that bodes well."
     n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
-# sorry ryan, drag me and wal off screen ty bestie <3
+    show aikha panic:
+        linear 3.0 xoffset 1920
+    show firewal upset:
+        linear 3.0 xoffset 1920
     aikha "NONONO! [player_name]! CALL MOON! CALL MOOOOOOOOOOON-"
     with hpunch
     n "The wall closes. Call... the moon? Is that a person? Is that a code for something?"
+    hide firewal
+    hide aikha
 # ADD WAL NO.1
+    show firewal at appear(x_align = 0.0)
     n "A Wal bot sporting the tag, {i}\"Manager Wal\"{i}, appears with a clipboard."
-# ADD WAL NO.1: "it seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter. Do not worry! We have Wals working to put out the fire. We calculate that it will take 118098 Wals to completely extinguish the fire."
-# CREATE SCENE WHERE WALS KEEP RUSHING IN AND DISAPPEARING 
+    wal1 "It seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter. Do not worry! We have Wals working to put out the fire. We calculate that it will take 118098 Wals to completely extinguish the fire."
+    n "...118098 Wals?"
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
+
     n "You see a Wal run into the fire, attempt to punch it out, and combust due to stress."
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
     n "You see a second Wal attempt to do the same... and combust."
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
     n "Then a third..."
+    
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
     n "How... long is this going to take?"
     menu: 
         n "You should step in."
