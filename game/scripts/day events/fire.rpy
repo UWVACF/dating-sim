@@ -6,7 +6,6 @@ label day_event_fire:
     n "{i}\"HELLO [[INTERN], PLEASE REPORT TO [[HALLWAY 7B, OFFICE 16] FOR A GUIDED TOUR. FIREWAL MANAGEMENT.\"{i}"
     n "..."
     n "You're pretty sure this is an automated message but it's not within your pay grade to question invitations from superiors."
-
     n "You're making your way to the designated location when you notice the sound of rummaging in the vents."
     show layer master:
         matrixcolor SaturationMatrix(1.0)
@@ -42,7 +41,7 @@ label day_event_fire:
     show hampter panic
     n "Hampter shuffles to hide something behind her back."
     show hampter happy 
-    hampter "It's my snack time!"
+    hampter "Just passing by! Nothing to see here!"
     n "..."
     n "I guess you can't judge other personnel for where they decide to take their lunch breaks."
     n "I mean... you were supposed to be on break before this meeting anyways."
@@ -62,17 +61,60 @@ label day_event_fire:
     aikha "Huh? Then where is he-"
     with hpunch
     n "You hear an explosion from down the hall."
-# Please make the screen shake
-# the screen has been shook, lord ai
     n "You might have a hunch as to where your tour guide went..."
+    hide aikha neutral
+    hide firewal pensive
     n "You rush to the source of the sound!"
-    n "Dr. Aikha and Dr. Firewal casually trail behind... guess this is somewhat common."
+    show aikha neutral
+    show firewal neutral
+    n "Dr. Aikha and Dr. Firewal casually trail behind..."
+    n "Guess this is a common occurence."
+# Add a bright overlay plus maybe a photo of a fire
+    n "You stand in front of a blazing inferno."
+    uriel_unknown "How do you not know what a birth certificate is?"
+# Conference room scene
+    hide aikha neutral
+    hide firewal neutral
+    show uriel panic
+    show helco neutral
+    n "You glance over to the nearby conference room and see a frustrated Uriel and confused Dr. Helco."
+    n "I guess it's not too worrying."
+# scene bg hallway
+    n "A charred Hampter walks through the flames."
+    show hampter panic
+    hampter "It wasn't me!!! A Wal found me and just combusted!"
+    n "The frayed wires in Hampter's mouth hint at her involvement." 
+    show firewal upset
+    n "Dr. Firewal sighs and taps the screen on his cuff a few times."
+    with hpunch
+    n "One of the walls split open, revealing a vast technology-filled lab."
+    n "Huh. That's not a part of the emergency escape routes on the floor plan..."
+    firewal "Manager Wal will handle this. Come on, Ai."
+    show aikha panic
+    aikha "Huh? Nono not again!"
+    n "Well, that bodes well."
+    n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
+# sorry ryan, drag me and wal off screen ty bestie <3
+    aikha "NONONO! [player_name]! CALL MOON! CALL MOOOOOOOOOOON-"
+    with hpunch
+    n "The wall closes. Call... the moon? Is that a person? Is that a code for something?"
+# ADD WAL NO.1
+    n "A Wal bot sporting the tag, {i}"\Manager Wal\"{i}, appears with a clipboard."
+# ADD WAL NO.1: "it seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter. Do not worry! We have Wals working to put out the fire. We calculate that it will take 118098 Wals to completely extinguish the fire."
+# CREATE SCENE WHERE WALS KEEP RUSHING IN AND DISAPPEARING 
+    n "You see a Wal run into the fire, attempt to punch it out, and combust due to stress."
+    n "You see a second Wal attempt to do the same... and combust."
+    n "Then a third..."
+    n "How... long is this going to take?"
+    menu: 
+        n "You should step in."
+        "Call... the moon?":
+            jump call_moon
+        "Convince the others to help.":
+            jump convince_the_conference
+        "Let the Wals manage it.":
+            jump wal_management
 
-# a crowd has gathered around the fire, uriel and helco added
-# seems like a charred hampter is the culprit
-# firewal presses a few buttons on his cuff, a wall splits open showing a vast lab narrator "huh thats not in the emergency escape route floor plan", drags Dr. aikha by the collar and leaves with them aikha shouts while being dragged away "CALL MOON CALL MOON!!!" the narrator is like... "call the moon? or a person named moon? What?"
-# something something helco is staring at the fire
-# wal no.1 shows up to "manage" the fire which is actually just throwing wal bots into the fire, causing a stress fire loop. "it seems like wal no.927 combusted after seeing a whole server destroyed by hampter. do not worry! we have wal bots working to put out the fire. we calculate that it will take 118098 wals to completely extinguish the fire."
 # have the three options as call... moon?, convince everyone to help, let the wals manage it
 # call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
 # convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
