@@ -107,7 +107,7 @@ label day_event_fire:
     show firewal at appear(x_align = 0.0)
     n "A Wal bot sporting the tag, {i}\"Manager Wal\"{i}, appears with a clipboard."
     wal1 "It seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
-    wal1 "Do not worry! We have Wals working to put out the fire. 
+    wal1 "Do not worry! We have Wals working to put out the fire."
     wal1 "We calculate that it will take 118098 Wals to completely extinguish the fire."
     n "...118098 Wals?"
     show firewal as dummy_wal:
@@ -141,7 +141,7 @@ label day_event_fire:
         xalign -0.5
         linear 2.0 xalign 1.5
     show layer master:
-        pause 2.0
+        pause 1.65
         shake
     n "How... long is this going to take?"
 
@@ -161,48 +161,43 @@ label day_event_fire:
     label wal_management:
     show firewal as dummy_wal:
         yalign 1.0
-        xalign -0.5
-        linear 2.0 xalign 1.5
-    show layer master:
-        pause 2.0
-        shake
-    n "Surely these Wals got it under control!"
-    show firewal as dummy_wal:
+        block:
+            xalign -0.5
+            linear 2.0 xalign 1.5
+            repeat
+    show firewal as dummy_wal_2:
         yalign 1.0
-        xalign -0.5
-        linear 2.0 xalign 1.5
+        pause 1.0
+        block:
+            xalign -0.5
+            linear 2.0 xalign 1.5
+            repeat
+    
     show layer master:
         pause 2.0
-        shake
-    n "I mean. They're already 0.005% done!"
-    show firewal as dummy_wal:
-        yalign 1.0
-        xalign -0.5
-        linear 2.0 xalign 1.5
-    show layer master:
-        pause 2.0
-        shake
-    n "0.0059% done now..."
-    show firewal as dummy_wal:
-        yalign 1.0
-        xalign -0.5
-        linear 2.0 xalign 1.5
-    show layer master:
-        pause 2.0
-        shake
-    n "Sunk cost fallacy..."
+        block:
+            pause 0.65
+            shake
+            repeat
+    n "Actually, nah. Surely these Wals got it under control!"
+    n "I mean. They're already 0.005%% done!"
+    n "0.0059%% done now..."
+    n "....Sunk cost fallacy..."
     n "Oh, look at that! Your break is over. Better... get going..."
     show black_screen zorder 50:
         alpha 1.0
         linear 2.0 alpha 0.0
+    hide dummy_wal
+    hide dummy_wal_2
+    show layer master
     n "Before you clock out for the day, you receive a ping on your phone."
-    n "{i}\"THE FIRE IN [HALLWAY 7B] HAS BEEN PUT OUT.\"{i}"
+    n "{i}\"THE FIRE IN [[HALLWAY 7B] HAS BEEN PUT OUT.\"{/i}"
     n "Well that's reassuring, I suppose."
-    n "{i}\"CASUALTY: 100290 WALS.\"{i}"
-    n "Oh that's less than expected... that's good."
-    n "{i}\"ESTIMATED DAMAGE 200 MILLION.\"{i}"
+    n "{i}\"CASUALTY: 100290 WALS.\"{/i}"
+    n "Oh! That's less than expected... that's good."
+    n "{i}\"ESTIMATED DAMAGE: 200 MILLION.\"{/i}"
     n "Oh... no."
-    n "Make sure Chan doesn't find out about this."
+    n "You'd better hope Chan doesn't find out about this."
     n "You hear a ping behind you."
     show chan panic
     n "You suspect it might be a little too late for that."
