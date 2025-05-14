@@ -106,7 +106,9 @@ label day_event_fire:
 # ADD WAL NO.1
     show firewal at appear(x_align = 0.0)
     n "A Wal bot sporting the tag, {i}\"Manager Wal\"{i}, appears with a clipboard."
-    wal1 "It seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter. Do not worry! We have Wals working to put out the fire. We calculate that it will take 118098 Wals to completely extinguish the fire."
+    wal1 "It seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
+    wal1 "Do not worry! We have Wals working to put out the fire. 
+    wal1 "We calculate that it will take 118098 Wals to completely extinguish the fire."
     n "...118098 Wals?"
     show firewal as dummy_wal:
         yalign 1.0
@@ -142,6 +144,7 @@ label day_event_fire:
         pause 2.0
         shake
     n "How... long is this going to take?"
+
     menu: 
         n "You should step in."
         "Call... the moon?":
@@ -150,7 +153,61 @@ label day_event_fire:
             jump convince_the_conference
         "Let the Wals manage it.":
             jump wal_management
-
+   
+    label call_moon:
+   
+    label convince_the_conference:
+   
+    label wal_management:
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
+    n "Surely these Wals got it under control!"
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
+    n "I mean. They're already 0.005% done!"
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
+    n "0.0059% done now..."
+    show firewal as dummy_wal:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show layer master:
+        pause 2.0
+        shake
+    n "Sunk cost fallacy..."
+    n "Oh, look at that! Your break is over. Better... get going..."
+    show black_screen zorder 50:
+        alpha 1.0
+        linear 2.0 alpha 0.0
+    n "Before you clock out for the day, you receive a ping on your phone."
+    n "{i}\"THE FIRE IN [HALLWAY 7B] HAS BEEN PUT OUT.\"{i}"
+    n "Well that's reassuring, I suppose."
+    n "{i}\"CASUALTY: 100290 WALS.\"{i}"
+    n "Oh that's less than expected... that's good."
+    n "{i}\"ESTIMATED DAMAGE 200 MILLION.\"{i}"
+    n "Oh... no."
+    n "Make sure Chan doesn't find out about this."
+    n "You hear a ping behind you."
+    show chan panic
+    n "You suspect it might be a little too late for that."
+    $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1})
+    return
 # have the three options as call... moon?, convince everyone to help, let the wals manage it
 # call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
 # convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
