@@ -50,7 +50,7 @@ label day_event_the_bingo_card_1:
         n "Surely that doesn't-"
         hide black_screen
         alex "HAHA!"
-        # plutoes does his thing
+        n "Plutoes glances down at his sheet and signs it."
         ryz "Shit..."
         wal387 "Objective [[Mustache drawn on Employee] has been completed. Outcome undesirable."
         jump middle
