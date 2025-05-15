@@ -11,12 +11,13 @@ label day_event_the_bingo_card_1:
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
     # all character turn and face you (center)
     aikha "Hold on, [player_name]."
+    player "What's going on?"
     aikha "We're playing Ryz's bingo. Everyone's... uh... really into it, heh..."
-    aikha "One wrong move could result in mass pandemonium among the players."
-    n "You spare a glance at Founder Alex's bingo sheet. The sheet is filled with goals like...\"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
+    aikha "One wrong move could incite mass pandemonium among the players."
+    n "You quickly glance at Founder Alex's bingo sheet. The sheet is filled with goals like...\"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
     n "...How often does someone do a backflip here?"
-    n "You see Founder Alex's eyes fixated on a mug in the corner that reads, \"#1 BINGO Player.\" So that's why he's in this."
-    n "You decide to act nonchanlant and carry on with what you were doing. Everyone's eyes follow you as you make your way across the room."
+    n "You glance up and see his eyes fixated on a mug in the corner that reads, \"#1 BINGO Player.\" So that's why he's in this."
+    n "You decide to act nonchanlant and carry on with what you were doing. You feel everyone's eyes follow you as you make your way across the room."
     menu:
         n "...What exactly were you up to again?"
         "Check the fridge for lunch":
@@ -29,7 +30,7 @@ label day_event_the_bingo_card_1:
         n "You decide to ignore it. Lunch time waits for nobody!"
         n "You open the fridge door...and are greeted by Pochi."
         n "He's napping on a plate like a basted turkey."
-        n "His face is covered with crumbs of the sandwich you were just about to eat...His greed knows no bounds."
+        n "His face is covered with the crumbs of the sandwich you were just about to eat...His greed knows no bounds."
         n "Startled by the sound of the fridge door opening, Pochi wakes up. He takes one look at you before bouncing out of the fridge into Plutoes' arms."
         n "Just as he does that, you hear the room erupt behind you."
         ryz "YES! \"Pochi escapes from fridge,\" check that off!"
@@ -64,13 +65,13 @@ label day_event_the_bingo_card_1:
         aikha "...And now everyone's one away..."
         n "You decide that it's probably best to get out of the room before the bingo game ends."
         n "You walk briskly over to the door but are stopped by Wal No.387."
-        n "You sneak a glance at his bingo sheet. The last goal he needs is...\"Someone gets punched in the face.\""
+        n "You sneak a glance at his bingo sheet. The last goal he needs is...\"Someone gets knocked out.\""
         n "As he towers over you, you see flames begin swirling around his fist."
         n "...Is the fire really necessary??"
         wal387 "Please remain still. I can assure you that there will be no lasting consequences."
         wal387 "REMINDER:\nIn the event that {i}Wal No.387{/i} fails-"
-        ryz "Don't listen to him! Here, you gotta do a backflip. I can give you...4 dollars and 35 cents."
-        alex "[player_name], I will kindly tell you this: if you don't down this pot of coffee, I will revoke your position at this company, effective immediately."
+        ryz "Don't listen to him! You gotta do a backflip. Here, I can give you...4 dollars and 35 cents."
+        alex "[player_name], I will kindly tell you now: if you don't down this pot of coffee right this instant, I will revoke your position at VAC Foundation, effective immediately." 
         n "Plutoes throws a sign at you that reads:"
         plutoes "Eat your walet nd i will give you a skatboard - signed plutoes{fast}"
         n "Five people are watching you intensely. Two are threatening you, two are bribing you, and one just wants peace."
@@ -94,15 +95,15 @@ label day_event_the_bingo_card_1:
         n "The sofa knocks him over and spontaneously combusts."
         n "As the fire alarm blares, you see Plutoes check his card and grin happily."
         n "He makes his way over to Dr. Aikha, who sighs and says something you can't quite make out."
-        n "Still grinning ear to ear, Plutoes makes his way over to the \"#1 BINGO\" mug."
+        n "Still grinning ear to ear, Plutoes walks over to the \"#1 BINGO\" mug."
         n "Meanwhile, Dr. Ryz has gotten a fire extinguisher and put out the sofa fire."
         ryz "Are we all good?"
-        n "You glance around the room. Your eyes lock onto Founder Alex, who's on his hands and knees in the floor."
+        n "You glance around the room. Your eyes lock onto Founder Alex, who's on his hands and knees on the floor."
         alex "...My...mug..."
-        n "He looks at Plutoes and Pochi, who are both happily chewing on the mug. Tears start to stream from behind his goggles."
+        n "He looks at Plutoes and Pochi, who are both happily chewing on the mug. Tears start to stream from behind his glasses, fogging the lenses."
         n "While that's going on, you see Wal No.387 glitching off to the side. Dr. Aikha is frantically trying to fix him."
         wal387 "CRITICAL MALFUNCTION. INTERFERENCE DETECTED. AWAITING FURTHER ORDERS."
-        n "...Bingo's over! You'd better leave before the Founder fulfills his promise."
+        n "...Looks like bingo's over! You should leave before you find out if the Founder was serious about his promise."
         $ update_character_points({"firewal": 1, "plutoes": 1})
         return
 
@@ -133,13 +134,25 @@ label day_event_the_bingo_card_1:
         return
     label coffee:
         n "I mean, your job is pretty important. Rent's due soon, anyways."
-        alex "Huzzah!"
+        alex "Hooray!"
         n "You grab the pot of coffee from Founder Alex's hands and start chu-"
         player "FUCK THAT'S HOT-"
-        n "You spill scalding-hot coffee all over the floor. As you stumble around, dazed by the first degree burns on your face, you slip."
+        n "You spill scalding-hot coffee all over the floor. As you stumble around, dazed by the first degree burns on your face, you slip backwards."
         n "Not just any kind of slip. You do a whole cartoon-banana-peel kind of slip, tumbling gracelessly through the air."
         n "After 2.75 rotations, you land face-first onto the floor."
         ryz "That was a backflip! That counts! THAT COUNTS!!!"
+        n "As you pick yourself up from the floor, you see Dr. Ryz happily scamper over to the \"#1 BINGO\" mug."
+        n "He raises it into the air like a trophy, much to the dismay of Founder Alex, who's currently on his hands and knees sobbing."
+        alex sad "..."
+        n "Meanwhile, Wal No.387 is-"
+        wal387 "Objective FAILED. Initiating SELF_DESTRUCT_SEQUENCE."
+        n "...Doing that."
+        aikha "NOOOOOO-"
+        n "...You should probably get out of there. You turn around and belt out of the room..."
+        n "...Before you slip on the coffee you spilled on the floor."
+        n "You can't help but notice the absurdity of the situation as you tumble gracelessly through the air for the second time."
+        $ update_character_points({"aikha": -1, "alex": 1, "ryz": 1})
+        return
 
     label wallet:
         n "...In a situation as dire as this, you were won over by...a skateboard."
@@ -147,19 +160,26 @@ label day_event_the_bingo_card_1:
         n "The wallet itself, though, was an heirloom from your late grandfather. You admire the antique, faded brown leather one last time..."
         n "The thought of the...skateboard...pushes aside all doubts."
         n "Plutoes flashes you an encouraging smile. You brace yourself and shove the wallet in your mouth."
-        n "As you attempt to unhinge your jaw to fit it in, you feel something slide down your throat. Something remarkably...coin-shaped."
-        n "It looks like you missed a coin. Oh, no, wait, three coins. Three coins that are now jammed in your esophagus."
+        n "As you attempt to unhinge your jaw to fit it in, you feel something slide down your throat. Something remarkably...coin-shaped." # bill may make more (physical) sense
+        n "It looks like you missed a coin. Oh, wait, no, three coins. Three coins that are now jammed in your esophagus."
         n "You begin to choke and flail around, searching for something to remove the $1.15 stuck in your throat."
-        n "Luckily, your seeking hands stumble upon Founder Alex's coffee pot. Out of the corner of your eye, you see him tense, but you have more pressing issues right now."
-        n "It's a little awkward, given the wallet stuck in your mouth, but you manage to down the entire thing."
-        n "It's hot. Scalding hot. But it's better to burn your insides than to die of asphyxiation."
-        n "It takes the entire pot, but you manage to dislodge the coins. They'll come out the other end soon enough."
-        n "You decide that enough is enough and spit the wallet out. Or, attempt to spit the wallet out. It actually takes you another full minute of grasping, trying to pull it out of your mouth."
-        n "When"
-
-
-
-
+        n "Out of nowhere, you feel someone place a whole pot of hot coffee in your hands. You realize what you need to do."
+        n "Despite the scalding hot coffee and the wallet in your mouth, you start chugging."
+        n "It takes the entire pot, but you manage to dislodge the coins when you hear someone shout."
+        alex happy "HUZZAH! \"Someone downs an entire pot of coffee\" has been fulfilled! That wins me the game!"
+        n "Founder Alex happily skips over to his newly-won \"#1 BINGO\" mug. He turns it around in his hands, caressing it like it's his newborn."
+        n "Well, at least he's plenty happy with-"
+        wal387 "Objective FAILED. Initiating SELF_DESTRUCT_SEQUENCE."
+        n "...Oh yeah-"
+        n "Wal No.387 spontaneously explodes, scattering shrapnel around the room. Miraculously, you manage to not get hit by any of it."
+        n "Dr. Aikha starts trying to put out the small fire that Wal No.387 left in his wake."
+        n "Dr. Ryz mutters quietly to himself before dejectedly leaving the room. Plutoes is nowhere to be found."
+        n "...Well! That's that. Aside from some internal first degree burns, and the coffee you spilled down your shirt, you feel perfectly fine."
+        n "As you prepare to leave, you notice a slip of paper on the floor. It's Plutoes' bingo card."
+        n "Out of curiousity, you quickly scan it. Huh."
+        n "...Eating a wallet wasn't even an objective..."
+        $ update_character_points({"plutoes": 1, "alex": 1})
+        return
 
 
 

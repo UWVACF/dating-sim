@@ -155,9 +155,94 @@ label day_event_fire:
             jump wal_management
    
     label call_moon:
-   
+        # call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
+
+
     label convince_the_conference:
-   
+        # convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
+        # pleases uriel and helco, puts wals out of a job
+        scene bg conference
+        show uriel at appear(x_align = 0.33)
+        show helco at appear(x_align = 0.66)
+        show layer master:
+            pause 0.6
+            block:
+                pause 1.65
+                shake
+                repeat
+        
+        n "You intelligently decide to implore Dr. Helco and Uriel for their help."
+        n "You knock on the door of the conference room-"
+        uriel "Do you even have a citizenship anywhere?"
+        n "...Might be a bad time, but you really need to help Wal right now. You knock again, louder."
+        uriel "...? Is there a problem?"
+        show layer master:
+            big_shake
+        player "...That."
+        n "Helco just stares blankly at you."
+        uriel "Well, the Wals seem to have it handled."
+        show layer master:
+            big_shake
+        show layer master:
+            pause 0.6
+            block:
+                pause 1.65
+                shake
+                repeat
+        "Wal No.571" "FOR THE WAL! FOR THE WAL!"
+        n "From down the hall, you see Manager Wal give you an enthusiastic thumbs up."
+        uriel "...On second thought, maybe this could go faster."
+        uriel "I believe there was a fire extinguisher in hallway 7C, between offices 5 and 6."
+        helco "Oh! This is a fire!"
+        player "...Yup!"
+        n "He continues stare at you absentmindedly."
+        player "I'll go find the-"
+        helco "I can help with the fire, if you'd like!"
+        menu:
+            n "What should you do?"
+            "Find the fire extinguisher yourself, and enlist the two of them to watch over the fire.":
+                jump fire_extinguisher
+            "Accept Dr. Helco's help, and enlist Uriel to find the fire extinguisher.":
+                jump helco_help
+        
+    label fire_extinguisher:
+
+    label helco_help:
+        show layer master:
+            pause 0.6
+            block:
+                pause 1.65
+                shake
+                repeat
+        n "You decide to ignore his obliviousness and accept his help."
+        player "Follow me. Uriel, could you grab the fire extinguisher in the meanwhile?"
+        uriel "Got it."
+        show uriel at disappear
+        show bg hallway
+        show helco:
+            xalign 0.66
+            yalign 1.0
+        n "You lead Dr. Helco out of the room to where Manager Wal is still guiding Walbots into the fire."
+        show firewal at appear(x_align = 0.33)
+        show firewal as dummy_wal behind helco:
+            yalign 1.0
+            xalign -0.5
+            linear 2.0 xalign 1.5
+            repeat
+        show layer master:
+            pause 0.6
+            block:
+                pause 1.65
+                shake
+                repeat
+        wal1 "Excellent work, Walbots! Fight valiantly in the name of THE WAL!"
+        "Wal No.1093" "FOR THE WAL! FOR THE WAL!"
+        n "Helco glances around him and notices a nearby window."
+        helco "It's getting a little stuffy in here, [player_name]. Could you open the window for us?"
+        n "The window? It's an odd request, but you decide to entertain it."
+        n "You walk over to the window and open-"
+        n "Out of nowhere, a torrent of water blasts you in the face and floods the hallway."
+        
     label wal_management:
     show firewal as dummy_wal:
         yalign 1.0
@@ -204,9 +289,6 @@ label day_event_fire:
     $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1})
     return
 # have the three options as call... moon?, convince everyone to help, let the wals manage it
-# call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
-# convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
-# pleases uriel and helco, puts wals out of a job
 # let the wals manage it, wal no1: OK THE FIRE IS PUT DOWN: casualty 100290 wals estimate damage to the area: 200 Million narrator: au-AUGH maybe dont let chan see this one… helco: who's writing the incident report... Chan exits one of the charred offices: Just put in the pile with the rest of them... I'll get to it eventually...
 # pleases wal, disappoints aikha
 

@@ -532,6 +532,37 @@ transform disappear(y_offset = 70, duration = 0.5):
         linear duration alpha 0.0
 
 # TODO: make this a function with intensity and randomness
+transform big_shake:
+    xoffset 16 yoffset -16
+    0.02
+    xoffset -14 yoffset 14
+    0.02
+    xoffset 13 yoffset -13
+    0.02
+    xoffset -12 yoffset 12
+    0.03
+    xoffset 11 yoffset -11
+    0.03
+    xoffset -10 yoffset 10
+    0.03
+    xoffset 9 yoffset -9
+    0.04
+    xoffset 8 yoffset -8
+    0.04
+    xoffset -6 yoffset 6
+    0.05
+    xoffset 5 yoffset -5
+    0.05
+    xoffset -4 yoffset 4
+    0.05
+    xoffset 3 yoffset -3
+    0.05
+    xoffset -2 yoffset 2
+    0.05
+    xoffset 1 yoffset -1
+    0.05
+    xoffset 0 yoffset 0
+
 transform shake:
     xoffset 8 yoffset -8
     0.05
