@@ -50,11 +50,11 @@ style honing_survey_answer_button_text:
     selected_color "#000000"
 
 
-init python:
-    def set_cursor_monitor():
+# init python:
+    # def set_cursor_monitor():
         # config.mouse["default"] = 
         # config.mouse["button"] = 
-    set_cursor_default():
+    # set_cursor_default():
 
 
 screen day_intro:
@@ -66,8 +66,8 @@ screen day_intro:
         image "gui/day intro/clock in base.png"
 
         frame:
-            hovered Function(set_cursor_screen)
-            unhovered Function(set_cursor_default)
+            # hovered Function(set_cursor_screen)
+            # unhovered Function(set_cursor_default)
 
             image "gui/day intro/clock in monitor.png"
             xsize 0
@@ -79,7 +79,7 @@ screen day_intro:
                 idle_background "gui/day intro/clock in idle button.png"
                 hover_background "gui/day intro/clock in hover button.png"
                 action Jump(today_event_label)
-                hovered Function(set_cursor_button)
+                # hovered Function(set_cursor_button)
                 
                 xpos 340
                 ypos 384
