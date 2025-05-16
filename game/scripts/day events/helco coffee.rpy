@@ -30,6 +30,7 @@ label day_event_helco_coffee:
     show helco neutral at appear
     n "He jolts awake at the sound of your voice."
     helco "Oh, hi!"
+    show helco neutral at shake(duration = 1.0, strength = 50.0)
     if characters["helco"]["points"] < 1:
         helco "[misremember_name()], right?"
         player "It's [player_name], actually."

@@ -98,7 +98,7 @@ style frame:
 screen say(who, what):
     window:
         id "window"
-        if who is not None and speaking_char is not "":
+        if who is not None and speaking_char != "":
             window:
                 id "namebox"
                 style "namebox"

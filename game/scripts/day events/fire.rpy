@@ -15,10 +15,11 @@ label day_event_fire:
     n "You're not equipped for this!"
 
 # make this next dialogue dependant on the company gun event in the future
-# this dialogue is now dependant on the company gun event in the future - signed ryan
+# this dialogue is now dependent on the company gun event - signed ryan
     if "company_issued_gun" not in seen_events:
         n "You've yet to receive your company-issued gun!"
 # screen shake for pep talks! WHERE IS YOUR ANGER RAHHHHHH!!!!!!!!
+# i politely refuse this request - signed ryan
 
     n "Okay."
     n "You got this!"
@@ -32,7 +33,7 @@ label day_event_fire:
     n "Surely whatever horrific anomaly this is must be harmless if there's no alarms going off!"
     n "You muster up the courage to look into the vent."
     show hampter happy 
-    hampter "Hiiii [player_name]!"
+    hampter "Oh! Hiiii [player_name]!"
     show layer master:
         matrixcolor SaturationMatrix(0.0)
         linear 1.0 matrixcolor SaturationMatrix(1.0) 
@@ -62,37 +63,36 @@ label day_event_fire:
     with hpunch
     n "You hear an explosion from down the hall."
     n "You might have a hunch as to where your tour guide went..."
-    hide aikha neutral
-    hide firewal pensive
-    n "You rush to the source of the sound!"
-    show aikha neutral
-    show firewal neutral
-    n "Dr. Aikha and Dr. Firewal casually trail behind..."
-    n "Guess this is a common occurence."
+    show aikha neutral at disappear
+    show firewal pensive at disappear
+    n "You rush to the source of the sound, with Dr. Aikha and Dr. Firewal casually trailing behind you."
+    show aikha neutral at appear(x_align = 0.33)
+    show firewal neutral at appear(x_align = 0.33)
+    n "They look indifferent. Guess this is a common occurence."
 # Add a bright overlay plus maybe a photo of a fire
-    n "You stand in front of a blazing inferno."
+    n "You stop in front of a blazing inferno."
     uriel_unknown "How do you not know what a birth certificate is?"
 # Conference room scene
-    hide aikha neutral
-    hide firewal neutral
+    show aikha neutral at disappear
+    show firewal neutral at disappear
     show uriel panic
     show helco neutral
     n "You glance over to the nearby conference room and see a frustrated Uriel and confused Dr. Helco."
-    n "I guess it's not too worrying."
+    helco "Is that something all humans should know of?"
+    n "You have more pressing matters right now."
     scene bg hallway
-    n "A charred Hampter walks through the flames."
-    show hampter panic
-    hampter "It wasn't me!!! A Wal found me and just combusted!"
-    n "The frayed wires in Hampter's mouth hint at her involvement." 
-    show firewal upset
+    n "As you turn back, you see a charred Hampter runs through the flames."
+    show hampter panic at appear(x_align = 0.33)
+    hampter "It wasn't me!!! A Wal found me and just combusted! It wasn't my fault!"
+    n "The frayed wires in Hampter's mouth suggest otherwise." 
+    show firewal upset at appear(x_align = 0.66)
     n "Dr. Firewal sighs and taps the screen on his cuff a few times."
     with hpunch
-    n "One of the walls split open, revealing a vast technology-filled lab."
-    n "Huh. That's not a part of the emergency escape routes on the floor plan..."
+    n "Suddenly, the wall behind you splits open, revealing a vast technology-filled lab."
+    n "Huh. That's not on the floor plan."
     firewal "Manager Wal will handle this. Come on, Ai."
-    show aikha panic
-    aikha "Huh? Nono not again!"
-    n "Well, that bodes well."
+    show aikha panic at appear(x_align = 0.5)
+    aikha "Huh? Nonono! Not again!"
     n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
     show aikha panic:
         linear 3.0 xoffset 1920
@@ -100,14 +100,14 @@ label day_event_fire:
         linear 3.0 xoffset 1920
     aikha "NONONO! [player_name]! CALL MOON! CALL MOOOOOOOOOOON-"
     with hpunch
-    n "The wall closes. Call... the moon? Is that a person? Is that a code for something?"
+    n "The wall closes. Call... the moon? Like, the thing in the sky? "
     hide firewal
     hide aikha
 # ADD WAL NO.1
     show firewal at appear(x_align = 0.0)
     n "A Wal bot sporting the tag, {i}\"Manager Wal\"{i}, appears with a clipboard."
-    wal1 "It seems like Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
-    wal1 "Do not worry! We have Wals working to put out the fire."
+    wal1 "It appears Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
+    wal1 "Do not panic! We will have Wals work to put out the fire."
     wal1 "We calculate that it will take 118098 Wals to completely extinguish the fire."
     n "...118098 Wals?"
     show firewal as dummy_wal:
@@ -118,7 +118,7 @@ label day_event_fire:
         pause 2.0
         shake
 
-    n "You see a Wal run into the fire, attempt to punch it out, and combust due to stress."
+    n "You see a Wal run into the fire, attempt to punch it out, and combust from stress."
     show firewal as dummy_wal:
         yalign 1.0
         xalign -0.5
@@ -177,12 +177,12 @@ label day_event_fire:
         n "...Might be a bad time, but you really need to help Wal right now. You knock again, louder."
         uriel "...? Is there a problem?"
         show layer master:
-            big_shake
+            shake(preset="strong")
         player "...That."
         n "Helco just stares blankly at you."
         uriel "Well, the Wals seem to have it handled."
         show layer master:
-            big_shake
+            shake(preset="strong")
         show layer master:
             pause 0.6
             block:
@@ -195,9 +195,9 @@ label day_event_fire:
         uriel "I believe there was a fire extinguisher in hallway 7C, between offices 5 and 6."
         helco "Oh! This is a fire!"
         player "...Yup!"
-        n "He continues stare at you absentmindedly."
-        player "I'll go find the-"
-        helco "I can help with the fire, if you'd like!"
+        n "He goes back to staring at you absentmindedly."
+        player "Hey, Dr. Helco?"
+        helco "Yes?"
         menu:
             n "What should you do?"
             "Find the fire extinguisher yourself, and enlist the two of them to watch over the fire.":
@@ -214,8 +214,8 @@ label day_event_fire:
                 pause 1.65
                 shake
                 repeat
-        n "You decide to ignore his obliviousness and accept his help."
-        player "Follow me. Uriel, could you grab the fire extinguisher in the meanwhile?"
+        n "In spite of his apparent obliviousness, you decide to ask him for his help."
+        player "Follow me. Uriel, could you grab the fire extinguisher in the meantime?"
         uriel "Got it."
         show uriel at disappear
         show bg hallway
@@ -237,11 +237,17 @@ label day_event_fire:
                 repeat
         wal1 "Excellent work, Walbots! Fight valiantly in the name of THE WAL!"
         "Wal No.1093" "FOR THE WAL! FOR THE WAL!"
+        player "What to do..."
         n "Helco glances around him and notices a nearby window."
-        helco "It's getting a little stuffy in here, [player_name]. Could you open the window for us?"
-        n "The window? It's an odd request, but you decide to entertain it."
+        helco "Say, it's getting a little stuffy in here, [player_name]. Could you open the window for us?"
+        n "The window? It's an odd request, but you have no better options."
         n "You walk over to the window and open-"
-        n "Out of nowhere, a torrent of water blasts you in the face and floods the hallway."
+        n "Out of nowhere, a deluge of water blasts you in the face and floods the hallway."
+        n "You come to your senses as the water clears from the hallway."
+        player "Dr. Helco?"
+        n "You look around and see Dr. Helco standing in a conveniently-sized dry spot next to the wall."
+        helco "[player_name], the fire has been extinguished!"
+        n "You turn "
         
     label wal_management:
     show firewal as dummy_wal:

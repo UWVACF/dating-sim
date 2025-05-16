@@ -22,7 +22,6 @@ init python:
     # Automatically adds pauses after punctuations
     # this is some really weird ass reg-ex shit please do not ask me what it means i will not know - ryan
     def auto_pause(text):
-        print(text[0:9])
         if text[0:9] == "/no_pause":
             return text[9:]
         

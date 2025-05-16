@@ -10,16 +10,15 @@ label day_event_dr_ryz_and_the_goose:
     caffi "IT'S DR. \"RIZZ\"!"
     roose "HONK HONK! HONK HONK!"
     caffi "I'M RIGHT! I'M LITERALLY RIGHT!"
-    n "This wasn't in the job description. You decide to ignore it."
+    n "This wasn't in the job description. You decide to ignore...whatever is going on and follow your objective."
     player "Have you seen Dr. Ryz?"
-    n "Your question was directed at Caffi, but for some reason, the goose turns to you. His beady eyes lock onto the box in your hands, and he gets excited."
-    n "You now recall that this goose was Dr. Ryz's."
+    n "Your question was directed at Caffi, but for some reason, the goose turns to you. His beady eyes lock onto the box in your hands, and he starts flapping his wings in excitement."
     roose talk "Honk! Honk!"
-    n "He runs out the door and pulls you out towards the hallway. Seems like he wants you to follow."
-    player "See you then, Caffi."
+    n "He runs out the door and pulls you out towards the hallway. Seems like he's trying to lead you to Dr. Ryz."
+    player "Well, see you then, Caffi."
     caffi "IT'S PRONOUNCED RIZZ! IT'S PRONOUNCED- "
     hide caffi
-    n "You calmly shut the door and follow the goose."
+    n "You calmly shut the door and leave."
     
     scene bg hallway
     show roose at center
@@ -36,7 +35,7 @@ label day_event_dr_ryz_and_the_goose:
         $ code = ""
         while numbers_entered < 5:
             menu:
-                n "[code]{fast}"
+                n "You've entered: [code]{fast}"
                 "Up":
                     $ numbers_entered += 1
                     $ code += "U"
@@ -69,6 +68,8 @@ label day_event_dr_ryz_and_the_goose:
                 n "Is the goose giving you feedback on your guess?"
             elif times_tried == 5:
                 n "It looks like it's commenting on when you get a letter right or wrong."
+            elif times_tried == 10:
+                n "Maybe a \"honk\" is a correct letter and a \"hiss\" is an incorrect one."
             elif times_tried >= 15:
                 n "..."
                 n "Surely you have enough information to solve it by now."
@@ -76,7 +77,7 @@ label day_event_dr_ryz_and_the_goose:
 
             jump enter_passcode
         else:
-            n "The door clicks!"
+            n "The door unlocks!"
     
     n "You follow the goose into the room."
     scene bg secret_room

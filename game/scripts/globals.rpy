@@ -531,53 +531,36 @@ transform disappear(y_offset = 70, duration = 0.5):
     parallel:
         linear duration alpha 0.0
 
-# TODO: make this a function with intensity and randomness
-transform big_shake:
-    xoffset 16 yoffset -16
-    0.02
-    xoffset -14 yoffset 14
-    0.02
-    xoffset 13 yoffset -13
-    0.02
-    xoffset -12 yoffset 12
-    0.03
-    xoffset 11 yoffset -11
-    0.03
-    xoffset -10 yoffset 10
-    0.03
-    xoffset 9 yoffset -9
-    0.04
-    xoffset 8 yoffset -8
-    0.04
-    xoffset -6 yoffset 6
-    0.05
-    xoffset 5 yoffset -5
-    0.05
-    xoffset -4 yoffset 4
-    0.05
-    xoffset 3 yoffset -3
-    0.05
-    xoffset -2 yoffset 2
-    0.05
-    xoffset 1 yoffset -1
-    0.05
-    xoffset 0 yoffset 0
+transform shake(duration=0.5, strength=10.0, preset=""):
+    function Shake(duration = duration, strength = strength, preset = preset)
 
-transform shake:
-    xoffset 8 yoffset -8
-    0.05
-    xoffset -6 yoffset 6
-    0.05
-    xoffset 5 yoffset -5
-    0.05
-    xoffset -4 yoffset 4
-    0.05
-    xoffset 3 yoffset -3
-    0.05
-    xoffset -2 yoffset 2
-    0.05
-    xoffset 1 yoffset -1
-    0.05
-    xoffset 0 yoffset 0
+init python:
+    class Shake(object):
+        def __init__(self, duration, strength, preset):
+            if preset == "":
+                self.duration = duration
+                self.strength = strength
+            elif preset == "strong":
+                self.duration = 1.0
+                self.strength = 20.0
+            elif present == "weak":
+                self.duration = 0.25
+                self.strength = 10.0
+                
+        
+        def __call__(self, trans, shown, anim):
+            factor = (self.duration - shown) / self.duration # the factor by which to multiply the shake
+            if factor <= 0: # function ended
+                trans.xoffset = 0
+                trans.yoffset = 0
+                return None
+            else:
+                # randomly choose a corner of the bounding box to move to
+                # the bounding box is the box of side length 2 * self.strength * factor
+                trans.xoffset = self.strength * factor * (renpy.random.choice([-1, 1])) 
+                trans.yoffset = self.strength * factor * (renpy.random.choice([-1, 1]))
+                return 0
+
+
 
 define default_fade = Fade(1.0, 1.0, 1.0)
