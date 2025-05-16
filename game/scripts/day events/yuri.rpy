@@ -72,7 +72,7 @@ label wing_aikha:
     n "You whip your head around to look for something- anything- to help."
     n "There's a fully loaded military-grade shotgun in an emergency glass case. Perfect!"
     player "Dr. Deceased! Watch this!"
-    n "You smash it open, and- against all ethics and occupational preservation- open-fire on Dr. Aikha."
+    n "You smash it open, and - against all ethics and occupational preservation - open-fire on Dr. Aikha."
     show aikha unique 
     aikha "AA- eughghghhhgh..."
     n "Is this working?"
@@ -84,13 +84,13 @@ label wing_aikha:
     deceased "It seems as a response to the external trauma, your body has compensated by turning into an amorphous entity!"
     deceased pensive "...Can this form be injured? Hold on."
     n "Dr. Deceased pulls out their company gun and shoots {i}it{/i}."
-    # Make screen shake
+    with hpunch
     aikha "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII{nw}"
     n "You aren't sure if this is supposed to be how this goes."
     deceased "Wow! The bullet has been completely absorbed! Dr. Aikha, you never told me what a fascinating biological structure you possess!"
     aikha_unknown "IIIIIIIIIIIIIIIIIIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA{nw}"
     n "At this point, you're not really sure what your plan was." 
-    n "If being you're honest to yourself, this was mostly an excuse to vent your hatred of office romcoms." 
+    n "If you're being honest with yourself, this was mostly an excuse to vent your hatred of office romcoms." 
     deceased happy "Oh, this is wonderful. There's so much data to be collected!"
     deceased "Dr. Aikha, would you perhaps be free to run some more tests in my office?"
     aikha_unknown "EEIAUAGHEAGAUUGAGH??"
