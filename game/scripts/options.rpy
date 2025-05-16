@@ -8,7 +8,7 @@ init python:
     config.layers = [ 'backdrop', 'master', 'transient', 'screens', 'top' ]
 
 
-define config.developer = True
+# define config.developer = True
 
 ## Basics ######################################################################
 

@@ -537,15 +537,15 @@ transform shake(duration=0.5, strength=10.0, preset=""):
 init python:
     class Shake(object):
         def __init__(self, duration, strength, preset):
-            if preset == "":
-                self.duration = duration
-                self.strength = strength
-            elif preset == "strong":
+            if preset == "strong":
                 self.duration = 1.0
                 self.strength = 20.0
             elif present == "weak":
                 self.duration = 0.25
                 self.strength = 10.0
+            else:
+                self.duration = duration
+                self.strength = strength
                 
         
         def __call__(self, trans, shown, anim):

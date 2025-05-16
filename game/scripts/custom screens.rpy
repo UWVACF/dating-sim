@@ -48,3 +48,32 @@ style honing_survey_answer_button:
 style honing_survey_answer_button_text:
     color "#dddd00"
     selected_color "#000000"
+
+screen day_intro:
+    frame:
+        xsize 1920
+        ysize 1080
+        xpos 0
+        ypos 0
+        image "gui/day intro/clock in base.png"
+
+        frame:
+            image "gui/day intro/clock in monitor.png"
+            xsize 0
+            ysize 0
+            xpos 395
+            ypos -5
+
+            textbutton "Clock in!":
+                idle_background "gui/day intro/clock in idle button.png"
+                hover_background "gui/day intro/clock in hover button.png"
+                
+                xpos 340
+                ypos 384
+                xsize 444
+                ysize 107
+                text_color "#ffffff"
+                text_xalign 0.5
+                text_yalign 0.5
+                text_size 40
+                action Jump(today_event_label)

@@ -24,6 +24,7 @@ label day_event_helco_coffee:
     with default_fade
 
     n "As you make your way to the coffee machine, you spot Dr. Helco sitting in a nearby armchair"
+    call screen day_intro
     n "He's staring completely motionless at a wall."
     
     player "Hello, Dr. Helco!"

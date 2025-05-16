@@ -28,7 +28,7 @@ label day_event_dr_ryz_and_the_goose:
     roose "Honk! Honk!"
     n "You're not sure how you're supposed to open the door. You don't exactly have the passcode."
     roose "Honk honk hooonk! Honk! Honk!"
-    n "You decide punch a random code in."
+    n "...Seems like the goose doesn't care. Might as well punch a random code in."
     $ times_tried = 0
     label enter_passcode:
         $ numbers_entered = 0
@@ -68,14 +68,11 @@ label day_event_dr_ryz_and_the_goose:
                 n "Is the goose giving you feedback on your guess?"
             elif times_tried == 5:
                 n "It looks like it's commenting on when you get a letter right or wrong."
-            elif times_tried == 10:
-                n "Maybe a \"honk\" is a correct letter and a \"hiss\" is an incorrect one."
-            elif times_tried >= 15:
-                n "..."
-                n "Surely you have enough information to solve it by now."
+            elif times_tried >= 10:
+                n "Seems like a \"honk\" is a correct letter and a \"hiss\" is an incorrect one."
             $ times_tried += 1
-
             jump enter_passcode
+
         else:
             n "The door unlocks!"
     
@@ -90,11 +87,11 @@ label day_event_dr_ryz_and_the_goose:
     n "They read:"
     n "\"It looks like the others are unable to understand Roose. Interesting.\""
     n "\"In any case, the goose is intelligent enough to recognize whenever this is the case and react accordingly.\""
-    n "\"He will keep his responses as simple as possible. If he must convey more complicated messages, he will use human-known ciphers, such as Morse.\""
-    n "\"A Roose translator is currently being developed to facilitate communication.\""
+    n "\"He will keep his responses as simple as possible. If he must convey more complicated messages, he will often resort to human-known ciphers, such as Morse code.\""
+    n "\"A translating device is currently being developed to facilitate communication.\""
     n "The notes end there."
     show roose at appear
-    n "You glance back at the goose just as he finishes his fourteenth loaf of bread."
+    n "You glance back at the goose just as he finishes his seventh loaf of bread."
     n "He glances at you and honks."
     roose "Honk! Honk!"
     show roose at disappear
