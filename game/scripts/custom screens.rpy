@@ -1,5 +1,5 @@
 # This file is for defining and styling custom screens, separate from the built-in ones
-
+# Also includes whatever functions are necessary
 
 screen honing_survey(question, answers_and_actions):
     default selected_answer = -1
@@ -49,6 +49,14 @@ style honing_survey_answer_button_text:
     color "#dddd00"
     selected_color "#000000"
 
+
+init python:
+    def set_cursor_monitor():
+        # config.mouse["default"] = 
+        # config.mouse["button"] = 
+    set_cursor_default():
+
+
 screen day_intro:
     frame:
         xsize 1920
@@ -58,6 +66,9 @@ screen day_intro:
         image "gui/day intro/clock in base.png"
 
         frame:
+            hovered Function(set_cursor_screen)
+            unhovered Function(set_cursor_default)
+
             image "gui/day intro/clock in monitor.png"
             xsize 0
             ysize 0
@@ -67,6 +78,8 @@ screen day_intro:
             textbutton "Clock in!":
                 idle_background "gui/day intro/clock in idle button.png"
                 hover_background "gui/day intro/clock in hover button.png"
+                action Jump(today_event_label)
+                hovered Function(set_cursor_button)
                 
                 xpos 340
                 ypos 384
@@ -76,4 +89,3 @@ screen day_intro:
                 text_xalign 0.5
                 text_yalign 0.5
                 text_size 40
-                action Jump(today_event_label)
