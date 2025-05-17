@@ -50,16 +50,9 @@ style honing_survey_answer_button_text:
     selected_color "#000000"
 
 
-
-init python:
-    
-    def set_cursor_monitor():
-        print("hover") # debug
-        config.mouse = { "default": [("gui/mouse/mouse default.png", 0.0, 0.0)], "button": [("gui/mouse/mouse button.png", 0.0, 0.0)] }
-    def set_cursor_default():
-        print("unhovered") # debug
-        config.mouse = None
-
+define config.mouse = { }
+define config.mouse["monitor"] = [("gui/mouse/mouse default.png", 10.0, 0.0)]
+define config.mouse["monitor button"] = [("gui/mouse/mouse button.png", 24, 0.0)]
 
 
 screen day_intro:
@@ -71,6 +64,12 @@ screen day_intro:
         xpos 0
         ypos 0
         image "gui/day intro/clock in base.png"
+
+        button:
+            background None
+            area (410, 5, 1100, 680)
+            mouse "monitor"
+            action NullAction()
 
         frame:
 
@@ -94,8 +93,6 @@ screen day_intro:
                 text_xalign 0.5
                 text_yalign 0.5
                 text_size 40
+                mouse "monitor button"
         
-        mousearea:
-            hovered Function(set_cursor_monitor)
-            unhovered Function(set_cursor_default)
-            area (395, -5, 1020, 250)
+        
