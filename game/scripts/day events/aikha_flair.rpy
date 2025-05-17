@@ -64,12 +64,13 @@ label day_event_aikha_flair:
             jump ahoot 
 
     label ahoot:
-        show layer master at shake (duration = 0.2)
-        n "You shoot withuot hesitation."
+        show layer master:
+            shake
+        n "You shoot without hesitation."
         # STOP SHOOTING WHY IS IT CONTINUING
         show overlay_ai_2 onlayer top:
-                alpha 0.0
-                linear 0.4 alpha 1.0
+            alpha 0.0
+            linear 0.4 alpha 1.0
         n "The figure begins melting away. You've survived another day at the foundation!"
         aikha "euuuuughhh..."
         n "Wait...Did it just make a sound..."

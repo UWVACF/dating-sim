@@ -234,7 +234,6 @@ init python:
             else:
                 self.duration = duration
                 self.strength = strength
-                
         
         def __call__(self, trans, shown, anim):
             factor = (self.duration - shown) / self.duration # the factor by which to multiply the shake
