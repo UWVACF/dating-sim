@@ -228,7 +228,7 @@ init python:
             if preset == "strong":
                 self.duration = 1.0
                 self.strength = 20.0
-            elif present == "weak":
+            elif preset == "weak":
                 self.duration = 0.25
                 self.strength = 10.0
             else:

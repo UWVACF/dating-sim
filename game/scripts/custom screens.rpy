@@ -49,21 +49,17 @@ style honing_survey_answer_button_text:
     color "#dddd00"
     selected_color "#000000"
 
-define config.mouse = { }
-define config.mouse["monitor"] = [ ( "gui/mouse/mouse default.png", 15, 0) ]
+
 
 init python:
+    
     def set_cursor_monitor():
-        print("hover")
-        config.mouse = { }
-        config.mouse['default'] = [ ( "gui/mouse/mouse default.png", 15, 0) ]
-        config.mouse['button'] = [ ( "gui/mouse/mouse button.png", 0, 0) ]
+        print("hover") # debug
+        config.mouse = { "default": [("gui/mouse/mouse default.png", 0.0, 0.0)], "button": [("gui/mouse/mouse button.png", 0.0, 0.0)] }
     def set_cursor_default():
-        print("unhovered")
-        # config.mouse = None
-        config.mouse = { }
-        config.mouse['default'] = [ ( "gui/mouse/mouse default.png", 0, 0) ]
-        config.mouse['button'] = [ ( "gui/mouse/mouse button.png", 0, 0) ]
+        print("unhovered") # debug
+        config.mouse = None
+
 
 
 screen day_intro:
