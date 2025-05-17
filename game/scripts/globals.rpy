@@ -205,6 +205,10 @@ transform disappear(y_offset = 70, duration = 0.5):
     parallel:
         linear duration alpha 0.0
 
+#
+transform move_to(x_align = 0.5, duration = default_move_time):
+    linear duration xalign x_align
+
 # shake transform
 # usage:
 #   use like a normal transform:
