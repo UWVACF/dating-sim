@@ -211,10 +211,11 @@ label day_init:
 
 
 label default_intro:
-    scene bg intro
+    scene 
+    show screen day_intro
     with default_fade
-    player "Intro sequence!!!!!!"
-    player "aughaghaghagh"
+    $ ui.interact() 
+    hide screen day_intro # i don't know how this works but it does so hopefully it stays that way (should technically be hiding it before the fade transition but it doesn't)
     return
 
 label default_outro:

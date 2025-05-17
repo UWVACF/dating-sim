@@ -82,7 +82,7 @@ screen day_intro:
             textbutton "Clock in!":
                 idle_background "gui/day intro/clock in idle button.png"
                 hover_background "gui/day intro/clock in hover button.png"
-                action Jump(today_event_label)
+                action Return(1)
                 # hovered Function(set_cursor_button)
                 
                 xpos 340
