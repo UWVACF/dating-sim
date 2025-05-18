@@ -50,7 +50,7 @@ label day_event_aikha_flair:
     show aikha flairup2
     n "Uh oh, it must have spotted you."
     show aikha flairup2:
-        linear 5 zoom 1.5
+        linear 5 zoom 1.3
     n "It gets up from the seat and makes its ways towards you."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
 
@@ -83,13 +83,11 @@ label day_event_aikha_flair:
         n "... This might have been {i}actually{/i} Dr. Aikha."
         aikha "Hur...ry..."
         aikha "AH-IIEIAAIII"
-        show aikha unique:
-            linear 4 zoom 2
+        #show aikha unique:
         n "Uh oh. You are about to actually get eaten! Not by a Mimimic, but Dr. Aikha!"
         n "You backup against the door and try to open it. The door won't budge without an Path-Para ID."
         n "Out of the corner of your eye, you see Dr. Aikha's wallet on the desk behind {i}it{/i}."
-        show aikha unique:
-            linear 4 zoom 2.5
+        #show aikha unique:
         menu:
             n "Quick! What to do!?"
             "Attempt to take Dr. Aikha's wallet on the desk. Hopefully their employee badge is in there and you can use it to escape the room... or at least get some cash.":
@@ -98,7 +96,9 @@ label day_event_aikha_flair:
                 jump reason
 
         label swipe_id:
-            show aikha at move_to(x_align = 0.2)
+            show aikha unique: 
+                linear 0 zoom 1
+                move_to(x_align = 0.2)
             n "You lunge to the side and barely dodge Dr. Aikha's teeth."
             hide aikha
             n "Scrambling to your feet, you run towards the desk with all the might you can muster."
@@ -121,19 +121,21 @@ label day_event_aikha_flair:
             aikha "nnnghnnn..."
             player "Wait, wait! I'm no poacher!"
             firewal "{size=-10}Oh. It's just you, intern.{/size}"
-            firewal "{size=-10}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!{/size}
+            firewal "{size=-10}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!{/size}"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
             # shake!
             n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
             firewal "Ah, I see the issue."
-# the chair slows down dr aikha and the player manage to gain distance, triggering pocket wal's security alert and activating him.
+            
+            # the chair slows down dr aikha and the player manage to gain distance, triggering pocket wal's security alert and activating him.
             return
 
         label reason:
 
             return
-
+        
+    hide overlay_ai_2
 
 
 # end of day -> player excited to go home
