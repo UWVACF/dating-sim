@@ -13,9 +13,11 @@ label day_event_aikha_flair:
             repeat
 
     scene bg hallway
-    n "You have just finished your last errand of the day and are very excited to go home."
-    n "You skip down to the path-para office to report completing the errand."
-    n "You knock on the office door, which could only be opened with a path-para employee ID."
+    n "You've just finished your last errand of the day and are very excited to go home."
+    n "You skip down to the Path-Para office to report task completion."
+    n "Unfortunately, your intern ID doesn't cover any of the doors in Path-Para..."
+    n "Wouldn't want to risk a zombie apocalypse I guess."
+    n "You knock on the door to Dr. Aikha's office."
     n "..."
     n "You knock again, this time more impatiently. You really want to finish this and go home."
     show plutoes at appear(x_align = 1.0)
@@ -30,7 +32,7 @@ label day_event_aikha_flair:
     show aikha flairup1 at bobbing()
     pause 0.5
     # dark filter
-    player "I've delivered the old path-para files to the archive, Dr. Aikha."
+    player "I've delivered the old Path-Para cases to the archives, Dr. Aikha."
     player "Here are the trial records you wanted."
     player "Can I go home now?"
     aikha "..."
@@ -40,8 +42,8 @@ label day_event_aikha_flair:
     player "Helloooo?"
     aikha "..."
     # slightly darker
-    n "You suddenly remember an old entry you read at the archive earlier about an anomaly that impesonates foundation personnel and eats unsuspecting coworkers."
-    n "The defining traits of it are that it cannot speak, and show odd behavior patterns."
+    n "You suddenly remember an old entry you read at the archives earlier about an anomaly that impersonates foundation personnel and eats unsuspecting coworkers."
+    n "The defining traits are that it can't speak and show odd behavior patterns."
     # EVEN darker
     show aikha:
         xalign 0.5
@@ -71,35 +73,61 @@ label day_event_aikha_flair:
         show overlay_ai_2 onlayer top:
             alpha 0.0
             linear 0.4 alpha 1.0
-        n "The figure begins melting away. You've survived another day at the foundation!"
-        aikha "euuuuughhh..."
-        n "Wait...Did it just make a sound..."
-        aikha "euuuuugHHH..."
-        n "... this might be the real Dr. Aikha."
-        aikha "ARGGGGGGG...HURT....HUNGRY..."
-        show aikha flairup2:
+        n "..."
+        n "The entity stumbles back and writhes in pain." 
+        n "Haha! You've survived another day at the foundation!"
+        n "Dr. Aikha jolts awake, suddenly gaining life in their eyes."
+        aikha "{sc}Wh-... new recruit...?{/sc}"
+        n "Wait... Did it just talk?"
+        aikha "{sc}W...hy... auuughh...im...destabilizin...g...{/sc}"
+        n "... This might have been {i}actually{/i} Dr. Aikha."
+        aikha "Hur...ry..."
+        aikha "AH-IIEIAAIII"
+        show aikha unique:
             linear 4 zoom 2
-        n "Uh oh. You are about to actually get eaten, just not by a Mimimic, but Dr. Aikha."
-        n "You backup against the door and try to open it. The door does not budge without an ID card."
-        n "Out of the corner of your eye, you see Dr Aikha's ID wallet on the desk behind them."
-        show aikha flairup2:
+        n "Uh oh. You are about to actually get eaten! Not by a Mimimic, but Dr. Aikha!"
+        n "You backup against the door and try to open it. The door won't budge without an Path-Para ID."
+        n "Out of the corner of your eye, you see Dr. Aikha's wallet on the desk behind {i}it{/i}."
+        show aikha unique:
             linear 4 zoom 2.5
         menu:
-            n "How do you get out of this?"
-            "Attempt to take Dr. Aikha's wallet on the desk. Hopefully their employee badge is in there and you can use it to escape the room.":
+            n "Quick! What to do!?"
+            "Attempt to take Dr. Aikha's wallet on the desk. Hopefully their employee badge is in there and you can use it to escape the room... or at least get some cash.":
                 jump swipe_id
             "Try to reason with Dr. Aikha. Surely they're in there somewhere, right?":
                 jump reason
 
         label swipe_id:
             show aikha at move_to(x_align = 0.2)
-            n "You lunge to the side and barely dodge out of Dr. Aikha's reach."
+            n "You lunge to the side and barely dodge Dr. Aikha's teeth."
             hide aikha
-            n "Scrambling to your feet, you run towards the desk with all your might."
-            n "You can hear the flesh sloping after you."
-            n "You reach the wallet and grab it, knocking over 7 bottles in the process."
-            n "The flesh blob quickly approaches. In a panic, you throw a chair over it and run back towards the door."
-            # the chair slows down dr aikha and the player manage to gain distance, triggering pocket wal's security alert and activating him.
+            n "Scrambling to your feet, you run towards the desk with all the might you can muster."
+            n "{sc}You can hear screeching behind you.{/sc}"
+            n "You reach the wallet and grab it, knocking over seven pill bottles in the process."
+            n "The mass of eyes and teeth quickly approaches. In a panic, you roll the chair into it and run back towards the door."
+            n "The anomaly is barely slowed by your desperate attack. It slinks past the office chair, reaching its sharp teeth towards you."
+            n "Oh god. You really are gonna make it onto that Casualty Report..."
+            # ENTER POCKET WAL
+            n "You accept your fate... this is what you get for wrecklessly shooting a department head..."
+            n "When suddenly..."
+            firewal "{size=-10}WEEWOOWEEWOO!!! THIEF! THIEF! THIEF ALERT!{/size}"
+            n "A small Wal pops out of Dr. Aikha's discarded lab coat."
+            n "A... Smal?..."
+            n "A Smal if you will."
+            n "The Smal pushes past the fabric and marches towards you."
+            firewal "{size=-10}Don't worry, Ai! I, Pocket Wal! will defeat this poacher!{/size}"
+            firewal "{size=-10}HAAAAAAA!!!{/size}"
+            n "Pocket Wal charges up and bursts into flames. Slightly calming down the mess of Dr. Aikha."
+            aikha "nnnghnnn..."
+            player "Wait, wait! I'm no poacher!"
+            firewal "{size=-10}Oh. It's just you, intern.{/size}"
+            firewal "{size=-10}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!{/size}
+            n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
+            n "This is really a horrific way to go..."
+            # shake!
+            n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
+            firewal "Ah, I see the issue."
+# the chair slows down dr aikha and the player manage to gain distance, triggering pocket wal's security alert and activating him.
             return
 
         label reason:
