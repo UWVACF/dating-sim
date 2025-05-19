@@ -16,7 +16,7 @@ label day_event_aikha_flair:
     n "You've just finished your last errand of the day and are very excited to go home."
     n "You skip down to the Path-Para office to report task completion."
     n "Unfortunately, your intern ID doesn't cover any of the doors in Path-Para..."
-    n "Wouldn't want to risk a zombie apocalypse I guess."
+    n "Wouldn't want to risk a zombie apocalypse, I guess."
     n "You knock on the door to Dr. Aikha's office."
     n "..."
     n "You knock again, this time more impatiently. You really want to finish this and go home."
@@ -42,7 +42,8 @@ label day_event_aikha_flair:
     player "Helloooo?"
     aikha "..."
     # slightly darker
-    n "You suddenly remember an old entry you read at the archives earlier about an anomaly that impersonates foundation personnel and eats unsuspecting coworkers."
+    n "You suddenly remember an old entry you read at the archives."
+    n "It was about an anomaly that impersonates foundation personnel and eats unsuspecting coworkers."
     n "The defining traits are that it can't speak and show odd behavior patterns."
     # EVEN darker
     show aikha:
@@ -69,12 +70,12 @@ label day_event_aikha_flair:
         show layer master:
             shake
         n "You shoot without hesitation."
-        # STOP SHOOTING WHY IS IT CONTINUING
         show overlay_ai_2 onlayer top:
             alpha 0.0
             linear 0.4 alpha 1.0
         n "..."
         n "The entity stumbles back and writhes in pain." 
+        hide aikha 
         n "Haha! You've survived another day at the foundation!"
         n "Dr. Aikha jolts awake, suddenly gaining life in their eyes."
         aikha "{sc}Wh-... new recruit...?{/sc}"
@@ -83,7 +84,7 @@ label day_event_aikha_flair:
         n "... This might have been {i}actually{/i} Dr. Aikha."
         aikha "{sc}Hur...ry...{/sc}"
         aikha "{sc}AH-IIEIAAIII{/sc}"
-        hide overlay_ai_2
+        hide overlay_ai_2 onlayer top
         #show aikha unique:
         n "Uh oh. Getting eaten by Dr. Aikha is definitely worse than that old Mimimic thing!"
         n "You backup against the door and try to open it. The door won't budge without an Path-Para ID."
