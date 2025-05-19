@@ -82,8 +82,10 @@ label day_event_aikha_flair:
             alpha 0.0
             linear 0.4 alpha 1.0
         n "..."
+        show aikha flairup1:
+            zoom 1.3
+            easein 0.05 zoom 1
         n "The entity stumbles back and writhes in pain." 
-        hide aikha 
         n "Haha! You've survived another day at the foundation!"
         n "Dr. Aikha jolts awake, suddenly gaining life in their eyes."
         aikha "{sc}Wh-... new recruit...?{/sc}"
@@ -121,7 +123,11 @@ label day_event_aikha_flair:
             # ENTER POCKET WAL
             n "You accept your fate... this is what you get for recklessly shooting a department head..."
             n "When suddenly..."
+            show haze black strong onlayer top:
+                alpha 0.8
+                linear 1 alpha 0
             firewal "{size=-10}WEEWOOWEEWOO!!! THIEF! THIEF! THIEF ALERT!{/size}"
+            hide haze black strong onlayer top
             n "A small Wal pops out of Dr. Aikha's discarded lab coat."
             n "A... Smal?..."
             n "A Smal if you will."
@@ -197,7 +203,7 @@ label day_event_aikha_flair:
             n "Their 'arm' suddenly extends and latches onto your left hand."
             n "For a moment, you believe it's the handshake of forgiveness."
             n "...then they rip your arm off."
-            show haze black strong zorder 50 onlayer top:
+            show haze red strong zorder 50 onlayer top:
                 alpha 0.25
                 block:
                     ease 0.75 alpha 0.5
@@ -229,9 +235,13 @@ label day_event_aikha_flair:
             show aikha flairup2
             n "They hold onto your stub of a forearm. You close your eyes unable to stomach what will happen next."
             # black screen cg
-            hide haze black onlayer top
+            show haze red onlayer top:
+                alpha 0.5
+                linear 1 alpha 0
             show layer master:
-                blur 0
+                blur 30
+                linear 1.5 blur 0
+            hide haze red onlayer top
             n "You hear squelching noises, as if something is being grown right in front of you."
             # slight shake of text box temp?
             n "Something is jammed into your stub and you feel all the vicera and nerves connect to something."
