@@ -1,0 +1,40 @@
+label day_event_didnt_do_it
+    scene bg lounge
+    
+
+#### CRIME SCENE ####
+# victim is beloved co-founder dr ralex
+
+# Co - founder (not real, anti cameo)
+    # lore accurate 
+    # dr alex's twin, who also has immortality, and the immortal snail
+
+
+# reason to pick up knife
+# making sandwich for lunch? picks up knife from counter
+# Dr. deceased walks in (witness), triggers anomaly effect to show corpse
+# Dr. deceased yell and a crowd gathers
+# choice: 
+    # truth - idk what is going on
+    # lie - make up excuses
+    # deflect - no YOU killed the co founder 
+
+    # truth chan +1
+        # overexplains, seems even more suspecious. no one believes you 
+        # you are dragged away into confinments by wal bots
+
+    # lie - chan -1
+        # "he ran into my knife volunterrily"
+        # "I was just testing how sharp it was"
+        # you are dragged away into confinments by wal bots
+
+    # deflect
+        # dr deceased "..."
+        # "Oh shit did i?"
+        # choice: 
+            # good argument -> dr deceased as the defendent in trial and error, deceased -1
+            # bad argument -> you are on trial, dr deceased +1
+
+# visitors during confinement - chan, uriel, syg (only truth or lie)
+    # uriel: do you need a lawer to represent you (foundation's right to appoint on, uriel is hence obligated to ask as the legal head) 
+    # syg: if you get death-rowed can i feed you to the demons (will avocate for death row)

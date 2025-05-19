@@ -116,12 +116,17 @@ init python:
         Event(
             label="filing_incident_report",
             personnel=["egg", "chan", "alex"],
-            tags=["personnel"],
+            tags=["work"],
         ), 
         Event(
             label="aikha_flair",
             personnel=["aikha"],
-            tags=["personnel"],
+            tags=["personnel", "incident"],
+        ), 
+        Event(
+            label="didnt_do_it",
+            personnel=["uriel", "deceased", "chan"],
+            tags=["anomaly"],
         ), 
     ]
 
