@@ -265,6 +265,7 @@ define firewal = Character("Dr. Firewal", kind=base_char, color="#961e44", cb_na
 define firewal_unknown = Character("???", kind=firewal)
 define wal1 = Character("Wal No.1", kind=firewal) # used in fire
 define wal387 = Character("Wal No.387", kind=firewal) # used in the bingo card 1
+define pocket_wal = Character("Pocket Wal", kind=firewal, what_size=30)
 
 define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="helco", image="helco")
 define helco_unknown = Character("???", kind=helco)

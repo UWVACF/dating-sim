@@ -1,7 +1,6 @@
 image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image aikha flairup1 = Image("images/personnel/aikha/aikha flairup1.png", sprite_highlight("aikha"))
 image aikha flairup2 = Image("images/personnel/aikha/aikha flairup2.png", sprite_highlight("aikha"))
-image haze black= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 
 transform dummy:
     alpha 1.0
@@ -126,32 +125,35 @@ label day_event_aikha_flair:
             show haze black strong onlayer top:
                 alpha 0.8
                 linear 1 alpha 0
-            firewal "{size=-10}WEEWOOWEEWOO!!! THIEF! THIEF! THIEF ALERT!{/size}"
+            firewal_unknown "WEEWOOWEEWOO!!! THIEF! THIEF! THIEF ALERT!"
             hide haze black strong onlayer top
             n "A small Wal pops out of Dr. Aikha's discarded lab coat."
             n "A... Smal?..."
             n "A Smal if you will."
             n "The Smal pushes past the fabric and marches towards you."
-            firewal "{size=-10}Don't worry, Ai! I, Pocket Wal! will defeat this poacher!{/size}"
-            firewal "{size=-10}HAAAAAAA!!!{/size}"
+            pocket_wal "Don't worry, Ai! I, Pocket Wal! will defeat this poacher!"
+            pocket_wal "HAAAAAAA!!!"
             n "Pocket Wal charges up and bursts into flames. Slightly calming down the mess of Dr. Aikha."
             aikha "nnnghnnn..."
             player "Wait, wait! I'm no poacher!"
-            firewal "{size=-10}Oh. It's just you, intern.{/size}"
-            firewal "{size=-10}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!{/size}"
+            pocket_wal "Oh. It's just you, intern."
+            pocket_wal "You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
             show layer master:
-                shake
-            # shake! or soundwave overlay?
+                shake(persist=15.0, preset="rumble")
             n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
-            firewal "{size=-10}Ah, I see the issue. Ai, spaighettied.{/size}"
+            show layer master # reset shake
+            pocket_wal "Ah, I see the issue. Ai, spaighettied."
             n "The Pocket Wal opens its mouth to emit another frequency."
-            firewal "{size=-10}I will occupy them while you will go retrieve an emergency snack.{/size}"
+            pocket_wal "I will occupy them while you will go retrieve an emergency snack."
             #shake/soundwave overlay again
-            firewal "{i}{sc}*************{/sc}{/i}"
-            firewal "{size=-10}It's in the cabinet to the right of the door, open the third cupboard down and you will see a safe.{/size}" 
-            hide firewal
+            show layer master:
+                shake(persist=15.0, preset="rumble")
+            pocket_wal "{i}{sc}*************{/sc}{/i}"
+            show layer master
+            pocket_wal "It's in the cabinet to the right of the door, open the third cupboard down and you will see a safe." 
+            hide pocket_wal
             #shake/soundwave overlay again again
             n "You run amidst Dr. Aikha and Pocket Wal's screeching match."
             # safe cg here
@@ -169,7 +171,7 @@ label day_event_aikha_flair:
                 n "You decide not to ponder about the origins of the biomass."
                 player "Pocket Wal! I got the... biohazards?"
                 #shake/overlay
-                firewal "{b}{sc}Good, now throw it over!{/sc}{/b}"
+                pocket_wal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 
                 scene bg office2
                 #bg should be back towards the office where dr ai and smal are
@@ -184,7 +186,7 @@ label day_event_aikha_flair:
                 aikha "Again."
                 n "This is definitely gonna jeopardize your internship, isn't it... Not to mention the guilt creeping in from shooting a person(?)."
                 n "The Pocket Wal hops onto Dr. Aikha's desk, knocking over an empty pill bottle."
-                firewal "{size=-10}Don't think I forgot your attempts to poach from Ai!{/size}"
+                pocket_wal "Don't think I forgot your attempts to poach from Ai!"
                 aikha "..."
                 n "Oh, come on!"
                 aikha neutral "[player_name]. I advise you don't attempt such a stunt again."
