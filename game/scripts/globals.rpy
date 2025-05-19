@@ -174,8 +174,26 @@ image bg venue = "images/bgs/venue.png"
 # cgs will be defined in the respective event rpy
 
 # other images
-
 image black_screen = Solid("#000000", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0) # for fade to black 
+
+transform white_to_red:
+    matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
+transform white_to_green:
+    matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
+transform white_to_black:
+    matrixcolor Matrix([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
+image haze white = Image("images/day events/haze white.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image haze white strong = Image("images/day events/haze white strong.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image haze red = At("haze white", white_to_red)
+image haze red strong = At("haze white strong", white_to_red)
+image haze green = At("haze white", white_to_green)
+image haze green strong = At("haze white strong", white_to_green)
+image haze black = At("haze white", white_to_black)
+image haze black strong = At("haze white strong", white_to_black)
+
 
 # return a Wal No. XX
 # init python early:
@@ -215,28 +233,36 @@ transform move_to(x_align = 0.5, duration = default_move_time):
 #       show helco at shake
 #   to shake the screen, shake the master layer
 #       show layer master at shake
-#   can change strength to presets: show ryz at shake(preset = "strong")
-#       presets are "strong", "weak", and none (leave empty)
-#       can alternatively determine duration and strength manually (note that if both preset and duration/strength are defined,
-#           preset takes priority)
-transform shake(duration=0.5, strength=10.0, preset=""):
-    function Shake(duration = duration, strength = strength, preset = preset)
+# parameters:
+#   duration: how long the shake will last, not including persist time
+#   strength: the max strength of the shake, measured in pixels of offset
+#   preset: sets predefined values of duration and strength. will override duration and strength if set. can be set to:
+#       "strong"
+#       "weak"
+#   persist: how long the shake will last WITHOUT DIMINISHING. happens at the start of the shake, and does not run down duration time
+transform shake(duration=0.5, strength=10.0, preset="", persist=0.0):
+    function Shake(duration = duration, strength = strength, preset = preset, persist = persist)
 
 init python:
     class Shake(object):
-        def __init__(self, duration, strength, preset):
+        def __init__(self, duration, strength, preset, persist):
             if preset == "strong":
                 self.duration = 1.0
                 self.strength = 20.0
             elif preset == "weak":
                 self.duration = 0.25
                 self.strength = 10.0
+            elif preset == "rumble":
+                self.duration = 0.5
+                self.strength = 2.0
             else:
                 self.duration = duration
                 self.strength = strength
+            self.persist = persist
         
         def __call__(self, trans, shown, anim):
-            factor = (self.duration - shown) / self.duration # the factor by which to multiply the shake
+            factor = min(1.0, (self.duration - shown + self.persist) / self.duration) # the factor by which to multiply the shake
+            print((self.duration - shown + self.persist))
             if factor <= 0: # function ended
                 trans.xoffset = 0
                 trans.yoffset = 0

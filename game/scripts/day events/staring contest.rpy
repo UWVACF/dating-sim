@@ -1,5 +1,3 @@
-image red_blur_1= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
-image red_blur_2 = Image("images/day events/red blur 2.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image overlay_ai_2 = Image("images/day events/overlay ai 2.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 
@@ -72,8 +70,8 @@ label day_event_staring_contest:
             alpha 1.0
         show layer master:
             block:
-                linear 2.0 blur 6
-                linear 2.0 blur 0
+                ease 2.0 blur 6
+                ease 2.0 blur 0
                 repeat
         with hpunch
         pause 0.5
@@ -153,7 +151,7 @@ label day_event_staring_contest:
         show aikha:
             matrixcolor TintMatrix("#ff000000")
             linear 0.6 matrixcolor TintMatrix("#ff00000f")
-        show red_blur_1 zorder 50 onlayer top:
+        show haze red zorder 50 onlayer top:
             alpha 0.0
             linear 0.6 alpha 0.3
         
@@ -161,11 +159,11 @@ label day_event_staring_contest:
         
         show aikha:
             linear 0.3 matrixcolor TintMatrix("#ff000033")
-        show red_blur_1 zorder 50 onlayer top:
+        show haze red zorder 50 onlayer top:
             linear 0.3 alpha 1.0
             block:
-                linear 1.0 alpha 0.7
-                linear 1.0 alpha 1.0
+                ease 1.0 alpha 0.7
+                ease 1.0 alpha 1.0
                 repeat
         with hpunch
         
@@ -190,30 +188,30 @@ label day_event_staring_contest:
         label fight:
             n "You gaze intensely at Dr. Lee through the wall. They do the same back."
             n "A minute passes. You can feel your eyes straining, while Dr. Lee shows no signs of faltering."
-            show red_blur_1 zorder 50 onlayer top:
-                linear 0.5 alpha 0.7
-                linear 0.5 alpha 1.0
+            show haze red zorder 50 onlayer top:
+                ease 0.5 alpha 0.7
+                ease 0.5 alpha 1.0
                 repeat
             n "Another minute passes. Your eyes start tearing up. Dr. Lee continues to stare at you, smiling all the same."
-            show red_blur_2 zorder 50 onlayer top:
+            show haze red strong zorder 50 onlayer top:
                 alpha 0.0
                 linear 1.0 alpha 0.25
             n "You don't give up. You can't. Sunk cost fallacy dictates you keep fighting."
-            show red_blur_1 zorder 49 onlayer top:
+            show haze red zorder 49 onlayer top:
                 alpha 1.0
-            show red_blur_2 zorder 50 onlayer top:
+            show haze red strong zorder 50 onlayer top:
                 alpha 0.25
                 block:
-                    linear 0.5 alpha 0.7
-                    linear 0.5 alpha 1.0
+                    ease 0.5 alpha 0.7
+                    ease 0.5 alpha 1.0
                     repeat
             n "The both of you reach the four minute mark."
             aikha "Wow, [player_name]. You're good!"
             n "Dr. Lee just keeps smiling, unwavering."
             n "Your eyes beg for mercy, but your hubris drowns out their cries."
             n "And finally..."
-            hide red_blur_1 onlayer top
-            hide red_blur_2 onlayer top
+            hide haze red onlayer top
+            hide haze red strong onlayer top
             hide aikha
             hide lee
             show black_screen zorder 50:
@@ -234,7 +232,7 @@ label day_event_staring_contest:
             show black_screen zorder 50:
                 matrixcolor ColorizeMatrix("#ff0000",   "#000000")
                 linear 5.0 matrixcolor ColorizeMatrix("#000000", "#ff0000")
-            hide red_blur_1 onlayer top
+            hide haze red onlayer top
             n "Terrible idea."
             n "The burning feeling in your eyes spreads throughout your body, and you succumb to the pain."
             show black_screen zorder 50:
@@ -351,16 +349,16 @@ label day_event_staring_contest:
             show lee at appear(x_align = 0.66):
                 alpha 0.5
                 matrixcolor TintMatrix("#ff000088")
-            show red_blur_2 onlayer top:
+            show haze red strong onlayer top:
                 alpha 0.0
                 block:
-                    linear 0.4 alpha 1.0
-                    linear 0.4 alpha 0.7
+                    ease 0.4 alpha 1.0
+                    ease 0.4 alpha 0.7
                     repeat
             n "At the same time, you feel an overwhelming amount of radiation emanating from the wall."
             n "{cps=12}{sc}{color=#ff0000}{b}Looks like they want you to stay. :){b}{/color}{/sc}{/cps}"
             show black_screen zorder 50
-            hide red_blur_2 onlayer top
+            hide haze red strong onlayer top
             hide overlay_ai_1 onlayer top
             n "Your body decides that's enough for today and black out."
             window hide

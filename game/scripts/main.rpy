@@ -208,8 +208,6 @@ label day_init:
     if day_number < day_threshold:
         jump day_init
 
-
-
 label default_intro:
     scene 
     show screen day_intro

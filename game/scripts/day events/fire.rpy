@@ -23,12 +23,12 @@ label day_event_fire:
 
     n "Okay."
     n "You got this!"
-    if day_number == 0:
+    if day_number == 1:
         n "Nevermind that it's your first day!"
-    elif day_number == 1:
-        n "You've been working here for [day_number] day!"
+    elif day_number == 2:
+        n "You've been working here for 1 day!"
     else:
-        n "You've been working here for [day_number] days!"
+        n "You've been working here for [day_number - 1] days!"
 
     n "Surely whatever horrific anomaly this is must be harmless if there's no alarms going off!"
     n "You muster up the courage to look into the vent."

@@ -66,9 +66,9 @@ label day_event_dr_ryz_and_the_goose:
 
             if times_tried == 0:
                 n "Is the goose giving you feedback on your guess?"
-            elif times_tried == 5:
+            elif times_tried == 7:
                 n "It looks like it's commenting on when you get a letter right or wrong."
-            elif times_tried >= 10:
+            elif times_tried >= 15:
                 n "Seems like a \"honk\" is a correct letter and a \"hiss\" is an incorrect one."
             $ times_tried += 1
             jump enter_passcode

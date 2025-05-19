@@ -1,7 +1,10 @@
 image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image aikha flairup1 = Image("images/personnel/aikha/aikha flairup1.png", sprite_highlight("aikha"))
 image aikha flairup2 = Image("images/personnel/aikha/aikha flairup2.png", sprite_highlight("aikha"))
-image red_blur_1= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image haze black= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+
+transform dummy:
+    alpha 1.0
 
 label day_event_aikha_flair:
 
@@ -32,13 +35,7 @@ label day_event_aikha_flair:
     show aikha flairup1
     show aikha flairup1 at bobbing()
     pause 0.5
-    show red_blur_1 onlayer top:
-        matrixcolor Matrix ([
-            0,0,0,0,
-            0,0,0,0,
-            0,0,0,0,
-            0,0,0,1
-        ])
+    show haze black onlayer top:
         alpha 0.0
         linear 1.5 alpha 0.2
     player "I've delivered the old Path-Para cases to the archives, Dr. Aikha."
@@ -50,12 +47,12 @@ label day_event_aikha_flair:
     show aikha flairup1 at bobbing(duration = 0.3)
     player "Helloooo?"
     aikha "..."
-    show red_blur_1 onlayer top:
+    show haze black onlayer top:
         linear 1.5 alpha 0.5
     n "You suddenly remember an old entry you read at the archives."
-    n "{sc}It was about an anomaly that impersonates foundation personnel and eats unsuspecting coworkers.{/sc}"
+    n "{sc}It was about an anomaly that impersonates foundation personnel and eats\nunsuspecting coworkers.{/sc}"
     n "The defining traits are that it can't speak and shows odd behavior patterns."
-    show red_blur_1 onlayer top:
+    show haze black onlayer top:
         linear 1.5 alpha 0.8
     show aikha:
         xalign 0.5
@@ -200,11 +197,11 @@ label day_event_aikha_flair:
             n "Their 'arm' suddenly extends and latches onto your left hand."
             n "For a moment, you believe it's the handshake of forgiveness."
             n "...then they rip your arm off."
-            show red_blur_2 zorder 50 onlayer top:
+            show haze black strong zorder 50 onlayer top:
                 alpha 0.25
                 block:
-                    linear 0.75 alpha 0.5
-                    linear 0.75 alpha 0.7
+                    ease 0.75 alpha 0.5
+                    ease 0.75 alpha 0.7
                     repeat
             show layer master:
                 blur 30
@@ -232,7 +229,7 @@ label day_event_aikha_flair:
             show aikha flairup2
             n "They hold onto your stub of a forearm. You close your eyes unable to stomach what will happen next."
             # black screen cg
-            hide red_blur_1 onlayer top
+            hide haze black onlayer top
             show layer master:
                 blur 0
             n "You hear squelching noises, as if something is being grown right in front of you."

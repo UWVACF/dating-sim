@@ -129,13 +129,7 @@ label day_event_the_big_chase:
         label expose_plutoes:
             player "He's behind Plutoes!"
             show plutoes upset
-            show red_blur_1 onlayer top:
-                matrixcolor Matrix([
-                    0.0, 1.0, 0.0, 0.0,
-                    1.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 1.0, 0.0,
-                    0.0, 0.0, 0.0, 1.0
-                ])
+            show haze green onlayer top:
                 alpha 0.0
                 linear 0.2 alpha 1.0
             show plutoes at disappear
