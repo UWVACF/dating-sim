@@ -79,13 +79,13 @@ label day_event_aikha_flair:
         n "Dr. Aikha jolts awake, suddenly gaining life in their eyes."
         aikha "{sc}Wh-... new recruit...?{/sc}"
         n "Wait... Did it just talk?"
-        aikha "{sc}W...hy... auuughh...im...destabilizin...g...{/sc}"
+        aikha "{sc}My... Head... auuughh...im...destabilizin...g...{/sc}"
         n "... This might have been {i}actually{/i} Dr. Aikha."
-        aikha "Hur...ry..."
+        aikha "{sc}Hur...ry...{/sc}"
         aikha "{sc}AH-IIEIAAIII{/sc}"
         hide overlay_ai_2
         #show aikha unique:
-        n "Uh oh. You are about to actually get eaten! Not by a Mimimic, but Dr. Aikha!"
+        n "Uh oh. Getting eaten by Dr. Aikha is definitely worse than that old Mimimic thing!"
         n "You backup against the door and try to open it. The door won't budge without an Path-Para ID."
         n "Out of the corner of your eye, you see Dr. Aikha's wallet on the desk behind {i}it{/i}."
         #show aikha unique:
@@ -106,8 +106,8 @@ label day_event_aikha_flair:
             n "{sc}You can hear screeching behind you.{/sc}"
             n "You reach the wallet and grab it, knocking over seven pill bottles in the process."
             n "The mass of eyes and teeth quickly approaches. In a panic, you roll the chair into it and run back towards the door."
-            n "The anomaly is barely slowed by your desperate attack. It slinks past the office chair, reaching its sharp teeth towards you."
-            n "Oh god. You really are gonna make it onto that Casualty Report..."
+            n "The anomaly is barely slowed by your desperate attack. It slinks past the office chair, reaching its sharp teeth and tendrils towards you."
+            n "Oh god. You really {i}are{/i} gonna make it onto that Casualty Report..."
             # ENTER POCKET WAL
             n "You accept your fate... this is what you get for wrecklessly shooting a department head..."
             n "When suddenly..."
@@ -127,19 +127,19 @@ label day_event_aikha_flair:
             n "This is really a horrific way to go..."
             # shake! or soundwave overlay?
             n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
-            firewal "Ah, I see the issue."
-            
+            firewal "Ah, I see the issue. Ai, spaighettied."
+            n "The Pocket Wal opens its mouth to emit another frequency."
             ####### eol filler starts here
 
-            firewal "Dr. Aikha is destablizied right now and require substance input. I will occupy them while you will go retrive their emergency snack."
+            firewal "I will occupy them while you will go retrieve an emergency snack."
             #shake/soundwave overlay again
             # maybe have wal open his mouth (like the epic violin noise doodle)...sorry cg assets team...
             firewal "{i}{sc}*************{/sc}{/i}"
             firewal "It's in the cabinet to the right of the door, open the third cupboard down and you will see a safe." 
             hide firewal
             #shake/soundwave overlay again again
-            n "You run amidst Dr. Aikha's growls and Smal's screeches."
-            # safe gc here
+            n "You run amidst Dr. Aikha's and Pocket Wal's screeching match."
+            # safe cg here
             n "Thankfully you find the safe. Now you just have to open it."
             # uh discuss and design minigame? like asking you silly foundation lore questions? or solving actual puzzles?
             menu:
@@ -148,27 +148,33 @@ label day_event_aikha_flair:
                     jump open_safe
 
             label open_safe:
-                # jar of eyeballs cg
-                n "The safe pops open. It is a clear jar of...eyeballs. Fresh, hydrous white spheres of various colors of iris."
+                # open safe with biomass
+                n "The safe pops open and out spills a mess of eyeballs, teeth, and flesh."
                 n "You are what you eat, I guess."
-                n "You decide not to ponder about the origins of the eyeballs."
-                player "Dr. Firewal, I got the...substances!"
+                n "You decide not to ponder about the origins of the biomass."
+                player "Pocket Wal! I got the... biohazards?"
                 #shake/overlay
                 firewal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 
                 scene bg hallway
                 #bg should be back towards the office where dr ai and smal are
-                n "You throw the jar and the glass shatters upon hitting the ground." 
-                n "As if sensing the scent of bloody organics, what became of Dr. Aikha spreads over the scattered balls and glass shards, infusing it with their own mass."
-                n "You watch in awe as the purple blob reforms into the familiar shape of Dr. Aikha."
+                n "You scoop up the pile of... stuff and toss it onto the freshly vacuumed carpet... sorry janitors!" 
+                n "As if sensing the of readily available organics, what became of Dr. Aikha spreads over the biomass, assuming it into their own mass."
+                n "You watch in awe as the spaighetti reforms into the familiar shape of Dr. Aikha."
                 show aikha upset at appear(x_align = 0.5) 
-                aikha "Ughhh. Wh..what happened..?"
-                n "They spits out some glass shards. You also notice some more shards embedded on their forhead."
-                aikha "Oh right. I got shot. Again."
-                n "You feel a little bad. Okay, very bad."
-                aikha neutral "[player_name]. It would be preferred if you...don't do that again."
-                aikha "Violence is not the answer. Towards me, at least."
-                n "They pick up the report you delivered and dismisses you."
+                aikha "Ughhh. Wh..what happened...?"
+                n "The hole in their head remains intact."
+                aikha "Right."
+                aikha "I got shot."
+                aikha "Again."
+                n "This is definitely gonna jeopardize your internship, isn't it... Not to mention the guilt creeping in from shooting a person(?)."
+                n "The Pocket Wal hops onto Dr. Aikha's desk, knocking over an empty pill bottle."
+                firewal "Don't think I forgot your attempts to poach from Ai!"
+                aikha "..."
+                n "Oh, come on!"
+                aikha neutral "[player_name]. I advise you don't attempt such a stunt again."
+                aikha "That will be all. Leave."
+                n "The Pocket Wal hops down and shoves you out of the door with surprising strength."
                 hide aikha
                 n "You have a feeling you won't be coming back here anytime soon."
 
@@ -179,42 +185,50 @@ label day_event_aikha_flair:
             player "I didn't mean to, I thought you were a man-eating anomaly..."
             aikha "{sc}IIEIAAIIIEEEAAAAAAAAA{/sc}"
             n "Their 'arm' suddenly extends and latches onto your left hand."
-            n "For a moment, you believe that this is a handshake of forgiveness."
+            n "For a moment, you believe it's the handshake of forgiveness."
             n "...then they rip your arm off."
             # blurry vision, blood red? filter
-            n "The pain reach your brain before the realization of what have just occurred does."
-            n "You feel yourself begin hyperventilating as every muscle in your body seemingly begin to throb."
-            n "You watch in horror as Dr. Aikha infuses the arm into their purple mass."
+            n "The pain reaches your brain before the realization of what just occurred does."
+            n "You feel yourself hyperventilating as every muscle in your body seemingly begin to throb."
+            n "You watch in horror as Dr. Aikha assimilates the arm into their purple mass."
             n "...surely this is covered in the employee insurance plan, right?"
-            n "After the arm completely dissolves, the purple blob rapidly reforms into the familiar shape of Dr. Aikha."
+            n "After the arm completely dissolves, the mass rapidly reforms into the familiar shape of Dr. Aikha."
             show aikha sad
-            aikha "Ughhh. Wh..what happened..?"
-            aikha "Oh right. I got shot. Again."
-            aikha "[player_name], you-"
-            aikha surprise "Oh."
-            aikha "Ah. I must have...attacked you during the flair up."
-            aikha happy "Don't worry! I can fix your arm!"
+            aikha "Ughhh. My... head..."
+            aikha "Right."
+            aikha "I got shot."
+            aikha "Again."
+            aikha "New recruit, you-"
+            aikha surprise "Hm."
+            aikha "Did you lose an arm on the job?"
+            aikha happy "Don't worry! I can fix it!"
             hide aikha
-            n "In your progressively blurring vision, you see Dr. Aikha shuffles over to a cabinet to take something out and begin munching."
+            n "In your progressively blurring vision, you see Dr. Aikha shuffling over to a cabinet."
+            n "After fiddling for a bit, they shove something into their mouth and begin munching."
             n "Guess this isn't considered an emergency."
             show aikha neutral
-            aikha "Sorry, I had to...recharge for a bit."
-            aikha "But I'll fix you up now!"
+            aikha "Sorry, I had to...recharge."
+            aikha "One moment."
             show aikha flairup2
-            n "They hold your shoulder that is now dirpping red. You feel viscous material encasing the wound and a tickish feeling extends to your fingertips."
-            n "...wait, fingertips?"
-            # possible, completely optional cg of an omni arm!
-            n "You look down to find you now have two arms again. However, your left arm is an unusual shade of violet with seams. "
-            #hide cg
-            aikha happy "There, all fixed! Don't worry about the purple, it'll turn 'normal' in a few days!"
-            aikha "...but if you like the purple, I can also keep it for you."
-            aikha "Anyways, I was going to reprimand you for shooting me, but it seems you already learnt you lessson, eh?"
-            aikha "Just don't do it again!"
+            n "They hold onto your stub of a forearm. You close your eyes unable to stomach what will happen next."
+            # black screen etc
+            n "You hear squelching noises, as if something is being grown right in front of you."
+            # slight shake of text box temp?
+            n "Something is jammed into your stub and you feel all the vicera and nerves connect to something."
+            n "You desperately clench your left hand to comfort yourself."
+            n "Wait. Left hand?"
+            n "You look down to find you now have two arms again. However, your left arm is scarred with purple, root-like structures. "
+            aikha "There, all fixed! Don't worry about the artifacts, it'll turn 'normal' in a few days!"
+            aikha "I don't blame you too too much, I guess."
+            aikha happy "Was gonna reprimand you for entering my office without permission and shooting me, but it seems you already learnt you lessson, eh?"
+            aikha "Heheh."
+            aikha "..."
+            aikha "I advise you refrain from that."
             hide aikha
 
             scene hallway
             n "You re-emerge into the hallway with your brand new arm."
-            n "You don't think you would ever use your company issued gun ever again."
+            n "Maybe you should refrain from playing with guns in the future."
             return
 
             ####### eol filler ends here
