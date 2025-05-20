@@ -95,4 +95,17 @@ screen day_intro:
                 text_size 40
                 mouse "monitor button"
         
-        
+default qte_time = 0
+
+screen qte(time = 10.0, act=NullAction()):
+    on "show" action SetVariable("qte_time", time)
+    timer 0.02:
+        repeat True
+        action If(qte_time > 0, true=SetVariable("qte_time", qte_time - 0.02), false=[Hide("qte"), act])
+    bar:
+        value AnimatedValue(value=qte_time, range=time, delay=0.02)
+        range time
+        xsize gui.choice_button_width
+        ysize 50
+        yalign 0.1
+        xalign 0.5

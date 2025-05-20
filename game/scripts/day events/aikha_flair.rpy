@@ -62,15 +62,21 @@ label day_event_aikha_flair:
     n "It gets up from the seat and makes its ways towards you."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
 
+    show screen qte (act=Jump("ahoot"), time=5.0)
+
     menu:
         n "You pull out your company issued gun."
         "Shoot":
+            hide screen qte
             jump ahoot
         "Shoot":
+            hide screen qte
             jump ahoot
         "Shoot" (on_hover = "Wait"):
+            hide screen qte
             jump ahoot
         "Shoot":
+            hide screen qte
             jump ahoot 
 
     label ahoot:

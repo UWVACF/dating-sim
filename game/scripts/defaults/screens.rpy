@@ -209,6 +209,8 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
+    
+
     vbox:
         for i in items:
             button:
