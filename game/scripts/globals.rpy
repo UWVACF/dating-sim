@@ -202,7 +202,16 @@ image haze black strong = At("haze white strong", white_to_black)
 
 # Transitions and transformations
 
-transform appear(y_offset = 70, duration = 0.5, x_align = 0.5, y_align = 1.0):
+# causes the character to rise up slightly and fade in from black
+# usage:
+#   show character at appear
+# parameters (all optional):
+#   x_align: the horizontal alignment of the character, with 0.0 being left, 0.5 being center and 1.0 being right
+#               probably the only parameter you will edit
+#   y_offset: how low the sprite starts when appearing, in px
+#   duration: how long the transition takes, in seconds
+#   y_align: the vertical alignment of the character, with 0.0 being the top, 0.5 being the center and 1.0 being the bottom
+transform appear(x_align = 0.5, y_offset = 70, duration = 0.5, y_align = 1.0):
     xalign x_align
     yalign y_align
     yoffset y_offset
@@ -213,21 +222,30 @@ transform appear(y_offset = 70, duration = 0.5, x_align = 0.5, y_align = 1.0):
     parallel:
         linear duration matrixcolor BrightnessMatrix(0.0)
 
+# causes the character to lower slightly and fade out
 # usage: 
-# show character with disappear
-# (any dialogue)
-# hide character
+#   show character at disappear
+#   (any dialogue)
+#   hide character
+# parameters (all optional):
+#   y_offset: how low the sprite will sink to, in px
+#   duration: how long the sprite takes to complete the animation
 transform disappear(y_offset = 70, duration = 0.5):
     parallel:
         easein duration yoffset y_offset
     parallel:
         linear duration alpha 0.0
 
-#
+# moves the character to the specified xalign after the specified duration
+# usage:
+#   show character at move_to(x_align = <VALUE>)
+# parameters (all optional):
+#   x_align: the horizontal alignment of the character
+#   duration: how long the character will take to move
 transform move_to(x_align = 0.5, duration = default_move_time):
     linear duration xalign x_align
 
-# shake transform
+# shakes the given sprite or layer randomly, optionally persisting at max strength for some time before diminishing towards the end
 # usage:
 #   use like a normal transform:
 #       show helco at shake
@@ -240,6 +258,9 @@ transform move_to(x_align = 0.5, duration = default_move_time):
 #       "strong"
 #       "weak"
 #   persist: how long the shake will last WITHOUT DIMINISHING. happens at the start of the shake, and does not run down duration time
+# example:
+#   show layer master at shake(duration = 3.0, strength = 10.0, persist = 1.0)
+#       this will shake the screen at max strength (10px displacement) for 1.0 seconds before fading out over the course of of 3.0 seconds
 transform shake(duration=0.5, strength=10.0, preset="", persist=0.0):
     function Shake(duration = duration, strength = strength, preset = preset, persist = persist)
 

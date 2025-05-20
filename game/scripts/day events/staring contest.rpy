@@ -367,7 +367,7 @@ label day_event_staring_contest:
             pause 2.0
             show black_screen zorder 50:
                 alpha 1.0
-                linear 2.0 alpha 0.0
+                linear 2.0 alpha 0.0 # asd
             window auto
             n "You wake up and find yourself lying on the floor of the lounge."
             n "The events of the staring contest slowly come back to you."
