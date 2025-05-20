@@ -211,8 +211,11 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
-
+            button:
+                style "choice_button"
+                idle_child Text(i.caption, style="choice_button_text")
+                hover_child Text(i.kwargs['on_hover'] if i.kwargs.get('on_hover') else i.caption, style="choice_button_text")
+                action i.action
 
 style choice_vbox is vbox
 style choice_button is button

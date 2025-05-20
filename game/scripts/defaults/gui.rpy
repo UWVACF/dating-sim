@@ -218,7 +218,7 @@ define gui.choice_button_text_xalign = 0.5
 # define gui.choice_button_text_yalign = 0.5
 define gui.choice_button_text_idle_color = '#ffffff'
 define gui.choice_button_text_hover_color = "#ffffff"
-define gui.choice_button_text_insensitive_color = '#8888887f'
+define gui.choice_button_text_insensitive_color = '#ffffff'
 
 
 ## File Slot Buttons ###########################################################

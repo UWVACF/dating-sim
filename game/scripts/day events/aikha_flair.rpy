@@ -68,7 +68,7 @@ label day_event_aikha_flair:
             jump ahoot
         "Shoot":
             jump ahoot
-        "Shoot":
+        "Shoot" (on_hover = "Wait"):
             jump ahoot
         "Shoot":
             jump ahoot 
