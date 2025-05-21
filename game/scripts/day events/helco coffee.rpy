@@ -23,9 +23,19 @@ label day_event_helco_coffee:
     scene bg lounge
     with default_fade
 
-    n "As you make your way to the coffee machine, you spot Dr. Helco sitting in a nearby armchair"
-    call screen day_intro
-    n "He's staring completely motionless at a wall."
+    show lee at appear
+    lee "neutral"
+    lee sad "sad"
+    lee fury "fury"
+    lee happy "happy"
+    lee panic "panic"
+    lee pensive "pensive"
+    lee surprise "surprise"
+    lee talk "talk"
+    lee unique "unique"
+    lee upset "upset"
+    
+    
     
     player "Hello, Dr. Helco!"
     show helco neutral at appear
