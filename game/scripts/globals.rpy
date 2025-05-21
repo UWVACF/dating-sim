@@ -164,12 +164,17 @@ define player_ref = "themself" # reflexive pronoun (himself, herself, themself)
 
 # bgs
 
-image bg hallway = "images/bgs/hallway.png"
-image bg lounge = "images/bgs/hallway.png"
-image bg office = "images/bgs/hallway.png"
-image bg lobby = "images/bgs/hallway.png"
-image bg venue = "images/bgs/venue.png"
+image bg hallway = "images/bgs/misc/hallway.png"
+image bg lounge = "images/bgs/misc/hallway.png"
+image bg office = "images/bgs/misc/hallway.png"
+image bg lobby = "images/bgs/misc/hallway.png"
+image bg venue = "images/bgs/misc/venue.png"
 
+image bg aikha office = "images/bgs/aikha office/ai office.png"
+image bg aikha office close = "images/bgs/aikha office/ai office close.png"
+image bg aikha office close dark = "images/bgs/aikha office/ai office close dark.png"
+image bg aikha office dark= "images/bgs/aikha office/ai office dark.png"
+image bg aikha office leave= "images/bgs/aikha office/ai office leave.png"
 
 # cgs will be defined in the respective event rpy
 
