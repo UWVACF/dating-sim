@@ -18,8 +18,11 @@ label day_event_aikha_flair:
             repeat
 
     scene bg hallway
-    n "You've just finished your last errand of the day and are very excited to go home."
-    n "You skip down to the Path-Para office to report task completion."
+    n "You've just finished your last errand of the day."
+    n "Home time is so close..."
+    n "You skip down to the Path-Para office to do the final check-in."
+    scene bg door
+    n "Right..."
     n "Unfortunately, your intern ID doesn't cover any of the doors in Path-Para..."
     n "Wouldn't want to risk a zombie apocalypse, I guess."
     n "You knock on the door to Dr. Aikha's office."
@@ -39,7 +42,7 @@ label day_event_aikha_flair:
     show haze black onlayer top:
         alpha 0.0
         linear 1.5 alpha 0.2
-    player "I've delivered the old Path-Para cases to the archives, Dr. Aikha."
+    player "I've delivered the old cases to the archives as you've asked, Dr. Aikha."
     player "Here are the trial records you wanted."
     player "Can I go home now?"
     aikha "..."
@@ -51,17 +54,21 @@ label day_event_aikha_flair:
     show haze black onlayer top:
         linear 1.5 alpha 0.5
     n "You suddenly remember an old entry you read at the archives."
-    n "{sc}It was about an anomaly that impersonates foundation personnel and eats\nunsuspecting coworkers.{/sc}"
-    n "The defining traits are that it can't speak and shows odd behavior patterns."
+    n "{sc}An anomaly that impersonates foundation personnel and eats unsuspecting coworkers.{/sc}"
+    n "Its defining traits?" 
+    n "it can't speak and shows odd behavior patterns."
     show haze black onlayer top:
         linear 1.5 alpha 0.8
     show aikha:
         xalign 0.5
+    n "I mean... It could just be paranoia..."
+    n "But... it did inexplicably go missing."
+    n "And from what you've heard, Dr. Aikha is pretty injury prone."
     show aikha flairup2
-    n "Uh oh, it must have spotted you."
+    n "Huh. Its looking right at you, isn't it?"
     show aikha flairup2:
         linear 5 zoom 1.3
-    n "It gets up from the seat and makes its ways towards you."
+    n "It approaches."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
 
     show screen qte (act=Jump("ahoot"), time=5.0, hidden=True)
@@ -76,11 +83,68 @@ label day_event_aikha_flair:
             jump ahoot
         "Shoot" (on_hover = "Wait"):
             hide screen qte
-            jump ahoot
+            jump wait
         "Shoot":
             hide screen qte
             jump ahoot 
 
+    label wait:
+        n "You fight your trigger finger, deciding to exercise restraint."
+        n "I mean, if your judgement is wrong then you'd be shooting a department head."
+        n "What you hope is Dr. Aikha stops in place and reaches a tendril towards you."
+# add spoopy ooOOooO overlay
+        n "And grabs the papers from you."
+        n "Huh. That wasn't too bad."
+        n "It's not doing anything though..."
+        n "You decide to sit down on the couch. Waiting to either be taken out by the Mimimic thing or dismissed."
+        player "..."
+        aikha "..."
+        player "..."
+        player "Dr. Aikha?"
+        aikha "..."
+        aikha "nnngn..."
+        n "The life returns in Dr. Aikha's eyes."
+        aikha "Hm? How'd you get in here, new recruit?"
+        n "A Plut Shroom spurts spores in the corner of the room."
+        aikha "Ah, I must have blanked out. For..."
+        n "Dr. Aikha pulls out a small Wal... a Smal."
+        n "A Smal if you will."
+        aikha "Pocket Wal?"
+        pocket_wal "Good morning!"
+        pocket_wal "You've been dissociating for 58 minutes, 59 seconds."
+        aikha "I see... thanks Pocket Wal."
+        pocket_wal "Yippiee!"
+        n "The Pocket Wal hops down and crawls back into Dr. Aikha's labcoat pocket."
+        n "Seems like an awfully advanced pocket watch..."
+        aikha "Sorry, [player_name]. I was supposed to meet you a while ago."
+        aikha "Did you finish everything I ask-"
+        n "Dr. Aikha stops mid question after noticing the papers in their hand."
+        aikha "Mmm."
+        n "They also notice the gun in your hand."
+        aikha "Hm."
+        player "Ah- uh I was just uh... practicing open-carry..."
+        n "Their eyes stare through you."
+        aikha "Well your heart rate looks pretty high."
+        aikha "I'm... sorry you had to see me like that."
+        player "I'm sorry for almost shooting you!"
+        aikha "It's understandable. I look a little... off when I'm relaxing my form."
+        player "Relaxing?"
+        n "Wow. You were going to shoot someone leisuring."
+        aikha "Mm. Maintaining appearances is straining is all."
+        aikha "Sometimes it's good to kinda melt in private."
+        n "Relatable."
+        aikha "And sometimes you melt so much you end up completely losing shape and giving full control to muscle memory."
+        n "Slightly less so..."
+        aikha "Regardless. Thanks for giving it a second thought before shooting me."
+        aikha "I'll drop off a gift to you later as compensation for your time. Next time just give the papers to one of my assistants, personnel, or just leave it at my door."
+        n "Huh, you were so excited to leave, you forgot those were all options."
+        hide aikha
+        scene hallway
+        n "The next day you find a gold bar at your desk."
+        n "There seems to be a clear disparity between how you're paid and how heads are paid..."
+        n "Not that you're complaining at this moment!"
+        n "You can pay rent!"
+        return
     label ahoot:
         show layer master:
             shake
@@ -104,7 +168,8 @@ label day_event_aikha_flair:
         hide overlay_ai_2 onlayer top
         #show aikha unique:
         n "Uh oh. Getting eaten by Dr. Aikha is definitely worse than that old Mimimic thing!"
-        n "You back up against the door and try to open it. The door won't budge without a Path-Para ID."
+        n "You back up against the door, fumbling with the knob."
+        n "Right, that Path-Para access."
         n "Out of the corner of your eye, you see Dr. Aikha's wallet on the desk behind {i}it{/i}."
         #show aikha unique:
         menu:
@@ -115,15 +180,16 @@ label day_event_aikha_flair:
                 jump reason
 
         label swipe_id:
-            "You instinctly decide to steal the wallet in hopes that their path-para badge is in there and you can use it to escape the room... or at least get some cash. "
+            "You instinctly steal the wallet in hopes that their Path-Para ID is in there and you can use it to escape the room... or at least get some cash. "
             show aikha unique: 
                 linear 0 zoom 1
                 move_to(x_align = 0.2)
-            n "You lunge to the side and barely dodge Dr. Aikha's teeth."
+            n "You lunge to the side and barely dodge Dr. Aikha's maws."
             hide aikha
-            n "Scrambling to your feet, you run towards the desk with all the might you can muster."
+            n "Scrambling to your feet, you dive towards the desk."
             n "{sc}You can hear screeching behind you.{/sc}"
-            n "You reach the wallet and grab it, knocking over seven pill bottles in the process."
+            n "You grab the wallet, knocking over seven pill bottles in the process."
+            n "Is... Dr. Aikha alright?"
             n "The mass of eyes and teeth quickly approaches. In a panic, you roll the chair into it and run back towards the door."
             n "The anomaly is barely slowed by your desperate attack. It slinks past the office chair, reaching its sharp teeth and tendrils towards you."
             n "Oh god. You really {i}are{/i} gonna make it onto that Casualty Report..."
@@ -145,9 +211,10 @@ label day_event_aikha_flair:
             aikha "nnnghnnn..."
             player "Wait, wait! I'm no poacher!"
             pocket_wal "Oh. It's just you, intern."
-            pocket_wal "You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!"
+            pocket_wal "You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
+            n "You can't even squeak out your last words because Wal NO.2 the yapper is drowning you out."
             show soundwave onlayer top
             show layer master:
                 shake(persist=15.0, preset="rumble")
@@ -167,7 +234,7 @@ label day_event_aikha_flair:
                 linear 0.3 alpha 0
             show layer master
             pocket_wal "I will occupy them while you will go retrieve an emergency snack."
-            pocket_wal "It's in the cabinet to the right of the door, open the third cupboard down and you will see a safe." 
+            pocket_wal "It's behind the mirror, push past it and you'll see a safe." 
             hide pocket_wal
             show soundwave onlayer top:
                 alpha 1.0
@@ -259,11 +326,11 @@ label day_event_aikha_flair:
             aikha "Did you lose an arm on the job?"
             aikha happy "Don't worry! I can fix it!"
             hide aikha
-            n "In your progressively blurring vision, you see Dr. Aikha shuffling over to a cabinet."
+            n "In your progressively blurring vision, you see Dr. Aikha looking behind a mirror."
             n "After fiddling for a bit, they shove something into their mouth and begin munching."
             n "Guess this isn't considered an emergency."
             show aikha neutral
-            aikha "Sorry, I had to...recharge."
+            aikha "Can't do this on an empty 'stomach'."
             aikha "One moment."
             show aikha flairup2
             n "They hold onto your stub of a forearm. You close your eyes unable to stomach what will happen next."
