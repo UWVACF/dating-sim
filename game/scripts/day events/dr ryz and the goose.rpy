@@ -52,7 +52,7 @@ label day_event_dr_ryz_and_the_goose:
         n "You enter [code]."
         
         $ correct_code = "DLRUD"
-        if code != correct_code:
+        if code != correct_code and times_tried < 20:
             n "The door doesn't open."
             python:
                 goose_reply = ""
@@ -74,28 +74,86 @@ label day_event_dr_ryz_and_the_goose:
             jump enter_passcode
 
         else:
+            if times_tried >= 20:
+                n "The door doesn't open."
+                n "The goose, fed up with your incompetence, angrily jumps onto your shoulder."
+                n "Its nails dig into your collarbone as it frustratedly types in the combination \"[correct_code]\"."
+
             n "The door unlocks!"
+
+            if times_tried >= 20:
+                n "...No thanks to you."
+                
     
     n "You follow the goose into the room."
     scene bg secret_room
     show roose at center
     n "It begins to devour the loaves of bread sitting in the corner."
-    n "You look around the room. It doesn't look like Dr. Ryz is here."
+    n "You glance around but see no sign of Dr. Ryz. Maybe he's out."
     show roose at disappear
     n "You do, however, find various sticky notes pinned to a bulletin board."
     hide roose
     n "They read:"
-    n "\"It looks like the others are unable to understand Roose. Interesting.\""
+    n "\"It looks like the others are unable to understand Pebbles. Interesting.\""
     n "\"In any case, the goose is intelligent enough to recognize whenever this is the case and react accordingly.\""
     n "\"He will keep his responses as simple as possible. If he must convey more complicated messages, he will often resort to human-known ciphers, such as Morse code.\""
     n "\"A translating device is currently being developed to facilitate communication.\""
-    n "The notes end there."
-    show roose at appear
-    n "You glance back at the goose just as he finishes his seventh loaf of bread."
-    n "He glances at you and honks."
+    n "Just as you finish reading the notes, you hear a voice behind you."
+    show ryz at appear(x_align = 0.33)
+    ryz "Oh, hey. What are you doing in here?"
+    n "You quickly explain the situation and pass him the samples. You'd really rather not get a complaint filed against you for breaking and entering."
+    n "As you finish, the goose honks in affirmation of your story."
+    show roose at appear(x_align = 0.66)
     roose "Honk! Honk!"
-    show roose at disappear
-    n "He runs out of the room, and you quickly follow him."
-    scene bg hallway
-    show roose at center
-    with default_fade
+    ryz happy "As expected. Pebbles is a smart one."
+    roose "Honk! Honk!"
+    n "Dr. Ryz tosses a cracker at the goose, who catches it mid-air and gobbles it up."
+    player "I'll be off, then."
+    n "As you turn to leave, Dr. Ryz calls you once more."
+    ryz "Say, what was the combination to the door?"
+    if times_tried < 20:
+        $ numbers_entered = 0
+        $ code = ""
+        while numbers_entered < 5:
+            menu:
+                n "The door combination was: [code]{fast}"
+                "Up":
+                    $ numbers_entered += 1
+                    $ code += "U"
+                "Left":
+                    $ numbers_entered += 1
+                    $ code += "L"
+                "Down":
+                    $ numbers_entered += 1
+                    $ code += "D"
+                "Right":
+                    $ numbers_entered += 1
+                    $ code += "R"
+        
+        player "It was [code]."
+        if code == correct_code:
+            ryz "Oh, nice. You remembered."
+            ryz "I've been meaning to change it, but I forgot the old code. I owe you one."
+            roose "Honk!!"
+            ryz "Yeah, yeah, I know you know it. You're free to leave, intern."
+            $ update_character_points({"ryz": 2})
+        else:
+            ryz "That doesn't sound right."
+            ryz "No matter, I'll remember it eventually. You're free to leave, intern."
+            $ update_character_points({"ryz": 1})
+        
+        ryz "...Nope. You've had enough bread already."
+        roose angry "HONK HONK!"
+        n "You decide to leave before the argument gets too intense."
+        n "As you close the door, you hear Dr. Ryz and the goose arguing through the wall."
+        ryz "...Was that Shakespeare? Don't you quote Shakespeare at me."
+        return
+
+    else:
+        n "Before you can answer, the goose looks at Dr. Ryz and honks a few times."
+        ryz "...I see."
+        n "He turns to look at you. You can almost feel the contempt radiating from his stare."
+        ryz "Nevermind. I'll remember it eventually."
+        ryz "...Twenty tries???"
+        $ update_character_points({"ryz": -1})
+        return
