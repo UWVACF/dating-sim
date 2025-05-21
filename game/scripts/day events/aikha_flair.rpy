@@ -1,6 +1,8 @@
 image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image aikha flairup1 = Image("images/personnel/aikha/aikha flairup1.png", sprite_highlight("aikha"))
 image aikha flairup2 = Image("images/personnel/aikha/aikha flairup2.png", sprite_highlight("aikha"))
+image haze black= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image soundwave = Image("images/day events/soundwave overlay.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 
 transform dummy:
     alpha 1.0
@@ -146,25 +148,39 @@ label day_event_aikha_flair:
             pocket_wal "You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing!"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
+            show soundwave onlayer top
             show layer master:
                 shake(persist=15.0, preset="rumble")
             n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
             show layer master # reset shake
+            show soundwave onlayer top:
+                alpha 1.0
+                linear 0.3 alpha 0
             pocket_wal "Ah, I see the issue. Ai, spaighettied."
-            n "The Pocket Wal opens its mouth to emit another frequency."
-            pocket_wal "I will occupy them while you will go retrieve an emergency snack."
-            #shake/soundwave overlay again
+            show soundwave onlayer top:
+                alpha 1.0
             show layer master:
                 shake(persist=15.0, preset="rumble")
-            pocket_wal "{i}{sc}*************{/sc}{/i}"
+            n "The Pocket Wal opens its mouth to emit another frequency."
+            show soundwave onlayer top:
+                alpha 1.0
+                linear 0.3 alpha 0
             show layer master
+            pocket_wal "I will occupy them while you will go retrieve an emergency snack."
             pocket_wal "It's in the cabinet to the right of the door, open the third cupboard down and you will see a safe." 
             hide pocket_wal
-            #shake/soundwave overlay again again
+            show soundwave onlayer top:
+                alpha 1.0
+            show layer master:
+                shake(persist=15.0, preset="rumble")
             n "You run amidst Dr. Aikha and Pocket Wal's screeching match."
             # safe cg here
             n "Thankfully you find the safe. Now you just have to open it."
             # uh discuss and design minigame? like asking you silly foundation lore questions? or solving actual puzzles?
+            show layer master
+            show soundwave onlayer top:
+                alpha 1.0
+                linear 0.3 alpha 0
             menu:
                 n "uh discuss and design minigame? like asking you silly foundation lore questions? or solving actual puzzles?"
                 "i haven't planed the minigame yet so this is the only choice you get":
@@ -176,14 +192,23 @@ label day_event_aikha_flair:
                 n "You are what you eat, I guess."
                 n "You decide not to ponder about the origins of the biomass."
                 player "Pocket Wal! I got the... biohazards?"
-                #shake/overlay
-                pocket_wal "{b}{sc}Good, now throw it over!{/sc}{/b}"
+                show soundwave onlayer top:
+                    alpha 1.0
+                show layer master:
+                    shake(persist=15.0, preset="rumble")
+                show soundwave onlayer top
+                firewal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 
-                scene bg office2
+                #idk should we bother swapping backgrounds
                 #bg should be back towards the office where dr ai and smal are
                 n "You scoop up the pile of... stuff and toss it onto the freshly vacuumed carpet... sorry janitors!" 
+                show soundwave onlayer top:
+                    alpha 1.0
+                    linear 0.3 alpha 0
+                hide soundwave onlayer top
                 n "As if sensing the readily available organics, what became of Dr. Aikha spreads over the biomass, assuming it into their own mass."
                 n "You watch in awe as the spaighetti reforms into the familiar shape of Dr. Aikha."
+                show layer master
                 show aikha upset at appear(x_align = 0.5) 
                 aikha "Ughhh. Wh..what happened...?"
                 n "The hole in their head remains intact."
