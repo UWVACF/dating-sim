@@ -193,13 +193,13 @@ label day_event_staring_contest:
                 ease 0.5 alpha 1.0
                 repeat
             n "Another minute passes. Your eyes start tearing up. Dr. Lee continues to stare at you, smiling all the same."
-            show haze red strong zorder 50 onlayer top:
+            show haze red strong zorder 50 onlayer top as alternate_haze:
                 alpha 0.0
                 linear 1.0 alpha 0.25
             n "You don't give up. You can't. Sunk cost fallacy dictates you keep fighting."
             show haze red zorder 49 onlayer top:
                 alpha 1.0
-            show haze red strong zorder 50 onlayer top:
+            show haze red strong zorder 50 onlayer top as alternate_haze:
                 alpha 0.25
                 block:
                     ease 0.5 alpha 0.7
@@ -228,7 +228,7 @@ label day_event_staring_contest:
         label give_up:
             n "You gaze halfheartedly at Dr. Lee through the wall. They do the same back."
             lee "Heya!"
-            n "After a minute passes, you decide it's about time to call it and blink."
+            n "After a minute passes, you decide it's about time to end it. You blink."
             show black_screen zorder 50:
                 matrixcolor ColorizeMatrix("#ff0000",   "#000000")
                 linear 5.0 matrixcolor ColorizeMatrix("#000000", "#ff0000")
@@ -279,10 +279,10 @@ label day_event_staring_contest:
         player "Don't you two have anything else to do?"
         n "An eye on Dr. Aikha's neck turns to stare at you."
         aikha "Nope!"
-        lee "There aren't a lot of radiological entities that need to be taken care of, anyway."
+        lee "There aren't a lot of radiological entities that need to be taken care of."
         aikha "I can monitor my staff from here anyways!"
-        n "The eye goes back staring at the wall."
-        n "You reckon it's about time to leave, when Dr. Chan walks into the room."
+        n "The eye goes back to staring at the wall."
+        n "You're just about to turn to leave when Dr. Chan walks into the room."
         show chan fury at appear(x_align = 0.66)
         chan "What the fuck are you guys doing."
         aikha "Hi Chan!"
@@ -293,7 +293,7 @@ label day_event_staring_contest:
         hide chan
         with default_fade
         n "Another 3 hours pass."
-        n "You wonder what you're doing with your life when you hear the door open behind you."
+        n "You're wondering what you're doing with your life when you hear the door open behind you."
         show alex at appear(x_align = 0.66)
         n "Founder Alex barely even glances in your direction as he fills his \"#1 BOSS\" mug with coffee."
         aikha "Hiya Mr. Founder!"
@@ -324,7 +324,7 @@ label day_event_staring_contest:
             lee "We can have a rematch tomorrow!"
             aikha "Sure! Same time?"
             lee "Yesss! [player_name], join us tomorrow!"
-            n "NONONONONONONONONONO"
+            n "NONONONONONONONONONO{nw}"
             player "Sure!"
             show black_screen onlayer top:
                 alpha 0.0
@@ -346,7 +346,7 @@ label day_event_staring_contest:
                 alpha 0.0
                 linear 0.4 alpha 1.0
             n "Dr. Aikha starts splitting open by {i}its{/i} seams, revealing an amalgamation of eyes and teeth."
-            show lee at appear(x_align = 0.66):
+            show lee unique at appear(x_align = 0.66):
                 alpha 0.5
                 matrixcolor TintMatrix("#ff000088")
             show haze red strong onlayer top:

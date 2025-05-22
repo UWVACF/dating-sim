@@ -1,5 +1,3 @@
-image red_blur_1= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
-
 label day_event_the_big_chase:
     scene bg hallway
     with default_fade
@@ -136,7 +134,7 @@ label day_event_the_big_chase:
             n "Suddenly, you and Dr. Chan are hit with a wave of noxious fumes."
             show chan panic
             chan panic "{i}cough cough cough{/i}"
-            show red_blur_1 onlayer top:
+            show haze green onlayer top:
                 linear 1.5 alpha 0.0
             chan "{i}cough- {/i}What was that?!"
             n "Unsurprisingly, Plutoes and Pochi are gone."
@@ -146,7 +144,7 @@ label day_event_the_big_chase:
             show chan at disappear
             n "You watch as Dr. Chan trudges away. At this point, it might be easier for him to just rewrite whatever was in that hard drive."
             $ update_character_points({"chan": 1})
-            hide red_blur_1 onlayer top
+            hide haze green onlayer top
             return
 
     label ignore_hampter:
@@ -196,7 +194,7 @@ label day_event_the_big_chase:
             n "...Was that was your imagination? Either way, you feel an itch in your ear."
             player "What the-"
             syg neutral "What happened, [player_name]?"
-            show red_blur_1 onlayer top:
+            show haze green onlayer top:
                 matrixcolor Matrix([
                     0.0, 1.0, 0.0, 0.0,
                     1.0, 0.0, 0.0, 0.0,
@@ -208,7 +206,7 @@ label day_event_the_big_chase:
             player "{sc}{color=#009900}F!&*@%%#! YOU $%%&*!%%@&*#%%@%%#${/color}{/sc}"
             n "You feel the spontaneous urge to skateboard away."
             n "But before you get the chance..."
-            hide red_blur_1 onlayer top
+            hide haze green onlayer top
             show black_screen zorder 50
             with hpunch
             n "...Dr. Syg sucker-punches you in the face."
