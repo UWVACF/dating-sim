@@ -79,17 +79,33 @@ label day_event_didnt_do_it:
 
     label ddi_truth:
         player "No I did not! I was just preping my lunch when Dr. Deceased came in and started accusing me!"
+        show syg at appear(x_align = 0.8)
         syg "How do you explain the body then?"
         player "I don't know! It was just there when I turned around after hearing Dr. Deceased!"
+        hide syg
         n "You see a few in the crowd shake their heads."
+        show aikha at appear(x_align = 0.2)
         aikha pensive "That was an unconvincing excuse, [player_name]. Did you not pay attention during my presentation?"
         player "It's not an excuse! I'm telling the truth! I don't even know who she is!"
+        hide aikha
         n "Nobody dares to meet your gaze. The silence is telling of how little they believe you."
         n "A recognizable figure squeezes through the crowd. It's Dr. Alex."
+        hide deceased
+        show alex
         n "You look towards him hopefully. Surely the Great Founder would remain calm and collected in the face of hysteria."
         player "Dr. Alex, you must-"
         alex sad "That's enough."
-        alex ""
+        alex "You've murdered my twin sister, [player_name]. (insert deep regret dialogues)"
+        alex sad "Take the culprit away, security!"
+        hide alex 
+        n "Two wals come forward and take you by the arms."
+        n "You cast a resentful glare at the bystanders as you are dragged out of the lounge."
+        n "Out of the corner of your eye, you see Dr. Chan and Ethy amongst the crowd of people."
+        n "Dr. Chan gives you a nod, while Ethy gives you a thumbs up with a wide grin."
+        $ update_character_points({"chan": 1})
+        jump ddi_jail
+        return
+
 
     label ddi_lie:
         n "still working on it"
@@ -130,12 +146,17 @@ label day_event_didnt_do_it:
             return
 
 
-        label ddi_still_screwed_up:
+        label ddi_still_screwed_up: #working on this
             player "lame uncredible statement"
             deceased "HA! NUH UH"
             crowd "Nuh uh..."
             deceased "smug statement"
             firewal "Affirmative. My memory module shows that Dr. Ralex specifically stated that the intern [player_name] has asked to meet them here to discuss matters concerning a potential full time offer."
+            n "more dialogues"
+
+        
+    label ddi_jail:
+        n "hehehehehehehehehehe"
 
 
 #### CRIME SCENE ####
