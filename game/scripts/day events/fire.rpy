@@ -6,6 +6,7 @@ label day_event_fire:
     n "{i}\"HELLO [[INTERN], PLEASE REPORT TO [[HALLWAY 7B, OFFICE 16] FOR A GUIDED TOUR. FIREWAL MANAGEMENT.\"{i}"
     n "..."
     n "You're pretty sure this is an automated message but it's not within your pay grade to question invitations from superiors."
+    show bg door
     n "You're making your way to the designated location when you notice the sound of rummaging in the vents."
     show layer master:
         matrixcolor SaturationMatrix(1.0)
@@ -31,6 +32,10 @@ label day_event_fire:
         n "You've been working here for [day_number - 1] days!"
 
     n "Surely whatever horrific anomaly this is must be harmless if there's no alarms going off!"
+    show bg door:
+        xcenter 0.95
+        ycenter 0.0
+        zoom 2.0
     n "You muster up the courage to look into the vent."
     show hampter happy 
     hampter "Oh! Hiiii [player_name]!"
@@ -47,6 +52,8 @@ label day_event_fire:
     n "I guess you can't judge other personnel for where they decide to take their lunch breaks."
     n "I mean... you were supposed to be on break before this meeting anyways."
     show hampter happy at disappear
+    hide bg
+    show bg hallway
     n "As you continue to your designated meeting spot, you hear a conversation."
     aikha_unknown "...So anyways, that's why I infected 1700 axolotls."
     firewal_unknown "Mmm. Understandable."
@@ -63,42 +70,57 @@ label day_event_fire:
     with hpunch
     n "You hear an explosion from down the hall."
     n "You might have a hunch as to where your tour guide went..."
-    show aikha neutral at disappear
-    show firewal pensive at disappear
-    show bg meeting hall
+    hide aikha neutral
+    hide firewal pensive
+    show bg room hall
     n "You rush to the source of the sound, with Dr. Aikha and Dr. Firewal casually trailing behind you."
-    show aikha neutral at appear(x_align = 0.33)
-    show firewal neutral at appear(x_align = 0.33)
+    show aikha neutral at appear(x_align = 0.0)
+    show firewal neutral at appear(x_align = 1.0)
     n "They look indifferent. Guess this is a common occurence."
-# Add a bright overlay plus maybe a photo of a fire
+    show haze orange onlayer top:
+        alpha 0.0
+        linear 0.5 alpha 0.5
+        block:
+            ease 0.5 alpha 0.3
+            ease 0.5 alpha 0.5
+            repeat
     n "You stop in front of a blazing inferno."
     uriel_unknown "How do you not know what a birth certificate is?"
-    show bg 
-    show aikha neutral at disappear
-    show firewal neutral at disappear
-    show uriel panic
-    show helco neutral
+    show bg meeting hall
+    hide aikha neutral
+    hide firewal neutral
+    show uriel panic:
+        xalign 0.33
+        yalign 1.0
+    show helco neutral:
+        xalign 0.66
+        yalign 1.0
     n "You glance over to the nearby conference room and see a frustrated Uriel and confused Dr. Helco."
     helco "Is that something all humans should know of?"
     n "You have more pressing matters right now."
-    scene bg hallway
+    show bg room hall
+    hide helco
+    hide uriel
     n "As you turn back, you see a charred Hampter runs through the flames."
-    show hampter panic at appear(x_align = 0.33)
+    show hampter panic at appear(x_align = 0.5)
     hampter "It wasn't me!!! A Wal found me and just combusted! It wasn't my fault!"
     n "The frayed wires in Hampter's mouth suggest otherwise." 
-    show firewal upset at appear(x_align = 0.66)
+    show aikha neutral at appear(x_align = 0.0)
+    show firewal upset at appear(x_align = 1.0)
     n "Dr. Firewal sighs and taps the screen on his cuff a few times."
     with hpunch
     n "Suddenly, the wall behind you splits open, revealing a vast technology-filled lab."
     n "Huh. That's not on the floor plan."
     firewal "Manager Wal will handle this. Come on, Ai."
-    show aikha panic at appear(x_align = 0.5)
-    aikha "Huh? Nonono! Not again!"
-    n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
-    show aikha panic:
-        linear 3.0 xoffset 1920
+    show aikha panic
     show firewal upset:
-        linear 3.0 xoffset 1920
+        linear 1.5 xalign 0.1
+    aikha "Huh? Nonono! Not again!"
+    show firewal upset:
+        linear 3.0 xalign 1.6
+    show aikha panic:
+        linear 3.0 xalign 1.5
+    n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
     aikha "NONONO! [player_name]! CALL MOON! CALL MOOOOOOOOOOON-"
     with hpunch
     n "The wall closes. Call... the moon? Like, the thing in the sky? "
@@ -116,7 +138,7 @@ label day_event_fire:
         xalign -0.5
         linear 2.0 xalign 1.5
     show layer master:
-        pause 2.0
+        pause 3.0
         shake
 
     n "You see a Wal run into the fire, attempt to punch it out, and combust from stress."
@@ -125,7 +147,7 @@ label day_event_fire:
         xalign -0.5
         linear 2.0 xalign 1.5
     show layer master:
-        pause 2.0
+        pause 3.0
         shake
     n "You see a second Wal attempt to do the same... and combust."
     show firewal as dummy_wal:
@@ -133,7 +155,7 @@ label day_event_fire:
         xalign -0.5
         linear 2.0 xalign 1.5
     show layer master:
-        pause 2.0
+        pause 3.0
         shake
     n "Then a third..."
     
@@ -142,7 +164,7 @@ label day_event_fire:
         xalign -0.5
         linear 2.0 xalign 1.5
     show layer master:
-        pause 1.65
+        pause 3.0
         shake
     n "How... long is this going to take?"
 
@@ -162,7 +184,7 @@ label day_event_fire:
     label convince_the_conference:
         # convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
         # pleases uriel and helco, puts wals out of a job
-        scene bg conference
+        scene bg meeting hall
         show uriel at appear(x_align = 0.33)
         show helco at appear(x_align = 0.66)
         show layer master:
@@ -212,19 +234,19 @@ label day_event_fire:
         show layer master:
             pause 0.6
             block:
-                pause 1.65
+                pause 1.5
                 shake
                 repeat
         n "In spite of his apparent obliviousness, you decide to ask him for his help."
         player "Follow me. Uriel, could you grab the fire extinguisher in the meantime?"
         uriel "Got it."
         show uriel at disappear
-        show bg hallway
+        show bg room hall
         show helco:
             xalign 0.66
             yalign 1.0
         n "You lead Dr. Helco out of the room to where Manager Wal is still guiding Walbots into the fire."
-        show firewal at appear(x_align = 0.33)
+        show firewal at appear(x_align = 0.0)
         show firewal as dummy_wal behind helco:
             yalign 1.0
             xalign -0.5
@@ -233,7 +255,7 @@ label day_event_fire:
         show layer master:
             pause 0.6
             block:
-                pause 1.65
+                pause 1.5
                 shake
                 repeat
         wal1 "Excellent work, Walbots! Fight valiantly in the name of THE WAL!"
@@ -268,7 +290,7 @@ label day_event_fire:
     show layer master:
         pause 2.0
         block:
-            pause 0.65
+            pause 0.5
             shake
             repeat
     n "Actually, nah. Surely these Wals got it under control!"
@@ -276,23 +298,26 @@ label day_event_fire:
     n "0.0059%% done now..."
     n "....Sunk cost fallacy..."
     n "Oh, look at that! Your break is over. Better... get going..."
-    show black_screen zorder 50:
-        alpha 1.0
-        linear 2.0 alpha 0.0
+    show haze orange onlayer top:
+        linear 1.0 alpha 0.0
+    scene hallway
+    with default_fade
+    hide firewal
     hide dummy_wal
     hide dummy_wal_2
     show layer master
     n "Before you clock out for the day, you receive a ping on your phone."
+    hide haze orange onlayer top
     n "{i}\"THE FIRE IN [[HALLWAY 7B] HAS BEEN PUT OUT.\"{/i}"
     n "Well that's reassuring, I suppose."
     n "{i}\"CASUALTY: 100290 WALS.\"{/i}"
     n "Oh! That's less than expected... that's good."
-    n "{i}\"ESTIMATED DAMAGE: 200 MILLION.\"{/i}"
+    n "{i}\"ESTIMATED DAMAGE: $200 MILLION.\"{/i}"
     n "Oh... no."
     n "You'd better hope Chan doesn't find out about this."
     n "You hear a ping behind you."
     show chan panic
-    n "You suspect it might be a little too late for that."
+    n "You suspect it might be a little too late for that..."
     $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1})
     return
 # have the three options as call... moon?, convince everyone to help, let the wals manage it

@@ -194,6 +194,9 @@ transform white_to_green:
 transform white_to_black:
     matrixcolor Matrix([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 
+transform white_to_orange:
+    matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 image haze white = Image("images/day events/haze white.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image haze white strong = Image("images/day events/haze white strong.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image haze red = At("haze white", white_to_red)
@@ -202,6 +205,8 @@ image haze green = At("haze white", white_to_green)
 image haze green strong = At("haze white strong", white_to_green)
 image haze black = At("haze white", white_to_black)
 image haze black strong = At("haze white strong", white_to_black)
+image haze orange = At("haze white", white_to_orange)
+image haze orange strong = At("haze white", white_to_orange)
 
 
 # return a Wal No. XX
