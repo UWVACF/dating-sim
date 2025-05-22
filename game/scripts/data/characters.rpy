@@ -24,7 +24,8 @@ image jessie unique = At("images/personnel/jessie/jessie unique.png", sprite_hig
 
 
 transform aikha_transform:
-    base_char_transform
+    # base_char_transform
+    alpha 1.0
 
 image aikha = At("images/personnel/aikha/aikha neutral.png", sprite_highlight("aikha"), aikha_transform)
 image aikha neutral = At("images/personnel/aikha/aikha neutral.png", sprite_highlight("aikha"), aikha_transform)
@@ -56,7 +57,8 @@ image alex unique = At("images/personnel/alex/alex unique.png", sprite_highlight
 
 
 transform helco_transform:
-    base_char_transform
+    # base_char_transform
+    alpha 1.0
 
 image helco = At("images/personnel/helco/helco neutral.png", sprite_highlight("helco"), helco_transform)
 image helco neutral = At("images/personnel/helco/helco neutral.png", sprite_highlight("helco"), helco_transform)
@@ -160,7 +162,8 @@ image firewal unique = At("images/personnel/firewal/firewal unique.png", sprite_
 
 
 transform chan_transform:
-    base_char_transform
+    # base_char_transform
+    alpha 1.0
 
 image chan = At("images/personnel/chan/chan neutral.png", sprite_highlight("chan"), chan_transform)
 image chan neutral = At("images/personnel/chan/chan neutral.png", sprite_highlight("chan"), chan_transform)

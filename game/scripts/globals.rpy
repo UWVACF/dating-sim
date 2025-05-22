@@ -172,6 +172,7 @@ image bg venue = "images/bgs/misc/venue.png"
 image bg door = "images/bgs/misc/door.png"
 image bg meeting hall = "images/bgs/misc/meeting hall.png"
 image bg meeting room = "images/bgs/misc/meeting room.png"
+image bg room hall = "images/bgs/misc/room hall.png"
 
 image bg aikha office = "images/bgs/aikha office/ai office.png"
 image bg aikha office close = "images/bgs/aikha office/ai office close.png"
@@ -188,7 +189,7 @@ transform white_to_red:
     matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 
 transform white_to_green:
-    matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+    matrixcolor Matrix([0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 
 transform white_to_black:
     matrixcolor Matrix([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])

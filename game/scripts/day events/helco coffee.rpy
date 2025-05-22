@@ -23,17 +23,11 @@ label day_event_helco_coffee:
     scene bg lounge
     with default_fade
 
-    show lee at appear
-    lee "neutral"
-    lee sad "sad"
-    lee fury "fury"
-    lee happy "happy"
-    lee panic "panic"
-    lee pensive "pensive"
-    lee surprise "surprise"
-    lee talk "talk"
-    lee unique "unique"
-    lee upset "upset"
+    menu:
+        "choice1" (on_hover = "nope"):
+            n "hi"
+        "choice2":
+            n "hello"
     
     
     

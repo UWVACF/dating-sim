@@ -84,7 +84,7 @@ label day_event_ethics_presentation:
         xalign -0.5
     show aikha at run_right
 
-    chan "On that note, the IRS have"
+    chan "On that note, the IRS have{nw}"
 
     show aikha:
         xzoom 1.0
@@ -96,11 +96,11 @@ label day_event_ethics_presentation:
     show aikha:
         xzoom -1.0
     aikha "GOTCHA! FINALLY!"
-    aikha "Heh, "
+    aikha "Heh, {nw}"
 
     show aikha at run_left(duration = 2.0)
 
-    extend "sorry John!"
+    extend "sorry Chan!"
     hide aikha
     chan "..."
     chan "As I was saying, one of our units is under investigation by the IRS due to-"
