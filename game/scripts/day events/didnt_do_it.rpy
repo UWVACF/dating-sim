@@ -61,9 +61,12 @@ label day_event_didnt_do_it:
     show deceased surprise 
     deceased "YOU MURDERER!"
     n "Murderer? What are they talking about?"
-    n "You bend down to pick up the knife when you saw it. A dead woman right next to your feet, bleeding out a pool of red the same color as the stains on the knife." 
-    # more lines here about deceased yelling
-    # and more lines here about people gathering and deceased accursing you
+    n "You bend down to pick up the knife when you saw it. A dead woman right next to your feet, bleeding out a pool of red the same color as the stains on the knife."
+    n "You were wondering who she is and how can an unauthorize person get in here when Dr. Deceased interupted your thought." 
+    deceased panic "{size=+10}THERE'S A MURDER!!!{/size}"
+    player "Wait, Dr. Deceased-"
+    n "Your voice is cut off by the swarm of people now stuck in the doorway, all trying to get a closer look at the crime scene."
+    deceased fury "Everyone look! [player_name] murdered Dr. Ralex!"
 
     menu:
         n"How do you defend yourself?"
@@ -75,7 +78,18 @@ label day_event_didnt_do_it:
             jump ddi_deflect
 
     label ddi_truth:
-        n "pspspspsps I'm still working on it..."
+        player "No I did not! I was just preping my lunch when Dr. Deceased came in and started accusing me!"
+        syg "How do you explain the body then?"
+        player "I don't know! It was just there when I turned around after hearing Dr. Deceased!"
+        n "You see a few in the crowd shake their heads."
+        aikha pensive "That was an unconvincing excuse, [player_name]. Did you not pay attention during my presentation?"
+        player "It's not an excuse! I'm telling the truth! I don't even know who she is!"
+        n "Nobody dares to meet your gaze. The silence is telling of how little they believe you."
+        n "A recognizable figure squeezes through the crowd. It's Dr. Alex."
+        n "You look towards him hopefully. Surely the Great Founder would remain calm and collected in the face of hysteria."
+        player "Dr. Alex, you must-"
+        alex sad "That's enough."
+        alex ""
 
     label ddi_lie:
         n "still working on it"
@@ -87,41 +101,41 @@ label day_event_didnt_do_it:
         deceased "{i}{size=10}I did forget what I came here for…unless{/size}{i}"
         n "Dr. Deceased stares down at their own hands. Seemingly considering it." 
         jessie surprise "Dr. Deceased, did you really?"
-    menu: 
-        n "this is a good chance to prove your innocence! (by blaming it on someone else!)"
-        "ouble down on deceased":
-            jump ddi_decease_murderer
-        "uhhhhh":
-            jump ddi_still_screwed_up
+        menu: 
+            n "this is a good chance to prove your innocence! (by blaming it on someone else!)"
+            "ouble down on deceased":
+                jump ddi_decease_murderer
+            "uhhhhh":
+                jump ddi_still_screwed_up
 
-    label ddi_decase_murderer:
-        player "double down statement"
-        all "gasps"
-        deceased "nuh uh"
-        player "yuh uh"
-        deceased "NUH UH!!"
-        player "YUH UH!!"
-        firewal "Affirmative. Security did show Dr. Deceased entering the lounge 5 minutes earlier."
-        someone else "Dr. Deceased, I can't believe you would do this!"
-        deceased "But I didn't! This...you bastard!"
-        alex "Take them away to the confinement room! We shall hold a fair trial later to bring justice to my dear twin sister!"
-        n "Two wals come into the room and start to drag Dr. Deceased away by their arm."
-        n "Dr. Deceased tries to put up a fight. They swing their arms at the wals and kick them."
-        n "Unfortunately, the wals are made of hard metals."
-        n "Dr. Deceased's arms and legs break off from the impact. The wals carry their scattered remains away, while Dr. Deceased's head curses them with the curse of the nile."
-        someone "What a tragedy this is. I'm sorry you have to witness this, [player_name]."
-        player "...Yea, I was so startled."
-        n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the wals has confiscated the knife as evidence for the murder."
-        n "Guess you're not getting your greens in today."
-        return
+        label ddi_decase_murderer:
+            player "double down statement"
+            all "gasps"
+            deceased "nuh uh"
+            player "yuh uh"
+            deceased "NUH UH!!"
+            player "YUH UH!!"
+            firewal "Affirmative. Security did show Dr. Deceased entering the lounge 5 minutes earlier."
+            someone else "Dr. Deceased, I can't believe you would do this!"
+            deceased "But I didn't! This...you bastard!"
+            alex "Take them away to the confinement room! We shall hold a fair trial later to bring justice to my dear twin sister!"
+            n "Two wals come into the room and start to drag Dr. Deceased away by their arm."
+            n "Dr. Deceased tries to put up a fight. They swing their arms at the wals and kick them."
+            n "Unfortunately, the wals are made of hard metals."
+            n "Dr. Deceased's arms and legs break off from the impact. The wals carry their scattered remains away, while Dr. Deceased's head curses them with the curse of the nile."
+            someone "What a tragedy this is. I'm sorry you have to witness this, [player_name]."
+            player "...Yea, I was so startled."
+            n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the wals has confiscated the knife as evidence for the murder."
+            n "Guess you're not getting your greens in today."
+            return
 
 
-    label ddi_still_screwed_up:
-        player "lame uncredible statement"
-        deceased "HA! NUH UH"
-        crowd "Nuh uh..."
-        deceased "smug statement"
-        firewal "Affirmative. My memory module shows that Dr. Ralex specifically stated that the intern [player_name] has asked to meet them here to discuss matters concerning a potential full time offer."
+        label ddi_still_screwed_up:
+            player "lame uncredible statement"
+            deceased "HA! NUH UH"
+            crowd "Nuh uh..."
+            deceased "smug statement"
+            firewal "Affirmative. My memory module shows that Dr. Ralex specifically stated that the intern [player_name] has asked to meet them here to discuss matters concerning a potential full time offer."
 
 
 #### CRIME SCENE ####

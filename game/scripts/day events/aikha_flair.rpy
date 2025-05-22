@@ -28,23 +28,27 @@ label day_event_aikha_flair:
     n "You knock on the door to Dr. Aikha's office."
     n "..."
     n "You knock again, this time more impatiently. You really want to finish this and go home."
-    show plutoes at appear(x_align = 1.0)
+    show plutoes at appear(x_align = 0.5)
     n "Plutoes comes out of the office. Clearly not to answer your knocking."
     player "Is Dr. Aikha in?"
     show plutoes at move_to(x_align = -0.5)
     n "Plutoes ignores you and shrooms away."
     n "You catch the door just as it closes and piggyback in."
 
-    scene bg office
-    show aikha flairup1
-    show aikha flairup1 at bobbing()
-    pause 0.5
+    scene bg aikha office leave
     show haze black onlayer top:
         alpha 0.0
         linear 1.5 alpha 0.2
     player "I've delivered the old cases to the archives as you've asked, Dr. Aikha."
+    scene bg aikha office dark
+    show aikha flairup1
+    show aikha flairup1 at bobbing()
+    pause 0.5
     player "Here are the trial records you wanted."
     player "Can I go home now?"
+    scene bg aikha office dark close
+    show aikha flairup1
+    show aikha flairup1 at bobbing()
     aikha "..."
     player "Dr. Aikha?"
     aikha "..."
@@ -54,9 +58,12 @@ label day_event_aikha_flair:
     show haze black onlayer top:
         linear 1.5 alpha 0.5
     n "You suddenly remember an old entry you read at the archives."
-    n "{sc}An anomaly that impersonates foundation personnel and eats unsuspecting coworkers.{/sc}"
+    n "{sc}An anomaly that impersonates foundation personnel and eats unsuspecting \ncoworkers.{/sc}"
     n "Its defining traits?" 
-    n "it can't speak and shows odd behavior patterns."
+    n "It can't speak and shows odd behavior patterns."
+    scene bg aikha office dark
+    show aikha flairup1
+    show aikha flairup1 at bobbing(0.3)
     show haze black onlayer top:
         linear 1.5 alpha 0.8
     show aikha:
@@ -94,6 +101,9 @@ label day_event_aikha_flair:
         n "What you hope is Dr. Aikha stops in place and reaches a tendril towards you."
 # add spoopy ooOOooO overlay
         n "And grabs the papers from you."
+        show aikha unique:
+            zoom 1.3
+            easein 0.5 zoom 1
         n "Huh. That wasn't too bad."
         n "It's not doing anything though..."
         n "You decide to sit down on the couch. Waiting to either be taken out by the Mimimic thing or dismissed."
@@ -105,6 +115,12 @@ label day_event_aikha_flair:
         aikha "nnngn..."
         n "The life returns in Dr. Aikha's eyes."
         aikha "Hm? How'd you get in here, new recruit?"
+        scene bg aikha office
+        show haze black onlayer top:
+            alpha 0.8
+            linear 0.4 alpha 0.0
+        show aikha
+        n "Dr. Aikha turns on the lights."
         n "A Plut Shroom spurts spores in the corner of the room."
         aikha "Ah, I must have blanked out. For..."
         n "Dr. Aikha pulls out a small Wal... a Smal."
@@ -144,6 +160,7 @@ label day_event_aikha_flair:
         n "There seems to be a clear disparity between how you're paid and how heads are paid..."
         n "Not that you're complaining at this moment!"
         n "You can pay rent!"
+        $ update_character_points({"aikha": 1})
         return
     label ahoot:
         show layer master:
@@ -153,6 +170,7 @@ label day_event_aikha_flair:
             alpha 0.0
             linear 0.4 alpha 1.0
         n "..."
+        show bg aikha office dark close
         show aikha flairup1:
             zoom 1.3
             easein 0.05 zoom 1
@@ -166,8 +184,10 @@ label day_event_aikha_flair:
         aikha "{sc}Hur...ry...{/sc}"
         aikha "{sc}AH-IIEIAAIII{/sc}"
         hide overlay_ai_2 onlayer top
+        show bg aikha office dark
         #show aikha unique:
         n "Uh oh. Getting eaten by Dr. Aikha is definitely worse than that old Mimimic thing!"
+        show bg aikha office leave
         n "You back up against the door, fumbling with the knob."
         n "Right, that Path-Para access."
         n "Out of the corner of your eye, you see Dr. Aikha's wallet on the desk behind {i}it{/i}."
@@ -184,12 +204,14 @@ label day_event_aikha_flair:
             show aikha unique: 
                 linear 0 zoom 1
                 move_to(x_align = 0.2)
+            show bg aikha office dark close
             n "You lunge to the side and barely dodge Dr. Aikha's maws."
             hide aikha
             n "Scrambling to your feet, you dive towards the desk."
             n "{sc}You can hear screeching behind you.{/sc}"
             n "You grab the wallet, knocking over seven pill bottles in the process."
             n "Is... Dr. Aikha alright?"
+            show bg aikha office leave
             n "The mass of eyes and teeth quickly approaches. In a panic, you roll the chair into it and run back towards the door."
             n "The anomaly is barely slowed by your desperate attack. It slinks past the office chair, reaching its sharp teeth and tendrils towards you."
             n "Oh god. You really {i}are{/i} gonna make it onto that Casualty Report..."
@@ -201,6 +223,7 @@ label day_event_aikha_flair:
                 linear 1 alpha 0
             firewal_unknown "WEEWOOWEEWOO!!! THIEF! THIEF! THIEF ALERT!"
             hide haze black strong onlayer top
+            show bg aikha office dark
             n "A small Wal pops out of Dr. Aikha's discarded lab coat."
             n "A... Smal?..."
             n "A Smal if you will."
@@ -211,7 +234,7 @@ label day_event_aikha_flair:
             aikha "nnnghnnn..."
             player "Wait, wait! I'm no poacher!"
             pocket_wal "Oh. It's just you, intern."
-            pocket_wal "You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity! THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!"
+            pocket_wal "{cps=*2}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity!{/cps} {cps=*3}THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! {/cps} {cps=*5}Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!{/cps}"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
             n "You can't even squeak out your last words because Wal NO.2 the yapper is drowning you out."
@@ -236,11 +259,14 @@ label day_event_aikha_flair:
             pocket_wal "I will occupy them while you will go retrieve an emergency snack."
             pocket_wal "It's behind the mirror, push past it and you'll see a safe." 
             hide pocket_wal
+            show bg aikha office leave
             show soundwave onlayer top:
                 alpha 1.0
             show layer master:
                 shake(persist=15.0, preset="rumble")
             n "You run amidst Dr. Aikha and Pocket Wal's screeching match."
+            show bg aikha office leave:
+                zoom 2.0
             # safe cg here
             n "Thankfully you find the safe. Now you just have to open it."
             # uh discuss and design minigame? like asking you silly foundation lore questions? or solving actual puzzles?
@@ -266,8 +292,8 @@ label day_event_aikha_flair:
                 show soundwave onlayer top
                 firewal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 
-                #idk should we bother swapping backgrounds
-                #bg should be back towards the office where dr ai and smal are
+                show bg aikha office dark close:
+                    zoom 1.0
                 n "You scoop up the pile of... stuff and toss it onto the freshly vacuumed carpet... sorry janitors!" 
                 show soundwave onlayer top:
                     alpha 1.0
@@ -292,11 +318,13 @@ label day_event_aikha_flair:
                 n "The Pocket Wal hops down and shoves you out of the door with surprising strength."
                 hide aikha
                 n "You have a feeling you won't be coming back here anytime soon."
+                $ update_character_points({"aikha": -1})
 
             return
 
         label reason:
-            n "You should probably apologise. Although that won't get rid of the role in their head."
+            n "You should probably apologise. Although that won't get rid of the hole in their head."
+            show bg aikha office dark close
             player "Dr. Aikha! I'm so sorry! Please wake up!"
             player "I didn't mean to, I thought you were a man-eating anomaly..."
             aikha "{sc}IIEIAAIIIEEEAAAAAAAAA{/sc}"
@@ -332,17 +360,17 @@ label day_event_aikha_flair:
             show aikha neutral
             aikha "Can't do this on an empty 'stomach'."
             aikha "One moment."
-            show aikha flairup2
+            show aikha unique
             n "They hold onto your stub of a forearm. You close your eyes unable to stomach what will happen next."
             # black screen cg
             show haze red onlayer top:
                 alpha 0.5
-                linear 1 alpha 0
+                linear 1.5 alpha 0
             show layer master:
                 blur 30
                 linear 1.5 blur 0
-            hide haze red onlayer top
             n "You hear squelching noises, as if something is being grown right in front of you."
+            hide haze red onlayer top
             # slight shake of text box temp?
             n "Something is jammed into your stub and you feel all the vicera and nerves connect to something."
             n "You desperately clench your left hand to comfort yourself."

@@ -65,6 +65,7 @@ label day_event_fire:
     n "You might have a hunch as to where your tour guide went..."
     show aikha neutral at disappear
     show firewal pensive at disappear
+    show bg meeting hall
     n "You rush to the source of the sound, with Dr. Aikha and Dr. Firewal casually trailing behind you."
     show aikha neutral at appear(x_align = 0.33)
     show firewal neutral at appear(x_align = 0.33)
@@ -72,7 +73,7 @@ label day_event_fire:
 # Add a bright overlay plus maybe a photo of a fire
     n "You stop in front of a blazing inferno."
     uriel_unknown "How do you not know what a birth certificate is?"
-# Conference room scene
+    show bg 
     show aikha neutral at disappear
     show firewal neutral at disappear
     show uriel panic

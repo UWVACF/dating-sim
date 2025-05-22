@@ -175,7 +175,7 @@ image bg meeting room = "images/bgs/misc/meeting room.png"
 
 image bg aikha office = "images/bgs/aikha office/ai office.png"
 image bg aikha office close = "images/bgs/aikha office/ai office close.png"
-image bg aikha office close dark = "images/bgs/aikha office/ai office close dark.png"
+image bg aikha office dark close = "images/bgs/aikha office/ai office dark close.png"
 image bg aikha office dark= "images/bgs/aikha office/ai office dark.png"
 image bg aikha office leave= "images/bgs/aikha office/ai office leave.png"
 
