@@ -107,7 +107,7 @@ label day_event_didnt_do_it:
         alex "Take them away to the confinement room! We shall hold a fair trial later to bring justice to my dear twin sister!"
         n "Two wals come into the room and start to drag Dr. Deceased away by their arm."
         n "Dr. Deceased tries to put up a fight. They swing their arms at the wals and kick them."
-    n "Unfortunately, the wals are made of hard metals."
+        n "Unfortunately, the wals are made of hard metals."
         n "Dr. Deceased's arms and legs break off from the impact. The wals carry their scattered remains away, while Dr. Deceased's head curses them with the curse of the nile."
         someone "What a tragedy this is. I'm sorry you have to witness this, [player_name]."
         player "...Yea, I was so startled."
