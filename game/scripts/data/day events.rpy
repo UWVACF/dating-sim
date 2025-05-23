@@ -119,7 +119,7 @@ init python:
             tags=["work"],
         ), 
         Event(
-            label="aikha_flair",
+            label="aikha_flare",
             personnel=["aikha"],
             tags=["personnel", "incident"],
         ), 

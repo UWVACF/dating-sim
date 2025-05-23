@@ -1,13 +1,13 @@
 image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
-image aikha flairup1 = Image("images/personnel/aikha/aikha flairup1.png", sprite_highlight("aikha"))
-image aikha flairup2 = Image("images/personnel/aikha/aikha flairup2.png", sprite_highlight("aikha"))
+image aikha flareup1 = Image("images/personnel/aikha/aikha flareup1.png", sprite_highlight("aikha"))
+image aikha flareup2 = Image("images/personnel/aikha/aikha flareup2.png", sprite_highlight("aikha"))
 image haze black= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 image soundwave = Image("images/day events/soundwave overlay.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
 
 transform dummy:
     alpha 1.0
 
-label day_event_aikha_flair:
+label day_event_aikha_flare:
 
     transform bobbing(duration = 0.1):
         block:
@@ -41,18 +41,18 @@ label day_event_aikha_flair:
         linear 1.5 alpha 0.2
     player "I've delivered the old cases to the archives as you've asked, Dr. Aikha."
     scene bg aikha office dark
-    show aikha flairup1
-    show aikha flairup1 at bobbing()
+    show aikha flareup1
+    show aikha flareup1 at bobbing()
     pause 0.5
     player "Here are the trial records you wanted."
     player "Can I go home now?"
     scene bg aikha office dark close
-    show aikha flairup1
-    show aikha flairup1 at bobbing()
+    show aikha flareup1
+    show aikha flareup1 at bobbing()
     aikha "..."
     player "Dr. Aikha?"
     aikha "..."
-    show aikha flairup1 at bobbing(duration = 0.3)
+    show aikha flareup1 at bobbing(duration = 0.3)
     player "Helloooo?"
     aikha "..."
     show haze black onlayer top:
@@ -62,8 +62,8 @@ label day_event_aikha_flair:
     n "Its defining traits?" 
     n "It can't speak and shows odd behavior patterns."
     scene bg aikha office dark
-    show aikha flairup1
-    show aikha flairup1 at bobbing(0.3)
+    show aikha flareup1
+    show aikha flareup1 at bobbing(0.3)
     show haze black onlayer top:
         linear 1.5 alpha 0.8
     show aikha:
@@ -71,9 +71,9 @@ label day_event_aikha_flair:
     n "I mean... It could just be paranoia..."
     n "But... it did inexplicably go missing."
     n "And from what you've heard, Dr. Aikha is pretty injury prone."
-    show aikha flairup2
+    show aikha flareup2
     n "Huh. Its looking right at you, isn't it?"
-    show aikha flairup2:
+    show aikha flareup2:
         linear 5 zoom 1.3
     n "It approaches."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
@@ -171,7 +171,7 @@ label day_event_aikha_flair:
             linear 0.4 alpha 1.0
         n "..."
         show bg aikha office dark close
-        show aikha flairup1:
+        show aikha flareup1:
             zoom 1.3
             easein 0.05 zoom 1
         n "The entity stumbles back and writhes in pain." 

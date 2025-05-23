@@ -40,7 +40,7 @@ label day_event_ethics_presentation:
     show black_screen:
         linear 2.0 alpha 0.0
     chan "...this includes not shooting your fellow coworkers. As well..."
-    n "You hear Dr. Helco furiously scribbling behind you."
+    n "You hear someone furiously scribbling behind you."
     show helco at appear(x_align = 0.0)
     helco "{size=[helco_text_downsize]}(Do not...shoot...coworkers...I wonder why?){/size}"
     show helco at disappear
@@ -49,7 +49,7 @@ label day_event_ethics_presentation:
         linear 4.0 alpha 1.0
     n "You're losing your fight for consciousness."
     hide helco
-    n "Just as you're about to give in, you hear a frantic voice and the sound of running."
+    n "Just as you're about to give in, you hear a panicked voice and the sound of a chase."
     show black_screen:
         linear 0.7 alpha 0.0
     aikha "Hey! Pochi! Stop!"
@@ -71,7 +71,7 @@ label day_event_ethics_presentation:
         xalign -0.5
     show aikha at run_right
     
-    aikha "Stawp! STAWP!!!{w=0.3}"
+    aikha "Stawp! STAWP!!!"
     chan "Furthermore- Dr. Aikha, do you mind?"
     
     show aikha:
@@ -114,7 +114,7 @@ label day_event_ethics_presentation:
     chan "I'm going to get a new projector."
     n "You can't help but feel a bit bad. Just a little."
     n "You decide to try helping Dr. Chan out by becoming an exemplary audience member."
-    $ correct_answers = 0
+    $ ethics_presentation_correct_answers = 0
 
     show ethics_slide 3:
         xalign 0.5
@@ -126,15 +126,15 @@ label day_event_ethics_presentation:
         xzoom 1.0
     show chan at move_to(x_align = 1.0, duration = 1.4)
         
-    n "After he sets up the new projector, you decide to ask:"
+    n "As he sets up the new projector, you decide to ask:"
     player "Dr. Chan, what were you saying about the IRS?"
     n "You see his eyes light up slightly."
-    chan "That's right. As I was saying..."
+    chan "That's right. The IRS..."
     show black_screen:
         alpha 0.0
         linear 3.0 alpha 1.0
     n "Despite your efforts, you feel yourself dozing off yet again."
-    n "So much for being exemplary..."
+    n "\"Exemplary\", you said..."
     show ethics_slide 4
     show black_screen:
         alpha 1.0
@@ -147,7 +147,7 @@ label day_event_ethics_presentation:
     
     chan "On that note, can anybody tell me what the IRS stands for?"
     n "You remember the decision you made 40 seconds ago and meekly raise your hand."
-    n "Dr. Chan's eyes light up slightly more."
+    n "Dr. Chan's eyes light up a bit more."
     chan "Yes, [player_name]?"
     menu:
         chan "What does the IRS stand for?"
@@ -157,7 +157,7 @@ label day_event_ethics_presentation:
             chan "Not quite."
         "Internal Revenue Service":
             chan "Correct."
-            $ correct_answers += 1
+            $ ethics_presentation_correct_answers += 1
         "I'm Really Sleepy":
             chan "..."
             chan "Please try to pay attention."
@@ -175,16 +175,16 @@ label day_event_ethics_presentation:
         alpha 1.0
         linear 4.0 alpha 0.0
     
-    chan "...which, naturally, brings us to the Declaration of Independence. Who can tell me which president first drafted this?"
+    chan "...which, naturally, brings us to the Declaration of Independence. Who can tell me which US president first drafted this document?"
     menu:
         n "You don't want to question the line of reasoning that brought him here. Who drafted the Declaration of Independence?"
-        "George Washington":
+        "Thomas Edison":
             chan "Not exactly."
         "Abraham Lincoln":
             chan "Not exactly."
         "Thomas Jefferson":
             chan "Perfect."
-            $ correct_answers += 1
+            $ ethics_presentation_correct_answers += 1
         "Al Capone":
             chan "..."
     chan "It was Thomas Jefferson who initially drafted the Declaration of Independence on July 4th, 1776."
@@ -209,7 +209,7 @@ label day_event_ethics_presentation:
             chan "Wrong."
         "That Hamlet holds a skull during his \"To be or not to be\" soliloquy - he does not":
             chan "Excellent."
-            $ correct_answers += 1
+            $ ethics_presentation_correct_answers += 1
         "That Hamlet is the Prince of Denmark - he's actually the Prince of Norway":
             chan "Wrong."
         "That Hamlet's father was poisoned in his garden - he was actually poisoned in his bed":
@@ -226,22 +226,22 @@ label day_event_ethics_presentation:
     show chan at move_to(x_align = 0.5)
     chan "[player_name], I would like a word, please."
 
-    if correct_answers < 2:
+    if ethics_presentation_correct_answers < 2:
         chan "I appreciate that you...attempted to answer my questions."
     else:
         chan "I appreciate that you answered my questions."
     
-    if correct_answers >= 2:
+    if ethics_presentation_correct_answers >= 2:
         chan "It's a breath of fresh air to see someone actually realize the importance of ethics."
     
     chan "I hope you found something useful from the presentation today."
 
-    if correct_answers == 0:
+    if ethics_presentation_correct_answers == 0:
         n "You feel closer with Dr. Chan...is what you would say if you had gotten a single one of his questions correct."
-    elif correct_answers < 3:
-        n "You feel a bit closer with Dr. Chan."
+    elif ethics_presentation_correct_answers < 3:
+        n "For someone dozing off during the presentation, you feel like you didn't do too bad on the questions."
         $ update_character_points({"chan": 1})
     else:
-        n "You feel closer with Dr. Chan."
+        n "Despite being half awake during the presentation, you managed to answer his questions flawlessly. What a prodigy you are!"
         $ update_character_points({"chan": 2})
     return
