@@ -1,8 +1,8 @@
-image overlay_ai_1 = Image("images/day events/overlay ai 1.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
-image aikha flareup1 = Image("images/personnel/aikha/aikha flareup1.png", sprite_highlight("aikha"))
-image aikha flareup2 = Image("images/personnel/aikha/aikha flareup2.png", sprite_highlight("aikha"))
-image haze black= Image("images/day events/red blur.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
-image soundwave = Image("images/day events/soundwave overlay.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image overlay_ai_1 = At("images/day events/overlay ai 1.png", base_overlay_transform)
+image aikha flareup1 = At("images/personnel/aikha/aikha flareup1.png", sprite_highlight("aikha"))
+image aikha flareup2 = At("images/personnel/aikha/aikha flareup2.png", sprite_highlight("aikha"))
+image haze black= At("images/day events/red blur.png", base_overlay_transform)
+image soundwave = At("images/day events/soundwave overlay.png", base_overlay_transform)
 
 transform dummy:
     alpha 1.0
@@ -340,9 +340,9 @@ label day_event_aikha_flare:
             show layer master:
                 blur 30
             n "The pain reaches your brain before the realization does."
-            n "You feel yourself hyperventilating as every muscle in your body seemingly begins to throb."
+            n "You feel yourself hyperventilating as every muscle in your body begins to throb."
             n "You watch in horror as Dr. Aikha assimilates the arm into their mass."
-            n "...surely this is covered in the employee insurance plan, right?"
+            n "...Surely this is covered in the employee insurance plan, right?"
             n "After the arm completely dissolves, the mass rapidly reforms into the familiar shape of Dr. Aikha."
             show aikha sad
             aikha "Ughhh. My... head..."
@@ -361,7 +361,7 @@ label day_event_aikha_flare:
             aikha "Can't do this on an empty 'stomach'."
             aikha "One moment."
             show aikha unique
-            n "They hold onto your stub of a forearm. You close your eyes unable to stomach what will happen next."
+            n "They hold onto your stub of a forearm. You close your eyes, unable to stomach what will happen next."
             # black screen cg
             show haze red onlayer top:
                 alpha 0.5
@@ -375,16 +375,16 @@ label day_event_aikha_flare:
             n "Something is jammed into your stub and you feel all the vicera and nerves connect to something."
             n "You desperately clench your left hand to comfort yourself."
             n "Wait. Left hand?"
-            n "You look down to find you now have two arms again. However, your left arm is scarred with purple, root-like structures. "
+            n "You look down and find that you now have two arms again. However, your left arm is scarred with purple, root-like structures. "
             aikha "There, all fixed! Don't worry about the artifacts, it'll turn 'normal' in a few days!"
-            aikha "I don't blame you too too much, I guess."
-            aikha happy "Was gonna reprimand you for entering my office without permission and shooting me, but it seems you already learnt you lessson, eh?"
+            aikha "I don't blame you {i}too{/i} too much, I guess."
+            aikha happy "Was gonna reprimand you for entering my office without permission and shooting me, but it seems you already learned you lessson, eh?"
             aikha "Heheh."
             aikha "..."
-            aikha "I advise you refrain from that."
+            aikha "I advise you refrain from doing that again."
             hide aikha
 
-            scene hallway
+            scene bg hallway
             n "You re-emerge into the hallway with your brand new arm."
             n "Maybe you should refrain from playing with guns in the future."
             return

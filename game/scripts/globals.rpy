@@ -182,8 +182,15 @@ image bg aikha office leave= "images/bgs/aikha office/ai office leave.png"
 
 # cgs will be defined in the respective event rpy
 
-# other images
+# other images and transforms related to them
 image black_screen = Solid("#000000", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0) # for fade to black 
+
+# the basic transform for 2120 x 1280 overlays
+transform base_overlay_transform:
+    xanchor 0.0
+    yanchor 0.0
+    xpos -100
+    ypos -100
 
 transform white_to_red:
     matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
@@ -197,8 +204,8 @@ transform white_to_black:
 transform white_to_orange:
     matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
 
-image haze white = Image("images/day events/haze white.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
-image haze white strong = Image("images/day events/haze white strong.png", xpos = -100, ypos = -100, xanchor = 0.0, yanchor = 0.0)
+image haze white = At("images/day events/haze white.png", base_overlay_transform)
+image haze white strong = At("images/day events/haze white strong.png", base_overlay_transform)
 image haze red = At("haze white", white_to_red)
 image haze red strong = At("haze white strong", white_to_red)
 image haze green = At("haze white", white_to_green)
@@ -271,6 +278,7 @@ transform move_to(x_align = 0.5, duration = default_move_time):
 #   preset: sets predefined values of duration and strength. will override duration and strength if set. can be set to:
 #       "strong"
 #       "weak"
+#       "rumble" (recommended if persist)
 #   persist: how long the shake will last WITHOUT DIMINISHING. happens at the start of the shake, and does not run down duration time
 # example:
 #   show layer master at shake(duration = 3.0, strength = 10.0, persist = 1.0)
@@ -308,7 +316,5 @@ init python:
                 trans.xoffset = self.strength * factor * (renpy.random.choice([-1, 1])) 
                 trans.yoffset = self.strength * factor * (renpy.random.choice([-1, 1]))
                 return 0
-
-
 
 define default_fade = Fade(1.0, 1.0, 1.0)
