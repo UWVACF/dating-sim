@@ -1,8 +1,8 @@
 label day_event_didnt_do_it:
-    define tne_defendant = True
-    define tne_chan_backup = False
-    define hampeter_witness = False
-    define plague_mask = False
+    $ tne_defendant = True
+    $ tne_chan_backup = False
+    $ hampeter_witness = False
+    $ plague_mask = False
     scene bg lounge
     n "It's lunch break and you're hungry."
     n "You march into the lounge kitchenette. Today you even brough a whole lettuce to include in your sandwich. Healthy!"
@@ -25,7 +25,7 @@ label day_event_didnt_do_it:
             n "A plague doctor mask falls out and its beak stabs you on the head. Ouch."
             n "Who left their hat here??? How irrisponsible."
             n "You shove it back into the cabinet for it to hit the next unfortunate person who opens it."
-            plague_mask = True
+            $ plague_mask = True
             jump choice_loop
 
         label drawers:
@@ -48,7 +48,7 @@ label day_event_didnt_do_it:
             hide hampter
             n "Hampter turns around and begins shoo mimimiming."
             n "You shut the door gently."
-            hampeter_witness = True
+            $ hampeter_witness = True
             jump choice_loop
 
         label open_fridge:
@@ -111,8 +111,8 @@ label day_event_didnt_do_it:
         n "Out of the corner of your eye, you see Dr. Chan and Ethy amongst the crowd of people."
         n "Dr. Chan looks deep in thought, while Ethy gives you a thumbs up with a wide grin."
         $ update_character_points({"chan": 1})
-        tne_defendant = True
-        tne_chan_backup = True
+        $ tne_defendant = True
+        $ tne_chan_backup = True
         jump ddi_jail
         return
 
@@ -120,8 +120,8 @@ label day_event_didnt_do_it:
     label ddi_lie:
         n "still working on it"
         $ update_character_points({"chan": -1})
-        tne_defendant = True
-        tne_chan_backup = False
+        $ tne_defendant = True
+        $ tne_chan_backup = False
         return
 
     label ddi_deflect: #immediatly carries out trial, no jailing even (for failure)
@@ -184,8 +184,8 @@ label day_event_didnt_do_it:
             hide helco
             n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the wals has confiscated the knife as evidence for the murder."
             n "Guess you're not getting your greens in today."
-            tne_defendant = False
-            tne_chan_backup = False
+            $ tne_defendant = False
+            $ tne_chan_backup = False
             return
 
 
@@ -218,8 +218,8 @@ label day_event_didnt_do_it:
             n "He picks you up and throws you over his metallic shoulders an carry you off like a stack of potatoes."
             hide firewal
             $ update_character_points({"deceased": -1})
-            tne_defendant = True
-            tne_chan_backup = False
+            $ tne_defendant = True
+            $ tne_chan_backup = False
             return
 
         label ddi_poor_argument:
@@ -227,8 +227,8 @@ label day_event_didnt_do_it:
             n "On the way out of the lounge, you stare resentfully Dr. Deceased who looks satisfied with winning this debate. You swear you can feel their grin underneath their large beak."
             n "They caught you staring and attempts to made a face at you. But of course you can't see it because all you see is a mocking plague doctor mask."
             $ update_character_points({"deceased": 1})
-            tne_defendant = True
-            tne_chan_backup = False
+            $ tne_defendant = True
+            $ tne_chan_backup = False
             return
 
         
