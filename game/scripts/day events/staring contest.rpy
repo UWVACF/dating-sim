@@ -47,13 +47,13 @@ label day_event_staring_contest:
     menu:
         n "Well?"
         "Let Dr. Aikha grow you a fresh pair of eyes.":
-            jump grow_more
+            jump sc_grow_more
         "Let Dr. Lee douse your eyes in radiation.":
-            jump irradiate
+            jump sc_irradiate
         "Ask to judge.":
-            jump judge
+            jump sc_judge
     
-    label grow_more:
+    label sc_grow_more:
         n "Surely having more eyes is always a good thing."
         aikha "Ready? Here goes!"
         n "Dr. Aikha holds out their hand and conjures a pair of grotesque eyes."
@@ -142,7 +142,7 @@ label day_event_staring_contest:
         $ update_character_points({"aikha": 2, "lee": 1})
         return
 
-    label irradiate:
+    label sc_irradiate:
         n "Surely blasting your eyes with a lethal dose of radiation won't be detrimental to your health."
         n "Wait. Lethal?{w=0.2}"
         lee "Here goes!"
@@ -181,11 +181,11 @@ label day_event_staring_contest:
         menu:
             n "What's your game plan?"
             "Battle valiantly for honour, with no regard for your personal wellbeing.":
-                jump fight
+                jump sc_fight
             "Pretend to put up a fight but lose so you can go back to normal faster.":
-                jump give_up
+                jump sc_give_up
         
-        label fight:
+        label sc_fight:
             n "You gaze intensely at Dr. Lee through the wall. They do the same back."
             n "A minute passes. You can feel your eyes straining, while Dr. Lee shows no signs of faltering."
             show haze red zorder 50 onlayer top:
@@ -223,9 +223,9 @@ label day_event_staring_contest:
             show black_screen zorder 50:
                 alpha 1.0
                 linear 2.0 alpha 0.0
-            jump lee_conclusion
+            jump sc_lee_conclusion
             
-        label give_up:
+        label sc_give_up:
             n "You gaze halfheartedly at Dr. Lee through the wall. They do the same back."
             lee "Heya!"
             n "After a minute passes, you decide it's about time to end it. You blink."
@@ -242,7 +242,7 @@ label day_event_staring_contest:
             hide aikha
             hide lee
 
-        label lee_conclusion:
+        label sc_lee_conclusion:
             show aikha neutral:
                 xalign 0.33
                 yalign 1.0
@@ -263,7 +263,7 @@ label day_event_staring_contest:
             $ update_character_points({"lee": 2, "aikha": 1})
             return
 
-    label judge:
+    label sc_judge:
         player "What if I just judged?"
         aikha "Mmmmmmmmm FIIIIIIIIINE."
         aikha "'Alright with you, CT?"

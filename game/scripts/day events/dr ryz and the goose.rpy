@@ -29,59 +29,59 @@ label day_event_dr_ryz_and_the_goose:
     n "You're not sure how you're supposed to open the door. You don't exactly have the passcode."
     roose "Honk honk hooonk! Honk! Honk!"
     n "...Seems like the goose doesn't care. Might as well punch a random code in."
-    $ times_tried = 0
+    $ dratg_times_tried = 0
     label enter_passcode:
-        $ numbers_entered = 0
-        $ code = ""
+        $ dratg_numbers_entered = 0
+        $ dratg_code = ""
         while numbers_entered < 5:
             menu:
-                n "You've entered: [code]{fast}"
+                n "You've entered: [dratg_code]{fast}"
                 "Up":
-                    $ numbers_entered += 1
-                    $ code += "U"
+                    $ dratg_numbers_entered += 1
+                    $ dratg_code += "U"
                 "Left":
-                    $ numbers_entered += 1
-                    $ code += "L"
+                    $ dratg_numbers_entered += 1
+                    $ dratg_code += "L"
                 "Down":
-                    $ numbers_entered += 1
-                    $ code += "D"
+                    $ dratg_numbers_entered += 1
+                    $ dratg_code += "D"
                 "Right":
-                    $ numbers_entered += 1
-                    $ code += "R"
+                    $ dratg_numbers_entered += 1
+                    $ dratg_code += "R"
         
-        n "You enter [code]."
+        n "You enter [dratg_code]."
         
-        $ correct_code = "DLRUD"
-        if code != correct_code and times_tried < 20:
+        $ dratg_correct_code = "DLRUD"
+        if dratg_code != dratg_correct_code and dratg_times_tried < 20:
             n "The door doesn't open."
             python:
                 goose_reply = ""
-                for i, letter in enumerate(code):
-                    if letter == correct_code[i]:
+                for i, letter in enumerate(dratg_code):
+                    if letter == dratg_correct_code[i]:
                         goose_reply += "Honk! "
                     else:
                         goose_reply += "Hiss! "
             
             roose "[goose_reply]"
 
-            if times_tried == 0:
+            if dratg_times_tried == 0:
                 n "Is the goose giving you feedback on your guess?"
-            elif times_tried == 7:
+            elif dratg_times_tried == 7:
                 n "It looks like it's commenting on when you get a letter right or wrong."
-            elif times_tried >= 15:
+            elif dratg_times_tried >= 15:
                 n "Seems like a \"honk\" is a correct letter and a \"hiss\" is an incorrect one."
-            $ times_tried += 1
+            $ dratg_times_tried += 1
             jump enter_passcode
 
         else:
-            if times_tried >= 20:
+            if dratg_times_tried >= 20:
                 n "The door doesn't open."
                 n "The goose, fed up with your incompetence, angrily jumps onto your shoulder."
-                n "Its nails dig into your collarbone as it frustratedly types in the combination \"[correct_code]\"."
+                n "Its nails dig into your collarbone as it frustratedly pecks in the combination \"[dratg_correct_code]\"."
 
             n "The door unlocks!"
 
-            if times_tried >= 20:
+            if dratg_times_tried >= 20:
                 n "...No thanks to you."
                 
     
@@ -111,27 +111,27 @@ label day_event_dr_ryz_and_the_goose:
     player "I'll be off, then."
     n "As you turn to leave, Dr. Ryz calls you once more."
     ryz "Say, what was the combination to the door?"
-    if times_tried < 20:
-        $ numbers_entered = 0
-        $ code = ""
+    if dratg_times_tried < 20:
+        $ dratg_numbers_entered = 0
+        $ dratg_code = ""
         while numbers_entered < 5:
             menu:
-                n "The door combination was: [code]{fast}"
+                n "The door combination was: [dratg_code]{fast}"
                 "Up":
                     $ numbers_entered += 1
-                    $ code += "U"
+                    $ dratg_code += "U"
                 "Left":
                     $ numbers_entered += 1
-                    $ code += "L"
+                    $ dratg_code += "L"
                 "Down":
                     $ numbers_entered += 1
-                    $ code += "D"
+                    $ dratg_code += "D"
                 "Right":
                     $ numbers_entered += 1
-                    $ code += "R"
+                    $ dratg_code += "R"
         
-        player "It was [code]."
-        if code == correct_code:
+        player "It was [dratg_code]."
+        if dratg_code == dratg_correct_code:
             ryz "Oh, nice. You remembered."
             ryz "I've been meaning to change it, but I forgot the old code. I owe you one."
             roose "Honk!!"

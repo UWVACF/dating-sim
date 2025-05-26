@@ -72,30 +72,30 @@ label day_event_aikha_flare:
     n "But... it did inexplicably go missing."
     n "And from what you've heard, Dr. Aikha is pretty injury prone."
     show aikha flareup2
-    n "Huh. Its looking right at you, isn't it?"
+    n "Huh. It's looking right at you, isn't it?"
     show aikha flareup2:
         linear 5 zoom 1.3
     n "It approaches."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
 
-    show screen qte (act=Jump("ahoot"), time=5.0, hidden=True)
+    show screen qte (act=Jump("af_shoot"), time=5.0, hidden=True)
 
     menu:
         n "You pull out your company issued gun."
         "Shoot":
             hide screen qte
-            jump ahoot
+            jump af_shoot
         "Shoot":
             hide screen qte
-            jump ahoot
+            jump af_shoot
         "Shoot" (on_hover = "Wait"):
             hide screen qte
-            jump wait
+            jump af_wait
         "Shoot":
             hide screen qte
-            jump ahoot 
+            jump af_shoot 
 
-    label wait:
+    label af_wait:
         n "You fight your trigger finger, deciding to exercise restraint."
         n "I mean, if your judgement is wrong then you'd be shooting a department head."
         n "What you hope is Dr. Aikha stops in place and reaches a tendril towards you."
@@ -134,13 +134,13 @@ label day_event_aikha_flare:
         n "Seems like an awfully advanced pocket watch..."
         aikha "Sorry, [player_name]. I was supposed to meet you a while ago."
         aikha "Did you finish everything I ask-"
-        n "Dr. Aikha stops mid question after noticing the papers in their hand."
+        n "Dr. Aikha stops mid-question after noticing the papers in their hand."
         aikha "Mmm."
         n "They also notice the gun in your hand."
         aikha "Hm."
         player "Ah- uh I was just uh... practicing open-carry..."
         n "Their eyes stare through you."
-        aikha "Well your heart rate looks pretty high."
+        aikha "Well, your heart rate looks pretty high."
         aikha "I'm... sorry you had to see me like that."
         player "I'm sorry for almost shooting you!"
         aikha "It's understandable. I look a little... off when I'm relaxing my form."
@@ -151,18 +151,21 @@ label day_event_aikha_flare:
         n "Relatable."
         aikha "And sometimes you melt so much you end up completely losing shape and giving full control to muscle memory."
         n "Slightly less so..."
-        aikha "Regardless. Thanks for giving it a second thought before shooting me."
+        aikha "Regardless, thanks for giving it a second thought before shooting me."
         aikha "I'll drop off a gift to you later as compensation for your time. Next time just give the papers to one of my assistants, personnel, or just leave it at my door."
         n "Huh, you were so excited to leave, you forgot those were all options."
         hide aikha
         scene hallway
+        # idk about this part bc if each event is a day we shouldn't have an event jump to the next day
+        # we can keep the joke with a different delivery
         n "The next day you find a gold bar at your desk."
         n "There seems to be a clear disparity between how you're paid and how heads are paid..."
         n "Not that you're complaining at this moment!"
         n "You can pay rent!"
         $ update_character_points({"aikha": 1})
         return
-    label ahoot:
+
+    label af_shoot:
         show layer master:
             shake
         n "You shoot without hesitation."
@@ -194,13 +197,13 @@ label day_event_aikha_flare:
         #show aikha unique:
         menu:
             n "Quick! What to do!?"
-            "Steal the wallet":
-                jump swipe_id
-            "Try to reason":
-                jump reason
+            "Steal the wallet.":
+                jump af_swipe_id
+            "Try to reason.":
+                jump af_reason
 
-        label swipe_id:
-            "You instinctly steal the wallet in hopes that their Path-Para ID is in there and you can use it to escape the room... or at least get some cash. "
+        label af_swipe_id:
+            "You instinctively steal the wallet in hopes that their Path-Para ID is in there and you can use it to escape the room... or at least get some cash. "
             show aikha unique: 
                 linear 0 zoom 1
                 move_to(x_align = 0.2)
@@ -322,7 +325,7 @@ label day_event_aikha_flare:
 
             return
 
-        label reason:
+        label af_reason:
             n "You should probably apologise. Although that won't get rid of the hole in their head."
             show bg aikha office dark close
             player "Dr. Aikha! I'm so sorry! Please wake up!"

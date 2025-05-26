@@ -13,7 +13,7 @@ label day_event_the_bingo_card_1:
     aikha "Hold on, [player_name]."
     player "What's going on?"
     aikha "We're playing Ryz's bingo. Everyone's... uh... really into it, heh..."
-    aikha "One wrong move could incite mass pandemonium among the players."
+    aikha "One wrong move could cause chaos among the players."
     n "You quickly glance at Founder Alex's bingo sheet. The sheet is filled with goals like...\"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
     n "...How often does someone do a backflip here?"
     n "You glance up and see his eyes fixated on a mug in the corner that reads, \"#1 BINGO Player.\" So that's why he's in this."
@@ -70,13 +70,13 @@ label day_event_the_bingo_card_1:
         n "Flames begin to swirl around his fist. That feels a little extra."
         wal387 "REMINDER:\nIn the event that {i}Wal No.387{/i} fails-"
         ryz "Don't listen to him! I need you to do a backflip. Here, I can give you...4 dollars and 35 cents."
-        alex "[player_name], I will kindly tell you now: if you don't down this pot of coffee right this instant, I will revoke your position at VAC Foundation, effective immediately." 
+        alex "[player_name], I will kindly tell you this: if you don't down this pot of coffee right this instant, I will revoke your position at VAC Foundation, effective immediately." 
         n "Plutoes throws a sign at you that reads:"
         plutoes "Eat your walet nd i will give you a skatboard - signed plutoes{fast}"
         n "Five people are watching you intensely. Two are threatening you, two are bribing you, and one just wants peace."
         
         menu:
-            n "Tread carefully."
+            n "Choose wisely."
             "Get punched by Wal No.387.":
                 jump punch
             "Do a backflip.":
@@ -91,10 +91,10 @@ label day_event_the_bingo_card_1:
         n "Wal No.387 cracks his robotic knuckles, the fire around his fist turning blue."
         wal387 "Your cooperation is greatly apprec-"
         n "Out of nowhere, he gets hit by a sofa thrown by Founder Alex."
-        n "The sofa knocks him over and spontaneously combusts."
+        n "He tumbles to the floor, and the fire he was conjuring causes the sofa to spontaneously combust."
         n "As the fire alarm blares, you see Plutoes check his card and grin happily."
         n "He makes his way over to Dr. Aikha, who sighs and says something you can't quite make out."
-        n "Still grinning ear to ear, Plutoes walks over to the \"#1 BINGO\" mug."
+        n "Still maintaining his signature grin, Plutoes walks over to the \"#1 BINGO\" mug."
         n "Meanwhile, Dr. Ryz has gotten a fire extinguisher and put out the sofa fire."
         ryz "Are we all good?"
         n "You glance around the room. Your eyes lock onto Founder Alex, who's on his hands and knees on the floor."

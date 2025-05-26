@@ -183,7 +183,6 @@ image bg aikha office leave= "images/bgs/aikha office/ai office leave.png"
 # cgs will be defined in the respective event rpy
 
 # other images and transforms related to them
-image black_screen = Solid("#000000", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0) # for fade to black 
 
 # the basic transform for 2120 x 1280 overlays
 transform base_overlay_transform:
@@ -191,6 +190,7 @@ transform base_overlay_transform:
     yanchor 0.0
     xpos -100
     ypos -100
+
 
 transform white_to_red:
     matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
@@ -203,6 +203,11 @@ transform white_to_black:
 
 transform white_to_orange:
     matrixcolor Matrix([1.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
+image black_screen = Solid("#000000", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0) # for fade to black 
+image white_screen = Solid("#ffffff", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0)
+image yellow_screen = Solid("#fff41d", xsize = 2020, ysize = 1180, xpos = -50, ypos = -50, xanchor = 0.0, yanchor = 0.0)
+
 
 image haze white = At("images/day events/haze white.png", base_overlay_transform)
 image haze white strong = At("images/day events/haze white strong.png", base_overlay_transform)
@@ -305,7 +310,6 @@ init python:
         
         def __call__(self, trans, shown, anim):
             factor = min(1.0, (self.duration - shown + self.persist) / self.duration) # the factor by which to multiply the shake
-            print((self.duration - shown + self.persist))
             if factor <= 0: # function ended
                 trans.xoffset = 0
                 trans.yoffset = 0

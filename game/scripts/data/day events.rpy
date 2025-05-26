@@ -127,6 +127,7 @@ init python:
             label="didnt_do_it",
             personnel=["uriel", "deceased", "chan"],
             tags=["anomaly"],
+            outro_label="ddi_outro"
         ), 
     ]
 
