@@ -3,20 +3,21 @@ label day_event_didnt_do_it:
     $ tne_chan_backup = False
     $ hampeter_witness = False
     $ plague_mask = False
+    $ tne_syg_backup = False
     scene bg lounge
     n "It's lunch break and you're hungry."
     n "You march into the lounge kitchenette. Today you even brough a whole lettuce to include in your sandwich. Healthy!"
-    n "You realizes that you've forgotten to bring your own knife today."
+    n "You realize that you've forgotten to bring your own knife today."
 
     label choice_loop:
         menu:
             n "There has to be a knife here somewhere, right? Your mouth isn't as big as Pochi's so you can't bite into a sandwich as big as your head."
-            "Check cabinet":
-                jump cabinet
-            "Check the fridge":
-                jump open_fridge
             "Check the drawers":
                 jump drawers
+            "Check the fridge":
+                jump open_fridge
+            "Check cabinet":
+                jump cabinet
             "Check the microwave":
                 jump microwave
             
@@ -62,12 +63,12 @@ label day_event_didnt_do_it:
     n "Huh. It must be rusted. But you won't die from a little bit of rust on your lettuce, surely?"
     n "You turn back towards your sandwich workshop when you hear footsteps behind you."
     deceased "AH!!!!! DR. RALEX!!!!"
-    n "You drop the knife and almost stabbed your toe. You turn around, slighly pissed off."
+    n "You drop the knife and almost stabbed your toe. You turn around, slighly annoyed."
     show deceased surprise 
     deceased "YOU MURDERER!"
     n "Murderer? What are they talking about?"
     # optoinal dead dr. ralex cg
-    n "You bend down to pick up the knife when you saw it. A dead woman right next to your feet, bleeding out a pool of red the same color as the stains on the knife."
+    n "You bend down to pick up your knife when you saw it. A dead woman right next to your feet, bleeding out a pool of red the same color as the stains on the knife."
     n "You were wondering who she is and how can an unauthorize person get in here when Dr. Deceased interuptes your thought." 
     deceased panic "{size=+10}{sc}{b}THERE'S A MURDER!!!{/b}{/sc}{/size}"
     player "Wait, Dr. Deceased-"
@@ -78,8 +79,6 @@ label day_event_didnt_do_it:
         n"How do you defend yourself?"
         "Tell the truth":
             jump ddi_truth
-        "Lie your way out of this":
-            jump ddi_lie
         "Deflect the accusation onto Dr. Deceased":
             jump ddi_deflect
 
@@ -102,8 +101,7 @@ label day_event_didnt_do_it:
         n "You look towards him hopefully. Surely the Great Founder would remain calm and collected in the face of hysteria."
         player "Dr. Alex, you must-"
         alex sad "That's enough."
-        alex "You've murdered my twin sister, [player_name]. (insert deep regret dialogues)"
-        alex sad "Take the culprit away, security!"
+        alex fury "Take the culprit away, security!"
         hide alex 
         hide deceased
         n "Two wals come forward and take you by the arms."
@@ -116,16 +114,10 @@ label day_event_didnt_do_it:
         jump ddi_jail
         return
 
-
-    label ddi_lie:
-        n "still working on it"
-        $ update_character_points({"chan": -1})
-        $ tne_defendant = True
-        $ tne_chan_backup = False
-        return
-
-    label ddi_deflect: #immediatly carries out trial, no jailing even (for failure)
-        player "No, you were probably the one who killed her!"
+    label ddi_deflect:
+        player "No, you were the one who killed her!"
+        ethy "{sc}{size=+10}{b}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!!!{/b}{/size}{/sc}"
+        n "You fight the instinct to cover your ears from the piercing scream you hear in your head."
         player "I bet you came back to clean up, but then ran into me here, so now you're trying to blame me!"
         deceased pensive "Huh." 
         deceased "{i}{size=25}I did forget what I came here for...unless...{/size}{i}"
@@ -134,6 +126,7 @@ label day_event_didnt_do_it:
         jessie surprise "Dr. Deceased, did you really?"
         n "The crowd begin mumbling ans discussing amongst themselves."
         hide jessie
+        $ update_character_points({"chan": -1})
 
         if plague_mask == True:            
             menu: 
@@ -142,22 +135,29 @@ label day_event_didnt_do_it:
                     jump ddi_decease_murderer
                 "Bring up the high casualty rate of Dr. Deceased's department.": # bad argumment, jail ending, deceased is unhappy because you brought up their sore spot
                     jump ddi_bad_argument
-                "second lame argument": #also bad argument jail ending, but gain a point because deceased is happy with winning
+                "Make up a motive for Dr. Deceased to kill.": #also bad argument jail ending, but gain a point because deceased is happy with winning
                     jump ddi_poor_argument
         elif plague_mask == False:
-                # only second and third option, no mask option
-                n "ahahahaha"
+            menu:
+                n "This is a good chance to prove your innocence!" 
+                "Bring up the high casualty rate of Dr. Deceased's department.": # bad argumment, jail ending, deceased is unhappy because you brought up their sore spot
+                    jump ddi_bad_argument
+                "Make up a motive for Dr. Deceased to kill.": #also bad argument jail ending, but gain a point because deceased is happy with winning
+                    jump ddi_poor_argument
 
-        label ddi_decease_murderer: #change this bruh
-            player "How cold-blooded! And you've already forgotten about it this quickly, huh? You must be plenty used to commiting manslaughter!"
+        label ddi_decease_murderer:
+            player "In fact, I have evidence that you've been here!"
+            ethy "{sc}{size=+3}{b}aaaa...?{/b}{/size}{/sc}"
+            n "Despite Ethy's scream trailing off, you can tell that you're not clear of suspicion yet."
+            n "You step over the pool of blood and open the cabinet. The plague mask falls out once again, stabbing you on the head."
             # make "all" gasps here
             n "{i}{size=25}*gasps*{/size}{i}"
-            deceased fury "What utter bullshit are you spilling now??"
-            player "There's a reason why your department has one of the highest employee casualties, doesn't it?"
-            # make "all" gasps here
-            n "{i}*loud gasps*{/i}"
-            deceased panic "nuh uh"
-            player "yuh uh"
+            n "All eyes gaze towards Dr. Deceased."
+            deceased surprise "{i}{size=25}Oh. So that's what I came into the lounge for.{/size}{i}"
+            deceased panic "S- So what? It can belong to anyone!"
+            player "It looks identical to the one you're wearing, Dr. Deceased."
+            deceased "Nuh uh."
+            player "Yuh uh."
             deceased fury "{sc}NUH UH!!{/sc}"
             player "{sc}YUH UH!!{sc}"
             show firewal at appear(x_align = 0.3)
@@ -177,29 +177,28 @@ label day_event_didnt_do_it:
             n "Dr. Deceased's arms and legs break off from the impact. The wals carry their scattered remains away, while Dr. Deceased's head curses them with the curse of the nile."
             show helco at appear(x_align = 0.4)
             helco "What a tragedy this is. I'm sorry for your loss, [player_name]."
-            player "..?"
+            player "...?"
             n "Dr. Helco simply stares into your eyes. Then he seems to remembered something."
             helco surprise "Ah. What I mean is, you must be shocked."
             player "...Yea, I was so startled."
             hide helco
-            n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the wals has confiscated the knife as evidence for the murder."
+            n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the wals have confiscated the knife as evidence for the murder."
             n "Guess you're not getting your greens in today."
             $ tne_defendant = False
             $ tne_chan_backup = False
             return
 
-
-        label ddi_bad_argument: #working on this
+            label ddi_bad_argument: 
             player "How cold-blooded! And you've already forgotten about it this quickly, huh? You must be plenty used to commiting manslaughter!"
             # make "all" gasps here
             n "{i}{size=25}*gasps*{/size}{i}"
             deceased fury "What utter bullshit are you spilling now??"
             player "There's a reason why your department has one of the highest employee casualties, doesn't it?"
-            show chan pensive at appear(x_align=0.7)
+            show chan pensive at appear(x_align=0.8 )
             chan "I must say, [player_name], that doesn't have much to do with the current situation."
             chan "It is also inappropriate to base one's character on groundless spectulations."
             deceased happy "Thank you! Dr. Chan."
-            deceased fury "So you are the bitching type, huh?" #idk how to frame this but basically refering to player as a person who makes up/exaggerates rumors 
+            deceased fury "So you are the bitching type, huh?" #there a word for this but I cannot remember, basically refering to player as a person who makes up/exaggerates rumors 
             deceased "I'll have you know that unlike you, I speak based on facts and evidence!"
             deceased "And I have evidence on why you would kill Dr. Ralex!"
             # make "all" gasps here
@@ -207,37 +206,99 @@ label day_event_didnt_do_it:
             deceased "You wanted to be promoted to a fulltime employee, but Dr. Ralex rejected you!"
             player "Wha-"
             deceased "Which is why in desperation, you took a knife to threaten her! But you're so emotional and not in controled that you accidentally stabbed her and she died!"
-            show firewal at appear(x_align = 0.3)
+            show firewal at appear(x_align = 0.2)
             firewal "Affirmative. My memory module shows that Dr. Ralex specifically stated that the intern [player_name] has asked to meet them here to discuss matters concerning a potential full time offer. This aligns with Dr. Deceased's hypothesis."
             player "That's bullshit! I have never even seen Dr. Ralex before!!!"
             deceased neutral "Tsk tsk, just look at you now. You're clearly emotionally unstable and you're still trying to lie your way out of this."
             hide deceased
             hide chan
-            firewal "INSTRUCTION RECIEVED. THE Wal and the Founder Alex have issued an order: arrest the suspect and prep for a trial immediatly. Executing now."
+            firewal "INSTRUCTION RECIEVED. THE WAL and the Founder Alex have issued an order: arrest the suspect and prep for a trial immediatly. Executing now."
             n "The wal come forward and take you by the arms. You try your best to shove him away from you, but you're no match against the ingenious creations of Dr. Firewal."
             n "He picks you up and throws you over his metallic shoulders an carry you off like a stack of potatoes."
             hide firewal
             $ update_character_points({"deceased": -1})
             $ tne_defendant = True
             $ tne_chan_backup = False
+            jump ddi_jailtwo
             return
 
         label ddi_poor_argument:
-
-            n "On the way out of the lounge, you stare resentfully Dr. Deceased who looks satisfied with winning this debate. You swear you can feel their grin underneath their large beak."
-            n "They caught you staring and attempts to made a face at you. But of course you can't see it because all you see is a mocking plague doctor mask."
+            n "You side eye the unfamiliar, cold body on the ground. You have no idea who she is, or her relationship with anyone in the room."
+            n "What would Dr. Deceased gain from this? That's when you notice the keychain peeking out of the soaked lab coat."
+            n "You knee down and pick it up. Its iconic blue twintails look awfully similar. An idea clickes in your head."
+            player "You must've done it because of this!"
+            deceased surprise "Huh??"
+            player "Dr. Ralex stole your prized keychain, so you confronted her for it! But you accidentally killed her during a struggle!"
+            n "You can see a few of the audiance nodding. Wow, you didn't actually think Dr. Deceased would give people this impression."
+            deceased pensive "..."
+            show deceased happy
+            n "To your surprise, Dr. Deceased starts cackling like a crow. Like many crows."
+            deceased "I see what you're trying to get at. Unfrotunetly for you, I gave this to Dr. Ralex myself!"
+            deceased "{i}{size=25}After losing a bet, that is.{/size}{i}"
+            n "Dr. Deceased snatchs the keychain out of your hand."
+            deceased neutral "I think it's pretty obvious who the murderer is now, right?"
+            hide deceased
+            n "You look around the room desperately. No one meets you eyes."
+            show firewal at appear(x_align = 0.2)
+            firewal "CONCLUSION: Arrest the suspect and prep for a trial immediatly. Executing now."
+            hide firewal
+            n "Two wals come forward and take you by the arms. You try your best to fight them off, but you're no match against the ingenious creations of Dr. Firewal."
+            n "They pick you up easily by your arms and legs and carry you out while swinging you like a hammock."
+            n "On the way out of the lounge, you stare resentfully Dr. Deceased, who looks satisfied with winning this debate and getting an addition to their collection."
             $ update_character_points({"deceased": 1})
             $ tne_defendant = True
             $ tne_chan_backup = False
+            jump ddi_jailtwo
             return
 
         
     label ddi_jail:
         scene bg containment
-        n "hehehehehehehehehehe"
+        n "You stare out the thick, anomaly-secured glass. Is this what anomalies feel like when contained?"
+        n "It's not too bad. You wager this containment room is larger than any jail cell."
+        n "You were about to gaslight yourself into acceptance when the door opens and Dr. Syg walks in. Your first prison visit!"
+        show syg at appear
+        n "You feel like Dr. Syg looks a little more content than usual. You wishfully hope that he's happy to deliver good news, rather than happy that you're in containment."
+        syg "Hello, [player_name]."
+        player "Dr. Syg, am I free?"
+        syg "Oh no. I'm here to ask if you would like to contribute to the Demonic Studies Department in the event that you are found convicted."
+        player "...?"
+        syg "We have been running low on demon feed. They're usually death row immates convicted of crimes such as murder or worse."
+        syg "Ex-Foundation employees however are have the employment benefit to choose the method of execution. But I would really appreciate it if you would like to chip in."
+        n "He pulls out a contract and questionable red ink."
+        menu:
+            syg "It's for a great cause. I'll make sure it's painless."
+            "Sign it, for science.":
+                n "You pick up the quill and sign your name. You hope Dr. Syg can keep his words."
+                n "Dr. Syg looks very content. In fact, you can {i}almost{/i} say he's smiling."
+                syg "I will do my best to avocate for a {i}desirable{/i} outcome on your trial."
+                hide syg
+                n "You're unsure if he meant desirable for him or you. You decide not to ask."
+                $ tne_chan_backup = True
+                $ update_character_points({"syg": 1})
+                n "You lie down on the cold floor and wonder will this truly spell the end of your career. And your life."
+                return
 
-#remove uriel as point target
-# only syg shows up at jail
+            "Don't sign it. Surely you won't be found guilty.":
+                syg "That's a shame."
+                syg pensive "Let me know if you change your mind later."
+                hide syg
+                syg "He leaves, significantly less content."
+                $ tne_syg_backup = False
+                $ update_character_points({"syg": -1})
+                n "You lie down on the cold floor and wonder will this truly spell the end of your career. And your life."
+                return
+        
+        label ddi_jailtwo:
+            #can we make the fade in a bit slower
+            scene bg containment
+            n "You stare out the thick, anomaly-secured glass. Is this what anomalies feel like when contained?"
+            n "It's not too bad. You wager this containment room is larger than any jail cell."
+            n "You lie down on the cold floor and wonder will this truly spell the end of your career. And your life."
+            return
+
+
+
 
 
 #### CRIME SCENE ####
