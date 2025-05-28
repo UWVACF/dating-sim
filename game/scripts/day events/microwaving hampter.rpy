@@ -67,7 +67,7 @@ label day_event_microwaving_hampter:
         n "Now you remember: eggs explode in the microwave!"
         n "You quickly stop the microwave to rescue Hampter from the onslaught of egg-grenades."
         n "You grab the plate-"
-        player "Ah shit! That's hot!"
+        player "SHIT! That's hot!"
         n "The scalding eggs covering the plate burn your hands as you try to grab it, and you drop the plate."
         hampter "NOOO!"
         show layer master:

@@ -18,7 +18,7 @@ label day_event_staring_contest:
     lee_unknown "Not happening. You first."
     n "A talking wall. Huh."
     n "You decide it's best for your sanity to ignore it. You continue pouring your coffee."
-    lee_unknown "Oh hey! Is that the intern?"
+    lee_unknown "Oh hey! Is that the newbie?"
     aikha "Hm? Oh, yeah! Recruit, would you like to join us?"
     player "\"Us\" being...you and the wall?"
     aikha "Not just any wall! Dr. Lee's behind this one. We're having a staring contest!"

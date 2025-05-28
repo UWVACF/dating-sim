@@ -14,7 +14,7 @@ label day_event_in_the_dark:
     n "You run into some familiar faces in the lounge."
     lee "Heya, Helco! Do you want a glow-in-the-dark sticker?"
     helco "Hmm? What's that?"
-    lee "It's a sticker that glows in the dark! See? Oh, hey intern! Do you want one too?"
+    lee "It's a sticker that glows in the dark! See? Oh, hey newbie! Do you want one too?"
 
     show screen qte(time = 2.0, act=Jump("itd_lights_go_out"), hidden=True)
     menu:
