@@ -185,6 +185,7 @@ label day_event_fire:
         # call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
         n "You have no idea how to \"call the moon\". Perhaps you can ask someone who's more informed."
         hide firewal
+        hide dummy_wal
         show moonposter:
             zoom 0.4 
             xalign 0.5 
@@ -217,39 +218,92 @@ label day_event_fire:
             shake
         moon "{size=+20}DEAR INTERN, COULD YOU STEP BACK A BIT?{/size}"
         n "You step back a bit. You peek out the window and see a faint green glow on the moon."
-        n "Then a giant bright beam shoots from the moon and through the window..."
         show greenbeam onlayer top:
             alpha 0
             easeout 0.6 alpha 1.0
             easeout 0.4 alpha 0
-        pause 0.1
-        hide greenbeam onlayer top
+        pause 0.6
+        n "Then a giant bright beam shoots from the moon and through the window..."
         show bg meeting hall
         show greenbeam onlayer top:
-            alpha 0
-            easeout 0.6 alpha 1.0
-            easeout 0.4 alpha 0
-        pause 0.1
-        hide greenbeam onlayer top
+            alpha 1.0
         show uriel panic:
             xalign 0.33
             yalign 1.0
         show helco neutral:
             xalign 0.66
             yalign 1.0
+        show greenbeam onlayer top:
+            easeout 0.6 alpha 0
+        pause 0.6
         n "...and through the two unfortunate Department Heads who have just walked out of their meeting."
         hide helco
         hide uriel
         show bg room hall
-        show flashbang onlayer top
-        pause 0.1
-        hide flashbang onlayer top
+        show greenbeam onlayer top:
+            alpha 1
+            easeout 0.4 alpha 0
+        pause 0.6
         n "Then beam reaches the fire."
-        show greenbeam onlayer top
+        show flashbang onlayer top:
+            alpha 0.0
+            linear 0.7 alpha 1.0
+            linear 0.7 alpha 0.0
         pause 0.1
-        hide greenbeam onlayer top
         hide haze orange onlayer top
         n "Huh. That works."
+        hide flashbang onlayer top
+        hide greenbeam onlayer top
+        player "{size=+15}...Thanks Moon!{/size}"
+        show layer master:
+            shake
+            shake
+            shake
+        moon "{size=+20}NO PROBlEM! LET ME KNOW IF THERE'S ANOTHER MESS TO CLEAN! :D{/size}"
+        show bg meeting hall
+        show uriel unique:
+            xalign 0.33
+            yalign 1.0
+        show helco upset:
+            xalign 0.66
+            yalign 1.0
+        n "You see a half distinegrated Uriel and an unusual expression on Dr. Helco's face."
+        helco "{i}ughhhhhhhh{/i}"
+        player "Dr. Helco? Are you okay?"
+        helco "..."
+        helco neutral "Yes. Yes I'm fine. Was that green beam...your doing?"
+        player "Oh, I called Moon to help with the fire."
+        helco neutral "...I see."
+        hide helco
+        n "You watch as Dr. Helco hurries off. You feel a little bad."
+        uriel panic "Huh..?"
+        uriel neutral "Ah. It must have been the fire."
+        uriel "Dammit. I liked this shirt."
+        n "Uriel walks off, a little dazed."
+        n "...Well, that's sorted."
+        n "You also turn around to leave when you feel a cold hand grab your shoulder."
+
+        show bg room hall
+        show firewal fury
+        show firewal fury as wal1:
+            xalign 0.1
+        show firewal fury as wal2:
+            xalign 0.9
+        show firewal fury as wal3:
+            xalign 0.3
+        show firewal fury as wal4:
+            xalign 0.7
+        show firewal fury as wal5:
+            xalign 0.2 yalign 0.2
+        show firewal fury as wal6:
+            xalign 0.8 yalign 0.2
+
+        wal1 "You've just put 118072 wals out of a job, [player_name]."
+        
+
+
+        # you put wals out of a job, angry wals
+        $ update_character_points({"firewal": 1, "helco": -1, "uriel": -1})
 
 
 
