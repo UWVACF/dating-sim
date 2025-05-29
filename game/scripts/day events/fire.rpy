@@ -1,4 +1,8 @@
 label day_event_fire:
+    image moonposter = "images/cgs/moonposter.png" 
+    image greenbeam = "images/day events/green screen.png"
+    image flashbang = "images/day events/white screen.png"
+
     scene bg hallway
     with default_fade
 
@@ -128,7 +132,7 @@ label day_event_fire:
     hide aikha
 # ADD WAL NO.1
     show firewal at appear(x_align = 0.0)
-    n "A Wal bot sporting the tag, {i}\"Manager Wal\"{i}, appears with a clipboard."
+    n "A Wal bot sporting the tag, {i}\"Manager Wal\"{/i}, appears with a clipboard."
     wal1 "It appears Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
     wal1 "Do not panic! We will have Wals work to put out the fire."
     wal1 "We calculate that it will take 118098 Wals to completely extinguish the fire."
@@ -179,6 +183,76 @@ label day_event_fire:
    
     label call_moon:
         # call moon, aikha is pleased, wal no.1 reports the wal unemployment to firewal... no context and gets you in trouble with firewal
+        n "You have no idea how to \"call the moon\". Perhaps you can ask someone who's more informed."
+        hide firewal
+        show moonposter:
+            zoom 0.4 
+            xalign 0.5 
+            yalign 0.1
+        n "You jog down the hallways in search of other people when a poster on the wall catches your eye. It reads, {b}{i}When in doubt? SHOUT! SHOUT! SHOUT!{/b}{/i}"
+        hide moonposter
+        n "Might as well give it a try. Worst come to worst, you just look like a lunatic yelling in the hallway."
+        player "{b}{size=+5}MOON!{/size}{/b}"
+        "Wal No.571" "{sc}{size=+10}{b}FOR THE WAL! FOR THE WAL!{/b}{/size}{/sc}"
+        n "Well, at least you're not the only lunatic in this hallway. You decide to try again."
+        player "{b}{size=+10}MOON!{/size}{/b}"
+        n "Nobody answers you. You're beginning to think that the poster on the wall is there to trick gullible interns like you."
+        n "You decide to try one last time."
+        player "{b}{size=+15}MOON!{/size}{/b}"
+        pause 3
+        n "Well, guess this isn't working-"
+        show layer master:
+            shake
+            shake
+            shake
+        moon "{size=+20}HELLO. WHAT SEEMS TO BE THE PROBLEM?{/size}"
+        show layer master:
+            shake
+            shake
+            shake
+        moon "{size=+20}OH. I SEE. IT'S A FIRE.{/size}"
+        show layer master:
+            shake
+            shake
+            shake
+        moon "{size=+20}DEAR INTERN, COULD YOU STEP BACK A BIT?{/size}"
+        n "You step back a bit. You peek out the window and see a faint green glow on the moon."
+        n "Then a giant bright beam shoots from the moon and through the window..."
+        show greenbeam onlayer top:
+            alpha 0
+            easeout 0.6 alpha 1.0
+            easeout 0.4 alpha 0
+        pause 0.1
+        hide greenbeam onlayer top
+        show bg meeting hall
+        show greenbeam onlayer top:
+            alpha 0
+            easeout 0.6 alpha 1.0
+            easeout 0.4 alpha 0
+        pause 0.1
+        hide greenbeam onlayer top
+        show uriel panic:
+            xalign 0.33
+            yalign 1.0
+        show helco neutral:
+            xalign 0.66
+            yalign 1.0
+        n "...and through the two unfortunate Department Heads who have just walked out of their meeting."
+        hide helco
+        hide uriel
+        show bg room hall
+        show flashbang onlayer top
+        pause 0.1
+        hide flashbang onlayer top
+        n "Then beam reaches the fire."
+        show greenbeam onlayer top
+        pause 0.1
+        hide greenbeam onlayer top
+        hide haze orange onlayer top
+        n "Huh. That works."
+
+
+
 
 
     label convince_the_conference:

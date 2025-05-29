@@ -160,7 +160,7 @@ label day_event_didnt_do_it:
             deceased "Nuh uh."
             player "Yuh huh!"
             deceased fury "{sc}NUH UH!!{/sc}"
-            player "{sc}YUH HUH!!{sc}"
+            player "{sc}YUH HUH!!{/sc}"
             show firewal at appear(x_align = 0.3)
             firewal "Correct. Security did show Dr. Deceased entering the lounge 5 minutes earlier. That lines up with [player_name]'s claim."
             show firewal at disappear
