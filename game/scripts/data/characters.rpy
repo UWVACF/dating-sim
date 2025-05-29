@@ -160,10 +160,14 @@ image firewal fury = At("images/personnel/firewal/firewal fury.png", sprite_high
 image firewal pensive = At("images/personnel/firewal/firewal pensive.png", sprite_highlight("firewal"), firewal_transform)
 image firewal unique = At("images/personnel/firewal/firewal unique.png", sprite_highlight("firewal"), firewal_transform)
 
-image pocketwal = At("images/personnel/firewal/pocketwal neutral.png", sprite_highlight("pocketwal"), pocketwat_transform)
-image pocketwal neutral = At("images/personnel/firewal/pocketwal neutral.png", sprite_highlight("pocketwal"), pocketwat_transform)
-image pocketwal talk = At("images/personnel/firewal/pocketwal talk.png", sprite_highlight("pocketwal"), pocketwat_transform)
-image pocketwal upset = At("images/personnel/firewal/pocketwal upset.png", sprite_highlight("pocketwal"), pocketwat_transform)
+
+transform pocketwal_transform:
+    base_char_transform
+
+image pocketwal = At("images/personnel/firewal/pocketwal neutral.png", sprite_highlight("pocketwal"), pocketwal_transform)
+image pocketwal neutral = At("images/personnel/firewal/pocketwal neutral.png", sprite_highlight("pocketwal"), pocketwal_transform)
+image pocketwal talk = At("images/personnel/firewal/pocketwal talk.png", sprite_highlight("pocketwal"), pocketwal_transform)
+image pocketwal upset = At("images/personnel/firewal/pocketwal upset.png", sprite_highlight("pocketwal"), pocketwal_transform)
 
 transform chan_transform:
     # base_char_transform
