@@ -105,7 +105,7 @@ init python:
         ),
         Event(
             label="the_bingo_card_1",
-            personnel=["plutoes, firewal, alex, ryz, aikha"],
+            personnel=["plutoes", "firewal", "alex", "ryz", "aikha"],
             tags=["personnel"],
         ), 
         Event(
@@ -125,10 +125,15 @@ init python:
         ), 
         Event(
             label="didnt_do_it",
-            personnel=["uriel", "deceased", "chan"],
+            personnel=["syg", "deceased", "chan"],
             tags=["anomaly"],
             outro_label="ddi_outro"
         ), 
+        Event(
+            label="the_bingo_card_2",
+            personnel=["deceased", "helco", "uriel", "ryz", "caffi"],
+            tags=["personnel"],
+        )
     ]
 
     # replace all spaces in labels with underscores
