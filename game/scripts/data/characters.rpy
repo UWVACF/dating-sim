@@ -239,13 +239,13 @@ image plutoes = At("images/personnel/plutoes/plutoes neutral.png", sprite_highli
 image plutoes neutral = At("images/personnel/plutoes/plutoes neutral.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes talk = At("images/personnel/plutoes/plutoes talk.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes happy = At("images/personnel/plutoes/plutoes happy.png", sprite_highlight("plutoes"), plutoes_transform)
-# image plutoes sad = At("images/personnel/plutoes/plutoes sad.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes upset = At("images/personnel/plutoes/plutoes upset.png", sprite_highlight("plutoes"), plutoes_transform)
+image plutoes unique = At("images/personnel/plutoes/plutoes unique.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes sad = At("images/personnel/plutoes/plutoes sad.png", sprite_highlight("plutoes"), plutoes_transform)
 # image plutoes surprise = At("images/personnel/plutoes/plutoes surprise.png", sprite_highlight("plutoes"), plutoes_transform)
 # image plutoes panic = At("images/personnel/plutoes/plutoes panic.png", sprite_highlight("plutoes"), plutoes_transform)
 # image plutoes fury = At("images/personnel/plutoes/plutoes fury.png", sprite_highlight("plutoes"), plutoes_transform)
 # image plutoes pensive = At("images/personnel/plutoes/plutoes pensive.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes unique = At("images/personnel/plutoes/plutoes unique.png", sprite_highlight("plutoes"), plutoes_transform)
 
 
 transform venture_transform:

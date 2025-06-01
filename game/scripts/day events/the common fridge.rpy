@@ -105,19 +105,19 @@ label day_event_the_common_fridge:
         label tcf_deny:
             n "...Well, you can't be incriminating yourself now."
             player "Sorry, I know just as little as you guys do."
-            wal1 "Do not apologize! This is not your doing. This is likely an inside job by an unknown evil criminal mastermind, done with the intent of destroying the priceless research in the facility!"
+            wal1 "Do not apologize! This is not your doing. This is likely an inside job by an unknown evil criminal mastermind, done with the intent of sabotaging the priceless research in the facility!"
             wal1 "Please do not panic! We shall apprehend the culprit using whatever means are necessary!"
             player "...Thank you, Manager Wal!"
             n "He flashes you an enthuastic thumbs up."
             wal1 "You're very welcome!"
             n "You walk back to the lounge, trying to look at innocent as possible."
-            n "...Maybe it's time to start counting your days."
+            n "20 hours 31 minutes until the analysis is complete. 20 hours 31 minutes to live."
             $ update_character_points({"firewal": -1})
             return
 
 
     label tcf_skull:
-        n "Bone marrow is nutritious. You reach over to the skull and-"
+        n "Bone marrow is nutritious, I suppose. You reach over to the skull and-"
         player "Alas, poor Yorick!" 
         n "Dear god."
         player "I knew him, Horatio - a fellow of infinite jest, of most excellent fancy. He hath bore me on his back a thousand times, and now how abhorred in my imagination it is!"
@@ -125,7 +125,7 @@ label day_event_the_common_fridge:
         player "My gorge rises at it. Here hung those lips that I have kissed I know not how oft."
         n "Well, technically, you're soliloquying."
         player "Where be your gibes now? Your gambols? Your songs? Your flashes of merriment that were wont to set the table on a roar? Not one now to mock your own grinning? Quite chapfallen?"
-        n "Oh, apparently the actual word is \"soliloquizing.\" Interesting."
+        n "Oh, apparently the proper word is \"soliloquizing.\" Interesting."
         player "Now get you to my lady's chamber, and tell her, let her paint an inch thick, to this favor she must come. Make her laugh at that."
         n "You can't stop. You raise the skull in your hand dramatically as you continue."
         player "Prithee, Horatio, tell me one thing."
@@ -142,10 +142,10 @@ label day_event_the_common_fridge:
         syg "STOP. Please."
         show syg fury at appear(x_align = 0.3)
         show deceased at appear(x_align = 0.7)
-        n "Someone slaps you. You come to your senses and realize that Dr. Deceased and Dr. Syg were standing in front of you for god knows how long, watching your monologue."
+        n "Someone slaps you, knocking the skull across the room. You come to your senses and realize that Dr. Deceased and Dr. Syg were standing in front of you for god knows how long, watching your soliloquy."
         n "You're eternally grateful for their saving you from a fate worse than death."
         syg "I could hear you from all the way down the hall. Please shut up."
-        deceased "Don't you know better than to touch suspicious objects?"
+        deceased "Is that the Yorick skull? Don't you know better than to touch suspicious objects?"
         player "Right. Sorry."
         deceased "We should really put this in a containment room or something."
         n "Without thinking, they bend down to pick up the skull and-"
@@ -153,7 +153,7 @@ label day_event_the_common_fridge:
         n "FUCK."
         deceased "I knew him, Horatio - a fellow of infinite jest, of most excellent fancy."
         syg "FUCK."
-        n "Dr. Syg slaps Dr. Deceased hard, causing their head to fly off from their body. As and after it sails through the air, it continues the monologue."
+        n "Dr. Syg slaps Dr. Deceased hard, causing their head to fly off from their body. In spite of the decapitation, their head continues the monologue."
         deceased "Where be your gibes now? Your gambols? Your songs?"
         n "Their headless body cradles the skull close to their chest."
         menu:
@@ -163,14 +163,14 @@ label day_event_the_common_fridge:
                 n "In response, they clutch it even more tightly."
                 deceased "Now get you to my lady's chamber, and tell her, let her paint an inch thick-"
                 n "You shake harder. Still no use."
-                n "Suddenly, inspiration hits. You grab their arms and pull hard. Unfortunately, lack of athleticism is doing you no favours."
+                n "Suddenly, inspiration hits. You grab their arms and pull hard. Unfortunately, your lack of athleticism is doing you no favours."
                 n "Dr. Syg catches onto what you're doing and rushes over to help. Together, you dislodge both of Dr. Deceased arms from their shoulders."
                 deceased "Prithee, Horatio, tell me one thing."
-                n "Carefully, you two start smacking the skull repeatedly against the countertop. After nearly a dozen attempts, their hands finally let go, and the skull soars across the room."
+                n "Carefully, you two start smacking the skull repeatedly against the countertop. After nearly a dozen attempts, their hands finally let go, and the skull soars once more across the room."
                 deceased "HORATIO: What's that, my- HUH? What? What happened?"
                 player "You picked up the skull and starting soliloquying."
                 n "It's \"soliloquizing.\""
-                syg "Just leave it be. Please. You two are giving me a headache, ugh."
+                syg "Just leave it. Someone else will clean it up. You two are giving me a headache, ugh."
                 n "He swiftly and coldly leaves the room, with Dr. Deceased trailing sheepishly behind."
                 n "Well, you missed out on lunch, but at least you saved someone from high school English PTSD."
                 $ update_character_points({"syg": 1, "deceased": 1})
@@ -195,7 +195,7 @@ label day_event_the_common_fridge:
         n "Oh shit, the stove was set to simmer. You crank the heat up to high."
         n "..."
         n "..."
-        n "You open the Aloe and take a sip. It reminds you of childhood memories."
+        n "You open the Aloe and take a sip. It brings back childhood memories."
         n "You also start snacking on the crumby bits of instant noodles. Good stuff."
         n "..."
         show helco at appear
@@ -203,7 +203,7 @@ label day_event_the_common_fridge:
         helco "Oh, hello!"
         player "Hi, Dr. Helco. What're you doing here?"
         helco "I'm grasping lunch!"
-        player "...Grabbing?"
+        player "...You mean grabbing?"
         helco "Yes! Grabbing lunch. As humans do."
         n "He smiles blankly at you." # maybe another word
         n "..."
@@ -221,11 +221,11 @@ label day_event_the_common_fridge:
         n "He leaves the room, happily humming to himself."
         n "..."
         n "..."
-        n "Oh yeah! You were boiling some noodles. You grab some wooden chopsticks and ." # take a bite?? or what
+        n "Oh yeah! You were boiling some noodles. You grab some wooden chopsticks and help yourself to some." # take a bite?? or what
         n "They don't taste very good. You forgot the flavour packet."
+        n "..."
         n "That's better."
         n "Not great, but better."
-        n "You ate the Instant Noodles."
         n "As you finish cleaning up, Dr. Helco re-enter the room with a small vial surrounded by white fumes."
         helco "I found some liquid nitrogen! Would you like some?"
         player "No thanks. I'll literally die."
@@ -251,11 +251,9 @@ label day_event_the_common_fridge:
         helco "In the oven? Do we not have an air fryer?"
         n "You frown. Your friendly fellow frames facts. Shouldn't you be air frying the Frigid Friday Fridge Fries?"
         n "Frankly, you're too famished to falter. You frenziedly fit the frumpy Frigid Friday Fridge Fries into the fryer."
-        n "You're fretful, fidgeting frantically while the Frigid Friday Fridge Fries to finish frying."
-        helco "Oh, those look..."
-        helco "..."
+        n "You're fretful, fidgeting frantically while the Frigid Friday Fridge Fries fry."
         n "Finally, you find that the Frigid Friday Fridge Fries finished frizzling flawlessly. Fabulous!"
-        n "You fastidiously fetch the formerly frigid, currently fervent fries from the fryer, fancying a feast."
+        n "You fastidiously fetch the formerly frigid, currently fervent Friday Fridge Fries from the fryer, fancying a feast."
         n "Forlornly, you find the Fiery Friday Fridge Fries fare fairly frowzily, fuming a foul fetor."
         n "You forego forcing yourself to finish this fiasco."
         n "You run to the nearest trash can and throw up - figuratively, the flurry of F's, and literally, the Fetid Friday Fridge Fries."
@@ -265,7 +263,7 @@ label day_event_the_common_fridge:
             n "What do you do?"
             "Spare him from the disgust.":
                 player "Believe you me, Dr. Helco, you don't want to be eating these."
-                helco sad "I understand. Well then, I shall continue my search for tasteable human food elsewhere."
+                helco sad "Oh. I understand. Well then, I shall continue my search for tasteable human food elsewhere."
                 helco sad "{size=[helco_text_downsize]}A shame...{/size}"
                 show helco sad at disappear
                 n "You feel a bit guilty, but frankly, you figure it's probably for the better if no one else tries these."
@@ -274,15 +272,15 @@ label day_event_the_common_fridge:
                 return
             "Let him try some.":
                 player "...Sure."
-                n "Dr. Helco takes a flimsy Fiery Friday Fridge Fry and plops it into his mouth."
+                n "Dr. Helco takes a flimsy Fiery Fetid Friday Fridge Fry and plops it into his mouth."
                 show helco pensive
-                n "He chews it pensively, showing complete nonchalence."
+                n "He chews it pensively, showing complete nonchalance."
                 helco "I don't taste anything. Perhaps if I try some more..."
                 n "He downs the entire tray with no reaction."
                 helco neutral "Hm. Still nothing."
                 n "You're stunned. The fries that, frankly, flogged your fauces, failed to fructify any form of feedback from Dr. Helco."
-                helco "A shame. I saw your reaction to eating these fries and thought I had finally found something I could taste. Apparently not."
-                helco happy "Well then, I shall continue my search for tasteable human food elsewhere."
+                helco "A shame. I saw how passionately you reacted to these fries and thought I had found some human food I could taste."
+                helco happy "No matter! I shall continue my search for tasteable human food elsewhere."
                 show helco happy at disappear
                 n "...Is this guy taste blind? Is he even human?"
                 n "These thoughts run through your head as you make your way back to your cubicle, still retching."
