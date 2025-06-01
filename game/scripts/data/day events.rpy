@@ -133,6 +133,11 @@ init python:
             label="the_bingo_card_2",
             personnel=["deceased", "helco", "uriel", "ryz", "caffi"],
             tags=["personnel"],
+        ),
+        Event(
+            label="fin",
+            personnel=["aikha"],
+            tags=["personnel"],
         )
     ]
 

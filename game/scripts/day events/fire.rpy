@@ -299,11 +299,20 @@ label day_event_fire:
             xalign 0.8 yalign 0.2
 
         wal1 "You've just put 118072 wals out of a job, [player_name]."
-        
+        wal1 "THE WAL will hear about this transgression."
+        hide firewal
+        hide wal1
+        hide wal2
+        hide wal3
+        hide wal4
+        hide wal5
+        hide wal6
+        n "They all march into a wall in union."
+        n "You feel the wrath of several millions walbots. You contemplate whether you should sleep with a fire extinguisher tonight."
 
 
         # you put wals out of a job, angry wals
-        $ update_character_points({"firewal": 1, "helco": -1, "uriel": -1})
+        $ update_character_points({"firewal": -1, "helco": -1, "uriel": -1, "aikha": +1})
 
 
 

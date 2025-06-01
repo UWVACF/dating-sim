@@ -42,7 +42,8 @@
             # you were exposed of cheating and deceased wins (dece +1)
                 # attempted to take the wires from deceased to show to the wal to get it to combust
                 # deceased calls you out, others agree due to how destructive that could've been (and incident reports to write)
-                # unhappy, you do something to sabortage deceased then deceased wins somehow. Happy with her miku prize
+                # spiteful, you grab the miku and run out of the hallway. unfortunately you run into pochi, who takes an interest in your loot. he chomp on your hand and taks it from you.
+                # deceased wins as <pochi commits thievery>. Happy with her miku prize
 
         # don't help helco (Can still gain +1 for 2 more person)
             # everyone is just tense and not doing anything.
