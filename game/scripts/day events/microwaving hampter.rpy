@@ -40,7 +40,7 @@ label day_event_microwaving_hampter:
                 jump microwaving_hampter_tots
             "A dozen pieces of string cheese.":
                 jump microwaving_hampter_string_cheese
-            "Yourself":
+            "Yourself.":
                 n "..."
                 n "...What?"
                 jump microwaving_hampter_choice

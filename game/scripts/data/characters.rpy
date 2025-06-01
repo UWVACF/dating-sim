@@ -239,12 +239,12 @@ image plutoes = At("images/personnel/plutoes/plutoes neutral.png", sprite_highli
 image plutoes neutral = At("images/personnel/plutoes/plutoes neutral.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes talk = At("images/personnel/plutoes/plutoes talk.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes happy = At("images/personnel/plutoes/plutoes happy.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes sad = At("images/personnel/plutoes/plutoes sad.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes sad = At("images/personnel/plutoes/plutoes sad.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes upset = At("images/personnel/plutoes/plutoes upset.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes surprise = At("images/personnel/plutoes/plutoes surprise.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes panic = At("images/personnel/plutoes/plutoes panic.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes fury = At("images/personnel/plutoes/plutoes fury.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes pensive = At("images/personnel/plutoes/plutoes pensive.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes surprise = At("images/personnel/plutoes/plutoes surprise.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes panic = At("images/personnel/plutoes/plutoes panic.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes fury = At("images/personnel/plutoes/plutoes fury.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes pensive = At("images/personnel/plutoes/plutoes pensive.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes unique = At("images/personnel/plutoes/plutoes unique.png", sprite_highlight("plutoes"), plutoes_transform)
 
 
@@ -391,7 +391,7 @@ define paul_unknown = Character("???", kind=paul)
 define uriel = Character("Uriel", kind=base_char, color="#acced2", cb_name="uriel", image="uriel")
 define uriel_unknown = Character("???", kind=uriel)
 
-define egg = Character("Harvard Egg", kind=base_char, color="#ff8561", cb_name="egg", image="egg")
+define egg = Character("Egg's Assistant", kind=base_char, color="#ff8561", cb_name="egg", image="egg")
 define egg_unknown = Character("???", kind=egg)
 
 define caffi = Character("\"Dr\" Caffi", kind=base_char, color="#000000", cb_name="caffi", image="caffi") # change colour
