@@ -85,7 +85,7 @@ label day_event_microwaving_hampter:
         player "Tater Tots! They're like potato cubes."
         helco "Oh!"
         helco "...What are potatoes?"
-        n "As Dr. Jessie explains what potatoes are, you make a little divet in the middle of the Tater Tot pile and place Hampter there."
+        n "As Dr. Jessie explains what potatoes are, you make a little divot in the middle of the Tater Tot pile and place Hampter there."
         hampter "Ah! Cold!"
         n "The packet says to bake at 425F for 30 minutes, so you set the microwave to 30 minutes."
 
