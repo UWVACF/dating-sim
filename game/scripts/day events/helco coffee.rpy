@@ -22,54 +22,93 @@ init python:
 label day_event_helco_coffee:
     scene bg lounge
     with default_fade
+    show helco at left
+    show aikha
+    show alex at right
+    helco "Yippee!"
+    show helco talk
+    show aikha talk
+    show alex talk
+    n "talk"
+    show helco sad
+    show aikha sad
+    show alex sad
+    n "sad"
+    show helco fury
+    show aikha fury
+    show alex fury
+    n "fury"
+    show helco happy
+    show aikha happy
+    show alex happy
+    n "happy"
+    show helco upset
+    show aikha upset
+    show alex upset
+    n "upset"
+    show helco unique
+    show aikha unique
+    show alex unique
+    n "unique"
+    show helco panic
+    show aikha panic
+    show alex panic
+    n "panic"
+    show helco surprise
+    show aikha surprise
+    show alex surprise
+    n "surprise"
+    show helco pensive
+    show aikha pensive
+    show alex pensive
+    n "pensive"
+    show helco unique
+    show aikha unique
+    show alex unique
+    n "unique"
 
-    menu:
-        "choice1" (on_hover = "nope"):
-            n "hi"
-        "choice2":
-            n "hello"
     
     
     
-    player "Hello, Dr. Helco!"
-    show helco neutral at appear
-    n "He jolts awake at the sound of your voice."
-    helco "Oh, hi!"
-    show helco neutral at shake(duration = 1.0, strength = 50.0)
-    if characters["helco"]["points"] < 1:
-        helco "[misremember_name()], right?"
-        player "It's [player_name], actually."
-        helco "Oh! Sorry!"
-        helco "{size=[helco_text_downsize]}I must write that down...{/size}"
-    else:
-        helco "[player_name], right?"
-        player "Yup!"
-        helco "{size=[helco_text_downsize]}Good, good...{/size}"
-    n "Helco spaces out briefly, before returning to normal."
-    helco "..."
-    player "What brings you here?"
-    helco "Oh! I'm just...grabbing a coffee, as you do."
-    player "here we will insert more awesome dialogue"
-    player "later"
-    player "bc i just pulled an all nighter so maybe now's not the best time to do so"
-    n "Perhaps Dr. Helco could use some guidance."
-    menu:
-        n "How will you teach Dr. Helco what it means to be human?"
-        "Teach him personally":
-            jump personally
-        "Gather Dr. Jessie and Dr. Firewal":
-            jump jessie_firewal
-        "Enlist the help of Dr. Plutoes and Dr. Aikha, the most human personnel":
-            jump aikha_plutoes
-    
-    label personally:
-        n "You're human! Surely you could teach him a thing or two about human activity."
-        return
+# player "Hello, Dr. Helco!"
+# show helco neutral at appear
+# n "He jolts awake at the sound of your voice."
+# helco "Oh, hi!"
+# show helco neutral at shake(duration = 1.0, strength = 50.0)
+# if characters["helco"]["points"] < 1:
+#     helco "[misremember_name()], right?"
+#     player "It's [player_name], actually."
+#     helco "Oh! Sorry!"
+#     helco "{size=[helco_text_downsize]}I must write that down...{/size}"
+# else:
+#     helco "[player_name], right?"
+#     player "Yup!"
+#     helco "{size=[helco_text_downsize]}Good, good...{/size}"
+# n "Helco spaces out briefly, before returning to normal."
+# helco "..."
+# player "What brings you here?"
+# helco "Oh! I'm just...grabbing a coffee, as you do."
+# player "here we will insert more awesome dialogue"
+# player "later"
+# player "bc i just pulled an all nighter so maybe now's not the best time to do so"
+# n "Perhaps Dr. Helco could use some guidance."
+# menu:
+#     n "How will you teach Dr. Helco what it means to be human?"
+#     "Teach him personally":
+#         jump personally
+#     "Gather Dr. Jessie and Dr. Firewal":
+#         jump jessie_firewal
+#     "Enlist the help of Dr. Plutoes and Dr. Aikha, the most human personnel":
+#         jump aikha_plutoes
 
-    label jessie_firewal:
-        n "You decide to gather the help of other human personnel to give Dr. Helco a group lesson."
-        return
+# label personally:
+#     n "You're human! Surely you could teach him a thing or two about human activity."
+#     return
 
-    label aikha_plutoes:
-        n "Perhaps Dr. Helco would best relate to other non-humans struggling to fit in."
-        return
+# label jessie_firewal:
+#     n "You decide to gather the help of other human personnel to give Dr. Helco a group lesson."
+#     return
+
+# label aikha_plutoes:
+#     n "Perhaps Dr. Helco would best relate to other non-humans struggling to fit in."
+#     return

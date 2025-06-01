@@ -6,9 +6,9 @@ label day_event_the_common_fridge:
     n "As you enter the room, you realize you forgot to bring your lunch today. Damn it."
     n "However, salvation comes in the large, rectangular shape of a fridge, on which a sticky note reads, \"COMMON.\" It's not hopeless after all!"
     n "You open the fridge and see a wide assortment of... things. Some are edible, some are legal, and some are none of the above."
-    n "Your stomach rumbles."
+    n "Your stomach rumbles. You gotta eat."
     menu:
-        n "You gotta eat. What do you grab?"
+        n "Mindful to not put your DNA on anything incriminating, you grab..."
         "The elephant.":
             jump tcf_elephant
         "The skull of poor Yorick.":
@@ -25,6 +25,7 @@ label day_event_the_common_fridge:
         n "We will also disregard how the elephant fits in the hallway, let alone the doorway."
         show layer master:
             shake(preset="strong")
+        pause 0.3
         n "Nevermind. It doesn't."
         show bg hallway
         n "You're devising a plan to kill and cook the elephant when you spot two people walking down the hall towards you."
@@ -32,14 +33,87 @@ label day_event_the_common_fridge:
         show syg at appear(x_align = 0.7)
         deceased "Did I tell you about that keychain I saw the other day?"
         syg "I don't believe so."
-        deceased "Oh! So it was this- who let the elephant out?"
-        n "Dr. Deceased's head turns to stare at you. You feel slightly uncomfortable."
-        deceased "Yeah, but anyways, I saw this Miku keychain the other day, and I just HAD to get it."
-        n "You're trying to figure out what to do when you hear a faint explosion and several voices chanting:"
-        "Walbot" "FOR THE WAL! FOR THE WAL!"
-        syg "Please do not tell me more."
-        deceased "It was like, Miku as a plague doctor! It was fate, it had to be. I'd never seen it before!"
-        # gang idk what to write here
+        deceased "Oh! So it was this- why is there an elephant in the hallway?"
+        n "Dr. Deceased turns to stare at you."
+        deceased "Hey intern! How's your time here been?"
+        player "Pretty good, thanks for asking!"
+        syg "...So do you know anything about the elephant in the hallway?"
+        player "Uhhhhhhhhhhhhhhhhhhhhhhhhhh"
+        show layer master:
+            shake
+        wal1 "FIGHT, WALBOTS! FOR THE WAL!"
+        player "Nope but I'm gonna go check it out anyways okay bye!!!"
+        show deceased at disappear
+        show syg at disappear
+        show bg meeting hall
+        show firewal at appear
+        n "You scurry over to the horde of Walbots fighting the elephant."
+        hide deceased
+        hide syg
+        show layer master:
+            shake
+            0.4
+            shake
+            1.2
+            shake
+            0.7
+            shake
+            1.9
+            repeat
+        wal1 "Hello [player_name]! How may I be of assistance?"
+        player "Oh, I was actually seeing if you guys needed any help with...this."
+        wal1 "Fret not! We have this situation under control!"
+        walbots "{sc}FOR THE WAL! FOR THE WAL!{/sc}"
+        show firewal at appear(x_align = 1.0) as wal641
+        wal641 "Manager Wal! The anomaly is not listed on the foundation records. We do not know where it came from."
+        wal1 "Perform an analysis!"
+        wal641 "Understood! Performing analysis..."
+        wal1 "Worry not, [player_name], we are capable of handling this situation!"
+        wal641 "Estimated time until completion: 20 hours 31 minutes..."
+        walbots "{sc}FOR THE WAL! FOR THE WAL!{/sc}"
+        show wal641 at disappear
+        wal1 "On second thought! Do you have any intelligence to help us here, [player_name]?"
+        hide wal641
+        menu:
+            n "What do you say?"
+            "Admit your guilt.":
+                jump tcf_admit
+            "Feign innocence.":
+                jump tcf_deny
+        
+        label tcf_admit:
+            player "Uh, actually, I do."
+            n "You explain the situation to the best of your ability."
+            wal1 "I see! I appreciate your candor, [player_name]!"
+            wal1 "Owing to your cooperation, we will simply let you off with a warning this time."
+            wal1 "We shall promptly recapture and detain the elephant into the common fridge. Please refrain from touching things you're unfamiliar with in the future."
+            n "A wave of relief washes over you. That could've gone much worse."
+            player "Thank you, Manager Wal!"
+            n "He flashes you an enthuastic thumbs up."
+            wal1 "You're very welcome!"
+            wal1 "WALBOTS! DETAIN THE ELEPHANT IN THE COMMON FRIDGE INSIDE THE LOUNGE AREA!"
+            walbots "YES SIR! FOR THE WAL! FOR THE WAL!"
+            n "Now that that's situation done with, you return to the lounge to grab a quick bite before the Walbots drag the elephant back in."
+            show bg lounge
+            n "Those instant noodles sound pretty good right about now."
+            n "You open the common fridge..."
+            n "..."
+            n "...Why is there a giraffe in here?"
+            $ update_character_points({"firewal": 1})
+            return
+        
+        label tcf_deny:
+            n "...Well, you can't be incriminating yourself now."
+            player "Sorry, I know just as little as you guys do."
+            wal1 "Do not apologize! This is not your doing. This is likely an inside job by an unknown evil criminal mastermind, done with the intent of destroying the priceless research in the facility!"
+            wal1 "Please do not panic! We shall apprehend the culprit using whatever means are necessary!"
+            player "...Thank you, Manager Wal!"
+            n "He flashes you an enthuastic thumbs up."
+            wal1 "You're very welcome!"
+            n "You walk back to the lounge, trying to look at innocent as possible."
+            n "...Maybe it's time to start counting your days."
+            $ update_character_points({"firewal": -1})
+            return
 
 
     label tcf_skull:
@@ -100,6 +174,7 @@ label day_event_the_common_fridge:
                 n "He swiftly and coldly leaves the room, with Dr. Deceased trailing sheepishly behind."
                 n "Well, you missed out on lunch, but at least you saved someone from high school English PTSD."
                 $ update_character_points({"syg": 1, "deceased": 1})
+                return
 
             "Nah.":
                 n "You're eternally grateful for their help, but not {i}that{/i} eternally grateful. You slowly turn to leave as Dr. Syg conjures up shadowy tentacles from the floor."
@@ -151,7 +226,7 @@ label day_event_the_common_fridge:
         n "That's better."
         n "Not great, but better."
         n "You ate the Instant Noodles."
-        n "You're about to finish cleaning up when you see Dr. Helco re-enter the room with a small vial surrounded by white fumes."
+        n "As you finish cleaning up, Dr. Helco re-enter the room with a small vial surrounded by white fumes."
         helco "I found some liquid nitrogen! Would you like some?"
         player "No thanks. I'll literally die."
         helco "Oh. In that case!"
@@ -173,10 +248,10 @@ label day_event_the_common_fridge:
         player "Oh, hi Dr. Helco!"
         helco "What are you doing there?"
         player "I'm making these Frigid Friday Fridge Fries."
-        helco "In the oven? Forgive me, but I believe we have an air fryer, no?"
+        helco "In the oven? Do we not have an air fryer?"
         n "You frown. Your friendly fellow frames facts. Shouldn't you be air frying the Frigid Friday Fridge Fries?"
         n "Frankly, you're too famished to falter. You frenziedly fit the frumpy Frigid Friday Fridge Fries into the fryer."
-        n "You're fretful, fidgeting frantically for the Frigid Friday Fridge Fries to finish frying."
+        n "You're fretful, fidgeting frantically while the Frigid Friday Fridge Fries to finish frying."
         helco "Oh, those look..."
         helco "..."
         n "Finally, you find that the Frigid Friday Fridge Fries finished frizzling flawlessly. Fabulous!"

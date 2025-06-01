@@ -133,7 +133,12 @@ init python:
             label="the_bingo_card_2",
             personnel=["deceased", "helco", "uriel", "ryz", "caffi"],
             tags=["personnel"],
-        )
+        ),
+        Event(
+            label="the_common_fridge",
+            personnel=["deceased", "helco", "syg", "firewal"],
+            tags=["personnel"],
+        ),
     ]
 
     # replace all spaces in labels with underscores
