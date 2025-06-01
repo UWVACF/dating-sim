@@ -207,6 +207,8 @@ label day_init:
     
     if day_number < day_threshold:
         jump day_init
+    else:
+        jump neutral_ending
 
 label default_intro:
     scene 

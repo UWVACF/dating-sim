@@ -259,12 +259,12 @@ init python:
                     "reply": ""
                 },
                 {
-                    "answer": "Spew brainrot",
+                    "answer": "Spewing brainrot",
                     "personnel": {"firewal": 1},
                     "reply": "Yippee!!"
                 },
                 {
-                    "answer": "Opioid shot",
+                    "answer": "Group opioid shots",
                     "personnel": {"bad end": 1},
                     "reply": "..."
                 }

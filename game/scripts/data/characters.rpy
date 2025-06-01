@@ -24,8 +24,7 @@ image jessie unique = At("images/personnel/jessie/jessie unique.png", sprite_hig
 
 
 transform aikha_transform:
-    # base_char_transform
-    alpha 1.0
+    base_char_transform
 
 image aikha = At("images/personnel/aikha/aikha neutral.png", sprite_highlight("aikha"), aikha_transform)
 image aikha neutral = At("images/personnel/aikha/aikha neutral.png", sprite_highlight("aikha"), aikha_transform)
@@ -57,20 +56,19 @@ image alex unique = At("images/personnel/alex/alex unique.png", sprite_highlight
 
 
 transform helco_transform:
-    # base_char_transform
-    alpha 1.0
+    base_char_transform
 
 image helco = At("images/personnel/helco/helco neutral.png", sprite_highlight("helco"), helco_transform)
 image helco neutral = At("images/personnel/helco/helco neutral.png", sprite_highlight("helco"), helco_transform)
-image helco talk = At("images/personnel/helco talk.png", sprite_highlight("helco"), helco_transform)
+image helco talk = At("images/personnel/helco/helco talk.png", sprite_highlight("helco"), helco_transform)
 image helco happy = At("images/personnel/helco/helco happy.png", sprite_highlight("helco"), helco_transform)
-image helco sad = At("images/personnel/helco sad.png", sprite_highlight("helco"), helco_transform)
-image helco upset = At("images/personnel/helco upset.png", sprite_highlight("helco"), helco_transform)
-image helco surprise = At("images/personnel/helco surprise.png", sprite_highlight("helco"), helco_transform)
-image helco panic = At("images/personnel/helco panic.png", sprite_highlight("helco"), helco_transform)
-image helco fury = At("images/personnel/helco fury.png", sprite_highlight("helco"), helco_transform)
-image helco pensive = At("images/personnel/helco pensive.png", sprite_highlight("helco"), helco_transform)
-image helco unique = At("images/personnel/helco unique.png", sprite_highlight("helco"), helco_transform)
+image helco sad = At("images/personnel/helco/helco sad.png", sprite_highlight("helco"), helco_transform)
+image helco upset = At("images/personnel/helco/helco upset.png", sprite_highlight("helco"), helco_transform)
+image helco surprise = At("images/personnel/helco/helco surprise.png", sprite_highlight("helco"), helco_transform)
+image helco panic = At("images/personnel/helco/helco panic.png", sprite_highlight("helco"), helco_transform)
+image helco fury = At("images/personnel/helco/helco fury.png", sprite_highlight("helco"), helco_transform)
+image helco pensive = At("images/personnel/helco/helco pensive.png", sprite_highlight("helco"), helco_transform)
+image helco unique = At("images/personnel/helco/helco unique.png", sprite_highlight("helco"), helco_transform)
 
 
 transform ryz_transform:
@@ -241,13 +239,13 @@ image plutoes = At("images/personnel/plutoes/plutoes neutral.png", sprite_highli
 image plutoes neutral = At("images/personnel/plutoes/plutoes neutral.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes talk = At("images/personnel/plutoes/plutoes talk.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes happy = At("images/personnel/plutoes/plutoes happy.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes sad = At("images/personnel/plutoes/plutoes sad.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes upset = At("images/personnel/plutoes/plutoes upset.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes surprise = At("images/personnel/plutoes/plutoes surprise.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes panic = At("images/personnel/plutoes/plutoes panic.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes fury = At("images/personnel/plutoes/plutoes fury.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes pensive = At("images/personnel/plutoes/plutoes pensive.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes unique = At("images/personnel/plutoes/plutoes unique.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes sad = At("images/personnel/plutoes/plutoes sad.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes surprise = At("images/personnel/plutoes/plutoes surprise.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes panic = At("images/personnel/plutoes/plutoes panic.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes fury = At("images/personnel/plutoes/plutoes fury.png", sprite_highlight("plutoes"), plutoes_transform)
+# image plutoes pensive = At("images/personnel/plutoes/plutoes pensive.png", sprite_highlight("plutoes"), plutoes_transform)
 
 
 transform venture_transform:
@@ -353,8 +351,10 @@ define jessie_unknown = Character("???", kind=jessie)
 
 define firewal = Character("Dr. Firewal", kind=base_char, color="#961e44", cb_name="firewal", image="firewal")
 define firewal_unknown = Character("???", kind=firewal)
-define wal1 = Character("Wal No.1", kind=firewal) # used in fire
-define wal387 = Character("Wal No.387", kind=firewal) # used in the bingo card 1
+define wal1 = Character("Wal No.1", kind=firewal)
+define wal387 = Character("Wal No.387", kind=firewal)
+define wal641 = Character("Wal No.641", kind=firewal)
+define walbots = Character("Walbots", kind=firewal)
 define pocket_wal = Character("Pocket Wal", kind=firewal, what_size=30, cb_name="pocketwal")
 
 define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="helco", image="helco")
@@ -391,7 +391,7 @@ define paul_unknown = Character("???", kind=paul)
 define uriel = Character("Uriel", kind=base_char, color="#acced2", cb_name="uriel", image="uriel")
 define uriel_unknown = Character("???", kind=uriel)
 
-define egg = Character("Harvard Egg", kind=base_char, color="#ff8561", cb_name="egg", image="egg")
+define egg = Character("Egg's Assistant", kind=base_char, color="#ff8561", cb_name="egg", image="egg")
 define egg_unknown = Character("???", kind=egg)
 
 define caffi = Character("\"Dr\" Caffi", kind=base_char, color="#000000", cb_name="caffi", image="caffi") # change colour
