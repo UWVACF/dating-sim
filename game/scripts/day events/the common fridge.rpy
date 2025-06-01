@@ -20,7 +20,7 @@ label day_event_the_common_fridge:
     
     label tcf_elephant:
         n "So we're just not gonna question how an elephant fits in there? No? Okay."
-        n "Physics be damned, you take the elephant out of the fridge. Now you have room for the giraffe!" # too obscure of a joke?
+        n "Physics be damned, you take the elephant out of the fridge."
         n "The elephant looks at you, trumpets in your face and trots away happily."
         n "We will also disregard how the elephant fits in the hallway, let alone the doorway."
         show layer master:
