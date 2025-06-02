@@ -1,6 +1,4 @@
 image overlay_ai_1 = At("images/day events/overlay ai 1.png", base_overlay_transform)
-image aikha flareup1 = At("images/personnel/aikha/aikha flareup1.png", sprite_highlight("aikha"))
-image aikha flareup2 = At("images/personnel/aikha/aikha flareup2.png", sprite_highlight("aikha"))
 image haze black= At("images/day events/red blur.png", base_overlay_transform)
 image soundwave = At("images/day events/soundwave overlay.png", base_overlay_transform)
 
@@ -41,18 +39,18 @@ label day_event_aikha_flare:
         linear 1.5 alpha 0.2
     player "I've delivered the old cases to the archives as you've asked, Dr. Aikha."
     scene bg aikha office dark
-    show aikha flareup1
-    show aikha flareup1 at bobbing()
+    show aikha depressed
+    show aikha depressed at bobbing()
     pause 0.5
     player "Here are the trial records you wanted."
     player "Can I go home now?"
     scene bg aikha office dark close
-    show aikha flareup1
-    show aikha flareup1 at bobbing()
+    show aikha depressed
+    show aikha depressed at bobbing()
     aikha "..."
     player "Dr. Aikha?"
     aikha "..."
-    show aikha flareup1 at bobbing(duration = 0.3)
+    show aikha depressed at bobbing(duration = 0.3)
     player "Helloooo?"
     aikha "..."
     show haze black onlayer top:
@@ -62,8 +60,8 @@ label day_event_aikha_flare:
     n "Its defining traits?" 
     n "It can't speak and shows odd behavior patterns."
     scene bg aikha office dark
-    show aikha flareup1
-    show aikha flareup1 at bobbing(0.3)
+    show aikha depressed
+    show aikha depressed at bobbing(0.3)
     show haze black onlayer top:
         linear 1.5 alpha 0.8
     show aikha:
@@ -71,9 +69,9 @@ label day_event_aikha_flare:
     n "I mean... It could just be paranoia..."
     n "But... it did inexplicably go missing."
     n "And from what you've heard, Dr. Aikha is pretty injury prone."
-    show aikha flareup2
+    show aikha unique
     n "Huh. It's looking right at you, isn't it?"
-    show aikha flareup2:
+    show aikha unique:
         linear 5 zoom 1.3
     n "It approaches."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
@@ -174,7 +172,7 @@ label day_event_aikha_flare:
             linear 0.4 alpha 1.0
         n "..."
         show bg aikha office dark close
-        show aikha flareup1:
+        show aikha depressed:
             zoom 1.3
             easein 0.05 zoom 1
         n "The entity stumbles back and writhes in pain." 
