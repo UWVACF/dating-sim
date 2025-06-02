@@ -46,7 +46,7 @@ label day_event_the_big_chase:
             player "...Sorry! The last time I did sports was in high school."
             n "Just as Dr. Chan makes his way towards Pochi, you see a mushroom pop up around the corner."
             n "Pochi must have seen it too, because he sprints towards it."
-            show plutoes at appear(x_align = 0.5)
+            show plutoes happy at appear(x_align = 0.5)
             n "Plutoes picks up Pochi, flashes everyone an enigmatic smile and leaves."
             show plutoes at disappear
             chan upset "My hard drive..."
@@ -97,7 +97,7 @@ label day_event_the_big_chase:
         n "Out of the corner of your eye, you see Pochi reappear behind Plutoes, standing a few steps behind Dr. Chan."
         chan fury "Hey [player_name], did you see where Pochi went? That damn thing ate my hard drive."
         n "You see Plutoes take out a sign."
-        plutoes "{b}{color=#ff2d00}dont tell him -signed plutoes{fast}{/color}{/b}"
+        plutoes talk "{b}{color=#ff2d00}dont tell him -signed plutoes{fast}{/color}{/b}"
         
         menu:
             n "Should you cover for Pochi?"
@@ -107,15 +107,16 @@ label day_event_the_big_chase:
                 jump expose_plutoes
             
         label chan_lie:
+            show plutoes
             player "I'm not sure. I think he teleported away."
-            #render ethy graphic at 0.5 alpha
             show chan unique
             ethy "{sc}{size=+5}{b}AAAAAAA??????{/size} {w=0.7}{size=+3} A. {/size}{w=0.7} AA.{/b}{sc}"
             n "You hear confused screaming in your head. Dr. Chan must be hearing it too, because he stares at you suspiciously."
             player "Or maybe he wasn't going after Hampter?"
+            show plutoes happy
             n "Plutoes nods at you, grinning."
             chan "Hm. It's alright, I've attached a tracker to the hard drive. I'll find him eventually."
-            show plutoes at disappear
+            show plutoes happy at disappear
             n "You see Dr. Chan take out his device, then swiftly turn around. Only then do you both realize that Plutoes is no longer there."
             chan fury "Dammit, Plutoes!"
             show chan at disappear
@@ -130,8 +131,9 @@ label day_event_the_big_chase:
             show haze green onlayer top:
                 alpha 0.0
                 linear 0.2 alpha 1.0
-            show plutoes at disappear
+            show plutoes unique
             n "Suddenly, you and Dr. Chan are hit with a wave of noxious fumes."
+            show plutoes unique at disappear
             show chan panic
             chan panic "{i}cough cough cough{/i}"
             show haze green onlayer top:
@@ -144,6 +146,8 @@ label day_event_the_big_chase:
             show chan at disappear
             n "You watch as Dr. Chan trudges away. At this point, it might be easier for him to just rewrite whatever was in that hard drive."
             $ update_character_points({"chan": 1})
+            hide chan
+            hide plutoes
             hide haze green onlayer top
             return
 
@@ -153,11 +157,11 @@ label day_event_the_big_chase:
         n "The beast burps, padding around in satisfaction. Did you just witness a murder?"
         n "The two figures get closer, and you recognize them as Dr. Syg and Plutoes. What an odd combination."
         n "Pochi ducks behind you like a kid that just broke an expensive vase."
-        show plutoes happy at appear(x_align = 0.33)
-        show syg neutral at appear(x_align = 0.66)
+        show plutoes happy at appear(x_align = 0.3)
+        show syg neutral at appear(x_align = 0.6)
         syg "Please grab Pochi for me, [player_name]. I need to recover Hampter. She's supposed to oversee my department temporarily."
         n "Plutoes pulls out a sign from behind his back."
-        plutoes "{b}{color=#ff2d00}hey bud gimme my dog back i was just tryna save the hairball from the demonis demon department -signed plutoes{fast}{/color}{/b}"
+        plutoes talk "{b}{color=#ff2d00}hey bud gimme my dog back i was just tryna save the hairball from the demonis demon department -signed plutoes{fast}{/color}{/b}"
 
         menu:
             n "No time for questions. Who should you listen to?"
@@ -171,9 +175,8 @@ label day_event_the_big_chase:
             show plutoes upset
             n "Pochi teleports away as soon as Dr. Syg tries to grab him, leaving behind a soaking, miserable Hampter in his palm."
             show hampter sad at appear(x_align = 0.5)
-            show plutoes fury 
             n "Plutoes smiles menacingly at you, then leaves. You feel an itch near your ear and scratch it."
-            show plutoes at disappear
+            show plutoes upset at disappear
             syg pensive "One day..."
             n "Your own voice rings in your ear, spewing slurs."
             n "{sc}{color=#009900}%%&*(@#&$%%!@#(*&(@%%%%*&!@$!*&*#*$!&%%!*&$$*!@&{/color}{/sc}"
@@ -184,6 +187,9 @@ label day_event_the_big_chase:
             show syg pensive at disappear
             n "You watch Dr. Syg walk away with a drained Hampter. You contemplate whether removing your ear or going deaf would get you more company compensation claims."
             $ update_character_points({"syg": 1})
+            hide hampter
+            hide syg
+            hide plutoes
             return
 
         label spare_pochi:
@@ -195,12 +201,6 @@ label day_event_the_big_chase:
             player "What the-"
             syg neutral "What happened, [player_name]?"
             show haze green onlayer top:
-                matrixcolor Matrix([
-                    0.0, 1.0, 0.0, 0.0,
-                    1.0, 0.0, 0.0, 0.0,
-                    0.0, 0.0, 1.0, 0.0,
-                    0.0, 0.0, 0.0, 1.0
-                ])
                 alpha 0.0
                 linear 0.2 alpha 1.0
             player "{sc}{color=#009900}F!&*@%%#! YOU $%%&*!%%@&*#%%@%%#${/color}{/sc}"

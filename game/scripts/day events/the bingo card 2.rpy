@@ -50,12 +50,16 @@
             # an hour pass...you break is over. You really should get going.
             # you forfit - ryz gets a point for "someone forfits the game" ryz +1
             ## Choice: + point deceased OR Uriel 
-            # deceased pspspspsp at you (or hand you a slip of paper) while you get your coffee, whispers to you to help them win the miku by <doing something that's definitely breaking the rules and may get you on uriel's bad side>
+            # deceased pspspspsp at you (or hand you a slip of paper) while you get your coffee, whispers to you to help them win the miku by setting off the anomaly breakout alarm outside. 
             # Choice: help deceased (+1) or don't help deceased and report them (uriel +1)
             # Help deceased:
-                # insert kind of dubius thing here
-                # 
+                # you leave the lounge and set off the alarm. Surely no one saw that, right. 
+                # you hear deceased's laughter in the lounge. It seems they've won. Good for them. 
+                # you turn around and see Uriel glaring at you from within in the lounge through the doorway. ah.
             # Don't help Uriel: you stick to the rules (uriel +1) and ryz wins <someone gets reported for cheating>
+                # report deceased for cheating
+                # deceased is pissed at you
+                # ryz wins, happy for winning
         
 
 #scoring groups
@@ -98,6 +102,3 @@
             #22 canabilism (intentional)
             #23 paul bio hazard
     #24 drug dealing
-
-# prompts on other personnel's cards
-    # 
