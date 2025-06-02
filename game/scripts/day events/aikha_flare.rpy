@@ -39,18 +39,18 @@ label day_event_aikha_flare:
         linear 1.5 alpha 0.2
     player "I've delivered the old cases to the archives as you've asked, Dr. Aikha."
     scene bg aikha office dark
-    show aikha depressed
-    show aikha depressed at bobbing()
+    show aikha sad
+    show aikha sad at bobbing()
     pause 0.5
     player "Here are the trial records you wanted."
     player "Can I go home now?"
     scene bg aikha office dark close
-    show aikha depressed
-    show aikha depressed at bobbing()
+    show aikha sad
+    show aikha sad at bobbing()
     aikha "..."
     player "Dr. Aikha?"
     aikha "..."
-    show aikha depressed at bobbing(duration = 0.3)
+    show aikha sad at bobbing(duration = 0.3)
     player "Helloooo?"
     aikha "..."
     show haze black onlayer top:
@@ -60,11 +60,11 @@ label day_event_aikha_flare:
     n "Its defining traits?" 
     n "It can't speak and shows odd behavior patterns."
     scene bg aikha office dark
-    show aikha depressed
-    show aikha depressed at bobbing(0.3)
+    show aikha sad
+    show aikha sad at bobbing(0.3)
     show haze black onlayer top:
         linear 1.5 alpha 0.8
-    show aikha:
+    show aikha sad:
         xalign 0.5
     n "I mean... It could just be paranoia..."
     n "But... it did inexplicably go missing."
@@ -124,10 +124,11 @@ label day_event_aikha_flare:
         n "Dr. Aikha pulls out a small Wal... a Smal."
         n "A Smal if you will."
         aikha "Pocket Wal?"
-        pocket_wal "Good morning!"
-        pocket_wal "You've been dissociating for 58 minutes, 59 seconds."
+        show pocketwal at appear(x_align = 0.4)
+        pocketwal "Good morning!"
+        pocketwal "You've been dissociating for 58 minutes, 59 seconds."
         aikha pensive "I see... thanks Pocket Wal."
-        pocket_wal "Yippiee!"
+        pocketwal "Yippiee!"
         n "The Pocket Wal hops down and crawls back into Dr. Aikha's labcoat pocket."
         n "Seems like an awfully advanced pocket watch..."
         aikha upset "Sorry, [player_name]. I was supposed to meet you a while ago."
@@ -147,7 +148,7 @@ label day_event_aikha_flare:
         aikha upset "Mm. Maintaining appearances is straining is all."
         aikha happy "Sometimes it's good to kinda melt in private."
         n "Relatable."
-        aikha depressed "And sometimes you melt so much you end up completely losing shape and giving full control to muscle memory."
+        aikha sad "And sometimes you melt so much you end up completely losing shape and giving full control to muscle memory."
         n "Slightly less so..."
         aikha "Regardless, thanks for giving it a second thought before shooting me."
         aikha happy "I'll drop off a gift to you later as compensation for your time. Next time just give the papers to one of my assistants, personnel, or just leave it at my door."
@@ -172,7 +173,7 @@ label day_event_aikha_flare:
             linear 0.4 alpha 1.0
         n "..."
         show bg aikha office dark close
-        show aikha depressed:
+        show aikha sad:
             zoom 1.3
             easein 0.05 zoom 1
         n "The entity stumbles back and writhes in pain." 
