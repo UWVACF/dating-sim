@@ -166,7 +166,8 @@ define player_verb_suffix = "" # either s or blank, used after a verb since that
 # bgs
 
 image bg hallway = "images/bgs/misc/hallway.png"
-image bg lounge = "images/bgs/misc/hallway.png"
+image bg lounge = "images/bgs/misc/lounge.png"
+image bg lab = "images/bgs/misc/lab.png"
 image bg office = "images/bgs/misc/hallway.png"
 image bg lobby = "images/bgs/misc/hallway.png"
 image bg venue = "images/bgs/misc/venue.png"
@@ -174,7 +175,7 @@ image bg door = "images/bgs/misc/door.png"
 image bg meeting hall = "images/bgs/misc/meeting hall.png"
 image bg meeting room = "images/bgs/misc/meeting room.png"
 image bg room hall = "images/bgs/misc/room hall.png"
-image bg containment = "image/bgs/misc//containment.png"
+image bg containment = "images/bgs/misc/containment.png"
 
 image bg aikha office = "images/bgs/aikha office/ai office.png"
 image bg aikha office close = "images/bgs/aikha office/ai office close.png"
