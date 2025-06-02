@@ -1,6 +1,4 @@
 image overlay_ai_1 = At("images/day events/overlay ai 1.png", base_overlay_transform)
-image aikha flareup1 = At("images/personnel/aikha/aikha flareup1.png", sprite_highlight("aikha"))
-image aikha flareup2 = At("images/personnel/aikha/aikha flareup2.png", sprite_highlight("aikha"))
 image haze black= At("images/day events/red blur.png", base_overlay_transform)
 image soundwave = At("images/day events/soundwave overlay.png", base_overlay_transform)
 
@@ -41,18 +39,18 @@ label day_event_aikha_flare:
         linear 1.5 alpha 0.2
     player "I've delivered the old cases to the archives as you've asked, Dr. Aikha."
     scene bg aikha office dark
-    show aikha flareup1
-    show aikha flareup1 at bobbing()
+    show aikha sad
+    show aikha sad at bobbing()
     pause 0.5
     player "Here are the trial records you wanted."
     player "Can I go home now?"
     scene bg aikha office dark close
-    show aikha flareup1
-    show aikha flareup1 at bobbing()
+    show aikha sad
+    show aikha sad at bobbing()
     aikha "..."
     player "Dr. Aikha?"
     aikha "..."
-    show aikha flareup1 at bobbing(duration = 0.3)
+    show aikha sad at bobbing(duration = 0.3)
     player "Helloooo?"
     aikha "..."
     show haze black onlayer top:
@@ -62,18 +60,18 @@ label day_event_aikha_flare:
     n "Its defining traits?" 
     n "It can't speak and shows odd behavior patterns."
     scene bg aikha office dark
-    show aikha flareup1
-    show aikha flareup1 at bobbing(0.3)
+    show aikha sad
+    show aikha sad at bobbing(0.3)
     show haze black onlayer top:
         linear 1.5 alpha 0.8
-    show aikha:
+    show aikha sad:
         xalign 0.5
     n "I mean... It could just be paranoia..."
     n "But... it did inexplicably go missing."
     n "And from what you've heard, Dr. Aikha is pretty injury prone."
-    show aikha flareup2
+    show aikha unique
     n "Huh. It's looking right at you, isn't it?"
-    show aikha flareup2:
+    show aikha unique:
         linear 5 zoom 1.3
     n "It approaches."
     n "You see your life flash before your eyes. Tomorrow, you'll just be a statistic on the {i}Monthly Foundation Casualty Report{/i}."
@@ -114,7 +112,7 @@ label day_event_aikha_flare:
         aikha "..."
         aikha "nnngn..."
         n "The life returns in Dr. Aikha's eyes."
-        aikha "Hm? How'd you get in here, new recruit?"
+        aikha panic "Hm? How'd you get in here, new recruit?"
         scene bg aikha office
         show haze black onlayer top:
             alpha 0.8
@@ -122,22 +120,23 @@ label day_event_aikha_flare:
         show aikha
         n "Dr. Aikha turns on the lights."
         n "A Plut Shroom spurts spores in the corner of the room."
-        aikha "Ah, I must have blanked out. For..."
+        aikha pensive "Ah, I must have blanked out. For..."
         n "Dr. Aikha pulls out a small Wal... a Smal."
         n "A Smal if you will."
         aikha "Pocket Wal?"
-        pocket_wal "Good morning!"
-        pocket_wal "You've been dissociating for 58 minutes, 59 seconds."
-        aikha "I see... thanks Pocket Wal."
-        pocket_wal "Yippiee!"
+        show pocketwal at appear(x_align = 0.4)
+        pocketwal "Good morning!"
+        pocketwal "You've been dissociating for 58 minutes, 59 seconds."
+        aikha pensive "I see... thanks Pocket Wal."
+        pocketwal "Yippiee!"
         n "The Pocket Wal hops down and crawls back into Dr. Aikha's labcoat pocket."
         n "Seems like an awfully advanced pocket watch..."
-        aikha "Sorry, [player_name]. I was supposed to meet you a while ago."
+        aikha upset "Sorry, [player_name]. I was supposed to meet you a while ago."
         aikha "Did you finish everything I ask-"
         n "Dr. Aikha stops mid-question after noticing the papers in their hand."
-        aikha "Mmm."
+        aikha pensive "Mmm."
         n "They also notice the gun in your hand."
-        aikha "Hm."
+        aikha upset "Hm."
         player "Ah- uh I was just uh... practicing open-carry..."
         n "Their eyes stare through you."
         aikha "Well, your heart rate looks pretty high."
@@ -146,13 +145,13 @@ label day_event_aikha_flare:
         aikha "It's understandable. I look a little... off when I'm relaxing my form."
         player "Relaxing?"
         n "Wow. You were going to shoot someone leisuring."
-        aikha "Mm. Maintaining appearances is straining is all."
-        aikha "Sometimes it's good to kinda melt in private."
+        aikha upset "Mm. Maintaining appearances is straining is all."
+        aikha happy "Sometimes it's good to kinda melt in private."
         n "Relatable."
-        aikha "And sometimes you melt so much you end up completely losing shape and giving full control to muscle memory."
+        aikha sad "And sometimes you melt so much you end up completely losing shape and giving full control to muscle memory."
         n "Slightly less so..."
         aikha "Regardless, thanks for giving it a second thought before shooting me."
-        aikha "I'll drop off a gift to you later as compensation for your time. Next time just give the papers to one of my assistants, personnel, or just leave it at my door."
+        aikha happy "I'll drop off a gift to you later as compensation for your time. Next time just give the papers to one of my assistants, personnel, or just leave it at my door."
         n "Huh, you were so excited to leave, you forgot those were all options."
         hide aikha
         scene hallway
@@ -174,7 +173,7 @@ label day_event_aikha_flare:
             linear 0.4 alpha 1.0
         n "..."
         show bg aikha office dark close
-        show aikha flareup1:
+        show aikha sad:
             zoom 1.3
             easein 0.05 zoom 1
         n "The entity stumbles back and writhes in pain." 
@@ -182,19 +181,19 @@ label day_event_aikha_flare:
         n "Dr. Aikha jolts awake, suddenly gaining life in their eyes."
         aikha "{sc}Wh-... new recruit...?{/sc}"
         n "Wait... Did it just talk?"
-        aikha "{sc}My... Head... auuughh...im...destabilizin...g...{/sc}"
+        aikha unique "{sc}My... Head... auuughh...im...destabilizin...g...{/sc}"
         n "... This might have {i}actually{/i} been Dr. Aikha."
-        aikha "{sc}Hur...ry...{/sc}"
-        aikha "{sc}AH-IIEIAAIII{/sc}"
+        aikha unique "{sc}Hur...ry...{/sc}"
+        aikha unique "{sc}AH-IIEIAAIII{/sc}"
         hide overlay_ai_2 onlayer top
         show bg aikha office dark
-        #show aikha unique:
+        show aikha unique
         n "Uh oh. Getting eaten by Dr. Aikha is definitely worse than that old Mimimic thing!"
         show bg aikha office leave
         n "You back up against the door, fumbling with the knob."
         n "Right, that Path-Para access."
         n "Out of the corner of your eye, you see Dr. Aikha's wallet on the desk behind {i}it{/i}."
-        #show aikha unique:
+        show aikha unique
         menu:
             n "Quick! What to do!?"
             "Steal the wallet.":
@@ -231,13 +230,13 @@ label day_event_aikha_flare:
             n "A... Smal?..."
             n "A Smal if you will."
             n "The Smal pushes past the fabric and marches towards you."
-            pocket_wal "Don't worry, Ai! I, Pocket Wal! will defeat this poacher!"
-            pocket_wal "HAAAAAAA!!!"
+            pocketwal upset "Don't worry, Ai! I, Pocket Wal! will defeat this poacher!"
+            pocketwal upset "HAAAAAAA!!!"
             n "Pocket Wal charges up and bursts into flames. Slightly calming down the mess of Dr. Aikha."
             aikha "nnnghnnn..."
             player "Wait, wait! I'm no poacher!"
-            pocket_wal "Oh. It's just you, intern."
-            pocket_wal "{cps=*2}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity!{/cps} {cps=*3}THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! {/cps} {cps=*5}Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!{/cps}"
+            pocketwal "Oh. It's just you, intern."
+            pocketwal upset "{cps=*2}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity!{/cps} {cps=*3}THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! {/cps} {cps=*5}Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!{/cps}"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
             n "You can't even squeak out your last words because Wal NO.2 the yapper is drowning you out."
@@ -249,7 +248,7 @@ label day_event_aikha_flare:
             show soundwave onlayer top:
                 alpha 1.0
                 linear 0.3 alpha 0
-            pocket_wal "Ah, I see the issue. Ai, spaighettied."
+            pocketwal upset "Ah, I see the issue. Ai, spaighettied."
             show soundwave onlayer top:
                 alpha 1.0
             show layer master:
@@ -259,9 +258,9 @@ label day_event_aikha_flare:
                 alpha 1.0
                 linear 0.3 alpha 0
             show layer master
-            pocket_wal "I will occupy them while you will go retrieve an emergency snack."
-            pocket_wal "It's behind the mirror, push past it and you'll see a safe." 
-            hide pocket_wal
+            pocketwal "I will occupy them while you will go retrieve an emergency snack."
+            pocketwal "It's behind the mirror, push past it and you'll see a safe." 
+            hide pocketwal
             show bg aikha office leave
             show soundwave onlayer top:
                 alpha 1.0
@@ -293,7 +292,7 @@ label day_event_aikha_flare:
                 show layer master:
                     shake(persist=15.0, preset="rumble")
                 show soundwave onlayer top
-                firewal "{b}{sc}Good, now throw it over!{/sc}{/b}"
+                pocketwal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 
                 show bg aikha office dark close:
                     zoom 1.0
@@ -313,11 +312,11 @@ label day_event_aikha_flare:
                 aikha "Again."
                 n "This is definitely gonna jeopardize your internship, isn't it... Not to mention the guilt creeping in from shooting a person(?)."
                 n "The Pocket Wal hops onto Dr. Aikha's desk, knocking over an empty pill bottle."
-                pocket_wal "Don't think I forgot your attempts to poach from Ai!"
-                aikha "..."
+                pocketwal upset "Don't think I forgot your attempts to poach from Ai!"
+                aikha fury "..."
                 n "Oh, come on!"
-                aikha neutral "[player_name]. I advise you don't attempt such a stunt again."
-                aikha "That will be all. Leave."
+                aikha happy "[player_name]. I advise you don't attempt such a stunt again."
+                aikha fury "That will be all. Leave."
                 n "The Pocket Wal hops down and shoves you out of the door with surprising strength."
                 hide aikha
                 n "You have a feeling you won't be coming back here anytime soon."
@@ -330,7 +329,7 @@ label day_event_aikha_flare:
             show bg aikha office dark close
             player "Dr. Aikha! I'm so sorry! Please wake up!"
             player "I didn't mean to, I thought you were a man-eating anomaly..."
-            aikha "{sc}IIEIAAIIIEEEAAAAAAAAA{/sc}"
+            aikha unique "{sc}IIEIAAIIIEEEAAAAAAAAA{/sc}"
             n "Their 'arm' suddenly extends and latches onto your left hand."
             n "For a moment, you believe it's the handshake of forgiveness."
             n "...then they rip your arm off."
@@ -347,7 +346,7 @@ label day_event_aikha_flare:
             n "You watch in horror as Dr. Aikha assimilates the arm into their mass."
             n "...Surely this is covered in the employee insurance plan, right?"
             n "After the arm completely dissolves, the mass rapidly reforms into the familiar shape of Dr. Aikha."
-            show aikha sad
+            show aikha upset
             aikha "Ughhh. My... head..."
             aikha "Right."
             aikha "I got shot."
@@ -379,12 +378,12 @@ label day_event_aikha_flare:
             n "You desperately clench your left hand to comfort yourself."
             n "Wait. Left hand?"
             n "You look down and find that you now have two arms again. However, your left arm is scarred with purple, root-like structures. "
-            aikha "There, all fixed! Don't worry about the artifacts, it'll turn 'normal' in a few days!"
+            aikha happy "There, all fixed! Don't worry about the artifacts, it'll turn 'normal' in a few days!"
             aikha "I don't blame you {i}too{/i} too much, I guess."
             aikha happy "Was gonna reprimand you for entering my office without permission and shooting me, but it seems you already learned you lessson, eh?"
             aikha "Heheh."
-            aikha "..."
-            aikha "I advise you refrain from doing that again."
+            aikha upset "..."
+            aikha fury "I advise you refrain from doing that again."
             hide aikha
 
             scene bg hallway

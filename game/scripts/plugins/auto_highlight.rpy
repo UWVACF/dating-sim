@@ -61,6 +61,7 @@
 # - Be sure that all images that you want to share the same sprite highlight name
 #   are using the same image tag.
 
+
 """ Variables """
 # - sprite_focus - (Dictionary) It is used to help inform who should be animated
 #                  and occasionaly holds timing data

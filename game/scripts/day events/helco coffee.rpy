@@ -22,50 +22,12 @@ init python:
 label day_event_helco_coffee:
     scene bg lounge
     with default_fade
-    show helco at left
     show aikha
-    show alex at right
-    helco "Yippee!"
-    show helco talk
-    show aikha talk
-    show alex talk
-    n "talk"
-    show helco sad
-    show aikha sad
-    show alex sad
-    n "sad"
-    show helco fury
-    show aikha fury
-    show alex fury
-    n "fury"
-    show helco happy
-    show aikha happy
-    show alex happy
-    n "happy"
-    show helco upset
-    show aikha upset
-    show alex upset
-    n "upset"
-    show helco unique
-    show aikha unique
-    show alex unique
-    n "unique"
-    show helco panic
-    show aikha panic
-    show alex panic
-    n "panic"
-    show helco surprise
-    show aikha surprise
-    show alex surprise
-    n "surprise"
-    show helco pensive
-    show aikha pensive
-    show alex pensive
-    n "pensive"
-    show helco unique
-    show aikha unique
-    show alex unique
-    n "unique"
+    n "test"
+    aikha "Hi gang!"
+    aikha upset "RAHH"
+    aikha neutral "lolz"
+    n "test"
 
     
     

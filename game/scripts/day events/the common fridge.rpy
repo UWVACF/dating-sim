@@ -1,7 +1,7 @@
 label day_event_the_common_fridge:
     scene bg hallway
     n "The clock strikes noon. Lunch time!"
-    n "You Jazzercise over to the lounge, relieved at finally being able to break."
+    n "You Jazzercise over to the lounge, relieved at finally being able to take a break."
     show bg lounge
     n "As you enter the room, you realize you forgot to bring your lunch today. Damn it."
     n "However, salvation comes in the large, rectangular shape of a fridge, on which a sticky note reads, \"COMMON.\" It's not hopeless after all!"
@@ -95,6 +95,7 @@ label day_event_the_common_fridge:
             walbots "YES SIR! FOR THE WAL! FOR THE WAL!"
             n "Now that that's situation done with, you return to the lounge to grab a quick bite before the Walbots drag the elephant back in."
             show bg lounge
+            hide firewal
             n "Those instant noodles sound pretty good right about now."
             n "You open the common fridge..."
             n "..."
@@ -110,8 +111,11 @@ label day_event_the_common_fridge:
             player "...Thank you, Manager Wal!"
             n "He flashes you an enthuastic thumbs up."
             wal1 "You're very welcome!"
-            n "You walk back to the lounge, trying to look at innocent as possible."
+            show bg lounge
+            hide firewal
+            n "You walk back to the lounge, trying to look as innocent as possible."
             n "20 hours 31 minutes until the analysis is complete. 20 hours 31 minutes to live."
+            # walk back to lounge, chan is eating the instant noodles, ethy screaming at you
             $ update_character_points({"firewal": -1})
             return
 
@@ -130,7 +134,7 @@ label day_event_the_common_fridge:
         n "You can't stop. You raise the skull in your hand dramatically as you continue."
         player "Prithee, Horatio, tell me one thing."
         player "HORATIO: What's that, my lord?"
-        n "I don't think you're supposed to say that part..."
+        n "I don't think you say the names..."
         player "HAMLET: Dost thou think Alexander looked o' this fashion i' th' earth?"
         player "HORATIO: E'en so."
         player "HAMLET: And smelt so? Pah! {i}[[He puts the skull down.]{/i}"
@@ -205,7 +209,7 @@ label day_event_the_common_fridge:
         helco "I'm grasping lunch!"
         player "...You mean grabbing?"
         helco "Yes! Grabbing lunch. As humans do."
-        n "He smiles blankly at you." # maybe another word
+        n "He smiles blankly at you."
         n "..."
         n "You check on the water. It's finally boiling! You put the noodles in and cover it."
         player "How's your morning been?"
@@ -250,7 +254,7 @@ label day_event_the_common_fridge:
         player "I'm making these Frigid Friday Fridge Fries."
         helco "In the oven? Do we not have an air fryer?"
         n "You frown. Your friendly fellow frames facts. Shouldn't you be air frying the Frigid Friday Fridge Fries?"
-        n "Frankly, you're too famished to falter. You frenziedly fit the frumpy Frigid Friday Fridge Fries into the fryer."
+        n "Frankly, you're too famished to falter. You frenziedly fit the faded Frigid Friday Fridge Fries into the fryer."
         n "You're fretful, fidgeting frantically while the Frigid Friday Fridge Fries fry."
         n "Finally, you find that the Frigid Friday Fridge Fries finished frizzling flawlessly. Fabulous!"
         n "You fastidiously fetch the formerly frigid, currently fervent Friday Fridge Fries from the fryer, fancying a feast."
