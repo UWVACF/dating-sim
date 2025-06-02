@@ -65,7 +65,7 @@ label day_event_the_common_fridge:
         wal1 "Fret not! We have this situation under control!"
         walbots "{sc}FOR THE WAL! FOR THE WAL!{/sc}"
         show firewal at appear(x_align = 1.0) as wal641
-        wal641 "Manager Wal! The anomaly is not listed on the foundation records. We do not know where it came from."
+        wal641 "Manager Wal! The anomaly is not listed on the foundation records. We do not know where it came from." # too much wal dialogue
         wal1 "Perform an analysis!"
         wal641 "Understood! Performing analysis..."
         wal1 "Worry not, [player_name], we are capable of handling this situation!"

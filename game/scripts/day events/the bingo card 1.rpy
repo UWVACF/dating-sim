@@ -92,13 +92,14 @@ label day_event_the_bingo_card_1:
         wal387 "Your cooperation is greatly apprec-"
         n "Out of nowhere, he gets hit by a sofa thrown by Founder Alex."
         n "He tumbles to the floor, and the fire he was conjuring causes the sofa to spontaneously combust."
+        # add dialogue
         n "As the fire alarm blares, you see Plutoes check his card and grin happily."
         n "He makes his way over to Dr. Aikha, who sighs and says something you can't quite make out."
         n "Still maintaining his signature grin, Plutoes walks over to the \"#1 BINGO\" mug."
         n "Meanwhile, Dr. Ryz has gotten a fire extinguisher and put out the sofa fire."
         ryz "Are we all good?"
         n "You glance around the room. Your eyes lock onto Founder Alex, who's on his hands and knees on the floor."
-        alex "...My...mug..."
+        alex sad "...My...mug..."
         n "He looks at Plutoes and Pochi, who are both happily chewing on the mug. Tears start to stream from behind his glasses, fogging the lenses."
         n "While that's going on, you see Wal No.387 glitching off to the side. Dr. Aikha is frantically trying to fix him."
         wal387 "CRITICAL MALFUNCTION. INTERFERENCE DETECTED. AWAITING FURTHER ORDERS."
@@ -109,7 +110,7 @@ label day_event_the_bingo_card_1:
     label backflip:
         n "...Do you really value your life and job at $4.35??"
         ryz "Yes! Okay, so what you want to do is swing your arms upwards when you jump. It helps give you momentum. Like this!"
-        n "Dr. Ryz does a radical backflip..."
+        n "Dr. Ryz does a radical backflip..." #radical backflip
         show black_screen zorder 50
         with vpunch
         n "...and promptly kicks you in the face."
@@ -157,7 +158,7 @@ label day_event_the_bingo_card_1:
         n "You take your wallet out of your pocket and empty it. It has nothing noteworthy inside: just a couple of maxed-out credit cards and a handful of loose change."
         n "The wallet itself, though, was an heirloom from your late grandfather. You admire the antique, faded brown leather one last time..."
         n "The thought of the...skateboard...pushes aside all doubts."
-        n "Plutoes flashes you an encouraging smile. You brace yourself and shove the wallet in your mouth."
+        n "Plutoes flashes you an encouraging smile. You brace yourself and shove the wallet into your mouth."
         n "As you attempt to unhinge your jaw to fit it in, you feel something slide down your throat. Something remarkably...coin-shaped." # bill may make more (physical) sense
         n "It looks like you missed a coin. Oh, wait, no, three coins. Three coins that are now jammed in your esophagus."
         n "You begin to choke and flail around, searching for something to remove the $1.15 stuck in your throat."

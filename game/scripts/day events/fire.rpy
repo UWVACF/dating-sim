@@ -70,11 +70,11 @@ label day_event_fire:
     n "Dr. Firewal checks his wrist cuff."
     firewal "...Apparently Wal No.927 invited [player_obj] here to show [player_obj] around."
     n "Wal... No.927?"
-    aikha surprised "Huh? Then where is he-"
+    aikha surprise "Huh? Then where is he-"
     with hpunch
     n "You hear an explosion from down the hall."
     n "You might have a hunch as to where your tour guide went..."
-    hide aikha surprised
+    hide aikha surprise
     hide firewal pensive
     show bg room hall
     n "You rush to the source of the sound, with Dr. Aikha and Dr. Firewal casually trailing behind you."
@@ -100,12 +100,12 @@ label day_event_fire:
         xalign 0.66
         yalign 1.0
     n "You glance over to the nearby conference room and see a frustrated Uriel and confused Dr. Helco."
-    helco surprised "Is that something all humans should know of?"
+    helco surprise "Is that something all humans should know of?"
     n "You have more pressing matters right now."
     show bg room hall
     hide helco
     hide uriel
-    n "As you turn back, you see a charred Hampter runs through the flames."
+    n "As you turn back, you see a charred Hampter run through the flames."
     show hampter panic at appear(x_align = 0.5)
     hampter "It wasn't me!!! A Wal found me and just combusted! It wasn't my fault!"
     n "The frayed wires in Hampter's mouth suggest otherwise." 
@@ -217,7 +217,7 @@ label day_event_fire:
             shake
             shake
         moon "{size=+20}DEAR INTERN, COULD YOU STEP BACK A BIT?{/size}"
-        n "You step back a bit. You peek out the window and see a faint green glow on the moon."
+        n "You comply. You peek out the window and see a faint green glow on the moon."
         show greenbeam onlayer top:
             alpha 0
             easeout 0.6 alpha 1.0
@@ -244,7 +244,7 @@ label day_event_fire:
             alpha 1
             easeout 0.4 alpha 0
         pause 0.6
-        n "Then beam reaches the fire."
+        n "The beam hits the fire."
         show flashbang onlayer top:
             alpha 0.0
             linear 0.7 alpha 1.0
@@ -259,7 +259,7 @@ label day_event_fire:
             shake
             shake
             shake
-        moon "{size=+20}NO PROBlEM! LET ME KNOW IF THERE'S ANOTHER MESS TO CLEAN! :D{/size}"
+        moon "{size=+20}NO PROBLEM! LET ME KNOW IF THERE'S ANOTHER MESS TO CLEAN! :D{/size}"
         show bg meeting hall
         show uriel unique:
             xalign 0.33
@@ -274,15 +274,19 @@ label day_event_fire:
         helco neutral "Yes. Yes I'm fine. Was that green beam...your doing?"
         player "Oh, I called Moon to help with the fire."
         helco neutral "...I see."
-        hide helco
+        show helco at disappear
         n "You watch as Dr. Helco hurries off. You feel a little bad."
+        hide helco
         uriel panic "Huh..?"
         uriel neutral "Ah. It must have been the fire."
         uriel "Dammit. I liked this shirt."
+        show uriel at disappear
         n "Uriel walks off, a little dazed."
+        hide uriel
         n "...Well, that's sorted."
         n "You also turn around to leave when you feel a cold hand grab your shoulder."
 
+        # TODO: change offset
         show bg room hall
         show firewal fury
         show firewal fury as wal1:
@@ -308,11 +312,12 @@ label day_event_fire:
         hide wal5
         hide wal6
         n "They all march into a wall in union."
-        n "You feel the wrath of several millions walbots. You contemplate whether you should sleep with a fire extinguisher tonight."
+        n "You feel the wrath of several million walbots. You contemplate whether you should sleep with a fire extinguisher tonight."
 
 
         # you put wals out of a job, angry wals
-        $ update_character_points({"firewal": -1, "helco": -1, "uriel": -1, "aikha": +1})
+        $ update_character_points({"firewal": -1, "helco": -1, "uriel": -1, "aikha": 1})
+        return
 
 
 
