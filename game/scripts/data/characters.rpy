@@ -10,8 +10,8 @@ transform base_char_transform(x = 666, y = 1000, xoff = 0, yoff = 0):
 transform jessie_transform:
     base_char_transform
 
-image jessie = At("images/personnel/jessie/jessie neutral.png", sprite_highlight("jessie"), jessie_transform)
-image jessie neutral = At("images/personnel/jessie/jessie neutral.png", sprite_highlight("jessie"), jessie_transform)
+image jessie = At(ConditionSwitch("speaking_char == 'jessie'", "images/personnel/jessie/jessie talk.png", "True", "images/personnel/jessie/jessie neutral.png"), sprite_highlight("jessie"), jessie_transform)
+image jessie neutral = "jessie"
 image jessie talk = At("images/personnel/jessie/jessie talk.png", sprite_highlight("jessie"), jessie_transform)
 image jessie happy = At("images/personnel/jessie/jessie happy.png", sprite_highlight("jessie"), jessie_transform)
 image jessie sad = At("images/personnel/jessie/jessie sad.png", sprite_highlight("jessie"), jessie_transform)
@@ -26,8 +26,8 @@ image jessie unique = At("images/personnel/jessie/jessie unique.png", sprite_hig
 transform aikha_transform:
     base_char_transform
 
-image aikha = At("images/personnel/aikha/aikha neutral.png", sprite_highlight("aikha"), aikha_transform)
-image aikha neutral = At("images/personnel/aikha/aikha neutral.png", sprite_highlight("aikha"), aikha_transform)
+image aikha = At(ConditionSwitch("speaking_char == 'aikha'", "images/personnel/aikha/aikha talk.png", "True", "images/personnel/aikha/aikha neutral.png"), sprite_highlight("aikha"), aikha_transform)
+image aikha neutral = "aikha"
 image aikha talk = At("images/personnel/aikha/aikha talk.png", sprite_highlight("aikha"), aikha_transform)
 image aikha happy = At("images/personnel/aikha/aikha happy.png", sprite_highlight("aikha"), aikha_transform)
 image aikha sad = At("images/personnel/aikha/aikha sad.png", sprite_highlight("aikha"), aikha_transform)
@@ -42,8 +42,8 @@ image aikha unique = At("images/personnel/aikha/aikha unique.png", sprite_highli
 transform alex_transform:
     base_char_transform
 
-image alex = At("images/personnel/alex/alex neutral.png", sprite_highlight("alex"), alex_transform)
-image alex neutral = At("images/personnel/alex/alex neutral.png", sprite_highlight("alex"), alex_transform)
+image alex = At(ConditionSwitch("speaking_char == 'alex'", "images/personnel/alex/alex talk.png", "True", "images/personnel/alex/alex neutral.png"), sprite_highlight("alex"), alex_transform)
+image alex neutral = "alex"
 image alex talk = At("images/personnel/alex/alex talk.png", sprite_highlight("alex"), alex_transform)
 image alex happy = At("images/personnel/alex/alex happy.png", sprite_highlight("alex"), alex_transform)
 image alex sad = At("images/personnel/alex/alex sad.png", sprite_highlight("alex"), alex_transform)
@@ -58,8 +58,8 @@ image alex unique = At("images/personnel/alex/alex unique.png", sprite_highlight
 transform helco_transform:
     base_char_transform
 
-image helco = At("images/personnel/helco/helco neutral.png", sprite_highlight("helco"), helco_transform)
-image helco neutral = At("images/personnel/helco/helco neutral.png", sprite_highlight("helco"), helco_transform)
+image helco = At(ConditionSwitch("speaking_char == 'helco'", "images/personnel/helco/helco talk.png", "True", "images/personnel/helco/helco neutral.png"), sprite_highlight("helco"), helco_transform)
+image helco neutral = "helco"
 image helco talk = At("images/personnel/helco/helco talk.png", sprite_highlight("helco"), helco_transform)
 image helco happy = At("images/personnel/helco/helco happy.png", sprite_highlight("helco"), helco_transform)
 image helco sad = At("images/personnel/helco/helco sad.png", sprite_highlight("helco"), helco_transform)
@@ -74,8 +74,8 @@ image helco unique = At("images/personnel/helco/helco unique.png", sprite_highli
 transform ryz_transform:
     base_char_transform
 
-image ryz = At("images/personnel/ryz/ryz neutral.png", sprite_highlight("ryz"), ryz_transform)
-image ryz neutral = At("images/personnel/ryz/ryz neutral.png", sprite_highlight("ryz"), ryz_transform)
+image ryz = At(ConditionSwitch("speaking_char == 'ryz'", "images/personnel/ryz/ryz talk.png", "True", "images/personnel/ryz/ryz neutral.png"), sprite_highlight("ryz"), ryz_transform)
+image ryz neutral = "ryz"
 image ryz talk = At("images/personnel/ryz/ryz talk.png", sprite_highlight("ryz"), ryz_transform)
 image ryz happy = At("images/personnel/ryz/ryz happy.png", sprite_highlight("ryz"), ryz_transform)
 image ryz sad = At("images/personnel/ryz/ryz sad.png", sprite_highlight("ryz"), ryz_transform)
@@ -90,8 +90,8 @@ image ryz unique = At("images/personnel/ryz/ryz unique.png", sprite_highlight("r
 transform roose_transform:
     base_char_transform(x = 400, y=600, yoff = -100)
 
-image roose = At("images/personnel/ryz/roose neutral.png", sprite_highlight("roose"), roose_transform)
-image roose neutral = At("images/personnel/ryz/roose neutral.png", sprite_highlight("roose"), roose_transform)
+image roose = At(ConditionSwitch("speaking_char == 'roose'", "images/personnel/roose/roose talk.png", "True", "images/personnel/roose/roose neutral.png"), sprite_highlight("roose"), roose_transform)
+image roose neutral = "roose"
 image roose talk = At("images/personnel/ryz/roose talk.png", sprite_highlight("roose"), roose_transform)
 image roose upset = At("images/personnel/ryz/roose upset.png", sprite_highlight("roose"), roose_transform)
 
@@ -99,8 +99,8 @@ image roose upset = At("images/personnel/ryz/roose upset.png", sprite_highlight(
 transform uriel_transform:
     base_char_transform
 
-image uriel = At("images/personnel/uriel/uriel neutral.png", sprite_highlight("uriel"), uriel_transform)
-image uriel neutral = At("images/personnel/uriel/uriel neutral.png", sprite_highlight("uriel"), uriel_transform)
+image uriel = At(ConditionSwitch("speaking_char == 'uriel'", "images/personnel/uriel/uriel talk.png", "True", "images/personnel/uriel/uriel neutral.png"), sprite_highlight("uriel"), uriel_transform)
+image uriel neutral = "uriel"
 image uriel talk = At("images/personnel/uriel/uriel talk.png", sprite_highlight("uriel"), uriel_transform)
 image uriel happy = At("images/personnel/uriel/uriel happy.png", sprite_highlight("uriel"), uriel_transform)
 image uriel sad = At("images/personnel/uriel/uriel sad.png", sprite_highlight("uriel"), uriel_transform)
@@ -115,8 +115,8 @@ image uriel unique = At("images/personnel/uriel/uriel unique.png", sprite_highli
 transform deceased_transform:
     base_char_transform
 
-image deceased = At("images/personnel/deceased/deceased neutral.png", sprite_highlight("deceased"), deceased_transform)
-image deceased neutral = At("images/personnel/deceased/deceased neutral.png", sprite_highlight("deceased"), deceased_transform)
+image deceased = At(ConditionSwitch("speaking_char == 'deceased'", "images/personnel/deceased/deceased talk.png", "True", "images/personnel/deceased/deceased neutral.png"), sprite_highlight("deceased"), deceased_transform)
+image deceased neutral = "deceased"
 image deceased talk = At("images/personnel/deceased/deceased talk.png", sprite_highlight("deceased"), deceased_transform)
 image deceased happy = At("images/personnel/deceased/deceased happy.png", sprite_highlight("deceased"), deceased_transform)
 image deceased sad = At("images/personnel/deceased/deceased sad.png", sprite_highlight("deceased"), deceased_transform)
@@ -130,8 +130,8 @@ image deceased unique = At("images/personnel/deceased/deceased unique.png", spri
 transform lee_transform:
     base_char_transform
 
-image lee = At("images/personnel/lee/lee neutral.png", sprite_highlight("lee"), lee_transform)
-image lee neutral = At("images/personnel/lee/lee neutral.png", sprite_highlight("lee"), lee_transform)
+image lee = At(ConditionSwitch("speaking_char == 'lee'", "images/personnel/lee/lee talk.png", "True", "images/personnel/lee/lee neutral.png"), sprite_highlight("lee"), lee_transform)
+image lee neutral = "lee"
 image lee talk = At("images/personnel/lee/lee talk.png", sprite_highlight("lee"), lee_transform)
 image lee happy = At("images/personnel/lee/lee happy.png", sprite_highlight("lee"), lee_transform)
 image lee sad = At("images/personnel/lee/lee sad.png", sprite_highlight("lee"), lee_transform)
@@ -146,8 +146,8 @@ image lee unique = At("images/personnel/lee/lee unique.png", sprite_highlight("l
 transform firewal_transform:
     base_char_transform
 
-image firewal = At("images/personnel/firewal/firewal neutral.png", sprite_highlight("firewal"), firewal_transform)
-image firewal neutral = At("images/personnel/firewal/firewal neutral.png", sprite_highlight("firewal"), firewal_transform)
+image firewal = At(ConditionSwitch("speaking_char == 'firewal'", "images/personnel/firewal/firewal talk.png", "True", "images/personnel/firewal/firewal neutral.png"), sprite_highlight("firewal"), firewal_transform)
+image firewal neutral = "firewal"
 image firewal talk = At("images/personnel/firewal/firewal talk.png", sprite_highlight("firewal"), firewal_transform)
 image firewal happy = At("images/personnel/firewal/firewal happy.png", sprite_highlight("firewal"), firewal_transform)
 image firewal sad = At("images/personnel/firewal/firewal sad.png", sprite_highlight("firewal"), firewal_transform)
@@ -162,8 +162,8 @@ image firewal unique = At("images/personnel/firewal/firewal unique.png", sprite_
 transform pocketwal_transform:
     base_char_transform
 
-image pocketwal = At("images/personnel/firewal/pocketwal neutral.png", sprite_highlight("pocketwal"), pocketwal_transform)
-image pocketwal neutral = At("images/personnel/firewal/pocketwal neutral.png", sprite_highlight("pocketwal"), pocketwal_transform)
+image pocketwal = At(ConditionSwitch("speaking_char == 'pocketwal'", "images/personnel/pocketwal/pocketwal talk.png", "True", "images/personnel/pocketwal/pocketwal neutral.png"), sprite_highlight("pocketwal"), pocketwal_transform)
+image pocketwal neutral = "pocketwal"
 image pocketwal talk = At("images/personnel/firewal/pocketwal talk.png", sprite_highlight("pocketwal"), pocketwal_transform)
 image pocketwal upset = At("images/personnel/firewal/pocketwal upset.png", sprite_highlight("pocketwal"), pocketwal_transform)
 
@@ -171,8 +171,8 @@ transform chan_transform:
     # base_char_transform
     alpha 1.0
 
-image chan = At("images/personnel/chan/chan neutral.png", sprite_highlight("chan"), chan_transform)
-image chan neutral = At("images/personnel/chan/chan neutral.png", sprite_highlight("chan"), chan_transform)
+image chan = At(ConditionSwitch("speaking_char == 'chan'", "images/personnel/chan/chan talk.png", "True", "images/personnel/chan/chan neutral.png"), sprite_highlight("chan"), chan_transform)
+image chan neutral = "chan"
 image chan talk = At("images/personnel/chan/chan talk.png", sprite_highlight("chan"), chan_transform)
 image chan happy = At("images/personnel/chan/chan happy.png", sprite_highlight("chan"), chan_transform)
 image chan sad = At("images/personnel/chan/chan sad.png", sprite_highlight("chan"), chan_transform)
@@ -187,8 +187,8 @@ image chan unique = At("images/personnel/chan/chan unique.png", sprite_highlight
 transform syg_transform:
     base_char_transform
 
-image syg = At("images/personnel/syg/syg neutral.png", sprite_highlight("syg"), syg_transform)
-image syg neutral = At("images/personnel/syg/syg neutral.png", sprite_highlight("syg"), syg_transform)
+image syg = At(ConditionSwitch("speaking_char == 'syg'", "images/personnel/syg/syg talk.png", "True", "images/personnel/syg/syg neutral.png"), sprite_highlight("syg"), syg_transform)
+image syg neutral = "syg"
 image syg talk = At("images/personnel/syg/syg talk.png", sprite_highlight("syg"), syg_transform)
 image syg happy = At("images/personnel/syg/syg happy.png", sprite_highlight("syg"), syg_transform)
 image syg sad = At("images/personnel/syg/syg sad.png", sprite_highlight("syg"), syg_transform)
@@ -203,8 +203,8 @@ image syg unique = At("images/personnel/syg/syg unique.png", sprite_highlight("s
 transform caffi_transform:
     base_char_transform
 
-image caffi = At("images/personnel/caffi/caffi neutral.png", sprite_highlight("caffi"), caffi_transform)
-image caffi neutral = At("images/personnel/caffi/caffi neutral.png", sprite_highlight("caffi"), caffi_transform)
+image caffi = At(ConditionSwitch("speaking_char == 'caffi'", "images/personnel/caffi/caffi talk.png", "True", "images/personnel/caffi/caffi neutral.png"), sprite_highlight("caffi"), caffi_transform)
+image caffi neutral = "caffi"
 image caffi talk = At("images/personnel/caffi/caffi talk.png", sprite_highlight("caffi"), caffi_transform)
 image caffi happy = At("images/personnel/caffi/caffi happy.png", sprite_highlight("caffi"), caffi_transform)
 image caffi sad = At("images/personnel/caffi/caffi sad.png", sprite_highlight("caffi"), caffi_transform)
@@ -219,8 +219,8 @@ image caffi unique = At("images/personnel/caffi/caffi unique.png", sprite_highli
 transform paul_transform:
     base_char_transform
 
-image paul = At("images/personnel/paul/paul neutral.png", sprite_highlight("paul"), paul_transform)
-image paul neutral = At("images/personnel/paul/paul neutral.png", sprite_highlight("paul"), paul_transform)
+image paul = At(ConditionSwitch("speaking_char == 'paul'", "images/personnel/paul/paul talk.png", "True", "images/personnel/paul/paul neutral.png"), sprite_highlight("paul"), paul_transform)
+image paul neutral = "paul"
 image paul talk = At("images/personnel/paul/paul talk.png", sprite_highlight("paul"), paul_transform)
 image paul happy = At("images/personnel/paul/paul happy.png", sprite_highlight("paul"), paul_transform)
 image paul sad = At("images/personnel/paul/paul sad.png", sprite_highlight("paul"), paul_transform)
@@ -235,8 +235,8 @@ image paul unique = At("images/personnel/paul/paul unique.png", sprite_highlight
 transform plutoes_transform:
     base_char_transform
 
-image plutoes = At("images/personnel/plutoes/plutoes neutral.png", sprite_highlight("plutoes"), plutoes_transform)
-image plutoes neutral = At("images/personnel/plutoes/plutoes neutral.png", sprite_highlight("plutoes"), plutoes_transform)
+image plutoes = At(ConditionSwitch("speaking_char == 'plutoes'", "images/personnel/plutoes/plutoes talk.png", "True", "images/personnel/plutoes/plutoes neutral.png"), sprite_highlight("plutoes"), plutoes_transform)
+image plutoes neutral = "plutoes"
 image plutoes talk = At("images/personnel/plutoes/plutoes talk.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes happy = At("images/personnel/plutoes/plutoes happy.png", sprite_highlight("plutoes"), plutoes_transform)
 image plutoes upset = At("images/personnel/plutoes/plutoes upset.png", sprite_highlight("plutoes"), plutoes_transform)
@@ -251,8 +251,8 @@ image plutoes unique = At("images/personnel/plutoes/plutoes unique.png", sprite_
 transform venture_transform:
     base_char_transform
 
-image venture = At("images/personnel/venture/venture neutral.png", sprite_highlight("venture"), venture_transform)
-image venture neutral = At("images/personnel/venture/venture neutral.png", sprite_highlight("venture"), venture_transform)
+image venture = At(ConditionSwitch("speaking_char == 'venture'", "images/personnel/venture/venture talk.png", "True", "images/personnel/venture/venture neutral.png"), sprite_highlight("venture"), venture_transform)
+image venture neutral = "venture"
 image venture talk = At("images/personnel/venture/venture talk.png", sprite_highlight("venture"), venture_transform)
 image venture happy = At("images/personnel/venture/venture happy.png", sprite_highlight("venture"), venture_transform)
 image venture sad = At("images/personnel/venture/venture sad.png", sprite_highlight("venture"), venture_transform)
@@ -267,8 +267,8 @@ image venture unique = At("images/personnel/venture/venture unique.png", sprite_
 transform b6_transform:
     base_char_transform
 
-image b6 = At("images/personnel/b6/b6 neutral.png", sprite_highlight("b6"), b6_transform)
-image b6 neutral = At("images/personnel/b6/b6 neutral.png", sprite_highlight("b6"), b6_transform)
+image b6 = At(ConditionSwitch("speaking_char == 'b6'", "images/personnel/b6/b6 talk.png", "True", "images/personnel/b6/b6 neutral.png"), sprite_highlight("b6"), b6_transform)
+image b6 neutral = "b6"
 image b6 talk = At("images/personnel/b6/b6 talk.png", sprite_highlight("b6"), b6_transform)
 image b6 happy = At("images/personnel/b6/b6 happy.png", sprite_highlight("b6"), b6_transform)
 image b6 sad = At("images/personnel/b6/b6 sad.png", sprite_highlight("b6"), b6_transform)
@@ -283,8 +283,8 @@ image b6 unique = At("images/personnel/b6/b6 unique.png", sprite_highlight("b6")
 transform meme_transform:
     base_char_transform
 
-image meme = At("images/personnel/meme/meme neutral.png", sprite_highlight("meme"), meme_transform)
-image meme neutral = At("images/personnel/meme/meme neutral.png", sprite_highlight("meme"), meme_transform)
+image meme = At(ConditionSwitch("speaking_char == 'meme'", "images/personnel/meme/meme talk.png", "True", "images/personnel/meme/meme neutral.png"), sprite_highlight("meme"), meme_transform)
+image meme neutral = "meme"
 image meme talk = At("images/personnel/meme/meme talk.png", sprite_highlight("meme"), meme_transform)
 image meme happy = At("images/personnel/meme/meme happy.png", sprite_highlight("meme"), meme_transform)
 image meme sad = At("images/personnel/meme/meme sad.png", sprite_highlight("meme"), meme_transform)
@@ -299,8 +299,8 @@ image meme unique = At("images/personnel/meme/meme unique.png", sprite_highlight
 transform moon_transform:
     base_char_transform
 
-image moon = At("images/personnel/moon/moon neutral.png", sprite_highlight("moon"), moon_transform)
-image moon neutral = At("images/personnel/moon/moon neutral.png", sprite_highlight("moon"), moon_transform)
+image moon = At(ConditionSwitch("speaking_char == 'moon'", "images/personnel/moon/moon talk.png", "True", "images/personnel/moon/moon neutral.png"), sprite_highlight("moon"), moon_transform)
+image moon neutral = "moon"
 image moon talk = At("images/personnel/moon/moon talk.png", sprite_highlight("moon"), moon_transform)
 image moon happy = At("images/personnel/moon/moon happy.png", sprite_highlight("moon"), moon_transform)
 image moon sad = At("images/personnel/moon/moon sad.png", sprite_highlight("moon"), moon_transform)
@@ -315,8 +315,8 @@ image moon unique = At("images/personnel/moon/moon unique.png", sprite_highlight
 transform egg_transform:
     base_char_transform
 
-image egg = At("images/personnel/egg/egg neutral.png", sprite_highlight("egg"), egg_transform)
-image egg neutral = At("images/personnel/egg/egg neutral.png", sprite_highlight("egg"), egg_transform)
+image egg = At(ConditionSwitch("speaking_char == 'egg'", "images/personnel/egg/egg talk.png", "True", "images/personnel/egg/egg neutral.png"), sprite_highlight("egg"), egg_transform)
+image egg neutral = "egg"
 image egg talk = At("images/personnel/egg/egg talk.png", sprite_highlight("egg"), egg_transform)
 image egg happy = At("images/personnel/egg/egg happy.png", sprite_highlight("egg"), egg_transform)
 image egg sad = At("images/personnel/egg/egg sad.png", sprite_highlight("egg"), egg_transform)
@@ -331,8 +331,8 @@ image egg unique = At("images/personnel/egg/egg unique.png", sprite_highlight("e
 transform hampter_transform:
     base_char_transform
 
-image hampter = At("images/personnel/hampter/hampter neutral.png", sprite_highlight("hampter"), hampter_transform)
-image hampter neutral = At("images/personnel/hampter/hampter neutral.png", sprite_highlight("hampter"), hampter_transform)
+image hampter = At(ConditionSwitch("speaking_char == 'hampter'", "images/personnel/hampter/hampter talk.png", "True", "images/personnel/hampter/hampter neutral.png"), sprite_highlight("hampter"), hampter_transform)
+image hampter neutral = "hampter"
 image hampter talk = At("images/personnel/hampter/hampter talk.png", sprite_highlight("hampter"), hampter_transform)
 image hampter happy = At("images/personnel/hampter/hampter happy.png", sprite_highlight("hampter"), hampter_transform)
 image hampter sad = At("images/personnel/hampter/hampter sad.png", sprite_highlight("hampter"), hampter_transform)
