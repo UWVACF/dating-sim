@@ -355,7 +355,7 @@ define wal1 = Character("Wal No.1", kind=firewal)
 define wal387 = Character("Wal No.387", kind=firewal)
 define wal641 = Character("Wal No.641", kind=firewal)
 define walbots = Character("Walbots", kind=firewal)
-define pocket_wal = Character("Pocket Wal", kind=firewal, what_size=30, cb_name="pocketwal")
+define pocketwal = Character("Pocket Wal", kind=firewal, what_size=30, cb_name="pocketwal", image="pocketwal")
 
 define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="helco", image="helco")
 define helco_unknown = Character("???", kind=helco)

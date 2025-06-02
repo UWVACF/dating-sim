@@ -230,13 +230,13 @@ label day_event_aikha_flare:
             n "A... Smal?..."
             n "A Smal if you will."
             n "The Smal pushes past the fabric and marches towards you."
-            pocket_wal upset "Don't worry, Ai! I, Pocket Wal! will defeat this poacher!"
-            pocket_wal upset "HAAAAAAA!!!"
+            pocketwal upset "Don't worry, Ai! I, Pocket Wal! will defeat this poacher!"
+            pocketwal upset "HAAAAAAA!!!"
             n "Pocket Wal charges up and bursts into flames. Slightly calming down the mess of Dr. Aikha."
             aikha "nnnghnnn..."
             player "Wait, wait! I'm no poacher!"
-            pocket_wal "Oh. It's just you, intern."
-            pocket_wal upset "{cps=*2}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity!{/cps} {cps=*3}THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! {/cps} {cps=*5}Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!{/cps}"
+            pocketwal "Oh. It's just you, intern."
+            pocketwal upset "{cps=*2}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity!{/cps} {cps=*3}THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! {/cps} {cps=*5}Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!{/cps}"
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
             n "You can't even squeak out your last words because Wal NO.2 the yapper is drowning you out."
@@ -248,7 +248,7 @@ label day_event_aikha_flare:
             show soundwave onlayer top:
                 alpha 1.0
                 linear 0.3 alpha 0
-            pocket_wal upset "Ah, I see the issue. Ai, spaighettied."
+            pocketwal upset "Ah, I see the issue. Ai, spaighettied."
             show soundwave onlayer top:
                 alpha 1.0
             show layer master:
@@ -258,9 +258,9 @@ label day_event_aikha_flare:
                 alpha 1.0
                 linear 0.3 alpha 0
             show layer master
-            pocket_wal "I will occupy them while you will go retrieve an emergency snack."
-            pocket_wal "It's behind the mirror, push past it and you'll see a safe." 
-            hide pocket_wal
+            pocketwal "I will occupy them while you will go retrieve an emergency snack."
+            pocketwal "It's behind the mirror, push past it and you'll see a safe." 
+            hide pocketwal
             show bg aikha office leave
             show soundwave onlayer top:
                 alpha 1.0
@@ -292,7 +292,7 @@ label day_event_aikha_flare:
                 show layer master:
                     shake(persist=15.0, preset="rumble")
                 show soundwave onlayer top
-                pocket_wal "{b}{sc}Good, now throw it over!{/sc}{/b}"
+                pocketwal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 
                 show bg aikha office dark close:
                     zoom 1.0
@@ -312,7 +312,7 @@ label day_event_aikha_flare:
                 aikha "Again."
                 n "This is definitely gonna jeopardize your internship, isn't it... Not to mention the guilt creeping in from shooting a person(?)."
                 n "The Pocket Wal hops onto Dr. Aikha's desk, knocking over an empty pill bottle."
-                pocket_wal upset "Don't think I forgot your attempts to poach from Ai!"
+                pocketwal upset "Don't think I forgot your attempts to poach from Ai!"
                 aikha fury "..."
                 n "Oh, come on!"
                 aikha happy "[player_name]. I advise you don't attempt such a stunt again."
