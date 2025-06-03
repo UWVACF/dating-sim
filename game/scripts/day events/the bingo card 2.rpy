@@ -1,12 +1,75 @@
-# caffi, helco, deceased, uriel, ryz
+label day_event_the_bingo_card_2:
+    scene bg lounge
+    n "You walk past the lounge and hear chattering from within. Curious, you take a peek through the doorway."
+    n "You see that everyone is holding a sheet."
+    if "the_bingo_card_1" in seen_events:
+        n "Ah. Bingo again."
 
-# player is playing this time- 6 players
-# prize: miku keychain
-# caffi - does not tell helco how to play correctly, decently competitive when closed to winning
-# helco - there for fun, isn't playing the game properly, he marks everything, and erases boxes randomly. doesn't know he could've "won"
-# deceased - very competitive (miku keychain)
-# uriel - extreme lawful competitive
-# ryz - moral competitive (less than uriel)
+    show caffi at appear(x_align = 0.2)
+    #show helco at appear(x_align = 0.2)
+    show deceased pensive at appear (x_align = 0.5)
+    show aikha at appear (x_align = 0.85)
+    n "The crowd have spotted you as well. Dr. Aikha waves enthusiastically at you."
+    aikha happy "New recruit! You're just in time."
+    aikha "I have a presentation to attend, so can you fill in for me for this bingo game?"
+    show aikha at disappear
+    n "Without waiting for your response, Dr. Aikha places the sheet in your hand before dashing out of the lounge."
+    show ryz unique at appear (x_align = 0.8)
+    n "The rest stare excitedly at you. Guess you don't have a choice."
+    ryz "So, [player_name], I assume you know how to play bingo."
+    ryz happy "Just for the sake of clearity, I'll still read you the rules."
+    ryz "Firstly, you are not allowed to directly cause something on your bingo card to happen."
+    ryz "Secondly, you are not supposed to peek at other's cards."
+    ryz "Thirdly-"
+    show ryz upset
+    caffi "We got it, {i}Dr. Rizz{/i}. Just let us continue the game."
+    show ryz neutral
+    n "You look down at Dr. Aikha's bingo sheet."
+    # bingo cg here onlayer almost top
+    n "...You decide not to question how some of these boxes got marked off today."
+    # hide bingo cg
+    show helco pensive:
+        xalign -0.15
+    show caffi at disappear
+    show ryz at disappear
+    show uriel pensive:
+        xalign 1.15
+    n "You briefly glance around the room. Dr. Helco has placed his sheet publically and openly on the table, and you can't help but take a glimpse of it."
+    # show helco bingo sheet cg
+    n "..."
+    n "Something doesn't feel right about his sheet."
+    # hide helco bingo sheet cg
+    n "You watch as Dr. Helco erases a random box everytime someone else marks one off on their own sheet."
+    n "His empty boxes could almost form a bingo now."
+    show caffi happy:
+        xalign 0.2
+    n "You meet Caffi's eyes and she started laughing hysterically."
+    menu:
+        n "You feel a little bad for Dr. Helco."
+        "Tell Dr. Helco he's playing wrong.":
+            jump bingo2_help_helco
+        "Don't tell him. It's one less opponent to worry about.":
+            jump bingo2_dont_help_helco
+        
+    label bingo2_help_helco:
+        player "Dr. Helco, you are playing wrong."
+
+    label bingo2_dont_help_helco:
+        n "You keep your mouth shut."
+
+
+
+
+
+
+# caffi, helco, deceased, uriel, ryz
+    # player is playing this time- 6 players
+    # prize: miku keychain
+    # caffi - does not tell helco how to play correctly, decently competitive when closed to winning
+    # helco - there for fun, isn't playing the game properly, he marks everything, and erases boxes randomly. doesn't know he could've "won"
+    # deceased - very competitive (miku keychain)
+    # uriel - extreme lawful competitive
+    # ryz - moral competitive (less than uriel)
 
 # short intro dr ryz clearifies the rules (not enforced but anyways)
     # supposingly, not allowed to forcefully make what's on your bingo card happen
