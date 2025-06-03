@@ -2,6 +2,7 @@ label day_event_fire:
     image moonposter = "images/cgs/moonposter.png" 
     image greenbeam = "images/day events/green screen.png"
     image flashbang = "images/day events/white screen.png"
+    $ put_wals_out_of_a_job = False
 
     scene bg hallway
     with default_fade
@@ -314,7 +315,7 @@ label day_event_fire:
         n "They all march into a wall in union."
         n "You feel the wrath of several million walbots. You contemplate whether you should sleep with a fire extinguisher tonight."
 
-
+        $ put_wals_out_of_a_job = True
         # you put wals out of a job, angry wals
         $ update_character_points({"firewal": -1, "helco": -1, "uriel": -1, "aikha": 1})
         return
