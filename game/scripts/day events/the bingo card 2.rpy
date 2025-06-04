@@ -9,15 +9,15 @@ label day_event_the_bingo_card_2:
     #show helco at appear(x_align = 0.2)
     show deceased pensive at appear (x_align = 0.5)
     show aikha at appear (x_align = 0.85)
-    n "The crowd have spotted you as well. Dr. Aikha waves enthusiastically at you."
-    aikha happy "New recruit! You're just in time."
-    aikha "I have a presentation to attend, so can you fill in for me for this bingo game?"
+    n "The crowd have spotted you as well. Dr. Aikha flags you down."
+    aikha happy "Just in time."
+    aikha "Got a presentation to attend, mind filling in for me this bingo game?"
     show aikha at disappear
     n "Without waiting for your response, Dr. Aikha places the sheet in your hand before dashing out of the lounge."
     show ryz unique at appear (x_align = 0.8)
     n "The rest stare excitedly at you. Guess you don't have a choice."
     ryz "So, [player_name], I assume you know how to play bingo."
-    ryz happy "Just for the sake of clearity, I'll still read you the rules."
+    ryz happy "Just for the sake of clarity, I'll still read you the rules."
     ryz "Firstly, you are not allowed to directly cause something on your bingo card to happen."
     ryz "Secondly, you are not supposed to peek at other's cards."
     ryz "Thirdly-"
@@ -28,6 +28,7 @@ label day_event_the_bingo_card_2:
     # bingo cg here onlayer almost top
     n "...You decide not to question how some of these boxes got marked off today."
     # hide bingo cg
+    n "Isn't... Dr. Aikha technically always breaking rule two?"
     show helco pensive:
         xalign -0.15
     show caffi at disappear
@@ -43,7 +44,7 @@ label day_event_the_bingo_card_2:
     n "His empty boxes could almost form a bingo now."
     show caffi happy:
         xalign 0.2
-    n "You meet Caffi's eyes and she started laughing hysterically."
+    n "You meet Caffi's eyes and she starts laughing hysterically."
     menu:
         n "You feel a little bad for Dr. Helco."
         "Tell Dr. Helco he's playing wrong.":
