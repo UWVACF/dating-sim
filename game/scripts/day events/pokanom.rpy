@@ -116,7 +116,14 @@ label day_event_pokanom:
             player "Why do you want this? You didn't seem all that interested when they were fighting."
             uriel "I need Dr. Chan to sign these, and bribery seems like the best option at this point."
             n "They gesture with a file that looks like it has enough paper to print a few dictionaries."
-            uriel "In exchange, you will no longer be on the hook for something that brought our two most reasonable departmend heads to animalistic rage."
+            uriel "In exchange, you will no longer be on the hook for the act that brought our two most reasonable departmend heads to animalistic rage."
+            n "The screeching is getting louder."
+            player "Deal!"
+            n "Uriel takes the pack from your hand and leaves through the door behind you."
+            n "Through the door, you can hear the faint sounds of conversation and one loud, aggrieved sigh from Dr. Chan."
+            n "You wait until the footsteps recede into the distance before steeping out."
+            n "Now how do you get out of here?"
+            return
 
 
 
