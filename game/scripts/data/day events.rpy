@@ -151,8 +151,8 @@ init python:
         ),
         Event(
             label="pokanom",
-            personnel=["chan", "uriel", "egg", "lee", "b6"]
-            tags=["personnel"]
+            personnel=["chan", "uriel", "egg", "lee", "b6"],
+            tags=["personnel"],
         )
     ]
 
