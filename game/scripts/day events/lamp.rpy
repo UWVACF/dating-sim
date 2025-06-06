@@ -173,6 +173,12 @@ label day_event_lamp:
 
         label so_it_was_you:
             n "Dr. Venture pauses."
+            n "{b}Well techically, it was not misplaced. More of a prank.{/b}"
+            menu:
+                "EXCUSE ME WHAT THE FU-":
+                    jump lamp_what_the
+
+        label lamp_what_the:
             n "{b}Anyways, I can get you out of there through Alchemical means. However, it does mean putting wals out of a job. So, what do you say?{/b}"
             wal1 upset "{color=#8eabbf}Dr. Venture, you are tampering with important evidential items! Please return it!{/color}"
             menu:
@@ -184,18 +190,93 @@ label day_event_lamp:
             n "{b}So I'll need you to tell me something that has the same value as your physical being. It can be anything - a physical item, a body part, or even your future.{/b}"
             wal1 upset "{color=#8eabbf}This is the last warning! Wal security will be called in 5...4...3...{/color}"
             n "{b}Quick! The wals are closing in! It can be anything!{/b}"
-            menu:
-                "Sacrifice an arm":
-                    jump lamp_arm
-                "Sacrifice a walbot":
-                    jump lamp_walbot
-                "Sacrifice your future":
-                    jump lamp_future
-                "Sacrfice something else that I haven't come up with yet":
-                    jump lamp_last
+            jump lamp_sacrifice
 
-            label lamp_arm:
-                n "uhhhhhhhh"
+        label lamp_sacrifice:
+            menu:
+                "Sacrifice"(on_hover = "a kidney"): 
+                    jump lamp_kidney
+                "Sacrfice"(on_hover = "your next paycheck"): ########fail
+                    jump lamp_paycheck
+                "Sacrifice"(on_hover = "your future"): ########fail
+                    jump lamp_future
+                "Sacrifice"(on_hover = "half of your memories"):
+                    jump lamp_memories
+                #"Sacrifice"(on_hover = "half of your soul"): #######fail
+                    #jump lmap_soul
+                "Sacrifice"(on_hover = "a walbot"):  #wal -1
+                    jump lamp_walbot
+
+            label lamp_kidney:
+                n "You have no idea why, but your kidney is the first that comes to mind."
+                n "{b}Got it! I'll get you out in a second!{/b}"
+                show venture at disappear
+                n "The image of Dr. Venture fades away. You are once again left in the dark."
+                n "Did the wal bots get him? Or is he begining the transmutation?"
+                # screen flash
+                scene bg lab 
+                show venture happy at appear(x_align = 0.5)
+                n "Suddenly, you can see light again."
+                n "You awaken lying in a transmutation circle, your hand tightly clutching your phone."
+                venture "Told you I could get you out!"
+                n "You are about to thank Dr. Venture when you feel a sharp pain on your right below your rib cage."
+                n "You fall over and roll on the ground in agony."
+                venture neutral "Ah. That must be the kidney."
+                venture "Sorry, I'm not exactly a qualified doctor. But don't worry, the laws of alchemy dictates that you won't die!"
+                player "You misunderstood, Dr. Venture."
+                player "This pain...it's bearable."
+                n "Dr. Venture looks at you with concern."
+                n "You appreciate his concern, but you know that he does not understand the pain of losing a kidney."
+                n "You could've sold that organ yourself for 100k."
+                n "But now it's just gone, taken by the void."
+                n "Hold on, you recall Dr. Venture mention something about misplacing a lamp."
+                n "Your dispair turns into fury, and you feel light-headed, whether from the anger or the blood you loss."
+                player "Dr. Ven-"
+                show firewal at appear(x_align = 0.25)
+                show venture at move_to(x_align = 0.85)
+                show venture surprise
+                wal1 upset "DR. VENTURE."
+                wal1 "Please return the phone! It is very important in order for us to save [player]!"
+                venture "Actually, I got [player] out."
+                n "Manager Wal turns around and stares down at you, who is still on the floor in the fetus position."
+                wal1 neutral "Oh."
+                wal1 "I see then. Thank you for your aid."
+                wal1 pensive "I shall go back to investigating the cause of this incident. Do not worry, for this will not happen again, as the anomaly has already been recontained-"
+                show venture sad
+                player "Dr. Venture did it."
+                wal1 "?"
+                player "He was the one who placed the lamp."
+                venture "Now, [player], I can understand that you are still in shock-"
+                player "I have evidence."
+                n "You take out your phone, which contains all the messages between you and Dr. Venture."
+                venture neutral "..."
+                venture happy "Alright, you got me good."
+                venture "I'll take care of all the incident report writing, Firewal."
+                wal1 "Affirmative, since you are the party responsible. I will also submit a report to the Founder about this."
+                wal1 "[player], I will need to borrow your device to present evidence. But it will be returned shortly, since the investigation is over."
+                show firewal at disappear
+                n "Manager Wal leaves, leaving you and Dr. Venture. Dr. Venture smiles at you."
+                hide firewal
+                venture "It is a lot of fun today."
+                venture "A shame that you stabotaged my game."
+                venture "But I shall just try something different next time."
+                show venture at disappear #HOW TO MAKE HIM DISAPPEAR SAME PLACE
+                n "Next time?"
+                n "You shudder to think about losing your other kidney. If it comes down to it, you might conider just staying in the void."
+                return
+
+            label lamp_paycheck:
+                n "Well, if you can't get out of here, you wouldn't really need your paycheck, would you?"
+                n "Might as well give that a try. You do like getting paid quite a bit. Afterall, the pay was the only reason you applied for this job."
+                n "{b}Got it! I'll get you out in a second!{/b}"
+                n "You wait."
+                n "To your dismay, you are still stuck in darkness after a {i}bit{/i} more than the second passed."
+                n "{b}Sorry [player], the transmutation failed. It seems that your next paycheck isn't valuable enough.{/b}"
+                n "Wow. Way to rub that in."
+                n "At least you get to keep your paycheck!"
+                n "If you get out of here, that is."
+
+
 
         n "{color=#8eabbf}oof{/color}"
         
