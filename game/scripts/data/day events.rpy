@@ -149,6 +149,11 @@ init python:
             personnel=["venture", "firewal"],
             tags=["anomaly"],
         ),
+        Event(
+            label="pokanom",
+            personnel=["chan", "uriel", "egg", "lee", "b6"]
+            tags=["personnel"]
+        )
     ]
 
     # replace all spaces in labels with underscores
