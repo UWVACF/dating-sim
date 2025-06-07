@@ -28,7 +28,7 @@ label day_event_lamp:
     n "You can't even hear your own voice. This is kind of bad, isn't it?"
     n "But you can hear me! Your friendly narrator! Yes, I am self aware."
     n "You have a meeting in 20 minutes and you haven't finished preparing for it. You really can't afford to be stuck in perpetual darkness."
-    n "Actually, how long has it been? You can't even count your own heartbeat to detemine this."
+    n "Actually, how long has it been? You can't even count your own heartbeats to detemine this."
     n "Just as you're about to start panicking, you make out a faint...image of someone."
     show layer master:
         blur 30
@@ -37,7 +37,7 @@ label day_event_lamp:
     n "Oh right. You have a meeting with the Founder."
     alex "{color=#8eabbf}{size=-10}Hm. Is [player_name] not here?{/size}{/color}"
     player "    "
-    n "Oh right. You don't have any vocal cords anymore."
+    n "Oh, yeah. You don't have any vocal cords anymore."
     alex "{color=#8eabbf}{size=-10}Oh. He left his phone here. Thats odd.{/size}{/color}"
     alex "{color=#8eabbf}{size=-10}More break time for me!{/size}{/color}"
     show alex pensive at disappear
@@ -55,7 +55,7 @@ label day_event_lamp:
     n "Just as you try to scrape your brain for step 4, another...image come into existance."
     show firewal pensive
     venture_unknown "{color=#8eabbf}{size=-10}This is all we found at [player_pos_adj] cubicle.{/size}{/color}"
-    wal1 "{color=#8eabbf}{size=-10}I see. That should rule out murder by robbery, since their device is here.{/size}{/color}"
+    wal1 "{color=#8eabbf}{size=-10}I see. That should rule out murder for robbery, since their device is here.{/size}{/color}"
     n "It's a Wal! The security team! You're saved!"
     wal1 "{color=#8eabbf}{size=-5}Hm. The device seems normal.{/size}{/color}"
     wal1 "{color=#8eabbf}{size=-5}We'll put it in the evidence archive, then.{/size}{/color}"
@@ -116,7 +116,7 @@ label day_event_lamp:
     label im_stuck_in_the_phone:
         wal1 surprise "{color=#8eabbf}Stuck...in the device?{/color}"
         wal1 "{color=#8eabbf}That would explain [player_pos_adj]- your disappearance.{/color}"
-        wal1 pensive "{color=#8eabbf}It seems this is an anomalous incident. I shall have the wals search the archive for any realated records.{/color}"
+        wal1 pensive "{color=#8eabbf}It seems this is an anomalous incident. I shall have the wals search the archive for any related records.{/color}"
         wal1 happy "{color=#8eabbf}Fear not, we will rescue you, [player_name].{/color}"
         n "You let out a sigh of relief. Or at least, try to."
         menu:
@@ -126,19 +126,19 @@ label day_event_lamp:
     label how_long_have_i_been_missing:
         wal1 neutral "{color=#8eabbf}Three days, I believe.{/color}"
         wal1 "{color=#8eabbf}You did not show up to the meeting with Founder Alex. But that was not reported until the next day, when HR noticed your absence during the morning headcount.{/color}"
-        n "Uh Oh. That would be...2 presentations, 6 meetings, 10 cups of coffee that you missed?"
+        n "Uh oh. That would be...2 presentations, 6 meetings, 10 cups of coffee that you missed?"
         n "To be honest, those presentations and meetings probably happened fine without you. You're just an insignificant intern, after all."
-        n "You're more worried at whether your body can function without caffine for so long once you are out of here."
+        n "You're more worried at whether your body can function without caffiene for so long once you're out of here."
         menu:
             "How can I get out of here?":
                 jump how_can_I_get_out_of_here
 
     label how_can_I_get_out_of_here:
-        wal1 "{color=#8eabbf}We are currently working on that. Wals have been deployed to go through all the files in our anomaly archive to look for the anomaly responsible for this incident.{/color}"
+        wal1 "{color=#8eabbf}We're currently working on that. Wals have been deployed to go through all the files in our anomaly archive to look for the anomaly responsible for this incident.{/color}"
         wal1 happy "{color=#8eabbf}Estimated time of completion: {i}226 days, 15 hours, 29 minutes, and 12 seconds.{/i}{/color}"
         n "226 days? Your internship will be over by then!"
         wal1 "{color=#8eabbf}{i}226 days, 15 hours, 29 minutes, and 5 seconds{/i} now.{/color}"
-        venture_unknown "{color=#8eabbf}Perhaps I can offer some assistant.{/color}"
+        venture_unknown "{color=#8eabbf}Perhaps I can offer some assistance.{/color}"
         n "You can feel another figure approach."
         show firewal neutral at move_to (x_align = 0.85)
         show venture happy at appear (x_align = 0.15)
@@ -147,16 +147,16 @@ label day_event_lamp:
 
         if "fire" in seen_events:
             if put_wals_out_of_a_job == True:
-                wal1 fury "{color=#8eabbf}[player_name] has already put 118072 wals out of a job recently. It would be greatly devastating if more suffer from unemployment. The poverty rates of wals will increase to 822%, while the homeless rates will be increased by-{/color}"
+                wal1 fury "{color=#8eabbf}[player_name] has already put 118072 wals out of a job recently. It'd be greatly devastating if more suffer from unemployment. The poverty rates of wals will increase to 822%, while the homeless rates will be increased by-{/color}"
             else:
                 wal1 panic "{color=#8eabbf}It would be greatly devastating if they are put out of unemployment. The poverty rates of wals will increase by 822\%, while the homeless rates will be increased by-{/color}"
         else:
             wal1 panic "{color=#8eabbf}It would be greatly devastating if they are put out of unemployment. The poverty rates of wals will increase to 822\%, while the homeless rates will be increased by-{/color}"
         
-        venture surprise "{color=#8eabbf}Woah there. I don't plan on stealing jobs from the wals. I have simply taken an interest in this incident as it seems to relate to my field of research.{/color}"
+        venture surprise "{color=#8eabbf}Woah there. I don't plan on stealing jobs from the wals. I've simply taken an interest in this incident as it seems to relate to my field of research.{/color}"
         show firewal at move_to (x_align = 1.2)
         show venture neutral at move_to (x_align = 0.5)
-        n "You feel Dr. Venture grab your conciousness from Manager Wal's hand."
+        n "You feel Dr. Venture grab your consciousness from Manager Wal's hand."
         n "You feel as if someone is tapping on you. Words appear in your head."
         n "{b}Can you see this, [player_name]?{/b}"
         n "{b}This is Dr. Wayne \:\) \nI'm here to offer you...a better solution than waiting for a year in your phone!{/b}"
@@ -173,20 +173,20 @@ label day_event_lamp:
 
         label so_it_was_you:
             n "Dr. Venture pauses."
-            n "{b}Well techically, it was not misplaced. More of a prank.{/b}"
+            n "{b}Well techically, it wasn't misplaced. More of a prank.{/b}"
             menu:
                 "EXCUSE ME WHAT THE FU-":
                     jump lamp_what_the
 
         label lamp_what_the:
             n "{b}Anyways, I can get you out of there through Alchemical means. However, it does mean putting wals out of a job. So, what do you say?{/b}"
-            wal1 upset "{color=#8eabbf}Dr. Venture, you are tampering with important evidential items! Please return it!{/color}"
+            wal1 upset "{color=#8eabbf}Dr. Venture, you're tampering with important evidential items! Please return it!{/color}"
             menu:
                 "What do you need me to do?":
                     jump what_do_i_do
 
         label what_do_i_do:
-            n "{b}It's simple! I can transmutate you from the device out into the real world again. But it requires some sacrifices, as alchemy abide by the rules of equivalent exchange.{/b}"
+            n "{b}It's simple! I can transmutate you from the device out into the real world again. But it requires some sacrifices, as alchemy abides by the rules of equivalent exchange.{/b}"
             n "{b}So I'll need you to tell me something that has the same value as your physical being. It can be anything - a physical item, a body part, or even your future.{/b}"
             wal1 upset "{color=#8eabbf}This is the last warning! Wal security will be called in 5...4...3...{/color}"
             n "{b}Quick! The wals are closing in! It can be anything!{/b}"
@@ -196,7 +196,7 @@ label day_event_lamp:
             menu:
                 "Sacrifice"(on_hover = "a kidney"): 
                     jump lamp_kidney
-                "Sacrfice"(on_hover = "your next paycheck"): ########fail
+                "Sacrifice"(on_hover = "your next paycheck"): ########fail
                     jump lamp_paycheck
                 "Sacrifice"(on_hover = "your future"): ########fail
                     jump lamp_future
@@ -208,11 +208,11 @@ label day_event_lamp:
                     jump lamp_walbot
 
             label lamp_kidney:
-                n "You have no idea why, but your kidney is the first that comes to mind."
+                n "You have no idea why, but your kidney is the first thing that comes to mind."
                 n "{b}Got it! I'll get you out in a second!{/b}"
                 show venture at disappear
-                n "The image of Dr. Venture fades away. You are once again left in the dark."
-                n "Did the wal bots get him? Or is he begining the transmutation?"
+                n "The image of Dr. Venture fades away. You're once again left in the dark."
+                n "Did the wal bots get him? Or is he beginning the transmutation?"
                 # screen flash
                 scene bg lab 
                 show venture happy at appear(x_align = 0.5)
@@ -222,7 +222,7 @@ label day_event_lamp:
                 n "You are about to thank Dr. Venture when you feel a sharp pain on your right below your rib cage."
                 n "You fall over and roll on the ground in agony."
                 venture neutral "Ah. That must be the kidney."
-                venture "Sorry, I'm not exactly a qualified doctor. But don't worry, the laws of alchemy dictates that you won't die!"
+                venture "Sorry, I'm not exactly a qualified doctor. But don't worry, the laws of alchemy dictate that you won't die!"
                 player "You misunderstood, Dr. Venture."
                 player "This pain...it's bearable."
                 n "Dr. Venture looks at you with concern."
@@ -236,9 +236,9 @@ label day_event_lamp:
                 show venture at move_to(x_align = 0.85)
                 show venture surprise
                 wal1 upset "DR. VENTURE."
-                wal1 "Please return the phone! It is very important in order for us to save [player]!"
+                wal1 "Please return the phone! It's very important in order for us to save [player]!"
                 venture "Actually, I got [player] out."
-                n "Manager Wal turns around and stares down at you, who is still on the floor in the fetus position."
+                n "Manager Wal turns around and stares down at you, who's still on the floor in the fetus position."
                 wal1 neutral "Oh."
                 wal1 "I see then. Thank you for your aid."
                 wal1 pensive "I shall go back to investigating the cause of this incident. Do not worry, for this will not happen again, as the anomaly has already been recontained-"
@@ -252,17 +252,17 @@ label day_event_lamp:
                 venture neutral "..."
                 venture happy "Alright, you got me good."
                 venture "I'll take care of all the incident report writing, Firewal."
-                wal1 "Affirmative, since you are the party responsible. I will also submit a report to the Founder about this."
-                wal1 "[player], I will need to borrow your device to present evidence. But it will be returned shortly, since the investigation is over."
+                wal1 "Affirmative, since you're the party responsible. I'll also submit a report to the Founder about this."
+                wal1 "[player], I'll need to borrow your device to present evidence. But it'll be returned shortly, since the investigation is over."
                 show firewal at disappear
                 n "Manager Wal leaves, leaving you and Dr. Venture. Dr. Venture smiles at you."
                 hide firewal
-                venture "It is a lot of fun today."
-                venture "A shame that you stabotaged my game."
+                venture "It was a lot of fun today."
+                venture "A shame that you sabotaged my game."
                 venture "But I shall just try something different next time."
                 show venture at disappear #HOW TO MAKE HIM DISAPPEAR SAME PLACE
                 n "Next time?"
-                n "You shudder to think about losing your other kidney. If it comes down to it, you might conider just staying in the void."
+                n "You shudder to think about losing your other kidney. If it comes down to it, you might consider just staying in the void."
                 return
 
             label lamp_paycheck:
