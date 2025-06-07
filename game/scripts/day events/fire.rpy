@@ -373,6 +373,9 @@ label day_event_fire:
         
     label fire_extinguisher:
 
+        $ update_character_points({"firewal": -1, "helco": 1, "uriel": -1, "moon": -1})
+        return
+
     label helco_help:
         show layer master:
             pause 0.6
@@ -414,6 +417,8 @@ label day_event_fire:
         n "You look around and see Dr. Helco standing in a conveniently-sized dry spot next to the wall."
         helco "[player_name], the fire has been extinguished!"
         n "You turn "
+
+        $ update_character_points({"firewal": -1, "helco": -1, "uriel": 1, "moon": -1})
         
     label wal_management:
     show firewal as dummy_wal:
@@ -461,7 +466,7 @@ label day_event_fire:
     n "You hear a ping behind you."
     show chan panic
     n "You suspect it might be a little too late for that..."
-    $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1})
+    $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1, "moon": -1, "uriel": -1})
     return
 # have the three options as call... moon?, convince everyone to help, let the wals manage it
 # let the wals manage it, wal no1: OK THE FIRE IS PUT DOWN: casualty 100290 wals estimate damage to the area: 200 Million narrator: au-AUGH maybe dont let chan see this one… helco: who's writing the incident report... Chan exits one of the charred offices: Just put in the pile with the rest of them... I'll get to it eventually...

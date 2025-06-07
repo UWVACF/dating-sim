@@ -237,7 +237,7 @@ label itd_lights_go_out:
                         alpha 0.0
                     
                     helco "Excellent! You did it!"
-                    $ update_character_points({"helco": 2})
+                    $ update_character_points({"helco": 1})
                     jump itd_conclusion
 
     label itd_run_away:
@@ -269,7 +269,6 @@ label itd_lights_go_out:
         n "You make your way down the hall, back towards where you heartlessly abandoned Dr. Helco."
         show helco 
         helco "Oh, hello!"
-        $ update_character_points({"helco": 1})
         jump itd_conclusion
 
     label itd_conclusion:

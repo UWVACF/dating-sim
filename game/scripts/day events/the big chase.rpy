@@ -58,6 +58,7 @@ label day_event_the_big_chase:
             hide syg
             $ update_character_points({"chan": 1})
             $ update_character_points({"syg": -1})
+            $ update_character_points({"plutoes": -1})
             jump help_hampter_con
         
         label syg_experiment:
@@ -75,6 +76,7 @@ label day_event_the_big_chase:
             show syg at disappear
             $ update_character_points({"syg": 1})
             $ update_character_points({"chan": -1})
+            $ update_character_points({"plutoes": -1})
             jump help_hampter_con
 
         label help_hampter_con:
@@ -123,6 +125,7 @@ label day_event_the_big_chase:
             n "Well. That's that. Go get a coffee or something. You need it."
             $ update_character_points({"plutoes": 1})
             $ update_character_points({"chan": -1})
+            $ update_character_points({"syg": -1})
             return
 
         label expose_plutoes:
@@ -146,6 +149,8 @@ label day_event_the_big_chase:
             show chan at disappear
             n "You watch as Dr. Chan trudges away. At this point, it might be easier for him to just rewrite whatever was in that hard drive."
             $ update_character_points({"chan": 1})
+            $ update_character_points({"syg": -1})
+            $ update_character_points({"plutoes": -1})
             hide chan
             hide plutoes
             hide haze green onlayer top
@@ -187,6 +192,9 @@ label day_event_the_big_chase:
             show syg pensive at disappear
             n "You watch Dr. Syg walk away with a drained Hampter. You contemplate whether removing your ear or going deaf would get you more company compensation claims."
             $ update_character_points({"syg": 1})
+            $ update_character_points({"plutoes": -1})
+            $ update_character_points({"chan": -1})
+            $ update_character_points({"hamp": -1})
             hide hampter
             hide syg
             hide plutoes
@@ -212,4 +220,6 @@ label day_event_the_big_chase:
             n "...Dr. Syg sucker-punches you in the face."
             $ update_character_points({"syg": -1})
             $ update_character_points({"plutoes": 1})
+            $ update_character_points({"chan": -1})
+            $ update_character_points({"hamp": -1})
             return

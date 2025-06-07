@@ -63,7 +63,7 @@ init python:
     day_events = [
         Event(
             label="fire",
-            personnel=["aikha", "firewal"],
+            personnel=["aikha", "firewal", "Uriel", "Helco", "Moon"],
         ),
         Event(
             label="helco_coffee",
@@ -80,7 +80,7 @@ init python:
         ),
         Event(
             label="staring_contest",
-            personnel=["lee", "aikha", "deceased"],
+            personnel=["lee", "aikha"],
             tags=["break"],
         ),
         Event(
@@ -144,7 +144,7 @@ init python:
             personnel=["deceased", "helco", "syg", "firewal"],
             tags=["personnel"],
         ),
-                Event(
+        Event(
             label="lamp",
             personnel=["venture", "firewal"],
             tags=["anomaly"],
