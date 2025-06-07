@@ -7,7 +7,7 @@ transform dummy:
 
 label day_event_aikha_flare:
 
-    transform bobbing(duration = 0.1):
+    transform bobbing(duration = 0.5):
         block:
             easein duration xalign 0.495
             pause 0.02
@@ -50,7 +50,7 @@ label day_event_aikha_flare:
     aikha "..."
     player "Dr. Aikha?"
     aikha "..."
-    show aikha sad at bobbing(duration = 0.3)
+    show aikha sad at bobbing(1)
     player "Helloooo?"
     aikha "..."
     show haze black onlayer top:
@@ -61,7 +61,7 @@ label day_event_aikha_flare:
     n "It can't speak and shows odd behavior patterns."
     scene bg aikha office dark
     show aikha sad
-    show aikha sad at bobbing(0.3)
+    show aikha sad at bobbing(1)
     show haze black onlayer top:
         linear 1.5 alpha 0.8
     show aikha sad:
@@ -172,7 +172,7 @@ label day_event_aikha_flare:
             linear 0.4 alpha 1.0
         n "..."
         show bg aikha office dark close
-        show aikha sad:
+        show aikha fury:
             zoom 1.3
             easein 0.05 zoom 1
         n "The entity stumbles back and writhes in pain." 
@@ -225,6 +225,7 @@ label day_event_aikha_flare:
             firewal_unknown "WEEWOOWEEWOO!!! THIEF! THIEF! THIEF ALERT!"
             hide haze black strong onlayer top
             show bg aikha office dark
+            show pocketwal at appear()
             n "A small Wal pops out of Dr. Aikha's discarded lab coat."
             n "A... Smal?..."
             n "A Smal if you will."
@@ -236,12 +237,19 @@ label day_event_aikha_flare:
             player "Wait, wait! I'm no poacher!"
             pocketwal "Oh. It's just you, intern."
             pocketwal upset "{cps=*2}You really shouldn't steal! What's wrong with you! I'm gonna have to report this to THE WAL! I mean this is just ridiculous... breaking into a Path-Para office and stealing Dr. Aikha's wallet! A DEPARTMENT HEAD TOO! The audacity!{/cps} {cps=*3}THE WAL has set me, WAL NO.2 in charge of protecting and keeping Ai company and the last thing I would expect to encounter is the INTERN stealing! What kind of fiend are you! {/cps} {cps=*5}Why I should just blast you right here. I mean if I protect Ai then THE WAL will be even happier with my operations! This is such a great opportunity! Usually I'm just hanging out in their pocket on stand-by but now is my chance! I can use all that dangerous tech that THE WAL graciously and benevolently gifted me!{/cps}"
+            show aikha unique:
+                alpha 0.0
+                alpha 1.0
+                appear(x_align = 1.3)
+                move_to(x_align = 0.6, duration = 3)
             n "The Pocket Wal's lecturing is interrupted by a very damaged Dr. Aikha. Who screeches before trying to engulf you."
             n "This is really a horrific way to go..."
             n "You can't even squeak out your last words because Wal NO.2 the yapper is drowning you out."
             show soundwave onlayer top
             show layer master:
                 shake(persist=15.0, preset="rumble")
+            show aikha fury:
+                move_to(x_align = 0.9, duration = 0.7)
             n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
             show layer master # reset shake
             show soundwave onlayer top:
@@ -260,6 +268,7 @@ label day_event_aikha_flare:
             pocketwal "I will occupy them while you will go retrieve an emergency snack."
             pocketwal "It's behind the mirror, push past it and you'll see a safe." 
             hide pocketwal
+            hide aikha
             show bg aikha office leave
             show soundwave onlayer top:
                 alpha 1.0

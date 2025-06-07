@@ -109,7 +109,7 @@ label day_event_didnt_do_it:
         n "You cast a resentful glare at the bystanders as you're dragged out of the lounge."
         n "Out of the corner of your eye, you see Dr. Chan and Ethy amongst the crowd of people."
         n "Dr. Chan looks deep in thought, while Ethy gives you a thumbs up with a wide grin."
-        $ update_character_points({"chan": 1})
+        $ update_character_points({"chan": 1, "deceased": -1})
         $ tne_defendant = True
         $ tne_chan_backup = True
         jump ddi_jail
@@ -127,7 +127,7 @@ label day_event_didnt_do_it:
         jessie surprise "Dr. Deceased, did you really?"
         n "The crowd begins mumbling and discussing amongst themselves."
         hide jessie
-        $ update_character_points({"chan": -1})
+        $ update_character_points({"chan": -2, "deceased": -1})
 
         if plague_mask == True:            
             menu: 
@@ -219,7 +219,7 @@ label day_event_didnt_do_it:
             n "The Wal comes forward and takes you by the arms. You try your best to shove him away from you, but you're no match against the ingenious creations of Dr. Firewal."
             n "He picks you up, throws you over his metallic shoulders and carries you off like a sack of potatoes."
             hide firewal
-            $ update_character_points({"deceased": -1})
+            $ update_character_points({"deceased": -2, "syg": -1, "chan": -1})
             $ tne_defendant = True
             $ tne_chan_backup = False
             jump ddi_jailtwo
@@ -278,7 +278,7 @@ label day_event_didnt_do_it:
                 hide syg
                 n "You're unsure if he meant desirable for him or you. You decide not to ask."
                 $ tne_chan_backup = True # typo? should be syg backup
-                $ update_character_points({"syg": 1})
+                $ update_character_points({"syg": 0})
                 n "You lie down on the cold floor and wonder if this will spell the end of your career. And your life."
                 return
 
@@ -288,7 +288,7 @@ label day_event_didnt_do_it:
                 hide syg
                 n "He leaves, significantly less content."
                 $ tne_syg_backup = False
-                $ update_character_points({"syg": -1})
+                $ update_character_points({"syg": 1})
                 n "You lie down on the cold floor and wonder will this truly spell the end of your career. And your life."
                 return
         

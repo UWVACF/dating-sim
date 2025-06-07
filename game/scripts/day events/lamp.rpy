@@ -323,7 +323,6 @@ label day_event_lamp:
                     alpha 0.0
                     alpha 1.0
                     appear(x_align = 1.3)
-
                     move_to(x_align = 0.7, duration = 1)
                 n "A walbot comes into view, charging straight at Dr. Venture."
                 show flashbang onlayer top:

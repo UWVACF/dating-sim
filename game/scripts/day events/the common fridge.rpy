@@ -100,7 +100,7 @@ label day_event_the_common_fridge:
             n "You open the common fridge..."
             n "..."
             n "...Why is there a giraffe in here?"
-            $ update_character_points({"firewal": 1})
+            $ update_character_points({"firewal": 1, "helco": -1})
             return
         
         label tcf_deny:
@@ -116,7 +116,7 @@ label day_event_the_common_fridge:
             n "You walk back to the lounge, trying to look as innocent as possible."
             n "20 hours 31 minutes until the analysis is complete. 20 hours 31 minutes to live."
             # walk back to lounge, chan is eating the instant noodles, ethy screaming at you
-            $ update_character_points({"firewal": -1})
+            $ update_character_points({"firewal": -2, "helco": -1})
             return
 
 
@@ -177,7 +177,7 @@ label day_event_the_common_fridge:
                 syg "Just leave it. Someone else will clean it up. You two are giving me a headache, ugh."
                 n "He swiftly and coldly leaves the room, with Dr. Deceased trailing sheepishly behind."
                 n "Well, you missed out on lunch, but at least you saved someone from high school English PTSD."
-                $ update_character_points({"syg": 1, "deceased": 1})
+                $ update_character_points({"syg": 1, "deceased": 1, "helco": -1, "firewal": -1})
                 return
 
             "Nah.":
@@ -188,7 +188,7 @@ label day_event_the_common_fridge:
                     shake
                 extend "AHHHHHHHHHH"
                 n "You can have lunch some other time..."
-                $ update_character_points({"syg": -1, "deceased": -1})
+                $ update_character_points({"syg": -1, "deceased": -1, "helco": -1, "firewal": -1})
                 return
                 
     label tcf_noodles:
@@ -238,7 +238,7 @@ label day_event_the_common_fridge:
         n "As you walk past him to return to your cubicle, you hear him mutter:"
         helco "Hmm, a little bland still."
         n "...You pick up the pace."
-        $ update_character_points({"helco": 1})
+        $ update_character_points({"helco": 1, "firewal": -1, "deceased": -1, "syg": -1})
         return
 
     label tcf_fries:
@@ -272,7 +272,7 @@ label day_event_the_common_fridge:
                 show helco sad at disappear
                 n "You feel a bit guilty, but frankly, you figure it's probably for the better if no one else tries these."
                 n "Still retching, you make your way back to the cubicle."
-                $ update_character_points({"helco": -1})
+                $ update_character_points({"helco": -1, "firewal": -1, "deceased": -1, "syg": -1})
                 return
             "Let him try some.":
                 player "...Sure."
@@ -288,5 +288,5 @@ label day_event_the_common_fridge:
                 show helco happy at disappear
                 n "...Is this guy taste blind? Is he even human?"
                 n "These thoughts run through your head as you make your way back to your cubicle, still retching."
-                $ update_character_points({"helco": 1})
+                $ update_character_points({"helco": 1, "firewal": -1, "deceased": -1, "syg": -1})
                 return

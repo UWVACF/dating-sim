@@ -162,7 +162,7 @@ image firewal unique = At("images/personnel/firewal/firewal unique.png", sprite_
 transform pocketwal_transform:
     base_char_transform
 
-image pocketwal = At(ConditionSwitch("speaking_char == 'pocketwal'", "images/personnel/pocketwal/pocketwal talk.png", "True", "images/personnel/pocketwal/pocketwal neutral.png"), sprite_highlight("pocketwal"), pocketwal_transform)
+image pocketwal = At(ConditionSwitch("speaking_char == 'pocketwal'", "images/personnel/firewal/pocketwal talk.png", "True", "images/personnel/firewal/pocketwal neutral.png"), sprite_highlight("pocketwal"), pocketwal_transform)
 image pocketwal neutral = "pocketwal"
 image pocketwal talk = At("images/personnel/firewal/pocketwal talk.png", sprite_highlight("pocketwal"), pocketwal_transform)
 image pocketwal upset = At("images/personnel/firewal/pocketwal upset.png", sprite_highlight("pocketwal"), pocketwal_transform)
