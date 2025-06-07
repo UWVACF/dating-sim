@@ -1,5 +1,8 @@
 label day_event_lamp:
     image soundwave = At("images/day events/soundwave overlay.png", base_overlay_transform)
+    image flashbang = "images/day events/white screen.png"
+    $ lamp_moneyy = False
+    $ lamp_memoriess = False
 
     scene bg cubicle
     n "You return to your desk after a small walk."
@@ -13,7 +16,7 @@ label day_event_lamp:
     with default_fade
     show black_screen as black_bg
     hide black_screen onlayer top
-    show black_screen as black_between zorder 3:
+    show black_screen as black_between zorder 50:
         alpha 0.0
         block:
             linear 2 alpha 0.8
@@ -31,7 +34,7 @@ label day_event_lamp:
     n "Actually, how long has it been? You can't even count your own heartbeat to detemine this."
     n "Just as you're about to start panicking, you make out a faint...image of someone."
     show layer master:
-        blur 30
+        blur 10
     show alex pensive
     n "Is that...Founder Alex?"
     n "Oh right. You have a meeting with the Founder."
@@ -96,14 +99,14 @@ label day_event_lamp:
         show soundwave onlayer top:
             alpha soundwaver_ol_alpha
         show layer master:
-            blur 30
+            blur 10
             shake(strength = shake_strength)
             repeat
         jump yell_loop 
 
     label end_yell_loop:
         show layer master:
-            blur 30
+            blur 10
         hide soundwave onlayer top
         n "{i}buzz buzz!{/i}"
         wal1 "{color=#8eabbf}Huh?{/color}"
@@ -162,7 +165,7 @@ label day_event_lamp:
         n "{b}This is Dr. Wayne \:\) \nI'm here to offer you...a better solution than waiting for a year in your phone!{/b}"
         n "{b}Do you remember how you got stuck in here?{/b}"
         menu:
-            "You turned on a lamp.":
+            "I turned on a lamp.":
                 jump lamp_lamp
         
         label lamp_lamp:
@@ -175,7 +178,7 @@ label day_event_lamp:
             n "Dr. Venture pauses."
             n "{b}Well techically, it was not misplaced. More of a prank.{/b}"
             menu:
-                "EXCUSE ME WHAT THE FU-":
+                "EXCUSE ME? WHAT THE FU-":
                     jump lamp_what_the
 
         label lamp_what_the:
@@ -187,23 +190,20 @@ label day_event_lamp:
 
         label what_do_i_do:
             n "{b}It's simple! I can transmutate you from the device out into the real world again. But it requires some sacrifices, as alchemy abide by the rules of equivalent exchange.{/b}"
-            n "{b}So I'll need you to tell me something that has the same value as your physical being. It can be anything - a physical item, a body part, or even your future.{/b}"
+            n "{b}So I'll need you to tell me something that has the same value as your physical being. It can be anything - an item, a body part, or even intangible things.{/b}"
             wal1 upset "{color=#8eabbf}This is the last warning! Wal security will be called in 5...4...3...{/color}"
             n "{b}Quick! The wals are closing in! It can be anything!{/b}"
+            show firewal at disappear
             jump lamp_sacrifice
 
         label lamp_sacrifice:
             menu:
                 "Sacrifice"(on_hover = "a kidney"): 
                     jump lamp_kidney
-                "Sacrfice"(on_hover = "your next paycheck"): ########fail
-                    jump lamp_paycheck
-                "Sacrifice"(on_hover = "your future"): ########fail
-                    jump lamp_future
-                "Sacrifice"(on_hover = "half of your memories"):
+                "Sacrfice"(on_hover = "your entire fortune"): ########fail
+                    jump lamp_money
+                "Sacrifice"(on_hover = "your memories"): ########fail
                     jump lamp_memories
-                #"Sacrifice"(on_hover = "half of your soul"): #######fail
-                    #jump lmap_soul
                 "Sacrifice"(on_hover = "a walbot"):  #wal -1
                     jump lamp_walbot
 
@@ -213,8 +213,14 @@ label day_event_lamp:
                 show venture at disappear
                 n "The image of Dr. Venture fades away. You are once again left in the dark."
                 n "Did the wal bots get him? Or is he begining the transmutation?"
-                # screen flash
+                show flashbang onlayer top:
+                    alpha 0.0
+                    easeout 0.4 alpha 1.0
                 scene bg lab 
+                hide firewal
+                show flashbang onlayer top:
+                    alpha 1.0
+                    easein 0.4 alpha 0.0
                 show venture happy at appear(x_align = 0.5)
                 n "Suddenly, you can see light again."
                 n "You awaken lying in a transmutation circle, your hand tightly clutching your phone."
@@ -245,10 +251,10 @@ label day_event_lamp:
                 show venture sad
                 player "Dr. Venture did it."
                 wal1 "?"
-                player "He was the one who placed the lamp."
+                player "He was the one who placed the lamp at my cubicle."
                 venture "Now, [player], I can understand that you are still in shock-"
                 player "I have evidence."
-                n "You take out your phone, which contains all the messages between you and Dr. Venture."
+                n "You take out your phone, which contains all the messages between you and Dr. Venture while you were trapped in it."
                 venture neutral "..."
                 venture happy "Alright, you got me good."
                 venture "I'll take care of all the incident report writing, Firewal."
@@ -257,28 +263,95 @@ label day_event_lamp:
                 show firewal at disappear
                 n "Manager Wal leaves, leaving you and Dr. Venture. Dr. Venture smiles at you."
                 hide firewal
-                venture "It is a lot of fun today."
+                venture "It was a lot of fun today."
                 venture "A shame that you stabotaged my game."
-                venture "But I shall just try something different next time."
-                show venture at disappear #HOW TO MAKE HIM DISAPPEAR SAME PLACE
+                venture "But I will just try something different next time."
+                show venture at disappear: #HOW TO MAKE HIM DISAPPEAR SAME PLACE
+                    xalign 0.85
                 n "Next time?"
                 n "You shudder to think about losing your other kidney. If it comes down to it, you might conider just staying in the void."
+                $ update_character_points({"firewal": 1, "venture": -1})
                 return
 
-            label lamp_paycheck:
-                n "Well, if you can't get out of here, you wouldn't really need your paycheck, would you?"
-                n "Might as well give that a try. You do like getting paid quite a bit. Afterall, the pay was the only reason you applied for this job."
+            label lamp_money:
+                if lamp_moneyy == False:
+                    n "Well, if you can't get out of here, you wouldn't really need money, would you?"
+                    n "Might as well give that a try. You can always make it back. Afterall, the pay was the only reason you applied for this job."
+                    n "{b}Got it! I'll get you out in a second!{/b}"
+                    n "You wait."
+                    n "To your dismay, you are still stuck in darkness after a {i}bit{/i} more than the second passed."
+                    n "{b}Sorry [player], the transmutation failed. It seems that your entire fortune isn't valuable enough.{/b}"
+                    n "Wow. Way to rub that in."
+                    n "At least you get to keep your 28 bucks!"
+                    n "If you get out of here, that is."
+                    $ lamp_moneyy = True
+                    jump lamp_sacrifice
+                else:
+                    n "You already tried that."
+                    n "You're broke, okay? Now try something else."
+                    jump lamp_sacrifice
+
+            label lamp_memories:
+                if lamp_memoriess == False:
+                    n "{b}Got it! I'll get you out in a second!{/b}"
+                    n "You reminisce your memories for one last time."
+                    n "That really good instant ramen last week."
+                    n "That good book with an insane plot twist your read a few months ago. Oh good, you can read it fresh again."
+                    n "Those countless nights during university, staying up to rush assignments...to be fair, you already forgot everything you've learnt."
+                    n "You remember your childhood, all those time you embarassed youself in front of your kindergarden crush..."
+                    n "...You have a remarkably good memory, I must say."
+                    n "You feel peace, knowing that you will no longer be huanted by some of these memories when you can't sleep at night."
+                    n "..."
+                    n "You can still explicitly remember it all. Why is it not working?"
+                    venture pensive "Hey so uh...the transmutation failed."
+                    venture "It seems that your memories aren't valuable enough to you."
+                    n "Dang it."
+                    $ lamp_memoriess = True
+                    jump lamp_sacrifice
+                else:
+                    n "You already tried this."
+                    n "If even you don't want some of these memories, why do you think the alchemy process would want them?"
+                    jump lamp_sacrifice
+
+            label lamp_walbot:
+                n "Technically, Dr. Venture never specified that you must {i}own{/v} the subject of equivalent exchange."
+                n "And the most valuable thing in the proximity right now is a walbot that is trying to grab the phone from Dr. Venture."
+                n "Infused with the greatest AI technology, made from expensive and rare metals, and forged by the great Dr. Firewal. What can be more valuable than that??"
+                show venture happy
                 n "{b}Got it! I'll get you out in a second!{/b}"
-                n "You wait."
-                n "To your dismay, you are still stuck in darkness after a {i}bit{/i} more than the second passed."
-                n "{b}Sorry [player], the transmutation failed. It seems that your next paycheck isn't valuable enough.{/b}"
-                n "Wow. Way to rub that in."
-                n "At least you get to keep your paycheck!"
-                n "If you get out of here, that is."
+                show firewal as sacrifice_wal:
+                    alpha 0.0
+                    alpha 1.0
+                    appear(x_align = 1.3)
 
+                    move_to(x_align = 0.7, duration = 1)
+                n "A walbot comes into view, charging straight at Dr. Venture."
+                show flashbang onlayer top:
+                    alpha 0.0
+                    easeout 0.4 alpha 1.0
+                scene bg lab 
+                hide firewal
+                show flashbang onlayer top:
+                    alpha 1.0
+                    easein 0.4 alpha 0.0
+                show venture happy at appear(x_align = 0.5)
+                n "Suddenly, you can see light again."
+                n "You lie in Dr. Venture's lab within a transmutation circle."
+                n "You turn your head to see a walbot next to you. Or rather, what remains of a walbot - the signature golden arm that resembles the one its creator has."
+                venture "Welcome back, [player_name]!"
+                venture "I gotta say, that was an interesting choice for a transmutation material. Thanks to you, I got inspired for a new direction in my research."
+                player "...Glad I could help."
+                venture neutral "Anyways, you can keep that as a souvenir. I don't really need more gold."
+                show venture at disappear
+                n "You pick up the golden arm. It weights down in your hand."
+                n "It buzzes in retaliation. Following the source of the buzzing, you realize that its wrist cuff can still be activated."
+                n "Curious, you click on it. A flashing red screen shines in your face."
+                n "{b}{color=#eb4034}{size=+15}THE WAL{/size} \nHAVE BEEN ALERTED OF THIS TRANSGRESSION{/color}{/b}"
+                n "Well. It's your life or this bot's. You're sure Dr. Firewal would understand."
+                n "...Right..?"
+                $ update_character_points({"firewal": 1, "venture": -1})
+                return
 
-
-        n "{color=#8eabbf}oof{/color}"
         
                 
             
