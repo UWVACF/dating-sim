@@ -350,6 +350,7 @@ define jessie = Character("Dr. Jessie", kind=base_char, color="#ff6dcf", cb_name
 define jessie_unknown = Character("???", kind=jessie)
 
 define firewal = Character("Dr. Firewal", kind=base_char, color="#961e44", cb_name="firewal", image="firewal")
+define wal = Character(kind=firewal)
 define firewal_unknown = Character("???", kind=firewal)
 define wal1 = Character("Wal No.1", kind=firewal)
 define wal387 = Character("Wal No.387", kind=firewal)
