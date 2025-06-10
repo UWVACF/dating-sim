@@ -20,6 +20,11 @@ label day_event_the_bingo_card_2:
     show ryz unique at appear (x_align = 1.0)
     n "The rest stare excitedly at you. Guess you don't have a choice."
     ryz "So, [player_name], I assume you know how to play bingo. The prize this time is a miku keychain."
+    n "Dr. Ryz gestures towards a small but delicate Miku at the center of the table."
+    if didnt_miku_bingo2 == 1:
+        n "It look simliar to the one you found on the Dr. Ralex's corpse. Albeit it is of a darker shade of blue."
+    else:
+        $ didnt_miku_bingo2 == 2
     ryz happy "Just for the sake of clarity, I'll still read you the special rules."
     ryz "Firstly, you are not allowed to directly cause something on your bingo card to happen."
     ryz "Secondly, you are not supposed to peek at other's cards."
@@ -203,20 +208,26 @@ label day_event_the_bingo_card_2:
             n "Your gaze fall on the innocent Miku keychain lying on the table. You recall that Dr. Deceased has an unmatched foundness to Miku."
             n "You spontaneously grab it off the table and dash out of the lounge."
             scene bg room hall
-            deceased "HOW DARE YOU GET YOUR GRUBBY HANDS ON MIKU!!! GET [player_obj!u]!!!" #####################
+            deceased "HOW DARE YOU GET YOUR GRUBBY HANDS ON MIKU!!! GET [player_obj!u]!!!"
             n "You run down the hallway and realize what you've done to a bunch of department heads. Your spite is immediately replaced by fear."
             n "You can hear Dr. Deceased's furious steps getting closer."
             n "Too late for regrets now. You continue running forwards-"
             show layer master:
                 shake
-            n "-crashing into a dense black ball on four legs."
-            n "The prized Miku flies through the air and is caught in Pochi's huge mouth. Then he runs off."
+            n "-until something really hard hit the back of your head, causing you to tumble over."
+            n "Ow. That really fucking hurts. You suspect that your skull might have cracked."
+            n "The prized Miku flies from your hands, landing out of your reach."
+            n "You roll around and spot the thing that assulted you. It is Dr. Deceased's head."
+            # deceased head cg
+            deceased "GOT YOU! NOW HAND OVER MIKU!"
+            n "Your head rings from their shouting while you try to stand up in a daze."
+            n "Out of the corner of your eyes, you see a black ball approaches the Miku. It gobbles up poor Miku with its giant tongue and sprints off."
+            n "Mission acomplished, I supposed. Now no one is getting that Miku."
+            n "The dizziness from your migraine forces you to sit back down. You brave your ears for Dr. Deceased's fury."
             deceased "YES! BINGO! {i}Pochi commits thievery{/i}!"
-            show deceased happy at appear(x_align = 0.5)
-            n "You turn around and see Dr. Deceased marking off their bingo card."
-            deceased "HA! You loser!"
-            show deceased at disappear
-            n "They skip away, following Pochi's trail. You're just glad that Dr. Deceased seems to have forgotten about your earlier action."
+            # hide deceased head cg
+            n "The head cackles before rolling down the corridor after Pochi's trail."
+            n "You're just glad that Dr. Deceased seems to have forgotten about your earlier actions."
             $ update_character_points ({"deceased": 1, "helco": 1})
             return
 

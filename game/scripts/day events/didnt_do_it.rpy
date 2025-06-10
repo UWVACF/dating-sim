@@ -228,11 +228,16 @@ label day_event_didnt_do_it:
         label ddi_poor_argument:
             n "You side eye the unfamiliar, cold body on the ground. You have no idea who she is, or her relationship with anyone in the room."
             n "What would Dr. Deceased gain from this? That's when you notice the keychain peeking out of the soaked lab coat."
-            n "You kneel down and pick it up. Its blue twintails look awfully familiar. An idea clicks in your head."
+            if didnt_miku_bingo2 == 2:
+                n "It looks identical to the one Dr. Deceased won at the last Bingo."
+                n "You kneel down and pick it up. You're beginning to actually think that Dr. Deceased is the culprit."
+            else:
+                $ didnt_miku_bingo2 == 1
+                n "You kneel down and pick it up. Its blue twintails look iconically familiar. An idea clicks in your head."
             player "You must've done it because of this!"
             deceased surprise "Huh??"
             player "Dr. Ralex stole your prized keychain, so you confronted her for it! But you accidentally killed her during a struggle!"
-            n "You can see a few people in the audience nodding. Wow, you didn't actually think Dr. Deceased would give people this impression."
+            n "You can see a few people in the audience nodding. Wow, it seems that everyone agrees that Dr. Deceased would kill for Miku."
             deceased pensive "..."
             show deceased happy
             n "To your surprise, Dr. Deceased starts cackling like a crow. Like many crows."
