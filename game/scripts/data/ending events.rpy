@@ -4,5 +4,8 @@ init python:
     ending_events = [
         Event(
             label="aikha_1",
+        ),
+        Event(
+            label="neutral_ending",
         )
     ]
