@@ -193,8 +193,8 @@ label day_init:
             if tag not in current_tags:
                 current_tags[tag] = 0
             current_tags[tag] += 1
-        for person in today_event.personnel:
-            characters[person]["points"] += 1
+        # for person in today_event.personnel: # automatically add points to characters
+        #     characters[person]["points"] += 1
 
         # check if an ending has been reached
         if current_ending is None:
