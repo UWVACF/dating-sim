@@ -21,17 +21,22 @@ label day_event_the_bingo_card_2:
     n "The rest stare excitedly at you. Guess you don't have a choice."
     ryz "So, [player_name], I assume you know how to play bingo. The prize this time is a miku keychain."
     n "Dr. Ryz gestures towards a small but delicate Miku at the center of the table."
-    if didnt_miku_bingo2 == 1:
-        n "It look simliar to the one you found on the Dr. Ralex's corpse. Albeit it is of a darker shade of blue."
+    if "didnt_do_it" in seen_events:
+        if didnt_miku_bingo2 == 1:
+            n "It look simliar to the one you found on the Dr. Ralex's corpse. Albeit it is of a darker shade of blue."
+        else:
+            jump bc2_continue
     else:
-        $ didnt_miku_bingo2 == 2
+        $ didnt_miku_bingo2 = 2
+
+label bc2_continue:
     ryz happy "Just for the sake of clarity, I'll still read you the special rules."
     ryz "Firstly, you are not allowed to directly cause something on your bingo card to happen."
     ryz "Secondly, you are not supposed to peek at other's cards."
     n "Isn't... Dr. Aikha technically always breaking rule two?"
     ryz "Thirdly-"
     show ryz upset
-    caffi "We got it, {i}Dr. Rizz{/i}. Just let us continue the game."
+    caffi neutral "We got it, {i}Dr. Rizz{/i}. Just let us continue the game." #remove neutral
     show ryz neutral
     n "You look down at Dr. Aikha's bingo sheet."
     # bingo cg here onlayer almost top
@@ -54,7 +59,7 @@ label day_event_the_bingo_card_2:
     # hide helco bingo sheet cg
     n "You watch as Dr. Helco erases a random box everytime someone else marks one off on their own sheet."
     n "His empty boxes could almost form a bingo now."
-    show caffi happy at appear(x_align = 0.0)
+    show caffi at appear(x_align = 0.0) #happy
     n "You meet Caffi's eyes and she starts laughing hysterically."
     menu:
         n "You feel a little bad for Dr. Helco."
@@ -66,7 +71,9 @@ label day_event_the_bingo_card_2:
     label bingo2_help_helco:
         player "Dr. Helco, you are playing wrong."
         helco surprise "Hmm?"
+        show helco neutral
         n "He look up and stare right into your soul. Then he look down at your sheet into its soul. If it has one."
+        show helco surprise
         show uriel pensive:
             xzoom -1.0
         n "Seems like nobody really follows rule 2 here."
@@ -79,16 +86,16 @@ label day_event_the_bingo_card_2:
         n "..Seems like nobody has ever told him the basic rules of bingo."
         show helco happy at disappear
         show uriel pensive at disappear
-        show caffi happy at disappear
+        show caffi at disappear #happy
         n "You look away to avoid his piercing gaze."
         hide helco
         hide uriel
         hide caffi
         n "On the other side, you see Dr. Deceased has stood up from their seat and is now fiddling something by the vent."
-        show deceased pensive at appear(x_align = 0.5)
+        show deceased pensive at appear(x_align = -0.1)
         deceased happy "Aha! Wires left by Hampter."
         n "You see them discreetly shove the wire pieces back into the vent, then look around suspicously to check if anyone has seen what they're doing, as if they didn't just announced their discovery out loud."
-        show deceased at disappear
+        show deceased happy at disappear
         # show bingo sheet updated 1
         n "Well, that's another step closer to winning. Not too difficult, huh?"
         hide deceased
@@ -101,7 +108,7 @@ label day_event_the_bingo_card_2:
         hide firewal
         show bg lounge
         show uriel pensive at appear(x_align = 0.5)
-        show deceased pensive at appear(x_align = 0.0)
+        show deceased at appear(x_align = 0.0) #pensive
         show ryz at appear(x_align = 1.0)
         n "You remember the wires that Dr. Deceased found. A devious plan pieces itself together in your head."
         n "Technically...if a wal combusts on its own, it wouldn't count as you \"directly\" causing it, no?"
@@ -126,18 +133,18 @@ label day_event_the_bingo_card_2:
             n "You decide to not follow through with your plan. A wal gets to live another day!"
             n "Now then, you can only wait for things to happen so that you can fill your bingo."
             n "A fire seems a bit worse than someone not using the door. You pray for the latter in your head for it to manifest."
-            show deceased at move_to(x_align = -0.8)
-            show uriel pensive at move_to(x_align = 0.0)
-            show ryz at move_to(x_align = 0.5)
+            show deceased at move_to(x_align = -0.8, duration = 1.5)
+            show uriel pensive at move_to(x_align = 0.0, duration = 1.5)
+            show ryz at move_to(x_align = 0.5, duration = 1.5)
             n "The only person capable of leaving the room without the door would be Dr. Ryz, who could phase throgh things. You turn and stare at him."
             hide deceased
             n "It's only a matter of time, right? Sooner or later, he has got to leave for a meeting or something."
             show ryz pensive
             n "Look, he's checking his watch right now."
-            show caffi pensive at appear(x_align = 1.0)
+            show caffi at appear(x_align = 1.0) #pensive
             n "You notice someone else also staring at Dr. Ryz. It's Caffi with a devious smile."
             n "You follow her gaze...she's readding his bingo sheet."
-            show caffi happy
+            show caffi #happy
             n "Caffi stands up, and her smile grows bigger. "
             show uriel pensive:
                 xzoom -1.0
@@ -154,24 +161,28 @@ label day_event_the_bingo_card_2:
             n "You hear a big sigh amongst everyone. Caffi have sabotaged almost everyone, including you."
             show censor zorder 50: #will prob have to reanimate this once we get permenant sprites
                 zoom 0.25
-                yalign 0.4
+                yalign 0.55
                 xalign 0.51
             ryz surprise "THERE WAS ONE MINUTE LEFT. ONE MINUTE!!! CAFFI!!!"
+            show censor zorder 50: #will prob have to reanimate this once we get permenant sprites
+                zoom 0.25
+                yalign 0.60
+                xalign 0.51
             n "Ohhh wait a minute."
             # show bingo card
             n "Ethy screams...someone get flipped off...You win!!!"
             # hide bingo card
             hide censor
-            show ryz unique:
+            show ryz sad:
                 xzoom 1.0
             show uriel:
                 xzoom 1.0
             player "BINGO!!!"
-            show ryz unique at disappear
+            show ryz sad at disappear
             show uriel at disappear
             show caffi at disappear
             n "You make your way over to the prize and pick it up. The Miku's eyes glitter at you. You hold Miku triumphantly."
-            n "You see Dr. Deceased had gave themselves timeout at a corner of the lounge. They mutter against the wall."
+            n "You see Dr. Deceased have given themselves timeout at a corner of the lounge. They mutter against the wall."
             deceased "It should've been me...it should've been me..."
             n "Uriel gives you a nod of approval."
             n "Helco gives your a thumbs up."
@@ -280,10 +291,17 @@ label day_event_the_bingo_card_2:
             player "Dr. Deceased is trying to cheat! They're asking me to falsely trigger the anomaly alarm!"
             deceased surprise "Wha-What?? You-!"
             uriel neutral "Really?"
+            deceased fury "No!? [player_name] is spouting bullshit!"
             n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, who still have not realized that it's facing the wrong side." ##someone reword this for me thanks
             n "Then he excitedly crosses out something in his bingo sheet."
-            ryz happy "BINGO!!!!"
-            deceased fury "NUH UH"
+            ryz happy "BINGO!!!! {i}Someone gets reported fro cheating!{/i}"
+            ryz "Thank you for standing on the side of fairness, [player_name]."
+            show ryz happy at disappear
+            n "Dr. Ryz skips happily towards the prize."
+            uriel upset "...Of course you would try to cheat."
+
+
+
             return
 
 
