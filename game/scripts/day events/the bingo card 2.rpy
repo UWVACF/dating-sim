@@ -255,7 +255,6 @@ label bc2_continue:
         with default_fade
         hide helco
         hide caffi
-        show 
         n "It's been...an hour. Your breaktime is definitely over."
         n "You should get back to work. You still have some tasks to complete today, and you don't want to stay overtime."
         # turn around
