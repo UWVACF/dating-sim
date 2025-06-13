@@ -1,43 +1,52 @@
 label ending_event_neutral_ending:
 
+    scene bg hallway
+    n "Your internship ends today."
+    n "You wait nervously outside the HR office, waiting to be called in."
+    n "Today will either be your last day at the Foundation, or the start of your new thrilling career."
+    egg "[player_name], please come in."
 
+    show bg meeting room
 
+    # rank personnel by points here to determine who shows up
 
+    n "You enter the chilled meeting room."
+    show egg at appear
+    egg "Congratulations on completing your internship, [player_name]."
+    egg "Unfortunately, today will be your last day here."
+    n "Ah. You have expected this. Still, you can't help but feel a bit disappointed."
+    egg "Because you have been recommended for multiple department-specific position in offsite facilities."
+    n "You stare at the Egg in disbelief. He smiles back at you sedately, as he always does."
+    n "You have an urge to pop his york."
+    show egg at move_to(x_align = 0.0)
+    #show personnel #1 at appear(x_align = 0.35)
+    #show personnel #2 at appear(x_align = 0.7)
+    #show personnel #3 at appear(x_align = 1.05)
 
+    # do I write if statements for the all the personnel....
 
+    menu:
+        n "Which department do you want to work under?" #is there some way to list all of the choices, but only the top 3 show up ##### or we can scrap this whole choosing thing 
+        "Choice 1":
+            jump choice1
+        "Choice 2":
+            jump choice2
+        "Choice 3":
+            jump choice3
+    
+    label choice1:
+        #personnel 1 "Welcome or something"
+        #fade to black
+        
+    label choice2:
+        #personnel 2 "Welcome or something"
+        #fade to black
 
+    label choice3:
+        #personnel 3 "Welcome or something"
+        #fade to black
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## temp credits ##
 
     scene bg hallway
 
@@ -48,7 +57,7 @@ label ending_event_neutral_ending:
     show aikha at disappear
 
     show ryz unique at appear
-    n "{b}Ryan{/b} 'WRITE THAT DOWN, WRITE THAT DOWN' \nFor coding us funny events full-time at his co-op, on the bus to AN, and probably in his sleep."
+    n "{b}Ryan{/b} \"dr lord it coach prof renpyan On his way! write that down\" \nFor coding us funny events full-time at his co-op, on the bus to AN, and probably in his sleep."
     hide aikha
     show ryz at disappear
 
@@ -117,14 +126,14 @@ label ending_event_neutral_ending:
     hide b6 #paul
     show plutoes at disappear
 
-    #show jacob x at appear
-    #n "{b}Jacob{/b} 'Mr. President' \nFor letting us use his name as the default player_name (we never asked actually)."
+    #show jakob x at appear
+    #n "{b}Jakob{/b} 'Mr. President' \nFor letting us use his name as the default player_name (we never asked actually)."
     #hide plutoes
-    #show jacob at disappear
+    #show jakob at disappear
 
     show chan unique at appear(x_align = -0.25)
     n "{b}John{/b} 'and Ethy' \nFor major world building of VACF."
-    hide plutoes #jacob
+    hide plutoes #jakob
     show chan at disappear
 
     show syg neutral at appear(x_align = 0.0)
