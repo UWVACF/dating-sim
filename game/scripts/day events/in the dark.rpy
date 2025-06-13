@@ -144,7 +144,7 @@ label itd_lights_go_out:
         n "You fumble desperately for the handle of the door behind you. The moment you find it, you wrench the door open and shut yourself inside."
         helco "Oh, hello [player_name]! What's-"
         player "That electric anomaly thing is outside and like holy hell I almost DIED I didn't know what else to do so I came into this room help me Dr. Helco help me please I just want to go home"
-        helco "Ah! So the anomaly is outside. Stay here, I will be quick."
+        helco "Ah! So the anomaly is outside. Stay here, I'll be quick."
         n "You once again hear the door open and close."
         n "You feel a wave of relief wash over you..."
         show yellow_screen:
