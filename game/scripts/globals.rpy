@@ -6,14 +6,19 @@ init python:
     # ----- STATEMENTS -----
     import copy
 
-    # chanegs the option of moving back in text
+    # toggles the ability of scrolling dialogue backwards
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SET TO FALSE WHEN SHIPPING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     config.rollback_enabled = True
 
-    # when enabled,
+    # debug:
     #   - skips intro
     #   - provides prompt to choose a specific event
-    debug_mode = True
+    # showcase_no_intro:
+    #   - follows set pathing for events
+    #   - skips intro
+    # showcase_intro:
+    #   - follows set pathing for events
+    game_mode = "showcase_no_intro"
 
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks

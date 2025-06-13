@@ -182,7 +182,18 @@ init python:
         "At least I'm free now."
     ]
 
+    showcase_events = [
+        filter_events(label="the_big_chase")[0],
+        filter_events(label="ethics_presentation")[0],
+        filter_events(label="the_bingo_card_1")[0],
+        filter_events(label="staring_contest")[0],
+        filter_events(label="the_common_fridge")[0],
+        filter_events(label="pokanom")[0],
+        filter_events(label="the_bingo_card_2")[0],
+        filter_events(label="in_the_dark")[0],
+        filter_events(label="fire")[0],
+        filter_events(label="didnt_do_it")[0],
+    ]
 
-
-## inter-event variables here
-$ didnt_miku_bingo2 = 0
+    ## inter-event variables here
+    didnt_miku_bingo2 = 0

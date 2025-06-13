@@ -1,4 +1,4 @@
-init python:
+init -20 python:
     # helper functions
 
     # returns an array of events with the following properties
@@ -74,7 +74,7 @@ label day_init:
         today_outro_label = "default_outro"
 
 
-        if debug_mode:
+        if game_mode == "debug":
             type_of_event = renpy.input("Choose either day or ending (for day and ending event respectively)").lower()
             while type_of_event != "day" and type_of_event != "ending":
                 renpy.notify("Type either \"day\" or \"event\"!")
@@ -104,6 +104,18 @@ label day_init:
                     today_intro_label = today_event.intro_label
                 if today_event.outro_label:
                     today_outro_label = today_event.outro_label
+        elif game_mode == "showcase_no_intro" or game_mode == "showcase_intro":
+            if showcase_events:
+                today_event = showcase_events[0]
+                today_event_label = "day_event_" + today_event.label
+                if today_event.intro_label:
+                    today_intro_label = today_event.intro_label
+                if today_event.outro_label:
+                    today_outro_label = today_event.outro_label
+                
+                showcase_events.pop(0)
+            else:
+                Jump("ending_event_neutral_ending")
         else:
             # call a chain event
             # assumptions: all prerequisites of the chain event are satisfied/are placed under the head of the chain
