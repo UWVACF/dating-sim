@@ -313,7 +313,7 @@ image moon unique = At("images/personnel/moon/moon unique.png", sprite_highlight
 
 
 transform egg_transform:
-    base_char_transform
+    base_char_transform(yoff = -60)
 
 image egg = At(ConditionSwitch("speaking_char == 'egg'", "images/personnel/egg/egg talk.png", "True", "images/personnel/egg/egg neutral.png"), sprite_highlight("egg"), egg_transform)
 image egg neutral = "egg"
