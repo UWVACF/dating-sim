@@ -1,11 +1,11 @@
 ﻿label start:
-    if debug_mode:
+    if game_mode == "debug" or game_mode == "showcase_no_intro":
         jump day_init
     
     scene bg room
-    n "As I walk past the..."
+    n "As you walk past the..."
     n "Dancing...rainbow mushroom...?"
-    n "I hear a girl's voice behind me."
+    n "You hear a girl's voice from behind you."
 
     show jessie neutral at appear
 
