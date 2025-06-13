@@ -22,12 +22,7 @@ init python:
 label day_event_test:
     scene bg lounge
     with default_fade
-    show paul at appear(x_align = 0.0)
-    show b6 at appear(x_align = 0.2)
-    show venture at appear(x_align = 0.4)
-    show syg at appear(x_align = 0.6)
-    show helco at appear(x_align = 0.8)
-    show aikha at appear(x_align = 1.0)
+    show egg
     n ""
 
 
