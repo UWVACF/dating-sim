@@ -45,7 +45,7 @@
             $ player_obj = "them"
             $ player_pos_adj = "their"
             $ player_pos_pro = "theirs"
-            $ player_ref = "themself"
+            $ player_ref = "themselves"
             $ player_verb_suffix = ""
 
     jessie "Nice to meet you, [player_name]!"

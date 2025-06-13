@@ -160,7 +160,7 @@ define player_sub_be = "they're" # subject pronoun + to be (he's, she's, they're
 define player_obj = "them" # object pronoun (him, her, them)
 define player_pos_adj = "their" # possessive adjective  (his, her, their)
 define player_pos_pro = "theirs" # possessive pronoun (his, hers, theirs)
-define player_ref = "themself" # reflexive pronoun (himself, herself, themself)
+define player_ref = "themselves" # reflexive pronoun (himself, herself, themselves)
 define player_verb_suffix = "" # either s or blank, used after a verb since that part changes (e.g. he puts vs they put)
 
 # bgs

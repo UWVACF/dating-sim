@@ -34,7 +34,7 @@ label day_event_ethics_presentation:
         linear 4.0 alpha 1.0
     chan "Ethics is..."
     n "You feel your eyelids drooping."
-    n "It hasn't even been two minutes yet."
+    n "It hasn't even been a minute yet."
     
     show ethics_slide 2
     show black_screen:
@@ -49,7 +49,7 @@ label day_event_ethics_presentation:
         linear 4.0 alpha 1.0
     n "You're losing your fight for consciousness."
     hide helco
-    n "Just as you're about to give in, you hear a panicked voice and the sound of a chase."
+    n "Just as you're about to give in, you hear a panicked voice and the sound of running."
     show black_screen:
         linear 0.7 alpha 0.0
     aikha "Hey! Pochi! Stop!"
@@ -91,7 +91,7 @@ label day_event_ethics_presentation:
         xalign 1.5
     show aikha at move_to(x_align = 0.5, duration = 0.5)
 
-    extend " contacted us about- "
+    extend " contacted us about- {nw}"
 
     show aikha:
         xzoom -1.0
@@ -104,7 +104,7 @@ label day_event_ethics_presentation:
     hide aikha
     chan "..."
     chan "As I was saying, one of our units is under investigation by the IRS due to-"
-    aikha "POCHI! A-"
+    aikha "POCHI! AA- {nw}"
     hide ethics_slide 
     with hpunch
     n "You hear the sound of a projector crashing onto the floor."
@@ -237,7 +237,7 @@ label day_event_ethics_presentation:
     chan "I hope you found something useful from the presentation today."
 
     if ethics_presentation_correct_answers == 0:
-        n "You feel closer with Dr. Chan...is what you would say if you had gotten a single one of his questions correct."
+        n "You feel closer with Dr. Chan...is what you would say if you'd gotten a single one of his questions correct."
         $ update_character_points({"chan": -1})
     elif ethics_presentation_correct_answers < 3:
         n "For someone dozing off during the presentation, you feel like you didn't do too bad on the questions."
