@@ -372,7 +372,12 @@ label day_event_fire:
                 jump helco_help
         
     label fire_extinguisher:
-
+        n "Let's just go for the fire extinguisher. At least we know it'll do something."
+        player "I'll get the fire extinguisher. Can you two just watch the fire and make sure the fire doesn't get worse?"
+        uriel "That should be fine. Just get back quickly."
+        n "Helco gives you a thumbs up as you turn to leave."
+        n "Alright, so you're in Hallway 7B, which means 7C should be an adjacent hallway."
+        
         $ update_character_points({"firewal": -1, "helco": 1, "uriel": -1, "moon": -1})
         return
 
@@ -416,9 +421,10 @@ label day_event_fire:
         player "Dr. Helco?"
         n "You look around and see Dr. Helco standing in a conveniently-sized dry spot next to the wall."
         helco "[player_name], the fire has been extinguished!"
-        n "You turn "
+        n "You turn to see the place where the fire used to be, along with quite a few drenched Wals."
 
         $ update_character_points({"firewal": -1, "helco": -1, "uriel": 1, "moon": -1})
+        return
         
     label wal_management:
     show firewal as dummy_wal:
