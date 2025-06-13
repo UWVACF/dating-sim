@@ -158,15 +158,15 @@ init python:
 
 
 # Player pronouns and names
-define default_name = "Jakob"
-define player_name = default_name
-define player_sub = "they" # subject pronoun (he, she, they)
-define player_sub_be = "they're" # subject pronoun + to be (he's, she's, they're)
-define player_obj = "them" # object pronoun (him, her, them)
-define player_pos_adj = "their" # possessive adjective  (his, her, their)
-define player_pos_pro = "theirs" # possessive pronoun (his, hers, theirs)
-define player_ref = "themselves" # reflexive pronoun (himself, herself, themselves)
-define player_verb_suffix = "" # either s or blank, used after a verb since that part changes (e.g. he puts vs they put)
+default default_name = "Jakob"
+default player_name = default_name
+default player_sub = "they" # subject pronoun (he, she, they)
+default player_sub_be = "they're" # subject pronoun + to be (he's, she's, they're)
+default player_obj = "them" # object pronoun (him, her, them)
+default player_pos_adj = "their" # possessive adjective  (his, her, their)
+default player_pos_pro = "theirs" # possessive pronoun (his, hers, theirs)
+default player_ref = "themselves" # reflexive pronoun (himself, herself, themselves)
+default player_verb_suffix = "" # either s or blank, used after a verb since that part changes (e.g. he puts vs they put)
 
 # bgs
 
