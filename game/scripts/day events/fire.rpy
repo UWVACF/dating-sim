@@ -339,7 +339,7 @@ label day_event_fire:
         
         n "You intelligently decide to implore Dr. Helco and Uriel for their help."
         n "You knock on the door of the conference room-"
-        uriel "Do you even have a citizenship anywhere?"
+        uriel "Do you even have any citizenship anywhere?"
         n "...Might be a bad time, but you really need to help Wal right now. You knock again, louder."
         uriel "...? Is there a problem?"
         show layer master:
