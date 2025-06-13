@@ -20,17 +20,15 @@ label day_event_pokanom:
     n "Hmm, Magic-Carp, Tuna-Tone, Bass-Tion,...Are all of these cards just fish?"
     hide uriel
     n "Suddenly, you hear loud screeching from something that looks like a buff demon with a scale for a head that's hovering over Dr. Chan's shoulder."
-    show chan talk
     chan "Yes! A CeleMeme! My demonics deck is finally complete."
     n "Well, at least they're having fun, right?"
-    show egg talk
     egg " Dr. Chan, have you gotten the full-art shiny card from the pack yet?"
     chan "No, have you?"
     n "Uh oh, looks like there's only one pack left. Well they're both reasonable people, you're sure they can just talk this out."
-    show egg fury:
+    show egg fury zorder 50:
         yalign -0.5
         xalign 0.2
-        linear 2.0 xalign 0.5
+        linear 0.3 xalign 0.5
     show chan fury
     n "Nope. Egg has just lunged on to Dr. Chan and Dr. Chan is pulling out a gun."
 
@@ -42,11 +40,10 @@ label day_event_pokanom:
             jump grab_and_run
 
     label pokanom_battle:
-        show chan talk
         chan "Fine. We'll settle this properly."
         chan "Hey Uriel, we're going to need a moderator."
         show chan neutral
-        show uriel talk at appear(x_align = 0.2)    
+        show uriel at appear(x_align = 0.2)    
         uriel "...Fine."
         show uriel neutral
         show egg neutral
@@ -55,14 +52,9 @@ label day_event_pokanom:
         n "..."
         with default_fade
         n "It's been half an hour. They can't possible have this many cards to look through."
-        show chan talk at appear(x_align = 0.5)
         chan "Okay, there's no way you're beating this deck!"
-        show chan neutral
-        show uriel talk at appear(x_align = 0.2)
         uriel "Oh good, they're finally starting."
-        show uriel neutral
         n "They both place a card facedown and, at Uriel's signal, flip over the card."
-        show egg neutral
         egg "There's no way your Tychanitar will gain enough energy before my Hydreggon knocks it out."
         chan "You forget that with Tychanitar's special ability, it can use an attack with one less energy when it's first placed in the Active zone. And with a Shelleus, I can add two extra energy."
         egg "But that's water energy, and Tychanitar needs psythic energy!"
@@ -149,8 +141,9 @@ label day_event_pokanom:
             return
 
         label keep_running:
+            show black_screen
             n "You go to open the door and suddenly fall forward as the door opens and closes behind you."
-            show meeting room
+            n "Welp. Time to find out what horrors these shadows hold."
             show uriel neutral
             uriel "Are you open to negotiations over that card pack?"
             n "Just do it. If you don't, all of these people are going to give you a heart attack."
@@ -165,13 +158,16 @@ label day_event_pokanom:
             hide uriel
             n "Through the door, you can hear the faint sounds of conversation and one loud, aggrieved sigh from Dr. Chan."
             n "You wait until the footsteps recede into the distance before stepping out."
-            
+            show black_screen zorder 10
             n "It's a lot darker here than you remember. And slimier?"
             n "The slime's getting into your pockets, like it's searching for something. Oh this is so gross."
             n "Well this is just great. You're down a pretty expensive card, you're covered in slime, and you smell like yolk."
             n "Wait, what? Actually, hold that thought, the slime is retreating."
+            scene hallway
             n "Once you open your eyes, you see a rapidly shrinking yellow and white mass."
+            show egg sad
             n "Finally, it solidifies into a form you recognize as the Egg, which frowns at you and floats away."
+            hide egg
             $ update_character_points({"uriel": 1, "chan": -1})
             #egg shows up?
             return
