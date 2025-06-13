@@ -1,23 +1,38 @@
 label day_event_pokanom:
     scene bg hallway
-    n "The workday is over, but you're still here. That would be admirable if you were actually working. Instead, you're just looking around for your phone."
+    n "The workday is over, but you're still here. That'd be admirable if you were actually working. Instead you're just looking around for your phone."
     n "Maybe it's in the lounge. You definitely had it on your lunch break."
-    show bg lounge
+    scene bg lounge
     n "You walk into the sounds of ripping plastic and shuffling cards."
-    n "You see Dr. Chan, Dr. Lee, B6, Egg, and Uriel around a table covered in cards and torn wrappings."
-    n "You grab a mostly-intact wrapper. It says \"Pokanom\"."
-    show uriel at appear
-    uriel "They ordered a box of cards that came today. Unfortunately, until they are done with the pack opening, Dr. Chan and Egg are functionally inaccessible."
-    n "Egg is just eating the tops of the card wrappers off with concerning speed, and Dr. Chan tearing into the packs at a similar rate."
-    n "B6 and Lee are having a comparatively calmer game at the other end of the table."
-    n "Suddenly, you hear loud screeching from something that looks like a buff demon with a scale for a head, hovering over Dr. Chan's shoulder."
-    show chan happy
+    n "You see people around a table covered in cards and torn wrappings."
+    n "Looking at one mostly intact wrapper, it says \"Pokanom\"."
+    show lee talk at appear(x_align = 0.8)
+    lee "They ordered a box of cards that came today. Unfortunately, until they are done with the pack opening, Dr. Chan and Egg are functionally inaccessible."
+    show lee happy
+    n "Well Dr. Lee looks pretty amused by the scene in front of them."
+    show uriel upset at appear(x_align = 0.2)
+    n "At the other side of the table, Uriel is also watching, although they seem far more impatient."
+    hide lee  
+    show egg happy at appear(x_align = 0.8)
+    show chan happy at appear(x_align = 0.5)
+    n "Egg is just eating the tops of the card wrappers off with concerning speed, and Dr. Chan is tearing into the packs at a similar rate."
+    n "Every so often, they drop a card onto an ever-growing pile in front of B6."
+    n "Hmm, Magic-Carp, Tuna-Tone, Bass-Tion,...Are all of these cards just fish?"
+    hide uriel
+    n "Suddenly, you hear loud screeching from something that looks like a buff demon with a scale for a head that's hovering over Dr. Chan's shoulder."
+    show chan talk
     chan "Yes! A CeleMeme! My demonics deck is finally complete."
     n "Well, at least they're having fun, right?"
-    egg "Dr. Chan, have you gotten the full-art shiny card from the pack yet?"
+    show egg talk
+    egg " Dr. Chan, have you gotten the full-art shiny card from the pack yet?"
     chan "No, have you?"
-    n "Uh oh, looks like there's only one pack left. Well, they're both reasonable people, you're sure they can just talk this out."
-    n "As you think that, you see Egg lunge onto Dr. Chan. In retaliation, Dr. Chan pulls out a gun."
+    n "Uh oh, looks like there's only one pack left. Well they're both reasonable people, you're sure they can just talk this out."
+    show egg fury:
+        yalign 1.0
+        xalign -0.5
+        linear 2.0 xalign 1.5
+    show chan fury
+    n "Nope. Egg has just lunged on to Dr. Chan and Dr. Chan is pulling out a gun."
 
     menu: 
         n "Quick! Find a way to resolve this without your two most responsible department heads coming to blows."
@@ -27,17 +42,27 @@ label day_event_pokanom:
             jump grab_and_run
 
     label pokanom_battle:
+        show chan talk
         chan "Fine. We'll settle this properly."
         chan "Hey Uriel, we're going to need a moderator."
+        show chan neutral
+        show uriel talk at appear(x_align = 0.2)    
         uriel "...Fine."
+        show uriel neutral
+        show egg neutral
         egg "Choose your cards wisely, for this will be the greatest challenge you will ever face."
-        n "Well, at least they're calmer now."
+        n "Well at least they're calmer now."
         n "..."
         with default_fade
         n "It's been half an hour. They can't possible have this many cards to look through."
+        show chan talk at appear(x_align = 0.5)
         chan "Okay, there's no way you're beating this deck!"
+        show chan neutral
+        show uriel talk at appear(x_align = 0.2)
         uriel "Oh good, they're finally starting."
+        show uriel neutral
         n "They both place a card facedown and, at Uriel's signal, flip over the card."
+        show egg neutral
         egg "There's no way your Tychanitar will gain enough energy before my Hydreggon knocks it out."
         chan "You forget that with Tychanitar's special ability, it can use an attack with one less energy when it's first placed in the Active zone. And with a Shelleus, I can add two extra energy."
         egg "But that's water energy, and Tychanitar needs psythic energy!"
@@ -56,37 +81,46 @@ label day_event_pokanom:
 
         menu:
             "Charyzard should be able to tank long enough to take down another two Pokanoms.":
-                jump pokanom_charyzard
+                jump charyzard
             "Styxtini will end the game faster, at least.":
-                jump pokanom_styxtini
+                jump styxtini
 
-        label pokanom_charyzard:
+        label charyzard:
             chan "Good choice. Charyzard already has the type advantage, so one big attack should be enough."
-            n "It takes a couple turns to charge up, but Ryzmic Toss does indeed get both of the Egg's next two Pokanoms down to zero hp in one hit."
+            with default_fade
+            n "It takes a couple turns to charge up, but  Ryzmic Toss does indeed get both of the Egg's next two Pokanoms down to zero hp in one hit."
             n "Uriel has left, muttering something about \"just forging the signatures\", but Ethy seems too enthralled by the battle to notice."
             n "At this point, it's well past midnight, but at least they're done."
+            show chan happy
+            show egg sad
             n "Chan has the card, and, honestly, this might be the happiest you've ever seen him."
-            $ update_character_points({"uriel": -1, "chan": -1}) # why is this -1 for chan
+            $ update_character_points({"uriel": -1, "chan": 1})
             return
     
-        label pokanom_styxtini:
-            chan "Well you seem pretty sure about this. Well, Aikhaslash should go down faster than it can get Styxtini."
+        label styxtini:
+            chan "Well you seem pretty sure about this. Aikhaslash should go down faster than it can get Styxtini."
             chan "After all, what are the chances of four out of four coin flips being heads?"
+            show chan surprise
+            show egg happy
             n "High enough, it seems, as Styxtini goes down in the next turn to a bizarrely lucky Naight Slash."
-            chan sad "..."
-            uriel "So, since this is over, Dr. Chan, I need a few papers signed."
+            show uriel happy
+            uriel "So, since this is over, I need a few papers signed, Dr. Chan."
+            show egg sad
             n "Uriel pulls out a pen and a stack of papers about as thick as your arm."
             n "Wow, way to kick a guy when he's down."
-            $ update_character_points({"chan": -1, "uriel": -1})
+            $ update_character_points({"chan": -1, "uriel": 1})
             return
     
     label grab_and_run:
         n "You grab the pack and rush out of the room."
-        n "Good news: they're not fighting each other anymore."
-        n "Bad news: they're both after you now."
+        hide egg
+        hide chan
+        scene bg hallway
+        n "Good news: they're not fighting each other anymore. Bad news: they're both after you now."
         n "You speed your way down the halls, taking random lefts and rights to try to shake your pursuers."
+        scene bg door
         n "Hmm, this place seems unfamiliar."
-        n "Well, there's two ways out of here. You've got the doorway that you just came through and a door that you can hear faint, slow footsteps behind."
+        n "Well, there's two ways out of here. You've got the doorway that you just came through and a door that you can hear faint footsteps behind."
 
         menu:
             n "Either you face the familiar screeching behind you, or keep going into the unknown."
@@ -98,21 +132,24 @@ label day_event_pokanom:
         label surrender:
             n "I'm sure you knew this couldn't go on forever."
             n "Just keep the pack in plain sight and don't make any sudden movements."
+            show chan fury
             n "Dr. Chan comes to a stop in front of you, still brandishing his gun. You hope the screams are due to Dr. Chan's actions, but seeing how Ethy seems to be intensely locked onto the cards in your hand, you doubt it."
-            chan "Hand over that card this instant, or I'll be forced to take more extreme measures."
-            n "You comply. After seeing his fight with Egg, you don't like your chances."
+            chan "Hand over that card this instant, or I will be forced to take more extreme measures."
+            n "You comply. After seeing that fight, you don't like your chances."
             n "He rips it open and you hear his delighted yell in concert with more screeching."
+            show chan happy
             chan "Yes! A full-art shiny V-bass! Oh wow, it's gorgeous."
             n "You look over and are nearly blinded by the glory of the card."
             n "It's just so incredible that there's no way we could do an artistic rendition."
             # if anyone really wants one just make me do it
-            n "Well, with Dr. Chan distracted by the beauty of his card, you can make your escape."
+            n "Well with Dr. Chan distracted by the beauty of his card, you can make your escape."
+            hide chan 
             n "Whatever's behind that door can wait for another day."
-            $ update_character_points({"uriel": -1, "chan": -1})
+            $ update_character_points({"uriel": -1, "chan": 1})
             return
 
         label keep_running:
-            n "You go to open the door but fall forward as the door behind you suddenly opens and closes."
+            n "You go to open the door and suddenly fall forward as the door opens and closes behind you."
             uriel "Are you open to negotiations over that card pack?"
             n "Just do it. If you don't, all of these people are going to give you a heart attack."
             player "Why do you want this? You didn't seem all that interested when they were fighting."
@@ -121,10 +158,17 @@ label day_event_pokanom:
             uriel "In exchange, you will no longer be on the hook for the act that brought our two most reasonable department heads to animalistic rage."
             n "The screeching is getting louder."
             player "Deal!"
-            n "Uriel takes the pack from your hand and leaves."
+            n "Uriel takes the pack from your hand and leaves through the door behind you."
             n "Through the door, you can hear the faint sounds of conversation and one loud, aggrieved sigh from Dr. Chan."
             n "You wait until the footsteps recede into the distance before stepping out."
-            n "Now how do you get out of here?"
+            n "It's a lot darker here than you remember. And slimier?"
+            n "The slime's getting into your pockets, like it's searching for something. Oh this is so gross."
+            n "Well this is just great. You're down a pretty expensive card, you're covered in slime, and you smell like yolk."
+            n "Wait, what? Actually, hold that thought, the slime is retreating."
+            n "Once you open your eyes, you see a rapidly shrinking yellow and white mass."
+            n "Finally, it solidifies into a form you recognize as the Egg, which frowns at you and floats away."
+            $ update_character_points({"uriel": 1, "chan": -1})
+            #egg shows up?
             return
 
 
