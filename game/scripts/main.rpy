@@ -223,7 +223,7 @@ label day_init:
         jump neutral_ending
 
 label default_intro:
-    scene 
+    scene bg cubicle
     show screen day_intro
     with default_fade
     $ ui.interact() 

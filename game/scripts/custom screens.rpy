@@ -66,35 +66,38 @@ screen day_intro:
         xpos 0
         ypos 0
         image "gui/day intro/clock in base.png"
+        background None
 
         button:
             background None
-            area (410, 5, 1100, 680)
+            area (607, 245, 683, 439)
             mouse "monitor"
             action NullAction()
 
         frame:
 
-            image "gui/day intro/clock in monitor.png"
-            xsize 0
-            ysize 0
-            xpos 395
-            ypos -5
+            image "gui/day intro/clock in monitor.png":
+                xsize 683
+                ysize 439
+            background None
+            xsize 683
+            ysize 439
+            xpos 607
+            ypos 245
 
             textbutton "Clock in!":
-                idle_background "gui/day intro/clock in idle button.png"
+                idle_background Image("gui/day intro/clock in idle button.png")
                 hover_background "gui/day intro/clock in hover button.png"
                 action Return(1)
-                # hovered Function(set_cursor_button)
                 
-                xpos 340
-                ypos 384
-                xsize 444
-                ysize 107
+                xpos 200
+                ypos 239
+                xsize 302
+                ysize 73
                 text_color "#ffffff"
                 text_xalign 0.5
                 text_yalign 0.5
-                text_size 40
+                text_size 23
                 mouse "monitor button"
         
 default qte_time = 0
