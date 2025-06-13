@@ -7,6 +7,7 @@ label day_event_the_bingo_card_2:
     image bingoc4 = "images/cgs/bc4.png"
     image bingoc5 = "images/cgs/bc5.png"
     image shock = "images/cgs/shock effect.png"
+    image blackout = "images/day events/black screen.png"
 
     scene bg lounge
     n "You walk past the lounge and hear chattering from within. Curious, you take a peek through the doorway."
@@ -371,7 +372,10 @@ label bc2_continue:
                     pause 0.4
                     repeat
             n "You run for you pathetic life while Pebbles bites at your ass."
-            hide shock
+            show blackout zorder 50:
+                alpha 0.0
+                linear 2 alpha 1.0
+            hide shock onlayer top
             $ update_character_points({"deceased": +1, "helco": 0, "ryz": -1, "uriel": -1})
 
             return
