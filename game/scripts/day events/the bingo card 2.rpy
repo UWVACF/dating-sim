@@ -258,8 +258,8 @@ label bc2_continue:
         n "It's been...an hour. Your breaktime is definitely over."
         n "You should get back to work. You still have some tasks to complete today, and you don't want to stay overtime."
         # turn around
-        player "I forfit. I have to get back to work."
-        ryz happy "Yes! {i}Someone forfits.{/i} Thank you [player_name], you have severed your purpose."
+        player "I forfeit. I have to get back to work."
+        ryz happy "Yes! {i}Someone forfeits.{/i} Thank you [player_name], you've served your purpose."
         player "...You're welcome?"
         show ryz at disappear
         show uriel at disappear
@@ -279,7 +279,7 @@ label bc2_continue:
         n "Dr. Deceased must really want that keychain."
         show ryz pensive at appear(x_align = 0.1)
         show uriel pensive at appear(x_align = 0.9)
-        n "You look at the other participants. Dr. Helco has achived a bingo with his empty squares. Dr. Uriel remains in deep focus. Caffi has fallen asleep. Dr. Ryz is staring at you, with a hint of suspicion in his eyes."
+        n "You look at the other participants. Dr. Helco has achieved a bingo with his empty squares. Uriel remains in deep focus. Caffi has fallen asleep. Dr. Ryz is staring at you, with a hint of suspicion in his eyes."
         menu:
             n "What do you do?"
             "Help Dr. Deceased win.":
@@ -297,9 +297,9 @@ label bc2_continue:
             deceased surprise "Wha-What?? You-!"
             uriel neutral "Really?"
             deceased fury "No!? [player_name] is spouting bullshit!"
-            n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, who still have not realized that it's facing the wrong side." ##someone reword this for me thanks
+            n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, which they still haven't realized is facing the wrong side." ##someone reword this for me thanks
             n "Then he excitedly crosses out something in his bingo sheet."
-            ryz happy "BINGO!!!! {i}Someone gets reported fro cheating!{/i}"
+            ryz happy "BINGO!!!! {i}Someone gets reported for cheating!{/i}"
             ryz "Thank you for standing on the side of fairness, [player_name]."
             show ryz happy at disappear
             n "Dr. Ryz skips happily towards the prize."
