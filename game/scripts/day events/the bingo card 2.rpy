@@ -58,7 +58,7 @@ label bc2_continue:
     n "..."
     n "Something doesn't feel right about his sheet."
     # hide helco bingo sheet cg
-    n "You watch as Dr. Helco erases a random box everytime someone else marks one off their own sheet."
+    n "You watch as Dr. Helco erases a random box every time someone else marks one off their own sheet."
     n "His empty boxes could almost form a bingo now."
     show caffi at appear(x_align = 0.0) #happy
     n "You meet Caffi's eyes and she starts laughing hysterically."
