@@ -181,3 +181,8 @@ init python:
         "Welp, let's go.",
         "At least I'm free now."
     ]
+
+
+
+## inter-event variables here
+$ didnt_miku_bingo2 = 0

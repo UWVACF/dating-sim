@@ -324,4 +324,4 @@ init python:
                 trans.yoffset = self.strength * factor * (renpy.random.choice([-1, 1]))
                 return 0
 
-define default_fade = Fade(1.0, 1.0, 1.0)
+
