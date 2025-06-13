@@ -4,10 +4,11 @@ transform shock:
     linear 1.0 alpha 0.0
 
 label day_event_in_the_dark:
+    $ itd_threw_phone = False
     scene bg lounge
     with default_fade
 
-    n "It's coffee time! Coffee coffee coffee coffee."
+    n "It's coffee time! Coffee coffee coffee coffee-"
 
     show lee at appear(x_align = 0.33)
     show helco at appear(x_align = 0.66)
@@ -35,7 +36,7 @@ label itd_lights_go_out:
         alpha 1.0
     n "Suddenly, the lights flicker and go out."
     n "You hear Dr. Lee start retching."
-    helco "Looks like an anomaly broke out. We should go examine it."
+    helco "Oh dear. It seems an anomaly broke out. We should go examine it."
     hide lee
     hide helco
     n "You walk forwa-"
@@ -44,7 +45,7 @@ label itd_lights_go_out:
     lee "W-Wait, hang on!"
     hide black_screen
 
-    show lee at appear(x_align = 0.5):
+    show lee panic at appear(x_align = 0.5):
         matrixcolor TintMatrix("#ff7070")
     show black_screen behind lee, yellow_screen
     n "Dr. Lee becomes one with their stickers and starts glowing in the dark."
@@ -57,7 +58,7 @@ label itd_lights_go_out:
     helco "The anomaly sucks in all electromagnetic radiation in a radius around it. It's only natural that Dr. Lee, who's inherently radioactive, is experiencing adverse symptoms."
     player "All electromagnetic radiation, huh?"
     n "You pull your phone out and tap the screen. Sure enough, it doesn't power on."
-    lee "...Hang on, this anomaly wasn't in the database. How do you know so much about this?"
+    lee "...Hang on, there wasn't anything like this in the database. How do you know so much about this?"
     helco panic "..."
     helco "Shall we go?"
     n "He quickly exits the room."
@@ -89,7 +90,7 @@ label itd_lights_go_out:
     helco "Ow!"
     player "Sorry!"
     n "You walked into Dr. Helco."
-    n "You're a bit tired of walking into things, but you decide it's best to not ask Dr. Lee to glow brighter. They're already not doing too well as is."
+    n "You're a bit tired of not being able to see where you're going, but you decide it's best to not ask Dr. Lee to glow brighter. They're already not doing too well as is."
     lee panic "..."
     player "Say, Dr. Lee?"
     lee panic "...?"
@@ -102,14 +103,14 @@ label itd_lights_go_out:
     hide lee
     with hpunch
     n "...walk into a wall. This joke's getting a little old."
-    n "You stumble your way back to Dr. Helco, who is patiently waiting for you."
+    n "You stumble your way back to Dr. Helco, who's patiently waiting for you."
     helco "It seems the anomaly is this way. Let's go."
     n "You follow the sounds of Dr. Helco's footsteps as he speedwalks down the hallway."
     helco "You see, the anomaly needs to draw in electricity to survive. Therefore, we can lure it towards us by standing nearby with electronic devices."
-    helco "Once it gets close enough, we can cause a short-circuit by throwing a device at it, after which we quickly apprehend and contain it."
+    helco "Once it gets close enough, we can cause a short-circuit by throwing a device at it, after which we will quickly apprehend and contain it."
     player "How do you know so much about this anomaly?"
     helco "Not important. This way!"
-    n "You begin to hear the buzzing of electricity. The noise only grows stronger as you continue down the various hallways."
+    n "AFter speedwalking for a bit, you start to hear the buzzing of electricity. The noise only grows stronger as you continue down the various hallways."
     n "Dr. Helco stops you outside what you assume to be a room. The buzzing is almost deafening."
     helco "In this room. Wait here."
     n "You hear the sound of a door opening and closing."
@@ -143,14 +144,14 @@ label itd_lights_go_out:
     label itd_room:
         n "You fumble desperately for the handle of the door behind you. The moment you find it, you wrench the door open and shut yourself inside."
         helco "Oh, hello [player_name]! What's-"
-        player "That electric anomaly thing is outside and like holy hell I almost DIED I didn't know what else to do so I came into this room help me Dr. Helco help me please I just want to go home"
+        player "That electric anomaly thing is outside and like holy hell I almost DIED I didn't know what else to do so I came into this room help me Dr. Helco help me please I just want to go home{nw}"
         helco "Ah! So the anomaly is outside. Stay here, I'll be quick."
         n "You once again hear the door open and close."
         n "You feel a wave of relief wash over you..."
         show yellow_screen:
             shock
         n "...Or was that fear? Probably fear. You feel a wave of fear wash over you."
-        n "You quickly exit the room."
+        n "You quickly feel around for the door and leave the room."
         player "Dr. Helco?"
         helco "Odd... it's not being attracted. Oh, hello!"
         player "What are you trying to do?"
@@ -211,7 +212,7 @@ label itd_lights_go_out:
                     elif itd_times_thrown_wallet == 7:
                         n "You throw your backup backup wallet at the anomaly."
                         n "..."
-                        n "It did nothing. Good work, soldier!"
+                        n "It did nothing. Fantastic work."
                     elif itd_times_thrown_wallet % 2 == 0:
                         n "You're fresh out of wallets."
                     else:
@@ -221,8 +222,9 @@ label itd_lights_go_out:
                     jump itd_final_choice
                 
                 "Throw your phone.":
+                    $ itd_threw_phone = True
                     n "You hurl your phone at the anomaly."
-                    n "Your phone gets caught in what appears to be the center of the anomaly. You feel the sting of electricity in the air intensify."
+                    n "Your phone gets caught in the eye of the storm of sparks. You feel the sting of electricity in the air intensify."
                     n "After releasing a torrent of sparks..."
                     show yellow_screen:
                         shock
@@ -243,7 +245,7 @@ label itd_lights_go_out:
     label itd_run_away:
         n "You turn on your heel and sprint down the hallway. It doesn't matter that you can't see where you're going. You just need to get away."
         n "You brave a glance behind your and see the figure hot on your tail. Uh oh."
-        n "This would be a terribly unfortunate time to run into a wall."
+        n "This would be a terribly unfortunate time to run into a wall-"
         n "Nah, kidding. That joke's old."
         n "You miraculously manage to make your way through the winding hallways without hurling yourself into a wall. Another glance behind informs you that the anomaly has seemingly stopped chasing you."
         n "You don't know where it went, but you decide not to take any chances. You find the nearest room and lock yourself in."
@@ -272,14 +274,14 @@ label itd_lights_go_out:
         jump itd_conclusion
 
     label itd_conclusion:
-        n "With the lights on, you can now clearly see the anomaly's figure lying on the floor. It's an amorphous blob. " # guys what does it appear to be
+        n "With the lights on, you can now clearly see an amorphous blob lying on the floor, emitting the occasional spark."
         player "We should contain it before it gets up again-"
-        n "You don't even get to finish your sentence before Dr. Helco picks it up and throws it into a trash bag. " # guys what does he do to capture the anomaly
+        n "You don't even get to finish your sentence before Dr. Helco picks it up and throws it into a trash bag."
         n "He seems remarkably skilled at this..."
         show bg containmentroom
         show helco happy
         with default_fade
-        n "With the anomaly now securely contained, you silently applaud yourself for a job well done."
+        n "With the anomaly now securely(?) contained, you silently applaud yourself for a job well done."
         show helco happy at disappear
         n "However, you still need to deal with the elephant in the room."
         hide helco
@@ -291,13 +293,18 @@ label itd_lights_go_out:
             "Keep silent.":
                 n "You decide it's not worth it. You leave Dr. Helco alone."
                 n "Either way, it seems like he's already left."
-        n "Slightly disappointed, you begin your way to the financial department to see if they can reimburse you for your phone." # insert better cooler funnier awesomer joke here
-        if itd_times_thrown_wallet > 0:
-            n "And your wallet."
+        if itd_threw_phone:
+            n "Slightly disappointed, you begin walking to the financial department to see if they can reimburse you for your phone." # insert better cooler funnier awesomer joke here
+            if itd_times_thrown_wallet > 0:
+                n "And your wallet."
+            $ update_character_points({"helco": 1, "lee": 1})
+        else:
+            n "Slightly disappointed, you begin walking back to the lounge. You should probably check on Dr. Lee."
+            $ update_character_points({"lee": 1})
         return
     
     label itd_charge:
-        n "What in the world are you do- {nw}"
+        n "??? What in the world are you do- {nw}"
         show yellow_screen:
             shock
         jump itd_hospital
