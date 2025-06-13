@@ -7,7 +7,7 @@ label day_event_in_the_dark:
     scene bg lounge
     with default_fade
 
-    n "It's coffee time! Coffee coffee coffee coffee"
+    n "It's coffee time! Coffee coffee coffee coffee."
 
     show lee at appear(x_align = 0.33)
     show helco at appear(x_align = 0.66)
@@ -95,14 +95,14 @@ label itd_lights_go_out:
     lee panic "...?"
     player "Maybe you should sit this one out. Dr. Helco and I can handle this."
     lee panic "Yeah... Maybe..."
-    n "You guide Dr. Lee back into the lounge and help them sit onto one of the chairs."
+    n "You guide Dr. Lee back into the lounge and help them sit on one of the chairs."
     n "You'll miss the glow, but their health comes first and foremost."
     show lee panic at disappear
     n "You turn to leave the lounge and-"
     hide lee
     with hpunch
     n "...walk into a wall. This joke's getting a little old."
-    n "You stumble your way back to Dr. Helco, who was patiently waiting for you."
+    n "You stumble your way back to Dr. Helco, who is patiently waiting for you."
     helco "It seems the anomaly is this way. Let's go."
     n "You follow the sounds of Dr. Helco's footsteps as he speedwalks down the hallway."
     helco "You see, the anomaly needs to draw in electricity to survive. Therefore, we can lure it towards us by standing nearby with electronic devices."
@@ -126,7 +126,7 @@ label itd_lights_go_out:
     n "...and see a surge of electricity in the wall behind you."
     "???" "{sc}{color=#ffff77}Bzzt! Bzzt!{/color}{/sc}"
     
-    n "You see yellow and blue sparks surround a figure. It's too dark to make out, but that's not exactly important."
+    n "You see yellow and blue sparks surrounding a figure. It's too dark to make out, but that's not exactly important."
     show screen qte(time = 5.0, act=Jump("itd_timeout"))
     menu:
         n "You should do something. Fast. Like right now."
@@ -245,7 +245,7 @@ label itd_lights_go_out:
         n "You brave a glance behind your and see the figure hot on your tail. Uh oh."
         n "This would be a terribly unfortunate time to run into a wall."
         n "Nah, kidding. That joke's old."
-        n "You miraculously manage your way through the winding hallways without hurling yourself into a wall. Another glance behind informs you that the anomaly has seemingly stopped chasing you."
+        n "You miraculously manage to make your way through the winding hallways without hurling yourself into a wall. Another glance behind informs you that the anomaly has seemingly stopped chasing you."
         n "You don't know where it went, but you decide not to take any chances. You find the nearest room and lock yourself in."
         n "With nothing else to do, you decide to wait."
         n "..."
@@ -272,11 +272,11 @@ label itd_lights_go_out:
         jump itd_conclusion
 
     label itd_conclusion:
-        n "With the lights on, you can now clearly see the anomaly's figure lying on the floor. It's a " # guys what does it appear to be
-        player "We should contain it before it gets up again."
-        n "You don't even get to finish your sentence before Dr. Helco starts " # guys what does he do to capture the anomaly
+        n "With the lights on, you can now clearly see the anomaly's figure lying on the floor. It's an amorphous blob. " # guys what does it appear to be
+        player "We should contain it before it gets up again-"
+        n "You don't even get to finish your sentence before Dr. Helco picks it up and throws it into a trash bag. " # guys what does he do to capture the anomaly
         n "He seems remarkably skilled at this..."
-        show bg containment room
+        show bg containmentroom
         show helco happy
         with default_fade
         n "With the anomaly now securely contained, you silently applaud yourself for a job well done."
@@ -311,12 +311,12 @@ label itd_lights_go_out:
     label itd_hospital:
         scene bg hospital
         with default_fade
-        n "You wake up to the blinding lights on the hopsital ceiling."
+        n "You wake up to the blinding lights on the hospital ceiling."
         helco "Are you alright, [player_name]?"
         player "Apart from a few minor burns and scratches, I actually feel fine."
         helco "Wonderful news!"
-        player "What happened to the anomaly!"
-        helco happy "Oh, I already contained it. There is no need to worry. I can assure you it will not be breaking out again."
+        player "What happened to the anomaly?!"
+        helco happy "Oh, I already contained it. There's no need to worry. I can assure you it won't be breaking out again."
         n "He stares at you slightly ominously. You probably shouldn't press further."
         n "However, it seems your lack of survival instincts has become clear to Dr. Helco. You should probably review those decision making skills some time."
         $ update_character_points({"helco": -1})
