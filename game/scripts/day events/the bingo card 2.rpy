@@ -58,7 +58,7 @@ label bc2_continue:
     n "..."
     n "Something doesn't feel right about his sheet."
     # hide helco bingo sheet cg
-    n "You watch as Dr. Helco erases a random box everytime someone else marks one off their own sheet."
+    n "You watch as Dr. Helco erases a random box every time someone else marks one off their own sheet."
     n "His empty boxes could almost form a bingo now."
     show caffi at appear(x_align = 0.0) #happy
     n "You meet Caffi's eyes and she starts laughing hysterically."
@@ -364,7 +364,7 @@ label bc2_continue:
             show deceased neutral #woudn't need this when we have fury
             n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, who still have not realized that it's facing the wrong side." ##someone reword this for me thanks
             n "Then he excitedly crosses out something in his bingo sheet."
-            ryz happy "BINGO!!!! {i}Someone gets reported fro cheating!{/i}"
+            ryz happy "BINGO!!!! {i}Someone gets reported for cheating!{/i}"
             ryz "Thank you for standing on the side of fairness, [player_name]."
             show ryz happy at disappear
             n "Dr. Ryz skips happily towards the prize."
