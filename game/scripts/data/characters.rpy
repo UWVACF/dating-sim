@@ -1,6 +1,6 @@
 # Image and character definitions/declarations for personnel
 # Base image transform
-transform base_char_transform(x = 666, y = 1000, xoff = 0, yoff = 0):
+transform base_char_transform(x = 600, y = 900, xoff = 0, yoff = 0):
     xsize x
     ysize y
     xoffset xoff
@@ -24,7 +24,7 @@ image jessie unique = At("images/personnel/jessie/jessie unique.png", sprite_hig
 
 
 transform aikha_transform:
-    base_char_transform
+    base_char_transform(x = 700, y = 1050, yoff = 100)
 
 image aikha = At(ConditionSwitch("speaking_char == 'aikha'", "images/personnel/aikha/aikha talk.png", "True", "images/personnel/aikha/aikha neutral.png"), sprite_highlight("aikha"), aikha_transform)
 image aikha neutral = "aikha"
@@ -185,7 +185,7 @@ image chan unique = At("images/personnel/chan/chan unique.png", sprite_highlight
 
 
 transform syg_transform:
-    base_char_transform
+    base_char_transform(x = 550, y = 825)
 
 image syg = At(ConditionSwitch("speaking_char == 'syg'", "images/personnel/syg/syg talk.png", "True", "images/personnel/syg/syg neutral.png"), sprite_highlight("syg"), syg_transform)
 image syg neutral = "syg"

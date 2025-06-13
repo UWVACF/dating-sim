@@ -66,7 +66,7 @@ init python:
             personnel=["aikha", "firewal", "Uriel", "Helco", "Moon"],
         ),
         Event(
-            label="helco_coffee",
+            label="test",
             personnel=["helco"],
         ),
         Event(

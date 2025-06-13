@@ -51,8 +51,10 @@ style honing_survey_answer_button_text:
 
 
 define config.mouse = { }
-define config.mouse["monitor"] = [("gui/mouse/mouse default.png", 10.0, 0.0)]
-define config.mouse["monitor button"] = [("gui/mouse/mouse button.png", 24, 0.0)]
+define config.mouse["default"] = [("gui/mouse/mouse default.png", 24.0, 4.0)]
+define config.mouse["button"] = [("gui/mouse/mouse hover.png", 24.0, 4.0)]
+define config.mouse["monitor"] = [("gui/mouse/day intro mouse default.png", 10.0, 0.0)]
+define config.mouse["monitor button"] = [("gui/mouse/day intro mouse hover.png", 12, 0.0)]
 
 
 screen day_intro:
