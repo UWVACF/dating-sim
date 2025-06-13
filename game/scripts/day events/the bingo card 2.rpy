@@ -170,7 +170,11 @@ label day_event_the_bingo_card_2:
             show ryz unique at disappear
             show uriel at disappear
             show caffi at disappear
-            n "You make your way over to the prize and pick it up. The Miku's eyes glitter at you."
+            n "You make your way over to the prize and pick it up. The Miku's eyes glitter at you. You hold Miku triumphantly."
+            n "You see Dr. Deceased had gave themselves timeout at a corner of the lounge. They mutter against the wall."
+            deceased "It should've been me...it should've been me..."
+            n "Uriel gives you a nod of approval."
+            n "Helco gives your a thumbs up."
             n "See, you can win morally!"
             $ update_character_points({"uriel": 1, "helco": -1})
             return
@@ -272,7 +276,14 @@ label day_event_the_bingo_card_2:
             return
 
         label bingo2_dont_help_deceased:
-            n "bahaahhaa"
+            n "You decide to not help but instead snitch on Dr. Deceased, whether due to your sense of justice or you just really want to screw Dr. Deceased over."
+            player "Dr. Deceased is trying to cheat! They're asking me to falsely trigger the anomaly alarm!"
+            deceased surprise "Wha-What?? You-!"
+            uriel neutral "Really?"
+            n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, who still have not realized that it's facing the wrong side." ##someone reword this for me thanks
+            n "Then he excitedly crosses out something in his bingo sheet."
+            ryz happy "BINGO!!!!"
+            deceased fury "NUH UH"
             return
 
 
@@ -337,7 +348,7 @@ label day_event_the_bingo_card_2:
                 # you leave the lounge and set off the alarm. Surely no one saw that, right. 
                 # you hear deceased's laughter in the lounge. It seems they've won. Good for them. 
                 # you turn around and see Uriel glaring at you from within in the lounge through the doorway. ah.
-            # Don't help Uriel: you stick to the rules (uriel +1) and ryz wins <someone gets reported for cheating>
+            # Don't help deceased: you stick to the rules (uriel +1) and ryz wins <someone gets reported for cheating>
                 # report deceased for cheating
                 # deceased is pissed at you
                 # ryz wins, happy for winning
