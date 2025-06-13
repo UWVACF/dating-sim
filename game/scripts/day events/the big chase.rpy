@@ -7,7 +7,6 @@ label day_event_the_big_chase:
     n "Following closely behind are two more figures you can't quite make out."
     # render in graphic of hampter(?) and pochi
     hampter "Help me!"
-    hide hampter
 
     menu: 
         n "What should you do?"
@@ -19,12 +18,13 @@ label day_event_the_big_chase:
             jump ignore_hampter
 
     label help_hampter:
+        hide hampter
         n "You pick up Hampter just as she reaches you."
         n "Pochi growls at you and starts biting at your ankles. It hurts. A lot."
         # un-render graphic, so just back to the hallway
         n "The two other figures finally catch up to you. You recognize them as Dr. Chan and Dr. Syg."
-        show chan panic at appear(x_align = 0.33)
-        show syg neutral at appear(x_align = 0.66)
+        show chan panic at appear(x_align = 0.2)
+        show syg neutral at appear(x_align = 0.8)
         chan "Finally... caught... up..."
         chan "Can you please... hand him over...? Pochi, I mean." 
         player "Huh? Why?"
@@ -55,7 +55,7 @@ label day_event_the_big_chase:
             chan sad "{size=-10}(Ten months of incident reports... Gone...){/size}"
             show chan at disappear
             syg fury "Tch. Fine. I'll get him eventually."
-            hide syg
+            show syg at disappear
             $ update_character_points({"chan": 1})
             $ update_character_points({"syg": -1})
             $ update_character_points({"plutoes": -1})
@@ -80,21 +80,25 @@ label day_event_the_big_chase:
             jump help_hampter_con
 
         label help_hampter_con:
+            show hampter happy
             hampter happy "Thank you for helping me!"
             n "Hampter nuzzles against your palm before teleporting away."
             hide hampter
+            hide chan
+            hide syg
             $ update_character_points({"hampter": 1})
             return
 
     label hamp_tele:
         player "...Can't you teleport, Hampter?"
         hampter surprise "!!!"
+        hide hampter
         n "You watch as Hampter disappears into thin air."
         n "Pochi skids to a stop in front of you. He doesn't have eyes, but you feel as if he's staring daggers into your soul."
         n "The sound of footsteps draws closer, and you can see who it is. It's Dr. Chan and Plutoes."
         n "Pochi growls and teleports away. Maybe to go after Hampter. Or escape from these two."
-        show plutoes at appear(x_align = 0.33)
-        show chan at appear(x_align = 0.66)
+        show plutoes at appear(x_align = 0.2)
+        show chan at appear(x_align = 0.8)
         n "Dr. Chan stops in front of you and looks around, bewildered."
         n "Out of the corner of your eye, you see Pochi reappear behind Plutoes, standing a few steps behind Dr. Chan."
         chan fury "Hey [player_name], did you see where Pochi went? That damn thing ate my hard drive."
@@ -157,13 +161,14 @@ label day_event_the_big_chase:
             return
 
     label ignore_hampter:
+        show hampter panic at disappear
         n "You watch as Hampter gets sucked into a black hole."
         player "???"
         n "The beast burps, padding around in satisfaction. Did you just witness a murder?"
         n "The two figures get closer, and you recognize them as Dr. Syg and Plutoes. What an odd combination."
         n "Pochi ducks behind you like a kid that just broke an expensive vase."
-        show plutoes happy at appear(x_align = 0.3)
-        show syg neutral at appear(x_align = 0.6)
+        show plutoes happy at appear(x_align = 0.2)
+        show syg neutral at appear(x_align = 0.8)
         syg "Please grab Pochi for me, [player_name]. I need to recover Hampter. She's supposed to oversee my department temporarily."
         n "Plutoes pulls out a sign from behind his back."
         plutoes talk "{b}{color=#ff2d00}hey bud gimme my dog back i was just tryna save the hairball from the demonis demon department -signed plutoes{fast}{/color}{/b}"
@@ -204,6 +209,7 @@ label day_event_the_big_chase:
             n "You don't do anything."
             n "Hold on, Dr. Syg's clearance level is technically above Plutoes'. Wouldn't this get you in trouble?"
             syg upset "I'll have to report this as an incident if we don't recover Hampter."
+            show plutoes at disappear
             n "Plutoes sneezes before skateboarding away. Pochi is nowhere to be found."
             n "...Was that was your imagination? Either way, you feel an itch in your ear."
             player "What the-"
@@ -218,6 +224,8 @@ label day_event_the_big_chase:
             show black_screen zorder 50
             with hpunch
             n "...Dr. Syg sucker-punches you in the face."
+            hide plutoes
+            hide syg
             $ update_character_points({"syg": -1})
             $ update_character_points({"plutoes": 1})
             $ update_character_points({"chan": -1})

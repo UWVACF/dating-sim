@@ -65,16 +65,16 @@ label day_event_didnt_do_it:
     n "You turn back towards your sandwich workshop when you hear footsteps behind you."
     deceased "AH!!!!! DR. RALEX!!!!"
     n "You drop the knife and almost stab your toe. You turn around, slightly annoyed."
-    show deceased surprise 
+    show deceased sad #surprise 
     deceased "YOU MURDERER!"
     n "Murderer? What are they talking about?"
     # optoinal dead dr. ralex cg
     n "You bend down to pick up your knife when you see it. A dead woman right next to your feet, bleeding out a pool of red the same color as the stains on the knife."
     n "You're wondering who she is and how an unauthorized person could've gotten in here, when Dr. Deceased interrupts your thoughts." 
-    deceased panic "{size=+10}{sc}{b}THERE'S A MURDER!!!{/b}{/sc}{/size}"
+    deceased neutral "{size=+10}{sc}{b}THERE'S A MURDER!!!{/b}{/sc}{/size}" #panic
     player "Wait, Dr. Deceased-"
     n "Your voice is cut off by the swarm of people now crowded in the doorway, all trying to get a closer look at the crime scene."
-    deceased fury "Everyone look! [player_name] murdered Dr. Ralex!"
+    deceased "Everyone look! [player_name] murdered Dr. Ralex!" #fury
 
     menu:
         n"How do you defend yourself?"
@@ -85,19 +85,21 @@ label day_event_didnt_do_it:
 
     label ddi_truth:
         player "No I did not! I was just prepping my lunch when Dr. Deceased came in and started accusing me!"
-        show syg at appear(x_align = 0.8)
+        show syg at appear(x_align = 0.9)
         syg "How do you explain the body then?"
         player "I don't know! It was just there when I turned around after hearing Dr. Deceased!"
-        hide syg
         n "You see a few people in the crowd shake their heads."
-        show aikha at appear(x_align = 0.2)
+        show aikha at appear(x_align = 0.0)
         aikha pensive "That was an unconvincing excuse. Pay attention to my presentation next time!"
         player "It's not an excuse! I'm telling the truth! I don't even know who she is!"
-        hide aikha
         n "Nobody dares to meet your gaze. The silence is telling of how little they believe you."
         n "A recognizable figure squeezes through the crowd. It's Dr. Alex."
         show deceased at move_to(x_align = 0.8)
+        show syg at move_to(x_align = 1.5)
+        show aikha at move_to(x_align = -0.5)
         pause 0.5
+        hide syg
+        hide aikha
         show alex at appear(x_align = 0.2)
         n "You look towards him hopefully. Surely the Great Founder would remain calm and collected in the face of hysteria."
         player "Dr. Alex, you must-"
@@ -120,13 +122,13 @@ label day_event_didnt_do_it:
         ethy "{sc}{size=+10}{b}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!!!{/b}{/size}{/sc}"
         n "You fight the instinct to cover your ears from the piercing scream you hear in your head."
         player "I bet you came back to clean up, but then ran into me here, so now you're trying to blame me!"
-        deceased pensive "Huh." 
+        deceased "Huh." #pensive
         deceased "{i}{size=-10}I did forget what I came here for...unless...{/size}{i}"
         n "Dr. Deceased stares down at their own hands, seemingly considering the accusation." 
-        show jessie surprise at appear (x_align = 0.2)
-        jessie surprise "Dr. Deceased, did you really?"
+        #show jessie surprise at appear (x_align = 0.2)
+        jessie "Dr. Deceased, did you really?"
         n "The crowd begins mumbling and discussing amongst themselves."
-        hide jessie
+        #hide jessie
         $ update_character_points({"chan": -2, "deceased": -1})
 
         if plague_mask == True:            
@@ -154,12 +156,12 @@ label day_event_didnt_do_it:
             # make "all" gasps here
             n "{i}{size=-10}*gasps*{/size}{i}"
             n "All eyes turn towards Dr. Deceased."
-            deceased surprise "{i}{size=-10}Oh. So that's what I came into the lounge for.{/size}{i}"
-            deceased panic "S- So what? It could belong to anyone!"
+            deceased "{i}{size=-10}Oh. So that's what I came into the lounge for.{/size}{i}" #surpirse
+            deceased sad "S- So what? It could belong to anyone!" #panic
             player "It looks identical to the one you're wearing, Dr. Deceased."
             deceased "Nuh uh."
             player "Yuh huh!"
-            deceased fury "{sc}NUH UH!!{/sc}"
+            deceased neutral "{sc}NUH UH!!{/sc}" #fury
             player "{sc}YUH HUH!!{/sc}"
             show firewal at appear(x_align = 0.3)
             firewal "Correct. Security did show Dr. Deceased entering the lounge 5 minutes earlier. That lines up with [player_name]'s claim."
@@ -184,8 +186,9 @@ label day_event_didnt_do_it:
             n "Dr. Helco simply stares into your eyes. Then he seems to remember something."
             helco surprise "Ah. What I mean is, you must be shocked."
             player "...Yea, I was so startled."
-            hide helco
+            show helco at disappear
             n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the Wals have confiscated the knife as evidence for the murder."
+            hide helco
             n "Guess you're not getting your greens in today."
             $ tne_defendant = False
             $ tne_chan_backup = False
@@ -195,13 +198,13 @@ label day_event_didnt_do_it:
             player "How cold-blooded! And you've already forgotten about it this quickly, huh? You must be plenty used to committing manslaughter!"
             # make "all" gasps here
             n "{i}{size=-10}*gasps*{/size}{i}"
-            deceased fury "What utter bullshit are you spouting now??"
+            deceased "What utter bullshit are you spouting now??" #fury
             player "There's a reason why your department has one of the highest employee casualties, doesn't it?"
             show chan pensive at appear(x_align=0.8 )
             chan "I must say, [player_name], that doesn't have much to do with the current situation."
             chan "It is also inappropriate to base one's character on groundless spectulations."
             deceased happy "Thank you, Dr. Chan."
-            deceased fury "So you're a pathological liar, huh?" #there a word for this but I cannot remember, basically refering to player as a person who makes up/exaggerates rumors 
+            deceased "So you're a pathological liar, huh?" #fury
             deceased "I'll have you know that unlike you, I speak based on facts and evidence!"
             deceased "And I have evidence on why you would kill Dr. Ralex!"
             # make "all" gasps here
@@ -213,11 +216,14 @@ label day_event_didnt_do_it:
             firewal "Affirmative. My memory module shows that Dr. Ralex specifically stated that the intern [player_name] has asked to meet them here to discuss matters concerning a potential full time offer. This aligns with Dr. Deceased's claim."
             player "That's bullshit! I've never even seen Dr. Ralex before!!!"
             deceased neutral "Tsk tsk, just look at you now. You're clearly emotionally unstable and you're still trying to lie your way out of this."
-            hide deceased
-            hide chan
+            show deceased at disappear
+            show chan at disappear
             firewal "INSTRUCTION RECEIVED. THE WAL and the Founder Alex have issued an order: arrest the suspect and arrange for a trial immediately. Executing now."
             n "The Wal comes forward and takes you by the arms. You try your best to shove him away from you, but you're no match against the ingenious creations of Dr. Firewal."
             n "He picks you up, throws you over his metallic shoulders and carries you off like a sack of potatoes."
+            hide deceased
+            hide chan
+            pause 0.01
             hide firewal
             $ update_character_points({"deceased": -2, "syg": -1, "chan": -1})
             $ tne_defendant = True
@@ -284,8 +290,9 @@ label day_event_didnt_do_it:
                 n "You pick up the quill and sign your name. You hope Dr. Syg can keep his word."
                 n "Dr. Syg looks very content. In fact, you can {i}almost{/i} say he's smiling."
                 syg "I will do my best to advocate for a {i}desirable{/i} outcome on your trial."
-                hide syg
+                show syg at disappear
                 n "You're unsure if he meant desirable for him or you. You decide not to ask."
+                hide syg
                 $ tne_chan_backup = True # typo? should be syg backup
                 $ update_character_points({"syg": 0})
                 n "You lie down on the cold floor and wonder if this will spell the end of your career. And your life."
@@ -294,8 +301,9 @@ label day_event_didnt_do_it:
             "Don't sign it. Surely you won't be found guilty.":
                 syg "That's a shame."
                 syg pensive "Let me know if you change your mind later."
-                hide syg
+                show syg at disappear
                 n "He leaves, significantly less content."
+                hide syg
                 $ tne_syg_backup = False
                 $ update_character_points({"syg": 1})
                 n "You lie down on the cold floor and wonder will this truly spell the end of your career. And your life."
