@@ -9,9 +9,9 @@ label day_event_the_bingo_card_2:
 
     show caffi at appear(x_align = 0.0)
     #show helco at appear(x_align = 0.2)
-    show deceased pensive at appear (x_align = 0.5)
+    show deceased at appear (x_align = 0.5) #pensive
     show aikha at appear (x_align = 1.0)
-    n "The crowd have spotted you as well. Dr. Aikha flags you down."
+    n "The crowd has spotted you as well. Dr. Aikha flags you down."
     aikha surprise "Just in time."
     show aikha neutral
     aikha "Got a presentation to attend, mind filling in for me this bingo game?"
@@ -19,8 +19,9 @@ label day_event_the_bingo_card_2:
     n "Without waiting for your response, Dr. Aikha places the sheet in your hand before dashing out of the lounge."
     show ryz unique at appear (x_align = 1.0)
     n "The rest stare excitedly at you. Guess you don't have a choice."
-    ryz "So, [player_name], I assume you know how to play bingo. The prize this time is a miku keychain."
-    n "Dr. Ryz gestures towards a small but delicate Miku at the center of the table."
+    ryz "So, [player_name], I assume you know how to play bingo. The prize this time is a Miku keychain."
+    # decease: it's MIKU with a CAPITAL M
+    n "Dr. Ryz gestures towards a small but delicate Miku keychain at the center of the table."
     if "didnt_do_it" in seen_events:
         if didnt_miku_bingo2 == 1:
             n "It look simliar to the one you found on the Dr. Ralex's corpse. Albeit it is of a darker shade of blue."
@@ -69,16 +70,16 @@ label bc2_continue:
             jump bingo2_dont_help_helco
         
     label bingo2_help_helco:
-        player "Dr. Helco, you are playing wrong."
+        player "Dr. Helco, you're playing wrong."
         helco surprise "Hmm?"
         show helco neutral
-        n "He look up and stare right into your soul. Then he look down at your sheet into its soul. If it has one."
+        n "He looks up and stares right into your soul. Then he looks down at your sheet into its soul. If it has one."
         show helco surprise
         show uriel pensive:
             xzoom -1.0
-        n "Seems like nobody really follows rule 2 here."
-        n "Except Uriel, who's trying very hard not to look at everyone's undefensed sheets."
-        n "Dr. Helco seems to have realized something after blantently reading off your sheet."
+        n "Seems like nobody really follows rule two here."
+        n "Except Uriel, who's trying very hard not to look at everyone's defenseless sheets."
+        n "Dr. Helco seems to have realized something after blatantly reading off your sheet."
         show helco pensive
         n "He proceeds to erase his whole sheet, then checking off the same squares on your grid."
         show helco happy
@@ -91,16 +92,16 @@ label bc2_continue:
         hide helco
         hide uriel
         hide caffi
-        n "On the other side, you see Dr. Deceased has stood up from their seat and is now fiddling something by the vent."
+        n "On the other side, you see Dr. Deceased has stood up from their seat and is now fiddling with something by the vent."
         show deceased pensive at appear(x_align = -0.1)
         deceased happy "Aha! Wires left by Hampter."
-        n "You see them discreetly shove the wire pieces back into the vent, then look around suspicously to check if anyone has seen what they're doing, as if they didn't just announced their discovery out loud."
+        n "You see them discreetly shove the wire pieces back into the vent, then look around suspicously to check if anyone has seen what they're doing, as if they didn't just announce their discovery out loud."
         show deceased happy at disappear
         # show bingo sheet updated 1
         n "Well, that's another step closer to winning. Not too difficult, huh?"
         hide deceased
         n "Let's see...you're almost at bingo! Your next go-tos are...a fire starts, or someone enters/exits without the door."
-        n "The first one seems a lot more likely, given the amount of walbots running around the foundation."
+        n "The first one seems a lot more likely, given the amount of Walbots running around the foundation."
         # hide bingo sheet
         show bg room hall
         show firewal at appear
@@ -111,11 +112,11 @@ label bc2_continue:
         show deceased at appear(x_align = 0.0) #pensive
         show ryz at appear(x_align = 1.0)
         n "You remember the wires that Dr. Deceased found. A devious plan pieces itself together in your head."
-        n "Technically...if a wal combusts on its own, it wouldn't count as you \"directly\" causing it, no?"
+        n "Technically...if a Wal combusts on its own, it wouldn't count as you \"directly\" causing it, no?"
         n "Plus, nobody is really following the rules anyways."
         ethy "{sc}{size=+3}{b}AAAAA!!!{/b}{/size}{sc}"
         n "Ethy's piercing scream fills your head, acting as the embodiment of your conscience."
-        if "ethics presentation" in seen_events:
+        if "ethics_presentation" in seen_events:
             n "You think back to Dr. Chan's ethics presentation. Ethics should be applied to all areas of life, not just at work."
             n "And that includes a bingo game."
         else:
@@ -123,14 +124,14 @@ label bc2_continue:
             n "Even if others are not following the rules, you don't have to follow their immoral ways."
         n "You can still win this bingo game fair and square. And get bragging rights for it."
         menu:
-            n "You hear the walbot's footstep getting further and further. Make your decision now."
+            n "You hear the Walbot's footsteps getting further and further. Make your decision now."
             "Don't do it - you should follow the rules.":
                 jump bingo2_follow_rules
             "Do it - your competitive spirit urges you to.":
                 jump bingo2_cheat
 
         label bingo2_follow_rules:
-            n "You decide to not follow through with your plan. A wal gets to live another day!"
+            n "You decide to not follow through with your plan. A Wal gets to live another day!"
             n "Now then, you can only wait for things to happen so that you can fill your bingo."
             n "A fire seems a bit worse than someone not using the door. You pray for the latter in your head for it to manifest."
             show deceased at move_to(x_align = -0.8, duration = 1.5)
@@ -143,7 +144,7 @@ label bc2_continue:
             n "Look, he's checking his watch right now."
             show caffi at appear(x_align = 1.0) #pensive
             n "You notice someone else also staring at Dr. Ryz. It's Caffi with a devious smile."
-            n "You follow her gaze...she's readding his bingo sheet."
+            n "You follow her gaze...she's reading his bingo sheet."
             show caffi #happy
             n "Caffi stands up, and her smile grows bigger. "
             show uriel pensive:
@@ -151,7 +152,7 @@ label bc2_continue:
             show ryz surprise:
                 xzoom -1.0
             n "Caffi hops over to the kitchenette, and promptly grabs the pot of coffee."
-            n "She downs it in one giant gulp. Then the room eruptes."
+            n "She downs it in one giant gulp. Then the room erupts."
             show uriel upset
             show ryz fury
             show layer master:
@@ -185,8 +186,8 @@ label bc2_continue:
             n "You see Dr. Deceased have given themselves timeout at a corner of the lounge. They mutter against the wall."
             deceased "It should've been me...it should've been me..."
             n "Uriel gives you a nod of approval."
-            n "Helco gives your a thumbs up."
-            n "See, you can win morally!"
+            n "Helco gives you a thumbs up."
+            n "See, you can win ethically!"
             $ update_character_points({"uriel": 1, "helco": -1})
             return
         
@@ -199,7 +200,7 @@ label bc2_continue:
             hide deceased
             hide ryz
             hide uriel
-            n "4 pieces of chewed on wires. Perfect."
+            n "Four pieces of chewed on wires. Perfect."
             show layer master:
                 shake(persist=15.0, preset="rumble")
             ethy "{sc}{size=+3}{b}AAAAAAAAAA!!!{/b}{/size}{sc}"
@@ -218,21 +219,21 @@ label bc2_continue:
             n "The others nod. Dr. Deceased rips apart your bingo sheet."
             ryz sad "Sorry, [player_name]. I'm not about to write an incident report for this."
             show ryz neutral
-            n "You see a Dr. Deceased and Dr. Ryz cross out a square on their sheet. {i}Someone gets reported for cheating.{/i}"
+            n "You see Dr. Deceased and Dr. Ryz cross out a square on their sheet. {i}Someone gets reported for cheating.{/i}"
             n "A strong feeling of spite emerges within you. What's the difference between what Dr. Deceased did and what you were going to do?"
-            n "Your gaze fall on the innocent Miku keychain lying on the table. You recall that Dr. Deceased has an unmatched foundness to Miku."
+            n "Your gaze falls on the innocent Miku keychain lying on the table. You recall that Dr. Deceased has an unmatched foundness to Miku."
             n "You spontaneously grab it off the table and dash out of the lounge."
             scene bg room hall
             deceased "HOW DARE YOU GET YOUR GRUBBY HANDS ON MIKU!!! GET [player_obj!u]!!!"
             n "You run down the hallway and realize what you've done to a bunch of department heads. Your spite is immediately replaced by fear."
             n "You can hear Dr. Deceased's furious steps getting closer."
-            n "Too late for regrets now. You continue running forwards-"
+            n "Too late for regrets now. You continue running forward-"
             show layer master:
                 shake
-            n "-until something really hard hit the back of your head, causing you to tumble over."
+            n "-until something really hard hits the back of your head, causing you to tumble over."
             n "Ow. That really fucking hurts. You suspect that your skull might have cracked."
             n "The prized Miku flies from your hands, landing out of your reach."
-            n "You roll around and spot the thing that assulted you. It is Dr. Deceased's head."
+            n "You roll around and spot the thing that assaulted you. It is Dr. Deceased's head."
             # deceased head cg
             deceased "GOT YOU! NOW HAND OVER MIKU!"
             n "Your head rings from their shouting while you try to stand up in a daze."
@@ -250,6 +251,9 @@ label bc2_continue:
         n "You keep your mouth shut. Perhaps Dr. Helco is doing it on purpose to fish out those that break rule #2."
         n "The room remains silent and tense. No one is doing anything, just observing each other."
         with default_fade
+        hide helco
+        hide caffi
+        show 
         n "It's been...an hour. Your breaktime is definitely over."
         n "You should get back to work. You still have some tasks to complete today, and you don't want to stay overtime."
         # turn around
