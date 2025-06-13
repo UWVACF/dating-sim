@@ -45,6 +45,7 @@ label day_event_the_common_fridge:
         player "Nope but I'm gonna go check it out anyways okay bye!!!"
         show deceased at disappear
         show syg at disappear
+        pause 0.5
         show bg meeting hall
         show firewal at appear
         n "You scurry over to the horde of Walbots fighting the elephant."
