@@ -168,8 +168,7 @@ image pocketwal talk = At("images/personnel/firewal/pocketwal talk.png", sprite_
 image pocketwal upset = At("images/personnel/firewal/pocketwal upset.png", sprite_highlight("pocketwal"), pocketwal_transform)
 
 transform chan_transform:
-    # base_char_transform
-    alpha 1.0
+    base_char_transform
 
 image chan = At(ConditionSwitch("speaking_char == 'chan'", "images/personnel/chan/chan talk.png", "True", "images/personnel/chan/chan neutral.png"), sprite_highlight("chan"), chan_transform)
 image chan neutral = "chan"
