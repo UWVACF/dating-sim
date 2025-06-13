@@ -13,12 +13,13 @@ label day_event_pokanom:
     show uriel upset at appear(x_align = 0.8)
     n "At the other side of the table, Uriel is also watching, although they seem far more impatient."
     hide lee  
+    hide uriel
     show egg happy at appear(x_align = 0.2)
     show chan happy at appear(x_align = 0.5)
+    show b6 neutral at appear(xalign = 0.8)
     n "Egg is just eating the tops of the card wrappers off with concerning speed, and Dr. Chan is tearing into the packs at a similar rate."
     n "Every so often, they drop a card onto an ever-growing pile in front of B6."
     n "Hmm, Magic-Carp, Tuna-Tone, Bass-Tion,...Are all of these cards just fish?"
-    hide uriel
     n "Suddenly, you hear loud screeching from something that looks like a buff demon with a scale for a head that's hovering over Dr. Chan's shoulder."
     chan "Yes! A CeleMeme! My demonics deck is finally complete."
     n "Well, at least they're having fun, right?"
