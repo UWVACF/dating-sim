@@ -6,14 +6,14 @@ label day_event_pokanom:
     n "You walk into the sounds of ripping plastic and shuffling cards."
     n "You see people around a table covered in cards and torn wrappings."
     n "Looking at one mostly intact wrapper, it says \"Pokanom\"."
-    show lee talk at appear(x_align = 0.8)
+    show lee talk at appear(x_align = 0.2)
     lee "They ordered a box of cards that came today. Unfortunately, until they are done with the pack opening, Dr. Chan and Egg are functionally inaccessible."
     show lee happy
     n "Well Dr. Lee looks pretty amused by the scene in front of them."
-    show uriel upset at appear(x_align = 0.2)
+    show uriel upset at appear(x_align = 0.8)
     n "At the other side of the table, Uriel is also watching, although they seem far more impatient."
     hide lee  
-    show egg happy at appear(x_align = 0.8)
+    show egg happy at appear(x_align = 0.2)
     show chan happy at appear(x_align = 0.5)
     n "Egg is just eating the tops of the card wrappers off with concerning speed, and Dr. Chan is tearing into the packs at a similar rate."
     n "Every so often, they drop a card onto an ever-growing pile in front of B6."
@@ -28,9 +28,9 @@ label day_event_pokanom:
     chan "No, have you?"
     n "Uh oh, looks like there's only one pack left. Well they're both reasonable people, you're sure they can just talk this out."
     show egg fury:
-        yalign 1.0
-        xalign -0.5
-        linear 2.0 xalign 1.5
+        yalign -0.5
+        xalign 0.2
+        linear 2.0 xalign 0.5
     show chan fury
     n "Nope. Egg has just lunged on to Dr. Chan and Dr. Chan is pulling out a gun."
 
@@ -150,6 +150,8 @@ label day_event_pokanom:
 
         label keep_running:
             n "You go to open the door and suddenly fall forward as the door opens and closes behind you."
+            show meeting room
+            show uriel neutral
             uriel "Are you open to negotiations over that card pack?"
             n "Just do it. If you don't, all of these people are going to give you a heart attack."
             player "Why do you want this? You didn't seem all that interested when they were fighting."
@@ -158,9 +160,12 @@ label day_event_pokanom:
             uriel "In exchange, you will no longer be on the hook for the act that brought our two most reasonable department heads to animalistic rage."
             n "The screeching is getting louder."
             player "Deal!"
+            show uriel happy
             n "Uriel takes the pack from your hand and leaves through the door behind you."
+            hide uriel
             n "Through the door, you can hear the faint sounds of conversation and one loud, aggrieved sigh from Dr. Chan."
             n "You wait until the footsteps recede into the distance before stepping out."
+            
             n "It's a lot darker here than you remember. And slimier?"
             n "The slime's getting into your pockets, like it's searching for something. Oh this is so gross."
             n "Well this is just great. You're down a pretty expensive card, you're covered in slime, and you smell like yolk."
