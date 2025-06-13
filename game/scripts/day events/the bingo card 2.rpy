@@ -214,7 +214,7 @@ label bc2_continue:
             player "Do what?"
             deceased "You're going to show the wires to that Wal, aren't you? To blow him up!"
             deceased "We can't have you do that! That breaks the foundation safety code!"
-            n "Safety code? Since when have anyone in this room followed the safety code?"
+            n "Safety code? Since when has anyone in this room followed the safety code?"
             show ryz at appear(x_align = 0.9)
             show uriel at appear(x_align = 0.1)
             deceased happy "I'm reporting [player_name] for cheating! They should be disqualified!"
@@ -263,8 +263,8 @@ label bc2_continue:
         with default_fade
         n "It's been...an hour. Your breaktime is definitely over."
         n "You should get back to work. You still have some tasks to complete today, and you don't want to stay overtime."
-        player "I forfit. I have to get back to work."
-        ryz happy "Yes! {i}Someone forfits.{/i} Thank you [player_name], you have severed your purpose."
+        player "I forfeit. I have to get back to work."
+        ryz happy "Yes! {i}Someone forfeits.{/i} Thank you [player_name], you have served your purpose."
         player "...You're welcome?"
         show ryz at disappear
         show uriel at disappear
@@ -302,7 +302,7 @@ label bc2_continue:
             n "You try your best to act natural while you walk out of the lounge. Dr. Ryz's gaze follows you the whole way. Uriel looks at you with interest."
             scene hallway
             n "This should be far enough, right? You look back at the corridor, and you can no longer see the lounge or hear conversations from within."
-            n "The bright red button on the walls shines at you. {i}Press me!{/i} You can almost hear it whispers in your ears."
+            n "The bright red button on the walls shines at you. {i}Press me!{/i} You can almost hear it whisper in your ears."
             n "You punch it with all your might. Your knuckle is now as red as the button."
             speaker "{b}{sc}ALERT! ALERT! ANOMALY BREAKOUT DETECTED! UNRELATED \nPERSONNEL, PLEASE EVACUATE TO THE NEAREST SHELTER!{/sc}{/b}"
             deceased "{size=-10}YES! BINGO!{/size}"
@@ -362,7 +362,7 @@ label bc2_continue:
             deceased sad "No!? [player_name] is spouting bullshit!" #fury
             show ryz pensive
             show deceased neutral #woudn't need this when we have fury
-            n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, who still have not realized that it's facing the wrong side." ##someone reword this for me thanks
+            n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, which they still have not realized is facing the wrong side." ##someone reword this for me thanks
             n "Then he excitedly crosses out something in his bingo sheet."
             ryz happy "BINGO!!!! {i}Someone gets reported for cheating!{/i}"
             ryz "Thank you for standing on the side of fairness, [player_name]."
@@ -372,26 +372,26 @@ label bc2_continue:
             deceased "Not like {i}anyone{/i} isn't cheating!" #fury or something
             uriel neutral "Actually, I did not. Neither did [player_name]. Or Helco."
             deceased "nUH UH, I don't believe you!" #fury
-            uriel "Why would I ever lie to you? Out of the two of us, you're the one who would lie."
+            uriel "Why would I ever lie to you? Out of the two of us, you are the one who would lie."
             deceased "...Curse of the Nile!"
-            uriel pensive "Great, that's two more curses until a free drink."
+            uriel pensive "Great, that is two more curses until a free drink."
             deceased "..."
             deceased "Fine. But what about Ryz?"
             show deceased:
                 xzoom -1.0
-            n "You all turn around at Dr. Ryz. He is no longer with us."
+            n "You all turn around at Dr. Ryz. He's no longer with us."
             n "He must have phased through the wall and left."
-            n "He has, however, abandoned the prize on the table. Looks like he does not care much for the Miku keychain, and only wanted to win."
-            deceased happy "Looks like first place has forfited the prize! The game shall continue!"
+            n "He has, however, abandoned the prize on the table. Looks like he doesn't care much for the Miku keychain, and only wanted to win."
+            deceased happy "Looks like first place has forfeited the prize! The game shall continue!"
             show deceased happy at disappear
             n "Dr. Deceased runs out of the lounge with their bingo sheet. A few moments later, the anomaly alarm starts blaring."
             speaker "{b}{sc}ALERT! ALERT! ANOMALY BREAKOUT DETECTED! UNRELATED \nPERSONNEL, PLEASE EVACUATE TO THE NEAREST SHELTER!{/sc}{/b}"
-            uriel neutral "Well, acording to safety protocols, in the event of an anomaly outbreak, all personnel must evacuate promptly, and displace any object that can lead to danger of other personnel or further escalate the situation."
-            uriel happy "I'm sure we can all agree that this Miku keychain will likely cause more danger if left alone, correct? Since it did initiate this \"anomaly outbreak\"."
+            uriel neutral "Well, acording to safety protocols, in the event of an anomaly outbreak, all personnel must evacuate promptly, and displace any object that could lead to danger of other personnel or further escalate the situation."
+            uriel happy "I am sure we can all agree that this Miku keychain will likely cause more danger if left alone, correct? Since it did initiate this \"anomaly outbreak\"."
             uriel "I will take it with me and dispose of it, then. You should get going too, [player_name]. It takes a while to get to the closest general employee shelter."
             show uriel at disappear
             n "You faintly hear Dr. Deceased's footsteps returning."
-            n "You decide that you do not want a matching curse of the Nile with Uriel. You also should get back to work, anways, like you were supposed to two hours ago."
+            n "You decide that you do not want a matching curse of the Nile with Uriel. You also should get back to work, anyways, like you were supposed to two hours ago."
             $ update_character_points({"deceased": -1, "helco": 0, "ryz": +1, "uriel": +1})
             return
 
