@@ -420,3 +420,4 @@ define player = Character("[player_name]", kind=base_char, color="#444444", cb_n
 
 define n = Character("", kind=base_char, cb_name="") # narrator, required to unhighlight characters whenever narration is occurring
 define unknown = Character("???", kind=base_char, color="#000000", cb_name="unknown")
+define speaker = Character("Security Speakers", kind=base_char, color="#000000", cb_name="unknown")

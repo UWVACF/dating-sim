@@ -252,34 +252,40 @@ label bc2_continue:
     label bingo2_dont_help_helco:
         n "You keep your mouth shut. Perhaps Dr. Helco is doing it on purpose to fish out those that break rule #2."
         n "The room remains silent and tense. No one is doing anything, just observing each other."
+        scene bg lounge
+        show ryz pensive:
+            xalign 1.0
+            yalign 1.0
+        show uriel neutral:
+            xalign 0.0
+            yalign 1.0
+        show deceased neutral
         with default_fade
-        hide helco
-        hide caffi
-        show 
         n "It's been...an hour. Your breaktime is definitely over."
         n "You should get back to work. You still have some tasks to complete today, and you don't want to stay overtime."
-        # turn around
         player "I forfit. I have to get back to work."
         ryz happy "Yes! {i}Someone forfits.{/i} Thank you [player_name], you have severed your purpose."
         player "...You're welcome?"
         show ryz at disappear
         show uriel at disappear
+        show deceased at disappear
         n "You go over to the coffee machine and make yourself a hot, bitter cup of coffee. This should power you through the rest of the day."
         hide ryz
         hide uriel
+        hide deceased
         deceased "Pspsps. Hey, [player_name]."
         show deceased at appear(x_align = 0.5)
         n "You turn around to see Dr. Deceased waving you over."
         player "What is it?"
-        deceased "I need you to do something for me. When you're leaving, go trigger the anomaly outbreak alarm."
+        deceased "I need you to do something for me. When you're leaving, go trigger the anomaly outbreak alarm." #hange expression
         player "Huh!? Why? Is there an anomaly outbreak?"
-        deceased "Shush! Just do as I say!"
+        deceased "Shush! Just do as I say!" #change expression
         n "You look down at Dr. Deceased's hand. They are holding their bingo card against their chest. Upon seeing your gaze, they hold it closer, as if trying to cover what's on it."
-        n "What Dr. Deceased doesn't seems to realize is the side with the bingo grid is facing outwards. Meaning, you can see everything on it."
+        n "What Dr. Deceased doesn't seem to realize is the side with the bingo grid is facing outwards. Meaning, you can see everything on it."
         n "You very clearly see that they are one away from a bingo. The last square reads {i}\"anomaly outbreak\"{/i}."
         n "Dr. Deceased must really want that keychain."
-        show ryz pensive at appear(x_align = 0.1)
-        show uriel pensive at appear(x_align = 0.9)
+        show ryz pensive at appear(x_align = 1.0)
+        show uriel pensive at appear(x_align = 0.0)
         n "You look at the other participants. Dr. Helco has achived a bingo with his empty squares. Dr. Uriel remains in deep focus. Caffi has fallen asleep. Dr. Ryz is staring at you, with a hint of suspicion in his eyes."
         menu:
             n "What do you do?"
@@ -289,15 +295,73 @@ label bc2_continue:
                 jump bingo2_dont_help_deceased
 
         label bingo2_help_deceased:
-            n "dnkjs" #i happen to agree - ryan
+            n "You give Dr. Deceased a nod. You've always wanted to trigger emergency alarms, and now you've been given an excuse to rightfully press one."
+            show deceased at disappear
+            show ryz neutral
+            show uriel neutral
+            n "You try your best to act natural while you walk out of the lounge. Dr. Ryz's gaze follows you the whole way. Uriel looks at you with interest."
+            scene hallway
+            n "This should be far enough, right? You look back at the corridor, and you can no longer see the lounge or hear conversations from within."
+            n "The bright red button on the walls shines at you. {i}Press me!{/i} You can almost hear it whispers in your ears."
+            n "You punch it with all your might. Your knuckle is now as red as the button."
+            speaker "{b}{sc}ALERT! ALERT! ANOMALY BREAKOUT DETECTED! UNRELATED \nPERSONNEL, PLEASE EVACUATE TO THE NEAREST SHELTER!{/sc}{/b}"
+            deceased "{size=-10}YES! BINGO!{/size}"
+            n "It seems you have completed your mission. You shake you hand in satisfaction (and pain)."
+            # Ryz head through the wall CG
+            ryz "[player_name]."
+            n "Dr. Ryz's head phases out of the wall directly in front of you. You jump back, startled."
+            show ryz fury # wouldn't need this once I have the cg
+            ryz "I knew it. I knew Deceased was cheating. Uriel was right."
+            n "Uh oh. Looks like you failed your first mission, agent."
+            # zoom in shock manga panel filter thing
+            # shake with it
+            ryz "You won't get away with this! Pebbles, get [player_obj]!"
+            # hide Ryz head cg
+            show ryz at disappear
+            show roose upset:
+                xalign 0.55
+                zoom 0.3
+                yalign 0.65
+                pause 0.1
+                parallel:
+                    easein 3 zoom 2.0
+                parallel:
+                    linear 3 xalign 0.6
+                parallel:
+                    linear 3 yalign 0.5
+            show layer master:
+                block:
+                    shake(duration = 0.1, strength = 3.0)
+                    repeat
+            n "You turn around and see an equally angry Pebbles honking and charging at you."
+
+            show layer master:
+                block:
+                    shake(duration= 0.1, strength = 7)
+                    pause 0.5
+                    repeat
+            show roose upset:
+                block:
+                    easeout 0.1 zoom 2.1
+                    linear 0.1 zoom 2.0
+                    pause 0.4
+                    repeat
+            n "You run for you pathetic life while Roose bites at your ass."
+            $ update_character_points({"deceased": +1, "helco": 0, "ryz": -1, "uriel": -1})
+
             return
 
         label bingo2_dont_help_deceased:
             n "You decide to not help but instead snitch on Dr. Deceased, whether due to your sense of justice or you just really want to screw Dr. Deceased over."
+            show ryz surprise
+            show uriel neutral:
+                xzoom -1.0
             player "Dr. Deceased is trying to cheat! They're asking me to falsely trigger the anomaly alarm!"
-            deceased surprise "Wha-What?? You-!"
+            deceased "Wha-What?? You-!" #surprise
             uriel neutral "Really?"
-            deceased fury "No!? [player_name] is spouting bullshit!"
+            deceased sad "No!? [player_name] is spouting bullshit!" #fury
+            show ryz pensive
+            show deceased neutral #woudn't need this when we have fury
             n "Dr. Ryz stares at Dr. Deceased's bingo card that they are clutching against their torso, who still have not realized that it's facing the wrong side." ##someone reword this for me thanks
             n "Then he excitedly crosses out something in his bingo sheet."
             ryz happy "BINGO!!!! {i}Someone gets reported fro cheating!{/i}"
@@ -305,11 +369,31 @@ label bc2_continue:
             show ryz happy at disappear
             n "Dr. Ryz skips happily towards the prize."
             uriel upset "...Of course you would try to cheat."
-
-
-
+            deceased "Not like {i}anyone{/i} isn't cheating!" #fury or something
+            uriel neutral "Actually, I did not. Neither did [player_name]. Or Helco."
+            deceased "nUH UH, I don't believe you!" #fury
+            uriel "Why would I ever lie to you? Out of the two of us, you're the one who would lie."
+            deceased "...Curse of the Nile!"
+            uriel pensive "Great, that's two more curses until a free drink."
+            deceased "..."
+            deceased "Fine. But what about Ryz?"
+            show deceased:
+                xzoom -1.0
+            n "You all turn around at Dr. Ryz. He is no longer with us."
+            n "He must have phased through the wall and left."
+            n "He has, however, abandoned the prize on the table. Looks like he does not care much for the Miku keychain, and only wanted to win."
+            deceased happy "Looks like first place has forfited the prize! The game shall continue!"
+            show deceased happy at disappear
+            n "Dr. Deceased runs out of the lounge with their bingo sheet. A few moments later, the anomaly alarm starts blaring."
+            speaker "{b}{sc}ALERT! ALERT! ANOMALY BREAKOUT DETECTED! UNRELATED \nPERSONNEL, PLEASE EVACUATE TO THE NEAREST SHELTER!{/sc}{/b}"
+            uriel neutral "Well, acording to safety protocols, in the event of an anomaly outbreak, all personnel must evacuate promptly, and displace any object that can lead to danger of other personnel or further escalate the situation."
+            uriel happy "I'm sure we can all agree that this Miku keychain will likely cause more danger if left alone, correct? Since it did initiate this \"anomaly outbreak\"."
+            uriel "I will take it with me and dispose of it, then. You should get going too, [player_name]. It takes a while to get to the closest general employee shelter."
+            show uriel at disappear
+            n "You faintly hear Dr. Deceased's footsteps returning."
+            n "You decide that you do not want a matching curse of the Nile with Uriel. You also should get back to work, anways, like you were supposed to two hours ago."
+            $ update_character_points({"deceased": -1, "helco": 0, "ryz": +1, "uriel": +1})
             return
-
 
 
 
