@@ -1,5 +1,13 @@
 label day_event_the_bingo_card_2:
     image censor = "images/cgs/censor pixel filter.png" 
+    image ryz_through_the_wall = "images/cgs/ryz through the wall.png"
+    image bingoc1 = "images/cgs/bc1.png"
+    image bingoc2 = "images/cgs/bc2.png"
+    image bingoc3 = "images/cgs/bc3.png"
+    image bingoc4 = "images/cgs/bc4.png"
+    image bingoc5 = "images/cgs/bc5.png"
+    image shock = "images/cgs/shock effect.png"
+    image blackout = "images/day events/black screen.png"
 
     scene bg lounge
     n "You walk past the lounge and hear chattering from within. Curious, you take a peek through the doorway."
@@ -8,7 +16,6 @@ label day_event_the_bingo_card_2:
         n "Ah. Bingo again."
 
     show caffi at appear(x_align = 0.0)
-    #show helco at appear(x_align = 0.2)
     show deceased at appear (x_align = 0.5) #pensive
     show aikha at appear (x_align = 1.0)
     n "The crowd has spotted you as well. Dr. Aikha flags you down."
@@ -19,8 +26,11 @@ label day_event_the_bingo_card_2:
     n "Without waiting for your response, Dr. Aikha places the sheet in your hand before dashing out of the lounge."
     show ryz unique at appear (x_align = 1.0)
     n "The rest stare excitedly at you. Guess you don't have a choice."
-    ryz "So, [player_name], I assume you know how to play bingo. The prize this time is a Miku keychain."
-    # decease: it's MIKU with a CAPITAL M
+    ryz "So, [player_name], I assume you know how to play bingo. The prize this time is a miku keychain-"
+    show ryz upset
+    deceased "It's MIKU with a CAPITAL {b}M{/b}. Get it right."
+    ryz "..."
+    show ryz unique
     n "Dr. Ryz gestures towards a small but delicate Miku keychain at the center of the table."
     if "didnt_do_it" in seen_events:
         if didnt_miku_bingo2 == 1:
@@ -40,13 +50,16 @@ label bc2_continue:
     caffi "We got it, {i}Dr. Rizz{/i}. Just let us continue the game." #remove neutral
     show ryz neutral
     n "You look down at Dr. Aikha's bingo sheet."
-    # bingo cg here onlayer almost top
+    show bc2:
+        zoom 0.7
+        xalign 0.5
     n "...You decide not to question how some of these boxes got marked off today."
-    # hide bingo cg
-    show helco pensive at appear(x_align = 0.5)
+    hide bc2
     show deceased at disappear
     show caffi at disappear
     show ryz at disappear
+    pause 0.5
+    show helco pensive at appear(x_align = 0.5)
     show uriel pensive:
         xzoom -1.0
         appear(x_align = 1.0)
@@ -54,10 +67,12 @@ label bc2_continue:
     hide ryz
     hide caffi
     hide deceased
-    # show helco bingo sheet cg
+    show bc1:
+        zoom 0.7
+        xalign 0.5
     n "..."
     n "Something doesn't feel right about his sheet."
-    # hide helco bingo sheet cg
+    hide bc1
     n "You watch as Dr. Helco erases a random box every time someone else marks one off their own sheet."
     n "His empty boxes could almost form a bingo now."
     show caffi at appear(x_align = 0.0) #happy
@@ -97,13 +112,15 @@ label bc2_continue:
         deceased happy "Aha! Wires left by Hampter."
         n "You see them discreetly shove the frayed wires back into the vent, then look around suspicously to check if anyone has seen what they're doing, as if they didn't just announce their discovery out loud."
         show deceased happy at disappear
-        # show bingo sheet updated 1
+        show bc3:
+            zoom 0.7
+            xalign 0.5
         n "Well, that's another step closer to winning. Not too difficult, huh?"
         hide deceased
         n "Let's see...you're almost at bingo! You need...a fire starts, or someone enters/exits without the door."
         n "The first one seems a lot more likely, given the amount of Walbots running around the foundation."
         n "Then again, the second one is also likely, given the amount of Walbots running around the foundation..."
-        # hide bingo sheet
+        hide bc3
         show bg room hall
         show firewal at appear
         n "Speaking of which, you see one walking past right outside the lounge." 
@@ -171,10 +188,12 @@ label bc2_continue:
                 yalign 0.60
                 xalign 0.51
             n "Oh, wait a minute."
-            # show bingo card
-            n "Ethy screams...someone get flipped off...You win!!!"
-            # hide bingo card
             hide censor
+            show bc5:
+                zoom 0.7
+                xalign 0.5
+            n "Ethy screams...someone get flipped off...You win!!!"
+            hide bc5
             show ryz sad:
                 xzoom 1.0
             show uriel:
@@ -307,17 +326,23 @@ label bc2_continue:
             speaker "{b}{sc}ALERT! ALERT! ANOMALY BREAKOUT DETECTED! UNRELATED \nPERSONNEL, PLEASE EVACUATE TO THE NEAREST SHELTER!{/sc}{/b}"
             deceased "{size=-10}YES! BINGO!{/size}"
             n "It seems you have completed your mission. You shake you hand in satisfaction (and pain)."
-            # Ryz head through the wall CG
-            ryz "[player_name]."
+            ryz "[player_name!u] ."
+            show bg door
+            show ryz_through_the_wall:
+                zoom 0.5
+                xalign 0.5
             n "Dr. Ryz's head phases out of the wall directly in front of you. You jump back, startled."
-            show ryz fury # wouldn't need this once I have the cg
             ryz "I knew it. I knew Deceased was cheating. Uriel was right."
             n "Uh oh. Looks like you failed your first mission, agent."
-            # zoom in shock manga panel filter thing
-            # shake with it
+            show layer master:
+                block:
+                    shake(duration = 0.05, strength = 2.0)
+                    repeat
+            show shock onlayer top
             ryz "You won't get away with this! Pebbles, get [player_obj]!"
-            # hide Ryz head cg
-            show ryz at disappear
+            show layer master
+            hide ryz_through_the_wall
+            show bg hallway
             show roose upset:
                 xalign 0.55
                 zoom 0.3
@@ -346,7 +371,11 @@ label bc2_continue:
                     linear 0.1 zoom 2.0
                     pause 0.4
                     repeat
-            n "You run for you pathetic life while Roose bites at your ass."
+            n "You run for you pathetic life while Pebbles bites at your ass."
+            show blackout zorder 50:
+                alpha 0.0
+                linear 2 alpha 1.0
+            hide shock onlayer top
             $ update_character_points({"deceased": +1, "helco": 0, "ryz": -1, "uriel": -1})
 
             return

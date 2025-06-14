@@ -5,9 +5,9 @@ label day_event_the_bingo_card_1:
     with default_fade
     n "As you walk into the lounge for your break, you notice that the vibe feels...off."
     # have characters not facing the player (center)
-    show aikha panic at appear(x_align = 0.8)
+    show aikha panic at appear(x_align = 0.9)
     show alex pensive at appear(x_align = 0.5)
-    show ryz pensive at appear(x_align = 0.2)
+    show ryz pensive at appear(x_align = 0.1)
     n "Everyone in the room is speaking in hushed voices and carrying around a small sheet of paper."
     # all character turn and face you (center)
     aikha "Hold on, [player_name]."
