@@ -199,7 +199,7 @@ label day_event_the_big_chase:
             $ update_character_points({"syg": 1})
             $ update_character_points({"plutoes": -1})
             $ update_character_points({"chan": -1})
-            $ update_character_points({"hamp": -1})
+            $ update_character_points({"hampter": -1})
             hide hampter
             hide syg
             hide plutoes

@@ -35,10 +35,9 @@ label ending_event_neutral_ending:
             jump choice3
     
     label choice1:
+        aikha happy "Good choice, new recruit! I'm sure you'll be a valuable asset."
         aikha happy "That's great! Welcome aboard, new recruit!"
         show black_screen:
-        aikha happy "Good choice, new recruit! I'm sure you'll be a valuable asset."
-        show fadeout:
             alpha 0.0
             linear 1 alpha 1.0
         
@@ -49,9 +48,8 @@ label ending_event_neutral_ending:
         
     label choice2:
         firewal pensive "You would make a great addition to the Wals, [player_name]."
-        show black_screen:
         firewal pensive "You would make a great addition to IT, [player_name]."
-        show fadeout:
+        show black_screen:
             alpha 0.0
             linear 1 alpha 1.0
 

@@ -24,6 +24,7 @@ label day_event_staring_contest:
     aikha "Not just any wall! Dr. Lee's behind this one. We're having a staring contest!"
     player "...Through the wall?"
     lee "Through the wall! Come!"
+    show bg door
     n "You make your way over to the wall and admire its...wall-like qualities."
     player "Am I supposed to be seeing them, or..."
     aikha "Shh! I'm about to win..."
@@ -211,7 +212,7 @@ label day_event_staring_contest:
             n "Your eyes beg for mercy, but your hubris drowns out their cries."
             n "And finally..."
             hide haze red onlayer top
-            hide haze red strong onlayer top
+            hide alternate_haze onlayer top
             hide aikha
             hide lee
             show black_screen zorder 50:
@@ -358,7 +359,7 @@ label day_event_staring_contest:
             n "At the same time, you feel an overwhelming amount of radiation emanating from the wall."
             n "{cps=12}{sc}{color=#ff0000}{b}Looks like they want you to stay. :){b}{/color}{/sc}{/cps}"
             show black_screen zorder 50
-            hide haze red strong onlayer top
+            hide haze red onlayer top
             hide overlay_ai_1 onlayer top
             n "Your body decides that's enough for today and black out."
             window hide

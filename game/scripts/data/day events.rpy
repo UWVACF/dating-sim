@@ -55,6 +55,66 @@ init python:
 
             self.prereq_tags = dict(prereq_tags) if prereq_tags is not None else {}
             self.antireq_tags = dict(antireq_tags) if antireq_tags is not None else {}
+
+    # returns an array of events with the following properties
+    # all parameters are optional - you probably only want to use one or two filters at a time, MAYBE three
+    def filter_events(
+        events = None, # can also specify it to be day_events (instead of remaining day events) or character_events
+        label = "", # should probably only be used for character_events
+        personnel = None, # array, finds event with ALL listed personnel
+        viewable_on_day = 0, # finds events viewable on this day, according to see_before and see_after
+        prereqs = None, # array, finds events with ALL listed prerequisite labels
+        prereq_tags = None, # dictionary, finds events with ALL listed prereq tags of value at LEAST x
+        antireqs = None, # array, finds events with ANY listed antireq labels
+        antireq_tags = None, # dictionary, finds events with ANY listed antireq tags of value GREATER THAN x
+        chain = "", # finds the UNIQUE event with that chain
+        tags = None # array, finds events with ALL listed tags
+    ):
+        if events is None:
+            events = remaining_day_events
+        
+        filtered = []
+
+        label = label.replace(" ", "_")
+        
+        for event in events:
+            if label and event.label != label:
+                continue
+
+            if personnel and not all(p in event.personnel for p in personnel):
+                continue
+                
+            if viewable_on_day > 0:
+                if event.see_before != 0 and viewable_on_day > event.see_before:
+                    continue
+                if event.see_after != 0 and viewable_on_day < event.see_after:
+                    continue
+            
+            if prereqs and not all(req in event.prereqs for req in prereqs):
+                continue
+                
+            if prereq_tags:
+                if not event.prereq_tags:
+                    continue
+                if not all(tag in event.prereq_tags for tag in prereq_tags):
+                    continue
+            
+            if antireqs and any(antireq in event.antireqs for antireq in antireqs):
+                continue
+                
+            if antireq_tags:
+                if any(tag in event.antireq_tags for tag in antireq_tags):
+                    continue
+            
+            if chain and event.chain != chain:
+                continue
+                
+            if tags and not all(tag in event.tags for tag in tags):
+                continue
+                
+            filtered.append(event)
+        
+        return filtered
             
     ################################# DAY EVENTS #################################
 
