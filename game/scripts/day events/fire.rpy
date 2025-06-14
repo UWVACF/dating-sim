@@ -377,7 +377,7 @@ label day_event_fire:
         uriel "That should be fine. Just get back quickly."
         n "Helco gives you a thumbs up as you turn to leave."
         n "Alright, so you're in Hallway 7B, which means 7C should be an adjacent hallway."
-        
+
         $ update_character_points({"firewal": -1, "helco": 1, "uriel": -1, "moon": -1})
         return
 
@@ -422,7 +422,12 @@ label day_event_fire:
         n "You look around and see Dr. Helco standing in a conveniently-sized dry spot next to the wall."
         helco "[player_name], the fire has been extinguished!"
         n "You turn to see the place where the fire used to be, along with quite a few drenched Wals."
-
+        show wal fury
+        wal "You've just put 118072 Wals out of a job, [player_name], and we will need to be thoroughly dried before we can be assigned any more tasks."
+        wal "This will be reported to THE WAL and you'll face the consequences."
+        hide wal
+        n "They make their ways into the wall, and you are left with a giant puddle of later where the fire and Wals once were."
+        uriel "Oh, it is already out. Good, I was not sure that this could deal with a fire that big."
         $ update_character_points({"firewal": -1, "helco": -1, "uriel": 1, "moon": -1})
         return
         
