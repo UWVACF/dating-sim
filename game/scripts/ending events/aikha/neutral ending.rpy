@@ -68,7 +68,7 @@ label ending_event_neutral_ending:
         n "You started you months long job under the Extraterrestrial department."
         n "Unfortunately, you don't actually get to go to space."
         n "There goes your bucket list..."
-        n "Turns out Helco kinda just lets you do what you want. Huh."
+        n "Turns out Dr. Helco kinda just lets you do what you want. Huh."
 
 ## temp credits ##
 
