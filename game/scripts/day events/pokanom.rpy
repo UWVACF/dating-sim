@@ -16,7 +16,7 @@ label day_event_pokanom:
     hide uriel
     show egg happy at appear(x_align = 0.2)
     show chan happy at appear(x_align = 0.5)
-    show b6 neutral at appear(xalign = 0.8)
+    show b6 neutral at appear(x_align = 0.8)
     n "Egg is just eating the tops of the card wrappers off with concerning speed, and Dr. Chan is tearing into the packs at a similar rate."
     n "Every so often, they drop a card onto an ever-growing pile in front of B6."
     n "Hmm, Magic-Carp, Tuna-Tone, Bass-Tion,...Are all of these cards just fish?"
