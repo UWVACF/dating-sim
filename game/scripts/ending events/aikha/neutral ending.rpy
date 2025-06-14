@@ -1,4 +1,5 @@
 label ending_event_neutral_ending:
+    fadeout = "image/day events/black screen.png"
 
     scene bg hallway
     n "Your internship ends today."
@@ -19,32 +20,54 @@ label ending_event_neutral_ending:
     n "You stare at the Egg in disbelief. He smiles back at you sedately, as he always does."
     n "You have an urge to pop his york."
     show egg at move_to(x_align = 0.0)
-    #show personnel #1 at appear(x_align = 0.35)
-    #show personnel #2 at appear(x_align = 0.7)
-    #show personnel #3 at appear(x_align = 1.05)
+    show aikha at appear(x_align = 0.35)
+    show firewal at appear(x_align = 0.7)
+    show helco at appear(x_align = 1.05)
 
     # do I write if statements for the all the personnel....
 
     menu:
         n "Which department do you want to work under?" #is there some way to list all of the choices, but only the top 3 show up ##### or we can scrap this whole choosing thing 
-        "Choice 1":
+        "Path-pare":
             jump choice1
-        "Choice 2":
+        "Technology":
             jump choice2
-        "Choice 3":
+        "Extraterrestrial":
             jump choice3
     
     label choice1:
-        #personnel 1 "Welcome or something"
-        #fade to black
+        aikha happy "That's great! Welcome aboard, new recruit!"
+        show fadeout:
+            alpha 0.0
+            linear 1 alpha 1.0
+        
+        n "You started your years long career under the Path-para department."
+        n "You conducted experiments in labs, collected samples in the field, participated in anomaly containment, and got infected 97 times."
+        n "On the 98 time, you unfortunately did not survive. You died a slow, painful death after the anomalous disease overtook your body."
+        n "THE END"
         
     label choice2:
-        #personnel 2 "Welcome or something"
-        #fade to black
+        firewal pensive "You would make a great addition to the Wals, [player_name]."
+        show fadeout:
+            alpha 0.0
+            linear 1 alpha 1.0
+
+        n "You started your years long position under the Technological department."
+        n "You did wonder, with so many wals already, why would you be needed?"
+        n "You found your answer the next day after being relacated at THE WAL head quarters."
+        n "You have one job: solve reCAPTCHA for the Walbots."
+        n "You spend your netxt 70 years solving captchas in front of a computer that Dr. Firewal provided you."
+        n "THE END"
 
     label choice3:
-        #personnel 3 "Welcome or something"
-        #fade to black
+        helco pensive "I look forward to working with you, Y...[player_name]."
+        show fadeout:
+            alpha 0.0
+            linear 1 alpha 1.0
+        
+        n "You started you months long job under the Extraterrestrial department."
+        n "Unfortunately, you don't actually get to go to space."
+        n ""
 
 ## temp credits ##
 
