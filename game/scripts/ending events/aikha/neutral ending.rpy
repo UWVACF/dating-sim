@@ -16,9 +16,9 @@ label ending_event_neutral_ending:
     egg "Congratulations on completing your internship, [player_name]."
     egg "Unfortunately, today will be your last day here."
     n "Ah. You have expected this. Still, you can't help but feel a bit disappointed."
-    egg "Because you have been recommended for multiple department-specific position in offsite facilities."
+    egg "Because you have been recommended for multiple department-specific positions in off-site facilities."
     n "You stare at the Egg in disbelief. He smiles back at you sedately, as he always does."
-    n "You have an urge to pop his york."
+    n "You have an urge to pop his yolk."
     show egg at move_to(x_align = 0.0)
     show aikha at appear(x_align = 0.35)
     show firewal at appear(x_align = 0.7)
@@ -28,7 +28,7 @@ label ending_event_neutral_ending:
 
     menu:
         n "Which department do you want to work under?" #is there some way to list all of the choices, but only the top 3 show up ##### or we can scrap this whole choosing thing 
-        "Path-pare":
+        "Path-para":
             jump choice1
         "Technology":
             jump choice2
@@ -36,27 +36,27 @@ label ending_event_neutral_ending:
             jump choice3
     
     label choice1:
-        aikha happy "That's great! Welcome aboard, new recruit!"
+        aikha happy "Good choice, new recruit! I'm sure you'll be a valuable asset."
         show fadeout:
             alpha 0.0
             linear 1 alpha 1.0
         
         n "You started your years long career under the Path-para department."
         n "You conducted experiments in labs, collected samples in the field, participated in anomaly containment, and got infected 97 times."
-        n "On the 98 time, you unfortunately did not survive. You died a slow, painful death after the anomalous disease overtook your body."
+        n "On the 98 time, you unfortunately did not survive. You died a slow, painful death after an anomalous disease overtook your body."
         n "THE END"
         
     label choice2:
-        firewal pensive "You would make a great addition to the Wals, [player_name]."
+        firewal pensive "You would make a great addition to IT, [player_name]."
         show fadeout:
             alpha 0.0
             linear 1 alpha 1.0
 
         n "You started your years long position under the Technological department."
-        n "You did wonder, with so many wals already, why would you be needed?"
-        n "You found your answer the next day after being relacated at THE WAL head quarters."
+        n "You did wonder, with so many Wals already, why would you be needed?"
+        n "You found your answer the next day after being relocated at THE WAL head quarters."
         n "You have one job: solve reCAPTCHA for the Walbots."
-        n "You spend your netxt 70 years solving captchas in front of a computer that Dr. Firewal provided you."
+        n "You spend your next 70 years solving captchas in front of a computer that Dr. Firewal provided you."
         n "THE END"
 
     label choice3:
@@ -67,7 +67,8 @@ label ending_event_neutral_ending:
         
         n "You started you months long job under the Extraterrestrial department."
         n "Unfortunately, you don't actually get to go to space."
-        n ""
+        n "There goes your bucket list..."
+        n "Turns out Helco kinda just lets you do what you want. Huh."
 
 ## temp credits ##
 
