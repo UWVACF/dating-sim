@@ -5,7 +5,7 @@ init python:
     # variables
     day_number = 1
     
-    day_threshold = 10 # max number of days
+    day_threshold = 11 # max number of days
     
     # the chance of getting an ending event instead of a day event
     ending_chance = 1.0 
@@ -187,7 +187,7 @@ init python:
             label="didnt_do_it",
             personnel=["syg", "deceased", "chan"],
             tags=["anomaly"],
-            outro_label="ddi_outro"
+            # outro_label="ddi_outro"
         ), 
         Event(
             label="the_bingo_card_2",

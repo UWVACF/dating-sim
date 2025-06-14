@@ -224,13 +224,16 @@ label day_event_the_common_fridge:
         n "He starts looking all around the room: in the fridge, the freezer, under the floor tiles and in the vents."
         helco "Perhaps someone else ate them...No matter! I'll just have some liquid nitrogen instead."
         n "He leaves the room, happily humming to himself."
+        show helco at disappear
         n "..."
+        hide helco
         n "..."
         n "Oh yeah! You were boiling some noodles. You grab some wooden chopsticks and help yourself to some." # take a bite?? or what
         n "They don't taste very good. You forgot the flavour packet."
         n "..."
         n "That's better."
         n "Not great, but better."
+        show helco at appear
         n "As you finish cleaning up, Dr. Helco re-enter the room with a small vial surrounded by white fumes."
         helco "I found some liquid nitrogen! Would you like some?"
         player "No thanks. I'll literally die."

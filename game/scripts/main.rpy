@@ -154,10 +154,11 @@ label day_init:
                     current_ending = first_label
                     break
     
+    # jump day_init
     if day_number < day_threshold:
         jump day_init
     else:
-        jump neutral_ending
+        jump ending_event_neutral_ending
 
 label default_intro:
     scene bg cubicle
