@@ -18,7 +18,7 @@ init python:
     #   - skips intro
     # showcase_intro:
     #   - follows set pathing for events
-    game_mode = "showcase_no_intro"
+    game_mode = "debug"
 
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks
