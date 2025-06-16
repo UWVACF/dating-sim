@@ -292,16 +292,22 @@ label day_event_fire:
         show firewal fury
         show firewal fury as wal1:
             xalign 0.1
+            yalign 1.0
         show firewal fury as wal2:
             xalign 0.9
+            yalign 1.0
         show firewal fury as wal3:
             xalign 0.3
+            yalign 1.0
         show firewal fury as wal4:
             xalign 0.7
+            yalign 1.0
         show firewal fury as wal5:
-            xalign 0.2 yalign 0.2
+            xalign 0.2
+            yalign 1.0
         show firewal fury as wal6:
-            xalign 0.8 yalign 0.2
+            xalign 0.8
+            yalign 1.0
 
         wal1 "You've just put 118072 wals out of a job, [player_name]."
         wal1 "THE WAL will hear about this transgression."

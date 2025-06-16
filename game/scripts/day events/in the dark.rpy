@@ -110,7 +110,7 @@ label itd_lights_go_out:
     helco "Once it gets close enough, we can cause a short-circuit by throwing a device at it, after which we will quickly apprehend and contain it."
     player "How do you know so much about this anomaly?"
     helco "Not important. This way!"
-    n "AFter speedwalking for a bit, you start to hear the buzzing of electricity. The noise only grows stronger as you continue down the various hallways."
+    n "After speedwalking for a bit, you start to hear the buzzing of electricity. The noise only grows stronger as you continue down the various hallways."
     n "Dr. Helco stops you outside what you assume to be a room. The buzzing is almost deafening."
     helco "In this room. Wait here."
     n "You hear the sound of a door opening and closing."
@@ -278,7 +278,7 @@ label itd_lights_go_out:
         player "We should contain it before it gets up again-"
         n "You don't even get to finish your sentence before Dr. Helco picks it up and throws it into a trash bag."
         n "He seems remarkably skilled at this..."
-        show bg containmentroom
+        # show bg containmentroom
         show helco happy
         with default_fade
         n "With the anomaly now securely(?) contained, you silently applaud yourself for a job well done."

@@ -305,7 +305,7 @@ label bc2_continue:
         n "Dr. Deceased must really want that keychain."
         show ryz pensive at appear(x_align = 1.0)
         show uriel pensive at appear(x_align = 0.0)
-        n "You look at the other participants. Dr. Helco has achived a bingo with his empty squares. Dr. Uriel remains in deep focus. Caffi has fallen asleep. Dr. Ryz is staring at you, with a hint of suspicion in his eyes."
+        n "You look at the other participants. Dr. Helco has achieved a bingo with his empty squares. Dr. Uriel remains in deep focus. Caffi has fallen asleep. Dr. Ryz is staring at you, with a hint of suspicion in his eyes."
         menu:
             n "What do you do?"
             "Help Dr. Deceased win.":
