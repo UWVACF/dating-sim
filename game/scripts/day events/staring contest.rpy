@@ -361,7 +361,7 @@ label day_event_staring_contest:
             show black_screen zorder 50
             hide haze red onlayer top
             hide overlay_ai_1 onlayer top
-            n "Your body decides that's enough for today and black out."
+            n "Your body decides that's enough for today and blacks out."
             window hide
             hide aikha
             hide lee
