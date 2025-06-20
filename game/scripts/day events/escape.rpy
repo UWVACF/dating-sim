@@ -1,6 +1,10 @@
 # init python:
-#     escape_passcode_attempts_remaining = 3
+#     # viewed
 #     escape_back_wall_viewed = False
+#     escape_back_wall_notebook_viewed = False
+
+
+#     escape_passcode_attempts_remaining = 3
 #     escape_inventory = ["Phone (Dead)"]
 #     escape_item_labels = {
 #         "Phone (Dead)": "escape_item_phone_dead",
@@ -106,7 +110,7 @@
 #     n "It's in Swedish. You can't read Swedish, unfortunately."
 #     if "Phone (Charged)" in escape_inventory:
 #         n "You do, however, have a translator on your phone."
-#         n "You open Guugle Translate and snap a photo of the sticky note."
+#         n "You open Guugle Trunslate and snap a photo of the sticky note."
 #         n "It reads:"
 #         call escape_item_testimony
 #         n "You peel off the sticky note and put it in your inventory."
@@ -123,16 +127,27 @@
 #         n "There's a countertop on the back wall, on which a notebook rests. Most of the pages are burnt, bloodstained or otherwise vandalized."
 #         $ escape_back_wall_viewed = True
 #     menu:
-#         n "Which page do you flip to?"
-#         "Page 114.":
-#             jump escape_back_wall_114
-#         "Page 236.":
-#             jump escape_back_wall_236
-#         "Page 357.":
-#             jump escape_back_wall_357
+#         n "What to do?"
+#         "Open notebook.":
+#             jump escape_back_wall_notebook
 #         "Go back.":
 #             jump escape_look_around
-        
+
+# label escape_back_wall_notebook:
+#     n "There's a "
+#     python:
+#         escape_flip_to_page = renpy.input("What page do you go to?", default=1)
+#         if not escape_flip_to_page.isdigit():
+#             renpy.notify("Choose a page from 1 to 999.")
+#             escape_flip_to_page = renpy.input("My name is...", default=1)
+#         escape_flip_to_page = int(escape_flip_to_page)
+#     if escape_flip_to_page == 1:
+#         n "The notebook reads:"
+#         n "Viable Actions for Containment: Attempting to contain, capture or otherwise interact with this anomaly is not recommended. Continued on page #######"
+#         n "The rest is cut off. Literally cut off. There are slash marks on the page."
+#     elif escape_flip_to_page == 67:
+
+
     
 # label escape_left_wall:
 #     menu:
