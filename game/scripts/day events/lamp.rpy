@@ -23,7 +23,7 @@ label day_event_lamp:
             linear 2 alpha 0.5
             repeat
 
-    n "Huh. Why are even the office lights out?"
+    n "Huh. Why did the office lights go out?"
     n "You click on the switch again. But you can't feel the switch."
     n "In fact, you can't even {i}feel{/i} your fingers. Or your arm. Or yourself. Or anything."
     player "   "
