@@ -95,8 +95,3 @@ label day_event_microwaving_hampter:
         n "You find a packet of string cheese in the fridge and take about a dozen or so."
         n "You unwrap them and line a plate neatly with them, placing Hampter onto what looks like a makeshift cheese raft."
         hampter "Ooh! Cheese!"
-
-
-
-
-    

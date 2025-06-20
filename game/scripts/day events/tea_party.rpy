@@ -58,10 +58,10 @@ label day_event_tea_party:
         n "Dr. Alex sips his coffee." 
         player "Then who sent that email?!" 
         jessie "Um, excuse me. Sorry to interrupt, but if you’re going to talk about work, I’d prefer it if you did it outside." 
-        "???" "…" 
+        egg "…" 
         jessie "Don’t worry! I’m sure they’re not trying to be rude." 
-        "???" "…"
-        "???" "…Rude." 
+        egg "…"
+        egg "…Rude." 
         n "That doesn’t sound good." 
         n "Just as you’re to stand up and make your escape, you’re stopped by the horrified look on Dr Alex’s face." 
         player "Mr. Founder?" 
@@ -73,12 +73,12 @@ label day_event_tea_party:
         n "Dr. Alex attempts to flee, but dark black tendrils wrap around him and pull him back."
         n "With your luck, it’s only natural that you’re restrained too and are now struggling to breathe as the anomaly looms over you." 
         player "…So I’m guessing there’s no meeting today." 
-        "???" "Don’t. Leave." # make text big and bold
+        egg "Don’t. Leave." # make text big and bold
         alex "Hrg."
-        "???" "Lonely?"
+        egg "Lonely?"
         player "Uh. Not at the moment, no." 
         n "The anomaly rises, seeming to fill the entire room. The lights dim." 
-        "???" "Leave. Rude." 
+        egg "Leave. Rude." 
 
 
 label friendship:
@@ -95,4 +95,3 @@ label jhamp_scare:
     n "Hampter blinks at you."
     hampter "I can teleport."
     player "Oh. Right." 
-
