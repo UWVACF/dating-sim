@@ -123,7 +123,7 @@ init python:
     day_events = [
         Event(
             label="fire",
-            personnel=["aikha", "firewal", "Uriel", "Helco", "Moon"],
+            personnel=["aikha", "firewal", "uriel", "helco", "moon"],
         ),
         Event(
             label="test",

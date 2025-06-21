@@ -122,9 +122,9 @@ label day_event_fire:
         linear 1.5 xalign 0.1
     aikha "Huh? Nonono! Not again!"
     show firewal upset:
-        linear 3.0 xalign 1.6
+        linear 3.0 xalign 1.7
     show aikha panic:
-        linear 3.0 xalign 1.5
+        linear 3.0 xalign 1.7
     n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
     aikha "NONONO! [player_name]! CALL MOON! CALL MOOOOOOOOOOON-"
     with hpunch
@@ -132,13 +132,18 @@ label day_event_fire:
     hide firewal
     hide aikha
 # ADD WAL NO.1
-    show firewal at appear(x_align = 0.0)
+    show firewal:
+        alpha 0.0
+        xzoom -1.0
+        alpha 1.0
+        appear(x_align = 0.0)
     n "A Wal bot sporting the tag, {i}\"Manager Wal\"{/i}, appears with a clipboard."
     wal1 "It appears Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
     wal1 "Do not panic! We will have Wals work to put out the fire."
     wal1 "We calculate that it will take 118098 Wals to completely extinguish the fire."
     n "...118098 Wals?"
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -148,6 +153,7 @@ label day_event_fire:
 
     n "You see a Wal run into the fire, attempt to punch it out, and combust from stress."
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -156,6 +162,7 @@ label day_event_fire:
         shake
     n "You see a second Wal attempt to do the same... and combust."
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -165,6 +172,7 @@ label day_event_fire:
     n "Then a third..."
     
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -265,7 +273,7 @@ label day_event_fire:
         show uriel unique:
             xalign 0.33
             yalign 1.0
-        show helco upset:
+        show helco sad:
             xalign 0.66
             yalign 1.0
         n "You see a half distinegrated Uriel and an unusual expression on Dr. Helco's face."
@@ -291,23 +299,23 @@ label day_event_fire:
         show bg room hall
         show firewal fury
         show firewal fury as wal1:
-            xalign 0.1
-            yalign 1.0
+            xalign -0.1
+            yalign 1.3
         show firewal fury as wal2:
-            xalign 0.9
-            yalign 1.0
+            xalign 0.1
+            yalign 1.3
         show firewal fury as wal3:
             xalign 0.3
-            yalign 1.0
+            yalign 1.3
         show firewal fury as wal4:
             xalign 0.7
-            yalign 1.0
+            yalign 1.3
         show firewal fury as wal5:
-            xalign 0.2
-            yalign 1.0
+            xalign 0.9
+            yalign 1.3
         show firewal fury as wal6:
-            xalign 0.8
-            yalign 1.0
+            xalign 1.1
+            yalign 1.3
 
         wal1 "You've just put 118072 wals out of a job, [player_name]."
         wal1 "THE WAL will hear about this transgression."
