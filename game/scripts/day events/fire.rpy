@@ -407,7 +407,7 @@ label day_event_fire:
         show helco happy
         uriel "Well, neither do I. Plus, the last time I used that...I can't remember what happended."
         n "Helco gives you an enthusiastic thumbs up, again."
-        n "Geez. These department heads really know how to avoid responsibilities. Still, you suppose this is what differentiates them from regular employees like you."
+        n "Geez. These department heads really know how to avoid responsibility. Still, you suppose this is what differentiates them from regular employees like you."
         hide uriel at disappear
         hide helco at disappear
         scene bg room hall
@@ -430,20 +430,20 @@ label day_event_fire:
         n "You muster up the courage and walk up to the fire surrounded by the Wals."
         
         menu:
-            wal1 "Oh, [player_name], please don't approach the area, it is dangerous-"
+            wal1 "Oh, [player_name], please don't approach the area, it's dangerous-"
             "Pull the pin off the extinguisher.":
                 jump fire_extinguish
 
         label fire_extinguish:
             show firewal talk
-            n "You ignore Mnager Wal and pull off the pin while aiming it towards the fire."
-            n "You see something come out of the nozzle. The substance is a strange crystal blue. It envolopes you."
+            n "You ignore Manager Wal and pull off the pin while aiming it towards the fire."
+            n "You see something come out of the nozzle. The substance is a strange crystal blue. It envelops you."
             show blueeeee onlayer top:
                 alpha 0.0
                 linear 0.3 alpha 0.55
             n "You feel your entire body now coated in a cooling blue film, like an extra layer of skin. It is so cool that you can no longer feel the heat of the fire."
             n "You shake the now empty extinguisher. Well, that didn't do shit."
-            n "Suddenly, your legs move forwards uncontrolably towards the flames. It is as if a strong force is pulling your muscles and moving them by your skin."
+            n "Suddenly, your legs move forwards uncontrollably towards the flames. It's as if a strong force is pulling your muscles and moving them by your skin."
             n "Wait, skin?"
             player "Wait wait wait wait help-!"
             firewal "[player_name]? Could you please step away?"
@@ -460,7 +460,7 @@ label day_event_fire:
                 alpha 1.0
                 pause 0.1
                 easein 0.3 alpha 0.55
-            n "You blue skin ignores Manager Wal and hurls you into the fire."
+            n "Your blue skin ignores Manager Wal and hurls you into the fire."
             hide haze orange onlayer top
             n "The fire is almost instantly quenched. Part of your new blue skin extends to cover and smother out any remaining flickers."
             show firewal:
@@ -472,15 +472,15 @@ label day_event_fire:
             firewal "Ah. Did you not see it reads DO NOT USE UNLESS ABSOLUTELY NECCESSARY?"
             n "You feel a chill down your spine."
             player "{b}{color=#5b7cc7}{cps=*0.6}Was this not an emergency?{/cps}{/color}{/b}"
-            firewal "No, us Wals could've taken care of it. That extinguisher is not to be use unless {i}ABSOLUTELY NECCESSARY{/i}."
+            firewal "No, us Wals could've taken care of it. That extinguisher isn't to be used unless {i}ABSOLUTELY NECCESSARY{/i}."
             n "You feel the coldness in his words."
             firewal pensive "Requesting backup! Apprehension and medical units!"
             player "{b}{color=#5b7cc7}{cps=*0.4}What's going on?{/cps}{/color}{/b}"
             n "You feel very cold. As if your skin is turning into ice."
-            firewal upset "The extinguisher you used has an anomaly in it. The anomaly thrive by absorbing heat."
+            firewal upset "The extinguisher you used has an anomaly in it. The anomaly thrives by absorbing heat."
             player "{b}{color=#5b7cc7}{cps=*0.2}Is that so..?{/cps}{/color}{/b}"
             firewal "And after the heat from the fire is absorbed, the next closest heat source is you."
-            n "Your eyes slowly closes as Manager Wal spoke the last words."
+            n "Your eyes slowly close as Manager Wal speaks the last words."
             scene bg sickbay
             show blueeeee onlayer top:
                 linear 0.3 alpha 0.0
@@ -488,17 +488,17 @@ label day_event_fire:
             n "You awaken in the foundation infirmary."
             hide blueeeee onlayer top
             show uriel at appear
-            uriel "Oh, you're up."
+            uriel "Oh, you have awoken."
             uriel happy "Thanks for putting out the fire! And...using the extinguisher."
-            uriel "No wonder I don't remember what happened the last time I used it."
+            uriel "No wonder I do not remember what happened the last time I used it."
             uriel neutral "The Wals are less pleased with you than I am, since they have to clean up the anomaly you released even though it was not ABSOLUTELY NECCESSARY."
             player "So when {i}exactly{/i} is ABSOLUTELY NECCESSARY?"
             show uriel surprise
             n "Uh oh. You don't like that new look on Uriel's face."
-            uriel fury "It's clearly stated in the foundation code, as well as the onboarding traings. You should've seen it!"
-            uriel upset "Since you don't know, I shall recite it for you."
-            uriel "{cps=*2}Code 2: Emergencies classfications and counter measures. Emergencies that occurs at the foundation can normally be classified into 5 catagories. They are level 1(mild), level 2 (moderate), level 3 (threat), level 4 (severe), and level 5 (dangerous).{/cps}{cps=*4} Level 5 can be further divided into just dangerous, or ABSOLUTELY NECCESSARY. All equipment used to tackle emergencies have a corresponding classification tag for which emergency level it can be used in. {/cps}{cps=*6}This is decided through the evaluation of risk, cost, danger of situations and technical skills required. The fire today would at most only be classified as a high level 2 emergency-{/cps}"
-            n "Your brain decide that this amount of information is too much to handle and overloads."
+            uriel fury "It is clearly stated in the foundation code, as well as the onboarding trainings. You should have seen it!"
+            uriel upset "Since you do not know, I shall recite it for you."
+            uriel "{cps=*2}Code 2: Emergency classfications and counter measures. Emergencies that occurs at the foundation can normally be classified into 5 catagories. They are level 1(mild), level 2 (moderate), level 3 (threat), level 4 (severe), and level 5 (dangerous).{/cps}{cps=*4} Level 5 can be further divided into just dangerous, or ABSOLUTELY NECCESSARY. All equipment used to tackle emergencies have a corresponding classification tag for which emergency level it can be used in. {/cps}{cps=*6}This is decided through the evaluation of risk, cost, danger of situations and technical skills required. The fire today would at most only be classified as a high level 2 emergency-{/cps}"
+            n "Your brain decides that this amount of information is too much to handle and overloads."
         $ update_character_points({"firewal": -1, "helco": 0, "uriel": 2, "aikha":-1, "moon": 0})
         return
 
