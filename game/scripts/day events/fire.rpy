@@ -331,12 +331,8 @@ label day_event_fire:
 
         $ put_wals_out_of_a_job = True
         # you put wals out of a job, angry wals
-        $ update_character_points({"firewal": -1, "helco": -1, "uriel": -1, "aikha": 1})
+        $ update_character_points({"firewal": -2, "helco": 0, "uriel": 0, "aikha": 2, "moon": 1})
         return
-
-
-
-
 
     label convince_the_conference:
         # convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
@@ -391,8 +387,8 @@ label day_event_fire:
         uriel "That should be fine. Just get back quickly."
         n "Helco gives you a thumbs up as you turn to leave."
         n "Alright, so you're in Hallway 7B, which means 7C should be an adjacent hallway."
-
-        $ update_character_points({"firewal": -1, "helco": 1, "uriel": -1, "moon": -1})
+        ############################################################################################################################################################################################################################################################
+        $ update_character_points({"firewal": -1, "helco": 0, "uriel": 1, "aikha":-1, "moon": 0})
         return
 
     label helco_help:
@@ -442,7 +438,7 @@ label day_event_fire:
         hide wal
         n "They make their ways into the wall, and you are left with a giant puddle of later where the fire and Wals once were."
         uriel "Oh, it is already out. Good, I was not sure that this could deal with a fire that big."
-        $ update_character_points({"firewal": -1, "helco": -1, "uriel": 1, "moon": -1})
+        $ update_character_points({"firewal": -1, "helco": 0, "uriel": 1, "aikha":-1, "moon": 0})
         return
         
     label wal_management:
@@ -493,6 +489,9 @@ label day_event_fire:
     n "You suspect it might be a little too late for that..."
     $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1, "moon": -1, "uriel": -1})
     return
+
+    pause 0.5
+
 # have the three options as call... moon?, convince everyone to help, let the wals manage it
 # let the wals manage it, wal no1: OK THE FIRE IS PUT DOWN: casualty 100290 wals estimate damage to the area: 200 Million narrator: au-AUGH maybe dont let chan see this one… helco: who's writing the incident report... Chan exits one of the charred offices: Just put in the pile with the rest of them... I'll get to it eventually...
 # pleases wal, disappoints aikha
