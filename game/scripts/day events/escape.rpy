@@ -19,7 +19,7 @@ label escape_initialize:
             "Phone (Dead)": "escape_item_phone_dead",
             "Phone (Charged)": "escape_item_phone_charged",
             "Testimony (Blue Sticky)": "escape_item_testimony",
-            "Page 237 (Spawn Rate)": "escape_item_page_237",
+            "Page 140 (Spawn Rate)": "escape_item_page_140",
             "Purple Light": "escape_item_purple_light",
             "Slip of Paper": "escape_item_slip_of_paper",
         }
@@ -55,7 +55,7 @@ label day_event_escape:
     aikha "Oh, look who the cat dragged in."
     show aikha at appear(x_align = 0.2)
     show ryz at appear(x_align = 0.5)
-    show wal at appear(x_align = 0.8)
+    show firewal at appear(x_align = 0.8)
     ryz "Morning, [player_name]."
     player "Where the hell are we?"
     firewal "No clue. Think we're in some containment room."
@@ -65,18 +65,22 @@ label day_event_escape:
     n "\"Signed, #######\""
     n "The name is blacked out."
     aikha "Ooh, this could be fun. New recruit, there should be hints scattered around the room. Try to piece together the puzzle and get us out of here!"
+    show aikha at disappear
+    show ryz at disappear
+    show firewal at disappear
     jump escape_main_menu
 
 label escape_main_menu:
-    n "What do you do?"
-    "Look around.":
-        jump escape_look_around
-    "Talk.":
-        jump escape_talk
-    "Check inventory.":
-        jump escape_inventory_menu
-    "Submit the passcode.":
-        jump escape_passcode
+    menu:
+        n "What do you do?"
+        "Look around.":
+            jump escape_look_around
+        "Talk.":
+            jump escape_talk
+        "Check inventory.":
+            jump escape_inventory_menu
+        "Submit the passcode.":
+            jump escape_passcode
 
 # ------------------------------ LOOK ------------------------------
 label escape_look_around:
@@ -150,11 +154,13 @@ label escape_left_wall:
 
             show black_screen zorder 50
             # stop music
-            n "{sc}{color=#ffffff}The Trickster.{/color}{/sc}"
+            show layer screens:
+                shake
+            n "{sc}{color=#ff0000}The Trickster.{/color}{/sc}"
             
-            show screen qte(act=Jump("escape_trickster_game_1_fail"), time=8)
+            show screen qte(act=Jump("escape_trickster_game_1_fail"), time=6)
             menu:
-                n "{sc}{color=#ffffff}Turn around. Face me.{/color}{/sc}"
+                n "{sc}{color=#ff0000}Shall we play a game?{/color}{/sc}"
                 "Don't turn around." (on_hover = "Turn around."):
                     jump escape_trickster_game_1_fail
                 "Don't turn around." (on_hover = "Turn around."): 
@@ -166,67 +172,69 @@ label escape_left_wall:
             
             label escape_trickster_game_1_2:
                 hide screen qte
-                show screen qte(act=Jump("escape_trickster_game_1_fail"), time=6)
+                show screen qte(act=Jump("escape_trickster_game_1_fail"), time=4)
                 menu:
-                n "{sc}{color=#ffffff}Face me.{/color}{/sc}"
-                "Don't turn around.": 
-                    jump escape_trickster_game_1_3
-                "Don't turn around." (on_hover = "Turn around."):
-                    jump escape_trickster_game_1_fail
-                "Don't turn around." (on_hover = "Turn around."): 
-                    jump escape_trickster_game_1_fail
-                "Don't turn around." (on_hover = "Turn around."):
-                    jump escape_trickster_game_1_fail
+                    n "{sc}{color=#ff0000}Turn around.{/color}{/sc}"
+                    "Don't turn around.": 
+                        jump escape_trickster_game_1_3
+                    "Don't turn around." (on_hover = "Turn around."):
+                        jump escape_trickster_game_1_fail
+                    "Don't turn around." (on_hover = "Turn around."): 
+                        jump escape_trickster_game_1_fail
+                    "Don't turn around." (on_hover = "Turn around."):
+                        jump escape_trickster_game_1_fail
                 
             label escape_trickster_game_1_3:
                 hide screen qte
-                show screen qte(act=Jump("escape_trickster_game_1_fail"), time=4)
+                show screen qte(act=Jump("escape_trickster_game_1_fail"), time=3)
                 menu:
-                n "{sc}{color=#ffffff}Face me.{/color}{/sc}"
-                "Don't turn around." (on_hover = "Turn around."):
-                    jump escape_trickster_game_1_fail
-                "Don't turn around." (on_hover = "Turn around."): 
-                    jump escape_trickster_game_1_fail
-                "Don't turn around." (on_hover = "Turn around."):
-                    jump escape_trickster_game_1_fail
-                "Don't turn around.": 
-                    hide screen qte
-                    jump escape_trickster_game_1_end
+                    n "{sc}{b}{color=#ff0000}FACE ME.{/color}{/b}{/sc}"
+                    "Don't turn around." (on_hover = "Turn around."):
+                        jump escape_trickster_game_1_fail
+                    "Don't turn around." (on_hover = "Turn around."): 
+                        jump escape_trickster_game_1_fail
+                    "Don't turn around." (on_hover = "Turn around."):
+                        jump escape_trickster_game_1_fail
+                    "Don't turn around.": 
+                        hide screen qte
+                        jump escape_trickster_game_1_end
                     
             label escape_trickster_game_1_fail:
                 hide screen qte
                 n "Your attempts of resistance are futile."
                 n "You feel your body turn around, against your will."
-                n "You look upwards, {color=#ffffff}against your will.{/color}"
-                n "You reach your arm out, {sc}{color=#ffffff}against your will.{/color}{/sc}"
-                n "{sc}{color=#ffffff}You are but a puppet.{/color}{/sc}"
+                n "You look upwards, {color=#ff0000}against your will.{/color}"
+                n "{color=#ff0000}You reach your arm out, {/color}{sc}{color=#ff0000}against your will.{/color}{/sc}"
+                n "{cps=*0.35}{sc}{color=#ff0000}You are but a puppet.{/color}{/sc}{/cps}"
                 
 
             label escape_trickster_game_1_end:
                 hide black_screen
                 n "Suddenly, the lights turn back on."
-                n "Your heart is racing. Your palms feel sweaty."
+                n "Your heart is pounding. Your palms are sweaty."
                 n "But whatever was behind you is gone."
                 n "...Was it ever there to begin with? You don't know."
                 n "The blue sticky note is still on the wall in front of you."
                 n "You decide to keep it for safekeeping."
                 n "Witness Testimony has been added to your inventory."
-                $ escape_inventory.add("Testimony (Blue Sticky)")
+                $ escape_inventory.append("Testimony (Blue Sticky)")
                 $ escape_testimony_read = True
                 jump escape_left_wall
     
     label escape_left_wall_orange:
         n "You read the orange sticky note. All it says is:"
         n "\"810: ? + ?? + ???\""
-        n "...Very helpful."
+        n "So concise."
         jump escape_left_wall
 
 label escape_back_wall:
+    $ escape_back_wall_flavour_text = "The notebook is here."
     if not escape_back_wall_viewed:
         n "There's a countertop on the back wall, on which a notebook rests. Most of the pages are burnt, bloodstained or otherwise vandalized."
         $ escape_back_wall_viewed = True
+        $ escape_back_wall_flavour_text = "What do you do?"
     else:
-        n "The notebook is here."
+        n "[escape_back_wall_flavour_text]"
     menu:
         n "What do you do?"
         "Open notebook.":
@@ -245,7 +253,7 @@ label escape_back_wall:
         if not escape_back_wall_notebook_viewed:
             n "\"Page 93: Tax fraud and illegal immigration.\""
             n "...Maybe the rest isn't so important."
-            escape_back_wall_notebook_viewed = True
+            $ escape_back_wall_notebook_viewed = True
 
         label escape_back_wall_notebook_flip:
             python:
@@ -288,7 +296,7 @@ label escape_back_wall:
                     
                     label escape_back_wall_notebook_morse_game:
                         $ escape_morse_input = renpy.input("What's the answer?")
-                        if escape_morse_input.lower() != "page 237":
+                        if escape_morse_input.lower() != "page 140":
                             if escape_morse_attempts == 0:
                                 n "..."
                                 n "No, that doesn't seem right. Try again."
@@ -307,24 +315,24 @@ label escape_back_wall:
                                 player "I can't solve this fricking-"
                                 aikha happy "Ooh, is that Morse? Give me!"
                                 n "Dr. Aikha snatches the paper out of your hand, and without even looking at the cipher, decodes it effortlessly."
-                                aikha "Page...237! That's what it says."
+                                aikha "Page...140! That's what it says."
 
                                 # TODO: give less points to aikha if you fail this
                                 aikha "Hehe, thank me later!"
                         
-                        n "\"Page 237\"... You have a feeling you know what this means."
+                        n "\"Page 140\"... You have a feeling you know what this means."
 
                 if not escape_back_wall_notebook_ciphers_viewed:
                     n "\"\"The Vigenere cipher, on the other hand...\""
                     n "You can almost feel the condescending nerd voice emanating from the words on the page and decide to stop before you get infected."
-                    escape_back_wall_notebook_ciphers_viewed = True
+                    $ escape_back_wall_notebook_ciphers_viewed = True
             
             elif escape_flip_to_page == 93:
                 n "\"A Guide to Committing Tax Fraud.\""
                 n "Unfortunately for you, the guide to illegal immigration seems to be missing."
                 n "...You probably have better things to be looking at."
 
-            # elif escape_flip_to_page == 237:
+            # elif escape_flip_to_page == 140:
             #     # TODO: UPDATE
             #     $ NullAction()
 
@@ -338,7 +346,7 @@ label escape_back_wall:
                 #  11, 9, 30 TODO: UPDATE ANSWERS
                 n "There's a lot going on here. Wonder what any of this means."
                 n "You tear the page out for safekeeping."
-                $ escape_inventory.add("Page 810 (Numbers)")
+                $ escape_inventory.append("Page 810 (Numbers)")
             elif escape_flip_to_page == 887:
                 n "There's nothing here."
                 if escape_back_wall_notebook_gullible_marked:
@@ -475,7 +483,7 @@ label escape_right_wall:
             n "You find the nearest outlet and start charging your phone."
             n "After a little bit, the screen turns on. Nice!"
             $ escape_inventory.remove("Phone (Dead)")
-            $ escape_inventory.add("Phone (Charged)")
+            $ escape_inventory.append("Phone (Charged)")
             jump escape_right_wall
 
 
@@ -507,7 +515,7 @@ label escape_right_wall:
                     $ escape_left_wall_briefcase_code_correct = False
                 "Yellow.":
                     $ NullAction()
-                "Crimson."
+                "Crimson.":
                     $ escape_right_wall_briefcase_code_correct = False
             menu:
                 n "What's the second colour?"
@@ -545,8 +553,8 @@ label escape_right_wall:
                 n "\"Find my complement.\""
                 n "There doesn't seem to be anything else in the briefcase."
                 n "Both items have been added to your inventory."
-                $ escape_inventory.add("Slip of Paper")
-                $ escape_inventory.add("Purple Light")
+                $ escape_inventory.append("Slip of Paper")
+                $ escape_inventory.append("Purple Light")
                 jump escape_right_wall
             else:
                 n "The briefcase doesn't open."
@@ -586,8 +594,9 @@ label escape_item_testimony:
 
 # ------------------------------ PASSCODE ------------------------------
 label escape_passcode:
+    $ escape_plural = "" if escape_passcode_attempts_remaining == 1 else "s"
     menu:
-        n "You have [escape_passcode_attempts_remaining] attempt["" if escape_passcode_attempts_remaining == 1 else "s"] remaining. Are you sure you would like to submit the code?"
+        n "You have [escape_passcode_attempts_remaining] attempt[escape_plural] remaining. Are you sure you would like to submit the code?"
         "Yes.":
             jump escape_submit_passcode_1
         "Go back.":

@@ -213,6 +213,11 @@ init python:
             label="pokanom",
             personnel=["chan", "uriel", "egg", "lee", "b6"],
             tags=["personnel"],
+        ),
+        Event(
+            label="escape",
+            personnel=["ryz", "aikha", "firewal"],
+            tags=["personnel"],
         )
     ]
 
@@ -239,7 +244,8 @@ init python:
         "I'm off the clock.",
         "Signing off.",
         "Welp, let's go.",
-        "At least I'm free now."
+        "At least I'm free now.",
+        "Get me out get me oug getm ouget mgetou mteot"
     ]
 
     showcase_events = [
