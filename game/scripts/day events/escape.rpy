@@ -61,7 +61,7 @@ label day_event_escape:
     firewal "No clue. Think we're in some containment room."
     aikha "We all just kind of woke up here."
     n "You look at the door to the room and see a torn scrap of paper next to it. You make your way over to it and read it:"
-    n "\"..And for those who forgot, the password is simply the anomaly's appearance, nickname and identification number.\""
+    n "\"..And for those who forgot, the password is simply the anomaly's name and V.A.C. number.\""
     n "\"Signed, #######\""
     n "The name is blacked out."
     aikha "Ooh, this could be fun. New recruit, there should be hints scattered around the room. Try to piece together the puzzle and get us out of here!"
@@ -223,7 +223,7 @@ label escape_left_wall:
     
     label escape_left_wall_orange:
         n "You read the orange sticky note. All it says is:"
-        n "\"810: ? + ?? + ???\""
+        n "\"610: ? + ?? + ???\""
         n "So concise."
         jump escape_left_wall
 
@@ -235,6 +235,7 @@ label escape_back_wall:
         $ escape_back_wall_flavour_text = "What do you do?"
     else:
         n "[escape_back_wall_flavour_text]"
+    
     menu:
         n "What do you do?"
         "Open notebook.":
@@ -251,7 +252,7 @@ label escape_back_wall:
         n "\"Page 67: Ciphers and translating them.\""
 
         if not escape_back_wall_notebook_viewed:
-            n "\"Page 93: Tax fraud and illegal immigration.\""
+            n "\"Page 193: Tax fraud and illegal immigration.\""
             n "...Maybe the rest isn't so important."
             $ escape_back_wall_notebook_viewed = True
 
@@ -265,16 +266,18 @@ label escape_back_wall:
                     escape_flip_to_page = renpy.input("What page do you go to? (\"Back\" to go back.)", default=1)
                 escape_flip_to_page = int(escape_flip_to_page)
             if escape_flip_to_page == 1:
-                n "The notebook reads:"
-                n "\"All anomalies are given a unique identification code comprised of two three-digit numbers separated by a hyphen.\""
-                n "\"The first number is the anomaly's {b}spawn rate{/b}, which indicates how often the anomaly has been encountered.\""
-                n "\"The second number is the anomaly's {b}globalization{/b}, which indicates how widespread the anomaly's presence is.\""
-                n "\"For instance, VACF 505-102, nicknamed 'Smiling Marshmallow' has been encountered often but does not have very widespread presence.\""
-                n "The explanation ends with various doodles of Pochi eating a marshmallow."
+                n "The page reads:"
+                n "\"All anomalies are given a unique identification code comprised of six digits separated three-and-three by a hyphen.\""
+                n "\"The first number is the anomaly's {b}threat level{/b} from 1-10, which indicates how dangerous the anomaly is to the general public.\""
+                n "\"Following this number is the {b}spawn rate{/b} from 1-100 (with 00 being 100), which is often the anomaly has been encountered."
+                n "\"This three-digit number is followed by a hyphen and the anomaly's {b}globalization{/b}, which indicates how widespread the anomaly's presence is.\""
+                n "\"Finally, the last digit is the {b}authorization level{/b} required to know about this anomaly from 1-10."
+                n "\"For instance, VACF 505-102, nicknamed 'Smiling Marshmallow' is relatively dangerous, found rarely, appears only in specific areas and can be found on the information with some digging.\""
+                n "The explanation ends with various doodles of Pochi eating a grinning marshmallow."
             elif escape_flip_tp_page == 50:
                 n "Oh! There's something on this page. It appears to be a transcript between two people."
                 n "\"{i}*inaudible*{/i}\""
-                n "\"{i}...ere? Like, here here?{/i}\""
+                n "\"{i}...Here? Like, here here?{/i}\""
                 n "\"{i}Yeah, I got ... to perform an analysis.{/i}\""
                 n "\"{i}Well, shit, where is it?{/i}\""
                 n "\"{i}{/i}\""
@@ -309,9 +312,9 @@ label escape_back_wall:
                             else:
                                 n "..."
                                 n "That's probably wrong."
-                                player "RAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+                                player "RAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH{nw}"
                                 show aikha at appear
-                                aikha "Hey, new recruit, what's up?"
+                                aikha "Hey, newbie, what's up?"
                                 player "I can't solve this fricking-"
                                 aikha happy "Ooh, is that Morse? Give me!"
                                 n "Dr. Aikha snatches the paper out of your hand, and without even looking at the cipher, decodes it effortlessly."
@@ -327,7 +330,7 @@ label escape_back_wall:
                     n "You can almost feel the condescending nerd voice emanating from the words on the page and decide to stop before you get infected."
                     $ escape_back_wall_notebook_ciphers_viewed = True
             
-            elif escape_flip_to_page == 93:
+            elif escape_flip_to_page == 193:
                 n "\"A Guide to Committing Tax Fraud.\""
                 n "Unfortunately for you, the guide to illegal immigration seems to be missing."
                 n "...You probably have better things to be looking at."
@@ -336,7 +339,7 @@ label escape_back_wall:
             #     # TODO: UPDATE
             #     $ NullAction()
 
-            elif escape_flip_to_page == 810:
+            elif escape_flip_to_page == 610:
                 n "Oh, there's some stuff on this page."
                 # show cg
                 # 3, 4, 4, 5, 6, 8, ?, 16, 24, 37
