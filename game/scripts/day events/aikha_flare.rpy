@@ -1,6 +1,7 @@
 image overlay_ai_1 = At("images/day events/overlay ai 1.png", base_overlay_transform)
 image haze black= At("images/day events/red blur.png", base_overlay_transform)
 image soundwave = At("images/day events/soundwave overlay.png", base_overlay_transform)
+image black screen = "images/day events/black screen.png"
 
 transform dummy:
     alpha 1.0
@@ -285,56 +286,93 @@ label day_event_aikha_flare:
                 alpha 1.0
                 linear 0.3 alpha 0
             $ flare_pin_tries = 0
-            $ flare_actual_pin = renpy.random.randint(100,999)
+            $ flare_actual_pin = renpy.random.randint(1000,9999)
+            $ flarepin_attempts = 'You\'ve already tried:'
             jump flare_enter_pin
 
         label flare_enter_pin:
-            while flare_pin_tries < 20:
-                n "You see the display only allows for a 3-digits code. A label has been stuck above it. It reads: {i}How many eyes does Dr. Aikha usually have?{/i}"
-                $ flare_pin = renpy.input("Enter a 3-digits pin:")
+            while flare_pin_tries < 10:
+                n "You see the display only allows for a 4-digits code. A label has been stuck above it. It reads: {i}How many eyes does Dr. Aikha usually have?{/i}"
+                $ renpy.notify([flarepin_attempts])
+                $ flare_pin = renpy.input("Enter a 4-digits pin:")
                 $ flare_pin = flare_pin.strip()
-                $ flare_pin_results = 5
+                if flarepin_attempts == 'You\'ve already tried:':
+                    $ flarepin_attempts = f"{flarepin_attempts} {flare_pin}"
+                else:
+                    $ flarepin_attempts = f"{flarepin_attempts} ', ' {flare_pin}"
                 python:
                     try: 
                         flare_pin_int = int(flare_pin)
                         if flare_pin_int < flare_actual_pin:
-                            if len(str(flare_pin)) != 3:
-                                flare_pin_results = 1
+                            if len(str(flare_pin)) != 4:
+                                renpy.say(n, "{b}4-digits{/b}. Do you not know how to count?")
                             else:
-                                flare_pin_results = 2 
+                                renpy.say(n, "WHOMP WHOMP. THAT'S TOO LITTLE. TRY AGAIN.")
                         elif flare_pin_int > flare_actual_pin:
-                            if len(str(flare_pin_int)) != 3:
-                                flare_pin_results = 1
+                            if len(str(flare_pin_int)) != 4:
+                                renpy.say(n, "{b}4-digits{/b}. Do you not know how to count?")
                             else:
-                                flare_pin_results = 3
+                                renpy.say(n, "WHOMP WHOMP. NOT THAT MANY. TRY AGAIN.")
                         elif flare_pin_int == flare_actual_pin:
-                            flare_pin_results = 0
+                            renpy.say(n, "DING!")
+                            renpy.jump("open_safe")
                     except:
-                        flare_pin_results = 4
+                        renpy.say(n, "That is not a number. How did you even enter this?")
+                    flare_pin_tries += 1
+                    renpy.jump("flare_enter_pin")
+            label flare_enter_pin_answer:
+                if flare_pin_tries >= 10:
+                    pocketwal "IT'S [flare_actual_pin]!!!!!"
+                    $ renpy.notify([flarepin_attempts])
+                    $ flare_pin = renpy.input("Enter a 4-digits pin:")
+                    $ flare_pin = flare_pin.strip()
+                    if flare_pin == str(flare_actual_pin):
+                        n "DING!"
+                        n "Wow. Finally. That only took like what, [flare_pin_tries] times?"
+                        jump open_safe
+                    elif flare_pin != flare_actual_pin:
+                        if flare_pin_tries == 11:
+                            n "Do you prefer the omni version of Dr. Aikha, perhaps?"
+                        elif flare_pin_tries == 12:
+                            n "Come on, this is getting old."
+                        elif flare_pin_tries == 13:
+                            n "I'm starting to question how you got this intern position."
+                        elif flare_pin_tries == 14:
+                            n "Is it your life's dream to be eaten? What is this, reverse cannibalism?"
+                        elif flare_pin_tries == 15:
+                            n "Okay, I'll fullfill your wish."
+                            n "You frantically attempt to enter the wrong passwords, unaware that the screeching has gotten closer."
+                            show overlay_ai_1 zorder 49:
+                                alpha 0.0
+                                linear 0.5 alpha 1.0
+                            n "Uh oh."
+                            show black screen zorder 50:
+                                alpha 0.0
+                                easeout 0.2 alpha 1.0
+                            hide overlay_ai_1 zorder 49
+                            n ""
+                            pocketwal "{sc}ARE YOU NOT DONE YET???? IT'S [flare_actual_pin]!!!!!{/sc}"
+                            hide black screen zorder 50
+                            n "You jolt back awake."
+                            n "Wow, you really must be tired, to be able to fall asleep in a situation like this."
+                        elif flare_pin_tries %3 == 0:
+                            n "Do you prefer the omni version of Dr. Aikha, perhaps?"
+                        elif flare_pin_tries %5 == 0: 
+                            n "Come on, this is getting old."
+                        elif flare_pin_tries %2 == 0:
+                            n "I'm starting to question how you got this intern position."
+                        else:
+                            n "Is it your life's dream to be eaten? What is this, reverse cannibalism?"
 
-                if flare_pin_results == 0:
-                    n "DING!" 
-                    jump open_safe
-                elif flare_pin_results == 1:
-                    n "{b}3-digits{/b}. Do you not know how to count?"
-                    $ flare_pin_tries += 1
-                    jump flare_enter_pin
-                elif flare_pin_results == 2:
-                    n "WHOMP WHOMP. THAT'S TOO LESS. TRY AGAIN."
-                    $ flare_pin_tries += 1
-                    jump flare_enter_pin
-                elif flare_pin_results == 3:
-                    n "WHOMP WHOMP. THAT IS TOO MANY. TRY AGAIN."
-                    $ flare_pin_tries += 1
-                    jump flare_enter_pin
-                elif flare_pin_results == 4:
-                    n "That is not a number. How did you even enter this?"
-                    $ flare_pin_tries += 1
-                    jump flare_enter_pin
+                        $ flarepin_attempts = f"{flarepin_attempts} ', ' {flare_pin}"
+                        $ flare_pin_tries += 1
+                        jump flare_enter_pin_answer
+
 
 
             label open_safe:
                 # cg of open safe with biomass
+                n "You could've swore this was different from the last time you counted."
                 n "The safe pops open and out spills a mess of eyeballs, teeth, and flesh."
                 n "You are what you eat, I guess."
                 n "You decide not to ponder about the origins of the biomass."
