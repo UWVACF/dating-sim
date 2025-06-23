@@ -213,6 +213,11 @@ init python:
             label="pokanom",
             personnel=["chan", "uriel", "egg", "lee", "b6"],
             tags=["personnel"],
+        ),
+        Event(
+            label="tea_party",
+            personnel=["deceased", "alex", "hamp", "jessie"],
+            tags=["anomaly"],
         )
     ]
 
