@@ -215,6 +215,11 @@ init python:
             tags=["personnel"],
         ),
         Event(
+            label="tea_party",
+            personnel=["deceased", "alex", "hamp", "jessie"],
+            tags=["anomaly"],
+        )
+        Event(
             label="escape",
             personnel=["ryz", "aikha", "firewal"],
             tags=["personnel"],
