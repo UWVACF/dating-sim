@@ -157,10 +157,11 @@ label day_event_aikha_flare:
         scene hallway
         # idk about this part bc if each event is a day we shouldn't have an event jump to the next day
         # we can keep the joke with a different delivery
-        n "The next day you find a gold bar at your desk."
+        n "The next day you find a gold bar at your desk." #later in the day maybe?
         n "There seems to be a clear disparity between how you're paid and how heads are paid..."
         n "Not that you're complaining at this moment!"
         n "You can pay rent!"
+        $ update_character_points ({"aikha": 2})
         return
 
     label af_shoot:
@@ -279,15 +280,58 @@ label day_event_aikha_flare:
                 zoom 2.0
             # safe cg here
             n "Thankfully you find the safe. Now you just have to open it."
-            # uh discuss and design minigame? like asking you silly foundation lore questions? or solving actual puzzles?
             show layer master
             show soundwave onlayer top:
                 alpha 1.0
                 linear 0.3 alpha 0
-            menu:
-                n "uh discuss and design minigame? like asking you silly foundation lore questions? or solving actual puzzles?"
-                "i haven't planed the minigame yet so this is the only choice you get":
+            $ flare_pin_tries = 0
+            $ flare_actual_pin = renpy.random.randint(100,999)
+            jump flare_enter_pin
+
+        label flare_enter_pin:
+            while flare_pin_tries < 20:
+                n "You see the display only allows for a 3-digits code. A label has been stuck above it. It reads: {i}How many eyes does Dr. Aikha usually have?{/i}"
+                $ flare_pin = renpy.input("Enter a 3-digits pin:")
+                $ flare_pin = flare_pin.strip()
+                $ flare_pin_results = 5
+                python:
+                    try: 
+                        flare_pin_int = int(flare_pin)
+                        if flare_pin_int < flare_actual_pin:
+                            if len(str(flare_pin)) != 3:
+                                flare_pin_results = 1
+                            else:
+                                flare_pin_results = 2 
+                        elif flare_pin_int > flare_actual_pin:
+                            if len(str(flare_pin_int)) != 3:
+                                flare_pin_results = 1
+                            else:
+                                flare_pin_results = 3
+                        elif flare_pin_int == flare_actual_pin:
+                            flare_pin_results = 0
+                    except:
+                        flare_pin_results = 4
+
+                if flare_pin_results == 0:
+                    n "DING!" 
                     jump open_safe
+                elif flare_pin_results == 1:
+                    n "{b}3-digits{/b}. Do you not know how to count?"
+                    $ flare_pin_tries += 1
+                    jump flare_enter_pin
+                elif flare_pin_results == 2:
+                    n "WHOMP WHOMP. THAT'S TOO LESS. TRY AGAIN."
+                    $ flare_pin_tries += 1
+                    jump flare_enter_pin
+                elif flare_pin_results == 3:
+                    n "WHOMP WHOMP. THAT IS TOO MANY. TRY AGAIN."
+                    $ flare_pin_tries += 1
+                    jump flare_enter_pin
+                elif flare_pin_results == 4:
+                    n "That is not a number. How did you even enter this?"
+                    $ flare_pin_tries += 1
+                    jump flare_enter_pin
+
 
             label open_safe:
                 # cg of open safe with biomass
@@ -393,7 +437,7 @@ label day_event_aikha_flare:
             aikha upset "..."
             aikha fury "I advise you refrain from doing that again."
             hide aikha
-            $ update_character_points({"aikha": -1})
+            $ update_character_points({"aikha": 0})
 
             scene bg hallway
             n "You re-emerge into the hallway with your brand new arm."

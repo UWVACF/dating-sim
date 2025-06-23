@@ -2,6 +2,7 @@ label day_event_fire:
     image moonposter = "images/cgs/moonposter.png" 
     image greenbeam = "images/day events/green screen.png"
     image flashbang = "images/day events/white screen.png"
+    image blueeeee = "images/day events/haze blue strong.png"
     $ put_wals_out_of_a_job = False
 
     scene bg hallway
@@ -122,9 +123,9 @@ label day_event_fire:
         linear 1.5 xalign 0.1
     aikha "Huh? Nonono! Not again!"
     show firewal upset:
-        linear 3.0 xalign 1.6
+        linear 3.0 xalign 1.7
     show aikha panic:
-        linear 3.0 xalign 1.5
+        linear 3.0 xalign 1.7
     n "Dr. Firewal drags Dr. Aikha by the collar into his lab."
     aikha "NONONO! [player_name]! CALL MOON! CALL MOOOOOOOOOOON-"
     with hpunch
@@ -132,13 +133,18 @@ label day_event_fire:
     hide firewal
     hide aikha
 # ADD WAL NO.1
-    show firewal at appear(x_align = 0.0)
+    show firewal:
+        alpha 0.0
+        xzoom -1.0
+        alpha 1.0
+        appear(x_align = 0.0)
     n "A Wal bot sporting the tag, {i}\"Manager Wal\"{/i}, appears with a clipboard."
     wal1 "It appears Wal No.927 combusted after seeing a whole server destroyed by Hampter." 
     wal1 "Do not panic! We will have Wals work to put out the fire."
     wal1 "We calculate that it will take 118098 Wals to completely extinguish the fire."
     n "...118098 Wals?"
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -148,6 +154,7 @@ label day_event_fire:
 
     n "You see a Wal run into the fire, attempt to punch it out, and combust from stress."
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -156,6 +163,7 @@ label day_event_fire:
         shake
     n "You see a second Wal attempt to do the same... and combust."
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -165,6 +173,7 @@ label day_event_fire:
     n "Then a third..."
     
     show firewal as dummy_wal:
+        xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
@@ -265,7 +274,7 @@ label day_event_fire:
         show uriel unique:
             xalign 0.33
             yalign 1.0
-        show helco upset:
+        show helco sad:
             xalign 0.66
             yalign 1.0
         n "You see a half distinegrated Uriel and an unusual expression on Dr. Helco's face."
@@ -291,23 +300,23 @@ label day_event_fire:
         show bg room hall
         show firewal fury
         show firewal fury as wal1:
-            xalign 0.1
-            yalign 1.0
+            xalign -0.1
+            yalign 1.3
         show firewal fury as wal2:
-            xalign 0.9
-            yalign 1.0
+            xalign 0.1
+            yalign 1.3
         show firewal fury as wal3:
             xalign 0.3
-            yalign 1.0
+            yalign 1.3
         show firewal fury as wal4:
             xalign 0.7
-            yalign 1.0
+            yalign 1.3
         show firewal fury as wal5:
-            xalign 0.2
-            yalign 1.0
+            xalign 0.9
+            yalign 1.3
         show firewal fury as wal6:
-            xalign 0.8
-            yalign 1.0
+            xalign 1.1
+            yalign 1.3
 
         wal1 "You've just put 118072 wals out of a job, [player_name]."
         wal1 "THE WAL will hear about this transgression."
@@ -323,12 +332,8 @@ label day_event_fire:
 
         $ put_wals_out_of_a_job = True
         # you put wals out of a job, angry wals
-        $ update_character_points({"firewal": -1, "helco": -1, "uriel": -1, "aikha": 1})
+        $ update_character_points({"firewal": -2, "helco": 0, "uriel": 0, "aikha": 2, "moon": 1})
         return
-
-
-
-
 
     label convince_the_conference:
         # convince everyone to help, uriel notes theres an extinguisher somewhere you go to grab it and come back to a really suspicious raincloud that has put out the fire. im guessing uriel would probably forget by now what happened due to stress
@@ -382,9 +387,119 @@ label day_event_fire:
         player "I'll get the fire extinguisher. Can you two just watch the fire and make sure the fire doesn't get worse?"
         uriel "That should be fine. Just get back quickly."
         n "Helco gives you a thumbs up as you turn to leave."
-        n "Alright, so you're in Hallway 7B, which means 7C should be an adjacent hallway."
+        scene bg room hall
+        # fire extinquisher cg
+        n "You find a glaring box anchored on the wall that reads: \n{b}SUPER EXTINGUISHER \nDO NOT USE UNLESS ABSOLUTELY NECESSARY{/b}"
+        n "You sure hope this is powerful enough to put out that fire. With the time your weak stamina took to get here, the fire probably got 10 times as big."
+        # hide cg
+        n "You break the glass case and take out the extinguisher and run back towards the blazing heat."
+        scene bg meeting hall
+        show uriel:
+            xalign 0.33
+            yalign 1.0
+        show helco pensive:
+            xalign 0.66
+            yalign 1.0
+        with default_fade
+        player "Uriel! I got the extinguisher!"
+        uriel "Great! Go use it!"
+        player "...Me? But I have no firefighting training."
+        show helco happy
+        uriel "Well, neither do I. Plus, the last time I used that...I can't remember what happended."
+        n "Helco gives you an enthusiastic thumbs up, again."
+        n "Geez. These department heads really know how to avoid responsibility. Still, you suppose this is what differentiates them from regular employees like you."
+        hide uriel at disappear
+        hide helco at disappear
+        scene bg room hall
+        show firewal:
+            xzoom -1.0
+            xalign 0.0
+            yalign 1.0
+        show firewal as dummy_wal:
+            xzoom -1.0
+            yalign 1.0
+            xalign -0.5
+            linear 2.0 xalign 1.5
+            repeat
+        show layer master:
+            pause 0.6
+            block:
+                pause 1.5
+                shake
+                repeat
+        n "You muster up the courage and walk up to the fire surrounded by the Wals."
+        
+        menu:
+            wal1 "Oh, [player_name], please don't approach the area, it's dangerous-"
+            "Pull the pin off the extinguisher.":
+                jump fire_extinguish
 
-        $ update_character_points({"firewal": -1, "helco": 1, "uriel": -1, "moon": -1})
+        label fire_extinguish:
+            show firewal talk
+            n "You ignore Manager Wal and pull off the pin while aiming it towards the fire."
+            n "You see something come out of the nozzle. The substance is a strange crystal blue. It envelops you."
+            show blueeeee onlayer top:
+                alpha 0.0
+                linear 0.3 alpha 0.55
+            n "You feel your entire body now coated in a cooling blue film, like an extra layer of skin. It is so cool that you can no longer feel the heat of the fire."
+            n "You shake the now empty extinguisher. Well, that didn't do shit."
+            n "Suddenly, your legs move forwards uncontrollably towards the flames. It's as if a strong force is pulling your muscles and moving them by your skin."
+            n "Wait, skin?"
+            player "Wait wait wait wait help-!"
+            firewal "[player_name]? Could you please step away?"
+            show blueeeee onlayer top:
+                alpha 0.55
+                easein 0.3 alpha 1.0
+            pause 0.3
+            scene bg room hall 
+            show layer master:
+                shake(1.0,6.0)
+            show haze orange onlayer top:
+                alpha 0.0
+            show blueeeee onlayer top:
+                alpha 1.0
+                pause 0.1
+                easein 0.3 alpha 0.55
+            n "Your blue skin ignores Manager Wal and hurls you into the fire."
+            hide haze orange onlayer top
+            n "The fire is almost instantly quenched. Part of your new blue skin extends to cover and smother out any remaining flickers."
+            show firewal:
+                xalign 0.5
+                yalign 1.0
+            firewal surprise "Oh."
+            firewal "You used the SUPER EXTINGUISHER?"
+            player "{b}{color=#5b7cc7}Yes, I did.{/color}{/b}"
+            firewal "Ah. Did you not see it reads DO NOT USE UNLESS ABSOLUTELY NECCESSARY?"
+            n "You feel a chill down your spine."
+            player "{b}{color=#5b7cc7}{cps=*0.6}Was this not an emergency?{/cps}{/color}{/b}"
+            firewal "No, us Wals could've taken care of it. That extinguisher isn't to be used unless {i}ABSOLUTELY NECCESSARY{/i}."
+            n "You feel the coldness in his words."
+            firewal pensive "Requesting backup! Apprehension and medical units!"
+            player "{b}{color=#5b7cc7}{cps=*0.4}What's going on?{/cps}{/color}{/b}"
+            n "You feel very cold. As if your skin is turning into ice."
+            firewal upset "The extinguisher you used has an anomaly in it. The anomaly thrives by absorbing heat."
+            player "{b}{color=#5b7cc7}{cps=*0.2}Is that so..?{/cps}{/color}{/b}"
+            firewal "And after the heat from the fire is absorbed, the next closest heat source is you."
+            n "Your eyes slowly close as Manager Wal speaks the last words."
+            scene bg sickbay
+            show blueeeee onlayer top:
+                linear 0.3 alpha 0.0
+            with default_fade
+            n "You awaken in the foundation infirmary."
+            hide blueeeee onlayer top
+            show uriel at appear
+            uriel "Oh, you have awoken."
+            uriel happy "Thanks for putting out the fire! And...using the extinguisher."
+            uriel "No wonder I do not remember what happened the last time I used it."
+            uriel neutral "The Wals are less pleased with you than I am, since they have to clean up the anomaly you released even though it was not ABSOLUTELY NECCESSARY."
+            player "So when {i}exactly{/i} is ABSOLUTELY NECCESSARY?"
+            show uriel surprise
+            n "Uh oh. You don't like that new look on Uriel's face."
+            uriel fury "It is clearly stated in the foundation code, as well as the onboarding trainings. You should have seen it!"
+            uriel upset "Since you do not know, I shall recite it for you."
+            uriel "{cps=*2}Code 2: Emergency classfications and counter measures. Emergencies that occurs at the foundation can normally be classified into 5 catagories. They are level 1(mild), level 2 (moderate), level 3 (threat), level 4 (severe), and level 5 (dangerous).{/cps}{cps=*4} Level 5 can be further divided into just dangerous, or ABSOLUTELY NECCESSARY. All equipment used to tackle emergencies have a corresponding classification tag for which emergency level it can be used in. {/cps}{cps=*6}This is decided through the evaluation of risk, cost, danger of situations and technical skills required. The fire today would at most only be classified as a high level 2 emergency-{/cps}"
+            n "Your brain decides that this amount of information is too much to handle and overloads."
+        $ update_character_points({"firewal": -1, "helco": 0, "uriel": 2, "aikha":-1, "moon": 0})
         return
 
     label helco_help:
@@ -398,13 +513,15 @@ label day_event_fire:
         player "Follow me. Uriel, could you grab the fire extinguisher in the meantime?"
         uriel "Got it."
         show uriel at disappear
-        show bg room hall
-        show helco:
-            xalign 0.66
-            yalign 1.0
+        scene bg room hall
         n "You lead Dr. Helco out of the room to where Manager Wal is still guiding Walbots into the fire."
-        show firewal at appear(x_align = 0.0)
-        show firewal as dummy_wal behind helco:
+        show firewal:
+            alpha 0.0
+            xzoom -1.0
+            alpha 1.0
+            appear(x_align = 0.0)
+        show firewal as dummy_wal:
+            xzoom -1.0
             yalign 1.0
             xalign -0.5
             linear 2.0 xalign 1.5
@@ -418,23 +535,54 @@ label day_event_fire:
         wal1 "Excellent work, Walbots! Fight valiantly in the name of THE WAL!"
         "Wal No.1093" "FOR THE WAL! FOR THE WAL!"
         player "What to do..."
+        scene bg room hall
+        show helco 
         n "Helco glances around him and notices a nearby window."
         helco "Say, it's getting a little stuffy in here, [player_name]. Could you open the window for us?"
         n "The window? It's an odd request, but you have no better options."
+        show helco at disappear
         n "You walk over to the window and open-"
+        hide helco
+        show layer master:
+            block:
+                shake
+                repeat
+        show haze orange onlayer top:
+            linear 0.5 alpha 0.0
         n "Out of nowhere, a deluge of water blasts you in the face and floods the hallway."
+        show layer master
         n "You come to your senses as the water clears from the hallway."
         player "Dr. Helco?"
+        show helco happy at appear(x_align = 1.0)
         n "You look around and see Dr. Helco standing in a conveniently-sized dry spot next to the wall."
-        helco "[player_name], the fire has been extinguished!"
+        helco neutral "[player_name], the fire has been extinguished!"
         n "You turn to see the place where the fire used to be, along with quite a few drenched Wals."
-        show wal fury
+        show firewal fury at appear(x_align = 0.3)
+        show firewal fury as wal1:
+            xalign 0.1
+            yalign 1.3
+        show firewal fury as wal2:
+            xalign 0.5
+            yalign 1.3
         wal "You've just put 118072 Wals out of a job, [player_name], and we will need to be thoroughly dried before we can be assigned any more tasks."
         wal "This will be reported to THE WAL and you'll face the consequences."
-        hide wal
+        show firewal fury at disappear
+        show firewal fury as wal1 at disappear
+        show firewal fury as wal2 at disappear
         n "They make their ways into the wall, and you are left with a giant puddle of later where the fire and Wals once were."
+        hide firewal
+        hide wal1
+        hide wal2
+        show uriel at appear(x_align = 0.2)
         uriel "Oh, it is already out. Good, I was not sure that this could deal with a fire that big."
-        $ update_character_points({"firewal": -1, "helco": -1, "uriel": 1, "moon": -1})
+        player "...Yea. But we also drenched some Wals."
+        helco "I'm sure they'll be fine. They won't survive fighting the fire, anyways."
+        show uriel at disappear
+        show helco at disappear
+        n "You wonder if Dr. Helco will be willing to help you put out a fire again when you get set ablazed by the Wals."
+        hide uriel
+        hide helco
+        $ update_character_points({"firewal": -2, "helco": 1, "uriel": 0, "aikha":-1, "moon": 0})
         return
         
     label wal_management:
@@ -483,8 +631,10 @@ label day_event_fire:
     n "You hear a ping behind you."
     show chan panic
     n "You suspect it might be a little too late for that..."
-    $ update_character_points({"firewal": 1, "aikha": -1, "chan": -1, "moon": -1, "uriel": -1})
+    $ update_character_points({"firewal": 2, "helco": 0, "uriel": 0, "aikha":2, "moon": 0})
     return
+
+
 # have the three options as call... moon?, convince everyone to help, let the wals manage it
 # let the wals manage it, wal no1: OK THE FIRE IS PUT DOWN: casualty 100290 wals estimate damage to the area: 200 Million narrator: au-AUGH maybe dont let chan see this one… helco: who's writing the incident report... Chan exits one of the charred offices: Just put in the pile with the rest of them... I'll get to it eventually...
 # pleases wal, disappoints aikha

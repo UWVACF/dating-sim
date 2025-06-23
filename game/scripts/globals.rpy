@@ -152,7 +152,11 @@ init python:
         "paul": {
             "points": 0,
             "has_route": False
-        }
+        },
+        "moon": {
+            "points": 0,
+            "has_route": False
+        },
     }
     
 

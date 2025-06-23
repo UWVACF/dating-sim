@@ -123,7 +123,7 @@ init python:
     day_events = [
         Event(
             label="fire",
-            personnel=["aikha", "firewal", "Uriel", "Helco", "Moon"],
+            personnel=["aikha", "firewal", "uriel", "helco", "moon"],
         ),
         Event(
             label="test",
@@ -219,6 +219,11 @@ init python:
             personnel=["deceased", "alex", "hamp", "jessie"],
             tags=["anomaly"],
         )
+        Event(
+            label="escape",
+            personnel=["ryz", "aikha", "firewal"],
+            tags=["personnel"],
+        )
     ]
 
     # replace all spaces in labels with underscores
@@ -244,7 +249,8 @@ init python:
         "I'm off the clock.",
         "Signing off.",
         "Welp, let's go.",
-        "At least I'm free now."
+        "At least I'm free now.",
+        "Get me out get me oug getm ouget mgetou mteot"
     ]
 
     showcase_events = [

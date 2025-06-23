@@ -27,19 +27,19 @@ init python:
         
         # adds pause after commas
         text = re.sub(
-            r',(?!\s*{[^}]*}|[0-9])', 
+            r',(?!\s*[0-9])', 
             f',{{w={punctuation_pauses["comma"]}}}', 
             text
         )
         # adds pause after periods
         text = re.sub(
-            r'(?<!\bMr)(?<!\bMrs)(?<!\bDr)(?<!\bMRS)(?<!\bMR)(?<!\bDR)(?<!\.)\. (?!\s*{[^}]*}|\s*$|\.|[0-9])', 
+            r'(?<!\bMr)(?<!\bMrs)(?<!\bDr)(?<!\bMRS)(?<!\bMR)(?<!\bDR)(?<!\.)\. (?!\s*\s*$|\.|[0-9])', 
             f'. {{w={punctuation_pauses["period"]}}}', 
             text
         )
         # adds pause after elipses
         text = re.sub(
-            r'\.{3}(?!\s*{[^}]*})', 
+            r'\.{3}(?!\s*)', 
             f'.{{w={punctuation_pauses["elipsis"]}}}.{{w={punctuation_pauses["elipsis"]}}}.{{w={punctuation_pauses["elipsis"]}}}', 
             text
         )
