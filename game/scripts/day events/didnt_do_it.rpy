@@ -19,8 +19,8 @@ label day_event_didnt_do_it:
                 jump ddi_open_fridge
             "Check the cabinet.":
                 jump ddi_cabinet
-            "Check the microwave.":
-                jump ddi_microwave
+            "Check the vent.":
+                jump ddi_vent
             
         label ddi_cabinet:
             n "You open the cabinet above your head."
@@ -38,14 +38,14 @@ label day_event_didnt_do_it:
             n "You stare into the drawers through the handle holes, and realize that it's a false drawer that hides the sink."
             jump ddi_choice_loop
 
-        label ddi_microwave:
-            n "Why would a knife be in a microwave?"
-            n "Anyways, you open the microwave. There's no knife."
+        label ddi_vent:
+            n "Why would a knife be in a vent?"
+            n "Anyways, you open the lid to the vent. There's no knife."
             n "But there is a Hampter."
             show hampter happy
             hampter "Oh hey [player_name]! Are you getting lunch?"
             player "...Yes."
-            hampter "Don't mind me. You can use the microwave! I'm just taking a nap!" # "Don't mind me! You can use the microwave!"
+            hampter "Don't mind me. I'm just taking a nap!"
             hampter "Do close the door when you leave, please!"
             hide hampter
             n "Hampter turns around and begins shoo mimimiming."
