@@ -291,7 +291,7 @@ label day_event_aikha_flare:
             jump flare_enter_pin
 
         label flare_enter_pin:
-            while flare_pin_tries < 10:
+            while flare_pin_tries < 3:
                 n "You see the display only allows for a 4-digits code. A label has been stuck above it. It reads: {i}How many eyes does Dr. Aikha usually have?{/i}"
                 $ renpy.notify([flarepin_attempts])
                 $ flare_pin = renpy.input("Enter a 4-digits pin:")
@@ -315,13 +315,15 @@ label day_event_aikha_flare:
                                 renpy.say(n, "WHOMP WHOMP. NOT THAT MANY. TRY AGAIN.")
                         elif flare_pin_int == flare_actual_pin:
                             renpy.say(n, "DING!")
+                            renpy.say(n, "What the fu-")
+                            renpy.say(n, "How did you even know that???")
                             renpy.jump("open_safe")
                     except:
                         renpy.say(n, "That is not a number. How did you even enter this?")
                     flare_pin_tries += 1
                     renpy.jump("flare_enter_pin")
             label flare_enter_pin_answer:
-                if flare_pin_tries >= 10:
+                if flare_pin_tries >= 3:
                     pocketwal "IT'S [flare_actual_pin]!!!!!"
                     $ renpy.notify([flarepin_attempts])
                     $ flare_pin = renpy.input("Enter a 4-digits pin:")
@@ -331,15 +333,15 @@ label day_event_aikha_flare:
                         n "Wow. Finally. That only took like what, [flare_pin_tries] times?"
                         jump open_safe
                     elif flare_pin != flare_actual_pin:
-                        if flare_pin_tries == 11:
+                        if flare_pin_tries == 4:
                             n "Do you prefer the omni version of Dr. Aikha, perhaps?"
-                        elif flare_pin_tries == 12:
+                        elif flare_pin_tries == 5:
                             n "Come on, this is getting old."
-                        elif flare_pin_tries == 13:
+                        elif flare_pin_tries == 6:
                             n "I'm starting to question how you got this intern position."
-                        elif flare_pin_tries == 14:
+                        elif flare_pin_tries == 7:
                             n "Is it your life's dream to be eaten? What is this, reverse cannibalism?"
-                        elif flare_pin_tries == 15:
+                        elif flare_pin_tries == 8:
                             n "Okay, I'll fullfill your wish."
                             n "You frantically attempt to enter the wrong passwords, unaware that the screeching has gotten closer."
                             show overlay_ai_1 zorder 49:
