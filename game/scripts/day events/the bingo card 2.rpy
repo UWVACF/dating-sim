@@ -209,7 +209,7 @@ label bc2_continue:
             n "Uriel gives you a nod of approval."
             n "Helco gives you a thumbs up."
             n "See, you {i}can{/i} win ethically!"
-            $ update_character_points({"uriel": 1, "helco": -1})
+            $ update_character_points({"uriel": 1, "helco": 1, "ryz": -1, "deceased": -1, "caffi": 1})
             return
         
         label bingo2_cheat:
@@ -265,7 +265,7 @@ label bc2_continue:
             # hide deceased head cg
             n "The head cackles before rolling down the corridor after Pochi's trail."
             n "You're just glad that Dr. Deceased seems to have forgotten about your earlier actions."
-            $ update_character_points ({"deceased": 1, "helco": 1})
+            $ update_character_points ({"deceased": 1, "helco": 1, "uriel": -1, "ryz": -1})
             return
 
     label bingo2_dont_help_helco:
@@ -376,7 +376,7 @@ label bc2_continue:
                 alpha 0.0
                 linear 2 alpha 1.0
             hide shock onlayer top
-            $ update_character_points({"deceased": +1, "helco": 0, "ryz": -1, "uriel": -1})
+            $ update_character_points({"deceased": 2, "helco": 0, "ryz": -1, "uriel": -1})
 
             return
 
@@ -421,7 +421,7 @@ label bc2_continue:
             show uriel at disappear
             n "You faintly hear Dr. Deceased's footsteps returning."
             n "You decide that you do not want a matching curse of the Nile with Uriel. You also should get back to work, anyways, like you were supposed to two hours ago."
-            $ update_character_points({"deceased": -1, "helco": 0, "ryz": +1, "uriel": +1})
+            $ update_character_points({"deceased": -2, "helco": 0, "ryz": 1, "uriel": 1})
             return
 
 

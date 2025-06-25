@@ -87,7 +87,7 @@ label day_event_pokanom:
             show chan happy
             show egg sad
             n "Chan has the card, and, honestly, this might be the happiest you've ever seen him."
-            $ update_character_points({"uriel": -1, "chan": 1})
+            $ update_character_points({"uriel": -2, "chan": 2, "b6": 0, "lee": 0, "egg": 0})
             return
     
         label styxtini:
@@ -101,7 +101,7 @@ label day_event_pokanom:
             show egg sad
             n "Uriel pulls out a pen and a stack of papers about as thick as your arm."
             n "Wow, way to kick a guy when he's down."
-            $ update_character_points({"chan": -1, "uriel": 1})
+            $ update_character_points({"uriel": 2, "chan": -2, "b6": 0, "lee": 0, "egg": 0})
             return
     
     label grab_and_run:
@@ -138,7 +138,7 @@ label day_event_pokanom:
             n "Well with Dr. Chan distracted by the beauty of his card, you can make your escape."
             hide chan 
             n "Whatever's behind that door can wait for another day."
-            $ update_character_points({"uriel": -1, "chan": 1})
+            $ update_character_points({"uriel": -1, "chan": 1, "b6": 0, "lee": 0, "egg": 0})
             return
 
         label keep_running:
@@ -169,7 +169,7 @@ label day_event_pokanom:
             show egg sad
             n "Finally, it solidifies into a form you recognize as the Egg, which frowns at you and floats away."
             hide egg
-            $ update_character_points({"uriel": 1, "chan": -1})
+            $ update_character_points({"uriel": 1, "chan": -1, "b6": 0, "lee": 0, "egg": 0})
             #egg shows up?
             return
 

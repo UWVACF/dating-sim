@@ -140,7 +140,7 @@ label day_event_staring_contest:
         n "You try to play it off but end up in a coughing fit."
         lee "Uh oh."
         n "You should probably head to the infirmary."
-        $ update_character_points({"aikha": 2, "lee": 1})
+        $ update_character_points({"aikha": 2, "lee": 0})
         return
 
     label sc_irradiate:
@@ -261,7 +261,7 @@ label day_event_staring_contest:
             lee "By the way, [player_name]!"
             player "Hm?"
             lee "I won!"
-            $ update_character_points({"lee": 2, "aikha": 1})
+            $ update_character_points({"lee": 2, "aikha": 0})
             return
 
     label sc_judge:

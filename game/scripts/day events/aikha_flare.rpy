@@ -162,7 +162,7 @@ label day_event_aikha_flare:
         n "There seems to be a clear disparity between how you're paid and how heads are paid..."
         n "Not that you're complaining at this moment!"
         n "You can pay rent!"
-        $ update_character_points ({"aikha": 2})
+        $ update_character_points ({"aikha": 3})
         return
 
     label af_shoot:
@@ -412,7 +412,7 @@ label day_event_aikha_flare:
                 n "The Pocket Wal hops down and shoves you out of the door with surprising strength."
                 hide aikha
                 n "You have a feeling you won't be coming back here anytime soon."
-                $ update_character_points({"aikha": -2})
+                $ update_character_points({"aikha": -3})
 
             return
 

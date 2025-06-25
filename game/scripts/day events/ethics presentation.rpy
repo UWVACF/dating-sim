@@ -238,10 +238,10 @@ label day_event_ethics_presentation:
 
     if ethics_presentation_correct_answers == 0:
         n "You feel closer with Dr. Chan...is what you would say if you'd gotten a single one of his questions correct."
-        $ update_character_points({"chan": -2})
+        $ update_character_points({"chan": -3})
     elif ethics_presentation_correct_answers < 3:
         n "For someone dozing off during the presentation, you feel like you didn't do too bad on the questions."
     else:
         n "Despite being half awake during the presentation, you managed to answer his questions flawlessly. What a prodigy you are!"
-        $ update_character_points({"chan": 2})
+        $ update_character_points({"chan": 3})
     return
