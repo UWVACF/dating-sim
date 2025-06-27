@@ -1,6 +1,8 @@
 # define wal387 = get_wal_num(387)
 
 label day_event_the_bingo_card_1:
+    image shock = "images/cgs/shock effect.png"
+
     scene bg lounge
     with default_fade
     n "As you walk into the lounge for your break, you notice that the vibe feels...off."
@@ -17,7 +19,12 @@ label day_event_the_bingo_card_1:
     n "You quickly glance at Founder Alex's bingo sheet. The sheet is filled with goals like...\"Someone downs a pot of coffee\" and \"Someone does a backflip.\""
     n "...How often does someone do a backflip here?"
     n "You glance up and see his eyes fixated on a mug in the corner that reads, \"#1 BINGO Player.\" So that's why he's in this."
+    show aikha upset
+    show ryz neutral
     n "You decide to act nonchanlant and carry on with what you were doing. You feel everyone's eyes follow you as you make your way across the room."
+    show aikha upset at disappear
+    show alex pensive at disappear
+    show ryz at disappear
     menu:
         n "...What exactly were you up to again?"
         "Check the fridge for lunch":
@@ -27,18 +34,27 @@ label day_event_the_bingo_card_1:
     
     label fridge:
         n "You make your way towards the fridge and hear someone inhale sharply."
+        hide aikha
         n "You decide to ignore it. Lunch time waits for nobody!"
         n "You open the fridge door...and are greeted by Pochi."
         n "He's napping on a plate like a basted turkey."
         n "His face is covered with the crumbs of the sandwich you were just about to eat...His greed knows no bounds."
         n "Startled by the sound of the fridge door opening, Pochi wakes up. He takes one look at you before bouncing out of the fridge into Plutoes' arms."
+        hide ryz
+        hide alex
         n "Just as he does that, you hear the room erupt behind you."
+        show ryz happy at appear(x_align = 0.5)
         ryz "YES! \"Pochi escapes from fridge,\" check that off!"
+        show firewal at appear(x_align = 0.1)
         wal387 "Objective [[Pochi escapes from fridge] has been completed. Column 2 has achieved {b}80%%{/b} completion."
+        show alex panic at appear(x_align = 0.9)
         alex upset "...Damnit."
+        show alex panic at move_to(x_align = 1.05)
+        show ryz happy at move_to(x_align = 0.75)
+        show firewal at move_to(x_align = 0.4)
         jump middle
     
-    label power_nap:
+    label power_nap: #TO ANIMATE
         n "That's right! You were going to take a power nap. It's been a long morning, after all."
         n "You make your way towards the couch, pushing through the small crowd of people watching your every move."
         n "In spite of the 5 pairs of eyes on you, you lie down comfortably and start napping."
@@ -57,20 +73,54 @@ label day_event_the_bingo_card_1:
 
 
     label middle:
+        show aikha fury:
+            alpha 0.0
+            xzoom -1.0
+            xalign -0.5
+            alpha 1.0
+            move_to(x_align = -0.1)
         aikha "Bastard! What's wrong with you?!"
         player "I was just minding my own business. What's the big deal?"
-        aikha "You don't underst-"
+        aikha panic "You don't underst-"
+        show ryz neutral
+        show alex neutral
         wal387 "REMINDER:\nIn the event that {i}Wal NO.387{/i} fails to complete mission \"Win Bingo Game,\" it will initiate {b}SELF_DESTRUCT_SEQUENCE{/b}."
         player "...Oh."
         aikha "...And now everyone's one away..."
+        show aikha panic at disappear
+        show firewal at disappear
+        show alex at disappear
+        show ryz at disappear
         n "You decide that it's probably best to get out of the room while you still can."
+        hide aikha
+        hide alex
+        hide ryz
+        hide firewal
         n "You walk briskly over to the door but are stopped by Wal No.387."
+        show firewal neutral at appear(x_align = 0.5)
         n "You sneak a glance at his bingo sheet. The last goal he needs is...\"Someone gets knocked out.\""
-        wal387 "Please remain still. I can assure you that there will be no lasting consequences."
+        wal387 fury "Please remain still. I can assure you that there will be no lasting consequences."
         n "Flames begin to swirl around his fist. That feels a little extra."
         wal387 "REMINDER:\nIn the event that {i}Wal No.387{/i} fails-"
+        show firewal fury at move_to(x_align = 0.7)
+        show ryz panic:
+            alpha 0.0
+            xzoom -1.0
+            alpha 1.0
+            appear(x_align = 0.3)
         ryz "Don't listen to him! I need you to do a backflip. Here, I can give you...4 dollars and 35 cents."
+        show ryz upset at move_to(x_align = 0.1)
+        show firewal fury at move_to(x_align = 0.9)
+        show alex upset at appear(x_align = 0.5)
         alex "[player_name], I will kindly tell you this: if you don't down this pot of coffee right this instant, I will revoke your position at VAC Foundation, effective immediately." 
+        show ryz neutral at move_to(x_align = 0.0)
+        show firewal fury at move_to(x_align = 1.0)
+        show alex upset at move_to(x_align = 0.7)
+        show plutoes:
+            alpha 0.0
+            xzoom -1.0
+            alpha 1.0
+            appear(x_align = 0.3)
         n "Plutoes throws a sign at you that reads:"
         plutoes "Eat your walet nd i will give you a skatboard - signed plutoes{fast}"
         n "Five people are watching you intensely. Two are threatening you, two are bribing you, and one just wants peace."
@@ -87,27 +137,75 @@ label day_event_the_bingo_card_1:
                 jump wallet
         
     label punch:
+        show ryz upset
+        show alex panic
+        show plutoes upset
         n "Well, your top priority is probably not dying to a kamikaze bingo robot."
+        show ryz upset at disappear
+        show alex panic at disappear
+        show plutoes upset at disappear
+        pause 0.3
+        show firewal fury at move_to(x_align = 0.5)
         n "Wal No.387 cracks his robotic knuckles, the fire around his fist turning blue."
+        hide ryz
+        hide alex
+        hide plutoes
         wal387 "Your cooperation is greatly apprec-"
+        show layer master:
+            shake
+        show shock onlayer top:
+            alpha 0.0
+            linear 0.2 alpha 1.0
+            alpha 0.0
+        show firewal panic at move_to(x_align = 0.2, duration = 0.3)
         n "Out of nowhere, he gets hit by a sofa thrown by Founder Alex."
+        hide shock onlayer top
+        show haze orange onlayer top:
+            alpha 0.0
+            linear 0.5 alpha 0.5
+            block:
+                ease 0.5 alpha 0.3
+                ease 0.5 alpha 0.5
+                repeat
+        show firewal panic:
+            easein 0.5 yalign 4.0
         n "He tumbles to the floor, and the fire he was conjuring causes the sofa to spontaneously combust."
-        # add dialogue
+        show plutoes happy at appear(x_align = 0.7)
         n "As the fire alarm blares, you see Plutoes check his card and grin happily."
+        show plutoes happy:
+            xzoom -1.0
+            move_to(x_align = 1.5, duration = 0.9)
         n "He makes his way over to Dr. Aikha, who sighs and says something you can't quite make out."
+        hide plutoes
         n "Still maintaining his signature grin, Plutoes walks over to the \"#1 BINGO\" mug."
+        show ryz at appear(x_align = 0.6)
         n "Meanwhile, Dr. Ryz has gotten a fire extinguisher and put out the sofa fire."
+        show haze orange onlayer top:
+            easein 0.2 alpha 0.5
+            ease 0.5 alpha 0.0
+        show firewal panic:
+            parallel:
+                linear 0.3 yalign 4.2
+            parallel:
+                linear 0.3 alpha 0.0
         ryz "Are we all good?"
+        hide haze orange onlayer top
+        show alex sad at appear(x_align = 1.0)
         n "You glance around the room. Your eyes lock onto Founder Alex, who's on his hands and knees on the floor."
-        alex sad "...My...mug..."
+        alex "...My...mug..."
+        show alex sad at disappear
+        show ryz at disappear
         n "He looks at Plutoes and Pochi, who are both happily chewing on the mug. Tears start to stream from behind his glasses, fogging the lenses."
+        hide alex
+        hide ryz
+        hide firewal
         n "While that's going on, you see Wal No.387 glitching off to the side. Dr. Aikha is frantically trying to fix him."
         wal387 "CRITICAL MALFUNCTION. INTERFERENCE DETECTED. AWAITING FURTHER ORDERS."
         n "...Looks like bingo's over! You should leave before you find out if the Founder was serious about his promise."
         $ update_character_points({"firewal": 1, "plutoes": 1})
         return
 
-    label backflip:
+    label backflip: #TO ANIMATE
         n "...Do you really value your life and job at $4.35??"
         ryz "Yes! Okay, so what you want to do is swing your arms upwards when you jump. It helps give you momentum. Like this!"
         n "Dr. Ryz does a radical backflip..." #radical backflip
@@ -131,7 +229,8 @@ label day_event_the_bingo_card_1:
         aikha "Told ya!"
         $ update_character_points({"ryz": 1, "firewal": 1})
         return
-    label coffee:
+
+    label coffee: #TO ANIMATE
         n "I mean, your job is pretty important. Rent's due soon, anyways."
         alex "Hooray!"
         n "You grab the pot of coffee from Founder Alex's hands and start chu-"
@@ -153,7 +252,7 @@ label day_event_the_bingo_card_1:
         $ update_character_points({"aikha": -1, "alex": 1, "ryz": 1})
         return
 
-    label wallet:
+    label wallet: #TO ANIMATE
         n "...In a situation as dire as this, you were won over by...a skateboard."
         n "You take your wallet out of your pocket and empty it. It has nothing noteworthy inside: just a couple of maxed-out credit cards and a handful of loose change."
         n "The wallet itself, though, was an heirloom from your late grandfather. You admire the antique, faded brown leather one last time..."

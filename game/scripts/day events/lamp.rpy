@@ -270,7 +270,7 @@ label day_event_lamp:
                     xalign 0.85
                 n "Next time?"
                 n "You shudder to think about losing your other kidney. If it comes down to it, you might consider just staying in the void."
-                $ update_character_points({"firewal": 1, "venture": -1})
+                $ update_character_points({"firewal": 2, "venture": -2})
                 return
 
             label lamp_money:
@@ -348,7 +348,7 @@ label day_event_lamp:
                 n "{b}{color=#eb4034}{size=+15}THE WAL{/size} \nHAS BEEN ALERTED OF THIS TRANSGRESSION{/color}{/b}"
                 n "Well. It's your life or this bot's. You're sure Dr. Firewal would understand."
                 n "...Right..?"
-                $ update_character_points({"firewal": -1, "venture": 1})
+                $ update_character_points({"firewal": -2, "venture": 2})
                 return
 
         

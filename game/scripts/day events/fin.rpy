@@ -116,13 +116,21 @@ label day_event_fin:
         n "Dr. Aikha turns around and leaves. Likely to continue their micromanaging."
         n "You turn your attention back to the stack of dull files. You reach over to turn on your computer when you notice a long row of faint teeth-marks on your arm."
         n "...Wait, teeth-marks?"
-        $ update_character_points({"aikha": +1})
+        $ update_character_points({"aikha": 3})
         return
 
     label fin_nope:
         n "You don't say anything. Remember, curiousity killed the cat."
-        n "You slump back down onto your chair. Maybe you should go to the psychology department sometime to get a check-in on your mental health."
+        n "You pull your phone back out. Your butt has swiped the screen for you and you are now the rats are no longer dancing kpop, but pole dancing."
+        n "You quickly turn your screen brightness down and look up to see if anyone has seen your screen."
+        n "Out of the corner of your eye, you see Dr. Aikha walks through the exit to the office, some of their eyes still on you."
+        show layer master:
+            shake(0.2,0.4)
+        n "Their fin slams against the doorframe. Ouch."
+        n "Dr. Aikha usually wouldn't make this kind of mistake, given their very hightened perception."
+        n "Unless, of course, they were very distracted."
+        n "You slump back down onto your chair to avoid the few eyes glaring at you on Dr. Aikha's neck."
         n "You turn your attention back to the stack of dull files. You can't decide whether you prefer this or the life-threatening situation."
-        n "...Maybe you really should go get an assessment with Dr. Chan."
-        $ update_character_points({"aikha": -1})
+        n "...Maybe you should go get a mental health check with Dr. Chan. For your reel addiction, too."
+        $ update_character_points({"aikha": -3})
         return

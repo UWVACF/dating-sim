@@ -19,8 +19,8 @@ label day_event_didnt_do_it:
                 jump ddi_open_fridge
             "Check the cabinet.":
                 jump ddi_cabinet
-            "Check the microwave.":
-                jump ddi_microwave
+            "Check the vent.":
+                jump ddi_vent
             
         label ddi_cabinet:
             n "You open the cabinet above your head."
@@ -38,14 +38,14 @@ label day_event_didnt_do_it:
             n "You stare into the drawers through the handle holes, and realize that it's a false drawer that hides the sink."
             jump ddi_choice_loop
 
-        label ddi_microwave:
-            n "Why would a knife be in a microwave?"
-            n "Anyways, you open the microwave. There's no knife."
+        label ddi_vent:
+            n "Why would a knife be in a vent?"
+            n "Anyways, you open the lid to the vent. There's no knife."
             n "But there is a Hampter."
             show hampter happy
             hampter "Oh hey [player_name]! Are you getting lunch?"
             player "...Yes."
-            hampter "Don't mind me. You can use the microwave! I'm just taking a nap!" # "Don't mind me! You can use the microwave!"
+            hampter "Don't mind me. I'm just taking a nap!"
             hampter "Do close the door when you leave, please!"
             hide hampter
             n "Hampter turns around and begins shoo mimimiming."
@@ -111,7 +111,7 @@ label day_event_didnt_do_it:
         n "You cast a resentful glare at the bystanders as you're dragged out of the lounge."
         n "Out of the corner of your eye, you see Dr. Chan and Ethy amongst the crowd of people."
         n "Dr. Chan looks deep in thought, while Ethy gives you a thumbs up with a wide grin."
-        $ update_character_points({"chan": 1, "deceased": -1})
+        $ update_character_points({"chan": 1, "deceased": -2, "syg": 0}) #syg +/- 1
         $ tne_defendant = True
         $ tne_chan_backup = True
         jump ddi_jail
@@ -129,7 +129,6 @@ label day_event_didnt_do_it:
         jessie "Dr. Deceased, did you really?"
         n "The crowd begins mumbling and discussing amongst themselves."
         #hide jessie
-        $ update_character_points({"chan": -2, "deceased": -1})
 
         if plague_mask == True:            
             menu: 
@@ -192,6 +191,7 @@ label day_event_didnt_do_it:
             n "Guess you're not getting your greens in today."
             $ tne_defendant = False
             $ tne_chan_backup = False
+            $ update_character_points({"chan": 0, "deceased": -2, "syg": 0})
             return
 
             label ddi_bad_argument: 
@@ -225,7 +225,7 @@ label day_event_didnt_do_it:
             hide chan
             pause 0.01
             hide firewal
-            $ update_character_points({"deceased": -2, "syg": -1, "chan": -1})
+            $ update_character_points({"deceased": -1, "syg": 0, "chan": -2})
             $ tne_defendant = True
             $ tne_chan_backup = False
             jump ddi_jailtwo
@@ -263,7 +263,7 @@ label day_event_didnt_do_it:
             n "Two Wals come forward and take you by the arms. You try your best to fight them off, but you're no match against the ingenious creations of Dr. Firewal."
             n "They pick you up easily by your arms and legs and carry you out while swinging you like a hammock."
             n "On the way out of the lounge, you stare resentfully Dr. Deceased, who looks satisfied with winning this debate and getting an addition to their collection."
-            $ update_character_points({"deceased": 1})
+            $ update_character_points({"deceased": 2, "chan": 0, "syg": 0})
             $ tne_defendant = True
             $ tne_chan_backup = False
             jump ddi_jailtwo
@@ -294,7 +294,7 @@ label day_event_didnt_do_it:
                 n "You're unsure if he meant desirable for him or you. You decide not to ask."
                 hide syg
                 $ tne_chan_backup = True # typo? should be syg backup
-                $ update_character_points({"syg": 0})
+                $ update_character_points({"syg": -1})
                 n "You lie down on the cold floor and wonder if this will spell the end of your career. And your life."
                 return
 
