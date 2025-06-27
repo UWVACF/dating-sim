@@ -33,7 +33,7 @@ label day_event_yuri:
             jump wing_aikha
 
 label wing_dece:
-    player "Hey, Dr. Aikha! I heard that there're some really cool... um... diseases! That Dr. Deceased has been researching!"
+    player "Hey, Dr. Aikha! I heard that there are some really cool... um... diseases! That Dr. Diseased -I mean Dr. Deceased- has been researching!"
     aikha surprise "Oh. Is that so? But I thought Dece specialized in..."
     aikha pensive "Huh. Dece. What {i}do{/i} you specialize in?"
     deceased happy "Oh! I'm glad you asked!"
@@ -48,18 +48,17 @@ label wing_dece:
     n "..."
     deceased neutral "...all that being said, I'm basically half an expert in anomalous pathologies myself!"
     deceased "Although not as much as you, certainly. Ha. Ha." #panic
-    n "You wish for a commically large piano to drop on your head right about now. Unforunately, it doesn't come."
+    n "You wish for a comically large piano to drop on your head right about now. Unfortunately, it doesn't come."
     aikha happy "Well, if you ever have time, you're free to come by and take a peak! I mean, I'm sure Aran would be happy to see you."
     deceased "Haha, yeah! Aran..."
-    aikha surprise "Unless you're preoccupied. You've been out a lot on field studies lately, so-"
+    aikha pensive "Unless you're preoccupied. You've been out a lot on field studies lately, so-"
     deceased "No!" #surprise
     aikha "..."
     deceased "I mean... it's been kind of slow out there lately. I can set my assistants on it for a bit. I have time! I promise."
     aikha happy "Oh. Of course! I've been meaning to hang out more, but you never seemed to have time. Heh."
     deceased happy "That's alright. I mean... I'll always make time for you!"
-    aikha ":D"
-    deceased ":D"
-    player ":("
+    aikha "..."
+    deceased "..."
     n "Barf."
     n "Well, you've already finished your coffee, so you leg it while you still can."
     player "I'll just... be going now..."
@@ -107,7 +106,7 @@ label wing_aikha:
             linear 0.8 alpha 1.0
             linear 0.8 alpha 0.0
             repeat
-    show aikha unique 
+    show aikha fury 
     aikha "AA- eughghghhhgh..."
     show aikha unique:
         xalign 0.8
@@ -140,7 +139,6 @@ label wing_aikha:
     hide overlay_ai zorder 50
     #potential cg??? idk man, deceased carrying a piles of flesh and eyeballs???/
     n "You watch as Dr. Deceased scrubs what's left of Dr. Aikha(?) off the floor and carries it out of the lounge area."
-    n "You're not sure, but from this angle, you think you can see a hint of blush coming from the pile of eyes and flesh."
     player "..."
     player "In front of my coffee?!"
     $ update_character_points({"aikha": -1, "deceased": 2})
