@@ -7,7 +7,6 @@ image escape_peculiar_paper = "images/cgs/escape peculiar paper.png"
 #   morse
 #   page 810
 # minigame at very end, reverse pandemonium, keep mouse out of button in middle while it slowly gets dragged in
-# inventory
 
 init python:
     def escape_check_drag_positions():
@@ -51,6 +50,10 @@ label escape_initialize:
 
         escape_inventory_page = 0
         escape_inventory_display_per_page = 3
+
+        
+
+        
 
     return
 
@@ -122,6 +125,31 @@ screen escape_blue_sticky_screen:
         draggable not escape_left_wall_blue_sticky_completed
         add "images/cgs/escape peculiar paper.png"
     timer 0.1 repeat True action Function(escape_check_drag_positions)
+
+default escape_final_minigame_hp = 100
+default escape_final_minigame_is_hovering = False
+
+screen escape_final_minigame:
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        textbutton "Turn around.":
+            xalign 0.5
+            yalign 0.5
+            text_xalign 0.5
+            text_yalign 0.5
+            xsize 300
+            ysize 300
+            hovered SetVariable("escape_final_minigame_is_hovering", True)
+            unhovered SetVariable("escape_final_minigame_is_hovering", False)
+            action NullAction()
+    
+    timer 0.1:
+        repeat True
+        action If(escape_final_minigame_is_hovering, true=SetVariable("escape_final_minigame_hp", escape_final_minigame_hp - 10))
+    timer 0.1:
+        repeat True
+        action If(escape_final_minigame_hp < 0, true=Jump("escape_final_minigame_fail"))
 
 label day_event_escape:
     call escape_initialize
@@ -821,6 +849,19 @@ label escape_submit_passcode_end:
         firewal "Congrats! Let's go."
         n "Dr. Aikha and Dr. Firewal make their way out the door. You're about to follow them when you get a weird feeling."
         n "Something's...off."
+
+        show screen qte(time = 10.0, act=Jump("escape_final_minigame_success"))
+        call screen escape_final_minigame
+    
+    label escape_final_minigame_success:
+        hide screen qte
+        hide screen escape_final_minigame
+        n "YAY!"
+    
+    label escape_final_minigame_fail:
+        hide screen qte
+        hide screen escape_final_minigame
+        n "NO!"
         
 
 
