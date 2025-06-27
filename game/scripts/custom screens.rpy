@@ -101,12 +101,13 @@ screen day_intro:
                 mouse "monitor button"
         
 default qte_time = 0
+default qte_paused = False
 
 screen qte(time = 10.0, act=NullAction(), hidden=False):
-    on "show" action SetVariable("qte_time", time)
+    on "show" action [SetVariable("qte_time", time), SetVariable("qte_paused", False)]
     timer 0.02:
         repeat True
-        action If(qte_time > 0, true=SetVariable("qte_time", qte_time - 0.02), false=[Hide("qte"), act])
+        action If(qte_time > 0, true=If(qte_paused, false=SetVariable("qte_time", qte_time - 0.02)), false=[Hide("qte"), act])
     if not hidden:
         bar:
             value AnimatedValue(value=qte_time, range=time, delay=0.02)

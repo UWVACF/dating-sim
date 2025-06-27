@@ -416,6 +416,7 @@ define venture_unknown = Character("???", kind=venture)
 
 define player = Character("[player_name]", kind=base_char, color="#444444", cb_name="player")
 
+define trickster = Character("?", kind=base_char, color="#095a10", cb_name="trickster", what_bold = True, what_size = 45)
 
 define n = Character("", kind=base_char, cb_name="") # narrator, required to unhighlight characters whenever narration is occurring
 define unknown = Character("???", kind=base_char, color="#000000", cb_name="unknown")

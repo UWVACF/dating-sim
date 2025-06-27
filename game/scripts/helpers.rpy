@@ -2,6 +2,7 @@
 
 init python:
     import re
+    import pygame
     
     # Raise the character points of personnel
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}

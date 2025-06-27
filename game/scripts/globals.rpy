@@ -20,6 +20,7 @@ init python:
     #   - follows set pathing for events
     game_mode = "debug"
 
+
     # ----- CONSTANTS -----
     # the default pause times after certain punctuation marks
     # note to developers: prefix a dialogue line with /no_pause to disable these pauses for that line
@@ -159,7 +160,6 @@ init python:
         },
     }
     
-
 
 # Player pronouns and names
 default default_name = "Jakob"
@@ -325,6 +325,7 @@ init python:
             if factor <= 0: # function ended
                 trans.xoffset = 0
                 trans.yoffset = 0
+                del self
                 return None
             else:
                 # randomly choose a corner of the bounding box to move to

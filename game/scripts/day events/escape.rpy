@@ -4,11 +4,13 @@ image escape_peculiar_paper = "images/cgs/escape peculiar paper.png"
 
 # TODO
 # make cgs
-#   morse
+#   morse (cipher + code)
 #   page 810
-# minigame at very end, reverse pandemonium, keep mouse out of button in middle while it slowly gets dragged in
+# dialogue
+# hint + solution system
 
 init python:
+
     def escape_check_drag_positions():
         if not escape_left_wall_blue_sticky_completed:
             threshold = 1.5
@@ -18,7 +20,43 @@ init python:
 
             if abs(sticky_props.xpos + 17 - paper_props.xpos) < threshold and abs(sticky_props.ypos - paper_props.ypos - 15) < threshold:
                 renpy.jump("escape_left_wall_blue_sticky_end")
+    
+    def escape_lose_life(label):
+        global escape_end_lives
+        escape_end_lives -= 1
+        print("escape end lives is ", escape_end_lives)
+        print("label is ", label)
+        renpy.call("escape_lose_life_animations", lab=label)
+    
+    def escape_drag_mouse():
+        import math
+        mx, my = renpy.get_mouse_pos()
+        cx, cy = config.screen_width / 2, config.screen_height / 2
+        d = escape_final_minigame_pull_strength
+        dx = cx - mx
+        dy = cy - my
+        length = math.hypot(dx, dy)
+        if length <= d:
+            new_x, new_y = cx, cy  # already at center
+        else:
+            # normalize
+            move_x = dx / length * d
+            move_y = dy / length * d
 
+            # find updated position
+            new_x = mx + move_x
+            new_y = my + move_y
+        
+        renpy.run(MouseMove(new_x, new_y))
+    
+    def escape_final_minigame_disable():
+        if not escape_final_minigame_is_hovering:
+            renpy.run(SetVariable("qte_paused", True))
+    
+    def escape_final_minigame_enable():
+        if not escape_final_minigame_is_hovering:
+            renpy.run(SetVariable("qte_paused", False))
+        
 label escape_initialize:
     python:
         # viewed
@@ -44,6 +82,7 @@ label escape_initialize:
             "Blue Sticky": "escape_item_blue_sticky",
             "Page 524": "escape_item_page_524",
             "Page 621": "escape_item_page_621",
+            "Page 810 (Puzzles)": "escape_item_page_810",
             "Purple Light": "escape_item_purple_light",
             "Slip of Paper": "escape_item_slip_of_paper",
         }
@@ -51,9 +90,11 @@ label escape_initialize:
         escape_inventory_page = 0
         escape_inventory_display_per_page = 3
 
-        
+        escape_end_lives = 3
 
-        
+        escape_moving_minigame_phase = 0
+        escape_moving_minigame_max_phase = 3
+        escape_moving_minigame_delays = [0.6, 0.4, 0.15]
 
     return
 
@@ -126,10 +167,36 @@ screen escape_blue_sticky_screen:
         add "images/cgs/escape peculiar paper.png"
     timer 0.1 repeat True action Function(escape_check_drag_positions)
 
+screen escape_blue_sticky_screen_answer:
+    drag:
+
+        id "sticky"
+        xalign 710
+        yalign 290
+        draggable False
+        add "images/cgs/escape blue sticky.png"
+    drag:
+        id "paper"
+        xalign 727
+        yalign 275
+        draggable False
+        add "images/cgs/escape peculiar paper.png"
+
 default escape_final_minigame_hp = 100
 default escape_final_minigame_is_hovering = False
+default escape_final_minigame_pull_strength = 10
 
 screen escape_final_minigame:
+    button:
+        background None
+        xsize 1920
+        ysize 1080
+        xpos 0
+        ypos 0
+        hovered Function(escape_final_minigame_enable)
+        unhovered Function(escape_final_minigame_disable)
+        action NullAction()
+
     vbox:
         xalign 0.5
         yalign 0.5
@@ -138,10 +205,12 @@ screen escape_final_minigame:
             yalign 0.5
             text_xalign 0.5
             text_yalign 0.5
-            xsize 300
-            ysize 300
+            xsize 417
+            ysize 87
             hovered SetVariable("escape_final_minigame_is_hovering", True)
             unhovered SetVariable("escape_final_minigame_is_hovering", False)
+            idle_background "gui/button/choice_idle_background.png"
+            hover_background "gui/button/choice_red_hover_background.png"
             action NullAction()
     
     timer 0.1:
@@ -149,7 +218,120 @@ screen escape_final_minigame:
         action If(escape_final_minigame_is_hovering, true=SetVariable("escape_final_minigame_hp", escape_final_minigame_hp - 10))
     timer 0.1:
         repeat True
-        action If(escape_final_minigame_hp < 0, true=Jump("escape_final_minigame_fail"))
+        action If(escape_final_minigame_hp < 0, true=Jump("escape_bad_end"))
+    
+    timer 0.05:
+        repeat True
+        action Function(escape_drag_mouse)
+    
+    timer 2.0:
+        action SetVariable("escape_final_minigame_pull_strength", 20)
+    timer 4.0:
+        action SetVariable("escape_final_minigame_pull_strength", 30)
+    timer 6.0:
+        action SetVariable("escape_final_minigame_pull_strength", 40)
+    timer 8.0:
+        action SetVariable("escape_final_minigame_pull_strength", 50)
+        
+screen escape_unwinnable:
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        textbutton "TURN AROUND.":
+            xalign 0.5
+            yalign 0.5
+            text_xalign 0.5
+            text_yalign 0.5
+            xsize 1920
+            ysize 1080
+            hovered SetVariable("escape_final_minigame_is_hovering", True)
+            unhovered SetVariable("escape_final_minigame_is_hovering", False)
+            idle_background "gui/button/choice_massive_idle_background.png"
+            hover_background "gui/button/choice_massive_red_hover_background.png"
+            action Return()
+    
+    timer 0.05:
+        repeat True
+        action Function(escape_drag_mouse)
+    
+    timer 1.0:
+        action SetVariable("escape_final_minigame_pull_strength", 60)
+    timer 2.0:
+        action SetVariable("escape_final_minigame_pull_strength", 70)
+    timer 3.0:
+        action SetVariable("escape_final_minigame_pull_strength", 80)
+    timer 4.0:
+        action SetVariable("escape_final_minigame_pull_strength", 150)
+    timer 5.0:
+        action Jump("escape_unwinnable_end")
+
+screen escape_comply_1:
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        textbutton "Comply.":
+            xalign 0.5
+            yalign 0.5
+            style "choice_button"
+            action Return()
+            unhovered MouseMove(config.screen_width / 2, config.screen_height / 2)
+
+
+screen escape_comply_2:
+    style_prefix "choice"
+    vbox:
+        xalign 0.5
+        yalign 0.5
+
+        textbutton "":
+            xalign 0.5
+            style "choice_button"
+            background None
+            sensitive False
+        
+        textbutton "Comply.":
+            xalign 0.5
+            style "choice_button"
+            action Return()
+            unhovered MouseMove(config.screen_width / 2, config.screen_height / 2)
+        
+        textbutton "Grab the gun.":
+            xalign 0.5
+            style "choice_button"
+            action Jump("escape_good_end")
+    
+
+label escape_lose_life_animations(lab):
+    if escape_end_lives == 2:
+        show haze white zorder 50 onlayer top:
+            matrixcolor ColorizeMatrix("#000000", "#095a10")
+            alpha 0.4
+    elif escape_end_lives == 1:
+        show haze white zorder 50 onlayer top:
+            matrixcolor ColorizeMatrix("#000000", "#095a10")
+            alpha 1.0
+        
+    show white_screen zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 0.0
+        linear 0.1 alpha 0.6
+        linear 0.3 alpha 0.0
+    
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+    
+    if escape_end_lives <= 0:
+        $ print("you died")
+        $ renpy.jump("escape_bad_end")
+    else:
+        $ print("jumping")
+        $ renpy.jump(lab)
+
+    return
 
 label day_event_escape:
     call escape_initialize
@@ -170,12 +352,12 @@ label day_event_escape:
     player "Where the hell are we?"
     firewal "No clue. Think we're in some containment room."
     aikha "We all just kind of woke up here."
-    n "You look at the door to the room and see a tablet attached to it. Lying beside it is a torn scrap of paper. It reads;"
-    n "\"..And for those who forgot, the password is simply the anomaly's name, V.A.C. number and appearance.\""
-    n "\"Signed, #######\""
+    n "You look at the door to the room and see a tablet attached to it. Taped beside it is a torn scrap of paper. It reads:"
+    n "{color=#095a10}\"And all you have to do is find my anomaly's name, V.A.C. number and what I look like!\"{/color}"
+    n "\"Good luck!\""
     n "The name is blacked out."
-    ryz "This is actually quite convenient. Matter of fact, I was just doing some research into this anomaly."
-    aikha "Oh, this is fun!. Newbie, there should be hints scattered around the room. Try to piece together the puzzle and get us out of here!"
+    ryz "I feel like I recognize this anomaly..."
+    aikha "Oh, this is fun! Newbie, take a look around the room. Try to piece together the puzzle and get us out of here!"
     show aikha at disappear
     show ryz at disappear
     show firewal at disappear
@@ -203,7 +385,8 @@ label escape_main_menu:
             "Check inventory.":
                 jump escape_inventory_menu
             "Submit the passcode.":
-                jump escape_passcode
+                jump escape_search_minigame_1
+                # jump escape_passcode
 
 # ------------------------------ LOOK ------------------------------
 label escape_look_around:
@@ -259,37 +442,68 @@ label escape_left_wall:
     
 
     label escape_left_wall_blue:
-        n "You read the blue sticky note."
-        n "It's labelled, \"Witness Testimony.\""
+        n "You look at the blue sticky note."
+        show escape_blue_sticky:
+            xalign 0.5
+            yalign 0.5
         n "..."
         n "It's a garbled mess of random letters."
         n "Notably, on the top left of the sticky note is a cane symbol."
         if "Peculiar Paper" in escape_inventory:
             n "Wait. A cane symbol?"
-            n "You take the peculiar piece of paper that you found in the drawer out, and, sure enough, the cane symbols are exactly the same."
-
+            hide escape_blue_sticky
+            $ escape_left_wall_blue_sticky_completed = True
             show screen escape_blue_sticky_screen
-            n "You know what to do. Probably."
+            n "You take the peculiar piece of paper that you found in the drawer out, and, sure enough, the cane symbols are exactly the same."
+            
+            $ escape_left_wall_blue_sticky_completed = False
+            show screen qte(time = 60, act = Jump(escape_left_wall_blue_sticky_timeout), hidden=True)
+            n "Uncover the code. You know how to. Probably."
             while True:
-                $ ui.interact()
+                n "Uncover the code. You know how to. Probably.{fast}"
+
+            label escape_left_wall_blue_sticky_timeout:
+                n "Okay, well, nevermind. Seems you don't know what to do."
+                hide screen escape_blue_sticky_screen
+                show screen escape_blue_sticky_screen_answer
+                n "Here. You put the cane symbol here onto the cane symbol here, and voila!"
+                jump escape_left_wall_blue_sticky_end
 
             # minigame
             label escape_left_wall_blue_sticky_end:
+                hide screen qte
                 $ escape_left_wall_blue_sticky_completed = True
                 n "When you aligned the symbols together, the holes in the paper revealed a message."
                 n "\"It introduced itself as{w=0.5}{nw}"
 
                 hide screen escape_blue_sticky_screen
+                hide screen escape_blue_sticky_screen_answer
 
                 show black_screen zorder 50
                 # stop music
                 show layer screens:
-                    shake(preset="rumble")
-                n "{sc}{color=#ffffff}The Trickster.{/color}{/sc}"
+                    shake
+                trickster "{sc}{color=#095a10}The TRICKSTER!!!{/color}{/sc}"
                 
-                show screen qte(act=Jump("escape_trickster_game_1_fail"), time=6)
+                trickster "{sc}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
                 menu:
-                    n "{sc}{color=#ffffff}Shall we play a game?{/color}{/sc}"
+                    trickster "{sc}{color=#095a10}Welcome, [player_name]! How has your time here been?{/color}{/sc}"
+                    "Splendid.":
+                        trickster "{sc}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
+                    "Splendid.":
+                        trickster "{sc}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
+                    "Splendid." (on_hover = "Terrible."):
+                        trickster "Oh dear oh dear, I'm so very sorry to hear that!"
+                    "Splendid.":
+                        trickster "{sc}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
+
+                trickster "{sc}{color=#095a10}Now then, [player_name], my little intern, shall we play a game?{/color}{/sc}"
+                trickster "{sc}{color=#095a10}All you have to do is TURN AROUND and FACE ME, eh?{/color}{/sc}"
+                n "You have a very bad feeling about this...!"
+
+                show screen qte(act=Jump("escape_trickster_game_1_fail"), time=8)
+                menu:
+                    trickster "{sc}{color=#095a10}Turn around!{/color}{/sc}"
                     "Don't turn around." (on_hover = "Turn around."):
                         jump escape_trickster_game_1_fail
                     "Don't turn around." (on_hover = "Turn around."): 
@@ -301,9 +515,9 @@ label escape_left_wall:
                 
                 label escape_trickster_game_1_2:
                     hide screen qte
-                    show screen qte(act=Jump("escape_trickster_game_1_fail"), time=4)
+                    show screen qte(act=Jump("escape_trickster_game_1_fail"), time=7)
                     menu:
-                        n "{sc}{color=#ffffff}Turn around.{/color}{/sc}"
+                        trickster "{sc}{color=#095a10}C'mon, turn around!{/color}{/sc}"
                         "Don't turn around.": 
                             jump escape_trickster_game_1_3
                         "Don't turn around." (on_hover = "Turn around."):
@@ -315,9 +529,9 @@ label escape_left_wall:
                     
                 label escape_trickster_game_1_3:
                     hide screen qte
-                    show screen qte(act=Jump("escape_trickster_game_1_fail"), time=3)
+                    show screen qte(act=Jump("escape_trickster_game_1_fail"), time=6)
                     menu:
-                        n "{sc}{b}{color=#ffffff}Face me.{/color}{/b}{/sc}"
+                        trickster "{sc}{b}{color=#095a10}Face me! Face the lights! Face the music!{/color}{/b}{/sc}"
                         "Don't turn around." (on_hover = "Turn around."):
                             jump escape_trickster_game_1_fail
                         "Don't turn around." (on_hover = "Turn around."): 
@@ -330,33 +544,36 @@ label escape_left_wall:
                         
                 label escape_trickster_game_1_fail:
                     hide screen qte
+                    n "Your attempts of resistance are futile."
                     hide black_screen
                     show escape_it zorder 50
-                    n "Your attempts of resistance are futile."
                     n "You feel your body turn around, against your will."
-                    n "You look upwards, {color=#ffffff}against your will.{/color}"
-                    n "{color=#ffffff}You reach your arm out, {/color}{sc}{color=#ffffff}against your will.{/color}{/sc}"
-                    n "{cps=*0.35}{sc}{color=#ffffff}You are but a puppet.{/color}{/sc}{/cps}"
-                    
+                    n "You look upwards, {color=#095a10}against your will.{/color}"
+                    n "{color=#095a10}You reach your arm out, {/color}{sc}{color=#095a10}against your will.{/color}{/sc}"
+                    n "{cps=*0.35}{sc}{color=#095a10}You are but a puppet.{/color}{/sc}{/cps}"
+                    trickster "{sc}{color=#095a10}Oh, yes! Yes! YES! Delightful! Just delightful!{/color}{/sc}"
+                    trickster "{sc}{color=#095a10}[player_name], my little intern, have you not yet realized?{/color}{/sc}{/cps}"
+                    trickster "{cps=*0.35}{color=#095a10}You are not the one in control here.{/color}{/cps}{w=0.5}{nw}"
+                    jump escape_tricker_game_1_end
 
                 label escape_trickster_game_1_end:
                     hide black_screen
                     hide escape_it
                     n "Suddenly, the lights turn back on."
                     n "Your heart is pounding. Your palms are sweaty."
-                    n "But whatever was behind you is gone."
-                    n "...Was it ever there to begin with?"
-                    n "The blue sticky note is still on the wall in front of you."
-                    n "You decide to keep it for safekeeping."
+                    n "But it looks like the anomaly behind you is gone."
+                    n "Heart still racing, you decide it's best to escape as fast as possible."
+                    n "You decide to take the blue sticky note for safekeeping."
                     n "Blue Sticky has been added to your inventory."
                     $ escape_inventory.append("Blue Sticky")
                     $ escape_blue_sticky_read = True
-                    jump escape_left_wall
+        
+        jump escape_left_wall
     
     label escape_left_wall_orange:
         n "You read the orange sticky note. All it says is:"
         n "\"810: ? x ??? - ??\""
-        n "So concise."
+        n "You have no clue what this means. Or do you?"
         jump escape_left_wall
 
 label escape_back_wall:
@@ -389,7 +606,7 @@ label escape_back_wall:
         python:
             escape_flip_to_page = renpy.input("What page do you go to? (1-999, \"back\" to go back.)", default=1)
             if escape_flip_to_page.lower() == "back":
-                Jump("escape_back_wall")
+                renpy.jump("escape_back_wall")
             while not escape_flip_to_page.isdigit():
                 renpy.notify("Invalid input.")
                 escape_flip_to_page = renpy.input("What page do you go to? (1-999, \"back\" to go back.)", default=1)
@@ -404,7 +621,9 @@ label escape_back_wall:
             n "\"This three-digit number is followed by a hyphen and the anomaly's {b}globalization{/b} from 1-100 (with 00 being 100), which indicates how widespread the anomaly's presence is.\""
             n "\"Finally, the last digit is the {b}authorization level{/b} required to know about this anomaly from 1-10 (with 0 being 10)."
             n "\"For instance, VAC 505-102, nicknamed 'Smiling Marshmallow' is relatively dangerous, found rarely, appears only in specific areas and can be found on the information with some digging.\""
-            n "The explanation ends with various doodles of Pochi eating a grinning marshmallow."
+            n "\"Of course, none of this information is actually important to solving this escape room.\""
+            n "\"Escape room? What escape room?\""
+            n "The explanation ends with various doodles of Pochi eating marshmallows."
         elif escape_flip_to_page == 67:
             if not escape_back_wall_notebook_ciphers_viewed:
                 n "The notebook reads:"
@@ -479,7 +698,7 @@ label escape_back_wall:
                 $ escape_inventory.append("Page 621")
 
         elif escape_flip_to_page == 810:
-            if "Page 810 (Numbers)" in escape_inventory:
+            if "Page 810 (Puzzles)" in escape_inventory:
                 $ NullAction()
                 # show cg
             else:
@@ -492,11 +711,12 @@ label escape_back_wall:
                 #  11, 9, 30 TODO: UPDATE ANSWERS
                 n "There's a lot going on here. Wonder what any of this means."
                 n "You tear the page out for safekeeping."
-                $ escape_inventory.append("Page 810 (Numbers)")
+                $ escape_inventory.append("Page 810 (Puzzles)")
         elif escape_flip_to_page == 887:
             n "There's nothing here."
             if escape_back_wall_notebook_gullible_marked:
                 n "...aside from a massive \"L\" written in the middle of the page."
+                $ escape_back_wall_notebook_gullible_viewed = True
         else:
             if escape_back_wall_notebook_invalid_viewed_times == 0:
                 n "It's impressive how the author managed to use so many words to make so little sense."
@@ -508,20 +728,20 @@ label escape_back_wall:
                 n "...That letter's probably an F. No, wait, why does it have a line sticking out from the top? Is this even English?"
 
             elif escape_back_wall_notebook_invalid_viewed_times == 3:
-                n "The entire page is black...aside from a small, red {color=#ffffff}=){/color} in the corner."
+                n "The entire page is illegible...aside from a small, green {color=#095a10}:D{/color} in the corner."
 
             elif escape_back_wall_notebook_invalid_viewed_times == 4:
-                n "The page reads:"
+                n "Oh, hey. You see a small note on the corner of the page:"
                 n "\"Did you know it says 'gullible' on page 887?\""
                 $ escape_back_wall_notebook_gullible_marked = True
 
             elif escape_back_wall_notebook_invalid_viewed_times == 5:
-                n "Oh, the page reads:"
+                n "In the margins, there's a small bit of text."
                 n "\"Hahaha, haha, haha haha{i}ha{/i}ha.\""
                 n "\"Haha-\" wait, no, sorry. That should be \"Hehe.\""
                 n "\"Hehe, heheheha.\""
                 n "Oh, it says more at the very bottom of the page:"
-                n "{size=-10}\"Ha\".{/size}"
+                n "{size=-10}\"Ha.\"{/size}"
                 
             else:
                 n "Nothing here is useful."
@@ -608,9 +828,12 @@ label escape_right_wall:
     label escape_right_wall_drawer:
         if "Peculiar Paper" not in escape_inventory:
             n "You open the drawer and find a peculiar looking piece of paper. It's entirely black, with numerous small, square holes cut into it."
-            # show cg
-            n "Notably, on the top left of the paper is a cut-out cane."
+            show escape_peculiar_paper:
+                xalign 0.5
+                yalign 0.5
+            n "Notably, on the top left of the paper is the cut-out symbol of a cane."
             n "This feels important. You take the piece of paper for safekeeping."
+            hide escape_peculiar_paper
             $ escape_inventory.append("Peculiar Paper")
         else:
             n "The drawer is now empty."
@@ -733,7 +956,7 @@ label escape_inventory_menu:
 
 
 label escape_item_blue_sticky:
-    n "{color=#ffffff}The Trickster.{/color}"
+    n "{color=#095a10}The Trickster.{/color}"
     # add rest of testimony to locked app in phone
     return
 
@@ -824,22 +1047,23 @@ label escape_submit_passcode_end:
                 0.4
                 alpha 1.0
             n "The lights flicker and go out."
-            n "{color=#ffffff}I thought there was more to you than this.{/color}"
-            n "{color=#ffffff}A shame. It really is a shame.{/color}"
-            n "{color=#ffffff}Well now. You have served your purpose.{/color}"
-            n "{color=#ffffff}You are no longer of use.{/color}"
+            trickster "{sc}{color=#095a10}Oh dear oh dear! [player_name], my little intern, how could you fail this?{/color}{/sc}"
+            trickster "{sc}{color=#095a10}A shame. Truly a shame!{/color}{/sc}"
+            trickster "{sc}{color=#095a10}Well now. Your actions have consequences, you know!.{/color}{/sc}"
+            trickster "{cps=*0.35}{color=#095a10}You are no longer of use.{/color}{/cps}"
 
             n "You notice"
             n "a presence"
             n "right"
             n "in front"
-            n "of you.{nw}"
+            n "of yo{nw}"
             # jumpscare
             return
             
         $ escape_passcode_attempts_remaining -= 1
     else:
         n "The tablet lets out a jingle, and the screen flashes green!"
+
         n "You hear the door click."
         show aikha happy at appear
         aikha "Newbie! You solved it!"
@@ -849,28 +1073,298 @@ label escape_submit_passcode_end:
         firewal "Congrats! Let's go."
         n "Dr. Aikha and Dr. Firewal make their way out the door. You're about to follow them when you get a weird feeling."
         n "Something's...off."
+        # add firewal and aikha transform into shadows, ryz is the only real one
+        # ryz tells you what to do
 
+        if escape_back_wall_notebook_gullible_viewed:
+            trickster "You even fell for that \"gullible\" joke!"
+            trickster "Come on, what year is it? You can't be falling for that anymore!"
+
+        $ renpy.notify("Fullscreen is recommended for this segment of the game.")
+
+
+label escape_search_minigame_1:
+    show screen qte(time=6, act=Function(escape_lose_life, "escape_search_minigame_2"))
+    menu:
+        trickster "{sc}{color=#095a10}Just turn around!{/color}{sc}"
+        "Don't turn around.":
+            jump escape_search_minigame_2
+        "Don't turn around." (on_hover = "Turn around"):
+            $ escape_lose_life("escape_search_minigame_2")
+        "Don't turn around." (on_hover = "Turn around"):
+            $ escape_lose_life("escape_search_minigame_2")
+        "Don't turn around." (on_hover = "Turn around"):
+            $ escape_lose_life("escape_search_minigame_2")
+    
+
+label escape_search_minigame_2:
+    hide screen qte
+    show screen qte(time=5, act=Function(escape_lose_life, "escape_search_minigame_3"))
+
+    menu:
+        trickster "{sc}{color=#095a10}You'll be so much happier!{/color}{sc}"
+        "Don't turn around." (on_hover = "Turn around"):
+            $ escape_lose_life("escape_search_minigame_3")
+        "Don't turn around." (on_hover = "Turn around"):
+            $ escape_lose_life("escape_search_minigame_3")
+        "Don't turn around." (on_hover = "Turn around"):
+            $ escape_lose_life("escape_search_minigame_3")
+        "Don't turn around.":
+            jump escape_search_minigame_3        
+
+label escape_search_minigame_3:
+    hide screen qte
+    show screen qte(time=4, act=Function(escape_lose_life, "escape_moving_minigame_1"))
+
+    menu:
+        trickster "{sc}{color=#095a10}All you need to do is...!{/color}{sc}"
+        "Turn around.":
+            $ escape_lose_life("escape_search_minigame_3")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_1")
+        "Turn around." (on_hover = "Don't turn around."):
+            jump escape_moving_minigame_1
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_1")
+
+
+label escape_moving_minigame_1:
+    hide screen qte
+    show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_2"), hidden=True)
+    menu:
+        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        "Don't turn around.":
+            jump escape_moving_minigame_end
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+
+label escape_moving_minigame_2:
+    show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_3"), hidden=True)
+    menu:
+        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Don't turn around.":
+            jump escape_moving_minigame_end
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+
+label escape_moving_minigame_3:
+    show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_4"), hidden=True)
+    menu:
+        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Don't turn around.":
+            jump escape_moving_minigame_end
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+
+
+label escape_moving_minigame_4:
+    show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_1"), hidden=True)
+    menu:
+        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Turn around.":
+            $ escape_lose_life("escape_moving_minigame_end")
+        "Don't turn around.":
+            jump escape_moving_minigame_end
+
+
+label escape_moving_minigame_end:
+    $ escape_moving_minigame_phase += 1
+    if escape_moving_minigame_phase >= escape_moving_minigame_max_phase:
+        hide screen qte
+        $ renpy.run(MouseMove(100, 100, 0))
         show screen qte(time = 10.0, act=Jump("escape_final_minigame_success"))
-        call screen escape_final_minigame
+        show screen escape_final_minigame
+        n "{sc}{color=#095a10}[player_name], my little intern! Come on!{/color}{sc}"
+        while True:
+            n "{sc}{color=#095a10}[player_name], my little intern! Come on!{/color}{sc}{fast}"
+    else:
+        jump escape_moving_minigame_1
     
-    label escape_final_minigame_success:
-        hide screen qte
-        hide screen escape_final_minigame
-        n "YAY!"
+label escape_final_minigame_success:
+    hide screen qte
+    hide screen escape_final_minigame
+    trickster "{sc}{color=#095a10}Fine. Fine! FINE!{/color}{/sc}"
+    trickster "{sc}{color=#095a10}You wanna play like that? You wanna see where insubordination gets you?{/color}{/sc}"
+    show screen escape_unwinnable
+    show white_screen zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 0.0
+        linear 0.1 alpha 0.6
+        linear 0.3 alpha 0.0
     
-    label escape_final_minigame_fail:
-        hide screen qte
-        hide screen escape_final_minigame
-        n "NO!"
-        
-
-
+    show haze white strong zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 1.0
+        block:
+            ease 0.3 alpha 0.7
+            ease 0.3 alpha 1.0
     
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+    trickster "{sc}{color=#095a10}TURN. AROUND.{/color}{/sc}"
+    while True:
+        trickster "{sc}{color=#095a10}TURN. AROUND.{/color}{/sc}{fast}"
+
+label escape_unwinnable_end:
+    show layer master
+    show layer screens
+    show layer top
+    hide screen escape_unwinnable
+    n "Despite every fibre of your being protesting otherwise..."
+    n "You slowly turn around."
+    trickster "{sc}{color=#095a10}Haha, YES! YES, YES, YES!{/color}{/sc}"
+    trickster "{sc}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
+    trickster "{sc}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
+
+    show screen escape_comply_1
+    $ renpy.run(MouseMove(960, 540, 0))
+    trickster "{sc}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
+    trickster "{sc}{color=#095a10}See? No fuss at all!{/color}{/sc}"
+    n "Your eyes are immovably attached to the green eyes in the darkness."
+    n "Your body disobeys every command you try to give it."
+    n "You "
+    n "are not"
+    n "{color=#095a10}the one{/color}"
+    n "{sc}{color=#095a10}in control here{nw}{/color}{/sc}"
+    n "...?"
+    n "Through the immeasurably faint glow in the darkness, you can just barely see a gun lying on the table on your right."
+    n "That's your last hope."
+
+    hide screen escape_comply_1
+    show screen escape_comply_2
+    while True:
+        n "Break free.{fast}"
+
+label escape_good_end:
+    hide screen escape_comply_2
+    n "YIPPEE"
+
+label escape_bad_end:
+    hide screen qte
+    hide screen escape_final_minigame
+    hide haze
+    hide white_screen
+
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+
+    show white_screen zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 0.0
+        linear 0.1 alpha 0.8
+        linear 0.5 alpha 0.05
+    show haze white strong zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 1.0
+        block:
+            ease 0.3 alpha 0.7
+            ease 0.3 alpha 1.0
+    show white_screen
+    n "You succumb. Your body turns around "
+    trickster "{sc}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
+    trickster "{sc}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
+    trickster "{sc}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
+    trickster "{sc}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
+    n "You try {nw}"
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+    trickster "{sc}{color=#095a10}Oh, shut it! You're not welcome here.{/color}{/sc}"
+    trickster "{sc}{color=#095a10}[player_name], [player_name], [player_name]...{/color}{/sc}"
+    trickster "{sc}{color=#095a10}This is so delightful! Just delightful! I don't know what to do! I didn't plan this far ahead!{/color}{/sc}"
+    menu:
+        trickster "{sc}{color=#095a10}Did you like my escape room? Was it fun?{/color}{/sc}"
+        "YES!":
+            $ NullAction()
+        "YES!":
+            $ NullAction()
+        "YES!":
+            $ NullAction()
+        "YES!":
+            $ NullAction()
+    
+    trickster "{sc}{color=#095a10}I'm SO glad to hear that!{/color}{/sc}"
+
+    menu:
+        trickster "{sc}{color=#095a10}Did you want me to make another one? Did you?{/color}{/sc}"
+        "YES!":
+            $ NullAction()
+        "YES!":
+            $ NullAction()
+        "YES!":
+            $ NullAction()
+        "YES!":
+            $ NullAction()
+    trickster "{sc}{color=#095a10}Of course! I'll get on that right now, just you w- {nw}{/color}{/sc}"
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+    
+    n "The sound of a gunshot causes your ears to ring."
+    trickster "{sc}{color=#095a10}Y-You!{/color}{/sc}"
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+    n "You hear a second gunshot."
+    trickster "{sc}{color=#095a10}Okay, OKAY! You win, you w-{/color}{/sc}"
+    show layer master:
+        shake
+    show layer screens:
+        shake
+    show layer top:
+        shake
+    n "Then a third."
+    trickster "{sc}{color=#095a10}I'LL BE TAKING MY LEAVE NOW THANK YOU VERY MUCH{/color}{/sc}"
+    show haze white strong zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 0.7
+        linear 5 alpha 0.0
+    show white_screen zorder 50 onlayer top:
+        matrixcolor ColorizeMatrix("#000000", "#095a10")
+        alpha 0.05
+        linear 3 alpha 0.0
+
+    show ryz at appear
+    ryz fury "That was MY escape room, by the way! MINE! 1400 LINES OF CODE!"
+    player "What?"
+    ryz "What?"
+    player "...Thanks, Dr. Ryz."
+    ryz neutral "Don't mention it. You alright?"
+    player "Yeah, I think."
 
 
-
-# setting: trapped in the containment room
-# need the code for the front door
-# the code is based off the anomaly that was initially contained in here
-# split into three parts:
-# anomaly name + VACF foundation number + personnel who contained it
+# very last game (after pandemonium): two options, turn around (top) and don't turn around. moving your mouse out of turn around will force it back on.
+# to not turn around, you need to use arrow keys
