@@ -1,4 +1,17 @@
 label day_event_trial_and_error:
+#    For court main:
+#        master:
+#            uriel (don't specify zorder)
+#            judge's table (zorder 90)
+#        master2:
+#            stage (zorder -1)
+#            defendant (don't specify zorder)
+#            side wall of stage (zorder 90)
+#    For court side:
+#        master:
+#            person
+#            stage (zorder 90)
+    
     image judge overlay = "images/cgs/court_main_overlay.png"
     image defendant overlay= "images/cgs/court_main_overlay2.png"
     image front defendant overlay = "images/cgs/court_main_overlay3.png"
@@ -26,27 +39,28 @@ label day_event_trial_and_error:
 label trial_you_as_defendant:
     scene bg court main
     $ trial_credibility_you = 0
-    show judge overlay zorder 90
-    show defendant overlay zorder 95
-    show front defendant overlay zorder 99
-    show uriel:
+    show judge overlay onlayer master zorder 90
+    show defendant overlay onlayer master2 zorder -1
+    show front defendant overlay onlayer master2 zorder 90
+    show uriel onlayer master:
         appear(0.5, y_align = 0.0)
     pause 1
     uriel "Today we are here for the trial of the murder of Dr. Ralex. I will be your judge, and will oversee this procedure."
-    show deceased zorder 96:
+    show deceased onlayer master2:
         alpha 0 
         xzoom -1.0
         alpha 1.0
         appear(-0.1, y_align = 1.3)
     uriel "The accused, [player_name], was found to be the prime suspect to this murder, with Dr. Deceased being the Plaintiff."
     uriel "I would like to introduce Dr. Chan as the jury."
-    show chan at appear(x_align = 1.0)
+    show chan onlayer master at appear(x_align = 1.0)
     chan "Thank you, Uriel. I swear that I will remain fair."
     show chan unique
     ethy "AA."
     chan "Ethy will help me determin if the Plaintiff or the defendant are lying."
     uriel "The court session will now start."
-    #deceased zorder 96 "I love miku"
+    deceased "I love Miku."
+    
 
 
 
