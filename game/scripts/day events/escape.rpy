@@ -95,11 +95,11 @@ label escape_initialize:
         escape_moving_minigame_phase = 0
         escape_moving_minigame_max_phase = 3
         escape_moving_minigame_delays = [0.6, 0.4, 0.15]
+        escape_moving_minigame_dialogue = ["Turn around!", "You think you're funny?", "Stop disobeying me."]
 
     return
 
 screen escape_inventory_screen:
-
     vbox:
         xalign 0.5
         yalign 0.5
@@ -153,7 +153,6 @@ screen escape_inventory_screen:
 
 screen escape_blue_sticky_screen:
     drag:
-
         id "sticky"
         xalign 0.2
         yalign 0.5
@@ -169,7 +168,6 @@ screen escape_blue_sticky_screen:
 
 screen escape_blue_sticky_screen_answer:
     drag:
-
         id "sticky"
         xalign 710
         yalign 290
@@ -242,12 +240,10 @@ screen escape_unwinnable:
             yalign 0.5
             text_xalign 0.5
             text_yalign 0.5
-            xsize 1920
-            ysize 1080
-            hovered SetVariable("escape_final_minigame_is_hovering", True)
-            unhovered SetVariable("escape_final_minigame_is_hovering", False)
-            idle_background "gui/button/choice_massive_idle_background.png"
-            hover_background "gui/button/choice_massive_red_hover_background.png"
+            xsize 417
+            ysize 87
+            idle_background "gui/button/choice_idle_background.png"
+            hover_background "gui/button/choice_red_hover_background.png"
             action Return()
     
     timer 0.05:
@@ -255,15 +251,26 @@ screen escape_unwinnable:
         action Function(escape_drag_mouse)
     
     timer 1.0:
-        action SetVariable("escape_final_minigame_pull_strength", 60)
+        action SetVariable("escape_final_minigame_pull_strength", 100)
     timer 2.0:
-        action SetVariable("escape_final_minigame_pull_strength", 70)
+        action SetVariable("escape_final_minigame_pull_strength", 200)
     timer 3.0:
-        action SetVariable("escape_final_minigame_pull_strength", 80)
+        action SetVariable("escape_final_minigame_pull_strength", 400)
     timer 4.0:
-        action SetVariable("escape_final_minigame_pull_strength", 150)
+        action SetVariable("escape_final_minigame_pull_strength", 800)
     timer 5.0:
+        action SetVariable("escape_final_minigame_pull_strength", 1600)
+    timer 6.0:
+        action SetVariable("escape_final_minigame_pull_strength", 3200)
+    timer 7.0:
+        action SetVariable("escape_final_minigame_pull_strength", 999999)
+    timer 10.0:
         action Jump("escape_unwinnable_end")
+
+screen escape_force_to_middle:
+    timer 0.05:
+        repeat True
+        action Function(escape_drag_mouse)
 
 screen escape_comply_1:
     vbox:
@@ -275,7 +282,6 @@ screen escape_comply_1:
             style "choice_button"
             action Return()
             unhovered MouseMove(config.screen_width / 2, config.screen_height / 2)
-
 
 screen escape_comply_2:
     style_prefix "choice"
@@ -292,7 +298,7 @@ screen escape_comply_2:
         textbutton "Comply.":
             xalign 0.5
             style "choice_button"
-            action Return()
+            action NullAction()
             unhovered MouseMove(config.screen_width / 2, config.screen_height / 2)
         
         textbutton "Grab the gun.":
@@ -483,27 +489,27 @@ label escape_left_wall:
                 # stop music
                 show layer screens:
                     shake
-                trickster "{sc}{color=#095a10}The TRICKSTER!!!{/color}{/sc}"
+                trickster "{sc=3}{color=#095a10}The TRICKSTER!!!{/color}{/sc}"
                 
-                trickster "{sc}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
+                trickster "{sc=3}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
                 menu:
-                    trickster "{sc}{color=#095a10}Welcome, [player_name]! How has your time here been?{/color}{/sc}"
+                    trickster "{sc=3}{color=#095a10}Welcome, [player_name]! How has your time here been?{/color}{/sc}"
                     "Splendid.":
-                        trickster "{sc}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
+                        trickster "{sc=3}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
                     "Splendid.":
-                        trickster "{sc}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
+                        trickster "{sc=3}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
                     "Splendid." (on_hover = "Terrible."):
                         trickster "Oh dear oh dear, I'm so very sorry to hear that!"
                     "Splendid.":
-                        trickster "{sc}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
+                        trickster "{sc=3}{color=#095a10}Delightful! Just delightful! I'm SO glad to hear that!{/color}{/sc}"
 
-                trickster "{sc}{color=#095a10}Now then, [player_name], my little intern, shall we play a game?{/color}{/sc}"
-                trickster "{sc}{color=#095a10}All you have to do is TURN AROUND and FACE ME, eh?{/color}{/sc}"
+                trickster "{sc=3}{color=#095a10}Now then, [player_name], my little intern, shall we play a game?{/color}{/sc}"
+                trickster "{sc=3}{color=#095a10}All you have to do is TURN AROUND and FACE ME, eh?{/color}{/sc}"
                 n "You have a very bad feeling about this...!"
 
                 show screen qte(act=Jump("escape_trickster_game_1_fail"), time=8)
                 menu:
-                    trickster "{sc}{color=#095a10}Turn around!{/color}{/sc}"
+                    trickster "{sc=3}{color=#095a10}Turn around!{/color}{/sc}"
                     "Don't turn around." (on_hover = "Turn around."):
                         jump escape_trickster_game_1_fail
                     "Don't turn around." (on_hover = "Turn around."): 
@@ -517,7 +523,7 @@ label escape_left_wall:
                     hide screen qte
                     show screen qte(act=Jump("escape_trickster_game_1_fail"), time=7)
                     menu:
-                        trickster "{sc}{color=#095a10}C'mon, turn around!{/color}{/sc}"
+                        trickster "{sc=3}{color=#095a10}C'mon, turn around!{/color}{/sc}"
                         "Don't turn around.": 
                             jump escape_trickster_game_1_3
                         "Don't turn around." (on_hover = "Turn around."):
@@ -531,7 +537,7 @@ label escape_left_wall:
                     hide screen qte
                     show screen qte(act=Jump("escape_trickster_game_1_fail"), time=6)
                     menu:
-                        trickster "{sc}{b}{color=#095a10}Face me! Face the lights! Face the music!{/color}{/b}{/sc}"
+                        trickster "{sc=3}{b}{color=#095a10}Face me! Face the lights! Face the music!{/color}{/b}{/sc}"
                         "Don't turn around." (on_hover = "Turn around."):
                             jump escape_trickster_game_1_fail
                         "Don't turn around." (on_hover = "Turn around."): 
@@ -549,10 +555,10 @@ label escape_left_wall:
                     show escape_it zorder 50
                     n "You feel your body turn around, against your will."
                     n "You look upwards, {color=#095a10}against your will.{/color}"
-                    n "{color=#095a10}You reach your arm out, {/color}{sc}{color=#095a10}against your will.{/color}{/sc}"
-                    n "{cps=*0.35}{sc}{color=#095a10}You are but a puppet.{/color}{/sc}{/cps}"
-                    trickster "{sc}{color=#095a10}Oh, yes! Yes! YES! Delightful! Just delightful!{/color}{/sc}"
-                    trickster "{sc}{color=#095a10}[player_name], my little intern, have you not yet realized?{/color}{/sc}{/cps}"
+                    n "{color=#095a10}You reach your arm out, {/color}{sc=3}{color=#095a10}against your will.{/color}{/sc}"
+                    n "{cps=*0.35}{sc=3}{color=#095a10}You are but a puppet.{/color}{/sc}{/cps}"
+                    trickster "{sc=3}{color=#095a10}Oh, yes! Yes! YES! Delightful! Just delightful!{/color}{/sc}"
+                    trickster "{sc=3}{color=#095a10}[player_name], my little intern, have you not yet realized?{/color}{/sc}{/cps}"
                     trickster "{cps=*0.35}{color=#095a10}You are not the one in control here.{/color}{/cps}{w=0.5}{nw}"
                     jump escape_tricker_game_1_end
 
@@ -1047,9 +1053,9 @@ label escape_submit_passcode_end:
                 0.4
                 alpha 1.0
             n "The lights flicker and go out."
-            trickster "{sc}{color=#095a10}Oh dear oh dear! [player_name], my little intern, how could you fail this?{/color}{/sc}"
-            trickster "{sc}{color=#095a10}A shame. Truly a shame!{/color}{/sc}"
-            trickster "{sc}{color=#095a10}Well now. Your actions have consequences, you know!.{/color}{/sc}"
+            trickster "{sc=3}{color=#095a10}Oh dear oh dear! [player_name], my little intern, how could you fail this?{/color}{/sc}"
+            trickster "{sc=3}{color=#095a10}A shame. Truly a shame!{/color}{/sc}"
+            trickster "{sc=3}{color=#095a10}Well now. Your actions have consequences, you know!.{/color}{/sc}"
             trickster "{cps=*0.35}{color=#095a10}You are no longer of use.{/color}{/cps}"
 
             n "You notice"
@@ -1086,7 +1092,7 @@ label escape_submit_passcode_end:
 label escape_search_minigame_1:
     show screen qte(time=6, act=Function(escape_lose_life, "escape_search_minigame_2"))
     menu:
-        trickster "{sc}{color=#095a10}Just turn around!{/color}{sc}"
+        trickster "{sc=3}{color=#095a10}Just turn around!{/color}{sc=3}"
         "Don't turn around.":
             jump escape_search_minigame_2
         "Don't turn around." (on_hover = "Turn around"):
@@ -1102,7 +1108,7 @@ label escape_search_minigame_2:
     show screen qte(time=5, act=Function(escape_lose_life, "escape_search_minigame_3"))
 
     menu:
-        trickster "{sc}{color=#095a10}You'll be so much happier!{/color}{sc}"
+        trickster "{sc=3}{color=#095a10}You'll be so much happier!{/color}{sc=3}"
         "Don't turn around." (on_hover = "Turn around"):
             $ escape_lose_life("escape_search_minigame_3")
         "Don't turn around." (on_hover = "Turn around"):
@@ -1117,7 +1123,7 @@ label escape_search_minigame_3:
     show screen qte(time=4, act=Function(escape_lose_life, "escape_moving_minigame_1"))
 
     menu:
-        trickster "{sc}{color=#095a10}All you need to do is...!{/color}{sc}"
+        trickster "{sc=3}{color=#095a10}All you need to do is...!{/color}{sc=3}"
         "Turn around.":
             $ escape_lose_life("escape_search_minigame_3")
         "Turn around.":
@@ -1132,7 +1138,7 @@ label escape_moving_minigame_1:
     hide screen qte
     show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_2"), hidden=True)
     menu:
-        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        n "{sc=3}{color=#095a10}[escape_moving_minigame_dialogue[escape_moving_minigame_phase]]{/color}{sc=3}{fast}"
         "Don't turn around.":
             jump escape_moving_minigame_end
         "Turn around.":
@@ -1145,7 +1151,7 @@ label escape_moving_minigame_1:
 label escape_moving_minigame_2:
     show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_3"), hidden=True)
     menu:
-        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        n "{sc=3}{color=#095a10}[escape_moving_minigame_dialogue[escape_moving_minigame_phase]]{/color}{sc=3}{fast}"
         "Turn around.":
             $ escape_lose_life("escape_moving_minigame_end")
         "Don't turn around.":
@@ -1158,7 +1164,7 @@ label escape_moving_minigame_2:
 label escape_moving_minigame_3:
     show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_4"), hidden=True)
     menu:
-        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        n "{sc=3}{color=#095a10}[escape_moving_minigame_dialogue[escape_moving_minigame_phase]]{/color}{sc=3}{fast}"
         "Turn around.":
             $ escape_lose_life("escape_moving_minigame_end")
         "Turn around.":
@@ -1172,7 +1178,7 @@ label escape_moving_minigame_3:
 label escape_moving_minigame_4:
     show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_1"), hidden=True)
     menu:
-        n "{sc}{color=#095a10}Turn around!{/color}{sc}{fast}"
+        n "{sc=3}{color=#095a10}[escape_moving_minigame_dialogue[escape_moving_minigame_phase]]{/color}{sc=3}{fast}"
         "Turn around.":
             $ escape_lose_life("escape_moving_minigame_end")
         "Turn around.":
@@ -1190,17 +1196,17 @@ label escape_moving_minigame_end:
         $ renpy.run(MouseMove(100, 100, 0))
         show screen qte(time = 10.0, act=Jump("escape_final_minigame_success"))
         show screen escape_final_minigame
-        n "{sc}{color=#095a10}[player_name], my little intern! Come on!{/color}{sc}"
+        n "{sc=3}{color=#095a10}[player_name], my little intern! Come on!{/color}{sc=3}"
         while True:
-            n "{sc}{color=#095a10}[player_name], my little intern! Come on!{/color}{sc}{fast}"
+            n "{sc=3}{color=#095a10}[player_name], my little intern! Come on!{/color}{sc=3}{fast}"
     else:
         jump escape_moving_minigame_1
     
 label escape_final_minigame_success:
     hide screen qte
     hide screen escape_final_minigame
-    trickster "{sc}{color=#095a10}Fine. Fine! FINE!{/color}{/sc}"
-    trickster "{sc}{color=#095a10}You wanna play like that? You wanna see where insubordination gets you?{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Fine. Fine! FINE!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}You wanna play like that? You wanna see where insubordination gets you?{/color}{/sc}"
     show screen escape_unwinnable
     show white_screen zorder 50 onlayer top:
         matrixcolor ColorizeMatrix("#000000", "#095a10")
@@ -1221,39 +1227,63 @@ label escape_final_minigame_success:
         shake
     show layer top:
         shake
-    trickster "{sc}{color=#095a10}TURN. AROUND.{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}TURN. AROUND.{/color}{/sc}"
     while True:
-        trickster "{sc}{color=#095a10}TURN. AROUND.{/color}{/sc}{fast}"
+        trickster "{sc=3}{color=#095a10}TURN. AROUND.{/color}{/sc}{fast}"
 
 label escape_unwinnable_end:
     show layer master
     show layer screens
     show layer top
     hide screen escape_unwinnable
+    show screen escape_force_to_middle
     n "Despite every fibre of your being protesting otherwise..."
     n "You slowly turn around."
-    trickster "{sc}{color=#095a10}Haha, YES! YES, YES, YES!{/color}{/sc}"
-    trickster "{sc}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
-    trickster "{sc}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Haha, YES! YES, YES, YES!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
 
+    hide screen escape_force_to_middle
     show screen escape_comply_1
     $ renpy.run(MouseMove(960, 540, 0))
-    trickster "{sc}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
-    trickster "{sc}{color=#095a10}See? No fuss at all!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}See? No fuss at all!{/color}{/sc}"
     n "Your eyes are immovably attached to the green eyes in the darkness."
     n "Your body disobeys every command you try to give it."
     n "You "
     n "are not"
     n "{color=#095a10}the one{/color}"
-    n "{sc}{color=#095a10}in control here{nw}{/color}{/sc}"
+    n "{sc=3}{color=#095a10}in control here.{/color}{/sc}"
     n "...?"
     n "Through the immeasurably faint glow in the darkness, you can just barely see a gun lying on the table on your right."
     n "That's your last hope."
-
     hide screen escape_comply_1
     show screen escape_comply_2
+    n "Break free.{w=1.5}{nw}"
+    trickster "{sc=3}{color=#095a10}[player_name]! [player_name], [player_name], [player_name].{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Oh, I'm so excited! I didn't plan this far ahead!{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}You'll be happy, [player_name]. You'll be so happy.{w=3.0}{nw}{/color}{/sc}"
+
+    show aikha at appear(x_align = 0.3, final_brightness = -1.0)
+    show firewal at appear(x_align = 0.7, final_brightness = -1.0)
+    trickster "{sc=3}{color=#095a10}Nevermind these \"department heads!\"{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}They talk so much, but have they ever {i}actually{/i} done anything for you?{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}wait where'd the third guy go{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}My little intern, with me, you can do so much more! {i}Be{/i} so much more!{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Oh! By the way! How did you like the escape room?{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Haha, I spent so long on it. I would literally break down and cry if you told me you hated it.{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}You loved it?{w=2.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Delightful! Just delightful! I'm so glad to hear that!{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}I'll make another one, just for you, eh? Eh?{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}You'd love that? But of course!{w=3.0}{nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Anything for you! Anything for you.{w=3.0}{nw}{/color}{/sc}"
+    
+
+    trickster "{sc=3}{color=#095a10}Don't worry, [player_name]. You're with me.{w=3.0}{nw}{/color}{/sc}"
     while True:
-        n "Break free.{fast}"
+        trickster "{sc=3}{color=#095a10}Don't worry, [player_name]. You're with me.{w=3.0}{nw}{/color}{/sc}{fast}"
+
+    
 
 label escape_good_end:
     hide screen escape_comply_2
@@ -1285,10 +1315,10 @@ label escape_bad_end:
             ease 0.3 alpha 1.0
     show white_screen
     n "You succumb. Your body turns around "
-    trickster "{sc}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
-    trickster "{sc}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
-    trickster "{sc}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
-    trickster "{sc}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
     n "You try {nw}"
     show layer master:
         shake
@@ -1296,11 +1326,11 @@ label escape_bad_end:
         shake
     show layer top:
         shake
-    trickster "{sc}{color=#095a10}Oh, shut it! You're not welcome here.{/color}{/sc}"
-    trickster "{sc}{color=#095a10}[player_name], [player_name], [player_name]...{/color}{/sc}"
-    trickster "{sc}{color=#095a10}This is so delightful! Just delightful! I don't know what to do! I didn't plan this far ahead!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Oh, shut it! You're not welcome here.{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}[player_name], [player_name], [player_name]...{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}This is so delightful! Just delightful! I don't know what to do! I didn't plan this far ahead!{/color}{/sc}"
     menu:
-        trickster "{sc}{color=#095a10}Did you like my escape room? Was it fun?{/color}{/sc}"
+        trickster "{sc=3}{color=#095a10}Did you like my escape room? Was it fun?{/color}{/sc}"
         "YES!":
             $ NullAction()
         "YES!":
@@ -1310,10 +1340,10 @@ label escape_bad_end:
         "YES!":
             $ NullAction()
     
-    trickster "{sc}{color=#095a10}I'm SO glad to hear that!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}I'm SO glad to hear that!{/color}{/sc}"
 
     menu:
-        trickster "{sc}{color=#095a10}Did you want me to make another one? Did you?{/color}{/sc}"
+        trickster "{sc=3}{color=#095a10}Did you want me to make another one? Did you?{/color}{/sc}"
         "YES!":
             $ NullAction()
         "YES!":
@@ -1322,7 +1352,7 @@ label escape_bad_end:
             $ NullAction()
         "YES!":
             $ NullAction()
-    trickster "{sc}{color=#095a10}Of course! I'll get on that right now, just you w- {nw}{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Of course! I'll get on that right now, just you w- {nw}{/color}{/sc}"
     show layer master:
         shake
     show layer screens:
@@ -1331,7 +1361,7 @@ label escape_bad_end:
         shake
     
     n "The sound of a gunshot causes your ears to ring."
-    trickster "{sc}{color=#095a10}Y-You!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Y-You!{/color}{/sc}"
     show layer master:
         shake
     show layer screens:
@@ -1339,7 +1369,7 @@ label escape_bad_end:
     show layer top:
         shake
     n "You hear a second gunshot."
-    trickster "{sc}{color=#095a10}Okay, OKAY! You win, you w-{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Okay, OKAY! You win, you w-{/color}{/sc}"
     show layer master:
         shake
     show layer screens:
@@ -1347,7 +1377,7 @@ label escape_bad_end:
     show layer top:
         shake
     n "Then a third."
-    trickster "{sc}{color=#095a10}I'LL BE TAKING MY LEAVE NOW THANK YOU VERY MUCH{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}I'LL BE TAKING MY LEAVE NOW THANK YOU VERY MUCH{/color}{/sc}"
     show haze white strong zorder 50 onlayer top:
         matrixcolor ColorizeMatrix("#000000", "#095a10")
         alpha 0.7

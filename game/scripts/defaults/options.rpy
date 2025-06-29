@@ -5,7 +5,7 @@
 ## may want to uncomment them when appropriate.
 
 init python:
-    config.layers = [ 'backdrop', 'master', 'transient', 'screens', 'top' ]
+    config.layers = [ 'backdrop', 'master0', 'master', 'master2', 'master3', 'transient', 'screens', 'top' ]
 
 
 # define config.developer = True

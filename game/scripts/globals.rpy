@@ -249,16 +249,17 @@ image haze orange strong = At("haze white", white_to_orange)
 #   y_offset: how low the sprite starts when appearing, in px
 #   duration: how long the transition takes, in seconds
 #   y_align: the vertical alignment of the character, with 0.0 being the top, 0.5 being the center and 1.0 being the bottom
-transform appear(x_align = 0.5, y_offset = 70, duration = 0.5, y_align = 1.0):
+transform appear(x_align = 0.5, y_offset = 70, duration = 0.5, y_align = 1.0, final_brightness = 0.0):
     xalign x_align
     yalign y_align
     yoffset y_offset
     matrixcolor BrightnessMatrix(-1.0)
+    alpha 1.0
 
     parallel:
         easein duration yoffset 0
     parallel:
-        linear duration matrixcolor BrightnessMatrix(0.0)
+        linear duration matrixcolor BrightnessMatrix(final_brightness)
 
 # causes the character to lower slightly and fade out
 # usage: 
