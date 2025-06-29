@@ -286,55 +286,7 @@ transform disappear(y_offset = 70, duration = 0.5):
 transform move_to(x_align = 0.5, duration = default_move_time):
     linear duration xalign x_align
 
-# shakes the given sprite or layer randomly, optionally persisting at max strength for some time before diminishing towards the end
-# usage:
-#   use like a normal transform:
-#       show helco at shake
-#   to shake the screen, shake the master layer
-#       show layer master at shake
-# parameters:
-#   duration: how long the shake will last, not including persist time
-#   strength: the max strength of the shake, measured in pixels of offset
-#   preset: sets predefined values of duration and strength. will override duration and strength if set. can be set to:
-#       "strong"
-#       "weak"
-#       "rumble" (recommended if persist)
-#   persist: how long the shake will last WITHOUT DIMINISHING. happens at the start of the shake, and does not run down duration time
-# example:
-#   show layer master at shake(duration = 3.0, strength = 10.0, persist = 1.0)
-#       this will shake the screen at max strength (10px displacement) for 1.0 seconds before fading out over the course of of 3.0 seconds
-transform shake(duration=0.5, strength=10.0, preset="", persist=0.0):
-    function Shake(duration = duration, strength = strength, preset = preset, persist = persist)
-
-init python:
-    class Shake(object):
-        def __init__(self, duration, strength, preset, persist):
-            if preset == "strong":
-                self.duration = 1.0
-                self.strength = 20.0
-            elif preset == "weak":
-                self.duration = 0.25
-                self.strength = 10.0
-            elif preset == "rumble":
-                self.duration = 0.5
-                self.strength = 2.0
-            else:
-                self.duration = duration
-                self.strength = strength
-            self.persist = persist
-        
-        def __call__(self, trans, shown, anim):
-            factor = min(1.0, (self.duration - shown + self.persist) / self.duration) # the factor by which to multiply the shake
-            if factor <= 0: # function ended
-                trans.xoffset = 0
-                trans.yoffset = 0
-                del self
-                return None
-            else:
-                # randomly choose a corner of the bounding box to move to
-                # the bounding box is the box of side length 2 * self.strength * factor
-                trans.xoffset = self.strength * factor * (renpy.random.choice([-1, 1])) 
-                trans.yoffset = self.strength * factor * (renpy.random.choice([-1, 1]))
-                return 0
+transform shake:
+    function shake_obj.start
 
 define default_fade = Fade(1.0, 1.0, 1.0)

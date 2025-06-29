@@ -3,7 +3,81 @@
 init python:
     import re
     import pygame
+    # from threading import Timer
     
+    class Shake(object):
+
+        def __init__(self, duration, strength, preset, persist):
+            self.update(duration, strength, preset, persist)
+
+        def update(self, duration, strength, preset, persist):
+            if preset == "strong":
+                self.duration = 1.0
+                self.strength = 20.0
+            elif preset == "medium":
+                self.duration = 0.5
+                self.strength = 10.0
+            elif preset == "weak":
+                self.duration = 0.25
+                self.strength = 10.0
+            elif preset == "rumble":
+                self.duration = 0.5
+                self.strength = 2.0
+            else:
+                self.duration = duration
+                self.strength = strength
+            
+            self.persist = persist
+
+        
+        def start(self, trans, shown, anim):
+            factor = min(1.0, (self.duration - shown + self.persist) / self.duration) # the factor by which to multiply the shake
+            if factor <= 0: # function ended
+                trans.xoffset = 0
+                trans.yoffset = 0
+                return None
+            else:
+                # randomly choose a corner of the bounding box to move to
+                # the bounding box is the box of side length 2 * self.strength * factor
+                trans.xoffset = self.strength * factor * (renpy.random.choice([-1, 1])) 
+                trans.yoffset = self.strength * factor * (renpy.random.choice([-1, 1]))
+                return 0
+
+    shake_obj = Shake(duration=0.5, strength=10.0, preset="", persist=0.0)
+
+    # shakes the given sprite or layer randomly, optionally persisting at max strength for some time before diminishing towards the end
+    # usage:
+    #   $ shake_screen(layers, duration, strength, preset, persist)
+    # parameters:
+    #   layers: which layers to shake
+    #       this can be an array or a string of a single layer's name
+    #       by default, it will shake all layers with sprites on them (not UI)
+    #       a value of "all" will shake ALL layers (including UI)
+    #   duration: the time it takes for the shake to go from max strength to nothing
+    #   strength: the strength of the shake, represented by the maximum displacement of a shake in pixels
+    #   preset: will set values of strength and duration to preset values:
+    #       strong: duration 1.0, strength 20.0
+    #       medium: duration 0.5, strength 10.0 (default)
+    #       weak: duration 0.25, strength 10.0
+    #       rumble: duration 0.5, strength 2.0, intended to be used for light, persistent rumble effects
+    #   persist: the amount of time at the beginning of the shake where it does not decay
+    #       example: persist 2.0, strength 10.0, duration 1.0 will cause the screen to shake at strength 10 for 2 seconds, then linearly decay from strength 10 to 0 over the course of 1 second 
+    #
+    def shake_screen(layers=None, duration=0.5, strength=10.0, preset="", persist=0.0):
+        shake_obj.update(duration, strength, preset, persist)
+        if layers is None:
+            layers = ['master0', 'master', 'master1', 'master2', 'top']
+        if isinstance(layers, str):
+            if layers == "all":
+                for layer in config.layers:
+                    renpy.show_layer_at(shake, layer=layer)
+            else: # single layer
+                renpy.show_layer_at(shake, layer=layers)
+                    
+        else: # multiple layers
+            for layer in layers:
+                renpy.show_layer_at(shake, layer=layer)
+
     # Raise the character points of personnel
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
     # example usage: update_character_points({"helco": 1, "plutoes", -2})

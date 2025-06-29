@@ -23,7 +23,17 @@ label day_event_test:
     scene bg lounge
     with default_fade
     show egg
-    n ""
+    n "a"
+    $ shake_screen()
+    n "b"
+    $ shake_screen(duration=1.5)
+    n "c"
+    $ shake_screen(duration=1.5, persist=3.0)
+    n "d"
+    n "e"
+    n "f"
+    n "g"
+    n "h"
 
 
     
