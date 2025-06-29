@@ -190,6 +190,11 @@ init python:
             # outro_label="ddi_outro"
         ), 
         Event(
+            label="trial_and_error",
+            personnel=[],
+            tags=["anomaly", "personnel", "incident"],
+        ), 
+        Event(
             label="the_bingo_card_2",
             personnel=["deceased", "helco", "uriel", "ryz", "caffi"],
             tags=["personnel"],
