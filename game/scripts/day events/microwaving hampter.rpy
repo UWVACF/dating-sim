@@ -58,10 +58,7 @@ label day_event_microwaving_hampter:
         hampter "Wee!!"
         n "The microwave hums, spinning both the eggs and Hampter."
         hampter "This is so fun! This is so-"
-        show layer master:
-            shake
-            0.8
-            repeat 6
+        $ shake_screen(delay=0.8, repeat=6)
         n "Suddenly, the eggs explode. One by one, they pop like balloons, spewing scalding hot yolk all around the microwave."
         hampter "AHHH!!"
         n "Now you remember: eggs explode in the microwave!"
@@ -70,8 +67,7 @@ label day_event_microwaving_hampter:
         player "SHIT! That's hot!"
         n "The scalding eggs covering the plate burn your hands as you try to grab it, and you drop the plate."
         hampter "NOOO!"
-        show layer master:
-            shake
+        $ shake_screen()
         n "...And Hampter."
         jessie panic "HAMPTER!"
         n "Dr. Jessie rushes to Hampter and scoops her up from the mess, ignoring the "

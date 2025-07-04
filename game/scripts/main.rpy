@@ -128,8 +128,11 @@ label day_init:
 
     # call the events (in renpy cuz call jumps to the next renpy statement, not python statement)
     $ renpy.call(today_intro_label)
+    $ clear_screen_transforms()
     $ renpy.call(today_event_label)
+    $ clear_screen_transforms()
     $ renpy.call(today_outro_label)
+    $ clear_screen_transforms()
 
     "{nw}" # again, .call jumps to next renpy statement so we place a pseudo renpy statement here
     

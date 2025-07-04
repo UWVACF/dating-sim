@@ -26,9 +26,9 @@ label day_event_test:
     n "a"
     $ shake_screen()
     n "b"
-    $ shake_screen(duration=1.5)
+    $ shake_screen(repeat=True)
     n "c"
-    $ shake_screen(duration=1.5, persist=3.0)
+    $ shake_screen(duration=0)
     n "d"
     n "e"
     n "f"
@@ -37,7 +37,7 @@ label day_event_test:
 
 
     
-    
+     
     
 # player "Hello, Dr. Helco!"
 # show helco neutral at appear

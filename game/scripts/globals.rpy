@@ -289,4 +289,7 @@ transform move_to(x_align = 0.5, duration = default_move_time):
 transform shake:
     function shake_obj.start
 
+transform null_transform: # do nothing
+    alpha 1.0
+
 define default_fade = Fade(1.0, 1.0, 1.0)

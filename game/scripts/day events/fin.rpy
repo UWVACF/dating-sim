@@ -124,8 +124,7 @@ label day_event_fin:
         n "You pull your phone back out. Your butt has swiped the screen for you and you are now the rats are no longer dancing kpop, but pole dancing."
         n "You quickly turn your screen brightness down and look up to see if anyone has seen your screen."
         n "Out of the corner of your eye, you see Dr. Aikha walks through the exit to the office, some of their eyes still on you."
-        show layer master:
-            shake(0.2,0.4)
+        $ shake_screen()(0.2,0.4)
         n "Their fin slams against the doorframe. Ouch."
         n "Dr. Aikha usually wouldn't make this kind of mistake, given their very hightened perception."
         n "Unless, of course, they were very distracted."

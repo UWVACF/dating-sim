@@ -23,8 +23,7 @@ label day_event_the_common_fridge:
         n "Physics be damned, you take the elephant out of the fridge."
         n "The elephant looks at you, trumpets in your face and trots away happily."
         n "We will also disregard how the elephant fits in the hallway, let alone the doorway."
-        show layer master:
-            shake(preset="strong")
+        $ shake_screen()(preset="strong")
         pause 0.3
         n "Nevermind. It doesn't."
         show bg hallway
@@ -39,8 +38,7 @@ label day_event_the_common_fridge:
         player "Pretty good, thanks for asking!"
         syg "...So do you know anything about the elephant in the hallway?"
         player "Uhhhhhhhhhhhhhhhhhhhhhhhhhh"
-        show layer master:
-            shake
+        $ shake_screen()
         wal1 "FIGHT, WALBOTS! FOR THE WAL!"
         player "Nope but I'm gonna go check it out anyways okay bye!!!"
         show deceased at disappear
@@ -51,16 +49,7 @@ label day_event_the_common_fridge:
         n "You scurry over to the horde of Walbots fighting the elephant."
         hide deceased
         hide syg
-        show layer master:
-            shake
-            0.4
-            shake
-            1.2
-            shake
-            0.7
-            shake
-            1.9
-            repeat
+        $ shake_screen()
         wal1 "Hello [player_name]! How may I be of assistance?"
         player "Oh, I was actually seeing if you guys needed any help with...this."
         wal1 "Fret not! We have this situation under control!"
@@ -142,8 +131,7 @@ label day_event_the_common_fridge:
         n "You put the- Wait, that's my line!"
         player "HORATIO: E'en so, my lord."
         player "HAMLET: To what-"
-        show layer master:
-            shake
+        $ shake_screen()
         syg "STOP. Please."
         show syg fury at appear(x_align = 0.3)
         show deceased at appear(x_align = 0.7)
@@ -185,8 +173,7 @@ label day_event_the_common_fridge:
                 n "You're eternally grateful for their help, but not {i}that{/i} eternally grateful. You slowly turn to leave as Dr. Syg conjures up shadowy tentacles from the floor."
                 syg "SHUT UP!"
                 deceased "Prithee, Horatio, tell me one thing.\nHORATIO: What's that, my l- {nw}"
-                show layer master:
-                    shake
+                $ shake_screen()
                 extend "AHHHHHHHHHH"
                 n "You can have lunch some other time..."
                 $ update_character_points({"firewal": 0, "helco": 0, "syg": -1, "deceased": -1})

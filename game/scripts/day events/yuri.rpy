@@ -91,10 +91,7 @@ label wing_aikha:
     player "Dr. Deceased! Watch this!"
     # show deceased surprise
     n "You smash it open, and - against all ethics and occupational preservation - open-fire on Dr. Aikha."
-    show layer master:
-        block:
-            shake(0.3,5)
-            repeat 3
+    $ shake_screen(duration=0.3, strength=5, repeat=3)
     show redblur:
         alpha 0.0
         block:

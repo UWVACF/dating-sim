@@ -176,8 +176,7 @@ label day_event_the_bingo_card_1:
         hide alex
         hide plutoes
         wal387 "Your cooperation is greatly apprec-"
-        show layer master:
-            shake
+        $ shake_screen()
         show shock onlayer top:
             alpha 0.0
             linear 0.2 alpha 1.0
@@ -323,10 +322,7 @@ label day_event_the_bingo_card_1:
             appear(x_align = 0.3)
         wal387 "Objective FAILED. Initiating SELF_DESTRUCT_SEQUENCE."
         n "...Doing that."
-        show layer master:
-            block:
-                shake(duration = 0.2, strength = 3)
-                repeat
+        $ shake_screen(duration=0.2, strength=3, repeat=True)
         show haze orange onlayer top:
             alpha 0.0
             linear 0.5 alpha 0.5
@@ -398,10 +394,7 @@ label day_event_the_bingo_card_1:
         wal387 "Objective FAILED. Initiating SELF_DESTRUCT_SEQUENCE."
         hide plutoes
         n "...Oh yeah-"
-        show layer master:
-            block:
-                shake(duration = 0.2, strength = 3)
-                repeat 11
+        $ shake_screen(duration=0.2, strength=3, repeat=11)
         show haze orange zorder 50:
             alpha 0.0
             linear 0.5 alpha 0.5

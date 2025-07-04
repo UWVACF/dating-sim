@@ -323,12 +323,7 @@ label escape_lose_life_animations(lab):
         linear 0.1 alpha 0.6
         linear 0.3 alpha 0.0
     
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
     
     if escape_end_lives <= 0:
         $ print("you died")
@@ -487,8 +482,7 @@ label escape_left_wall:
 
                 show black_screen zorder 50
                 # stop music
-                show layer screens:
-                    shake
+                $ shake_screen()
                 trickster "{sc=3}{color=#095a10}The TRICKSTER!!!{/color}{/sc}"
                 
                 trickster "{sc=3}{color=#095a10}Oh, yes! Yes! YES!{/color}{/sc}"
@@ -1221,12 +1215,7 @@ label escape_final_minigame_success:
             ease 0.3 alpha 0.7
             ease 0.3 alpha 1.0
     
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
     trickster "{sc=3}{color=#095a10}TURN. AROUND.{/color}{/sc}"
     while True:
         trickster "{sc=3}{color=#095a10}TURN. AROUND.{/color}{/sc}{fast}"
@@ -1295,12 +1284,7 @@ label escape_bad_end:
     hide haze
     hide white_screen
 
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
 
     show white_screen zorder 50 onlayer top:
         matrixcolor ColorizeMatrix("#000000", "#095a10")
@@ -1320,12 +1304,7 @@ label escape_bad_end:
     trickster "{sc=3}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
     trickster "{sc=3}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
     n "You try {nw}"
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
     trickster "{sc=3}{color=#095a10}Oh, shut it! You're not welcome here.{/color}{/sc}"
     trickster "{sc=3}{color=#095a10}[player_name], [player_name], [player_name]...{/color}{/sc}"
     trickster "{sc=3}{color=#095a10}This is so delightful! Just delightful! I don't know what to do! I didn't plan this far ahead!{/color}{/sc}"
@@ -1353,29 +1332,14 @@ label escape_bad_end:
         "YES!":
             $ NullAction()
     trickster "{sc=3}{color=#095a10}Of course! I'll get on that right now, just you w- {nw}{/color}{/sc}"
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
     
     n "The sound of a gunshot causes your ears to ring."
     trickster "{sc=3}{color=#095a10}Y-You!{/color}{/sc}"
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
     n "You hear a second gunshot."
     trickster "{sc=3}{color=#095a10}Okay, OKAY! You win, you w-{/color}{/sc}"
-    show layer master:
-        shake
-    show layer screens:
-        shake
-    show layer top:
-        shake
+    $ shake_screen(layers="all")
     n "Then a third."
     trickster "{sc=3}{color=#095a10}I'LL BE TAKING MY LEAVE NOW THANK YOU VERY MUCH{/color}{/sc}"
     show haze white strong zorder 50 onlayer top:
