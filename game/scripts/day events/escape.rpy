@@ -9,8 +9,10 @@ image escape_peculiar_paper = "images/cgs/escape peculiar paper.png"
 # dialogue
 # hint + solution system
 
-init python:
+# trickster colour is #095a10 (ctrl f to replace)
 
+init python:
+    
     def escape_check_drag_positions():
         if not escape_left_wall_blue_sticky_completed:
             threshold = 1.5
@@ -26,7 +28,7 @@ init python:
         escape_end_lives -= 1
         print("escape end lives is ", escape_end_lives)
         print("label is ", label)
-        renpy.call("escape_lose_life_animations", lab=label)
+        renpy.jump("escape_lose_life_animations", lab=label)
     
     def escape_drag_mouse():
         import math
@@ -56,6 +58,8 @@ init python:
     def escape_final_minigame_enable():
         if not escape_final_minigame_is_hovering:
             renpy.run(SetVariable("qte_paused", False))
+        
+
         
 label escape_initialize:
     python:
@@ -97,6 +101,8 @@ label escape_initialize:
         escape_moving_minigame_delays = [0.6, 0.4, 0.15]
         escape_moving_minigame_dialogue = ["Turn around!", "You think you're funny?", "Stop disobeying me."]
 
+        escape_inventory_current_item = ""
+
     return
 
 screen escape_inventory_screen:
@@ -105,9 +111,19 @@ screen escape_inventory_screen:
         yalign 0.5
         spacing gui.choice_spacing
 
-        text "Your Inventory":
-            size 50
-            xalign 0.13
+
+        hbox:
+            xalign 0.5
+            spacing 300
+            text "Your Inventory":
+                size 50
+                xalign 0.0
+                yalign 0.5
+            textbutton "Go back.":
+                style "choice_button"
+                xalign 1.0
+                xsize 230
+                action Jump("escape_main_menu")
 
         $ escape_inventory_screen_start = escape_inventory_page * escape_inventory_display_per_page
         $ escape_inventory_screen_end = escape_inventory_screen_start + escape_inventory_display_per_page
@@ -116,12 +132,7 @@ screen escape_inventory_screen:
             textbutton i:
                 xalign 0.5
                 style "choice_button"
-                action Call(escape_item_labels[i])
-    
-        textbutton "Go back.":
-            xalign 0.5
-            style "choice_button"
-            action Jump("escape_main_menu")
+                action [SetVariable("escape_inventory_current_item", escape_item_labels[i]), Jump("escape_call_item_label")]
 
         hbox:
             xalign 0.5
@@ -150,6 +161,10 @@ screen escape_inventory_screen:
                 idle_background "gui/button/choice_small_idle_background.png"
                 hover_background "gui/button/choice_small_hover_background.png"
                 insensitive_background "gui/button/choice_small_insensitive_background.png"
+
+label escape_call_item_label:
+    $ renpy.call(escape_inventory_current_item)
+    jump escape_inventory_menu
 
 screen escape_blue_sticky_screen:
     drag:
@@ -336,9 +351,12 @@ label escape_lose_life_animations(lab):
 
 label day_event_escape:
     call escape_initialize
-    scene bg hallway
-    player "Yeah!!! It's coffee time!!"
-    n "You excitedly hurry over to the lounge to indulge in your coffee addiction when-"
+    scene bg ryz office
+    ryz "...which is exactly why we can't just {i}shoot{/i} it. We'll probably need nukes, at the very least."
+    n "You come to after zoning out and find yourself in Dr. Ryz's office."
+    player "Ohhhh, I think I understand now."
+    n "You completely forgot what you were talking about."
+    ryz "Yeah, it's probably not a big deal. Won't be the first time, anyway."
     show escape_it
     with hpunch
     scene bg room containment

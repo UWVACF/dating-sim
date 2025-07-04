@@ -112,7 +112,7 @@ init python:
     
     # for clearing all screens' transforms, including stopping the screen shake after using an indefinitely looping screen shake
     def clear_screen_transforms():
-        shake_obj.update(duration=0.0)
+        shake_obj.update(duration=0.0, strength=0.0, preset="", persist=0.0, delay=0.0, repeat=0, interval=0.0, timeline=None)
         for layer in config.layers:
             renpy.show_layer_at(null_transform, layer=layer, reset = True)
 
