@@ -166,8 +166,7 @@ label day_event_aikha_flare:
         return
 
     label af_shoot:
-        show layer master:
-            shake
+        $ shake_screen()
         n "You shoot without hesitation."
         show overlay_ai_2 onlayer top:
             alpha 0.0
@@ -248,20 +247,17 @@ label day_event_aikha_flare:
             n "This is really a horrific way to go..."
             n "You can't even squeak out your last words because Wal NO.2 the yapper is drowning you out."
             show soundwave onlayer top
-            show layer master:
-                shake(persist=15.0, preset="rumble")
+            $ shake_screen(persist=15.0, preset="rumble")
             show aikha fury:
                 move_to(x_align = 0.9, duration = 0.7)
             n "The Pocket Wal springs into action! Emitting a high pitch frequency to stun Dr. Aikha."
-            show layer master # reset shake
             show soundwave onlayer top:
                 alpha 1.0
                 linear 0.3 alpha 0
             pocketwal upset "Ah, I see the issue. Ai, spaighettied."
             show soundwave onlayer top:
                 alpha 1.0
-            show layer master:
-                shake(persist=15.0, preset="rumble")
+            $ shake_screen(persist=15.0, preset="rumble")
             n "The Pocket Wal opens its mouth to emit another frequency."
             show soundwave onlayer top:
                 alpha 1.0
@@ -274,8 +270,7 @@ label day_event_aikha_flare:
             show bg aikha office leave
             show soundwave onlayer top:
                 alpha 1.0
-            show layer master:
-                shake(persist=15.0, preset="rumble")
+            $ shake_screen(persist=15.0, preset="rumble")
             n "You run amidst Dr. Aikha and Pocket Wal's screeching match."
             show bg aikha office leave:
                 zoom 2.0
@@ -381,8 +376,7 @@ label day_event_aikha_flare:
                 player "Pocket Wal! I got the... biohazards?"
                 show soundwave onlayer top:
                     alpha 1.0
-                show layer master:
-                    shake(persist=15.0, preset="rumble")
+                $ shake_screen()
                 show soundwave onlayer top
                 pocketwal "{b}{sc}Good, now throw it over!{/sc}{/b}"
 

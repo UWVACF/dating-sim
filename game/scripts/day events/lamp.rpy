@@ -100,8 +100,7 @@ label day_event_lamp:
             alpha soundwaver_ol_alpha
         show layer master:
             blur 10
-            shake(strength = shake_strength)
-            repeat
+        $ shake_screen(strength = shake_strength, repeat=True)
         jump yell_loop 
 
     label end_yell_loop:

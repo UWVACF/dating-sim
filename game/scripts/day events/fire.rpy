@@ -148,9 +148,7 @@ label day_event_fire:
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
-    show layer master:
-        pause 3.0
-        shake
+    $ shake_screen(delay=3)
 
     n "You see a Wal run into the fire, attempt to punch it out, and combust from stress."
     show firewal as dummy_wal:
@@ -158,18 +156,14 @@ label day_event_fire:
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
-    show layer master:
-        pause 3.0
-        shake
+    $ shake_screen(delay=3)
     n "You see a second Wal attempt to do the same... and combust."
     show firewal as dummy_wal:
         xzoom -1.0
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
-    show layer master:
-        pause 3.0
-        shake
+    $ shake_screen(delay=3)
     n "Then a third..."
     
     show firewal as dummy_wal:
@@ -177,9 +171,7 @@ label day_event_fire:
         yalign 1.0
         xalign -0.5
         linear 2.0 xalign 1.5
-    show layer master:
-        pause 3.0
-        shake
+    $ shake_screen(delay=3)
     n "How... long is this going to take?"
 
     menu: 
@@ -212,20 +204,11 @@ label day_event_fire:
         player "{b}{size=+15}MOON!{/size}{/b}"
         pause 3
         n "Well, guess this isn't working-"
-        show layer master:
-            shake
-            shake
-            shake
+        $ shake_screen()
         moon "{size=+20}HELLO. WHAT SEEMS TO BE THE PROBLEM?{/size}"
-        show layer master:
-            shake
-            shake
-            shake
+        $ shake_screen()
         moon "{size=+20}OH. I SEE. IT'S A FIRE.{/size}"
-        show layer master:
-            shake
-            shake
-            shake
+        $ shake_screen()
         moon "{size=+20}DEAR INTERN, COULD YOU STEP BACK A BIT?{/size}"
         n "You comply. You peek out the window and see a faint green glow on the moon."
         show greenbeam onlayer top:
@@ -265,10 +248,7 @@ label day_event_fire:
         hide flashbang onlayer top
         hide greenbeam onlayer top
         player "{size=+15}...Thanks Moon!{/size}"
-        show layer master:
-            shake
-            shake
-            shake
+        $ shake_screen()
         moon "{size=+20}NO PROBLEM! LET ME KNOW IF THERE'S ANOTHER MESS TO CLEAN! :D{/size}"
         show bg meeting hall
         show uriel unique:
@@ -341,31 +321,18 @@ label day_event_fire:
         scene bg meeting hall
         show uriel at appear(x_align = 0.33)
         show helco at appear(x_align = 0.66)
-        show layer master:
-            pause 0.6
-            block:
-                pause 1.65
-                shake
-                repeat
+        $ shake_screen(delay=0.6, interval=1.5, repeat=True)
         
         n "You intelligently decide to implore Dr. Helco and Uriel for their help."
         n "You knock on the door of the conference room-"
         uriel "Do you even have any citizenship anywhere?"
         n "...Might be a bad time, but you really need to help Wal right now. You knock again, louder."
         uriel "...? Is there a problem?"
-        show layer master:
-            shake(preset="strong")
+        $ shake_screen(preset="strong")
         player "...That."
         n "Helco just stares blankly at you."
         uriel "Well, the Wals seem to have it handled."
-        show layer master:
-            shake(preset="strong")
-        show layer master:
-            pause 0.6
-            block:
-                pause 1.65
-                shake
-                repeat
+        $ shake_screen(preset="strong")
         "Wal No.571" "FOR THE WAL! FOR THE WAL!"
         n "From down the hall, you see Manager Wal give you an enthusiastic thumbs up."
         uriel "...On second thought, maybe this could go faster."
@@ -421,12 +388,7 @@ label day_event_fire:
             xalign -0.5
             linear 2.0 xalign 1.5
             repeat
-        show layer master:
-            pause 0.6
-            block:
-                pause 1.5
-                shake
-                repeat
+        $ shake_screen(delay=0.6, interval=1.5, repeat=True)
         n "You muster up the courage and walk up to the fire surrounded by the Wals."
         
         menu:
@@ -452,8 +414,7 @@ label day_event_fire:
                 easein 0.3 alpha 1.0
             pause 0.3
             scene bg room hall 
-            show layer master:
-                shake(1.0,6.0)
+            $ shake_screen()
             show haze orange onlayer top:
                 alpha 0.0
             show blueeeee onlayer top:
@@ -503,12 +464,7 @@ label day_event_fire:
         return
 
     label helco_help:
-        show layer master:
-            pause 0.6
-            block:
-                pause 1.5
-                shake
-                repeat
+        $ shake_screen(delay=0.6, interval=1.5, repeat=True)
         n "In spite of his apparent obliviousness, you decide to ask him for his help."
         player "Follow me. Uriel, could you grab the fire extinguisher in the meantime?"
         uriel "Got it."
@@ -526,12 +482,7 @@ label day_event_fire:
             xalign -0.5
             linear 2.0 xalign 1.5
             repeat
-        show layer master:
-            pause 0.6
-            block:
-                pause 1.5
-                shake
-                repeat
+        $ shake_screen(delay=0.6, interval=1.5, repeat=True)
         wal1 "Excellent work, Walbots! Fight valiantly in the name of THE WAL!"
         "Wal No.1093" "FOR THE WAL! FOR THE WAL!"
         player "What to do..."
@@ -543,14 +494,11 @@ label day_event_fire:
         show helco at disappear
         n "You walk over to the window and open-"
         hide helco
-        show layer master:
-            block:
-                shake
-                repeat
+        $ shake_screen(preset="rumble", repeat=True, persist=9999)
         show haze orange onlayer top:
             linear 0.5 alpha 0.0
         n "Out of nowhere, a deluge of water blasts you in the face and floods the hallway."
-        show layer master
+        $ shake_screen(duration=0)
         n "You come to your senses as the water clears from the hallway."
         player "Dr. Helco?"
         show helco happy at appear(x_align = 1.0)
@@ -600,12 +548,7 @@ label day_event_fire:
             linear 2.0 xalign 1.5
             repeat
     
-    show layer master:
-        pause 2.0
-        block:
-            pause 0.5
-            shake
-            repeat
+    $ shake_screen(delay=2, interval=0.5, repeat=True)
     n "Actually, nah. Surely these Wals got it under control!"
     n "I mean. They're already 0.005%% done!"
     n "0.0059%% done now..."

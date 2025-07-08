@@ -23,11 +23,21 @@ label day_event_test:
     scene bg lounge
     with default_fade
     show egg
-    n ""
+    n "a"
+    $ shake_screen()
+    n "b"
+    $ shake_screen(repeat=True)
+    n "c"
+    $ shake_screen(duration=0)
+    n "d"
+    n "e"
+    n "f"
+    n "g"
+    n "h"
 
 
     
-    
+     
     
 # player "Hello, Dr. Helco!"
 # show helco neutral at appear

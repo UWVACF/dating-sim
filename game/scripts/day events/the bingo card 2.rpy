@@ -173,8 +173,7 @@ label bc2_continue:
             n "She downs it in one giant gulp. Then the room erupts."
             show uriel upset
             show ryz fury
-            show layer master:
-                shake(persist=15.0, preset="rumble")
+            $ shake_screen(persist=15, preset="rumble")
             ethy "{sc}{size=+3}{b}AAAAAAAAAA!!!{/b}{/size}{sc}"
             show layer master
             n "Everyone gives a collective sigh. Caffi has sabotaged almost everyone, including you."
@@ -222,8 +221,7 @@ label bc2_continue:
             hide ryz
             hide uriel
             n "Four pieces of chewed-on wires. Perfect."
-            show layer master:
-                shake(persist=15.0, preset="rumble")
+            $ shake_screen(persist=15, preset="rumble")
             ethy "{sc}{size=+3}{b}AAAAAAAAAA!!!{/b}{/size}{sc}"
             show layer master
             n "You ignore Ethy. What does he know about bingo anyways?"
@@ -249,8 +247,7 @@ label bc2_continue:
             n "You run down the hallway and realize what you've done to a bunch of department heads. Your spite is immediately replaced with fear."
             n "You can hear Dr. Deceased's furious steps getting closer."
             n "Too late for regrets now. You continue running forward-"
-            show layer master:
-                shake
+            $ shake_screen()
             n "-until something really hard hits the back of your head, causing you to tumble over."
             n "Ow. That really fucking hurt. You suspect that your skull might've cracked."
             n "The prized Miku flies from your hands, landing out of your reach."
@@ -334,13 +331,10 @@ label bc2_continue:
             n "Dr. Ryz's head phases out of the wall directly in front of you. You jump back, startled."
             ryz "I knew it. I knew Deceased was cheating. Uriel was right."
             n "Uh oh. Looks like you failed your first mission, agent."
-            show layer master:
-                block:
-                    shake(duration = 0.05, strength = 2.0)
-                    repeat
+            $ shake_screen(duration=0.05, strength = 2.0, repeat=True)
             show shock onlayer top
             ryz "You won't get away with this! Pebbles, get [player_obj]!"
-            show layer master
+            $ shake_screen(duration=0)
             hide ryz_through_the_wall
             show bg hallway
             show roose upset:
@@ -354,17 +348,10 @@ label bc2_continue:
                     linear 3 xalign 0.6
                 parallel:
                     linear 3 yalign 0.5
-            show layer master:
-                block:
-                    shake(duration = 0.1, strength = 3.0)
-                    repeat
+            $ shake_screen(duration=0.1, strength=3.0, repeat=True)
             n "You turn around and see an equally angry Pebbles honking and charging at you."
 
-            show layer master:
-                block:
-                    shake(duration= 0.1, strength = 7)
-                    pause 0.5
-                    repeat
+            $ shake_screen(duration=0.1, strength=7, interval=0.5, repeat=True)
             show roose upset:
                 block:
                     easeout 0.1 zoom 2.1
