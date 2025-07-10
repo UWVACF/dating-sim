@@ -77,7 +77,7 @@ label day_event_didnt_do_it:
     deceased "Everyone look! [player_name] murdered Dr. Ralex!" #fury
 
     menu:
-        n"How do you defend yourself?"
+        n "How do you defend yourself?"
         "Tell the truth.":
             jump ddi_truth
         "Deflect the accusation onto Dr. Deceased.":

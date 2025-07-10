@@ -59,7 +59,29 @@ label trial_you_as_defendant:
     ethy "AA."
     chan "Ethy will help me determin if the Plaintiff or the defendant are lying."
     uriel "The court session will now start."
-    deceased "I love Miku."
+    uriel "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
+    uriel "After {i}through{/i} investigation, the security department has determined that the intern, [player_name] is the most likely suspect to this crime."
+    uriel "Evidence suggested that [player_name] likely called Dr. Ralex out to meet in order to discuss a full time position offer, and resorted to murder when [player_sub] were rejected."
+    uriel " Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?"
+    menu:
+        "no":
+            jump to tne_no
+        "no":
+            jump to tne_no
+        "no":
+            jump to tne_no
+        "yes":
+            jump to tne_yes
+    
+    label tne_no:
+        player "No, I don't. Because..."
+        menu:
+            n "Defend yourself!"
+            "Dr. Deceased is the real murderer!":
+                player "bla bla bla"
+            "I don't know Dr. Ralex!":
+                player "blu blu blu"
+            
     
 
 
