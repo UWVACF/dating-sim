@@ -372,7 +372,7 @@ label day_event_fire:
         uriel "Great! Go use it!"
         player "...Me? But I have no firefighting training."
         show helco happy
-        uriel "Well, neither do I. Plus, the last time I used that...I can't remember what happended."
+        uriel "Well, neither do I. Plus, the last time I used that...I cannot remember what happended."
         n "Helco gives you an enthusiastic thumbs up, again."
         n "Geez. These department heads really know how to avoid responsibility. Still, you suppose this is what differentiates them from regular employees like you."
         hide uriel at disappear
@@ -458,7 +458,7 @@ label day_event_fire:
             n "Uh oh. You don't like that new look on Uriel's face."
             uriel fury "It is clearly stated in the foundation code, as well as the onboarding trainings. You should have seen it!"
             uriel upset "Since you do not know, I shall recite it for you."
-            uriel "{cps=*2}Code 2: Emergency classfications and counter measures. Emergencies that occurs at the foundation can normally be classified into 5 catagories. They are level 1(mild), level 2 (moderate), level 3 (threat), level 4 (severe), and level 5 (dangerous).{/cps}{cps=*4} Level 5 can be further divided into just dangerous, or ABSOLUTELY DANGEROUS. All equipment used to tackle emergencies have a corresponding classification tag for which emergency level it can be used in. {/cps}{cps=*6}This is decided through the evaluation of risk, cost, danger of situations and technical skills required. The fire today would at most only be classified as a high level 2 emergency-{/cps}"
+            uriel "{cps=*2}Code 2: Emergency classfications and counter measures. Emergencies that occurs at the foundation can normally be classified into 5 categories. They are level 1 (mild), level 2 (moderate), level 3 (threat), level 4 (severe), and level 5 (dangerous).{/cps}{cps=*4} Level 5 can be further divided into just dangerous, or ABSOLUTELY DANGEROUS. All equipment used to tackle emergencies have a corresponding classification tag for which emergency level it can be used in. {/cps}{cps=*6}This is decided through the evaluation of risk, cost, danger of situations and technical skills required. The fire today would at most only be classified as a high level 2 emergency-{/cps}"
             n "Your brain decides that this amount of information is too much to handle and overloads."
         $ update_character_points({"firewal": -1, "helco": 0, "uriel": 2, "aikha":-1, "moon": 0})
         return
