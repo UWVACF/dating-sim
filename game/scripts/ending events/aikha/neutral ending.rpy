@@ -15,9 +15,9 @@ label ending_event_neutral_ending:
     egg "Congratulations on completing your internship, [player_name]."
     egg "Unfortunately, today will be your last day here."
     n "Ah. You have expected this. Still, you can't help but feel a bit disappointed."
-    egg "Because you have been recommended for multiple department-specific positions in off-site facilities."
+    egg "Because you have been recommended for multiple department-specific position in offsite facilities."
     n "You stare at the Egg in disbelief. He smiles back at you sedately, as he always does."
-    n "You have an urge to pop his yolk."
+    n "You have an urge to pop his york."
     show egg at move_to(x_align = 0.0)
     show aikha at appear(x_align = 0.35)
     show firewal at appear(x_align = 0.7)
@@ -27,7 +27,7 @@ label ending_event_neutral_ending:
 
     menu:
         n "Which department do you want to work under?" #is there some way to list all of the choices, but only the top 3 show up ##### or we can scrap this whole choosing thing 
-        "Path-para":
+        "Path-pare":
             jump choice1
         "Technology":
             jump choice2
@@ -35,41 +35,38 @@ label ending_event_neutral_ending:
             jump choice3
     
     label choice1:
-        aikha happy "Good choice, new recruit! I'm sure you'll be a valuable asset."
         aikha happy "That's great! Welcome aboard, new recruit!"
-        show black_screen:
+        show fadeout:
             alpha 0.0
             linear 1 alpha 1.0
         
         n "You started your years long career under the Path-para department."
         n "You conducted experiments in labs, collected samples in the field, participated in anomaly containment, and got infected 97 times."
-        n "On the 98 time, you unfortunately did not survive. You died a slow, painful death after an anomalous disease overtook your body."
+        n "On the 98 time, you unfortunately did not survive. You died a slow, painful death after the anomalous disease overtook your body."
         n "THE END"
         
     label choice2:
         firewal pensive "You would make a great addition to the Wals, [player_name]."
-        firewal pensive "You would make a great addition to IT, [player_name]."
-        show black_screen:
+        show fadeout:
             alpha 0.0
             linear 1 alpha 1.0
 
         n "You started your years long position under the Technological department."
-        n "You did wonder, with so many Wals already, why would you be needed?"
-        n "You found your answer the next day after being relocated at THE WAL head quarters."
+        n "You did wonder, with so many wals already, why would you be needed?"
+        n "You found your answer the next day after being relacated at THE WAL head quarters."
         n "You have one job: solve reCAPTCHA for the Walbots."
-        n "You spend your next 70 years solving captchas in front of a computer that Dr. Firewal provided you."
+        n "You spend your netxt 70 years solving captchas in front of a computer that Dr. Firewal provided you."
         n "THE END"
 
     label choice3:
         helco pensive "I look forward to working with you, Y...[player_name]."
-        show black_screen:
+        show fadeout:
             alpha 0.0
             linear 1 alpha 1.0
         
         n "You started you months long job under the Extraterrestrial department."
         n "Unfortunately, you don't actually get to go to space."
-        n "There goes your bucket list..."
-        n "Turns out Dr. Helco kinda just lets you do what you want. Huh."
+        n ""
 
 ## temp credits ##
 
@@ -89,7 +86,7 @@ label ending_event_neutral_ending:
     show helco panic at appear
     n "{b}Eol{/b} 'stabotage' \nFor always writing simple events into multi-ending complex ones, and tripling the amount of fun but also the amount of work."
     hide ryz
-    show helco at disappear
+    show helco x at disappear
 
 
     show uriel surprise at appear
@@ -103,33 +100,33 @@ label ending_event_neutral_ending:
     show deceased at disappear
 
     show alex happy at appear
-    n "{b}Alex{/b}    GLORY TO THE GREAT FOUNDER \nFor bringing to life the gorgeous sprites of himself, Deceased, Paul, and B6."
+    n "{b}Alex{/b}    GLORY TO THE GREAT FOUNDER \nFor bringing to life the gorgeous sprites of himself, Deceased, Paul, B6, ."
     hide deceased
     show alex at disappear
 
     show lee unique at appear
-    n "{b}Lee{/b} \nFor making the beautiful sprites of themselves, Helco and Syg."
+    n "{b}Lee{/b} \nFor making the beautiful sprites of themselves, Helco, Syg, ."
     hide alex
     show lee at disappear
 
     show firewal neutral at appear
-    show firewal neutral as wal1 at appear(x_align = 0.2)
-    show firewal neutral as wal2 at appear(x_align = 0.8)
-    n "{b}Wal{/b} \nFor creating the stunning sprites of himself and Aikha."
+    show firewal as wal1 at appear(x_align = 0.2)
+    show firewal as wal2 at appear(x_align = 0.8)
+    n "{b}Wal{/b} \nFor creating the stunning sprites of himself, Aikha, ."
     hide lee
     show firewal at disappear
-    show firewal neutral as wal1 at disappear
-    show firewal neutral as wal2 at disappear
+    show wa11 at disappear
+    show wal2 at disappear
 
-    show b6 neutral at appear
+    show b6 at appear
     n "{b}Zak{/b} \nFor drawing the cool sprites of Ryz."
     hide firewal
     hide wal1
     hide wal2
-    show b6 neutral at disappear
+    show b6 at disappear
 
     show meme at appear
-    n "{b}Meem{/b} \nFor making the wonderful sprites of Jessie."
+    n "{b}Meem{/b} \nFor making the wonderful sprites of Jessie,."
     hide b6
     show meme at disappear
 
@@ -156,7 +153,7 @@ label ending_event_neutral_ending:
     #hide plutoes
     #show jakob at disappear
 
-    show chan unique at appear
+    show chan unique at appear(x_align = -0.25)
     n "{b}John{/b} 'and Ethy' \nFor major world building of VACF."
     hide plutoes #jakob
     show chan at disappear
@@ -170,8 +167,7 @@ label ending_event_neutral_ending:
     show caffi at disappear
     show venture at disappear
 
-    n "And YOU \nFor joining us today! :D"
-    n "Thank you all for coming if you liked our content please drop us a like and subscribe it only takes one minute-"
+    n "And YOU \nFor joining us today!"
     hide syg
     hide caffi
     hide venture
