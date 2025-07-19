@@ -126,6 +126,7 @@ image deceased panic = At("images/personnel/deceased/deceased panic.png", sprite
 image deceased fury = At("images/personnel/deceased/deceased fury.png", sprite_highlight("deceased"), deceased_transform)
 image deceased pensive = At("images/personnel/deceased/deceased pensive.png", sprite_highlight("deceased"), deceased_transform)
 image deceased unique = At("images/personnel/deceased/deceased unique.png", sprite_highlight("deceased"), deceased_transform)
+image deceased objection = At("images/personnel/deceased/deceased objection.png", sprite_highlight("deceased"), deceased_transform)
 
 transform lee_transform:
     base_char_transform

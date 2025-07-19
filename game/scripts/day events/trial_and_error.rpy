@@ -16,18 +16,19 @@ label day_event_trial_and_error:
     image defendant overlay= "images/cgs/court_main_overlay2.png"
     image front defendant overlay = "images/cgs/court_main_overlay3.png"
     image side overlay = "images/cgs/court_side_overlay.png"
+    image shock = "images/cgs/shock effect.png"
 
     # to remove when not testing
-    $ tne_defendant = renpy.input("Ture for defendant, or False for Deceased being the defendant.")
+    $ tne_defendant = renpy.input("Ture for being the defendant, or False for Deceased being the defendant.")
     $ tne_defendant = tne_defendant.strip()
 
-    $ tne_chan_backup = renpy.input("Ture or False for Chan on your side")
+    $ tne_chan_backup = renpy.input("Ture or False for Chan on your side (did not lie in I didn't do it)")
     $ tne_chan_backup = tne_chan_backup.strip()
     
-    $ hampter_witness = renpy.input("Ture or False for hampt witness")
+    $ hampter_witness = renpy.input("Ture or False for hampt witness (found hampter in the vents)")
     $ hampter_witness = hampter_witness.strip()
     
-    $ tne_syg_backup = renpy.input("Ture or False for syg back you up")
+    $ tne_syg_backup = renpy.input("Ture or False for syg back you up (agreed to become demon food if you're on death row)")
     $ tne_syg_backup = tne_syg_backup.strip()
     # btw for the showcase we're going defendant route
 
@@ -60,7 +61,7 @@ label trial_you_as_defendant:
     ethy "AA."
     chan "Ethy will help me determine if the plaintiff or the defendant are lying."
     uriel "The court session will now start."
-    # insert start cg or something
+    # insert trial start cg or something
     show chan neutral
     uriel sad "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
     uriel upset "After {i}through{/i} investigation, the security department has determined that the intern, [player_name] is the most likely suspect to this crime."
@@ -82,14 +83,287 @@ label trial_you_as_defendant:
         menu:
             player "/no_pause{cps=1000}No, I don't. Because...{/cps}"
             "Dr. Deceased is the real murderer!":
-                player "bla bla bla"
+                $ trial_credibility_you += -1
+                player "As I've said before, I think Dr. Deceased is the real murderer instead!"
+                chan unique "...a soft scream. Statement has deceitful elements, but not fully."
+                deceased "OBJECTION!"
+                deceased "THAT IS SLANDER! You don't even have evidence!"
+                uriel pensive "It is not your turn to speak, Dr. Deceased."
+                uriel neutral "The defendant's statement is rejected due to lack of evidence. Also, irrelevant to my question."
+                uriel "We will proceed with presenting evidence. Dr. Deceased, you may speak."
+                jump objection_time
+
             "I don't know Dr. Ralex!":
-                player "blu blu blu"
-            
+                $ trial_credibility_you += 1
+                player "I don't know Dr. Ralex! I've never seen her before!"
+                chan "...No reaction from Ethy."
+                deceased "You can still kill someone you've never met or don't know the face of!"
+                uriel upset "Silence, Dr. Deceased. It is not your turn to speak."
+                uriel neutral "Since the defendant does not plead guilty, we will proceed with presenting evidence. Dr. Deceased, {i}now{/i} you may speak."
+                jump objection_time
+
+    label objection_time:
+        scene bg court side
+
+        hide deceased onlayer master2
+        hide defendant overlay onlayer master2
+        hide front defendant overlay onlayer master2
+        
+        show side overlay zorder 90
+        show deceased objection as dece_point:
+            xalign 0.4
+            yalign 1.3
+            xzoom 1.4
+            zoom 1.3
+        show shock onlayer master2
+        $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
+        deceased "I have evidence that this is an orchestrated murder!"
+        deceased "The fact that [player_name] has a knife is solid proof!"
+        show deceased objection as dece_point:
+            alpha 0.0
+        show deceased: 
+            alpha 0.0
+            xalign 0.2
+            yalign 0.3
+            xzoom -1.0
+            alpha 1.0
+        show shock onlayer master2:
+            alpha 0.0
+        deceased happy "According to foundation protocols, for safety reasons, the common kitchenette does not have shared dangerous objects such as knifes!" #pensive
+        deceased neutral "Hence, the knife was brought by [player_name] [player_ref]."
+        show deceased:
+            alpha 0.0
+        show deceased objection as dece_point:
+            alpha 1.0
+        show shock onlayer master2:
+            alpha 1.0
+        deceased "Which could only mean that Dr. Ralex's murder was planned!"
+        n "You see a few in the audience nodding their heads. This isn't looking good for you."
+        menu:
+            n "Object to Dr. Deceased!"
+            "The knife doesn't belong to you - you found it in the fridge.":
+                $ trial_credibility_you += 1
+                show shock onlayer master2:
+                    alpha 0.0
+                show deceased:
+                    alpha 1.0
+                show deceased objection as dece_point:
+                    alpha 0.0
+                player "I found the knife in the fridge! It's not mine!"
+                chan "...No reaction from Ethy."
+                deceased "Fine. But that doens't disprove that this was not an intentional murder!"
+            "The protocol Dr. Deceased mention must be false - here are other dangerous weapons.":
+                $ trial_credibility_you += -1
+                show shock onlayer master2:
+                    alpha 0.0
+                show deceased:
+                    alpha 1.0
+                show deceased objection as dece_point:
+                    alpha 0.0
+                player "There were other dangerous weapons at the kitchenette like the chainsaw!"
+                show shock onlayer master2:
+                    alpha 1.0
+                show deceased:
+                    alpha 0.0
+                show deceased objection as dece_point:
+                    alpha 1.0
+                deceased "That doesn't matter! They are irrelevant to the case!"
+                deceased "What matters is that you were in possession of the murder weapon which should not be on foundation grounds otherwise!"
+
+        show shock onlayer master2:
+            alpha 0.0
+        show deceased:
+            alpha 1.0
+        show deceased objection as dece_point:
+            alpha 0.0
+        deceased "Another huge point of concern is why you're in the lounge at that time."
+        deceased "As far as I know, the time we found you and Dr. Ralex is work time and not lunch time yet."
+        show shock onlayer master2:
+            alpha 1.0
+        show deceased:
+            alpha 0.0
+        show deceased objection as dece_point:
+            alpha 1.0
+        deceased "You have no justified reasons to be there. Hence, the only logical deduction is that you were there because of your planned meeting and assasination of Dr. Ralex!"
+        menu:
+            n "Object Dr. Deceased's accusations!"
+            "You've finished your work and was craving an early lunch.":
+                $ trial_credibility_you += 1
+                show shock onlayer master2:
+                    alpha 0.0
+                show deceased:
+                    alpha 1.0
+                show deceased objection as dece_point:
+                    alpha 0.0
+                player "No, I finished my work, so I just wanted to have lunch early!"
+                chan "Ethy says that the first half of the statement does not seem truthful."
+                player "...Fine, but I was only there to make my sandwich! You all saw my ingredients!"
+                show shock onlayer master2:
+                    alpha 1.0
+                show deceased:
+                    alpha 0.0
+                show deceased objection as dece_point:
+                    alpha 1.0
+                
+            "Nobody follows strict work schedules - Dr. Deceased themselves were also there.":
+                show shock onlayer master2:
+                    alpha 0.0
+                show deceased:
+                    alpha 1.0
+                show deceased objection as dece_point:
+                    alpha 0.0
+                $ trial_credibility_you += -1
+                player "I could say the same for you, and everyone else who was there!"
+                deceased "I am a department head! I get to set my own work schedule!"
+                chan "Actually, you don't."
+                deceased "..."
+                show shock onlayer master2:
+                    alpha 1.0
+                show deceased:
+                    alpha 0.0
+                show deceased objection as dece_point:
+                    alpha 1.0
+                deceased "Regardless! In that case we both don't have valid reasons to be there! But, all other evidences point at you!"
+
+        show shock onlayer master2:
+            alpha 0.0
+        show deceased:
+            alpha 1.0
+        show deceased objection as dece_point:
+            alpha 0.0
+        deceased "I've finished my questions, your honor."
+        hide shock onlyer master2
+        hide deceased objection as dece_point
+        show layer master2
+
+        scene bg court main
+        show judge overlay onlayer master zorder 90
+        show defendant overlay onlayer master2 zorder -1
+        show front defendant overlay onlayer master2 zorder 90
+        show uriel onlayer master:
+            xalign 0.5
+            yalign 0.0
+
+        show deceased onlayer master2:
+            alpha 0 
+            xzoom -1.0
+            alpha 1.0
+            xalign -0.1
+            yalign 1.3
+
+        show chan onlayer master:
+            xalign 1.0
+            yalign 1.0
+
+        uriel "In that case, let us hear from the attesters."
+        if tne_chan_backup == True or "True" or hampter_witness == True or "True" or tne_syg_backup == True or "True":
+            if tne_chan_backup == True or "True":
+                uriel pensive "First, Dr. Chan."
+                show uriel neutral:
+                    xzoom -1.0
+                uriel neutral "You said you wanted to make a statement, right?"
+                show uriel neutral
+                $ trial_credibility_you += 0.5
+                chan unique "Yes. I can attest that [player_name] was not lying when they say [player_sub_be] not the murderer at the crime scene. Ethy can back me up."
+                n "Ethy gives you two thumbs up."
+                if trial_credibility_you <= 0:
+                    chan "I'm cannot say the same about [player_pos_adj] statements today, but I swear that me and Ethy are reporting truthfully."
+                uriel "Thank you, Dr. Chan."
+                ethy "AAA."
+                uriel "And Ethy."
+            if tne_syg_backup == True or "True":
+                show uriel neutral:
+                    xzoom -1.0
+                if tne_chan_backup == True or "True":
+                    uriel pensive "Next, Dr. Syg."
+                else:
+                    uriel pensive "You may make your testimony, Dr. Syg."
+                uriel neutral "Is there something you want to say to help this trial?"
+                $ trial_credibility_you += 0.5
+                show syg onlayer master2:
+                    alpha 0
+                    alpha 1.0
+                    appear(1.0, y_align = 1.3) 
+                syg "I believe in [player_name]."
+                uriel neutral "Based on..?"
+                syg "..."
+                n "Dr. Syg gives you an affirming nod. Then shadows envelope him."
+                show syg onlayer master2 at disappear
+                uriel "Well, alright then."
+            if hampter_witness == True or "True":
+                if tne_chan_backup == False or "False" and tne_syg_backup == False or "Flase":
+                    uriel "We have a witness. Hampter, you may come in and make your testimony."
+                else:
+                    uriel pensive "We also have a witness. Hampter, you can come in."
+                $ trial_credibility_you += 1
+                show hampter panic onlayer master2:
+                    alpha 0
+                    alpha 1.0
+                    appear(1.0, y_align = 1.3)
+                hampter "Uh. Hello."
+                uriel "Hampter, you reported that you were at the crime scene. Can you describe what you were doing?"
+                show hampter happy onlayer master2
+                hampter happy "Oh, yes. I was napping in the vents when [player_name] woke me up."
+                uriel pensive "And what were [player_sub] doing?"
+                hampter "[player_sub] were looking for something, I think. After that, I went back to nap."
+                show hampter panic onlayer master2
+                hampter panic "Then 5 minutes later, I heard Dr. Deceased scream."
+                uriel "So you did not hear any struggling or arguments?"
+                hampter "No, I didn't."
+                deceased "This cannot be!"
+                uriel "Dr. Deceased, please refrain from spekaing when it is not your turn."
+                # show deceased panic
+                if trial_credibility_you > 2:
+                    if tne_chan_backup == False or "False":
+                        deceased "{size=-10}No way, was it actually me who killed Dr. Ralex?{/size}"
+                uriel "Hampter, you mentioned that you went back to nap. Are you 100\% certain that no struggling has occured?"
+                hampter panic "uh...I..."
+                uriel upset "Are you 100\% certain that was [player_name]? Could it be possible that you were dreaming?"
+                hampter "uh...uh...uh"
+                show hampter panic onlayer master2 at disappear
+                chan "I believe the witness is too stressed to continue. But I think we have enough statements from attesters."
+        else:
+            show uriel pensive
+            n "..."
+            uriel happy "No attesters, huh."
+        
+        uriel neutral "We shall decide on the verdict now, then."
+        if trial_credibility_you > 3:
+            uriel "[player_name], you are found..."
+            uriel "Not guilty. Congrats."
+            n "Two Wals come up to you and free your handcuffs."
+            uriel "There is not sufficient evidence to prove [player_name] as the murderer."
+            uriel "The case will be given to the Walbots security team to investigate further."
+            uriel "Court dismissed."
+            jump after_court_innocent
+        else:
+            uriel "[player_name], you are found..."
+            uriel fury "Guilty!"
+            uriel "For your crimes of murdering our great co-founder, I sentence you to-"
+            venture_unknown "Wait! Wait!"
+            uriel upset "Who dare to interupt!"
+            show venture onlayer master2 zorder 91:
+                appear(0.7, y_align = 2.0)
+            venture "There has been a great misunderstanding!"
+            uriel "Misunderstanding?"
+            venture "Yes, yes. This is all caused by an anomaly!"
+            venture "The knife that was suspected as the murder weapon was an anomalous knife that creates illusions of murder scenes of false victims!"
+            chan pensive "Hmm. Now that you speak of it, I do vaguely remember such an anomaly in containment."
+            chan neutral "But, how do you know that, Dr. Ventures?"
+            venture "About that...It was an alchemical accident! During an experiment I was conducting, something went wrong and transported the knife out of my lab."
+            venture "Now that I've proven [player_name]'s innocence, the body should disappear very soon, and the brainwashing lifted."
+            uriel "idk how to end this actually, so you can go jakob i guess"
+            n "yippie, the end"
+            hide venture onlayer master2 zorder 91
+
+
+
+
+
     label tne_yes:
         n "...Why would you admit guilt to something you didn't do?"
         player "Yes, I do."
-        $ trial_credibility_you += -1
+        $ trial_credibility_you += -0.5
         show deceased happy onlayer master2
         deceased happy "I KNEW IT!"
         show deceased neutral onlayer master2
@@ -100,7 +374,7 @@ label trial_you_as_defendant:
         show uriel:
             xzoom -1
         uriel "Lying about what?"
-        chan "Ethy screamed softly in my ears when [player_sub] said yes to the crime."
+        chan "Ethy screamed in my ears when [player_sub] said yes to the crime. "
         chan pensive "Which means that statement was said with a deceitful intent."
         show uriel:
             xzoom 1
@@ -120,12 +394,15 @@ label trial_you_as_defendant:
                 jump tne_yes_yes
 
     label tne_yes_no:
-        n "okay back to the trial"
+        chan "In that case, let us return to normal procedures."
+        uriel neutral "Since the defendant does not plead guilty, we will proceed with presenting evidence. Dr. Deceased, {i}now{/i} you may speak."
+        jump objection_time
+        
     
     label tne_yes_yes:
         player "Yes, I do."
         n "Hey, this isn't a marriage proposal."
-        $ trial_credibility_you += -1
+        $ trial_credibility_you += -0.5
         chan "...[player_sub_be] still lying."
         deceased "What tricks are you pulling here!!" #fury or something
         deceased "Aha! I get it! You saying yes to pleading guilty is a lie beacuse you {i}don't feel guilty!{/i} What a cold-hearted criminal!"
@@ -153,6 +430,9 @@ label trial_you_as_defendant:
                 jump tne_yes_yes_yes
 
         label tne_yes_yes_no:
+            chan "In that case, let us return to normal procedures."
+            uriel neutral "Since the defendant does not plead guilty, we will proceed with presenting evidence. Dr. Deceased, {i}now{/i} you may speak."
+            jump objection_time
 
 
         label tne_yes_yes_yes:
@@ -220,10 +500,31 @@ label trial_you_as_defendant:
             n "Seems all clear. Now run for it-"
             venture_unknown "[player_name]!"
             n "OH FUCK-"
+            n "I donno what to put here"
             show venture at appear
             ##idk what to write here##
 
-            
+    label after_court_innocent:
+        scene bg room hall
+
+        hide deceased onlayer master2
+        hide defendant overlay onlayer master2
+        hide front defendant overlay onlayer master2
+
+        n "You walk out of the multi-purpose room, and the reality of what have happened finally hit you."
+        n "You were almost accused of murder. Sent to jail."
+        n "You begin to question whether this job is really worth it."
+        n "You feel a light tap on the back of your shoulder."
+        show venture at appear
+        venture "Hey, [player_name]!"
+        player "Hello, Dr. Ventures."
+        venture "Woah, what's going on? Why are so many people coming out of the multipurpose room? Did we have a foundation-wide event? Without me?"
+        player "It was a trial, actually-"
+        venture "Oh. Nah. That's boring. Glad I sat that one out."
+        venture "Anyways, I pulled you over cause I want to ask if you've seen something I've lost. I've applied alchemical scent onto it and you seems to have picked up on some of it."
+        venture "It's an anomalous knife! I must have misplaced it, silly me! It's quite dangerous though, it is capable of affecting the mind and creating illusions of a murder of a person that it creates in the affected's minds."
+        player "..."
+        player "{nw}ARE YOU FUCKING KIDDING ME-"
 
 
     
