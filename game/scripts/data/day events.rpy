@@ -228,7 +228,12 @@ init python:
             label="escape",
             personnel=["ryz", "aikha", "firewal"],
             tags=["personnel"],
-        )
+        ),
+        Event(
+            label="skibidi",
+            personnel=["ryz", "caffi", "helco", "meem"],
+            tags=["personnel"],
+        ),
     ]
 
     # replace all spaces in labels with underscores

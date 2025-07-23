@@ -12,7 +12,6 @@ image escape_peculiar_paper = "images/cgs/escape peculiar paper.png"
 # trickster colour is #095a10 (ctrl f to replace)
 
 init python:
-    
     def escape_check_drag_positions():
         if not escape_left_wall_blue_sticky_completed:
             threshold = 1.5
@@ -79,6 +78,8 @@ label escape_initialize:
 
         escape_left_wall_blue_sticky_completed = False
 
+        escape_aikha_solved_morse = False
+
         escape_passcode_attempts_remaining = 5
         escape_inventory = ["Peculiar Paper", "Blue Sticky", "Page 524", "Page 621", "Purple Light", "Slip of Paper"]
         escape_item_labels = {
@@ -103,6 +104,51 @@ label escape_initialize:
 
         escape_inventory_current_item = ""
 
+        escape_talk_shown_item = ""
+
+        escape_inventory_screen_is_talking = False
+        escape_inventory_talking_to = ""
+
+        escape_talked = False
+
+        escape_talk_items = {
+            "aikha":
+            {
+                "Peculiar Paper": False,
+                "Blue Sticky": False,
+                "Page 524": False,
+                "Page 621": False,
+                "Page 810": False,
+                "Purple Light": False,
+                "Slip of Paper": False,
+            },
+            "ryz":
+            {
+                "Peculiar Paper": False,
+                "Blue Sticky": False,
+                "Page 524": False,
+                "Page 621": False,
+                "Page 810": False,
+                "Purple Light": False,
+                "Slip of Paper": False,
+                "Escaping": False,
+            },
+            "firewal":
+            {
+                "Peculiar Paper": False,
+                "Blue Sticky": False,
+                "Page 524": False,
+                "Page 621": False,
+                "Page 810": False,
+                "Purple Light": False,
+                "Slip of Paper": False,
+            }
+        }
+
+        escape_talk_chats_aikha = 0
+        escape_talk_chats_ryz = 0
+        escape_talk_chats_firewal = 0
+
     return
 
 screen escape_inventory_screen:
@@ -123,7 +169,13 @@ screen escape_inventory_screen:
                 style "choice_button"
                 xalign 1.0
                 xsize 230
-                action Jump("escape_main_menu")
+                action If(escape_inventory_screen_is_talking,
+                        true=If(escape_inventory_talking_to == "aikha",
+                                true=Jump("escape_talk_aikha"),
+                                false=If(escape_inventory_talking_to == "ryz",
+                                        true=Jump("escape_talk_ryz"),
+                                        false=Jump("escape_talk_firewal"))),
+                        false=Jump("escape_main_menu"))
 
         $ escape_inventory_screen_start = escape_inventory_page * escape_inventory_display_per_page
         $ escape_inventory_screen_end = escape_inventory_screen_start + escape_inventory_display_per_page
@@ -132,7 +184,7 @@ screen escape_inventory_screen:
             textbutton i:
                 xalign 0.5
                 style "choice_button"
-                action [SetVariable("escape_inventory_current_item", escape_item_labels[i]), Jump("escape_call_item_label")]
+                action If(escape_inventory_screen_is_talking, true=[SetVariable("escape_talk_shown_item", i), Return()], false=[SetVariable("escape_inventory_current_item", escape_item_labels[i]), Jump("escape_call_item_label")])
 
         hbox:
             xalign 0.5
@@ -618,7 +670,7 @@ label escape_back_wall:
 
         if not escape_back_wall_notebook_viewed:
             n "\"Page 193: Tax fraud and illegal immigration.\""
-            n "...Maybe the rest isn't so important."
+            n "...Maybe the rest isn't that important."
             $ escape_back_wall_notebook_viewed = True
 
         python:
@@ -638,7 +690,7 @@ label escape_back_wall:
             n "\"Following this number is the {b}spawn rate{/b} from 1-100 (with 00 being 100), which is often the anomaly has been encountered."
             n "\"This three-digit number is followed by a hyphen and the anomaly's {b}globalization{/b} from 1-100 (with 00 being 100), which indicates how widespread the anomaly's presence is.\""
             n "\"Finally, the last digit is the {b}authorization level{/b} required to know about this anomaly from 1-10 (with 0 being 10)."
-            n "\"For instance, VAC 505-102, nicknamed 'Smiling Marshmallow' is relatively dangerous, found rarely, appears only in specific areas and can be found on the information with some digging.\""
+            n "\"For instance, VAC 505-102, nicknamed 'Smiling Marshmallow' has a danger level of 5, a spawn rate of 5, a globalization value of 10 and an authorization level of 2.\""
             n "\"Of course, none of this information is actually important to solving this escape room.\""
             n "\"Escape room? What escape room?\""
             n "The explanation ends with various doodles of Pochi eating marshmallows."
@@ -684,12 +736,13 @@ label escape_back_wall:
 
                             # TODO: give less points to aikha if you fail this
                             aikha "Haha, you can thank me later!"
+                            $ escape_aikha_solved_morse = True
                     
                     n "\"Page 524\"... You have a feeling you know what this means."
 
             if not escape_back_wall_notebook_ciphers_viewed:
                 n "\"\"The Vigenere cipher, on the other hand...\""
-                n "You can almost feel the condescending nerd voice emanating from the words on the page and decide to stop before you get infected."
+                n "You can almost feel the condescending voice emanating from the words on the page and decide to stop before you develop a savior complex."
                 $ escape_back_wall_notebook_ciphers_viewed = True
         
         elif escape_flip_to_page == 193:
@@ -726,7 +779,7 @@ label escape_back_wall:
                 # ARTISAN + GLOBE = BEAR , ELEGANT + STRIFE = FEEL, NEANDERTHAL + ALUMNI = ?? (9)
                 # T T T T T T T (30)
                 #     ^ what is this???
-                #  11, 9, 30 TODO: UPDATE ANSWERS
+                #  11, 9, 30 TODO: UPDATE ANSWERS TO 621
                 n "There's a lot going on here. Wonder what any of this means."
                 n "You tear the page out for safekeeping."
                 $ escape_inventory.append("Page 810 (Puzzles)")
@@ -937,8 +990,12 @@ label escape_talk:
         # each item should be task name (string), aikha_seen (bool), ryz_seen (bool), wal_seen (bool)
     # go down the list for each personnel and trigger dialogue about them
     # once list is exhausted, have list of generic dialogue event labels and trigger them sequentially (or random if not too hard)
+    $ appear_if_absent("aikha", x_align = 0.25)
+    $ appear_if_absent("ryz", x_align = 0.5)
+    $ appear_if_absent("firewal", x_align = 0.75)
+    $ escape_talked = False
     menu:
-        n "To who?"
+        n "Who do you talk to?"
         "Dr. Aikha.":
             jump escape_talk_aikha
         "Dr. Ryz.":
@@ -949,16 +1006,313 @@ label escape_talk:
             jump escape_main_menu
 
     label escape_talk_aikha:
-        player "A"
+        $ disappear_if_present("ryz")
+        $ disappear_if_present("firewal")
+        $ escape_inventory_talking_to = "aikha"
+        $ escape_talk_message = "Need something else?" if escape_talked else "Hi [player_name]!"
+        $ escape_talked = True
+        show aikha:
+            linear 1.0 xalign 0.5
+
+        menu:
+            aikha "[escape_talk_message]"
+            "Ask about an item.":
+                call screen escape_inventory_screen
+                if escape_talk_shown_item == "Blue Sticky" or ("Blue Sticky" in escape_inventory and escape_talk_shown_item == "Peculiar Paper"):
+                    if not escape_talk_items["aikha"]["Blue Sticky"]:
+                        $ escape_talk_items["aikha"]["Blue Sticky"] = True
+                        aikha "Ah! You solved the puzzle! Excellent!"
+                        aikha "What did it say?"
+                        player "\"It introduced itself as 'The Trickster.'\""
+                        player "Do you have any idea what that means?"
+                        aikha pensive "Hmm... "
+                        aikha neutral "Nah. No clue."
+                        aikha "But that's one piece of the door code, right? You're one step closer!"
+                    else:
+                        aikha "You got this, intern!"
+
+                elif escape_talk_shown_item == "Peculiar Paper":
+                    if not escape_talk_items["aikha"]["Peculiar Paper"]:
+                        $ escape_talk_items["aikha"]["Peculiar Paper"] = True
+                        player "Dr. Aikha, could you take a look at this?"
+                        show escape_peculiar_paper:
+                            xalign 0.5
+                            yalign 0.5
+                        aikha pensive "Hmm..."
+                        hide escape_peculiar_paper
+                    aikha "Not sure. Maybe keep looking around?"
+
+                elif escape_talk_shown_item == "Page 524" or escape_talk_shown_item == "Page 621":
+                    n "Dr. Aikha probably wouldn't be interested in this."
+
+                elif escape_talk_shown_item == "Page 810":
+                    if "Page 621" in escape_inventory:
+                        n "You already solved this. No point in discussing it further."
+                    elif not escape_talk_items["aikha"]["Page 621"]:
+                        $ escape_talk_items["aikha"]["Page 621"] = True
+                        player "Dr. Aikha, could you take a look at this?"
+                        # show cg
+                        aikha pensive "Hmm..."
+                        aikha "The second one looks an awful lot like"
+                        # TODO: FINISH 
+
+                elif escape_talk_shown_item == "Purple Light":
+                    if not escape_talk_items["aikha"]["Purple Light"]:
+                        $ escape_talk_items["aikha"]["Purple Light"] = True
+                        player "Dr. Aikha, what do you think of this flashlight?"
+                        aikha "Oh?"
+                        n "You give the purple flashlight to Dr. Aikha, who turns it around in their hands."
+                        aikha pensive "\"Find my complement...\""
+                        aikha neutral "Hmm... maybe it has something to do with the colour?"
+                    else:
+                        aikha "It probably has something to do with the colour!"
+
+                elif escape_talk_shown_item == "Slip of Paper":
+                    if "Page 524" in escape_inventory:
+                        if not escape_talk_items["aikha"]["Slip of Paper"]:
+                            n "You already solved this. There's no point discussing it further."
+                        elif escape_aikha_solved_morse:
+                            aikha "Oh? Did you come to thank me?"
+                            aikha happy "You're welcome!"
+                            show aikha neutral
+                        else:
+                            aikha happy "Hey, you solved it! Nice job!"
+                    else:
+                        if not escape_talk_items["aikha"]["Slip of Paper"]:
+                            $ escape_talk_items["aikha"]["Slip of Paper"] = True
+                            player "Dr. Aikha, do you know what this is?"
+                            n "You hand over the slip of paper with dots and dashes on it."
+                            aikha "Oh yeah. It's morse."
+                            player "What does it say?"
+                            aikha "Haha, that's for you to figure out!"
+                            player "..."
+                        aikha "I reckon there's a cipher somewhere around here. Just keep looking."
+                else:
+                    n "aikha talk shown item broke bruh wtf"
+            "Chat.":
+                if escape_talk_chats_aikha == 0:
+                    aikha "Hey! How's it going, newbie?"
+                    player "Not bad, I suppose. Figuring things out slowly."
+                    aikha happy "That's good! Come to me if you need any help, yeah?"
+                elif escape_talk_chats_aikha == 1:
+                    aikha "Hey, newbie."
+                    player "Yeah?"
+                    menu:
+                        aikha "Waffles or pancakes?"
+                        "Waffles.":
+                            player "Waffles."
+                        "Pancakes.":
+                            player "Pancakes!"
+                    player "What about you?"
+                    aikha "Eh. I'm indifferent."
+                    player "..."
+                    aikha "Fuck whipped cream though. Hate that."
+                    player "Is this relevant to the escape room?"
+                    aikha "Nope!"
+                elif escape_talk_chats_aikha == 2:
+                    aikha "You know, I had a really weird dream last night."
+                    player "Uh huh."
+                    aikha "In it, I was some chess grandmaster playing Magnus Carlsen."
+                    aikha panic "I was completely winning, but just before I delivered checkmate, he grabbed a shotgun from under the table and blasted my head clean off."
+                    aikha "What a sore loser, right?"
+                elif escape_talk_chats_aikha == 3:
+                    aikha "Remember to stay hydrated!"
+                    aikha "Also, remember to check your posture. Can't be getting osteoporosis, can we now?"
+                elif escape_talk_chats_aikha == 4:
+                    aikha "There's this one light novel that I enjoy, but I can't out myself by telling you."
+                    aikha happy "So I'm gonna keep it a secret! Hehe."
+                elif escape_talk_chats_aikha == 5:
+                    aikha "Wow. Are things really going so well that you can sit around and talk to me all day?"
+                    aikha "I mean, I'm all for it, but, shouldn't you be doing something else?"
+                else:
+                    aikha "Don't you have anything better to do?"
+                show aikha neutral
+                $ escape_talk_chats_aikha += 1
+            "Go back.":
+                jump escape_talk
+        jump escape_talk_aikha
 
     label escape_talk_ryz:
-        player "Say, Dr. Ryz, can't you just like...walk through the wall and free us?"
-        ryz "Hm? Well, I guess, but I spent {i}way{/i} too long coding this."
-        player "What?"
-        ryz "What?"
+        $ disappear_if_present("aikha")
+        $ disappear_if_present("firewal")
+        $ escape_inventory_talking_to = "ryz"
+        $ escape_talk_message = "Still need something?" if escape_talked else "Hmm?"
+        $ escape_talked = True
+
+        show ryz:
+            linear 1.0 xalign 0.5
+        
+        menu:
+            ryz "[escape_talk_message]"
+            "Ask about an item.":
+                if escape_talk_shown_item == "Blue Sticky" or ("Blue Sticky" in escape_inventory and escape_talk_shown_item == "Peculiar Paper"):
+                    if not escape_talk_items["ryz"]["Blue Sticky"]:
+                        $ escape_talk_items["ryz"]["Blue Sticky"] = True
+                        ryz "yap yap"
+                    else:
+                        ryz "yap yap"
+
+                elif escape_talk_shown_item == "Peculiar Paper":
+                    if not escape_talk_items["ryz"]["Peculiar Paper"]:
+                        $ escape_talk_items["ryz"]["Peculiar Paper"] = True
+                        ryz "yap yap"
+                    else:
+                        ryz "yap yap"
+
+
+                elif escape_talk_shown_item == "Page 524" or escape_talk_shown_item == "Page 621":
+                    n "Dr. ryz probably wouldn't be interested in this."
+
+                elif escape_talk_shown_item == "Page 810":
+                    if "Page 621" in escape_inventory:
+                        ryz "yap yap"
+                        
+                    elif not escape_talk_items["ryz"]["Page 621"]:
+                        $ escape_talk_items["ryz"]["Page 621"] = True
+                        ryz "yap yap"
+                        
+                        # TODO: FINISH 
+
+                elif escape_talk_shown_item == "Purple Light":
+                    if not escape_talk_items["ryz"]["Purple Light"]:
+                        $ escape_talk_items["ryz"]["Purple Light"] = True
+                        ryz "yap yap"
+                        
+                    else:
+                        ryz "yap yap"
+
+                elif escape_talk_shown_item == "Slip of Paper":
+                    if "Page 524" in escape_inventory:
+                        if not escape_talk_items["ryz"]["Slip of Paper"]:
+                            ryz "yap yap"
+                        else:
+                            ryz "yap yap"
+                    else:
+                        if not escape_talk_items["ryz"]["Slip of Paper"]:
+                            $ escape_talk_items["ryz"]["Slip of Paper"] = True
+                            ryz "yap yap"
+                else:
+                    n "ryz talk shown item broke bruh wtf"
+            "Chat.":
+                if escape_talk_chats_ryz == 0:
+                    ryz "Hey. How's it going?"
+                    player "Pretty alright. You?"
+                    ryz "Not bad. Are the puzzles hard?"
+                    player "They're fine. Probably. Wanna help?"
+                    ryz happy "Hmm. Nah."
+                    ryz "I'll be here if you need me, though. Just hit me up."
+                elif escape_talk_chats_ryz == 1:
+                    player "Nice day out, isn't it?"
+                    ryz "I wouldn't know. I don't go outside."
+                    player "..."
+                    ryz pensive "I think it's been...let's see..."
+                    ryz "3? No, 4 days since I went out."
+                    player "..."
+                    ryz neutral "What?"
+                elif escape_talk_chats_ryz == 2:
+                    player "Say, Dr. Ryz, can't you just like...phase through the wall and free us?"
+                    ryz "Hm? Well, I guess, but I spent {i}way{/i} too long coding this."
+                    player "What?"
+                    ryz "What?"
+                elif escape_talk_chats_ryz == 3:
+                    # TODO: change this if lore demands it
+                    ryz pensive "..."
+                    player "What are you thinking of?"
+                    ryz "All of these puzzles are really off-putting."
+                    ryz "First the passcode on that door, now this?"
+                    ryz "Makes you really wonder who - or what - is behind all of this."
+                elif escape_talk_chats_ryz == 4:
+                    ryz "Are you just overly talkative today, or do you really not want to do the escape room?"
+                    ryz "If you {i}really{/i} want to give up, you can just get the passcode wrong 5 times, you know?"
+                else:
+                    ryz "Go do something else, please."
+                show ryz neutral
+                $ escape_talk_chats_ryz += 1
+            "Go back.":
+                jump escape_talk
+        jump escape_talk_ryz
 
     label escape_talk_firewal:
-        player "A"
+        $ escape_inventory_talking_to = "firewal"
+        $ disappear_if_present("ryz")
+        $ disappear_if_present("aikha")
+        $ escape_talk_message = "Anything else?" if escape_talked else "What's up?"
+        $ escape_talked = True
+
+        show firewal:
+            linear 1.0 xalign 0.5
+
+        menu:
+            firewal "[escape_talk_message]"
+            "Ask about an item.":
+                if escape_talk_shown_item == "Blue Sticky" or ("Blue Sticky" in escape_inventory and escape_talk_shown_item == "Peculiar Paper"):
+                    if not escape_talk_items["firewal"]["Blue Sticky"]:
+                        $ escape_talk_items["firewal"]["Blue Sticky"] = True
+                        firewal "yap yap"
+                    else:
+                        firewal "yap yap"
+                        
+
+                elif escape_talk_shown_item == "Peculiar Paper":
+                    if not escape_talk_items["firewal"]["Peculiar Paper"]:
+                        $ escape_talk_items["firewal"]["Peculiar Paper"] = True
+                        firewal "yap yap"
+                    else:
+                        firewal "yap yap"
+
+
+                elif escape_talk_shown_item == "Page 524" or escape_talk_shown_item == "Page 621":
+                    n "Dr. firewal probably wouldn't be interested in this."
+
+                elif escape_talk_shown_item == "Page 810":
+                    if "Page 621" in escape_inventory:
+                        firewal "yap yap"
+                        
+                    elif not escape_talk_items["firewal"]["Page 621"]:
+                        $ escape_talk_items["firewal"]["Page 621"] = True
+                        firewal "yap yap"
+                        # TODO: FINISH 
+
+                elif escape_talk_shown_item == "Purple Light":
+                    if not escape_talk_items["firewal"]["Purple Light"]:
+                        $ escape_talk_items["firewal"]["Purple Light"] = True
+                        firewal "yap yap"
+                    else:
+                        firewal "yap yap"
+
+                elif escape_talk_shown_item == "Slip of Paper":
+                    if "Page 524" in escape_inventory:
+                        if not escape_talk_items["firewal"]["Slip of Paper"]:
+                            firewal "yap yap"
+                        else:
+                            firewal "yap yap"
+                    else:
+                        if not escape_talk_items["firewal"]["Slip of Paper"]:
+                            $ escape_talk_items["firewal"]["Slip of Paper"] = True
+                else:
+                    n "firewal talk shown item broke bruh wtf"
+            "Chat.":
+                if escape_talk_chats_firewal == 0:
+                    player "Hey, Dr. Firewal. Rare to see you outside of your office."
+                    firewal "Yeah, true. How's the escape room?"
+                    player "It's going, it's going."
+                    firewal "That's good. Let me know if you need help with anything."
+                elif escape_talk_chats_firewal == 1:
+                    
+                elif escape_talk_chats_firewal == 2:
+                    
+                elif escape_talk_chats_firewal == 3:
+                    
+                elif escape_talk_chats_firewal == 4:
+                    
+                else:
+                    
+                show firewal neutral
+                $ escape_talk_chats_firewal += 1
+            "Go back.":
+                jump escape_talk
+        
+        jump escape_talk_firewal
 
 
 # ------------------------------ INVENTORY ------------------------------
@@ -968,10 +1322,9 @@ label escape_inventory_menu:
         n "Your inventory is empty."
     else:
         $ escape_inventory_page = 0
+        $ escape_inventory_screen_is_talking = False
         call screen escape_inventory_screen
     jump escape_main_menu
-    
-
 
 label escape_item_blue_sticky:
     n "{color=#095a10}The Trickster.{/color}"
@@ -989,7 +1342,6 @@ label escape_item_page_621:
     n "In the event that a victim complies and turns around, it will..."
     n "The rest is crossed out."
     return
-
 
 # ------------------------------ PASSCODE ------------------------------
 label escape_passcode:
@@ -1027,7 +1379,6 @@ label escape_submit_passcode_2:
     if escape_submit_passcode_2_input != "524-621":
         $ escape_submit_passcode_correct = False
     jump escape_submit_passcode_3
-    
 
 label escape_submit_passcode_3:
     menu:
@@ -1067,7 +1418,7 @@ label escape_submit_passcode_end:
             n "The lights flicker and go out."
             trickster "{sc=3}{color=#095a10}Oh dear oh dear! [player_name], my little intern, how could you fail this?{/color}{/sc}"
             trickster "{sc=3}{color=#095a10}A shame. Truly a shame!{/color}{/sc}"
-            trickster "{sc=3}{color=#095a10}Well now. Your actions have consequences, you know!.{/color}{/sc}"
+            trickster "{sc=3}{color=#095a10}Well now. Your actions have consequences, you know!{/color}{/sc}"
             trickster "{cps=*0.35}{color=#095a10}You are no longer of use.{/color}{/cps}"
 
             n "You notice"
@@ -1092,14 +1443,13 @@ label escape_submit_passcode_end:
         n "Dr. Aikha and Dr. Firewal make their way out the door. You're about to follow them when you get a weird feeling."
         n "Something's...off."
         # add firewal and aikha transform into shadows, ryz is the only real one
-        # ryz tells you what to do
+        # ryz tells you what to do  
 
         if escape_back_wall_notebook_gullible_viewed:
             trickster "You even fell for that \"gullible\" joke!"
             trickster "Come on, what year is it? You can't be falling for that anymore!"
 
         $ renpy.notify("Fullscreen is recommended for this segment of the game.")
-
 
 label escape_search_minigame_1:
     show screen qte(time=6, act=Function(escape_lose_life, "escape_search_minigame_2"))
@@ -1114,7 +1464,6 @@ label escape_search_minigame_1:
         "Don't turn around." (on_hover = "Turn around"):
             $ escape_lose_life("escape_search_minigame_2")
     
-
 label escape_search_minigame_2:
     hide screen qte
     show screen qte(time=5, act=Function(escape_lose_life, "escape_search_minigame_3"))
@@ -1137,14 +1486,13 @@ label escape_search_minigame_3:
     menu:
         trickster "{sc=3}{color=#095a10}All you need to do is...!{/color}{sc=3}"
         "Turn around.":
-            $ escape_lose_life("escape_search_minigame_3")
+            $ escape_lose_life("escape_moving_minigame_1")
         "Turn around.":
             $ escape_lose_life("escape_moving_minigame_1")
         "Turn around." (on_hover = "Don't turn around."):
             jump escape_moving_minigame_1
         "Turn around.":
             $ escape_lose_life("escape_moving_minigame_1")
-
 
 label escape_moving_minigame_1:
     hide screen qte
@@ -1186,7 +1534,6 @@ label escape_moving_minigame_3:
         "Turn around.":
             $ escape_lose_life("escape_moving_minigame_end")
 
-
 label escape_moving_minigame_4:
     show screen qte(time=escape_moving_minigame_delays[escape_moving_minigame_phase], act=Jump("escape_moving_minigame_1"), hidden=True)
     menu:
@@ -1199,7 +1546,6 @@ label escape_moving_minigame_4:
             $ escape_lose_life("escape_moving_minigame_end")
         "Don't turn around.":
             jump escape_moving_minigame_end
-
 
 label escape_moving_minigame_end:
     $ escape_moving_minigame_phase += 1
@@ -1218,7 +1564,7 @@ label escape_final_minigame_success:
     hide screen qte
     hide screen escape_final_minigame
     trickster "{sc=3}{color=#095a10}Fine. Fine! FINE!{/color}{/sc}"
-    trickster "{sc=3}{color=#095a10}You wanna play like that? You wanna see where insubordination gets you?{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}You wanna play like that? You wanna see where your insubordination gets you?{/color}{/sc}"
     show screen escape_unwinnable
     show white_screen zorder 50 onlayer top:
         matrixcolor ColorizeMatrix("#000000", "#095a10")
@@ -1237,6 +1583,7 @@ label escape_final_minigame_success:
     trickster "{sc=3}{color=#095a10}TURN. AROUND.{/color}{/sc}"
     while True:
         trickster "{sc=3}{color=#095a10}TURN. AROUND.{/color}{/sc}{fast}"
+        # TODO: add jumpscare if they alt tab out
 
 label escape_unwinnable_end:
     show layer master
@@ -1246,23 +1593,25 @@ label escape_unwinnable_end:
     show screen escape_force_to_middle
     n "Despite every fibre of your being protesting otherwise..."
     n "You slowly turn around."
-    trickster "{sc=3}{color=#095a10}Haha, YES! YES, YES, YES!{/color}{/sc}"
+    trickster "{sc=3}{color=#095a10}Haha, YES, YES, YES!{/color}{/sc}"
     trickster "{sc=3}{color=#095a10}Delightful! Just delightful!{/color}{/sc}"
     trickster "{sc=3}{color=#095a10}See, my little intern? See, [player_name]? Isn't it just so much easier?{/color}{/sc}"
+    n "Your eyes are immovably attached to the green figure in the darkness."
 
     hide screen escape_force_to_middle
     show screen escape_comply_1
     $ renpy.run(MouseMove(960, 540, 0))
     trickster "{sc=3}{color=#095a10}Life is so much easier if you just comply, comply, comply!{/color}{/sc}"
     trickster "{sc=3}{color=#095a10}See? No fuss at all!{/color}{/sc}"
-    n "Your eyes are immovably attached to the green eyes in the darkness."
+    n "You slowly nod, against your will."
     n "Your body disobeys every command you try to give it."
     n "You "
     n "are not"
     n "{color=#095a10}the one{/color}"
     n "{sc=3}{color=#095a10}in control here.{/color}{/sc}"
     n "...?"
-    n "Through the immeasurably faint glow in the darkness, you can just barely see a gun lying on the table on your right."
+    n "But..."
+    n "Through the faint glow in the darkness, you can just barely see a gun lying on the table  your right."
     n "That's your last hope."
     hide screen escape_comply_1
     show screen escape_comply_2
@@ -1288,9 +1637,7 @@ label escape_unwinnable_end:
 
     trickster "{sc=3}{color=#095a10}Don't worry, [player_name]. You're with me.{w=3.0}{nw}{/color}{/sc}"
     while True:
-        trickster "{sc=3}{color=#095a10}Don't worry, [player_name]. You're with me.{w=3.0}{nw}{/color}{/sc}{fast}"
-
-    
+        trickster "{sc=3}{color=#095a10}Don't worry, [player_name]. You're with me.{w=3.0}{nw}{/color}{/sc}{fast}"    
 
 label escape_good_end:
     hide screen escape_comply_2
@@ -1370,13 +1717,9 @@ label escape_bad_end:
         linear 3 alpha 0.0
 
     show ryz at appear
-    ryz fury "That was MY escape room, by the way! MINE! 1400 LINES OF CODE!"
+    ryz fury "That was MY escape room, by the way! MINE! 1500 LINES OF CODE!"
     player "What?"
-    ryz "What?"
+    ryz neutral "What?"
     player "...Thanks, Dr. Ryz."
-    ryz neutral "Don't mention it. You alright?"
+    ryz "Don't mention it. You alright?"
     player "Yeah, I think."
-
-
-# very last game (after pandemonium): two options, turn around (top) and don't turn around. moving your mouse out of turn around will force it back on.
-# to not turn around, you need to use arrow keys
