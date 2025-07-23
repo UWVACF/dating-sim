@@ -53,13 +53,13 @@ label trial_you_as_defendant:
         xzoom -1.0
         alpha 1.0
         appear(-0.1, y_align = 1.3)
-    uriel "The accused, [player_name], was found to be the prime suspect to this murder, with Dr. Deceased being the Plaintiff."
+    uriel "The accused, [player_name], was found to be the prime suspect to this murder, with Dr. Deceased being the accuser."
     uriel "I would like to introduce Dr. Chan as the jury."
     show chan onlayer master at appear(x_align = 1.0)
     chan "Thank you, Uriel. I swear that I will remain fair."
     show chan unique
     ethy "AA."
-    chan "Ethy will help me determine if the plaintiff or the defendant are lying."
+    chan "Ethy will help me determine if the accuser or the defendant are lying."
     uriel "The court session will now start."
     # insert trial start cg or something
     show chan neutral
@@ -129,7 +129,7 @@ label trial_you_as_defendant:
             alpha 1.0
         show shock onlayer master2:
             alpha 0.0
-        deceased happy "According to foundation protocols, for safety reasons, the common kitchenette does not have shared dangerous objects such as knifes!" #pensive
+        deceased happy "According to foundation protocols, for safety reasons, the common kitchenette does not have shared dangerous objects such as knives!" #pensive
         deceased neutral "Hence, the knife was brought by [player_name] [player_ref]."
         show deceased:
             alpha 0.0
@@ -160,7 +160,12 @@ label trial_you_as_defendant:
                     alpha 1.0
                 show deceased objection as dece_point:
                     alpha 0.0
-                player "There were other dangerous weapons at the kitchenette like the chainsaw!"
+                player "There are other dangerous weapons at the foundation! A knife is nothing!"
+                n "To prove your point, you pull out from your pockets: a ceremonial dagger from demonics, radioactive materials from Dr. Lee, 6 brass knuckles for spider legs-"
+                n "-a nuclear warhead from a Wal, two taser traps from the Extraterrestial department, some combination of 15 espresso shots and 10 red bulls, not exactly a weapon but should be considered one-"
+                roose "HONK HONK HONK HONK HONK!?"
+                n "Oh, and that goose. That one in particular. I'm most scared of that one."
+                n "{i}How{/i} did you get all that???"
                 show shock onlayer master2:
                     alpha 1.0
                 show deceased:
@@ -176,8 +181,8 @@ label trial_you_as_defendant:
             alpha 1.0
         show deceased objection as dece_point:
             alpha 0.0
-        deceased "Another huge point of concern is why you're in the lounge at that time."
-        deceased "As far as I know, the time we found you and Dr. Ralex is work time and not lunch time yet."
+        deceased "Another huge point of concern is why you were in the lounge at that time."
+        deceased "As far as I know, the time we found you and Dr. Ralex was work time and not lunch time yet."
         show shock onlayer master2:
             alpha 1.0
         show deceased:
@@ -255,7 +260,7 @@ label trial_you_as_defendant:
             xalign 1.0
             yalign 1.0
 
-        uriel "In that case, let us hear from the attesters."
+        uriel "In that case, let us hear from the character witnesses."
         if tne_chan_backup == True or "True" or hampter_witness == True or "True" or tne_syg_backup == True or "True":
             if tne_chan_backup == True or "True":
                 uriel pensive "First, Dr. Chan."
@@ -307,7 +312,7 @@ label trial_you_as_defendant:
                 uriel pensive "And what were [player_sub] doing?"
                 hampter "[player_sub] were looking for something, I think. After that, I went back to nap."
                 show hampter panic onlayer master2
-                hampter panic "Then 5 minutes later, I heard Dr. Deceased scream."
+                hampter panic "Then five minutes later, I heard Dr. Deceased scream."
                 uriel "So you did not hear any struggling or arguments?"
                 hampter "No, I didn't."
                 deceased "This cannot be!"
@@ -321,11 +326,12 @@ label trial_you_as_defendant:
                 uriel upset "Are you 100\% certain that was [player_name]? Could it be possible that you were dreaming?"
                 hampter "uh...uh...uh"
                 show hampter panic onlayer master2 at disappear
+                n "Hampter disappeared in a blink of an eye."
                 chan "I believe the witness is too stressed to continue. But I think we have enough statements from attesters."
         else:
             show uriel pensive
             n "..."
-            uriel happy "No attesters, huh."
+            uriel happy "It seems that you don't have any of those. That's sad."
         
         uriel neutral "We shall decide on the verdict now, then."
         if trial_credibility_you > 3:
@@ -347,14 +353,16 @@ label trial_you_as_defendant:
             venture "There has been a great misunderstanding!"
             uriel "Misunderstanding?"
             venture "Yes, yes. This is all caused by an anomaly!"
-            venture "The knife that was suspected as the murder weapon was an anomalous knife that creates illusions of murder scenes of false victims!"
+            venture "The knife that is suspected as the murder weapon was an anomalous knife that creates illusions of murder scenes with false victims!"
             chan pensive "Hmm. Now that you speak of it, I do vaguely remember such an anomaly in containment."
-            chan neutral "But, how do you know that, Dr. Ventures?"
+            chan neutral "But, how do you know that, Dr. Venture?"
             venture "About that...It was an alchemical accident! During an experiment I was conducting, something went wrong and transported the knife out of my lab."
             venture "Now that I've proven [player_name]'s innocence, the body should disappear very soon, and the brainwashing lifted."
             uriel "idk how to end this actually, so you can go jakob i guess"
             n "yippie, the end"
             hide venture onlayer master2 zorder 91
+
+            jump after_court_innocent
 
 
 
@@ -465,7 +473,7 @@ label trial_you_as_defendant:
                 pause 0.3
             show chan surprise
             uriel upset "...Are you lying, Dr. Chan?"
-            chan fury "You can't be serious! Uriel, Deceased's is talking nonsense!"
+            chan fury "You can't be serious! Uriel, Deceased is talking nonsense!"
             show uriel fury
             n "You watch as the room erupts into chaos. The trial is surely not proceeding at this state."
             show uriel sad:
@@ -500,7 +508,7 @@ label trial_you_as_defendant:
             n "Seems all clear. Now run for it-"
             venture_unknown "[player_name]!"
             n "OH FUCK-"
-            n "I donno what to put here"
+            n "Quick! Commit another murder!"
             show venture at appear
             ##idk what to write here##
 
@@ -517,7 +525,7 @@ label trial_you_as_defendant:
         n "You feel a light tap on the back of your shoulder."
         show venture at appear
         venture "Hey, [player_name]!"
-        player "Hello, Dr. Ventures."
+        player "Hello, Dr. Venture."
         venture "Woah, what's going on? Why are so many people coming out of the multipurpose room? Did we have a foundation-wide event? Without me?"
         player "It was a trial, actually-"
         venture "Oh. Nah. That's boring. Glad I sat that one out."

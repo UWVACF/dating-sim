@@ -9,7 +9,6 @@ label day_event_didnt_do_it:
     n "It's lunch break and you're hungry."
     n "You march into the lounge kitchenette. Today you even brought a whole head of lettuce to include in your sandwich. Healthy!"
     n "However, you realize that you've forgotten to bring your own knife today."
-    n "You scan the lounge. There is a pair of scissors in the sink, a flamethrower glowing red on an open stove, a chainsaw hanging on the wall...but no knife."
 
     label ddi_choice_loop:
         menu:
