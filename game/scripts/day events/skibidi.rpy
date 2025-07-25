@@ -18,12 +18,15 @@ label day_event_skibidi:
     caffi "Yeah! It's like, \"What the hell\" or \"What the fuck,\" you know?"
     helco "Oh."
     helco happy "Hello, [player_name]. What the fuck is going on?"
-    show helco scared
+    show helco scared at move_to(x_align = 1.75)
+    show caffi at move_to(x_align = 1.5)
+    show meme at move_to(x_align = 1.5, duration = 2 * default_move_time)
     n "Caffi drags Dr. Helco by the sleeve to the back of the room, while Meme, chuckling, follows behind."
-    show helco scared at disappear
-    show caffi at disappear
-    show meme at disappear
+    hide helco
+    hide caffi
+    hide meme
     caffi "You know what? Let's move on. I'll teach you the word \"gyatt\" instead." # im in so much pain
+    helco "Oh! Okay!"
     menu:
         n "...Do you intervene?"
         "Save Dr. Helco from brainrot.":
@@ -38,10 +41,41 @@ label day_event_skibidi:
         show caffi happy at appear(x_align = 0.25)
         show meme at appear(x_align = 0.75)
         caffi happy "You say \"gyatt\" whenever you're really surprised, or when something's really cool."
-        caffi "Then we have \"sus\", which means suspicious, \"cap\" which means lie, \"aura\" which means..."
-        n "You can feel your brain shrinking as Caffi continues talking. You mourn the loss of thousands of years of societal development."
+        caffi "Then we have \"sus\", \"cap\", \"aura\"..."
+        n "Your eyes glaze over as you mourn the loss of thousands of years of societal development."
         n "About 14 and a half minutes later, Dr. Helco walks up to you with renewed confidence. You brace yourself for impact."
-        helco happy "Hey [player_name], you rizzler " # i literally died writing this somebody else can take over
+        helco happy "Yoooo! [player_name], my homie! Wsg, you sigma?" # i literally died writing this somebody else can take over
+        player "I, uh-"
+        helco "Aura farming, as usual? Yeah, me too, fr fr!"
+        player "Dr. Helco-"
+        helco surprise "You know, when Caffi came up to me and was all like, \"Hey Helco! Can I teach you some new words?\" I thought she was just my opp!"
+        helco happy "But like, be so real right now, this is the shit! Like, gyatt damn! Life before was so mid!"
+        player "..."
+        helco neutral "Hey mate, what's wrong?"
+        n "A single teardrop streams down your cheek as you witness the regression of the foundation you loved so dearly. It's the beginning of the end."
+        helco "[player_name]? [player_name]! "
+        helco "[player_sub_be] not responding (skull emoji). [player_sub!c] fell for the ragebait, smh. Negative 10000 social credit."
+        helco "ICL, TS PMO. I'm out."
+        show helco at disappear
+        n "Dr. Helco leaves the room swaggaliciously."
+        n "You remain frozen in place, unresponsive and unblinking."
+        meme "Hey, buddy! You good?"
+        n "Meme shakes your shoulders, but to no avail. You remain in shock."
+        meme pensive "Aw, they're gone. Now where did [player_sub] put [player_pos_adj] wallet..."
+        caffi "Wake up. Wake. Up."
+        n "Caffi smacks your forehead, and you tumble backwards onto to the floor, spread-eagled."
+        meme "Wh- hey, chill! I'm tryna pickpocket [player_obj] here!"
+        meme happy "Oh! Found it!"
+        show meme at disappear
+        n "Meme exits the room, happily humming to themselves. You remain in your vegetative state."
+        caffi happy "Moon will take care of you. Toodles!"
+        show caffi at disappear
+        n "..."
+        n "So how long {i}are{/i} you gonna lie there?"
+        $ update_character_points() 
+        return
+
 
     label skibidi_yourself:
-        n "a"
+        n "Nah. He can fend for himself. Surely."
+        n ""
