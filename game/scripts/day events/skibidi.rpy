@@ -44,17 +44,17 @@ label day_event_skibidi:
         caffi "Then we have \"sus\", \"cap\", \"aura\"..."
         n "Your eyes glaze over as you mourn the loss of thousands of years of societal development."
         n "About 14 and a half minutes later, Dr. Helco walks up to you with renewed confidence. You brace yourself for impact."
-        helco happy "Yoooo! [player_name], my homie! Wsg, you sigma?" # i literally died writing this somebody else can take over
+        helco happy "Wagwan shawty?" # i literally died writing this somebody else can take over
         player "I, uh-"
         helco "Aura farming, as usual? Yeah, me too, fr fr!"
         player "Dr. Helco-"
-        helco surprise "You know, when Caffi came up to me and was all like, \"Hey Helco! Can I teach you some new words?\" I thought she was just my opp!"
+        helco surprise "You know, when Caffi came up to me and was promising to, like, enhance my life I thought she was cappin'!"
         helco happy "But like, be so real right now, this is the shit! Like, gyatt damn! Life before was so mid!"
         player "..."
         helco neutral "Hey mate, what's wrong?"
         n "A single teardrop streams down your cheek as you witness the regression of the foundation you loved so dearly. It's the beginning of the end."
         helco "[player_name]? [player_name]! "
-        helco "[player_sub_be] not responding (skull emoji). [player_sub!c] fell for the ragebait, smh. Negative 10000 social credit."
+        helco "[player_sub_be] not responding (skull emoji). Chat, is this real? [player_sub!c] fell for the ragebait, smh. Negative 10000 social credit."
         helco "ICL, TS PMO. I'm out."
         show helco at disappear
         n "Dr. Helco leaves the room swaggaliciously."
@@ -63,7 +63,7 @@ label day_event_skibidi:
         n "Meme shakes your shoulders, but to no avail. You remain in shock."
         meme pensive "Aw, they're gone. Now where did [player_sub] put [player_pos_adj] wallet..."
         caffi "Wake up. Wake. Up."
-        n "Caffi smacks your forehead, and you tumble backwards onto to the floor, spread-eagled."
+        n "Caffi smacks your face, and you tumble backwards onto to the floor, spread-eagled."
         meme "Wh- hey, chill! I'm tryna pickpocket [player_obj] here!"
         meme happy "Oh! Found it!"
         show meme at disappear
@@ -79,3 +79,27 @@ label day_event_skibidi:
     label skibidi_yourself:
         n "Nah. He can fend for himself. Surely."
         n ""
+
+
+"""
+dawg
+blud
+smthmaxxing
+:wilted_rose:
+:heartbreak:
+alpha, beta, sigma, alpha male
+edging
+amogus
+chungus
+one must imagine sisyphus happy
+delulu
+mewing
+we got ... before gta 6
+red pilled
+-core
+-pilled
+早上好中国，现在我有冰淇淋
+chat is this real
+cooked, fried, broiled, sauted, chopped
+erm, what the sigma
+"""

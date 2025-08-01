@@ -234,6 +234,11 @@ init python:
             personnel=["ryz", "caffi", "helco", "meem"],
             tags=["personnel"],
         ),
+        Event(
+            label="anendophasia",
+            personnel=["meme", "venture", "aikha", "plutoes", "alex"],
+            tags=["personnel"],
+        ),
     ]
 
     # replace all spaces in labels with underscores

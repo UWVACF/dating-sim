@@ -1298,14 +1298,18 @@ label escape_talk:
                     player "It's going, it's going."
                     firewal "That's good. Let me know if you need help with anything."
                 elif escape_talk_chats_firewal == 1:
-                    
+                    $ NullAction()
                 elif escape_talk_chats_firewal == 2:
+                    $ NullAction()
                     
                 elif escape_talk_chats_firewal == 3:
+                    $ NullAction()
                     
                 elif escape_talk_chats_firewal == 4:
+                    $ NullAction()
                     
                 else:
+                    $ NullAction()
                     
                 show firewal neutral
                 $ escape_talk_chats_firewal += 1
