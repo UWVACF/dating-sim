@@ -3,12 +3,6 @@
 # see event.rpy for documentation on the Event class
 init python:
     fixed_events = [
-        Event(
-            label="aikha_1",
-        ),
-        Event(
-            label="neutral_ending",
-        )
     ]
 
     # replace all spaces in labels with underscores
