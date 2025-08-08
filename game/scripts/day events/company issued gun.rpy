@@ -212,46 +212,46 @@ label day_event_company_issued_gun:
         egg "At least not after Dr. Deceased kept eating their gun."
         
         scene bg hallway
-            n "You hold your new gun like your newborn child."
-            n "This thing will surely keep you safe."
-            n "For the first time, you felt comfort since working here."
-            show deceased at appear()
-            deceased "Oh hey [player_name]! What are you doing at HR?"
-            n "You see their head turns towards what you're cradling in your arms. Your grip tightens."
-            deceased happy "OH! You got your company issued gun!"
-            deceased "The company benefits here sure are great, eh?"
-            show deceased happy:
-                linear 1.0 zoom 1.2
-            n "They inch closer to you. Your motherly instincts demands you to run."
-            deceased "What upgrades did you get? May I have a look?"
-            show deceased happy:
-                linear 1.0 zoom 1.4
-            menu:
-                n "They reach their arm forward, about to snatch your gun."
-                "Run":
-                    hide deceased
-                    n "You decided to turn around and flee. You hear the sounds of rapid footsteps and crows cacking behind you."
-                    n "It seems like this gun will not keep you safe."
-                "Shoot":
-                    $ shake_screen()
-                    n "In a panic, you test out your new gun."
-                    # different outcomes depending on bullets/silencers...
-                    n "Only after the gun shot did you realize what you're done."
-                    n "To your surprise, Dr. Deceased seems fine, minus the hole on their forehead. They aren't even bleeding."
-                    deceased neutral "...Did you just shoot me?"
-                    n "You feel as if the temperature drops by 50 degrees. The plague doctor mask suddenly looks a lot more intimidating staring down at you."
-                    n "Uh oh. It seems you're about to lose your prized weapon."
-                    deceased "..."
-                    deceased happy "Well, if it's a gun fight you want, I have a gun too!"
-                    show deceased happy:
-                        linear 1.5 zoom 1.0
-                    n "Dr. Deceased opens their beak and pulls out a gun. A much larger gun, with almost every upgrades you saw back in The Egg's office. Then they backs up a bit."
-                    deceased "On the count of three! We'll take a shot at each other and see who hits more! Bonus points for the head!"
-                    deceased neutral "Three..."
-                    deceased "Two..."
-                    show deceased happy at disappear
-                    n "You turn and run without waiting to hear \"one\"."
-                    n "It seems like this gun will not keep you safe."
+        n "You hold your new gun like your newborn child."
+        n "This thing will surely keep you safe."
+        n "For the first time, you felt comfort since working here."
+        show deceased at appear()
+        deceased "Oh hey [player_name]! What are you doing at HR?"
+        n "You see their head turns towards what you're cradling in your arms. Your grip tightens."
+        deceased happy "OH! You got your company issued gun!"
+        deceased "The company benefits here sure are great, eh?"
+        show deceased happy:
+            linear 1.0 zoom 1.2
+        n "They inch closer to you. Your motherly instincts demands you to run."
+        deceased "What upgrades did you get? May I have a look?"
+        show deceased happy:
+            linear 1.0 zoom 1.4
+        menu:
+            n "They reach their arm forward, about to snatch your gun."
+            "Run":
+                hide deceased
+                n "You decided to turn around and flee. You hear the sounds of rapid footsteps and crows cacking behind you."
+                n "It seems like this gun will not keep you safe."
+            "Shoot":
+                $ shake_screen()
+                n "In a panic, you test out your new gun."
+                # different outcomes depending on bullets/silencers...
+                n "Only after the gun shot did you realize what you're done."
+                n "To your surprise, Dr. Deceased seems fine, minus the hole on their forehead. They aren't even bleeding."
+                deceased neutral "...Did you just shoot me?"
+                n "You feel as if the temperature drops by 50 degrees. The plague doctor mask suddenly looks a lot more intimidating staring down at you."
+                n "Uh oh. It seems you're about to lose your prized weapon."
+                deceased "..."
+                deceased happy "Well, if it's a gun fight you want, I have a gun too!"
+                show deceased happy:
+                    linear 1.5 zoom 1.0
+                n "Dr. Deceased opens their beak and pulls out a gun. A much larger gun, with almost every upgrades you saw back in The Egg's office. Then they backs up a bit."
+                deceased "On the count of three! We'll take a shot at each other and see who hits more! Bonus points for the head!"
+                deceased neutral "Three..."
+                deceased "Two..."
+                show deceased happy at disappear
+                n "You turn and run without waiting to hear \"one\"."
+                n "It seems like this gun will not keep you safe."
 
 
 
