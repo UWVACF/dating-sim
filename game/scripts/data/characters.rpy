@@ -420,5 +420,8 @@ define player = Character("[player_name]", kind=base_char, color="#444444", cb_n
 define trickster = Character("?", kind=base_char, color="#095a10", cb_name="trickster", what_bold = True, what_size = 45)
 
 define n = Character("", kind=base_char, cb_name="") # narrator, required to unhighlight characters whenever narration is occurring
-define unknown = Character("???", kind=base_char, color="#000000", cb_name="unknown")
-define speaker = Character("Security Speakers", kind=base_char, color="#000000", cb_name="unknown")
+define unknown = Character("???", kind=base_char, color="#000000", cb_name="???")
+define speaker = Character("Security Speakers", kind=base_char, color="#000000", cb_name="Speakers")
+define crowd = Character("Crowd", kind=base_char, color="#000000", cb_name="Crowd")
+define person = Character("Person", kind=base_char, color="#000000", cb_name="Person")
+define josh = Character("Josh", kind=base_char, color="#000000", cb_name="Josh")

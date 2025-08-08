@@ -3,6 +3,9 @@
 # see event.rpy for documentation on the Event class
 init python:
     fixed_events = [
+        Event(
+            label="company_issued_gun",
+        ),
     ]
 
     # replace all spaces in labels with underscores

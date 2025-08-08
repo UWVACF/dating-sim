@@ -21,13 +21,13 @@ label day_event_company_issued_gun:
     egg "First question:"
     menu:
         egg "Under what situations can you fire your company issued gun?" 
-        "Situations above level 3 emergensies":
+        "Situations above level 3 emergencies":
             $ gun_sanity_points -= 1
             egg "mhm."
         "When I feel my life is threatened":
             $ gun_sanity_points -= 1
             egg "mhm."
-        "Situations above level 4 emergensies":
+        "Situations above level 4 emergencies":
             $ gun_sanity_points += 1
             egg happy "mhm."
         "When I feel like it":
@@ -103,12 +103,12 @@ label day_event_company_issued_gun:
             n "Additional functions:"
             "Corporal anomaly proximity radar - chan":
                 # show cg
-                egg "This is developed by Dr. Chan and detects if there are any anomalies near you! Doesn't work for non corporal Cerebersites though."
+                egg "This is developed by Dr. Chan and detects if there are any anomalies near you! Doesn't work for non-corporal Cerebrasites though."
                 $ gun_temp = "chan"
-            "Owner locator - ufo":
+            "Owner locator - uriel":
                 # show cg
                 egg "This is developed by Uriel, it tracks where you are and will alert you on your work phone if your gun gets too far away."
-                $ gun_temp = "ufo"
+                $ gun_temp = "uriel"
             "Hunan proximity radar - Helco":
                 # show cg
                 egg "This is developed by Dr. Helco and it detects if there are any humans near you!"
@@ -121,19 +121,19 @@ label day_event_company_issued_gun:
                 # show cg
                 egg "This is made with b6 as inspiration. It doesn't look anything like b6."
                 $ gun_temp = "b6"
-            "Sentient. - aikha":
+            "Sentience. - aikha":
                 # show cg
-                egg "This is developed by Dr. Aikha. We're working on allowing it to speak on the next upgrade."
+                egg "This is developed by Dr. Aikha. We here at the foundation like to ensure that our weapons are in pain."
                 $ gun_temp = "aikha"
         jump gun_yes_no
 
     label comgun_lu:
         $ gun_menu = 2
         menu: 
-            n "Lethaloty upgrades:"
+            n "Lethality upgrades:"
             "Sniper scope - syg":
                 # show cg
-                egg "This is requested and tested by Dr. Syg."
+                egg "This is requested and throughoutly tested by Dr. Syg."
                 $ gun_temp = "syg"
             "Flamethrower - firewal":
                 # show cg
@@ -204,12 +204,13 @@ label day_event_company_issued_gun:
                     jump comgun_end
             "No":
                 #remove cg
-                if gun_menu == 1:
-                    jump comgun_af
-                elif gun_menu == 2:
-                    jump comgun_lu
-                else:
-                    jump comgun_dec
+                egg "Take your time picking!"
+        if gun_menu == 1:
+            jump comgun_af
+        elif gun_menu == 2:
+            jump comgun_lu
+        else:
+            jump comgun_dec
 
     label comgun_end:
         # hide cg
@@ -228,18 +229,19 @@ label day_event_company_issued_gun:
         deceased "The company benefits here sure are great, eh?"
         show deceased happy:
             linear 1.0 zoom 1.2
-            linear 1.0 yalign 1.5
-        n "They inch closer to you. Your motherly instincts demand you to run."
+        n "They inch closer to you. Your parental instincts demand you to run."
         deceased "What upgrades did you get? May I have a look?"
         show deceased happy:
-            linear 1.0 zoom 1.4
-            linear 1.0 yalign 2.5
+            parallel:
+                linear 1.0 zoom 1.4
+            parallel:
+                linear 1.0 yalign 0.0
         menu:
             n "They reach their arm forward, about to snatch your gun."
             "Run":
                 hide deceased
-                n "You decided to turn around and flee. You hear the sounds of rapid footsteps and crows cacking behind you."
-                deceased "Hey where are you going,, [player_name]? I just want a bite- I mean look!"
+                n "You decided to turn around and flee. You hear the sounds of rapid footsteps and crows cackling behind you."
+                deceased "Hey where are you going, [player_name]? I just want a bite- I mean to look!"
                 n "It seems you have overestimated the capability of the gun."
             "Shoot":
                 $ shake_screen()
@@ -253,8 +255,11 @@ label day_event_company_issued_gun:
                 deceased "..."
                 deceased happy "Well, if it's a gun fight you want, I have a gun too!"
                 show deceased happy:
-                    linear 1.5 zoom 1.0
-                n "Dr. Deceased begins coughing uncontrollably. After a few cough, they throw up a gun from their beak.. A much larger gun, with almost every upgrades you saw back in The Egg's office. Then they backs up a bit."
+                    parallel:
+                        linear 1.0 zoom 1.0
+                    parallel:
+                        linear 1.0 yalign 1.0
+                n "Dr. Deceased begins coughing uncontrollably. After a few cough, they throw up a gun out of their beak. A much larger gun, with almost every upgrade you saw back in The Egg's office. Then they back up a bit."
                 deceased "They won't give me a new gun, so you're stuck with this one I had for a snack last week. Don'y worry, it still has full ammo!"
                 deceased "On the count of three! We'll take a shot at each other and see who hits more! Bonus points for the head!"
                 deceased neutral "Three..."

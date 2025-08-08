@@ -122,6 +122,11 @@ init python:
             personnel=["meme", "venture", "aikha", "plutoes", "alex"],
             tags=["personnel"],
         ),
+        Event(
+            label="fluke_cake",
+            personnel=["hampter", "syg", "alex", "uriel", "egg", "meme", "caffi", "aikha"],
+            tags=["incident"],
+        ),
     ]
 
     # replace all spaces in labels with underscores
