@@ -98,10 +98,38 @@ label day_event_fluke_cake:
     n "He doesn't look fine."
     show hampter happy at disappear
     player "..."
-    n "Out of the corner of your eye, you spot a diligent snail making it's way over to Dr. Alex."
-    $ shake_screen(duration=0.1, repeat=7, interval=0.4)
+    n "Out of the corner of your eye, you spot a diligent snail making its way over to Dr. Alex."
+    $ shake_screen(duration=0.1, repeat=5, interval=0.3)
     n "You are about to comment on it when Dr. Aikha punts it like a soccer ball. Then they whip their gun out and shoot it repeatedly."
     aikha "Don't mind me! I'll take care of it!"
+    $ shake_screen(duration=0.1, repeat=5, interval=0.3)
+    n "...Just another day at the foundation."
+    n "You look around at everyone eating their slice of cake. You didn't even get one."
+    n "You deciede to join a group. It would look really sad if you just stand around alone with no cake."
+    # monster con hangout style chibi head cg for pairs of people
+    menu:
+        n "Who are you joining?"
+        "Hampter and Dr. Alex":
+            jump fluke_HA
+        "Caffi and Meem":
+            jump fluke_CM
+        "Dr. Aikha and Uriel":
+            jump fluke_AU
+        "The Egg and Dr. Syg":
+            jump fluke_ES
+
+    label fluke_HA:
+        n "You are still worry for the Founder, so you decieded to stay with Hampter and Dr. Alex."
+        n ""
+
+    label fluke_CM:
+        n "hehe"
+
+    label fluke_AU:
+        n "hehe"
+
+    label fluke_ES:
+        n "hehe"
 
 
 
