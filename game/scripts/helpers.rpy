@@ -151,58 +151,58 @@ init python:
         
         # adds pause after commas
         text = re.sub(
-            r',(?!\s*[0-9])', 
-            f',{{w={punctuation_pauses["comma"]}}}', 
+            r', (?!\s*[0-9])', 
+            f',{{cps={1/punctuation_pauses["comma"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after periods
         text = re.sub(
             r'(?<!\bMr)(?<!\bMrs)(?<!\bDr)(?<!\bMRS)(?<!\bMR)(?<!\bDR)(?<!\.)\. (?!\s*\s*$|\.|[0-9])', 
-            f'. {{w={punctuation_pauses["period"]}}}', 
+            f'.{{cps={1/punctuation_pauses["period"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after elipses
         text = re.sub(
             r'\.{3}(?!\s*)', 
-            f'.{{w={punctuation_pauses["elipsis"]}}}.{{w={punctuation_pauses["elipsis"]}}}.{{w={punctuation_pauses["elipsis"]}}}', 
+            f'{{cps={1/punctuation_pauses["elipsis"]}}}...{{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after exclamation mark
         text = re.sub(
             r'! (?!\s*[0-9])', 
-            f'! {{w={punctuation_pauses["exclamation"]}}}', 
+            f'!{{cps={1/punctuation_pauses["exclamation"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after question mark
         text = re.sub(
             r'\? (?!\s*[0-9])', 
-            f'? {{w={punctuation_pauses["question"]}}}', 
+            f'?{{cps={1/punctuation_pauses["question"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after colon
         text = re.sub(
             r': (?!\s*[0-9])', 
-            f': {{w={punctuation_pauses["colon"]}}}', 
+            f':{{cps={1/punctuation_pauses["colon"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after semi colon
         text = re.sub(
             r'; (?!\s*[0-9])', 
-            f'; {{w={punctuation_pauses["semicolon"]}}}', 
+            f';{{cps={1/punctuation_pauses["semicolon"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
 
         # adds pause after quotation mark
         text = re.sub(
             r'" (?!\s*[0-9])', 
-            f'" {{w={punctuation_pauses["quotation"]}}}', 
+            f'"{{cps={1/punctuation_pauses["quotation"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
 
         # adds pause after hyphen
         text = re.sub(
             r'- (?!\s*[0-9])', 
-            f'- {{w={punctuation_pauses["hyphen"]}}}', 
+            f'-{{cps={1/punctuation_pauses["hyphen"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
 

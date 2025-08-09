@@ -12,10 +12,10 @@ label day_init:
 
 
         if game_mode == "debug":
-            type_of_event = renpy.input("Choose either day or ending (for day and ending event respectively)").lower()
-            while type_of_event != "day" and type_of_event != "ending":
-                renpy.notify("Type either \"day\" or \"event\"!")
-                type_of_event = renpy.input("Choose either day or ending (for day and ending event respectively)").lower()
+            type_of_event = renpy.input("Choose either \"day\", \"fixed\" or \"ending\".").lower()
+            while type_of_event != "day" and type_of_event != "ending" and type_of_event != "fixed":
+                renpy.notify("Type either \"day\", \"fixed\" or \"event\"!")
+                type_of_event = renpy.input("Choose either \"day\", \"fixed\" or \"ending\".").lower()
 
             if type_of_event == "day":
                 today_event_label = renpy.input("Choose a day event label to see:")
@@ -29,7 +29,7 @@ label day_init:
                     today_intro_label = today_event.intro_label
                 if today_event.outro_label:
                     today_outro_label = today_event.outro_label
-            else:
+            elif type_of_event == "ending":
                 today_event_label = renpy.input("Choose an ending event label to see:")
                 while not today_event_label or not filter_events(events = ending_events, label = today_event_label):
                     renpy.notify("Event not found (don't include \"day_event_\")")
@@ -37,6 +37,18 @@ label day_init:
                 
                 today_event = filter_events(label = today_event_label)[0]
                 today_event_label = "ending_event_" + today_event_label
+                if today_event.intro_label:
+                    today_intro_label = today_event.intro_label
+                if today_event.outro_label:
+                    today_outro_label = today_event.outro_label
+            else:
+                today_event_label = renpy.input("Choose a fixed event label to see:")
+                while not today_event_label or not filter_events(label = today_event_label):
+                    renpy.notify("Event not found (don't include \"fixed_event_\")")
+                    today_event_label = renpy.input("Choose a fixed event label to see:")
+                
+                today_event = filter_events(label = today_event_label, events = fixed_events)[0]
+                today_event_label = "fixed_event_" + today_event_label
                 if today_event.intro_label:
                     today_intro_label = today_event.intro_label
                 if today_event.outro_label:

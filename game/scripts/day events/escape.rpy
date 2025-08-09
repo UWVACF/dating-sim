@@ -209,7 +209,7 @@ screen escape_inventory_screen:
                 xalign 1.0
                 text_xalign 0.5
                 action SetVariable("escape_inventory_page", escape_inventory_page + 1)
-                sensitive escape_inventory_page != int(len(escape_inventory) / escape_inventory_display_per_page) - 1
+                sensitive escape_inventory_page != int(len(escape_inventory) / escape_inventory_display_per_page)
                 idle_background "gui/button/choice_small_idle_background.png"
                 hover_background "gui/button/choice_small_hover_background.png"
                 insensitive_background "gui/button/choice_small_insensitive_background.png"

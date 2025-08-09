@@ -1,4 +1,217 @@
-label day_event_company_issued_gun:
+init python:
+    gun_display_display_per_page = 4
+    gun_display_page = 0
+    gun_display_current_page_title = ""
+    gun_selected_item_personnel = ""
+    gun_display_current_description = "Hover over an item to see its description."
+    gun_display_current_remark = ""
+
+    gun_items = {
+        "Additional Functions": [
+            {
+                "name": "Corporeal anomaly proximity radar",
+                "personnel": "chan",
+                "description": "A comically large, bright neon red radar. A shrill voice will shriek in your ear if it detects any anomalies nearby.",
+                "remark": "This was developed by Dr. Chan and detects if there are any anomalies near you! Doesn't work for non-corporeal Cerebrasites, though."
+            },
+            {
+                "name": "Owner locator",
+                "personnel": "uriel",
+                "description": "A GPS-looking contraption held together with duct tape and hot glue.",
+                "remark": "This was developed by Uriel! It tracks where you are and will alert you on your work phone if your gun gets too far away.",
+            },
+            {
+                "name": "Human proximity radar",
+                "personnel": "helco",
+                "description": "A classic, green radar. Looks remarkably sophisticated.",
+                "remark": "This was developed by Dr. Helco! It detects if there are any humans near you. I wonder why he'd need it..."
+            },
+            {
+                "name": "\"Kaching!!!\" silencer",
+                "personnel": "meme",
+                "description": "A golden \"silencer.\" It smells vaguely of shrooms.",
+                "remark": "This was developed by Meme! It silences your gun shots with the sound of money."
+            },
+            {
+                "name": "Fish",
+                "personnel": "b6",
+                "description": "It goes without saying.",
+                "remark": "This was made with b6 in mind. It looks nothing like b6."
+            },
+            {
+                "name": "Sentience",
+                "personnel": "aikha",
+                "description": "The display case has a single eyeball.",
+                "remark": "This was developed by Dr. Aikha. To quote, \"We here at VAC Foundation like to ensure that our weapons are in pain.\" Maybe I should look into that."
+            },
+        ],
+        "Lethality Upgrades": [
+            {
+                "name": "Sniper scope",
+                "personnel": "syg",
+                "description": "A classic sniper scope, perfect for long-range encounters. Remember to hold shift while aiming to stabalize.",
+                "remark": "This was personally requested and throughoutly tested by Dr. Syg."
+            },
+            {
+                "name": "Flamethrower",
+                "personnel": "firewal",
+                "description": "A miniature flamethrower that attaches underneath the barrel of the gun. It's in the shape of an enthusiastic thumbs up.",
+                "remark": "This was made by the great Dr. Firewal. Every purchase of this upgrade saves one Walbot from poverty."
+            },
+            {
+                "name": "Green laser",
+                "personnel": "moon",
+                "description": "A bright green laser cannon that attaches underneath the barrel of the gun. Ready? Miku miku BEAAAAAAAAA-",
+                "remark": "A laser inspired by our janitor! Unfortunately, the beam is so powerful that it'll keep travelling indefinitely."
+            },
+            {
+                "name": "Egg",
+                "personnel": "egg",
+                "description": "Egg. Unfortunately, this one didn't graduate from Harvard law.",
+                "remark": "Sourced locally! Works wonders as ammunition as well as an emergency snack."
+            },
+            {
+                "name": "Hamp certified sharpened spoons",
+                "personnel": "hamp",
+                "description": "Spoons with their heads gnawed down. They actually look remarkably lethal.",
+                "remark": "All hand-crafted by Hamp herself!"
+            },
+            {
+                "name": "Divorce papers",
+                "personnel": "paul",
+                "description": "An lengthy document detailing the divorce between Paul Demure Johnson and their ex-wife. You have no idea what tactical advantage this would give you in a battle.",
+                "remark": "I don't know why this is here, actually."
+            },
+            
+        ],
+        "Decorations": [
+            {
+                "name": "Glow in the dark stickers",
+                "personnel": "lee",
+                "description": "They're shaped like",
+                "remark": "Lets you find your gun in the dark! Unfortunately, it also lets your enemies find your gun in the dark."
+            },
+            {
+                "name": "Star charm",
+                "personnel": "caffi",
+                "description": "It reminds you of the stars in Caffi's hair. She'll never let you live this down if she sees you with this.",
+                "remark": "Designed by Caffi herself!"
+            },
+            {
+                "name": "Bell",
+                "personnel": "jessie",
+                "description": "It makes a cute little jingle whenever it moves. This would definitely not put you at a disadvantage in a real combat situation. Of course not.",
+                "remark": "Ding ding!"
+            },
+            {
+                "name": "Bandages",
+                "personnel": "venture",
+                "description": "...Are these used?",
+                "remark": "They look cool. One could argue, at least."
+            },
+            {
+                "name": "Cool mustache",
+                "personnel": "alex",
+                "description": "A piece of black, roughly-cut construction paper in the shape of a mustache. You almost gave yourself a paper cut handling it.",
+                "remark": "This barely compares to a fraction of a fraction of the Founder's greatness.",
+            },
+            {
+                "name": "Miku keychain",
+                "personnel": "deceased",
+                "description": "A keychain of Hatsune Miku carrying an oversized leek.",
+                "remark": "A Miku keychain, funded by Dr. Deceased! A singing feature is in the works."
+            },
+            {
+                "name": "Pebbles keychain",
+                "personnel": "ryz",
+                "description": "An incredibly cool keychain of an incredibly cool goose wearing incredibly cool sunglasses. HONK!!!!!!!!",
+                "remark": "Make sure to feed it bread on the daily."
+            },
+        ],
+    }
+
+
+screen gun_display_screen:
+    on "show" action [SetVariable("gun_display_page", 0), SetVariable("gun_selected_item_personnel", ""), SetVariable("gun_display_current_description", "Hover over an item to see its description."), SetVariable("speaking_char", "")]
+
+    vbox:
+        xalign 0.9
+        yalign 0.0
+        spacing gui.choice_spacing
+
+        hbox:
+            xalign 0.5
+            spacing 120
+            ypos 150
+            xsize 630
+            text gun_display_current_page_title:
+                size 50
+                xsize 450
+                xalign 0.0
+                yalign 0.5
+            textbutton "Back":
+                style "choice_button"
+                xalign 1.0
+                xsize 150
+                action Jump("comgun_custom")
+
+        $ gun_display_start = gun_display_page * gun_display_display_per_page
+        $ gun_display_end = gun_display_start + gun_display_display_per_page
+        $ gun_display_displayed_items = gun_items[gun_display_current_page_title][gun_display_start:gun_display_end] 
+        vbox:
+            ypos 150
+            xalign 0.5
+            for item in gun_display_displayed_items:
+                textbutton item["name"]:
+                    sensitive item["personnel"] not in comgun_addons
+                    xsize 700
+                    xalign 0.5
+                    style "choice_button"
+                    hovered SetVariable("gun_display_current_description", item["description"])
+                    unhovered SetVariable("gun_display_current_description", "Hover over an item to see its description.")
+                    action [SetVariable("gun_selected_item_personnel", item["personnel"]), SetVariable("gun_display_current_remark", item["remark"]), Jump("gun_remark")]
+
+    hbox:
+        xalign 0.957
+        spacing 700
+        ypos 440
+
+        textbutton "<":
+            xsize 78
+            ysize 78
+            xalign 0.0
+
+            text_xalign 0.5
+            action SetVariable("gun_display_page", gun_display_page - 1)
+            sensitive gun_display_page != 0
+            idle_background "gui/button/choice_small_idle_background.png"
+            hover_background "gui/button/choice_small_hover_background.png"
+            insensitive_background "gui/button/choice_small_insensitive_background.png"
+
+        textbutton ">":
+            xsize 78
+            ysize 78
+            xalign 1.0
+            text_xalign 0.5
+            action SetVariable("gun_display_page", gun_display_page + 1)
+            sensitive gun_display_page != int(len(gun_items[gun_display_current_page_title]) / gun_display_display_per_page)
+            idle_background "gui/button/choice_small_idle_background.png"
+            hover_background "gui/button/choice_small_hover_background.png"
+            insensitive_background "gui/button/choice_small_insensitive_background.png"
+    
+    window:
+        id "what"
+        text gun_display_current_description style "say_dialogue"
+        background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    
+    hbox:
+        xalign 0.1
+        yalign 0.25
+        xsize 875
+        ysize 625
+        image Solid("#cccccc")
+
+label fixed_event_company_issued_gun:
     scene bg hr office
 
     n "You're getting your company issued gun today! Finally!"
@@ -83,11 +296,11 @@ label day_event_company_issued_gun:
         n "The assistant directs you towards a shelf that you can swear wasn't there before."
         #show gun cg, customization screen starts
         egg "We have Additional functions, Lethality upgrades, and Decorations."
-        egg "You can pick up to 3 total for your gun. Any additional add-ons will cost extra and will be deducted from your salary."
+        egg "You can pick 3 total for your gun. Any additional add-ons will cost extra and will be deducted from your salary."
     $ n_o_gun_addons = 0
     $ comgun_addons = []
 
-    # add chibi heads to choices! 
+    # add chibi heads to choices! AHHHHHHHHHHHHH
     label comgun_custom:
         menu:
             n "Choose a category:"
@@ -98,116 +311,39 @@ label day_event_company_issued_gun:
             "Decorations": 
                 jump comgun_dec
     label comgun_af:
-        $ gun_menu = 1
-        menu: 
-            n "Additional functions:"
-            "Corporal anomaly proximity radar - chan":
-                # show cg
-                egg "This is developed by Dr. Chan and detects if there are any anomalies near you! Doesn't work for non-corporal Cerebrasites though."
-                $ gun_temp = "chan"
-            "Owner locator - uriel":
-                # show cg
-                egg "This is developed by Uriel, it tracks where you are and will alert you on your work phone if your gun gets too far away."
-                $ gun_temp = "uriel"
-            "Hunan proximity radar - Helco":
-                # show cg
-                egg "This is developed by Dr. Helco and it detects if there are any humans near you!"
-                $ gun_temp = "helco"
-            "\"Kaching!!!\" silencer - meme":
-                # show cg
-                egg "This is developed by Meme and silences your gun shots with the sound of money."
-                $ gun_temp = "meme"
-            "Fish. - b6":
-                # show cg
-                egg "This is made with b6 as inspiration. It doesn't look anything like b6."
-                $ gun_temp = "b6"
-            "Sentience. - aikha":
-                # show cg
-                egg "This is developed by Dr. Aikha. We here at the foundation like to ensure that our weapons are in pain."
-                $ gun_temp = "aikha"
-        jump gun_yes_no
+        $ gun_display_current_page_title = "Additional Functions"
+        call screen gun_display_screen
 
     label comgun_lu:
-        $ gun_menu = 2
-        menu: 
-            n "Lethality upgrades:"
-            "Sniper scope - syg":
-                # show cg
-                egg "This is requested and throughoutly tested by Dr. Syg."
-                $ gun_temp = "syg"
-            "Flamethrower - firewal":
-                # show cg
-                egg "This is made by the great Dr. Firewal. Every purchase of this upgrade saves one Wal from poverty."
-                $ gun_temp = "firewal"
-            "Green laser - moon":
-                # show cg
-                n "You wonder if its range can reach the moon."
-                $ gun_temp = "moon"
-            "The Egg certified organic free-ranged eggs - Egg":
-                # show cg
-                egg "Sourced locally! Works wonder as ammunition as well as an emergency snack (raw)."
-                $ gun_temp = "egg"
-            "Hamp certified sharpened spoons (reusable and reloadable!) - hamp":
-                # show cg
-                egg "All hand-crafted by Hamp themselves."
-                $ gun_temp = "hamp"
-            "Divorce papers - paul":
-                # show cg
-                egg "I don't know why this is here, actually."
-                $ gun_temp = "paul"
-        jump gun_yes_no
+        $ gun_display_current_page_title = "Lethality Upgrades"
+        call screen gun_display_screen
 
     label comgun_dec:
-        $ gun_menu = 3
-        menu: 
-            n "Decorations:"
-            "glow in the dark stickers - lee":
-                # show cg
-                egg "Lets you find your gun in the dark."
-                $ gun_temp = "lee"
-            "star charm - caffi":
-                # show cg
-                n "It reminds you of the stars in Caffi's hair."
-                $ gun_temp = "caffi"
-            "Bell - Jessie":
-                # show cg
-                n "It reminds you of Dr. Jessie."
-                $ gun_temp = "jessie"
-            "bandages - venture":
-                # show cg
-                n "It just looks cool. Not very functional."
-                $ gun_temp = "venture"
-            "cool mustache - alex":
-                # show cg
-                n "This can barely compare to 1%% of the founder's greatness."
-                $ gun_temp = "alex"
-            "miku!!! - deceased":
-                # show cg
-                n "It's miku colored."
-                $ gun_temp = "deceased"
-            "Pebbles keychain - ryz":
-                # show cg
-                egg "Comes with sound!"
-                roose "HONK HONK HONKKKK!!!"
-                $ gun_temp = "ryz"
-        jump gun_yes_no
+        $ gun_display_current_page_title = "Decorations"
+        call screen gun_display_screen
 
+    label gun_remark:
+        # show cg
+        egg "[gun_display_current_remark]"
+        # hide cg
+        jump gun_confirm
 
-    label gun_yes_no:
+    label gun_confirm:
         menu:
-            n "Do you want this function?"
+            n "Do you want this upgrade?"
             "Yes":
-                $ comgun_addons.append(gun_temp)
-                $ update_character_points({gun_temp: 2})
+                $ comgun_addons.append(gun_selected_item_personnel)
+                $ update_character_points({gun_selected_item_personnel: 2})
                 $ n_o_gun_addons += 1
                 if n_o_gun_addons >= 3:
                     jump comgun_end
             "No":
                 #remove cg
                 egg "Take your time picking!"
-        if gun_menu == 1:
+        
+        if gun_display_current_page_title == "Additional Functions":
             jump comgun_af
-        elif gun_menu == 2:
+        elif gun_display_current_page_title == "Lethality Upgrades":
             jump comgun_lu
         else:
             jump comgun_dec
@@ -216,13 +352,13 @@ label day_event_company_issued_gun:
         # hide cg
         egg "That's three add-ons! If you want to add anymore, each is about...three months of your pay."
         egg happy "Please take utmost care and responsibility of this company property. We will not reissue another gun for free if your gun is damaged or lost."
-        egg "At least not after Dr. Deceased kept on eating theirs."
+        egg "At least, not after Dr. Deceased kept on eating theirs."
         
         scene bg hallway
         n "You hold your new gun like it's your newborn child."
         n "It will surely keep you safe."
         n "For the first time, you felt comfort since working here."
-        show deceased at appear()
+        show deceased at appear
         deceased "Oh hey [player_name]! What are you doing at HR?"
         n "You see their head turns towards what you're cradling in your arms. Your grip tightens."
         deceased happy "OH! You got your company issued gun!"
@@ -230,7 +366,7 @@ label day_event_company_issued_gun:
         show deceased happy:
             linear 1.0 zoom 1.2
         n "They inch closer to you. Your parental instincts demand you to run."
-        deceased "What upgrades did you get? May I have a look?"
+        deceased "What upgrades did you get? Can I have a look?"
         show deceased happy:
             parallel:
                 linear 1.0 zoom 1.4
