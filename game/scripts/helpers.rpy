@@ -115,6 +115,7 @@ init python:
         shake_obj.update(duration=0.0, strength=0.0, preset="", persist=0.0, delay=0.0, repeat=0, interval=0.0, timeline=None)
         for layer in config.layers:
             renpy.show_layer_at(null_transform, layer=layer, reset = True)
+            renpy.scene(layer=layer)
 
     # shows the personnel with appear animation only if they aren't already present
     def appear_if_absent(personnel, tags="", x_align=0.5, layer=None):
