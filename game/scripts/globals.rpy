@@ -29,7 +29,7 @@ init python:
     punctuation_pauses = {
         "comma": 0.2,
         "period": 0.4,
-        "elipsis": 0.133,
+        "elipsis": 0.2,
         "exclamation": 0.4,
         "question": 0.4,
         "colon": 0.2,

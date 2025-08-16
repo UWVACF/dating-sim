@@ -163,8 +163,8 @@ init python:
         )
         # adds pause after elipses
         text = re.sub(
-            r'\.{3}(?!\s*)', 
-            f'{{cps={1/punctuation_pauses["elipsis"]}}}...{{cps={preferences.text_cps}}}', 
+            r'\.{3}', 
+            f'{{cps={1/punctuation_pauses["elipsis"]}}}...​{{cps={preferences.text_cps}}}', 
             text
         )
         # adds pause after exclamation mark
@@ -205,6 +205,8 @@ init python:
             f'-{{cps={1/punctuation_pauses["hyphen"]}}} {{cps={preferences.text_cps}}}', 
             text
         )
+
+        print(text)
 
         return text
 
