@@ -15,25 +15,25 @@ init python:
             {
                 "name": "Corporeal anomaly proximity radar",
                 "personnel": "chan",
-                "description": "A turquoise radar. A shrill voice will shriek in your ear if it detects any anomalies nearby.",
+                "description": "A turquoise radar. A shrill voice will shriek in your ear if it detects any anomalies and/or ethical violations nearby.",
                 "remark": "This was developed by Dr. Chan and detects if there are any anomalies near you! Doesn't work for non-corporeal Cerebrasites, though."
             },
             {
                 "name": "Owner locator",
                 "personnel": "uriel",
-                "description": "An arrow with the word \"OWNER\" printed on it in large font. You have no idea how it rotates.",
+                "description": "A plastic arrow duct-taped to the gun. It doesn't work.",
                 "remark": "This was developed by Uriel! It tracks where you are and will alert you on your work phone if your gun gets too far away.",
             },
             {
                 "name": "Human proximity radar",
                 "personnel": "helco",
-                "description": "A golden radar. Looks remarkably sophisticated.",
+                "description": "A golden radar designed for tracking humans. Fortunately, it confirms that you are, in fact, a human.",
                 "remark": "This was developed by Dr. Helco! It detects if there are any humans near you. I wonder why he'd need it..."
             },
             {
                 "name": "\"Kaching!!!\" silencer",
                 "personnel": "meme",
-                "description": "A golden \"silencer.\" It smells vaguely of shrooms.",
+                "description": "A golden \"silencer.\" Lets you defeat enemies with the power of capitalism.",
                 "remark": "This was developed by Meme! It silences your gun shots with the sound of money."
             },
             {
@@ -45,7 +45,7 @@ init python:
             {
                 "name": "Sentience",
                 "personnel": "aikha",
-                "description": "The display case has a single eyeball.",
+                "description": "An eyeball that embeds itself near the front of the gun. It squelches whenever it looks around.",
                 "remark": "This was developed by Dr. Aikha. To quote, \"We here at VAC Foundation like to ensure that our weapons are in pain.\" Maybe I should look into that."
             },
         ],
@@ -53,19 +53,19 @@ init python:
             {
                 "name": "Sniper scope",
                 "personnel": "syg",
-                "description": "An oversized sniper scope, perfect for long-range encounters. Remember to hold shift while aiming to stabalize.",
+                "description": "An oversized sniper scope, perfect for long-range encounters. Remember to hold shift while aiming to stabilize.",
                 "remark": "This was personally requested and throughoutly tested by Dr. Syg."
             },
             {
                 "name": "Flamethrower",
                 "personnel": "firewal",
-                "description": "A miniature flamethrower that attaches underneath the barrel of the gun. It's flashing you an enthusiastic thumbs up.",
+                "description": "A miniature yet highly lethal flamethrower. Flash your enemies an enthusiastic thumbs up as you scorch them alive.",
                 "remark": "This was made by the great Dr. Firewal. Every purchase of this upgrade saves one Walbot from poverty."
             },
             {
                 "name": "Green laser",
                 "personnel": "moon",
-                "description": "A bright green laser cannon that attaches underneath the barrel of the gun. You have a feeling it will indiscriminately annihilate everything in its path.",
+                "description": "A bright green laser cannon. You have a feeling it will indiscriminately annihilate everything in its path.",
                 "remark": "A laser inspired by our janitor! Unfortunately, the beam is so powerful that it keeps travelling indefinitely."
             },
             {
