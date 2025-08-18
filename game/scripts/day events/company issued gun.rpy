@@ -425,7 +425,7 @@ label fixed_event_company_issued_gun:
                 $ comgun_addons.append(gun_selected_item_personnel)
                 $ update_character_points({gun_selected_item_personnel: 2})
                 $ n_o_gun_addons += 1
-                if n_o_gun_addons >= 20:
+                if n_o_gun_addons >= 3:
                     jump comgun_end
             "No":
                 #remove cg
@@ -448,6 +448,13 @@ label fixed_event_company_issued_gun:
         n "You hold your new gun like it's your newborn child."
         n "It will surely keep you safe."
         n "For the first time, you felt comfort since working here."
+        if "chan" in comgun_addons and "helco" in comgun_addons:
+            n "Suddenly, both the anomaly radar and the human radar start flashing. You see a dot matching on both radar a few meters behind you."
+            n "The anomaly radar emits a piercing scream resembling Ethy's, while the human radar blip-blobs."
+        elif "chan" in comgun_addons and "helco" not in comgun_addons:
+            n "Suddenly, the anomaly radar lets out a piercing scream resembling Ethy's. You see a dot on the radar a few meters behind you."
+        elif "helco" in comgun_addons:
+            n "Suddenly, the human radar begins blip-blobing. You see a dot on the radar a few meters behind you."
         show deceased at appear
         deceased "Oh hey [player_name]! What are you doing at HR?"
         n "You see their head turns towards what you're cradling in your arms. Your grip tightens."
@@ -467,32 +474,80 @@ label fixed_event_company_issued_gun:
             "Run":
                 hide deceased
                 n "You decided to turn around and flee. You hear the sounds of rapid footsteps and crows cackling behind you."
+                if "ryz" in comgun_addons:
+                    n "Pebble's keychain makes a HONK! at your every step, as if shaming you for your cowardice."
                 deceased "Hey where are you going, [player_name]? I just want a bite- I mean to look!"
                 n "It seems you have overestimated the capability of the gun."
             "Shoot":
                 $ shake_screen()
                 n "In a panic, you test out your new gun."
-                # different outcomes depending on bullets/silencers...
+                if "meme" in comgun_addons:
+                    n "The sound of hitting jackpot at the casino rings out from the silencer."
+                if "egg" in comgun_addons:
+                    if "firewal" in comgun_addons and "hampter" in comgun_addons:
+                        n "You shoot an assortment of ammunition from your gun."
+                        n "The sharpened spoon cracks the egg. The flamethrower sets the egg remnants ablze and a burning smell fills the air."
+                        n "The now burnt egg residue lands on Dr. Deceased's goggles."
+                    elif "hampter" in comgun_addons:
+                        n "You shoot an assortment of ammunition from your gun."
+                        n "The sharpened spoon cracks the egg. The egg white flys out and slops onto Dr. Deceased's face."
+                    elif "firewal" in comgun_addons:
+                        n "The flamethrower roars as you shoot the egg at Dr. Deceased."
+                        n "It smacks them hard in the forhead and cracks, revealing a perfectly \"boiled\" egg."
+                    else:
+                        n "You shoot the egg at Dr. Deceased. It cracks on their forhead. The egg white slops down their mask."
+                elif "firewal" in comgun_addons:
+                    if "hampter" in comgun_addons:
+                        n "You shoot the sharpened spoon at Dr. Deceased. It glows red from being heated by the flames."
+                        n "It stabs right through their left goggle."
+                    if "b6" in comgun_addons:
+                        n "The fish shoots fire form its mouth. The smell of fried fish hits your nose."
+                        n "Unfortunately, Dr. Deceased is just a step too far for the tip of the flame to reach."
+                    else:
+                        n "The fire from the flamethrower shoots at Dr. Deceased. Unfortunately, they're just a step too far for the tip of the flame to reach."
+                elif "hampter" in comgun_addons:
+                    n "You shoot the sharpened spoon at Dr. Deceased. It stabs right through their right goggle."
+                if "moon" in comgun_addons:
+                    if "egg" not in comgun_addons and "firewal" not in comgun_addons and "hamp" not in comgun_addons:
+                        n "A green beam of light pierce through Dr. Deceased's forhead and through the wall at the end of the corridor."
+                        n "You hear sounds of beaker breaking from that direction. The fire alarm starts going off."
+                    else:
+                        n "The laser finally finishes charging and activates. A green beam of light pierce through Dr. Deceased's forhead and through the wall at the end of the corridor."
+                        n "You hear a faint scream from that direction. It appears that the laser shot more than Dr. Deceased."
+                else:
+                    if gun_sanity_points < 0:
+                        if "b6" in comgun_addons:
+                            n "Your fish spits water at Dr. Deceased's face. It does nothing to stop the approaching plague doctor."
+                        else:
+                            n "Water squirts from the gun onto Dr. Deceased's face. It does nothing to stop the approaching plague doctor."
+                        if "paul" in comgun_addons:
+                            n "In your last-ditch effort, you throw the divorce papers at Dr. Deceased. It becomes soaked by the water and sticks on their mask."
+                        n "Only after you ran out of water in your watergun did you realize what you're done."
+                        n "Dr. Deceased remains unscartched, minus being drenched."
+                        jump gun_continue
+                
                 n "Only after the gun shot did you realize what you're done."
-                n "To your surprise, Dr. Deceased seems fine, minus the hole on their forehead. They aren't even bleeding."
-                deceased neutral "...Did you just shoot me?"
-                n "You feel as if the temperature has droped by 50 degrees. The plague doctor mask suddenly looks a lot more intimidating staring down at you."
-                n "Uh oh. It seems you're about to lose your prized weapon."
-                deceased "..."
-                deceased happy "Well, if it's a gun fight you want, I have a gun too!"
-                show deceased happy:
-                    parallel:
-                        linear 1.0 zoom 1.0
-                    parallel:
-                        linear 1.0 yalign 1.0
-                n "Dr. Deceased begins coughing uncontrollably. After a few cough, they throw up a gun out of their beak. A much larger gun, with almost every upgrade you saw back in The Egg's office. Then they back up a bit."
-                deceased "They won't give me a new gun, so you're stuck with this one I had for a snack last week. Don'y worry, it still has full ammo!"
-                deceased "On the count of three! We'll take a shot at each other and see who hits more! Bonus points for the head!"
-                deceased neutral "Three..."
-                deceased "Two..."
-                show deceased happy at disappear
-                n "You turn and run without waiting to hear \"one\"."
-                n "It seems like your gun will not be able to keep you safe here."
+                n "To your surprise, Dr. Deceased seems fine. They aren't even bleeding."
+                
+                label gun_continue:
+                    deceased neutral "...Did you just shoot at me?"
+                    n "You feel as if the temperature has droped by 50 degrees. The plague doctor mask suddenly looks a lot more intimidating staring down at you."
+                    n "Uh oh. It seems you're about to lose your prized weapon."
+                    deceased "..."
+                    deceased happy "Well, if it's a gun fight you want, I have a gun too!"
+                    show deceased happy:
+                        parallel:
+                            linear 1.0 zoom 1.0
+                        parallel:
+                            linear 1.0 yalign 1.0
+                    n "Dr. Deceased begins coughing uncontrollably. After a few cough, they throw up a gun out of their beak. A much larger gun, with almost every upgrade you saw back in The Egg's office. Then they back up a bit."
+                    deceased "They won't give me a new gun, so you're stuck with this one I had for a snack last week. Don'y worry, it still has full ammo!"
+                    deceased "On the count of three! We'll take a shot at each other and see who hits more! Bonus points for the head!"
+                    deceased neutral "Three..."
+                    deceased "Two..."
+                    show deceased happy at disappear
+                    n "You turn and run without waiting to hear \"one\"."
+                    n "It seems like your gun will not be able to keep you safe here."
 
 
 
