@@ -207,7 +207,7 @@ init python:
             text
         )
 
-        print(text)
+        # print(text)
 
         return text
 

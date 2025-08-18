@@ -1,29 +1,33 @@
 init python:
+    gun_img_path = "images/cgs/company_gun/"
+
     gun_display_display_per_page = 4
     gun_display_page = 0
     gun_display_current_page_title = ""
     gun_selected_item_personnel = ""
     gun_display_current_description = "Hover over an item to see its description."
     gun_display_current_remark = ""
+    gun_display_hovering = ""
+    gun_base = "gun" # gun or water
 
     gun_items = {
         "Additional Functions": [
             {
                 "name": "Corporeal anomaly proximity radar",
                 "personnel": "chan",
-                "description": "A comically large, bright neon red radar. A shrill voice will shriek in your ear if it detects any anomalies nearby.",
+                "description": "A turquoise radar. A shrill voice will shriek in your ear if it detects any anomalies nearby.",
                 "remark": "This was developed by Dr. Chan and detects if there are any anomalies near you! Doesn't work for non-corporeal Cerebrasites, though."
             },
             {
                 "name": "Owner locator",
                 "personnel": "uriel",
-                "description": "A GPS-looking contraption held together with duct tape and hot glue.",
+                "description": "An arrow with the word \"OWNER\" printed on it in large font. You have no idea how it rotates.",
                 "remark": "This was developed by Uriel! It tracks where you are and will alert you on your work phone if your gun gets too far away.",
             },
             {
                 "name": "Human proximity radar",
                 "personnel": "helco",
-                "description": "A classic, green radar. Looks remarkably sophisticated.",
+                "description": "A golden radar. Looks remarkably sophisticated.",
                 "remark": "This was developed by Dr. Helco! It detects if there are any humans near you. I wonder why he'd need it..."
             },
             {
@@ -49,20 +53,20 @@ init python:
             {
                 "name": "Sniper scope",
                 "personnel": "syg",
-                "description": "A classic sniper scope, perfect for long-range encounters. Remember to hold shift while aiming to stabalize.",
+                "description": "An oversized sniper scope, perfect for long-range encounters. Remember to hold shift while aiming to stabalize.",
                 "remark": "This was personally requested and throughoutly tested by Dr. Syg."
             },
             {
                 "name": "Flamethrower",
                 "personnel": "firewal",
-                "description": "A miniature flamethrower that attaches underneath the barrel of the gun. It's in the shape of an enthusiastic thumbs up.",
+                "description": "A miniature flamethrower that attaches underneath the barrel of the gun. It's flashing you an enthusiastic thumbs up.",
                 "remark": "This was made by the great Dr. Firewal. Every purchase of this upgrade saves one Walbot from poverty."
             },
             {
                 "name": "Green laser",
                 "personnel": "moon",
-                "description": "A bright green laser cannon that attaches underneath the barrel of the gun. Ready? Miku miku BEAAAAAAAAA-",
-                "remark": "A laser inspired by our janitor! Unfortunately, the beam is so powerful that it'll keep travelling indefinitely."
+                "description": "A bright green laser cannon that attaches underneath the barrel of the gun. You have a feeling it will indiscriminately annihilate everything in its path.",
+                "remark": "A laser inspired by our janitor! Unfortunately, the beam is so powerful that it keeps travelling indefinitely."
             },
             {
                 "name": "Egg",
@@ -72,7 +76,7 @@ init python:
             },
             {
                 "name": "Hamp certified sharpened spoons",
-                "personnel": "hamp",
+                "personnel": "hampter",
                 "description": "Spoons with their heads gnawed down. They actually look remarkably lethal.",
                 "remark": "All hand-crafted by Hamp herself!"
             },
@@ -88,7 +92,7 @@ init python:
             {
                 "name": "Glow in the dark stickers",
                 "personnel": "lee",
-                "description": "They're shaped like",
+                "description": "Small golden stars that you can plaster around your gun. May or may not cause hand cancer, if that's a thing.",
                 "remark": "Lets you find your gun in the dark! Unfortunately, it also lets your enemies find your gun in the dark."
             },
             {
@@ -100,7 +104,7 @@ init python:
             {
                 "name": "Bell",
                 "personnel": "jessie",
-                "description": "It makes a cute little jingle whenever it moves. This would definitely not put you at a disadvantage in a real combat situation. Of course not.",
+                "description": "It makes a cute little jingle whenever it moves. This would definitely not put you at a disadvantage in a real combat situation.",
                 "remark": "Ding ding!"
             },
             {
@@ -116,10 +120,10 @@ init python:
                 "remark": "This barely compares to a fraction of a fraction of the Founder's greatness.",
             },
             {
-                "name": "Miku keychain",
+                "name": "Miku paint",
                 "personnel": "deceased",
-                "description": "A keychain of Hatsune Miku carrying an oversized leek.",
-                "remark": "A Miku keychain, funded by Dr. Deceased! A singing feature is in the works."
+                "description": "Is that popular Japanese virtual idol Hatsune Miku?!?!",
+                "remark": "Miku miku ooeeoo!"
             },
             {
                 "name": "Pebbles keychain",
@@ -130,9 +134,78 @@ init python:
         ],
     }
 
+    gun_img_zorders = {
+        "chan": 7,
+        "helco": 7,
+        "uriel": 7,
+        "lee": 7,
+        "jessie": 6,
+        "caffi": 6,
+        "alex": 6,
+        "syg": 6,
+        "venture": 5,
+        "aikha": 5,
+        "deceased": 4,
+        "gun": 3,
+        "water": 3,
+        "b6": 3,
+        "firewal": 2,
+        "moon": 2,
+        "ryz": 2,
+        "meme": 0,
+        "hampter": 0,
+        "egg": 0,
+        "paul": -1,
+    }
+
+
+    def get_addon_path(addon):
+        if addon == "b6":
+            return gun_img_path + "b6.png"
+        elif addon == "gun" or addon == "water":
+            if "b6" in comgun_addons or gun_display_hovering == "b6":
+                return ""
+            elif addon == "gun":
+                return gun_img_path + "gun.png"
+            else:
+                return gun_img_path + "gunwater.png"
+        elif addon == "deceased":
+            if "b6" in comgun_addons or gun_display_hovering == "b6":
+                return gun_img_path + "deceased_b6.png"
+            elif gun_base == "water":
+                return gun_img_path + "deceased_gunwater.png"
+            else:
+                return gun_img_path + "deceased.png"
+        elif ("b6" in comgun_addons or gun_display_hovering == "b6") and (addon == "alex" or addon == "venture"):
+            return gun_img_path + addon + "_b6.png"
+        else:
+            return gun_img_path + addon + ".png"
+
+    def sort_by_zorders(arr):
+        rv = []
+        arr_clone = arr[:]
+        while arr_clone:
+            min_zorder = gun_img_zorders[arr_clone[0]]
+            min_index = 0
+            for i, x in enumerate(arr_clone):
+                if gun_img_zorders[x] < min_zorder:
+                    min_index = i
+                    min_zorder = gun_img_zorders[x]
+            
+            rv.append(arr_clone[min_index])
+            arr_clone.pop(min_index)
+        
+        return rv
+
+
+transform fade_in_out:
+    alpha 0.3
+    ease 1.5 alpha 0.7
+    ease 1.5 alpha 0.3
+    repeat
 
 screen gun_display_screen:
-    on "show" action [SetVariable("gun_display_page", 0), SetVariable("gun_selected_item_personnel", ""), SetVariable("gun_display_current_description", "Hover over an item to see its description."), SetVariable("speaking_char", "")]
+    on "show" action [SetVariable("gun_display_page", 0), SetVariable("gun_selected_item_personnel", ""), SetVariable("gun_display_current_description", "Hover over an item to see its description."), SetVariable("speaking_char", ""), SetVariable("gun_display_hovering", "")]
 
     vbox:
         xalign 0.9
@@ -167,8 +240,8 @@ screen gun_display_screen:
                     xsize 700
                     xalign 0.5
                     style "choice_button"
-                    hovered SetVariable("gun_display_current_description", item["description"])
-                    unhovered SetVariable("gun_display_current_description", "Hover over an item to see its description.")
+                    hovered [SetVariable("gun_display_current_description", item["description"]), SetVariable("gun_display_hovering", item["personnel"])]
+                    unhovered [SetVariable("gun_display_current_description", "Hover over an item to see its description."), SetVariable("gun_display_hovering", "")]
                     action [SetVariable("gun_selected_item_personnel", item["personnel"]), SetVariable("gun_display_current_remark", item["remark"]), Jump("gun_remark")]
 
     hbox:
@@ -204,13 +277,28 @@ screen gun_display_screen:
         text gun_display_current_description style "say_dialogue"
         background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
     
-    hbox:
+    fixed:
         xalign 0.1
         yalign 0.25
         xsize 875
         ysize 625
-        image Solid("#cccccc")
+        image Image(gun_img_path + "/gun_backdrop.png")
 
+        $ comgun_addons_sorted = comgun_addons[:]
+        $ comgun_addons_sorted.append(gun_base)
+        if gun_display_hovering:
+            $ comgun_addons_sorted.append(gun_display_hovering)
+        $ comgun_addons_sorted = sort_by_zorders(comgun_addons_sorted)
+        $ print(comgun_addons_sorted)
+
+        for addon in comgun_addons_sorted:
+            $ gun_addon_path = get_addon_path(addon)
+            if gun_addon_path != "":
+                if addon == gun_display_hovering:
+                    image Image(gun_addon_path) at fade_in_out
+                else:
+                    image Image(gun_addon_path)
+                    
 label fixed_event_company_issued_gun:
     scene bg hr office
 
@@ -289,6 +377,7 @@ label fixed_event_company_issued_gun:
         egg happy "Do not worry, we also have a variety of add-ons to customize every employee's gun to their own needs."
         egg neutral "Or if you cannot accept this gun, you can also choose to not take a gun."
         n "You decide to settle for the water gun. Perhaps the upgrades can still save you in the events of a life threatening incident."
+        $ gun_base = "water"
     else:
         n "The Egg floats back on top of its assistant's head. It smiles at you satisfied."
         egg "This is now yours! We also offer add-ons to customize each employee's gun to their own needs."
@@ -297,6 +386,7 @@ label fixed_event_company_issued_gun:
         #show gun cg, customization screen starts
         egg "We have Additional functions, Lethality upgrades, and Decorations."
         egg "You can pick 3 total for your gun. Any additional add-ons will cost extra and will be deducted from your salary."
+        $ gun_base = "gun"
     $ n_o_gun_addons = 0
     $ comgun_addons = []
 
@@ -335,7 +425,7 @@ label fixed_event_company_issued_gun:
                 $ comgun_addons.append(gun_selected_item_personnel)
                 $ update_character_points({gun_selected_item_personnel: 2})
                 $ n_o_gun_addons += 1
-                if n_o_gun_addons >= 3:
+                if n_o_gun_addons >= 20:
                     jump comgun_end
             "No":
                 #remove cg
