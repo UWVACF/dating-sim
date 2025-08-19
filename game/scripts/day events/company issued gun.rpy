@@ -301,6 +301,8 @@ screen gun_display_screen:
                     
 label fixed_event_company_issued_gun:
     scene bg hr office
+    image eggcase = "images/cgs/gun_egg_case.png"
+    image egggun = "images/cgs/gun_egg_gun.png"
 
     n "You're getting your company issued gun today! Finally!"
     n "You will now have a way to defend yourself against the anomalies and people! No longer shall you live in fear for your life!"
@@ -310,9 +312,12 @@ label fixed_event_company_issued_gun:
     show egg at disappear
     n "You watch as The Egg floats off its assistant's head, levitates through the air, and lands on the side of the cabinets. It slides into one of the drawers through the slim crack and it pops open."
     n "The Egg reappears out of the drawer, now larger and rectangle shaped." 
-    #rectangle egg cg????
+    show eggcase:
+        zoom 0.5
+        xalign 0.5
     show egg at appear(y_align = 0.3)
     n "It floats down on the table and reveals the content in its stomach. It's a metal case, just like the ones from the movies."
+    hide eggcase
     n "You open the case. A plain pistol lies in the foam."
     n "You reach out to grab it when The Egg hops onto the upper half of the case, slamming it shut. It smiles at you and your fingers that were two inches from being sandwiched by the case."
     egg "Apologies. Before we can give you the gun, we must conduct a simple questionnaire to determine whether you are capable of responsibly owning and handling a company gun."
@@ -367,11 +372,14 @@ label fixed_event_company_issued_gun:
     if gun_sanity_points < 0:
         show egg at move_to(x_align = 1.5, duration = 1.5)
         n "The Egg re-swallows the case and returns it into the cabinet." 
-        # egg watergun cg
+        show egggun:
+            zoom 0.5
+            xalign 0.5
         show egg:
             xalign 0.5
         n "It returns, this time gun shaped."
         n "It drops the gun in front of you. It's a watergun."
+        hide egggun    
         egg "We have decided that you're qualified for a company issued water gun."
         player "A water gun?? How am I supposed to defend myself with just a water gun???"
         egg happy "Do not worry, we also have a variety of add-ons to customize every employee's gun to their own needs."
