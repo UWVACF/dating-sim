@@ -332,7 +332,7 @@ label trial_you_as_defendant:
         uriel neutral "We shall decide on the verdict now, then."
         if trial_credibility_you > 2:
             uriel "[player_name], you are found..."
-            uriel "Not guilty. Congrats."
+            uriel "Not guilty. Congratulations."
             n "Two Wals come up to you and free you from your handcuffs."
             uriel "There is insufficient evidence to prove [player_name] as the murderer."
             uriel "The case will be given to the Walbots security team to investigate further."
@@ -372,7 +372,7 @@ label trial_you_as_defendant:
         deceased happy "I KNEW IT!"
         show deceased neutral onlayer master2
         uriel panic "Well, case closed, I suppose."
-        uriel neutral "So, [player_name], you're officially convicted of the murder of Dr. Ralex. We will now decide on your sentence-"
+        uriel neutral "So, [player_name], you are officially convicted of the murder of Dr. Ralex. We will now decide on your sentence-"
         chan "Hold on!"
         chan "...[player_sub_be!c] lying."
         show uriel:
