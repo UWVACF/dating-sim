@@ -102,7 +102,7 @@ label day_event_anendophasia:
                     player "I walk down the hall towards Dr. Venture's office-"
                     show venture at appear
                     venture "Hm? What is it, [player_name]?"
-                    player "Oh! He opened the door before I got here"
+                    player "Oh! He opened the door before I got here."
                     venture "Who are you talking to?"
                     player "Uh, no one. But, anyways!"
                     player "I have - well, used to have - this voice in my head that would narrate everything, but it just randomly disappeared."
@@ -157,7 +157,7 @@ label day_event_anendophasia:
                 else:
                     $ anendophasia_asked_plutoes = True
                     player "Plutoes? Maybe?"
-                    player "Where the hell woudl I find Plutoes? Does he even have an office?"
+                    player "Where the hell would I find Plutoes? Does he even have an office?"
                     player "Oh, well. I choose a random direction and start walking-"
                     show bg office
                     show plutoes at appear
@@ -219,7 +219,7 @@ label day_event_anendophasia:
     player "I walk around the room a bit more. There's nothing particularly of note, except for various paperwork scattered everywhere. "
     player "However, I notice something on the counter to the left: a silver coffee machine."
     meme neutral "Oh, yeah! That was mine, I accidentally left it in the lounge. Here, did you read the label?"
-    player "The label it says:"
+    player "The label says:"
     player "\"Premium Shroom Blend, by Meme. Only $10 per cup!\""
     player "\"LIMITED TIME: We are offering a buy-two-for-the-price-of-three-and-get-one-free promotion!\""
     player "\"(While supplies last. Only at participating restaurants. By purchasing our product, you are agreeing to our Terms of Service. For more details, please contact Meme.)\""
@@ -238,7 +238,7 @@ label day_event_anendophasia:
     player "..."
     meme "[player_name] is giving me a look!"
     player "...Meme pulls out a Ziploc bag filled with blood red mushrooms."
-    meme "Not just any mushrooms! These are shrooms curated in the deeper trenches of hell!"
+    meme "Not just any mushrooms! These are shrooms curated in the deepest trenches of hell!"
     meme "They're super well renowned for curing any hangover or post-acid trip crash instantly! You'll be restored to perfect condition!"
     meme "Or so rumour has it."
     player "Rumour???"
@@ -261,7 +261,7 @@ label day_event_anendophasia:
 
     label anendophasia_pay:
         meme happy "You'll pay? That works too!"
-        meme "What are you gonna pay with? Credit? Debit? Card? E-transfer? Cheque?"
+        meme "What are you gonna pay with? Credit? Debit? Gift card? E-transfer? Cheque?"
         player "Uh, cash is fine, I think. I need to go to an ATM though."
         meme "Oh, well, I have one right here! Behind you!"
         player "Huh?? Why??"
@@ -329,7 +329,7 @@ label day_event_anendophasia:
         player "\"Nothing beats a nice, cozy acid trip through the depths of hell! And right now, YOU can save $50 per shroom! That's $200 off for a family of 4!\""
         player "\"Introducing the newest Shroom of Tartarus: for when regular life is just too boring for you. Only $450 per for a limited time!\""
         player "\"Meme's Premium Shrooms: giving you only the highest quality shrooms since 2025!\""
-        player "\"(No refunds allowed. Meme is not liable for any injuries or damages caused by consumption of Meme's Premium Shrooms. By purchasing this product, you are agreeing to our Terms of Service.\""
+        player "\"(No refunds allowed. Meme is not liable for any injuries or damages caused by consumption of Meme's Premium Shrooms. By purchasing this product, you are agreeing to our Terms of Service.)\""
         player "..."
         player "Can I change my decision-"
         meme "Nope! Off to the lounge you go! I'll check up on you every few hours."
@@ -357,7 +357,7 @@ label day_event_anendophasia:
         chan "Selling shrooms in the facility lounge? What are you thinking? Are you out of your mind?"
         chan "What do you have to say for yourself?"
         player "Well, Meme kind of made me an offer, and I didn't have much of a choice-"
-        chan shock "Oh? What were the terms of this offer?"
+        chan surprise "Oh? What were the terms of this offer?"
         player "It's kind of a long story, but basically, they said that if I did some advertising for them, I could get my, uh, narrator back."
         chan "Your narrator? Is that someone close to you?"
         player "Yeah, I guess you could say that-"
@@ -365,6 +365,7 @@ label day_event_anendophasia:
         chan neutral "Well, intern. I can't fault you for your actions, as it seems your hands were tied."
         chan "I'll be sure to take appropriate action against Meme, and have them return your \"narrator\" back to you."
         chan "First drug dealing, now kidnapping? The Founder would love to have a word about this."
+        show chan at disappear
         player "Uh, well, it's not like they actually- oh, and he's gone."
         n "You should probably go after him."
         player "Yeah, I-"
@@ -376,6 +377,8 @@ label day_event_anendophasia:
         player "Ohmygodwhydidyouleavemeneverdothatagain"
         n "Yeah, yeah. Let's skip this sentimental stuff. You should probably go after Dr. Chan."
         player "Right. Okay."
-        n "As you open the door to the hallway, you can hear shouting in the distance: \"[player_name!u] WHEN I GET YOU!!!!\""
+        show bg hallway
+        n "As you open the door to the hallway, you can hear shouting in the distance:"
+        meme "[player_name!u] WHEN I GET YOU!!!!"
         n "...Maybe it's time to disappear again."
         $ update_character_points({"chan": 1, "meme": -1})

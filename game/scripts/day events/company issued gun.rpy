@@ -451,7 +451,7 @@ label fixed_event_company_issued_gun:
         if "chan" in comgun_addons and "helco" in comgun_addons:
             n "Suddenly, both the anomaly radar and the human radar start flashing. You see a dot matching on both radar a few meters behind you."
             n "The anomaly radar emits a piercing scream resembling Ethy's, while the human radar blip-blobs."
-        elif "chan" in comgun_addons and "helco" not in comgun_addons:
+        elif "chan" in comgun_addons:
             n "Suddenly, the anomaly radar lets out a piercing scream resembling Ethy's. You see a dot on the radar a few meters behind you."
         elif "helco" in comgun_addons:
             n "Suddenly, the human radar begins blip-blobing. You see a dot on the radar a few meters behind you."
@@ -476,13 +476,14 @@ label fixed_event_company_issued_gun:
                 n "You decided to turn around and flee. You hear the sounds of rapid footsteps and crows cackling behind you."
                 if "ryz" in comgun_addons:
                     n "Pebble's keychain makes a HONK! at your every step, as if shaming you for your cowardice."
-                deceased "Hey where are you going, [player_name]? I just want a bite- I mean to look!"
+                deceased "Hey, where are you going, [player_name]? I just want a bite- I mean to look!"
                 n "It seems you have overestimated the capability of the gun."
             "Shoot":
                 $ shake_screen()
                 n "In a panic, you test out your new gun."
                 if "meme" in comgun_addons:
                     n "The sound of hitting jackpot at the casino rings out from the silencer."
+                    
                 if "egg" in comgun_addons:
                     if "firewal" in comgun_addons and "hampter" in comgun_addons:
                         n "You shoot an assortment of ammunition from your gun."
@@ -507,12 +508,13 @@ label fixed_event_company_issued_gun:
                         n "The fire from the flamethrower shoots at Dr. Deceased. Unfortunately, they're just a step too far for the tip of the flame to reach."
                 elif "hampter" in comgun_addons:
                     n "You shoot the sharpened spoon at Dr. Deceased. It stabs right through their right goggle."
+
                 if "moon" in comgun_addons:
                     if "egg" not in comgun_addons and "firewal" not in comgun_addons and "hamp" not in comgun_addons:
-                        n "A green beam of light pierce through Dr. Deceased's forhead and through the wall at the end of the corridor."
+                        n "A green beam of light pierces through Dr. Deceased's forehead and through the wall at the end of the corridor."
                         n "You hear sounds of beaker breaking from that direction. The fire alarm starts going off."
                     else:
-                        n "The laser finally finishes charging and activates. A green beam of light pierce through Dr. Deceased's forhead and through the wall at the end of the corridor."
+                        n "The laser finally finishes charging and activates. A green beam of light pierces through Dr. Deceased's forhead and through the wall at the end of the corridor."
                         n "You hear a faint scream from that direction. It appears that the laser shot more than Dr. Deceased."
                 else:
                     if gun_sanity_points < 0:

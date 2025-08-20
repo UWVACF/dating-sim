@@ -22,8 +22,11 @@ init python:
 label day_event_test:
     scene bg lounge
     with default_fade
-    show deceased happy
-    n "yay"
+    show chan unique at left:
+        ysize 1080
+        xsize 720
+    show chan neutral at right as chan2
+    n ""
 
 
     
