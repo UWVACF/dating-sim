@@ -314,6 +314,7 @@ label fixed_event_company_issued_gun:
     show eggcase:
         zoom 0.5
         xalign 0.5
+    n "The Egg reappears out of the drawer, now larger and rectangle shaped." 
     show egg at appear(y_align = 0.3)
     n "It floats down on the table and reveals the content in its stomach. It's a metal case, just like the ones from the movies."
     hide eggcase
@@ -421,7 +422,6 @@ label fixed_event_company_issued_gun:
 
     label gun_remark:
         egg "[gun_display_current_remark]"
-        # hide cg
         jump gun_confirm
 
     label gun_confirm:
@@ -434,7 +434,6 @@ label fixed_event_company_issued_gun:
                 if n_o_gun_addons >= 3:
                     jump comgun_end
             "No":
-                #remove cg
                 egg "Take your time picking!"
         
         if gun_display_current_page_title == "Additional Functions":
