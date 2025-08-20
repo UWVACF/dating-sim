@@ -307,11 +307,9 @@ label fixed_event_company_issued_gun:
     n "You're getting your company issued gun today! Finally!"
     n "You will now have a way to defend yourself against the anomalies and people! No longer shall you live in fear for your life!"
     show egg at appear(y_align = 0.3)
-    egg "Hello, your name?" #egg assistant
     player "It's [player_name]."
     show egg at disappear
     n "You watch as The Egg floats off its assistant's head, levitates through the air, and lands on the side of the cabinets. It slides into one of the drawers through the slim crack and it pops open."
-    n "The Egg reappears out of the drawer, now larger and rectangle shaped." 
     show eggcase:
         zoom 0.5
         xalign 0.5
@@ -421,7 +419,6 @@ label fixed_event_company_issued_gun:
         call screen gun_display_screen
 
     label gun_remark:
-        # show cg
         egg "[gun_display_current_remark]"
         # hide cg
         jump gun_confirm
@@ -447,7 +444,6 @@ label fixed_event_company_issued_gun:
             jump comgun_dec
 
     label comgun_end:
-        # hide cg
         egg "That's three add-ons! If you want to add anymore, each is about...three months of your pay."
         egg happy "Please take utmost care and responsibility of this company property. We will not reissue another gun for free if your gun is damaged or lost."
         egg "At least, not after Dr. Deceased kept on eating theirs."
