@@ -119,7 +119,7 @@ label day_event_anendophasia:
                     $ anendophasia_people_asked += 1
             "Dr. Aikha.":
                 if anendophasia_asked_aikha:
-                    player "I already asked them. They think I'm drunk."
+                    player "I already asked them. They think I'm stressed."
                 else:
                     $ anendophasia_asked_aikha = True
                     player "Surely Dr. Aikha can help me out here. They'll understand."
@@ -131,22 +131,22 @@ label day_event_anendophasia:
                     player "There's a door at the end of the hallway. Oh, it says \"Office of Paul Demure Johnson.\" Whoops."
                     player "Actually, I think it was on the other side of the foundation. Ughhhhhhh."
                     player "I start the long trek to the other side of the foundation-"
-                    aikha panicked "??? Oh, new recruit, that was you talking in the hallway?"
+                    aikha panicked "???"
                     show aikha at appear
                     player "Dr. Aikha, there you are!!"
-                    aikha "Are you okay?? Who were you talking to?"
+                    aikha "Something wrong? You're talking to yourself."
                     player "Dr. Aikha, if I tell you something crazy, can you promise to believe me?"
-                    aikha neutral "Oh, uh, sure?! What's up?"
+                    aikha neutral "Can't guarantee that but go on."
                     player "Okay, so, basically, I used to have this narrator who would just constantly make sassy remarks in my head."
                     player "But earlier today, it disappeared randomly. Do you know what could've happened to it?"
-                    aikha pensive "You had this voice in your head, you're saying?"
+                    aikha pensive "You had this voice in your head."
                     player "Yeah."
-                    aikha "For how long?"
+                    aikha "How long?"
                     player "Since I got here. It's really weird."
-                    aikha "Hmm..."
-                    aikha neutral "And how many drinks did you have last night?"
+                    aikha "Mmmmm..."
+                    aikha neutral "Stress delusions are common for this career path."
                     player "GOD- okay, nevermind, bye."
-                    aikha "Make sure to drink plenty of water!"
+                    aikha "Perhaps consider a support system."
                     show hallway
                     show aikha at disappear
                     player "*sigh*"
