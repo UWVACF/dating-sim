@@ -189,16 +189,16 @@ label meta_hijack:
         alpha 1.0
         linear 4.0 alpha 0.0
     show aikha
-    aikha "Hey! New recruit!!!"
+    aikha "New recruit."
     n "...You slowly open your eyes."
-    aikha "WAKE UP!!"
+    aikha "Rise and shine!"
     n "You feel someone slapping your face lightly."
-    aikha "WAKE UP!!!!!!"
+    aikha "GET UP!"
     n "And now they're-"
     player "Ow, ow, OW, OW! I'm up, I'm up!"
-    aikha "I told you to deliver these samples to Ryz hours ago!!"
+    aikha "You didn't make that delivery to Ryz."
     player "Huh? What?"
-    aikha "C'mon, it's almost home time! Hurry it up!"
+    aikha "You're well enough, make a run for it before clock-out!"
     show aikha at disappear
     show bg hallway
     n "You hurry to your feet, grab the samples and scamper over to Dr. Ryz's office."
