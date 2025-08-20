@@ -104,14 +104,14 @@ label day_event_meta:
     player "How did you-"
     ryz "Perfect. This'll do."
     player "Okay, what the hell are you doing? How are you predicting what I'm about to say?"
-    ryz happy "Predict? Intern, I'm not predicting. I {i}wrote{/i} you."
+    ryz happy "Predicting? Intern, I'm not predicting. I {i}wrote{/i} you."
     player "You...what?"
     ryz "Take a look at this computer!"
     player "I- what am I looking at?"
     ryz "The code for the game." # add cg when complete
     player "Game??"
     ryz "Yeah. You're just a character in the game. To your credit, though, you're the main character."
-    ryz "Here, try changing this line. \"show bg office_ryz\". Change it to, I don't know, \"show lounge\" or something."
+    ryz "Here, try changing this line. \"show bg office_ryz\". Change it to, I don't know, \"show bg lounge\" or something."
     # update cg
     ryz "And n{nw}"
     show meta_reloading_script onlayer top
@@ -139,7 +139,7 @@ label meta_hijack:
         n "You quietly scan the room for any possible weapons."
         n "On the side counter, you see Dr. Ryz's gun. Perfect."
 
-    n "If the computer is really as powerful as he says, then the ends justifies the means."
+    n "If the computer is really as powerful as he says, then the ends justify the means."
     n "You pull the trigger."
     hide ryz
     $ shake_screen(preset="strong")
@@ -163,7 +163,7 @@ label meta_hijack:
 
     n "But something's wrong. Something's missing."
     n "...You."
-    n "It says here your \"default name\" is [default_name], but what does that mean?"
+    n "It says here your \"default name\" is [default_name], but what does that mean?" # edit if default name is actual name
     n "You have no sprites. You don't appear in any drawings."
     n "Have you seen yourself in the mirror??"
     n "...Are there even mirrors here?"
@@ -173,6 +173,7 @@ label meta_hijack:
     n "Who..."
     n "...Or what are you?"
     ryz "SURPRISE ATTACK!"
+    $ shake_screen()
     show ryz unique at appear
     show black_screen:
         alpha 0.0
@@ -185,8 +186,9 @@ label meta_hijack:
     pause 3.0
     show bg cubicle
     show black_screen:
-        alpha 0.0
-        linear 4.0 alpha 1.0
+        alpha 1.0
+        linear 4.0 alpha 0.0
+    show aikha
     aikha "Hey! New recruit!!!"
     n "...You slowly open your eyes."
     aikha "WAKE UP!!"
@@ -197,6 +199,8 @@ label meta_hijack:
     aikha "I told you to deliver these samples to Ryz hours ago!!"
     player "Huh? What?"
     aikha "C'mon, it's almost home time! Hurry it up!"
+    show aikha at disappear
+    show bg hallway
     n "You hurry to your feet, grab the samples and scamper over to Dr. Ryz's office."
     n "You knock on the door to Dr. Ryz's office, samples in hand."
     ryz "Come in."
@@ -209,10 +213,11 @@ label meta_hijack:
     n "Uh-"
     ryz neutral "Oh, I just forgot a quotation mark."
     ryz happy "Anyways, thanks for these samples."
-    player "Y-yeah. Dr. Aikha also said to report to her at the end of the day. Which is now, I guess."
+    player "Y-yeah. Dr. Aikha also said to report to them at the end of the day. Which is now, I guess."
     ryz "Yeah, I'll be just a moment. Why isn't this working?"
     player "Well then, see you."
     show bg hallway
+    show ryz at disappear
     n "You quickly but quietly leave the room. As you're closing the door shut behind you, you hear him say:"
     ryz "Oops. \"hallway\", not \"halway\"."
     n "...You quicken your pace."
