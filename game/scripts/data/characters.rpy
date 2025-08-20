@@ -409,7 +409,7 @@ define meme_unknown = Character("???", kind=meme)
 
 define ryz = Character("Dr. Ryz", kind=base_char, color="#f9be82", cb_name="ryz", image="ryz")
 define ryz_unknown = Character("???", kind=ryz)
-define roose = Character("Roose", kind=ryz, image="roose", cb_name="roose")
+define roose = Character("Pebbles", kind=ryz, image="roose", cb_name="roose")
 define roose_unknown = Character("???", kind=roose)
 
 define venture = Character("Dr. Wayne Venture", kind=base_char, color="#8f7557", cb_name="venture", image="venture") # change colour

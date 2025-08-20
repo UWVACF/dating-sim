@@ -83,7 +83,7 @@ init python:
             {
                 "name": "Divorce papers",
                 "personnel": "paul",
-                "description": "An lengthy document detailing the divorce between Paul Demure Johnson and their ex-wife. You have no idea what tactical advantage this would give you in a battle.",
+                "description": "A lengthy document detailing the divorce between Paul Demure Johnson and their ex-wife. You have no idea what tactical advantage this would give you in a battle.",
                 "remark": "I don't know why this is here, actually."
             },
             
@@ -307,6 +307,7 @@ label fixed_event_company_issued_gun:
     n "You're getting your company issued gun today! Finally!"
     n "You will now have a way to defend yourself against the anomalies and people! No longer shall you live in fear for your life!"
     show egg at appear(y_align = 0.3)
+    egg "Hello! What's your name?"
     player "It's [player_name]."
     show egg at disappear
     n "You watch as The Egg floats off its assistant's head, levitates through the air, and lands on the side of the cabinets. It slides into one of the drawers through the slim crack and it pops open."
@@ -319,12 +320,12 @@ label fixed_event_company_issued_gun:
     n "You open the case. A plain pistol lies in the foam."
     n "You reach out to grab it when The Egg hops onto the upper half of the case, slamming it shut. It smiles at you and your fingers that were two inches from being sandwiched by the case."
     egg "Apologies. Before we can give you the gun, we must conduct a simple questionnaire to determine whether you are capable of responsibly owning and handling a company gun."
-    player "I thought all employees are delegated one."
+    player "I thought all employees were issued one."
     egg "That is correct. The outcome of this questionnaire will simply dictate which security level arms you can be assigned."
     $ gun_sanity_points = 0
     egg "First question:"
     menu:
-        egg "Under what situations can you fire your company issued gun?" 
+        egg "Under what situations can you fire your gun?" 
         "Situations above level 3 emergencies":
             $ gun_sanity_points -= 1
             egg "mhm."
@@ -376,12 +377,12 @@ label fixed_event_company_issued_gun:
         show egg:
             xalign 0.5
         n "It returns, this time gun shaped."
-        n "It drops the gun in front of you. It's a watergun."
+        n "It drops the gun in front of you. It's a water gun."
         hide egggun    
         egg "We have decided that you're qualified for a company issued water gun."
         player "A water gun?? How am I supposed to defend myself with just a water gun???"
         egg happy "Do not worry, we also have a variety of add-ons to customize every employee's gun to their own needs."
-        egg neutral "Or if you cannot accept this gun, you can also choose to not take a gun."
+        egg neutral "Or if you cannot accept this gun, you can also choose to not take one."
         n "You decide to settle for the water gun. Perhaps the upgrades can still save you in the events of a life threatening incident."
         $ gun_base = "water"
     else:
@@ -444,14 +445,14 @@ label fixed_event_company_issued_gun:
             jump comgun_dec
 
     label comgun_end:
-        egg "That's three add-ons! If you want to add anymore, each is about...three months of your pay."
+        egg "That was three add-ons! If you want to add any more, each is about...three months of your pay."
         egg happy "Please take utmost care and responsibility of this company property. We will not reissue another gun for free if your gun is damaged or lost."
         egg "At least, not after Dr. Deceased kept on eating theirs."
         
         scene bg hallway
         n "You hold your new gun like it's your newborn child."
         n "It will surely keep you safe."
-        n "For the first time, you felt comfort since working here."
+        n "For the first time since working here, you feel comfortable."
         if "chan" in comgun_addons and "helco" in comgun_addons:
             n "Suddenly, both the anomaly radar and the human radar start flashing. You see a dot matching on both radar a few meters behind you."
             n "The anomaly radar emits a piercing scream resembling Ethy's, while the human radar blip-blobs."
@@ -461,7 +462,7 @@ label fixed_event_company_issued_gun:
             n "Suddenly, the human radar begins blip-blobing. You see a dot on the radar a few meters behind you."
         show deceased at appear
         deceased "Oh hey [player_name]! What are you doing at HR?"
-        n "You see their head turns towards what you're cradling in your arms. Your grip tightens."
+        n "You see their head turn towards what you're cradling in your arms. Your grip tightens."
         deceased happy "OH! You got your company issued gun!"
         deceased "The company benefits here sure are great, eh?"
         show deceased happy:
@@ -527,17 +528,17 @@ label fixed_event_company_issued_gun:
                         else:
                             n "Water squirts from the gun onto Dr. Deceased's face. It does nothing to stop the approaching plague doctor."
                         if "paul" in comgun_addons:
-                            n "In your last-ditch effort, you throw the divorce papers at Dr. Deceased. It becomes soaked by the water and sticks on their mask."
-                        n "Only after you ran out of water in your watergun did you realize what you're done."
-                        n "Dr. Deceased remains unscartched, minus being drenched."
+                            n "In a last-ditch effort, you throw the divorce papers at Dr. Deceased. It becomes soaked by the water and sticks on their mask."
+                        n "Only after you ran out of water in your water gun did you realize what you've done."
+                        n "Dr. Deceased remains unscathed, aside from being drenched."
                         jump gun_continue
                 
                 n "Only after the gun shot did you realize what you're done."
                 n "To your surprise, Dr. Deceased seems fine. They aren't even bleeding."
                 
                 label gun_continue:
-                    deceased neutral "...Did you just shoot at me?"
-                    n "You feel as if the temperature has droped by 50 degrees. The plague doctor mask suddenly looks a lot more intimidating staring down at you."
+                    deceased neutral "...Did you just shoot me?"
+                    n "You feel as if the temperature has dropped 50 degrees. The plague doctor mask suddenly looks a lot more intimidating staring down at you."
                     n "Uh oh. It seems you're about to lose your prized weapon."
                     deceased "..."
                     deceased happy "Well, if it's a gun fight you want, I have a gun too!"
@@ -546,15 +547,11 @@ label fixed_event_company_issued_gun:
                             linear 1.0 zoom 1.0
                         parallel:
                             linear 1.0 yalign 1.0
-                    n "Dr. Deceased begins coughing uncontrollably. After a few cough, they throw up a gun out of their beak. A much larger gun, with almost every upgrade you saw back in The Egg's office. Then they back up a bit."
-                    deceased "They won't give me a new gun, so you're stuck with this one I had for a snack last week. Don'y worry, it still has full ammo!"
-                    deceased "On the count of three! We'll take a shot at each other and see who hits more! Bonus points for the head!"
+                    n "Dr. Deceased begins coughing uncontrollably. After a few coughs, they throw up a gun out of their beak. A much larger gun, with almost every upgrade you saw back in The Egg's office. Then they back up a bit."
+                    deceased "They won't give me a new gun, so you're stuck with this one I had for a snack last week. Don't worry, it still has full ammo!"
+                    deceased "On the count of three! We'll take shots at each other and see who hits more! Bonus points for the head!"
                     deceased neutral "Three..."
                     deceased "Two..."
                     show deceased happy at disappear
                     n "You turn and run without waiting to hear \"one\"."
-                    n "It seems like your gun will not be able to keep you safe here."
-
-
-
-
+                    n "It seems like your gun won't be able to keep you safe here."
