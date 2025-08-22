@@ -30,6 +30,7 @@
             $ player_pos_pro = "his"
             $ player_ref = "himself"
             $ player_verb_suffix = "s"
+            $ player_be = "are"
         "She, her":
             $ player_sub = "she"
             $ player_sub_be = "she's"
@@ -38,6 +39,7 @@
             $ player_pos_pro = "hers"
             $ player_ref = "herself"
             $ player_verb_suffix = "s"
+            $ player_be = "are"
         "They, them":
             # assignments technically redundant since they/them is the default
             $ player_sub = "they"
@@ -47,6 +49,7 @@
             $ player_pos_pro = "theirs"
             $ player_ref = "themselves"
             $ player_verb_suffix = ""
+            $ player_be = "were"
 
     jessie "Nice to meet you, [player_name]!"
     jessie "Let me just call the founder to let him know you've come!"
