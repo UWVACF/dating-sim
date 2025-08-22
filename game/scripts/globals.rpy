@@ -171,7 +171,8 @@ default player_pos_adj = "their" # possessive adjective  (his, her, their)
 default player_pos_pro = "theirs" # possessive pronoun (his, hers, theirs)
 default player_ref = "themselves" # reflexive pronoun (himself, herself, themselves)
 default player_verb_suffix = "" # either s or blank, used after a verb since that part changes (e.g. he puts vs they put)
-default player_be = "were"
+default player_be = "are" # player's to be
+default player_be_past = "were" # player's to be, past tense
 
 # bgs
 
