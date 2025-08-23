@@ -18,9 +18,9 @@ label day_event_anendophasia:
     player "I'm gonna grab some coffee. See you, Meme."
     meme sad "Aww, lame! And didn't you just have a coffee?"
     player "That one tasted weird. I need another."
-    meme neutral "Oh? How do you feel?"
-    player "Huh? Fine. Why?"
-    meme "Oh, nevermind. See you!"
+    meme "Ever consider fixing your addiction?"
+    player "Nah. I need my coffee."
+    meme "Okay, then. See ya!"
     show meme at disappear
     show bg lounge
     player "..."
@@ -51,7 +51,7 @@ label day_event_anendophasia:
     player "It's like, a voice in your head? Kinda like a narrator, you know? It just describes everything that's going on, usually sarcastically-"
     show caffi at disappear
     caffi "GUYS! THE INTERN'S DELUSIONAL. I REPEAT-"
-    player "GOD DAMNIT- okay, nevermind."
+    player "...Okay, nevermind."
     player "I need to find out where it went. Shit."
     player "And now I need to fill in for it. Ugh."
 
@@ -88,7 +88,7 @@ label day_event_anendophasia:
                     alex "...Have a good day."
                     player "Yeah, you too."
                     alex "And for the record, schizophrenia {i}is{/i} covered by the company insurance-"
-                    player "BYE."
+                    player "Bye."
                     show alex at disappear
                     show bg hallway
                     player "Ugh, that was useless."
@@ -111,11 +111,11 @@ label day_event_anendophasia:
                     venture happy "Are you high?"
                     player "Wh- no!"
                     player "...I don't think so??"
-                    venture neutral "I think you're high. Goodbye!"
+                    venture neutral "Well, I think so. Adios~"
                     player "I'm just stressed! I'm- wow, okay, he closed the door on me."
                     show bg hallway
                     show venture at disappear
-                    player "God damnit."
+                    player "Ugh."
                     $ anendophasia_people_asked += 1
             "Dr. Aikha.":
                 if anendophasia_asked_aikha:
@@ -136,7 +136,7 @@ label day_event_anendophasia:
                     player "Dr. Aikha, there you are!!"
                     aikha "Something wrong? You're talking to yourself."
                     player "Dr. Aikha, if I tell you something crazy, can you promise to believe me?"
-                    aikha neutral "Can't guarantee that but go on."
+                    aikha neutral "Can't guarantee that, but go on."
                     player "Okay, so, basically, I used to have this narrator who would just constantly make sassy remarks in my head."
                     player "But earlier today, it disappeared randomly. Do you know what could've happened to it?"
                     aikha pensive "You had this voice in your head."
@@ -145,7 +145,7 @@ label day_event_anendophasia:
                     player "Since I got here. It's really weird."
                     aikha "Mmmmm..."
                     aikha neutral "Stress delusions are common for this career path."
-                    player "GOD- okay, nevermind, bye."
+                    player "*sigh* Okay, nevermind, bye."
                     aikha "Perhaps consider a support system."
                     show hallway
                     show aikha at disappear
@@ -208,8 +208,9 @@ label day_event_anendophasia:
     show bg office
     meme "Meme (the coolest person ever) opens the door to their office and pulls you inside before locking the door."
     player "Hey, if you're gonna narrate, you need to be objective!"
+    meme happy "Hehe!"
     player "Inside the office is-"
-    meme "SHHHH! You can't go announcing what I have in here to the world!"
+    meme panic "SHHHH! You can't go announcing what I have in here to the world!"
     player "I start whispering. Inside the office is a row of planters, each filled to the brim with soil, sitting underneath a square of fluorescent lightbulbs."
     player "Inside the planters are- are those shrooms???"
     meme "SHHHHHHHHHH!!!! You can't let anyone know about this!"
@@ -378,7 +379,7 @@ label day_event_anendophasia:
         n "Yeah, yeah. Let's skip this sentimental stuff. You should probably go after Dr. Chan."
         player "Right. Okay."
         show bg hallway
-        n "As you open the door to the hallway, you can hear shouting in the distance:"
+        n "As you open the door to the hallway, you can hear shouting in the distance."
         meme "[player_name!u] WHEN I GET YOU!!!!"
         n "...Maybe it's time to disappear again."
         $ update_character_points({"chan": 1, "meme": -1})

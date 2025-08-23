@@ -81,7 +81,7 @@ label escape_initialize:
         escape_aikha_solved_morse = False
 
         escape_passcode_attempts_remaining = 5
-        escape_inventory = ["Peculiar Paper", "Blue Sticky", "Page 524", "Page 621", "Purple Light", "Slip of Paper"]
+        escape_inventory = []
         escape_item_labels = {
             "Peculiar Paper": "escape_item_peculiar_paper",
             "Blue Sticky": "escape_item_blue_sticky",
@@ -404,6 +404,7 @@ label escape_lose_life_animations(lab):
 label day_event_escape:
     call escape_initialize
     scene bg ryz office
+    show ryz at appear
     ryz "...which is exactly why we can't just {i}shoot{/i} it. We'll probably need nukes, at the very least."
     n "You come to after zoning out and find yourself in Dr. Ryz's office."
     player "Ohhhh, I think I understand now."
@@ -424,7 +425,7 @@ label day_event_escape:
     firewal "No clue. Think we're in some containment room."
     aikha "We all just kind of woke up here."
     n "You look at the door to the room and see a tablet attached to it. Taped beside it is a torn scrap of paper. It reads:"
-    n "{color=#095a10}\"And all you have to do is find my anomaly's name, V.A.C. number and what I look like!\"{/color}"
+    n "{color=#095a10}\"And all you have to do is find my name, V.A.C. number and what I look like!\"{/color}"
     n "\"Good luck!\""
     n "The name is blacked out."
     ryz "I feel like I recognize this anomaly..."
@@ -528,7 +529,7 @@ label escape_left_wall:
             n "You take the peculiar piece of paper that you found in the drawer out, and, sure enough, the cane symbols are exactly the same."
             
             $ escape_left_wall_blue_sticky_completed = False
-            show screen qte(time = 60, act = Jump(escape_left_wall_blue_sticky_timeout), hidden=True)
+            show screen qte(time = 60, act = Jump("escape_left_wall_blue_sticky_timeout"), hidden=True)
             n "Uncover the code. You know how to. Probably."
             while True:
                 n "Uncover the code. You know how to. Probably.{fast}"
@@ -637,7 +638,7 @@ label escape_left_wall:
                     n "Blue Sticky has been added to your inventory."
                     $ escape_inventory.append("Blue Sticky")
                     $ escape_blue_sticky_read = True
-        
+        hide escape_blue_sticky
         jump escape_left_wall
     
     label escape_left_wall_orange:
@@ -749,7 +750,7 @@ label escape_back_wall:
             n "\"A Guide to Committing Tax Fraud.\""
             n "Unfortunately for you, the guide to illegal immigration seems to be missing."
             n "...Actually, you probably have better things to be looking at."
-        elif escape_flip_tp_page == 524:
+        elif escape_flip_to_page == 524:
             if "Page 524" not in escape_inventory:
                 n "Oh! There's something on this page. It reads:"
 
@@ -775,9 +776,9 @@ label escape_back_wall:
             else:
                 n "Oh, there's some stuff on this page."
                 # show cg
-                # 1, 3, 6, 10, 15, ?, 28, 35... (21)
-                # ARTISAN + GLOBE = BEAR , ELEGANT + STRIFE = FEEL, NEANDERTHAL + ALUMNI = ?? (9)
-                # T T T T T T T (30)
+                # 1, 3, 6, 10, 15, ?, 28, 35... 
+                # ARTISAN + GLOBE = BEAR , ELEGANT + STRIFE = FEEL, NEANDERTHAL + ALUMNI = ??
+                # T T T T T T T
                 #     ^ what is this???
                 #  11, 9, 30 TODO: UPDATE ANSWERS TO 621
                 n "There's a lot going on here. Wonder what any of this means."
@@ -818,7 +819,7 @@ label escape_back_wall:
                 n "Nothing here is useful."
             $ escape_back_wall_notebook_invalid_viewed_times += 1
         
-        jump escape_back_wall_notebook_flip
+        jump escape_back_wall_notebook
         
 label escape_right_wall:
     menu:
@@ -1006,8 +1007,8 @@ label escape_talk:
             jump escape_main_menu
 
     label escape_talk_aikha:
-        $ disappear_if_present("ryz")
-        $ disappear_if_present("firewal")
+        # $ disappear_if_present("ryz")
+        # $ disappear_if_present("firewal")
         $ escape_inventory_talking_to = "aikha"
         $ escape_talk_message = "Need something else?" if escape_talked else "Hi [player_name]!"
         $ escape_talked = True
@@ -1133,8 +1134,8 @@ label escape_talk:
         jump escape_talk_aikha
 
     label escape_talk_ryz:
-        $ disappear_if_present("aikha")
-        $ disappear_if_present("firewal")
+        # $ disappear_if_present("aikha")
+        # $ disappear_if_present("firewal")
         $ escape_inventory_talking_to = "ryz"
         $ escape_talk_message = "Still need something?" if escape_talked else "Hmm?"
         $ escape_talked = True
@@ -1234,8 +1235,8 @@ label escape_talk:
 
     label escape_talk_firewal:
         $ escape_inventory_talking_to = "firewal"
-        $ disappear_if_present("ryz")
-        $ disappear_if_present("aikha")
+        # $ disappear_if_present("ryz")
+        # $ disappear_if_present("aikha")
         $ escape_talk_message = "Anything else?" if escape_talked else "What's up?"
         $ escape_talked = True
 
@@ -1453,6 +1454,7 @@ label escape_submit_passcode_end:
             trickster "You even fell for that \"gullible\" joke!"
             trickster "Come on, what year is it? You can't be falling for that anymore!"
 
+        show black_screen
         $ renpy.notify("Fullscreen is recommended for this segment of the game.")
 
 label escape_search_minigame_1:
