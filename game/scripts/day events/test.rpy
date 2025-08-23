@@ -26,51 +26,13 @@ label day_event_test:
         ysize 1080
         xsize 720
     show chan neutral at right as chan2
-    n ""
-
-
-    
-     
-    
-# player "Hello, Dr. Helco!"
-# show helco neutral at appear
-# n "He jolts awake at the sound of your voice."
-# helco "Oh, hi!"
-# show helco neutral at shake(duration = 1.0, strength = 50.0)
-# if characters["helco"]["points"] < 1:
-#     helco "[misremember_name()], right?"
-#     player "It's [player_name], actually."
-#     helco "Oh! Sorry!"
-#     helco "{size=[helco_text_downsize]}I must write that down...{/size}"
-# else:
-#     helco "[player_name], right?"
-#     player "Yup!"
-#     helco "{size=[helco_text_downsize]}Good, good...{/size}"
-# n "Helco spaces out briefly, before returning to normal."
-# helco "..."
-# player "What brings you here?"
-# helco "Oh! I'm just...grabbing a coffee, as you do."
-# player "here we will insert more awesome dialogue"
-# player "later"
-# player "bc i just pulled an all nighter so maybe now's not the best time to do so"
-# n "Perhaps Dr. Helco could use some guidance."
-# menu:
-#     n "How will you teach Dr. Helco what it means to be human?"
-#     "Teach him personally":
-#         jump personally
-#     "Gather Dr. Jessie and Dr. Firewal":
-#         jump jessie_firewal
-#     "Enlist the help of Dr. Plutoes and Dr. Aikha, the most human personnel":
-#         jump aikha_plutoes
-
-# label personally:
-#     n "You're human! Surely you could teach him a thing or two about human activity."
-#     return
-
-# label jessie_firewal:
-#     n "You decide to gather the help of other human personnel to give Dr. Helco a group lesson."
-#     return
-
-# label aikha_plutoes:
-#     n "Perhaps Dr. Helco would best relate to other non-humans struggling to fit in."
-#     return
+    show aikha:
+        xalign 0.3
+        yalign 1.0
+    show ryz:
+        xalign 0.7
+        yalign 1.0
+    show helco at center:
+        yalign 1.0
+    n "test"
+    chan "Hello, intern."

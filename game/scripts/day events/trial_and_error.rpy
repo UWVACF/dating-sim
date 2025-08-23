@@ -366,17 +366,17 @@ label trial_you_as_defendant:
                 uriel "Misunderstanding?"
                 venture "Yes, yes. This was all caused by an anomaly!"
                 venture "The knife that was suspected as the murder weapon was an anomalous knife that creates illusions of murder scenes with false victims!"
-                show venture:
+                show venture onlayer master2:
                     xzoom -1.0
                 chan pensive "Hmm. Now that you speak of it, I do vaguely remember such an anomaly in containment."
                 chan neutral "But, I recall that individuals with high ONERIO such as Founder Alex and I should be immune to its effects. So it cannot be that anomaly, can it now?"
                 show uriel neutral
                 venture "About that...I was working with the anomaly for an alchemical experiment."
                 chan pensive "...What was your experiment about, Dr. Venture?"
-                venture "To amplify its cognitive effects, and investigate the material origin of the corpse it manifest."
+                venture "To amplify its cognitive effects, and investigate the material origin of the corpse it manifests."
                 chan fury "..."
                 chan "We will have a meeting {i}soon{/i} about practicing ethics and responsibilities when choosing research topics, Dr. Venture."
-                show venture:
+                show venture onlayer master2:
                     xzoom 1.0
                 uriel "Hold on, Dr. Venture. Do you have evidence to back up your claim?"
                 chan pensive "I believe that a thorough investigation into Dr. Ralex should reveal some inconsistencies in our knowledge of her, as well as a lack of actual record of her work."
@@ -404,7 +404,7 @@ label trial_you_as_defendant:
                 n "Given what you know about the efficiency of the Wals security team, this investigation might take longer than your internship."
                 n "Meaning, the only thing you will be putting on your resume for this internship is \'jail time\'."
                 n "Perhaps, \'experience in containment\' will sound better."
-                n "You begin drafting your resume update on the fog you breathe on the glass wall when Dr. Venture walked in."
+                n "You begin drafting your resume update on the fog you breathe on the glass wall when Dr. Venture walks in."
                 show venture at appear
                 venture "...Are you kissing the glass?"
                 venture "Sorry, I didn't expect this incident to cause you this much...distress."
@@ -594,7 +594,7 @@ label trial_you_as_defendant:
             show venture at appear
             n "Dr. Venture reappears in front of you a few moments later."
             venture "Damn, you really got yourself into some big trouble, huh?"
-            venrue "So I take it that you touched the knife?"
+            venture "So I take it that you touched the knife?"
             player "Knife?"
             # notes
 

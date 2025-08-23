@@ -6,7 +6,7 @@ label day_event_fin:
     n "Really, you should appreciate such peaceful days."
     n "But all you feel is mind-numbing boredom as you comb through the old files and type them into the system."
     n "Perhaps you've gotten too used to the constant chaos that usually occurs."
-    n "You stand up to take a strech and glance around the office room. It seems like today is a slow day for everyone else too."
+    n "You stand up to take a stretch and glance around the office room. It seems like today is a slow day for everyone else too."
     n "You reach your arm into your back pocket and slowly pull out your phone. Surely you can take a short break, right?"
     n "Your finger follows your muscle memory and opens the app. Just one reel."
     with default_fade
@@ -18,10 +18,10 @@ label day_event_fin:
     n "You drop your phone a second time. The fin rises above the wall and you see that it's Dr. Aikha."
     show aikha 
     aikha happy "Working hard, aren't we, new recruit?"
-    n "You nervously break a into sweat."
+    n "You nervously break into a sweat."
     aikha "So how's it going so far?"
     player "It's alright...just a slow day."
-    n "You avoid Dr. Aikha's main pair of eyes. Your eyes land on their fin, which also has an eye. It stares at you and blinks."
+    n "You avoid Dr. Aikha's main pair of eyes. Your gaze lands on their fin, which also has an eye. It stares at you and blinks."
     player "Dr. Aikha, have you...always had a shark fin?"
     aikha neutral "Hm? Oh. Yes. It just comes out sometimes."
     n "Huh. Guess you learn something new every day at the foundation."
@@ -31,7 +31,7 @@ label day_event_fin:
     show aikha neutral
     n "Swim..?"
     n "Well, you suppose that it'll make it easier for them to collect anomaly samples in aquatic environments."
-    n "Some of Dr. Aikha's eyes begin to twich and survey the office. Looks like they're about to leave."
+    n "Some of Dr. Aikha's eyes begin to twitch and survey the office. Looks like they're about to leave."
     n "But you really don't want to get back to work. You ponder for things to say that'll keep Dr. Aikha here to lessen your boredom."
     player "Dr. Aikha, why do you have so many eyes?"
     n "All the eyes on Dr. Aikha turn to focus on you."
@@ -61,7 +61,7 @@ label day_event_fin:
 
     pause 2
 
-    n "You feel sharp, hard pieces against your face."
+    n "You feel hard, sharp teeth against your face."
     hide overlay_ai_1 onlayer top
     n "This must be the end..."
     n "..."
@@ -70,10 +70,10 @@ label day_event_fin:
     n "Huh. The end sure is taking a while."
     hide black_screen
     n "You open your eyes to take a peek. There is no Dr. Aikha, no shark fin, no eyes, no teeth."
-    n "There is however, a [player_name] who is currently lying face first on [player_pos_adj] keyboard."
+    n "There is, however, a [player_name] who is currently lying face first on [player_pos_adj] keyboard."
     n "You take out your phone and open the camera to admire your gridded forehead."
     n "Then you see Dr. Aikha peeking at you over the cubicle wall from behind."
-    show aikha
+    show aikha at appear
     n "You drop your phone for the third time. No, first time?"
     player "Hello, Dr. Aikha."
     aikha happy "Working hard, aren't we, new recruit?"
@@ -82,15 +82,15 @@ label day_event_fin:
     player "..."
     player "It's alright...just a slow day."
     n "You glance at the top of Dr. Aikha's head. There is no fin. Just an ahoge."
-    aikha neutral "Your heartrate is a little higher than usual, [player_name]. Is something the matter?"
+    aikha neutral "Your heart rate is a little higher than usual, [player_name]. Is something the matter?"
     player "Oh no. Just...tired."
     aikha happy "Well then, keep it up!"
     aikha neutral "Anyways, I was here to check in on everyone. Oh, what's that on your phone?"
-    aikha "I didn't think that dancing rats was part of your assignment."
+    aikha "I didn't think dancing rats were part of your assignment."
     n "You force a smile and shove your phone deep into your back pocket."
     aikha "As long as work's getting done, I don't mind."
     aikha "So I advise you get back to it."
-    hide aikha
+    show aikha at disappear
     n "Dr. Aikha turns around to leave. You stand up to walk them out of your tiny cubicle."
     n "And on the back of Dr. Aikha's head, you see...a shark fin."
     menu:
@@ -102,7 +102,7 @@ label day_event_fin:
     label fin_ask:
         n "You muster up the courage to speak the words."
         player "Dr. Aikha, have you...always had a shark fin?"
-        show aikha 
+        show aikha at appear
         aikha surprise "Hm? Oh. Yes. It just comes out sometimes."
         aikha neutral "I didn't realize it had popped out again. Huh."
         player "...If I may ask, why {i}do{/i} you have a shark fin, Dr. Aikha?"
@@ -112,24 +112,24 @@ label day_event_fin:
         player "Haha. Well...it's a slow day."
         n "Dr. Aikha glances at your file of archive entries. They give you a nod in pity."
         aikha "Well, good luck with that!"
-        hide aikha 
+        show aikha at disappear
         n "Dr. Aikha turns around and leaves. Likely to continue their micromanaging."
         n "You turn your attention back to the stack of dull files. You reach over to turn on your computer when you notice a long row of faint teeth-marks on your arm."
         n "...Wait, teeth-marks?"
-        $ update_character_points({"aikha": 3})
+        $ update_character_points({"aikha": 1})
         return
 
     label fin_nope:
         n "You don't say anything. Remember, curiousity killed the cat."
-        n "You pull your phone back out. Your butt has swiped the screen for you and you are now the rats are no longer dancing kpop, but pole dancing."
+        n "You pull your phone back out. Your butt has swiped the screen for you and the KPOP-dancing rats are now pole-dancing rats."
         n "You quickly turn your screen brightness down and look up to see if anyone has seen your screen."
-        n "Out of the corner of your eye, you see Dr. Aikha walks through the exit to the office, some of their eyes still on you."
-        $ shake_screen()(0.2,0.4)
-        n "Their fin slams against the doorframe. Ouch."
-        n "Dr. Aikha usually wouldn't make this kind of mistake, given their very hightened perception."
+        n "Out of the corner of your eye, you see Dr. Aikha walk through the exit to the office, some of their eyes still on you."
+        $ shake_screen()
+        n "Their fin slams against the door frame. Ouch."
+        n "Dr. Aikha usually wouldn't make this kind of mistake, given their very heightened perception."
         n "Unless, of course, they were very distracted."
         n "You slump back down onto your chair to avoid the few eyes glaring at you on Dr. Aikha's neck."
         n "You turn your attention back to the stack of dull files. You can't decide whether you prefer this or the life-threatening situation."
         n "...Maybe you should go get a mental health check with Dr. Chan. For your reel addiction, too."
-        $ update_character_points({"aikha": -3})
+        $ update_character_points({"aikha": -1})
         return
