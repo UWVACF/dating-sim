@@ -3,7 +3,8 @@ label day_event_tea_party:
     with default_fade
 
     n "You're walking down the hallway for what seems like the seventh time this shift for a meeting."
-    n "What's the meeting about? You don't know and you don't care. All you know is that there'll be free snacks."
+    n "What's the meeting about? You don't know and you don't care. All you know is that there'll be free coffee."
+    n "The better kind. Not the cheap instant brand at the lounge."
     n "As you're walking, you examine the few decorations in the hallway." 
     n "There's a poster advertising a cult meeting. A suspicious potted plant sits further down. A large mass with several eyes leering over you. A stray coupon." 
     player "...Wait a minute." 
