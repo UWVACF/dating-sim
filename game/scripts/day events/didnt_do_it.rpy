@@ -1,5 +1,4 @@
 label day_event_didnt_do_it:
-    $ tne_defendant = True
     $ tne_chan_backup = False
     $ hampter_witness = False
     $ plague_mask = False
@@ -112,7 +111,6 @@ label day_event_didnt_do_it:
         n "Out of the corner of your eye, you see Dr. Chan and Ethy amongst the crowd of people."
         n "Dr. Chan looks deep in thought, while Ethy gives you a thumbs up with a wide grin."
         $ update_character_points({"chan": 1, "deceased": -2, "syg": 0}) #syg +/- 1
-        $ tne_defendant = True
         $ tne_chan_backup = True
         jump ddi_jail
         return
@@ -189,9 +187,8 @@ label day_event_didnt_do_it:
             n "The crowd disperses and you decide to go back to prepping your sandwich. To your dismay, the Wals have confiscated the knife as evidence for the murder."
             hide helco
             n "Guess you're not getting your greens in today."
-            $ tne_defendant = False
             $ tne_chan_backup = False
-            $ update_character_points({"chan": 0, "deceased": -2, "syg": 0})
+            $ update_character_points({"chan": 0, "deceased": 3, "syg": 0})
             return
 
             label ddi_bad_argument: 
@@ -226,7 +223,6 @@ label day_event_didnt_do_it:
             pause 0.01
             hide firewal
             $ update_character_points({"deceased": -1, "syg": 0, "chan": -2})
-            $ tne_defendant = True
             $ tne_chan_backup = False
             jump ddi_jailtwo
             return
@@ -263,8 +259,7 @@ label day_event_didnt_do_it:
             n "Two Wals come forward and take you by the arms. You try your best to fight them off, but you're no match against the ingenious creations of Dr. Firewal."
             n "They pick you up easily by your arms and legs and carry you out while swinging you like a hammock."
             n "On the way out of the lounge, you stare resentfully Dr. Deceased, who looks satisfied with winning this debate and getting an addition to their collection."
-            $ update_character_points({"deceased": 2, "chan": 0, "syg": 0})
-            $ tne_defendant = True
+            $ update_character_points({"deceased": 1, "chan": 0, "syg": 0})
             $ tne_chan_backup = False
             jump ddi_jailtwo
             return

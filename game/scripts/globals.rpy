@@ -187,6 +187,7 @@ image bg meeting hall = "images/bgs/misc/meeting hall.png"
 image bg meeting room = "images/bgs/misc/meeting room.png"
 image bg room hall = "images/bgs/misc/room hall.png"
 image bg containment = "images/bgs/misc/containment.png"
+image bg cubicle = "images/bgs/misc/cubicle.png"
 image bg court main = "images/bgs/misc/count_main.png"
 image bg court side = "images/bgs/misc/count_side.png"
 

@@ -19,25 +19,20 @@ label day_event_trial_and_error:
     image shock = "images/cgs/shock effect.png"
 
     # to remove when not testing
-    $ tne_defendant = renpy.input("Ture for being the defendant, or False for Deceased being the defendant.")
-    $ tne_defendant = tne_defendant.strip()=="True"
+    #$ tne_chan_backup = renpy.input("Ture or False for Chan on your side (did not lie in I didn't do it)")
+    #$ tne_chan_backup = tne_chan_backup.strip()=="True"
+    #
+    #$ hampter_witness = renpy.input("Ture or False for hampt witness (found hampter in the vents)")
+    #$ hampter_witness = hampter_witness.strip()=="True"
+    #
+    #$ tne_syg_backup = renpy.input("Ture or False for syg back you up (agreed to become demon food if you're on death row)")
+    #$ tne_syg_backup = tne_syg_backup.strip()=="True"
 
-    $ tne_chan_backup = renpy.input("Ture or False for Chan on your side (did not lie in I didn't do it)")
-    $ tne_chan_backup = tne_chan_backup.strip()=="True"
-    
-    $ hampter_witness = renpy.input("Ture or False for hampt witness (found hampter in the vents)")
-    $ hampter_witness = hampter_witness.strip()=="True"
-    
-    $ tne_syg_backup = renpy.input("Ture or False for syg back you up (agreed to become demon food if you're on death row)")
-    $ tne_syg_backup = tne_syg_backup.strip()=="True"
-    # btw for the showcase we're going defendant route
+    # for showcase
+    $ tne_chan_backup = True
+    $ tne_syg_backup = False
+    $ hampter_witness = True
 
-    if tne_defendant == True:
-        jump trial_you_as_defendant
-    elif tne_defendant == False:
-        jump trial_deceased_as_defendant
-
-label trial_you_as_defendant:
     scene bg court main
     $ trial_credibility_you = 0
     show judge overlay onlayer master zorder 90
@@ -62,7 +57,6 @@ label trial_you_as_defendant:
     ethy "AA."
     chan "Ethy will help me determine if the prosecutor or the defendant are lying."
     uriel "The court session will now start."
-    jump tne_yes_yes_yes #testing
     # insert trial start cg or something
     show chan neutral
     uriel sad "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
@@ -325,7 +319,7 @@ label trial_you_as_defendant:
                 show hampter happy onlayer master2
                 hampter happy "Oh, yes. I was napping in the vents when [player_name] woke me up."
                 deceased pensive "And what was [player_name] doing?"
-                hampter "[player_be!c] [player_sub] looking for something, I think. After that, I went back to napping." #grammar
+                hampter "[player_be!c] [player_sub] looking for something, I think. After that, I went back to napping." 
                 show hampter panic onlayer master2
                 hampter panic "Then five minutes later, I heard Dr. Deceased scream."
                 deceased "I did NOT scream! It was an exclamation!"
@@ -420,6 +414,7 @@ label trial_you_as_defendant:
             venture "...Haha."
             n "You stare Dr. Venture right in the eye. If looks could kill, you would've committed your first murder right here."
             venture "...I forgot it in the fridge while I was getting a snack."
+            $ update_character_points({"alex": -1, "aikha": -1, "ryz": -1, "helco": -1, "uriel": -1, "firewal": -1, "chan": -1, "hamp": -1, "deceased": -1, "syg": -1})
             return
 
     label tne_yes:
@@ -631,7 +626,7 @@ label trial_you_as_defendant:
             n "You make your way towards the security department."
             n "Dr. Venture seems to have kept his word. You haven't seen a single person or Walbot on your way here."
 
-            scene bg cubical
+            scene bg cubicle
             n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back against you."
             $ tne_sneak_v = False
             $ tne_sneak_vv = False
@@ -662,7 +657,7 @@ label trial_you_as_defendant:
                 "I'm Dr. Venture":
                     if not tne_sneak_v:
                         player "I'm Dr. Venture."
-                        if "lamp" not in seen_events:
+                        if "lamp" in seen_events:
                             show firewal:
                                 zoom 1.0
                                 yalign 1.0
@@ -741,6 +736,7 @@ label trial_you_as_defendant:
             show firewal:
                     zoom 1.0
                     yalign 1.0
+                    xalign 0.5
             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
             n "The emoticon virus seems to have lost him his object permanence."
             n "Perhaps you can re-enter and retry."
@@ -749,6 +745,7 @@ label trial_you_as_defendant:
         label tne_con_success:
             player "I need the knife from [player_name]'s trial."
             wal1986 "I (>_<)> see (O-O) !"
+            wal1986 "..."
             show firewal unique:
                 zoom 1.4
                 yalign -0.7
@@ -760,10 +757,10 @@ label trial_you_as_defendant:
                 yalign 1.0
             wal1986 "{size=+10}{b}Hm.{/b}{/size}"
             wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."    
-            show firewal at disappear
+            show firewal talk at disappear
             n "The Walbot goes up and goes up to the nearest wall."
             $ shake_screen()
-            n "He punches the wall with a fully-charged fire fist. The wall crumbles under the impact, revealing 4 more walls behind it, all of which have been destroyed as well."
+            n "He punches the wall with a fully-charged fire fist. The wall crumbles under the impact, revealing four more walls behind it, all of which have been destroyed as well."
             n "The Walbot digs through the rubble and retrieves an object."           
             show firewal at appear
             wal1986 "Mission (>_<)> completed (>_<)> !"
@@ -779,32 +776,35 @@ label trial_you_as_defendant:
             n "Dr. Venture kneels down and shoves another knife in the hands of your doppelganger."
             venture "Ta-da! I've made it so that the knife frames you for your own murder!"
             n "Before you can ask any questions, Dr. Venture sounds the emergency alarm on the wall. Immediately, rapid footsteps can be heard closing in from both ends of the corridor."
-            show deceased at appear(x_align = 0.25)
-            show firewal at move_to(x_align = 0.75):
-                yalign 1.0
+            show deceased:
+                alpha 0.0
+                xzoom -1.0
+            show deceased at appear(x_align = 0.2)
+            show venture at move_to(x_align = 0.8)
             deceased "Aha! Found you..! And you've already murdered another victim!!!"
             deceased "Huh."
             deceased "Why are there two of you?? And why are you dead??? And why are you also alive???"
             deceased "Only I am allowed to be dead! You can't be Deceased too!!"
-            venture "It appears [player_name] has an evil twin!"
-            venture "I was strolling down the hall when I saw [player_name] here being chased by [player_name]."
+            venture "It appears {b}[player_name]{/b} has an evil twin!"
+            venture "I was strolling down the hall when I saw {b}[player_name]{/b} here being chased by {b}[player_name]{/b}."
             venture "Naturally, as a department head, I have to make sure our employees were safe."
-            venture "So, I attempted to apprehend [player_name] so that [player_sub] couldn't harm [player_name]."
-            venture "But, there was an accident, and now [player_name] is dead."
+            venture "So, I attempted to apprehend {b}[player_name]{/b} so that {b}[player_name]{/b} couldn't harm {b}[player_name]{/b}."
+            venture "But, there was an accident, and now {b}[player_name]{/b} is dead."
             deceased "..."
             n "Dr. Deceased looks back and forth between you and your corpse."
             deceased "So is [player_name] deceased?"
             venture "[player_name] is, but {i}[player_name]{/i} isn't."
             deceased "..."
             deceased happy "Okay then! As long as [player_name] doesn't take my identity."
-            show deceased at disappear
-            show firewal at disappear
-            n "Dr. Deceased happily skips away, with the Walbot trailing closely behind."
+            show deceased happy at disappear
+            n "Dr. Deceased happily skips away. "
             venture "See? Problem solved!"
             venture "I'll get the Wal inside to frame your \'evil\' twin for the murder of Dr. Ralex. You should be off the hook."
             venture "Just keep the knife thing a secret between you and me, yea? I don't want to write another five reports for \'letting an anomaly escape containment\'."
+            show venture at disappear
             n "You watch as Dr. Venture drags your dead doppelganger into the security department." 
             n "You're never going to forget your own knife, ever again."
+            $ update_character_points({"venture":1})
             return
 
     label after_court_innocent:
@@ -831,13 +831,6 @@ label trial_you_as_defendant:
         venture "It's quite dangerous though; it's capable of affecting the mind and creating illusions of a murder of a fake person."
         player "..."
         player "{nw}ARE YOU FUCKING KIDDING ME-"
+        $ update_character_points({"alex": 1, "aikha": 1, "ryz": 1, "helco": 1, "uriel": 1, "firewal": 1, "chan": 1, "hamp": 1, "deceased": 1, "syg": 1})
+        return
 
-
-    
-
-
-
-
-label trial_deceased_as_defendant:
-    scene bg court main
-    $ trial_credibility_deceased = 0
