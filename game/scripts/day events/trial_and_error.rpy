@@ -62,7 +62,7 @@ label trial_you_as_defendant:
     ethy "AA."
     chan "Ethy will help me determine if the prosecutor or the defendant are lying."
     uriel "The court session will now start."
-    jump temp_temp
+    jump tne_yes_yes_yes #testing
     # insert trial start cg or something
     show chan neutral
     uriel sad "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
@@ -353,75 +353,74 @@ label trial_you_as_defendant:
             uriel "Court dismissed."
             jump after_court_innocent
         else:
-            label temp_temp:
-                uriel neutral "[player_name], you are found..."
-                uriel fury "Guilty!"
-                uriel "For your crimes of murdering our great co-founder, I sentence you to-"
-                venture_unknown "Wait! Wait!"
-                show chan surprise
-                uriel upset "Who dares to interrupt!"
-                show venture onlayer master2 zorder 91:
-                    appear(0.7, y_align = 2.0)
-                venture "There has been a great misunderstanding!"
-                uriel "Misunderstanding?"
-                venture "Yes, yes. This was all caused by an anomaly!"
-                venture "The knife that was suspected as the murder weapon was an anomalous knife that creates illusions of murder scenes with false victims!"
-                show venture onlayer master2:
-                    xzoom -1.0
-                chan pensive "Hmm. Now that you speak of it, I do vaguely remember such an anomaly in containment."
-                chan neutral "But, I recall that individuals with high ONERIO such as Founder Alex and I should be immune to its effects. So it cannot be that anomaly, can it now?"
-                show uriel neutral
-                venture "About that...I was working with the anomaly for an alchemical experiment."
-                chan pensive "...What was your experiment about, Dr. Venture?"
-                venture "To amplify its cognitive effects, and investigate the material origin of the corpse it manifests."
-                chan fury "..."
-                chan "We will have a meeting {i}soon{/i} about practicing ethics and responsibilities when choosing research topics, Dr. Venture."
-                show venture onlayer master2:
-                    xzoom 1.0
-                uriel "Hold on, Dr. Venture. Do you have evidence to back up your claim?"
-                chan pensive "I believe that a thorough investigation into Dr. Ralex should reveal some inconsistencies in our knowledge of her, as well as a lack of actual record of her work."
-                uriel "If you say so, Dr. Chan."
-                uriel pensive "In that case, the trial shall be put on hold until further investigation is complete."
-                uriel neutral "[player_name], you will remain in custody for the time being."
-                show uriel pensive
-                show chan upset
-                n "Dr. Venture gives you a wink of reassurance."
-                n "Two Wals come up to you and drag you back into the containment room."
+            uriel neutral "[player_name], you are found..."
+            uriel fury "Guilty!"
+            uriel "For your crimes of murdering our great co-founder, I sentence you to-"
+            venture_unknown "Wait! Wait!"
+            show chan surprise
+            uriel upset "Who dares to interrupt!"
+            show venture onlayer master2 zorder 91:
+                appear(0.7, y_align = 2.0)
+            venture "There has been a great misunderstanding!"
+            uriel "Misunderstanding?"
+            venture "Yes, yes. This was all caused by an anomaly!"
+            venture "The knife that was suspected as the murder weapon was an anomalous knife that creates illusions of murder scenes with false victims!"
+            show venture onlayer master2:
+                xzoom -1.0
+            chan pensive "Hmm. Now that you speak of it, I do vaguely remember such an anomaly in containment."
+            chan neutral "But, I recall that individuals with high ONERIO such as Founder Alex and I should be immune to its effects. So it cannot be that anomaly, can it now?"
+            show uriel neutral
+            venture "About that...I was working with the anomaly for an alchemical experiment."
+            chan pensive "...What was your experiment about, Dr. Venture?"
+            venture "To amplify its cognitive effects, and investigate the material origin of the corpse it manifests."
+            chan fury "..."
+            chan "We will have a meeting {i}soon{/i} about practicing ethics and responsibilities when choosing research topics, Dr. Venture."
+            show venture onlayer master2:
+                xzoom 1.0
+            uriel "Hold on, Dr. Venture. Do you have evidence to back up your claim?"
+            chan pensive "I believe that a thorough investigation into Dr. Ralex should reveal some inconsistencies in our knowledge of her, as well as a lack of actual record of her work."
+            uriel "If you say so, Dr. Chan."
+            uriel pensive "In that case, the trial shall be put on hold until further investigation is complete."
+            uriel neutral "[player_name], you will remain in custody for the time being."
+            show uriel pensive
+            show chan upset
+            n "Dr. Venture gives you a wink of reassurance."
+            n "Two Wals come up to you and drag you back into the containment room."
 
-                show black_screen onlayer top:
-                    alpha 0.0
-                    linear 1.0 alpha 0.1
-                scene bg containment
-                hide venture onlayer master2
-                hide deceased onlayer master2
-                hide defendant overlay onlayer master2
-                hide front defendant overlay onlayer master2
-                hide black_screen onlayer top
-                
-                n "You're back in the fucking building again."
-                n "I mean, the containment room."
-                n "You have no idea how long you'll be here this time."
-                n "Given what you know about the efficiency of the Wals security team, this investigation might take longer than your internship."
-                n "Meaning, the only thing you will be putting on your resume for this internship is \'jail time\'."
-                n "Perhaps, \'experience in containment\' will sound better."
-                n "You begin drafting your resume update on the fog you breathe on the glass wall when Dr. Venture walks in."
-                show venture at appear
-                venture "...Are you kissing the glass?"
-                venture "Sorry, I didn't expect this incident to cause you this much...distress."
-                venture "Anyways, good news!"
-                venture "You're free!"
-                player "...That was quick."
-                venture "Well, yes. Since Dr. Chan was familiar with the anomaly, he aided in the investigation process."
-                venture "However, as personnel who were involved in, ahem, \'a misconducted experiment\', both you and I are to each write 5 incident reports, complete 3 ethic courses, and commit to 7 hours of community services."
-                player "Why am I involved???"
-                venture "Well, while I could explain that you {i}didn't{/i} commit murder, I have no idea how you came into contact with the knife."
-                venture "They probably wouldn't let it go so easily if the story isn't complete. You catch my drift?"
-                venture "So I just said you were assigined as my temporary assistant for this experiment."
-                player "...So, why was the knife there?"
-                venture "...Haha."
-                n "You stare Dr. Venture right in the eye. If looks could kill, you would've committed your first murder right here."
-                venture "...I forgot it in the fridge while I was getting a snack."
-                return
+            show black_screen onlayer top:
+                alpha 0.0
+                linear 1.0 alpha 0.1
+            scene bg containment
+            hide venture onlayer master2
+            hide deceased onlayer master2
+            hide defendant overlay onlayer master2
+            hide front defendant overlay onlayer master2
+            hide black_screen onlayer top
+            
+            n "You're back in the fucking building again."
+            n "I mean, the containment room."
+            n "You have no idea how long you'll be here this time."
+            n "Given what you know about the efficiency of the Wals security team, this investigation might take longer than your internship."
+            n "Meaning, the only thing you will be putting on your resume for this internship is \'jail time\'."
+            n "Perhaps, \'experience in containment\' will sound better."
+            n "You begin drafting your resume update with the fog you breathe on the glass wall when Dr. Venture walks in."
+            show venture at appear
+            venture "...Are you kissing the glass?"
+            venture "Sorry, I didn't expect this incident to cause you this much...distress."
+            venture "Anyways, good news!"
+            venture "You're free!"
+            player "...That was quick."
+            venture "Well, yes. Since Dr. Chan was familiar with the anomaly, he aided in the investigation process."
+            venture "However, as personnel who were involved in, ahem, \'a misconducted experiment\', both you and I are to each write 5 incident reports, complete 3 ethic courses, and commit to 7 hours of community services."
+            player "Why am I involved???"
+            venture "Well, while I could explain that you {i}didn't{/i} commit murder, I have no idea how you came into contact with the knife."
+            venture "They probably wouldn't let it go so easily if the story isn't complete. You catch my drift?"
+            venture "So I just said you were assigined as my temporary assistant for this experiment."
+            player "...So, why was the knife there?"
+            venture "...Haha."
+            n "You stare Dr. Venture right in the eye. If looks could kill, you would've committed your first murder right here."
+            venture "...I forgot it in the fridge while I was getting a snack."
+            return
 
     label tne_yes:
         n "...Why would you admit guilt to something you didn't do?"
@@ -588,7 +587,9 @@ label trial_you_as_defendant:
             n "You hear rapid footsteps from the direction of the multi-purpose room-turned-courtroom. Dr. Venture seems to have heard it too."
             n "He pulls out a scroll with a complex rune on it and slaps it onto you."
             hide venture
-            show black screen
+            scene bg lab
+            show black_screen onlayer master zorder 0:
+                alpha 0.75
             n "You're immediately warped to an unknown space."
 
             show venture at appear
@@ -596,8 +597,211 @@ label trial_you_as_defendant:
             venture "Damn, you really got yourself into some big trouble, huh?"
             venture "So I take it that you touched the knife?"
             player "Knife?"
-            # notes
+            venture "An anomalous knife I was conducting research on. Touching it frames you for murder."
+            n "You think back to what you were doing when it all happened." 
+            n "You were in the lounge preping your lunch. Then, you wanted to cut your lettuce, but you had forgotten your own knife."
+            n "So you tried looking for one in the kitchenette. Then-"
+            player "Right, I found a knife in the fridge."
+            n "Dr. Venture lets out a sigh. Then, he pats your shoulders."
+            venture "Looks like we're stuck on the same boat, then."
+            player "What do you mean?"
+            venture "Well, that anomaly escaped containment from my lab due to...some accients. So it's, supposingly, under my responsibiliy."
+            venture "But, if we can retrieve it without being caught, I have a way to resolve this situation."
+            venture "It can help prove your innocent, while I won't get in trouble for the \'accidents\'."
+            n "You nod. Although Dr. Venture doesn't seem very reliable, this is the best way out of this while hopfully keeping your job."
+            venture "Great!" 
+            venture "So, I've already located the knife. It's currently being kept in the evidence storage section of the security department."
+            venture "But, with you currently on the run, all the Wals are deployed to search for you. This means that there should only be one Wal looking after the storage."
+            venture "I will go distract the others to make sure they don't go near the area. You only have to get through the one Wal and get the knife."
+            player "But I'm wanted right now. That Wal will surely get me. Why can't you go instead, Dr. Venture?"
+            if "lamp" in seen_events:
+                venture "I've been banned from being within 10ft radius of a Wal since the lamp incident last time."
+            else:
+                venture "...It's far, and my body is frail."
+                n "He bents down slowly and slumps down on his chair like an old man. His bandages ruffle in agreement."
+                n "A pretty convincing act, if it weren't for the fact that you saw him dodged your shot agilely, and threw a flask at your face at full force."
+            venture "So it has to be you, [player_name]." #smile
 
+            show bg room hall
+            hide black_screen onlayer master
+            hide venture
+            n "He shakes your hand, and you're transported once again back to the corridor near the temporary court room."
+            scene bg room hall
+            with default_fade
+            n "You've made your way towards the security department."
+            n "Dr. Venture seems to have kept his words. You haven't seen a single person on your way here."
+
+            scene bg cubical
+            n "You open the door to the evidence storage section quietly. You see only a single Wal at the work desk with his back against you."
+            $ tne_sneak_v == False
+            $ tne_sneak_vv == False
+            $ tne_sneak_w == False
+            $ tne_sneak_em == False
+        label tne_convince_wal:
+            show firewal at appear
+            wal1986 "Hello (^O^)/ how (?_?) may ^_^ I (>_<)> help L(^w^ ) you ( ^o^)-->(oOo) !"
+            if tne_sneak_v or tne_sneak_w:
+                player "...How are you saying that?"
+                wal1986 "I (>_<)> installed \\(^0^) an (owo)1!! emoticon (^.^) virus (@_@) ! Everything \\(+w+)/ I (>_<)> say ( oDo) and (IvI)/\\(IvI) see (O-O) is (~w~) emoticon (^.^) !"
+                wal1986 "I (>_<)> have (UAU) no (-=-)X idea (*o*)! who (p_-) you ( ^o^)-->(oOo) are (~w~) !"
+            show shock onlayer master2
+            $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
+            show firewal unique:
+                zoom 1.4
+                yalign -0.7
+            wal1986 unique "{size=+10}{b}WHO ARE YOU. {/b}{/size}"
+            wal1986 unique "{size=+10}{b}...{/b}{/size}"
+            show shock onlayer master2:
+                alpha 0.0
+            wal1986 unique "{size=+10}{b}<(`O_O`)>{/b}{/size}"
+        label tne_convince_wal_menu:
+            menu:
+                n "Uh oh, the Wal is charging up his fist."
+                "I'm Dr. Venture":
+                    if tne_sneak_v:
+                        player "I'm Dr. Venture."
+                        if "lamp" not in seen_events:
+                            show firewal:
+                                zoom 1.0
+                                yalign 1.0
+                            wal1986 "I (>_<)> see (O-O) !"
+                            wal1986 "..."
+                            show shock onlayer master2:
+                                alpha 1.0
+                            show firewal unique:
+                                zoom 1.4
+                                yalign -0.7
+                            wal1986 unique "{size=+10}{b}WARNING! WARNING! DR. VENTURE IS WITHIN DANGEROUS PROXIMITY!{/b}{/size}"
+                            n "The flames turn blue as he aims his fire cannon at you."
+                            wal1986 "{size=+10}{b}LEAVE RIGHT THIS INSTANT OR BE OBLITERATED!!!!!!{/b}{/size}"
+                            n "You quickly dash out of the room."
+                            show shock onlayer master2:
+                                alpha 0.0
+                            show firewal:
+                                zoom 1.0
+                                yalign 1.0
+                            wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
+                            n "The emoticon virus seems to have given him object permanence."
+                            n "Perhaps you can re-enter and retry."
+                            $ tne_sneak_v == True
+                            jump tne_convince_wal
+                        else:
+                            show firewal:
+                                zoom 1.0
+                                yalign 1.0
+                            wal1986 "I (>_<)> see (O-O) !"
+                            wal1986 "..."
+                            wal1968 "Can ^_^ you -->(oOo) show (owo)/ your -->(oOo) department head (O/\O) ID (-o-)*+ ?"
+                            n "Oh shit."
+                            wal1986 "..."
+                            show shock onlayer master2:
+                                alpha 0.0
+                            show firewal unique:
+                                zoom 1.4
+                                yalign -0.7
+                            wal1986 unique "{size=+10}{b}WARNING! WARNING! DETECTING IMPOSTER!{/b}{/size}"
+                            n "The flames turn blue as he aims his fire cannon at you."
+                            wal1986 "{size=+10}{b}ELIMINATING THREAT!!!!{/b}{/size}"
+                    else:
+                        n "Do you want to get burnt for real??"
+                        jump tne_convince_wal_menu
+                "I'm Wal No.283":
+                    player "I'm Wal No.283."
+                    show firewal:
+                        zoom 1.0
+                        yalign 1.0
+                    wal1986 "I (>_<)> see (O-O) !"
+                    wal1986 "..."
+                    show firewal unique:
+                        zoom 1.4
+                        yalign -0.7
+                    wal1986 unique "{size=+10}{b}NO YOU ARE NOT.{/b}{/size}"
+                    show shock onlayer master2:
+                        alpha 1.0
+                    wal1986 "{size=+10}{b}I (>_<)> installed \\(^0^) the <--(OAO) virus (@_@) on ^(1-1)^ every \\(+A+)/ Wal <(>_<)> !{/b}{/size}"
+                    wal1986 "{size=+10}{b}YOU -->(oOo) DO <(o-o) NOT (-=-)X SPEAK ( oDo) EMOTICON (^.^). YOU -->(oOo) ARE (~w~) AN (owo)1!! IMPOSTER ?!(@-@) !!!{/b}{/size}"
+                    wal1986 "{size=+10}{b}OBLITERATE (`O`)// IMPOSTER ?!(@-@) !!!{/b}{/size}"
+                "(>_<)>":
+                    player "(>_<)>"
+                    show firewal:
+                        zoom 1.0
+                        yalign 1.0
+                    wal1986 "I (>_<)> see (O-O) !"
+                    wal1986 "How (?_?) may ^_^ I (>_<)> serve (^w^ )> you ( ^o^)-->(oOo) ?"
+                    jump tne_con_success
+            n "Uh oh, you messed up."
+            hide firewal
+            n "You duck behind the corner as the Wal releases a fireball."
+            show shock onlayer master2:
+                alpha 0.0
+            n "..."
+            n "Why is it so quiet?"
+            show firewal:
+                    zoom 1.0
+                    yalign 1.0
+            wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
+            n "The emoticon virus seems to have given him object permanence."
+            n "Perhaps you can re-enter and retry."
+            jump tne_convince_wal
+
+        label tne_con_success:
+            player "I need the knife from [player_name]'s trial."
+            wal1986 "I (>_<)> see (O-O) !"
+            show firewal unique:
+                zoom 1.4
+                yalign -0.7
+            wal1986 unique "{size=+10}{b}WHERE IS YOUR EMOTICON.{/b}{/size}"
+            n "Shit."
+            player "...(O-O)>"
+            show firewal:
+                zoom 1.0
+                yalign 1.0
+            wal1986 "{size=+10}{b}Hm.{/b}{/size}"
+            wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."    
+            show firewal at disappear
+            n "The Walbot gets up and went up to the nearest wall."
+            $ shake_screen()
+            n "And punch a the wall with a fully charged fire fist. The wall crumbles under the impact, revealing 4 more walls behind it, which has all been destroyed as well."
+            n "The Walbot dig through the rubble and retrieves an object."           
+            show firewal at appear
+            wal1968 "Mission (>_<)> completed (>_<)> !"
+            n "You let out a sigh of relief. The Walbot hands you the same knife that started all of this."
+            n "You quickly leave the security department."
+
+            scene bg room hall
+            show venture 
+            n "To your surprise, Dr. Venture is already here, waiting for you."
+            venture "Great! You got the knife!"
+            n "You hand him the knife. Then, he stabs \'you\'."
+            n "The moment the tip of the knife touches your skin, a body identical to you appears out of nowhere at your feet."
+            n "Dr. Venture knees down and shove another knife in the hands of your body."
+            venture "Ta-da! I've made it so that the knife frames you for your own murder!"
+            n "Before you can ask any questions, Dr. Venture sounds the emergency alarm on the wall. Immediately, rapid footsteps can be heard closing in from both ends of the corridor."
+            show deceased at appear(x_align = 0.25)
+            show firewal at move_to(x_align = 0.75)
+            deceased "Aha! Found you..! And you've already murdered another victim!!!"
+            deceased "Huh."
+            deceased "Why is there two of you?? And why are you dead??? And why are you also alive???"
+            deceased "ONly I am allowed to be dead! You can't be Deceased too!!"
+            venture "It appears [player_name] has an evil twin!"
+            venture "I was strolling down the hall when I saw [player_name] here being chased by [player_name]."
+            venture "Naturally, as a department head, I have to make sure our employees are safe."
+            venture "So, I attempted to apprehend [player_name] so that [player_obj] cannot harm [player_name]."
+            venture "But, there was an accident, and now [player_name] is dead."
+            deceased "..."
+            n "Dr. Deceased look back and forth between you and your corpse."
+            deceased "So is [player_name] deceased?"
+            venture "[player_name] is, but [player_name] isn't."
+            deceased "..."
+            deceased happy "Okay then! As long as [player_name] doesn't take my identity."
+            show deceased at disappear
+            n "Dr. Deceased happily skips away."
+            venture "See? Problem solved!"
+            venture "I'll get the Wal inside to frame your \'evil\' twin for the murder of Dr. Ralex."
+            venture "Now that there's no prosecutor, there won't be a trial for you."
+            venture "Just keep the knife thing a secret between you and me, yea? I don't want to write another five reports for \'letting an anomaly escape containment\'."
+            n "You watch as Dr. Venture drags your dead carbon copy into the Security Department." 
+            n "You are never going to forget your own knife, ever again."
             return
 
     label after_court_innocent:

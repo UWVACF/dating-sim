@@ -355,6 +355,7 @@ define firewal_unknown = Character("???", kind=firewal)
 define wal1 = Character("Wal No.1", kind=firewal)
 define wal387 = Character("Wal No.387", kind=firewal)
 define wal641 = Character("Wal No.641", kind=firewal)
+define wal1986 = Character("Wal No.1986", kind=firewal)
 define walbots = Character("Walbots", kind=firewal)
 define pocketwal = Character("Pocket Wal", kind=firewal, what_size=30, cb_name="pocketwal", image="pocketwal")
 
