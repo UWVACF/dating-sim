@@ -605,21 +605,21 @@ label trial_you_as_defendant:
             n "Dr. Venture lets out a sigh. Then, he pats your shoulders."
             venture "Looks like we're stuck in the same boat, then."
             player "What do you mean?"
-            venture "Well, that anomaly escaped containment from my lab due to...some accidents. So it's, supposedly, under my responsibiliy."
+            venture "Well, that anomaly escaped containment from my lab due to some...accidents. So it's, supposedly, under my responsibility."
             venture "But, if we can retrieve it without getting caught, I have a way to resolve this situation."
-            venture "It can help prove your innocence, and I won't get in trouble for the \'accidents\'."
-            n "You nod. Although Dr. Venture doesn't seem very reliable, this is the best way out of this situation while hopefully keeping your job."
+            venture "You'll be proven innocent, and I won't get in trouble for the \'accidents\'. It's a win-win."
+            n "You nod. Although Dr. Venture doesn't seem entirely reliable, you see no other way out of this situation that involves keeping your job."
             venture "Great!" 
             venture "So, I've already located the knife. It's currently being kept in the evidence room of the security department."
             venture "But, with you currently on the run, all the Walbots have been deployed to search for you. That means that there should only be one Walbot looking after the storage."
             venture "I'll go distract the others to make sure they don't go near that area. You only have to get through the one Walbot and get the knife."
-            player "But I'm wanted right now. That Walbot will surely get me. Why can't you go instead, Dr. Venture?"
+            player "But I'm wanted right now. Why can't you go instead, Dr. Venture?"
             if "lamp" in seen_events:
                 venture "I've been banned from being within 10-foot radius of a Walbot since the lamp incident last time."
             else:
                 venture "...It's far, and my body is frail."
                 n "He bends down slowly and slumps down on his chair like an old man. His bandages ruffle in agreement."
-                n "A pretty convincing act, if it weren't for the fact that you saw him dodged your shot nimbly, and threw a flask at your face at full force."
+                n "A pretty convincing act, if it weren't for the fact that you saw him dodged your shot nimbly before throwing a flask at your face with full force."
             venture "So it has to be you, [player_name]." #smile
 
             show bg room hall
@@ -633,14 +633,14 @@ label trial_you_as_defendant:
 
             scene bg cubical
             n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back against you."
-            $ tne_sneak_v == False
-            $ tne_sneak_vv == False
-            $ tne_sneak_w == False
-            $ tne_sneak_em == False
+            $ tne_sneak_v = False
+            $ tne_sneak_vv = False
+            $ tne_sneak_w = False
+            $ tne_sneak_em = False
         label tne_convince_wal:
             show firewal at appear
             wal1986 "Hello (^O^)/ how (?_?) may ^_^ I (>_<)> help L(^w^ ) you ( ^o^)-->(oOo) !"
-            if tne_sneak_v or tne_sneak_w:
+            if not tne_sneak_v and not tne_sneak_w:
                 player "...How are you saying that?"
                 wal1986 "I (>_<)> installed \\(^0^) an (owo)1!! emoticon (^.^) virus (@_@) ! Everything \\(+w+)/ I (>_<)> say ( oDo) and (IvI)/\\(IvI) see (O-O) is (~w~) emoticon (^.^) !"
                 wal1986 "I (>_<)> have (UAU) no (-=-)X idea (*o*)! who (p_-) you ( ^o^)-->(oOo) are (~w~) !"
@@ -654,11 +654,13 @@ label trial_you_as_defendant:
             show shock onlayer master2:
                 alpha 0.0
             wal1986 unique "{size=+10}{b}<(`O_O`)>{/b}{/size}"
+            jump tne_convince_wal_menu
+
         label tne_convince_wal_menu:
             menu:
                 n "Uh oh, the Walbot is charging up his fist."
                 "I'm Dr. Venture":
-                    if tne_sneak_v:
+                    if not tne_sneak_v:
                         player "I'm Dr. Venture."
                         if "lamp" not in seen_events:
                             show firewal:
@@ -683,7 +685,7 @@ label trial_you_as_defendant:
                             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
                             n "The emoticon virus seems to have lost him his object permanence."
                             n "Perhaps you can re-enter and retry."
-                            $ tne_sneak_v == True
+                            $ tne_sneak_v = True
                             jump tne_convince_wal
                         else:
                             show firewal:
@@ -691,7 +693,7 @@ label trial_you_as_defendant:
                                 yalign 1.0
                             wal1986 "I (>_<)> see (O-O) !"
                             wal1986 "..."
-                            wal1968 "Can ^_^ you -->(oOo) show (owo)/ your -->(oOo) department head (O/\O) ID (-o-)*+ ?"
+                            wal1986 "Can ^_^ you -->(oOo) show (owo)/ your -->(oOo) department head (O/\O) ID (-o-)*+ ?"
                             n "Oh shit."
                             wal1986 "..."
                             show shock onlayer master2:
@@ -759,12 +761,12 @@ label trial_you_as_defendant:
             wal1986 "{size=+10}{b}Hm.{/b}{/size}"
             wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."    
             show firewal at disappear
-            n "The Walbot gets up and went up to the nearest wall."
+            n "The Walbot goes up and goes up to the nearest wall."
             $ shake_screen()
             n "He punches the wall with a fully-charged fire fist. The wall crumbles under the impact, revealing 4 more walls behind it, all of which have been destroyed as well."
             n "The Walbot digs through the rubble and retrieves an object."           
             show firewal at appear
-            wal1968 "Mission (>_<)> completed (>_<)> !"
+            wal1986 "Mission (>_<)> completed (>_<)> !"
             n "You let out a sigh of relief. The Walbot hands you the knife that started all of this."
             n "You quickly leave the security department."
 
@@ -772,36 +774,37 @@ label trial_you_as_defendant:
             show venture 
             n "To your surprise, Dr. Venture is already here, waiting for you."
             venture "Great! You got the knife!"
-            n "You hand him the knife. Then, he stabs \'you\'."
-            n "The moment the tip of the knife touches your skin, a body identical to you appears out of nowhere at your feet."
-            n "Dr. Venture knees down and shove another knife in the hands of your body."
+            n "You hand him the knife. Then, he stabs you."
+            n "The moment the tip of the knife touches your skin, someone identical to you appears out of nowhere at your feet."
+            n "Dr. Venture kneels down and shoves another knife in the hands of your doppelganger."
             venture "Ta-da! I've made it so that the knife frames you for your own murder!"
             n "Before you can ask any questions, Dr. Venture sounds the emergency alarm on the wall. Immediately, rapid footsteps can be heard closing in from both ends of the corridor."
             show deceased at appear(x_align = 0.25)
-            show firewal at move_to(x_align = 0.75)
+            show firewal at move_to(x_align = 0.75):
+                yalign 1.0
             deceased "Aha! Found you..! And you've already murdered another victim!!!"
             deceased "Huh."
             deceased "Why are there two of you?? And why are you dead??? And why are you also alive???"
             deceased "Only I am allowed to be dead! You can't be Deceased too!!"
             venture "It appears [player_name] has an evil twin!"
             venture "I was strolling down the hall when I saw [player_name] here being chased by [player_name]."
-            venture "Naturally, as a department head, I have to make sure our employees are safe."
-            venture "So, I attempted to apprehend [player_name] so that [player_obj] cannot harm [player_name]."
+            venture "Naturally, as a department head, I have to make sure our employees were safe."
+            venture "So, I attempted to apprehend [player_name] so that [player_sub] couldn't harm [player_name]."
             venture "But, there was an accident, and now [player_name] is dead."
             deceased "..."
-            n "Dr. Deceased look back and forth between you and your corpse."
+            n "Dr. Deceased looks back and forth between you and your corpse."
             deceased "So is [player_name] deceased?"
-            venture "[player_name] is, but [player_name] isn't."
+            venture "[player_name] is, but {i}[player_name]{/i} isn't."
             deceased "..."
             deceased happy "Okay then! As long as [player_name] doesn't take my identity."
             show deceased at disappear
-            n "Dr. Deceased happily skips away."
+            show firewal at disappear
+            n "Dr. Deceased happily skips away, with the Walbot trailing closely behind."
             venture "See? Problem solved!"
-            venture "I'll get the Wal inside to frame your \'evil\' twin for the murder of Dr. Ralex."
-            venture "Now that there's no prosecutor, there won't be a trial for you."
+            venture "I'll get the Wal inside to frame your \'evil\' twin for the murder of Dr. Ralex. You should be off the hook."
             venture "Just keep the knife thing a secret between you and me, yea? I don't want to write another five reports for \'letting an anomaly escape containment\'."
-            n "You watch as Dr. Venture drags your dead carbon copy into the security department." 
-            n "You are never going to forget your own knife, ever again."
+            n "You watch as Dr. Venture drags your dead doppelganger into the security department." 
+            n "You're never going to forget your own knife, ever again."
             return
 
     label after_court_innocent:
