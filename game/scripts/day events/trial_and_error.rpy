@@ -599,27 +599,27 @@ label trial_you_as_defendant:
             player "Knife?"
             venture "An anomalous knife I was conducting research on. Touching it frames you for murder."
             n "You think back to what you were doing when it all happened." 
-            n "You were in the lounge preping your lunch. Then, you wanted to cut your lettuce, but you had forgotten your own knife."
+            n "You were in the lounge preparing your lunch. Then, you wanted to cut your lettuce, but you had forgotten your own knife."
             n "So you tried looking for one in the kitchenette. Then-"
             player "Right, I found a knife in the fridge."
             n "Dr. Venture lets out a sigh. Then, he pats your shoulders."
-            venture "Looks like we're stuck on the same boat, then."
+            venture "Looks like we're stuck in the same boat, then."
             player "What do you mean?"
-            venture "Well, that anomaly escaped containment from my lab due to...some accients. So it's, supposingly, under my responsibiliy."
-            venture "But, if we can retrieve it without being caught, I have a way to resolve this situation."
-            venture "It can help prove your innocent, while I won't get in trouble for the \'accidents\'."
-            n "You nod. Although Dr. Venture doesn't seem very reliable, this is the best way out of this while hopfully keeping your job."
+            venture "Well, that anomaly escaped containment from my lab due to...some accidents. So it's, supposedly, under my responsibiliy."
+            venture "But, if we can retrieve it without getting caught, I have a way to resolve this situation."
+            venture "It can help prove your innocence, and I won't get in trouble for the \'accidents\'."
+            n "You nod. Although Dr. Venture doesn't seem very reliable, this is the best way out of this situation while hopefully keeping your job."
             venture "Great!" 
-            venture "So, I've already located the knife. It's currently being kept in the evidence storage section of the security department."
-            venture "But, with you currently on the run, all the Wals are deployed to search for you. This means that there should only be one Wal looking after the storage."
-            venture "I will go distract the others to make sure they don't go near the area. You only have to get through the one Wal and get the knife."
-            player "But I'm wanted right now. That Wal will surely get me. Why can't you go instead, Dr. Venture?"
+            venture "So, I've already located the knife. It's currently being kept in the evidence room of the security department."
+            venture "But, with you currently on the run, all the Walbots have been deployed to search for you. That means that there should only be one Walbot looking after the storage."
+            venture "I'll go distract the others to make sure they don't go near that area. You only have to get through the one Walbot and get the knife."
+            player "But I'm wanted right now. That Walbot will surely get me. Why can't you go instead, Dr. Venture?"
             if "lamp" in seen_events:
-                venture "I've been banned from being within 10ft radius of a Wal since the lamp incident last time."
+                venture "I've been banned from being within 10-foot radius of a Walbot since the lamp incident last time."
             else:
                 venture "...It's far, and my body is frail."
-                n "He bents down slowly and slumps down on his chair like an old man. His bandages ruffle in agreement."
-                n "A pretty convincing act, if it weren't for the fact that you saw him dodged your shot agilely, and threw a flask at your face at full force."
+                n "He bends down slowly and slumps down on his chair like an old man. His bandages ruffle in agreement."
+                n "A pretty convincing act, if it weren't for the fact that you saw him dodged your shot nimbly, and threw a flask at your face at full force."
             venture "So it has to be you, [player_name]." #smile
 
             show bg room hall
@@ -628,11 +628,11 @@ label trial_you_as_defendant:
             n "He shakes your hand, and you're transported once again back to the corridor near the temporary court room."
             scene bg room hall
             with default_fade
-            n "You've made your way towards the security department."
-            n "Dr. Venture seems to have kept his words. You haven't seen a single person on your way here."
+            n "You make your way towards the security department."
+            n "Dr. Venture seems to have kept his word. You haven't seen a single person or Walbot on your way here."
 
             scene bg cubical
-            n "You open the door to the evidence storage section quietly. You see only a single Wal at the work desk with his back against you."
+            n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back against you."
             $ tne_sneak_v == False
             $ tne_sneak_vv == False
             $ tne_sneak_w == False
@@ -656,7 +656,7 @@ label trial_you_as_defendant:
             wal1986 unique "{size=+10}{b}<(`O_O`)>{/b}{/size}"
         label tne_convince_wal_menu:
             menu:
-                n "Uh oh, the Wal is charging up his fist."
+                n "Uh oh, the Walbot is charging up his fist."
                 "I'm Dr. Venture":
                     if tne_sneak_v:
                         player "I'm Dr. Venture."
@@ -681,7 +681,7 @@ label trial_you_as_defendant:
                                 zoom 1.0
                                 yalign 1.0
                             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
-                            n "The emoticon virus seems to have given him object permanence."
+                            n "The emoticon virus seems to have lost him his object permanence."
                             n "Perhaps you can re-enter and retry."
                             $ tne_sneak_v == True
                             jump tne_convince_wal
@@ -703,7 +703,7 @@ label trial_you_as_defendant:
                             n "The flames turn blue as he aims his fire cannon at you."
                             wal1986 "{size=+10}{b}ELIMINATING THREAT!!!!{/b}{/size}"
                     else:
-                        n "Do you want to get burnt for real??"
+                        n "Do you want to get burned for real??"
                         jump tne_convince_wal_menu
                 "I'm Wal No.283":
                     player "I'm Wal No.283."
@@ -731,7 +731,7 @@ label trial_you_as_defendant:
                     jump tne_con_success
             n "Uh oh, you messed up."
             hide firewal
-            n "You duck behind the corner as the Wal releases a fireball."
+            n "You duck behind the corner as the Walbot releases a fireball."
             show shock onlayer master2:
                 alpha 0.0
             n "..."
@@ -740,7 +740,7 @@ label trial_you_as_defendant:
                     zoom 1.0
                     yalign 1.0
             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
-            n "The emoticon virus seems to have given him object permanence."
+            n "The emoticon virus seems to have lost him his object permanence."
             n "Perhaps you can re-enter and retry."
             jump tne_convince_wal
 
@@ -761,11 +761,11 @@ label trial_you_as_defendant:
             show firewal at disappear
             n "The Walbot gets up and went up to the nearest wall."
             $ shake_screen()
-            n "And punch a the wall with a fully charged fire fist. The wall crumbles under the impact, revealing 4 more walls behind it, which has all been destroyed as well."
-            n "The Walbot dig through the rubble and retrieves an object."           
+            n "He punches the wall with a fully-charged fire fist. The wall crumbles under the impact, revealing 4 more walls behind it, all of which have been destroyed as well."
+            n "The Walbot digs through the rubble and retrieves an object."           
             show firewal at appear
             wal1968 "Mission (>_<)> completed (>_<)> !"
-            n "You let out a sigh of relief. The Walbot hands you the same knife that started all of this."
+            n "You let out a sigh of relief. The Walbot hands you the knife that started all of this."
             n "You quickly leave the security department."
 
             scene bg room hall
@@ -781,8 +781,8 @@ label trial_you_as_defendant:
             show firewal at move_to(x_align = 0.75)
             deceased "Aha! Found you..! And you've already murdered another victim!!!"
             deceased "Huh."
-            deceased "Why is there two of you?? And why are you dead??? And why are you also alive???"
-            deceased "ONly I am allowed to be dead! You can't be Deceased too!!"
+            deceased "Why are there two of you?? And why are you dead??? And why are you also alive???"
+            deceased "Only I am allowed to be dead! You can't be Deceased too!!"
             venture "It appears [player_name] has an evil twin!"
             venture "I was strolling down the hall when I saw [player_name] here being chased by [player_name]."
             venture "Naturally, as a department head, I have to make sure our employees are safe."
@@ -800,7 +800,7 @@ label trial_you_as_defendant:
             venture "I'll get the Wal inside to frame your \'evil\' twin for the murder of Dr. Ralex."
             venture "Now that there's no prosecutor, there won't be a trial for you."
             venture "Just keep the knife thing a secret between you and me, yea? I don't want to write another five reports for \'letting an anomaly escape containment\'."
-            n "You watch as Dr. Venture drags your dead carbon copy into the Security Department." 
+            n "You watch as Dr. Venture drags your dead carbon copy into the security department." 
             n "You are never going to forget your own knife, ever again."
             return
 
