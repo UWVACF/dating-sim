@@ -629,26 +629,22 @@ label day_event_trial_and_error:
             scene bg cubicle
             n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back against you."
             $ tne_sneak_v = False
-            $ tne_sneak_vv = False
             $ tne_sneak_w = False
-            $ tne_sneak_em = False
         label tne_convince_wal:
             show firewal at appear
             wal1986 "Hello (^O^)/ how (?_?) may ^_^ I (>_<)> help L(^w^ ) you ( ^o^)-->(oOo) !"
-            if not tne_sneak_v and not tne_sneak_w:
+            if tne_sneak_v == False and tne_sneak_w == False:
                 player "...How are you saying that?"
                 wal1986 "I (>_<)> installed \\(^0^) an (owo)1!! emoticon (^.^) virus (@_@) ! Everything \\(+w+)/ I (>_<)> say ( oDo) and (IvI)/\\(IvI) see (O-O) is (~w~) emoticon (^.^) !"
                 wal1986 "I (>_<)> have (UAU) no (-=-)X idea (*o*)! who (p_-) you ( ^o^)-->(oOo) are (~w~) !"
             show shock onlayer master2
             $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
-            show firewal unique:
-                zoom 1.4
-                yalign -0.7
-            wal1986 unique "{size=+10}{b}WHO ARE YOU. {/b}{/size}"
-            wal1986 unique "{size=+10}{b}...{/b}{/size}"
+            show firewal fury
+            wal1986 fury "{size=+10}{b}WHO ARE YOU. {/b}{/size}"
+            wal1986 fury "{size=+10}{b}...{/b}{/size}"
             show shock onlayer master2:
                 alpha 0.0
-            wal1986 unique "{size=+10}{b}<(`O_O`)>{/b}{/size}"
+            wal1986 fury "{size=+10}{b}<(`O_O`)>{/b}{/size}"
             jump tne_convince_wal_menu
 
         label tne_convince_wal_menu:
@@ -658,71 +654,60 @@ label day_event_trial_and_error:
                     if not tne_sneak_v:
                         player "I'm Dr. Venture."
                         if "lamp" in seen_events:
-                            show firewal:
-                                zoom 1.0
-                                yalign 1.0
+                            show firewal
                             wal1986 "I (>_<)> see (O-O) !"
                             wal1986 "..."
                             show shock onlayer master2:
                                 alpha 1.0
-                            show firewal unique:
-                                zoom 1.4
-                                yalign -0.7
-                            wal1986 unique "{size=+10}{b}WARNING! WARNING! DR. VENTURE IS WITHIN DANGEROUS PROXIMITY!{/b}{/size}"
+                            show firewal fury
+                            wal1986 fury "{size=+10}{b}WARNING! WARNING! DR. VENTURE IS WITHIN DANGEROUS PROXIMITY!{/b}{/size}"
                             n "The flames turn blue as he aims his fire cannon at you."
                             wal1986 "{size=+10}{b}LEAVE RIGHT THIS INSTANT OR BE OBLITERATED!!!!!!{/b}{/size}"
                             n "You quickly dash out of the room."
                             show shock onlayer master2:
                                 alpha 0.0
-                            show firewal:
-                                zoom 1.0
-                                yalign 1.0
+                            show firewal
                             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
                             n "The emoticon virus seems to have lost him his object permanence."
                             n "Perhaps you can re-enter and retry."
-                            $ tne_sneak_v = True
                             jump tne_convince_wal
                         else:
-                            show firewal:
-                                zoom 1.0
-                                yalign 1.0
+                            show firewal
                             wal1986 "I (>_<)> see (O-O) !"
                             wal1986 "..."
                             wal1986 "Can ^_^ you -->(oOo) show (owo)/ your -->(oOo) department head (O/\O) ID (-o-)*+ ?"
                             n "Oh shit."
                             wal1986 "..."
                             show shock onlayer master2:
-                                alpha 0.0
-                            show firewal unique:
-                                zoom 1.4
-                                yalign -0.7
-                            wal1986 unique "{size=+10}{b}WARNING! WARNING! DETECTING IMPOSTER!{/b}{/size}"
+                                alpha 1.0
+                            show firewal fury
+                            wal1986 fury "{size=+10}{b}WARNING! WARNING! DETECTING IMPOSTER!{/b}{/size}"
                             n "The flames turn blue as he aims his fire cannon at you."
                             wal1986 "{size=+10}{b}ELIMINATING THREAT!!!!{/b}{/size}"
+                        $ tne_sneak_v = True
                     else:
                         n "Do you want to get burned for real??"
                         jump tne_convince_wal_menu
                 "I'm Wal No.283":
-                    player "I'm Wal No.283."
-                    show firewal:
-                        zoom 1.0
-                        yalign 1.0
-                    wal1986 "I (>_<)> see (O-O) !"
-                    wal1986 "..."
-                    show firewal unique:
-                        zoom 1.4
-                        yalign -0.7
-                    wal1986 unique "{size=+10}{b}NO YOU ARE NOT.{/b}{/size}"
-                    show shock onlayer master2:
-                        alpha 1.0
-                    wal1986 "{size=+10}{b}I (>_<)> installed \\(^0^) the <--(OAO) virus (@_@) on ^(1-1)^ every \\(+A+)/ Wal <(>_<)> !{/b}{/size}"
-                    wal1986 "{size=+10}{b}YOU -->(oOo) DO <(o-o) NOT (-=-)X SPEAK ( oDo) EMOTICON (^.^). YOU -->(oOo) ARE (~w~) AN (owo)1!! IMPOSTER ?!(@-@) !!!{/b}{/size}"
-                    wal1986 "{size=+10}{b}OBLITERATE (`O`)// IMPOSTER ?!(@-@) !!!{/b}{/size}"
+                    if not tne_sneak_w:
+                        player "I'm Wal No.283."
+                        show firewal
+                        wal1986 "I (>_<)> see (O-O) !"
+                        wal1986 "..."
+                        show firewal fury
+                        wal1986 fury "{size=+10}{b}NO YOU ARE NOT.{/b}{/size}"
+                        show shock onlayer master2:
+                            alpha 1.0
+                        wal1986 "{size=+10}{b}I (>_<)> installed \\(^0^) the <--(OAO) virus (@_@) on ^(1-1)^ every \\(+A+)/ Wal <(>_<)> !{/b}{/size}"
+                        wal1986 "{size=+10}{b}YOU -->(oOo) DO <(o-o) NOT (-=-)X SPEAK ( oDo) EMOTICON (^.^). YOU -->(oOo) ARE (~w~) AN (owo)1!! IMPOSTER ?!(@-@) !!!{/b}{/size}"
+                        wal1986 "{size=+10}{b}OBLITERATE (`O`)// IMPOSTER ?!(@-@) !!!{/b}{/size}"
+                        $ tne_sneak_w = True
+                    else:
+                        n "Do you want to get blasted for real??"
+                        jump tne_convince_wal_menu
                 "(>_<)>":
                     player "(>_<)>"
-                    show firewal:
-                        zoom 1.0
-                        yalign 1.0
+                    show firewal
                     wal1986 "I (>_<)> see (O-O) !"
                     wal1986 "How (?_?) may ^_^ I (>_<)> serve (^w^ )> you ( ^o^)-->(oOo) ?"
                     jump tne_con_success
@@ -733,10 +718,7 @@ label day_event_trial_and_error:
                 alpha 0.0
             n "..."
             n "Why is it so quiet?"
-            show firewal:
-                    zoom 1.0
-                    yalign 1.0
-                    xalign 0.5
+            show firewal
             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
             n "The emoticon virus seems to have lost him his object permanence."
             n "Perhaps you can re-enter and retry."
@@ -746,15 +728,11 @@ label day_event_trial_and_error:
             player "I need the knife from [player_name]'s trial."
             wal1986 "I (>_<)> see (O-O) !"
             wal1986 "..."
-            show firewal unique:
-                zoom 1.4
-                yalign -0.7
-            wal1986 unique "{size=+10}{b}WHERE IS YOUR EMOTICON.{/b}{/size}"
+            show firewal fury
+            wal1986 "{size=+10}{b}WHERE IS YOUR EMOTICON.{/b}{/size}"
             n "Shit."
             player "...(O-O)>"
-            show firewal:
-                zoom 1.0
-                yalign 1.0
+            show firewal
             wal1986 "{size=+10}{b}Hm.{/b}{/size}"
             wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."    
             show firewal talk at disappear

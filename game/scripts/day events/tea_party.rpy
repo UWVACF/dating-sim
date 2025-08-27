@@ -109,7 +109,6 @@ label day_event_tea_party:
             # fading to black
             n "The light is fading in front of your eyes. Do they have coffee in heaven? You hope so."
             player "Espresso, here I come..."
-            show alex at (x_align=0.2)
             alex "I'm too young to die!"
             show deceased at (x_align=0.8)
             deceased "Aren't you, like... half a century old, Mr. Founder?"
