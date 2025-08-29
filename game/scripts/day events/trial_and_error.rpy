@@ -17,6 +17,9 @@ label day_event_trial_and_error:
     image front defendant overlay = "images/cgs/court_main_overlay3.png"
     image side overlay = "images/cgs/court_side_overlay.png"
     image shock = "images/cgs/shock effect.png"
+    image trial start = "images/cgs/trial_start.png"
+    image emote cool = "images/cgs/cool_emote.png"
+    image emote angry = "images/cgs/angry_emote.png"
 
     # to remove when not testing
     #$ tne_chan_backup = renpy.input("Ture or False for Chan on your side (did not lie in I didn't do it)")
@@ -57,9 +60,18 @@ label day_event_trial_and_error:
     ethy "AA."
     chan "Ethy will help me determine if the prosecutor or the defendant are lying."
     uriel "The court session will now start."
-    # insert trial start cg or something
+    $ shake_screen(layers="all", duration=0.3, strength=3)
+    pause 0.1
+    $ shake_screen(layers="all", duration=0.6, strength=7)
+    show trial start onlayer top:
+        yalign 0.5
+        xalign 0.5
+        zoom 1.7
+    n ""
+    hide trial start onlayer top
     show chan neutral
     uriel sad "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
+    jump temp
     uriel upset "After {i}thorough{/i} investigation, the security department has determined that the intern, [player_name] is the most likely suspect to this crime."
     uriel "Evidence suggests that [player_name] met with Dr. Ralex to discuss a full time position offer, and resorted to murder when [player_sub] got rejected."
     uriel neutral "Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?"
@@ -625,13 +637,14 @@ label day_event_trial_and_error:
             with default_fade
             n "You make your way towards the security department."
             n "Dr. Venture seems to have kept his word. You haven't seen a single person or Walbot on your way here."
-
-            scene bg cubicle
+        label temp:
+            scene bg office side
             n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back against you."
             $ tne_sneak_v = False
             $ tne_sneak_w = False
         label tne_convince_wal:
             show firewal at appear
+            show emote cool onlayer top
             wal1986 "Hello (^O^)/ how (?_?) may ^_^ I (>_<)> help L(^w^ ) you ( ^o^)-->(oOo) !"
             if tne_sneak_v == False and tne_sneak_w == False:
                 player "...How are you saying that?"
