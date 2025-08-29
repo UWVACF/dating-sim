@@ -71,10 +71,10 @@ label day_event_trial_and_error:
     hide trial start onlayer top
     show chan neutral
     uriel sad "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
-    jump temp
     uriel upset "After {i}thorough{/i} investigation, the security department has determined that the intern, [player_name] is the most likely suspect to this crime."
     uriel "Evidence suggests that [player_name] met with Dr. Ralex to discuss a full time position offer, and resorted to murder when [player_sub] got rejected."
     uriel neutral "Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?"
+    jump guilty
     menu:
         uriel "Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?{fast}"
         "No":
@@ -359,7 +359,8 @@ label day_event_trial_and_error:
             uriel "Court dismissed."
             jump after_court_innocent
         else:
-            uriel neutral "[player_name], you are found..."
+            label guilty:
+                uriel neutral "[player_name], you are found..."
             uriel fury "Guilty!"
             uriel "For your crimes of murdering our great co-founder, I sentence you to-"
             venture_unknown "Wait! Wait!"
@@ -374,7 +375,7 @@ label day_event_trial_and_error:
             show venture onlayer master2:
                 xzoom -1.0
             chan pensive "Hmm. Now that you speak of it, I do vaguely remember such an anomaly in containment."
-            chan neutral "But, I recall that individuals with high ONERIO such as Founder Alex and I should be immune to its effects. So it cannot be that anomaly, can it now?"
+            chan neutral "But, I recall that individuals with high ONEIRO such as Founder Alex and I should be immune to its effects. So it cannot be that anomaly, can it now?"
             show uriel neutral
             venture "About that...I was working with the anomaly for an alchemical experiment."
             chan pensive "...What was your experiment about, Dr. Venture?"
@@ -426,7 +427,7 @@ label day_event_trial_and_error:
             venture "...Haha."
             n "You stare Dr. Venture right in the eye. If looks could kill, you would've committed your first murder right here."
             venture "...I forgot it in the fridge while I was getting a snack."
-            $ update_character_points({"alex": -1, "aikha": -1, "ryz": -1, "helco": -1, "uriel": -1, "firewal": -1, "chan": -1, "hamp": -1, "deceased": -1, "syg": -1})
+            $ update_character_points({"alex": -1, "aikha": -1, "ryz": -1, "helco": -1, "uriel": -1, "firewal": -1, "chan": -1, "hampter": -1, "deceased": -1, "syg": -1})
             return
 
     label tne_yes:
@@ -600,7 +601,7 @@ label day_event_trial_and_error:
             n "You're immediately warped to an unknown space."
 
             show venture at appear
-            n "Dr. Venture reappears in front of you a few moments later."
+            n "Dr. Venture appears in front of you a few moments later."
             venture "Damn, you really got yourself into some big trouble, huh?"
             venture "So I take it that you touched the knife?"
             player "Knife?"
@@ -626,7 +627,7 @@ label day_event_trial_and_error:
             else:
                 venture "...It's far, and my body is frail."
                 n "He bends down slowly and slumps down on his chair like an old man. His bandages ruffle in agreement."
-                n "A pretty convincing act, if it weren't for the fact that you saw him dodged your shot nimbly before throwing a flask at your face with full force."
+                n "A pretty convincing act, if it weren't for the fact that you saw him dodge your shot nimbly before throwing a flask at your face with full force."
             venture "So it has to be you, [player_name]." #smile
 
             show bg room hall
@@ -639,25 +640,39 @@ label day_event_trial_and_error:
             n "Dr. Venture seems to have kept his word. You haven't seen a single person or Walbot on your way here."
         label temp:
             scene bg office side
-            n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back against you."
+            n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back to you."
             $ tne_sneak_v = False
             $ tne_sneak_w = False
         label tne_convince_wal:
+            show bg office side
             show firewal at appear
-            show emote cool onlayer top
+            show emote cool onlayer master2:
+                zoom 0.45
+                xalign 0.4
+                yalign 0.75
             wal1986 "Hello (^O^)/ how (?_?) may ^_^ I (>_<)> help L(^w^ ) you ( ^o^)-->(oOo) !"
+            show emote cool onlayer master2:
+                yalign 0.85
             if tne_sneak_v == False and tne_sneak_w == False:
                 player "...How are you saying that?"
+                show emote cool onlayer master2:
+                    yalign 0.75
                 wal1986 "I (>_<)> installed \\(^0^) an (owo)1!! emoticon (^.^) virus (@_@) ! Everything \\(+w+)/ I (>_<)> say ( oDo) and (IvI)/\\(IvI) see (O-O) is (~w~) emoticon (^.^) !"
                 wal1986 "I (>_<)> have (UAU) no (-=-)X idea (*o*)! who (p_-) you ( ^o^)-->(oOo) are (~w~) !"
             show shock onlayer master2
             $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
             show firewal fury
+            show emote angry onlayer master2:
+                zoom 0.45
+                xalign 0.46
+                yalign 0.85
             wal1986 fury "{size=+10}{b}WHO ARE YOU. {/b}{/size}"
             wal1986 fury "{size=+10}{b}...{/b}{/size}"
             show shock onlayer master2:
                 alpha 0.0
             wal1986 fury "{size=+10}{b}<(`O_O`)>{/b}{/size}"
+            show emote angry onlayer master2:
+                yalign 0.9
             jump tne_convince_wal_menu
 
         label tne_convince_wal_menu:
@@ -668,35 +683,69 @@ label day_event_trial_and_error:
                         player "I'm Dr. Venture."
                         if "lamp" in seen_events:
                             show firewal
+                            show emote cool onlayer master2:
+                                zoom 0.45
+                                xalign 0.4
+                                yalign 0.75
                             wal1986 "I (>_<)> see (O-O) !"
+                            $ shake_screen(layers="master2", strength=0)
                             wal1986 "..."
                             show shock onlayer master2:
                                 alpha 1.0
+                            $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
                             show firewal fury
+                            show emote angry onlayer master2:
+                                zoom 0.45
+                                xalign 0.46
+                                yalign 0.85
                             wal1986 fury "{size=+10}{b}WARNING! WARNING! DR. VENTURE IS WITHIN DANGEROUS PROXIMITY!{/b}{/size}"
+                            show emote angry onlayer master2:
+                                yalign 0.9
                             n "The flames turn blue as he aims his fire cannon at you."
+                            show emote angry onlayer master2:
+                                yalign 0.85
                             wal1986 "{size=+10}{b}LEAVE RIGHT THIS INSTANT OR BE OBLITERATED!!!!!!{/b}{/size}"
                             n "You quickly dash out of the room."
                             show shock onlayer master2:
                                 alpha 0.0
+                            $ shake_screen(layers="master2", strength=0)
                             show firewal
+                            show emote cool onlayer master2:
+                                zoom 0.45
+                                xalign 0.4
+                                yalign 0.75
                             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
                             n "The emoticon virus seems to have lost him his object permanence."
                             n "Perhaps you can re-enter and retry."
+                            hide emote cool onlayer master2
                             jump tne_convince_wal
                         else:
                             show firewal
+                            $ shake_screen(layers="master2", strength=0)
+                            show emote cool onlayer master2:
+                                zoom 0.45
+                                xalign 0.4
+                                yalign 0.75
                             wal1986 "I (>_<)> see (O-O) !"
                             wal1986 "..."
                             wal1986 "Can ^_^ you -->(oOo) show (owo)/ your -->(oOo) department head (O/\O) ID (-o-)*+ ?"
+                            show emote cool onlayer master2:
+                                yalign 0.85
                             n "Oh shit."
+                            show emote cool onlayer master2:
+                                yalign 0.75
                             wal1986 "..."
                             show shock onlayer master2:
                                 alpha 1.0
+                            $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
                             show firewal fury
+                            show emote angry onlayer master2:
+                                zoom 0.45
+                                xalign 0.46
+                                yalign 0.85
                             wal1986 fury "{size=+10}{b}WARNING! WARNING! DETECTING IMPOSTER!{/b}{/size}"
                             n "The flames turn blue as he aims his fire cannon at you."
-                            wal1986 "{size=+10}{b}ELIMINATING THREAT!!!!{/b}{/size}"
+                            wal1986 unique "{size=+10}{b}ELIMINATING THREAT!!!!{/b}{/size}"
                         $ tne_sneak_v = True
                     else:
                         n "Do you want to get burned for real??"
@@ -705,9 +754,19 @@ label day_event_trial_and_error:
                     if not tne_sneak_w:
                         player "I'm Wal No.283."
                         show firewal
+                        $ shake_screen(layers='master2', strength=0)
+                        show emote cool onlayer master2:
+                            zoom 0.45
+                            xalign 0.4
+                            yalign 0.75
                         wal1986 "I (>_<)> see (O-O) !"
                         wal1986 "..."
+                        $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
                         show firewal fury
+                        show emote angry onlayer master2:
+                            zoom 0.45
+                            xalign 0.46
+                            yalign 0.85
                         wal1986 fury "{size=+10}{b}NO YOU ARE NOT.{/b}{/size}"
                         show shock onlayer master2:
                             alpha 1.0
@@ -721,44 +780,85 @@ label day_event_trial_and_error:
                 "(>_<)>":
                     player "(>_<)>"
                     show firewal
+                    show emote cool onlayer master2:
+                        zoom 0.45
+                        xalign 0.4
+                        yalign 0.75
+                    $ shake_screen(layers='master2', strength=0)
                     wal1986 "I (>_<)> see (O-O) !"
                     wal1986 "How (?_?) may ^_^ I (>_<)> serve (^w^ )> you ( ^o^)-->(oOo) ?"
+                    show emote cool onlayer master2:
+                        yalign 0.85
                     jump tne_con_success
+            show emote angry onlayer master2:
+                yalign 0.9
             n "Uh oh, you messed up."
+            hide emote angry onlayer master2
             hide firewal
+            show bg office close
             n "You duck behind the corner as the Walbot releases a fireball."
             show shock onlayer master2:
                 alpha 0.0
+            $ shake_screen(layers='master2', strength=0)
             n "..."
             n "Why is it so quiet?"
             show firewal
+            show emote cool onlayer master2:
+                zoom 0.45
+                xalign 0.4
+                yalign 0.85
             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
+            show emote cool onlayer master2:
+                yalign 0.85
             n "The emoticon virus seems to have lost him his object permanence."
             n "Perhaps you can re-enter and retry."
+            hide emote cool onlayer master2
             jump tne_convince_wal
 
         label tne_con_success:
             player "I need the knife from [player_name]'s trial."
+            show emote cool onlayer master2:
+                zoom 0.45
+                xalign 0.4
+                yalign 0.75
             wal1986 "I (>_<)> see (O-O) !"
             wal1986 "..."
             show firewal fury
+            show emote angry onlayer master2:
+                zoom 0.45
+                xalign 0.46
+                yalign 0.85
             wal1986 "{size=+10}{b}WHERE IS YOUR EMOTICON.{/b}{/size}"
+            show emote angry onlayer master2:
+                yalign 0.9
             n "Shit."
             player "...(O-O)>"
             show firewal
+            show emote cool onlayer master2:
+                zoom 0.45
+                xalign 0.4
+                yalign 0.75
             wal1986 "{size=+10}{b}Hm.{/b}{/size}"
-            wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."    
+            wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."
+            hide emote angry onlayer master2  
             show firewal talk at disappear
-            n "The Walbot goes up and goes up to the nearest wall."
+            n "The Walbot goes up to the nearest wall."
             $ shake_screen()
             n "He punches the wall with a fully-charged fire fist. The wall crumbles under the impact, revealing four more walls behind it, all of which have been destroyed as well."
             n "The Walbot digs through the rubble and retrieves an object."           
             show firewal at appear
+            show emote cool onlayer master2:
+                zoom 0.45
+                xalign 0.4
+                yalign 0.75
             wal1986 "Mission (>_<)> completed (>_<)> !"
+            show emote cool onlayer master2:
+                yalign 0.85
             n "You let out a sigh of relief. The Walbot hands you the knife that started all of this."
             n "You quickly leave the security department."
 
             scene bg room hall
+            hide emote cool onlayer master2
             show venture 
             n "To your surprise, Dr. Venture is already here, waiting for you."
             venture "Great! You got the knife!"
@@ -785,8 +885,11 @@ label day_event_trial_and_error:
             n "Dr. Deceased looks back and forth between you and your corpse."
             deceased "So is [player_name] deceased?"
             venture "[player_name] is, but {i}[player_name]{/i} isn't."
+            venture "So no, {b}[player_name]{/b} is {b}[player_name]{/b}, you are Deceased."
+            venture "Now the {b}[player_name]{/b} who {b}[player_name]ed{/b} Dr. Ralex is deceased, {b}[player_name]ed{/b} by {b}[player_name].{/b}"
             deceased "..."
             deceased happy "Okay then! As long as [player_name] doesn't take my identity."
+            n "You don't know how you feel about your name being used as a euphamism for murder, but if it gets Dr. Deceased off you back, you'll happily take it."
             show deceased happy at disappear
             n "Dr. Deceased happily skips away. "
             venture "See? Problem solved!"
@@ -795,7 +898,7 @@ label day_event_trial_and_error:
             show venture at disappear
             n "You watch as Dr. Venture drags your dead doppelganger into the security department." 
             n "You're never going to forget your own knife, ever again."
-            $ update_character_points({"venture":1})
+            $ update_character_points({"venture":2})
             return
 
     label after_court_innocent:
@@ -822,6 +925,6 @@ label day_event_trial_and_error:
         venture "It's quite dangerous though; it's capable of affecting the mind and creating illusions of a murder of a fake person."
         player "..."
         player "{nw}ARE YOU FUCKING KIDDING ME-"
-        $ update_character_points({"alex": 1, "aikha": 1, "ryz": 1, "helco": 1, "uriel": 1, "firewal": 1, "chan": 1, "hamp": 1, "deceased": 1, "syg": 1})
+        $ update_character_points({"alex": 1, "aikha": 1, "ryz": 1, "helco": 1, "uriel": 1, "firewal": 1, "chan": 1, "hampter": 1, "deceased": 1, "syg": 1})
         return
 
