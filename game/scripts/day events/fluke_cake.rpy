@@ -1,3 +1,71 @@
+init python:
+    fc_topdown_dialogue = "Who do you want to sit with?"
+
+screen fluke_cake_lounge_topdown:
+    fixed:
+        image "images/cgs/lounge_topdown.png":
+            zoom 0.8
+            xpos 112
+            ypos -25
+        image "images/cgs/lounge_topdown_ah.png":
+            zoom 0.8
+            xpos 112
+            ypos -25
+        image "images/cgs/lounge_topdown_au.png":
+            zoom 0.8
+            xpos 112
+            ypos -25
+        image "images/cgs/lounge_topdown_cm.png":
+            zoom 0.8
+            xpos 112
+            ypos -25
+        image "images/cgs/lounge_topdown_se.png":
+            zoom 0.8
+            xpos 112
+            ypos -25
+        
+        button: # alex hamp
+            background None
+            xpos 500
+            ypos 100
+            xsize 400
+            ysize 170
+            action Jump("fluke_HA")
+            hovered SetVariable("fc_topdown_dialogue", "Sit with Founder Alex and Hampter.")
+            unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
+        button: # caffi meme
+            background None
+            xpos 1100
+            ypos 55
+            xsize 400
+            ysize 170
+            action Jump("fluke_CM")
+            hovered SetVariable("fc_topdown_dialogue", "Sit with Caffi and Meme.")
+            unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
+        button: #syg egg
+            background None
+            xpos 550
+            ypos 500
+            xsize 400
+            ysize 170
+            action Jump("fluke_ES")
+            hovered SetVariable("fc_topdown_dialogue", "Sit with Dr. Syg and The Egg.")
+            unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
+        button: # ai uriel
+            background None
+            xpos 1130
+            ypos 500
+            xsize 400
+            ysize 170
+            action Jump("fluke_AU")
+            hovered SetVariable("fc_topdown_dialogue", "Sit with Dr. Aikha and Uriel.")
+            unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
+        
+    window:
+        id "what"
+        text fc_topdown_dialogue style "say_dialogue"
+        background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+
 label day_event_fluke_cake:
     scene bg hallway
     n "You're on your way back after a conference when you hear loud cheering from the direction of your office."
@@ -106,17 +174,9 @@ label day_event_fluke_cake:
     n "...Just another day at the foundation."
     n "You look around at everyone eating their slice of cake. You didn't even get one."
     n "You deciede to join a group. It would look really sad if you just stand around alone with no cake."
+
+    call screen fluke_cake_lounge_topdown
     # monster con hangout style chibi head cg for pairs of people
-    menu:
-        n "Who are you joining?"
-        "Hampter and Dr. Alex":
-            jump fluke_HA
-        "Caffi and Meem":
-            jump fluke_CM
-        "Dr. Aikha and Uriel":
-            jump fluke_AU
-        "The Egg and Dr. Syg":
-            jump fluke_ES
 
     label fluke_HA:
         n "You are still worry for the Founder, so you decieded to stay with Hampter and Dr. Alex."

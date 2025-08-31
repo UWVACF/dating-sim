@@ -19,20 +19,13 @@ init python:
         
         return "o" + player_name[1:] if player_name[0] != "o" else "u" + player_name[1:]
 
+
+
+
+
 label day_event_test:
     scene bg lounge
     with default_fade
-    show chan unique at left:
-        ysize 1080
-        xsize 720
-    show chan neutral at right as chan2
-    show aikha:
-        xalign 0.3
-        yalign 1.0
-    show ryz:
-        xalign 0.7
-        yalign 1.0
-    show helco at center:
-        yalign 1.0
-    n "test"
+    show screen lounge_topdown
+    n "Who do you want to sit with?"
     chan "Hello, intern."
