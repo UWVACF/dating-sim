@@ -478,7 +478,8 @@ label day_event_fluke_cake:
         meme "But! You also need to make sure you find three other people willing to join the scheme- err, business.\nBottom text"
         n "Caffi turns to you slowly, squinting and slightly hunched over."
         caffi "{cps=*0.8}Youngster. I don't understand what they're saying. Could you be a dear and help me out?{/cps}"
-        meme "TFW "
+        meme "Yo [player_name]! Help me "
+        meme "Bruh, am I not clear enough? Chat, is this real?"
         menu:
             n "What will you do?"
             "Help Meme sell their D.R.U.G.S.":
@@ -526,7 +527,16 @@ label day_event_fluke_cake:
 # ```
 
     label fluke_AU:
-        n "hehe"
+        n "You decide to hang out with Dr. Aikha and Uriel."
+        show aikha at appear(x_align = 0.2)
+        show uriel at appear(x_align = 0.8)
+        aikha "So a company of a friend who"
+        uriel "I know some people who are good at...covering things up."
+        uriel 
+        aikha "So I have a friend who got a friend, who has another friend, who has an uncle who is running an operation, who could use some legal advices."
+        uriel "What kind of advice?"
+        aikha ""
+        n ""
         #
 
         #
