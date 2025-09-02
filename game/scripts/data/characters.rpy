@@ -368,8 +368,9 @@ define aikha_unknown = Character("???", kind=aikha)
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes", what_color="#ff2d00", what_bold = True)
 define plutoes_unknown = Character("???", kind=plutoes)
 
-define alex = Character("Dr. Alex", kind=base_char, color="#000000", cb_name="alex", image="alex")
+define alex = Character("Founder Alex", kind=base_char, color="#000000", cb_name="alex", image="alex")
 define alex_unknown = Character("???", kind=alex)
+define alex_quotes = Character("\"Founder Alex\"", kind=alex)
 
 define deceased = Character("Dr. Deceased", kind=base_char, color="#894bb2", cb_name="deceased", image="deceased")
 define deceased_unknown = Character("???", kind=deceased)
@@ -404,6 +405,7 @@ define moon_unknown = Character("???", kind=moon)
 
 define hampter = Character("Hampter", kind=base_char, color="#6b78ac", cb_name="hampter", image="hampter")
 define hampter_unknown = Character("???", kind=hampter)
+define hampter_quotes = Character("\"Hampter\"", kind=hampter)
 
 define meme = Character("Meme", kind=base_char, color="#e4f8fe", cb_name="meme", image="meme") # change colour
 define meme_unknown = Character("???", kind=meme)
