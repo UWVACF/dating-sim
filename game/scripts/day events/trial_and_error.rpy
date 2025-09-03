@@ -56,7 +56,7 @@ label day_event_trial_and_error:
     show chan onlayer master at appear(x_align = 1.0)
     n "One singular person as the jury. What an official trial."
     chan "Thank you, Uriel. I swear that I will remain fair."
-    show chan unique
+    show chan pensive
     ethy "AA."
     chan "Ethy will help me determine if the prosecutor or the defendant are lying."
     uriel "The court session will now start."
@@ -74,7 +74,6 @@ label day_event_trial_and_error:
     uriel upset "After {i}thorough{/i} investigation, the security department has determined that the intern, [player_name] is the most likely suspect to this crime."
     uriel "Evidence suggests that [player_name] met with Dr. Ralex to discuss a full time position offer, and resorted to murder when [player_sub] got rejected."
     uriel neutral "Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?"
-    jump guilty
     menu:
         uriel "Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?{fast}"
         "No":
@@ -290,7 +289,7 @@ label day_event_trial_and_error:
                 uriel neutral "You said you wanted to make a statement, right?"
                 show uriel neutral
                 $ trial_credibility_you += 0.5
-                chan unique "Yes. I can attest that [player_name] was not lying when they said [player_sub_be] not the murderer at the crime scene. Ethy can back me up."
+                chan pensive "Yes. I can attest that [player_name] was not lying when they said [player_sub_be] not the murderer at the crime scene. Ethy can back me up."
                 n "Ethy gives you two thumbs up."
                 if trial_credibility_you <= 0:
                     chan "I'm cannot say the same about [player_pos_adj] statements today, but I swear that me and Ethy are reporting truthfully."
@@ -359,8 +358,7 @@ label day_event_trial_and_error:
             uriel "Court dismissed."
             jump after_court_innocent
         else:
-            label guilty:
-                uriel neutral "[player_name], you are found..."
+            uriel neutral "[player_name], you are found..."
             uriel fury "Guilty!"
             uriel "For your crimes of murdering our great co-founder, I sentence you to-"
             venture_unknown "Wait! Wait!"
@@ -483,11 +481,11 @@ label day_event_trial_and_error:
         chan "Uh, Uriel, we should probably conclude the murder charge first."
         if tne_chan_backup == "True" or True:
             chan "So [player_name], I recall you had previously denied the murder at the crime scene. Is there a reason why you're lying now?"
-            chan unique "I totally understand if it is out of spite, but please rest assured that we are fair and just here at the court."
+            chan pensive "I totally understand if it is out of spite, but please rest assured that we are fair and just here at the court."
         elif tne_chan_backup == False or "False":
             chan unique "[player_name], you are legally obligated to answer truthfully in court."
             chan "It gains you no benefit to not do so."
-        chan "So let me ask you again, did you kill Dr. Ralex?"
+        chan pensive "So let me ask you again, did you kill Dr. Ralex?"
         menu:
             chan "So let me ask you again, did you kill Dr. Ralex?{fast}"
             "No":
@@ -515,7 +513,7 @@ label day_event_trial_and_error:
             deceased "Hey, is this neccesary? [player_name] already admitted guilt. We should just chuck [player_obj] in jail and get it over with."
             show uriel upset:
                 xzoom -1
-            chan unique "But [player_sub_be] lying, which means [player_sub_be] not responsible for the murder."
+            chan pensive "But [player_sub_be] lying, which means [player_sub_be] not responsible for the murder."
             show uriel upset:
                 xzoom 1
             deceased "What reason would [player_sub] have to lie???"
@@ -638,7 +636,6 @@ label day_event_trial_and_error:
             with default_fade
             n "You make your way towards the security department."
             n "Dr. Venture seems to have kept his word. You haven't seen a single person or Walbot on your way here."
-        label temp:
             scene bg office side
             n "You open the door to the evidence storage section quietly. You see only a single Walbot at the work desk with his back to you."
             $ tne_sneak_v = False
@@ -649,14 +646,16 @@ label day_event_trial_and_error:
             show emote cool onlayer master2:
                 zoom 0.45
                 xalign 0.4
-                yalign 0.75
+                yalign 0.95
             wal1986 "Hello (^O^)/ how (?_?) may ^_^ I (>_<)> help L(^w^ ) you ( ^o^)-->(oOo) !"
             show emote cool onlayer master2:
-                yalign 0.85
+                xalign 0.42
+                yalign 1.05
             if tne_sneak_v == False and tne_sneak_w == False:
                 player "...How are you saying that?"
                 show emote cool onlayer master2:
-                    yalign 0.75
+                    xalign 0.4
+                    yalign 0.95
                 wal1986 "I (>_<)> installed \\(^0^) an (owo)1!! emoticon (^.^) virus (@_@) ! Everything \\(+w+)/ I (>_<)> say ( oDo) and (IvI)/\\(IvI) see (O-O) is (~w~) emoticon (^.^) !"
                 wal1986 "I (>_<)> have (UAU) no (-=-)X idea (*o*)! who (p_-) you ( ^o^)-->(oOo) are (~w~) !"
             show shock onlayer master2
@@ -665,14 +664,14 @@ label day_event_trial_and_error:
             show emote angry onlayer master2:
                 zoom 0.45
                 xalign 0.46
-                yalign 0.85
+                yalign 0.95
             wal1986 fury "{size=+10}{b}WHO ARE YOU. {/b}{/size}"
             wal1986 fury "{size=+10}{b}...{/b}{/size}"
             show shock onlayer master2:
                 alpha 0.0
             wal1986 fury "{size=+10}{b}<(`O_O`)>{/b}{/size}"
             show emote angry onlayer master2:
-                yalign 0.9
+                yalign 1.05
             jump tne_convince_wal_menu
 
         label tne_convince_wal_menu:
@@ -686,7 +685,7 @@ label day_event_trial_and_error:
                             show emote cool onlayer master2:
                                 zoom 0.45
                                 xalign 0.4
-                                yalign 0.75
+                                yalign 0.95
                             wal1986 "I (>_<)> see (O-O) !"
                             $ shake_screen(layers="master2", strength=0)
                             wal1986 "..."
@@ -697,14 +696,16 @@ label day_event_trial_and_error:
                             show emote angry onlayer master2:
                                 zoom 0.45
                                 xalign 0.46
-                                yalign 0.85
+                                yalign 0.95
                             wal1986 fury "{size=+10}{b}WARNING! WARNING! DR. VENTURE IS WITHIN DANGEROUS PROXIMITY!{/b}{/size}"
                             show emote angry onlayer master2:
-                                yalign 0.9
+                                yalign 1.05
                             n "The flames turn blue as he aims his fire cannon at you."
                             show emote angry onlayer master2:
-                                yalign 0.85
+                                yalign 0.95
                             wal1986 "{size=+10}{b}LEAVE RIGHT THIS INSTANT OR BE OBLITERATED!!!!!!{/b}{/size}"
+                            show emote angry onlayer master2:
+                                yalign 1.05
                             n "You quickly dash out of the room."
                             show shock onlayer master2:
                                 alpha 0.0
@@ -713,8 +714,11 @@ label day_event_trial_and_error:
                             show emote cool onlayer master2:
                                 zoom 0.45
                                 xalign 0.4
-                                yalign 0.75
+                                yalign 0.95
                             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
+                            show emote cool onlayer master2:
+                                xalign 0.42
+                                yalign 1.05
                             n "The emoticon virus seems to have lost him his object permanence."
                             n "Perhaps you can re-enter and retry."
                             hide emote cool onlayer master2
@@ -725,15 +729,17 @@ label day_event_trial_and_error:
                             show emote cool onlayer master2:
                                 zoom 0.45
                                 xalign 0.4
-                                yalign 0.75
+                                yalign 0.95
                             wal1986 "I (>_<)> see (O-O) !"
                             wal1986 "..."
                             wal1986 "Can ^_^ you -->(oOo) show (owo)/ your -->(oOo) department head (O/\O) ID (-o-)*+ ?"
                             show emote cool onlayer master2:
-                                yalign 0.85
+                                xalign 0.42
+                                yalign 1.05
                             n "Oh shit."
                             show emote cool onlayer master2:
-                                yalign 0.75
+                                xalign 0.4
+                                yalign 0.95
                             wal1986 "..."
                             show shock onlayer master2:
                                 alpha 1.0
@@ -742,9 +748,13 @@ label day_event_trial_and_error:
                             show emote angry onlayer master2:
                                 zoom 0.45
                                 xalign 0.46
-                                yalign 0.85
+                                yalign 0.95
                             wal1986 fury "{size=+10}{b}WARNING! WARNING! DETECTING IMPOSTER!{/b}{/size}"
+                            show emote angry onlayer master2:
+                                yalign 1.05
                             n "The flames turn blue as he aims his fire cannon at you."
+                            show emote angry onlayer master2:
+                                yalign 0.95
                             wal1986 unique "{size=+10}{b}ELIMINATING THREAT!!!!{/b}{/size}"
                         $ tne_sneak_v = True
                     else:
@@ -758,7 +768,7 @@ label day_event_trial_and_error:
                         show emote cool onlayer master2:
                             zoom 0.45
                             xalign 0.4
-                            yalign 0.75
+                            yalign 0.95
                         wal1986 "I (>_<)> see (O-O) !"
                         wal1986 "..."
                         $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
@@ -766,7 +776,7 @@ label day_event_trial_and_error:
                         show emote angry onlayer master2:
                             zoom 0.45
                             xalign 0.46
-                            yalign 0.85
+                            yalign 0.95
                         wal1986 fury "{size=+10}{b}NO YOU ARE NOT.{/b}{/size}"
                         show shock onlayer master2:
                             alpha 1.0
@@ -783,15 +793,16 @@ label day_event_trial_and_error:
                     show emote cool onlayer master2:
                         zoom 0.45
                         xalign 0.4
-                        yalign 0.75
+                        yalign 0.95
                     $ shake_screen(layers='master2', strength=0)
                     wal1986 "I (>_<)> see (O-O) !"
                     wal1986 "How (?_?) may ^_^ I (>_<)> serve (^w^ )> you ( ^o^)-->(oOo) ?"
                     show emote cool onlayer master2:
-                        yalign 0.85
+                        xalign 0.42
+                        yalign 1.05
                     jump tne_con_success
             show emote angry onlayer master2:
-                yalign 0.9
+                yalign 1.05
             n "Uh oh, you messed up."
             hide emote angry onlayer master2
             hide firewal
@@ -806,10 +817,11 @@ label day_event_trial_and_error:
             show emote cool onlayer master2:
                 zoom 0.45
                 xalign 0.4
-                yalign 0.85
+                yalign 0.95
             wal1986 "I (>_<)> cannot (-=-)X see (O-O) IMPOSTER ?!(@-@) ?"
             show emote cool onlayer master2:
-                yalign 0.85
+                xalign 0.42
+                yalign 1.05
             n "The emoticon virus seems to have lost him his object permanence."
             n "Perhaps you can re-enter and retry."
             hide emote cool onlayer master2
@@ -820,24 +832,24 @@ label day_event_trial_and_error:
             show emote cool onlayer master2:
                 zoom 0.45
                 xalign 0.4
-                yalign 0.75
+                yalign 0.95
             wal1986 "I (>_<)> see (O-O) !"
             wal1986 "..."
             show firewal fury
             show emote angry onlayer master2:
                 zoom 0.45
                 xalign 0.46
-                yalign 0.85
+                yalign 0.95
             wal1986 "{size=+10}{b}WHERE IS YOUR EMOTICON.{/b}{/size}"
             show emote angry onlayer master2:
-                yalign 0.9
+                yalign 1.05
             n "Shit."
             player "...(O-O)>"
             show firewal
             show emote cool onlayer master2:
                 zoom 0.45
                 xalign 0.4
-                yalign 0.75
+                yalign 0.95
             wal1986 "{size=+10}{b}Hm.{/b}{/size}"
             wal1986 "I (>_<)> will v( owo)/ get (u-u)/ it (i-i)."
             hide emote angry onlayer master2  
@@ -850,10 +862,11 @@ label day_event_trial_and_error:
             show emote cool onlayer master2:
                 zoom 0.45
                 xalign 0.4
-                yalign 0.75
+                yalign 0.95
             wal1986 "Mission (>_<)> completed (>_<)> !"
             show emote cool onlayer master2:
-                yalign 0.85
+                xalign 0.42
+                yalign 1.05
             n "You let out a sigh of relief. The Walbot hands you the knife that started all of this."
             n "You quickly leave the security department."
 
