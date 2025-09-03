@@ -37,6 +37,9 @@ image aikha panic = At("images/personnel/aikha/aikha panic.png", sprite_highligh
 image aikha fury = At("images/personnel/aikha/aikha fury.png", sprite_highlight("aikha"), aikha_transform)
 image aikha pensive = At("images/personnel/aikha/aikha pensive.png", sprite_highlight("aikha"), aikha_transform)
 image aikha unique = At("images/personnel/aikha/aikha unique.png", sprite_highlight("aikha"), aikha_transform)
+image ace fury = At("images/personnel/aikha/ace fury.png", sprite_highlight("aikha"), aikha_transform)
+image ace upset = At("images/personnel/aikha/ace upset.png", sprite_highlight("aikha"), aikha_transform)
+image ace neutral = At("images/personnel/aikha/ace neutral.png", sprite_highlight("aikha"), aikha_transform)
 
 
 transform alex_transform:
@@ -325,7 +328,7 @@ image egg surprise = At("images/personnel/egg/egg surprise.png", sprite_highligh
 image egg panic = At("images/personnel/egg/egg panic.png", sprite_highlight("egg"), egg_transform)
 image egg fury = At("images/personnel/egg/egg fury.png", sprite_highlight("egg"), egg_transform)
 image egg pensive = At("images/personnel/egg/egg pensive.png", sprite_highlight("egg"), egg_transform)
-image egg unique = At("images/personnel/egg/egg unique.png", sprite_highlight("egg"), egg_transform)
+image egg unique = At("images/personnel/egg/egg png.png", sprite_highlight("egg"), egg_transform)
 
 
 transform hampter_transform:
