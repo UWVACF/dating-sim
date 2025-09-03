@@ -1,3 +1,4 @@
+image ramace = "images/cgs/ramace.png"
 init python:
     fc_topdown_dialogue = "Who do you want to sit with?"
 
@@ -98,10 +99,10 @@ label day_event_fluke_cake:
     n "You flash Josh a smile as you watch them make their way to the cake. You will now be remembered as a great person."
     # cake slice cg 
     n "Josh cuts the cake and the crowd gasps."
-    josh "Wow, you must have put in a ton of effort into making this! There're so many flavours!!"
+    josh "Wow, you must have put in a ton of effort into making this! What a variety flavours!!"
     josh "No wonder you said it's birthday cake flavour! It was a surprise all along!"
     n "You feel a bead of sweat slide down from your forehead. You're starting to have a bad feeling about this."
-    josh "[player_name], since you made it, you should be the one to cut this! Tell us what flavours are there!"
+    josh "[player_name], since you made it, you should be the one to cut this! Tell us what flavours there are!"
     n "You reluctantly shuffle over in front of the cake. The crowd forms an organized line behind you."
     $ cake_list = ["Blood Velvet", "Dirt (organic topsoil)", "Eyeball (filling)", "Turnip", "Egg", "Strawberry Tallcake", "Sponge (the washing kind) cake", "Cinco Leche (almond, soy, woolly mammoth, walnut, expired)", "Angel Dust (cocaine)", "Sheet cake (papersheets)", "Black Forest (with wood, sawdust and rice crispies)", "Ice Cube cake (now just water)", "Invisible And Incorporeal cake (air)", "Pineapple Right-side-up cake", "Pop cake (with jam filling and a popsticle stick)", "Chocolate Coke Cake (the other coke)", "Dehydrated cake (0% water)", "Bun cake (a bun that is cake shaped)", "Butter cake (a block of unsalted butter)", "Pound cake (british currency)", "Catepilliar cake (no catepilliars are harmed in the process of making this)", "Cheesecake (a wheel of brie, not for those latose intolerant)", "Coffee cake (just coffee grounds with whipped cream on top)", "Marble cake (hollow cake with round marble filling)", "Singlular confetti cake (with a singular sprinkle)"]
     $ cake_this_list = random.sample(cake_list, 5)
