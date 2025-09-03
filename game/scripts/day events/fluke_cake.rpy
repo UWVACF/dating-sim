@@ -530,13 +530,17 @@ label day_event_fluke_cake:
         n "You decide to hang out with Dr. Aikha and Uriel."
         show aikha at appear(x_align = 0.2)
         show uriel at appear(x_align = 0.8)
-        aikha "So a company of a friend who"
+        aikha "So a friend of mine's company needs to skirt some legislation."
+        uriel "Was it already passed or do they need lobbying help?"
         uriel "I know some people who are good at...covering things up."
-        uriel 
-        aikha "So I have a friend who got a friend, who has another friend, who has an uncle who is running an operation, who could use some legal advices."
-        uriel "What kind of advice?"
-        aikha ""
-        n ""
+        aikha "..."
+        uriel "..."
+        aikha "Got a business card?"
+        n "That probably wasn't enough information to implicate your involvement."
+        egg "I know a few people you can contact from my times at Harvard."
+        n "Its phone rings."
+        egg "Oh, that's them now."
+
         #
 
         #
