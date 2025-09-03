@@ -1,4 +1,3 @@
-image ramace = "images/cgs/ramace.png"
 init python:
     fc_topdown_dialogue = "Who do you want to sit with?"
 
@@ -56,6 +55,7 @@ screen fluke_cake_lounge_topdown:
 
 label day_event_fluke_cake:
     scene bg hallway
+    image ramace = "images/cgs/ramace.png"
     n "You're on your way back after a conference when you hear loud cheering from the direction of your office."
     $ shake_screen(duration=1.0, preset="rumble", persist=2)
     crowd "HAPPY BIRTHDAY!!!"
@@ -611,7 +611,7 @@ label day_event_fluke_cake:
             player "You know what, I should go check on the others. Make sure that my definitely safe homemade cake wasn't affected by an anomalous box or something."
             n "You dash out of the room before Dr. Ace smashes your sknull in."
             n "Surely those two will be fine."
-            $ update_character_points({"uriel": -1, "aikha": -1})
+            $ update_character_points({"uriel": -1})
             return
 
         label fc_truth:
