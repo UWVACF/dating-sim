@@ -366,6 +366,7 @@ define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="
 define helco_unknown = Character("???", kind=helco)
 
 define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="aikha", image="aikha")
+define ace = Character("Dr. Ace", kind=base_char, color="#8f76ff", cb_name="Dr. Ace", image="aikha")
 define aikha_unknown = Character("???", kind=aikha)
 
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes", what_color="#ff2d00", what_bold = True)
