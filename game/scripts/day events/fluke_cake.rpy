@@ -158,7 +158,7 @@ label day_event_fluke_cake:
     $ shake_screen(duration=0.1, repeat=5, interval=0.3)
     n "You're about to comment on it when Dr. Aikha punts it like a soccer ball before whipping their gun out and shooting it repeatedly."
     show aikha at appear
-    aikha "Don't mind me! I'll take care of it!"
+    aikha "One moment."
     show aikha at disappear
     $ shake_screen(duration=0.1, repeat=5, interval=0.3)
     n "...Just another day at the foundation."
@@ -171,7 +171,7 @@ label day_event_fluke_cake:
     label fluke_HA:
         n "You're still worried for the Founder, so you decided to stay with Hampter and Dr. Alex."
         alex "Help me..."
-        n "He's still splayed out on the floor, while Hampter is happily licking the crumbs of the cake off her lips."
+        n "He's still splayed out on the floor, while Hampter is happily licking the crumbs of the cake off her fur."
         hampter "Yum yum!"
         alex "Augh..."
         n "Suddenly, you hear a loud \"pop!\""
@@ -445,7 +445,7 @@ label day_event_fluke_cake:
         meme "It's simple, really! We're selling a brand new product: Demonic Rejuvenating Ultimate Glorious Stimulants!"
         meme "Just one gram of this is enough to power you through the entire day!"
         caffi pensive "Oh?"
-        meme neutral "Yup! 100% organically grown, with money back guarantee!"
+        meme neutral "Yup! 100\%\ organically grown, with money back guaranteed!"
         n "...Maybe you can find a new group of people to hang out with."
         show caffi pensive at disappear
         show meme happy at disappear
@@ -463,7 +463,7 @@ label day_event_fluke_cake:
         # show cg
         show syg happy at appear
         n "Dr. Syg."
-        n "He looks remarkably...bonita."
+        n "He looks remarkably... bonita."
         n "This feels terribly wrong."
         syg happy "HELLOOOOO [player_name!u]!!!"
         player "...Hi?"
@@ -474,7 +474,7 @@ label day_event_fluke_cake:
         n "Unfortunately, this leads you straight into Caffi and Meme."
         show meme happy at appear(x_align = 0.35)
         show caffi pensive at appear(x_align = 0.65)
-        meme "🚨⚠️TRADE OFFER⚠️🚨\nI RECEIVE: Your money!\nYOU RECEIEVE: Demonic Rejuvenating Ultimate Glorious Stimulants!"
+        meme "🚨⚠️TRADE OFFER⚠️🚨\nI RECEIVE: Your money!\nYOU RECEIVE: Demonic Rejuvenating Ultimate Glorious Stimulants!"
         caffi "{cps=*0.8}Speak up. These ears don't work like they used to.{/cps}"
         meme "But! You also need to make sure you find three other people willing to join the scheme- err, business.\nBottom text"
         n "Caffi turns to you slowly, squinting and slightly hunched over."
@@ -537,7 +537,7 @@ label day_event_fluke_cake:
         aikha "..."
         uriel "..."
         aikha "Got a business card?"
-        n "That probably wasn't enough information to implicate your involvement."
+        n "That probably wasn't enough information to implicate your involvement, yet."
         egg "I know a few people you can contact from my times at Harvard."
         n "Suddenly, you hear a loud cracking sound."
         n "The Egg's phone rings."
@@ -556,12 +556,17 @@ label day_event_fluke_cake:
         n "Their arms don't move."
         aikha "You might be having a stroke. Let's get you checked into the clinic. [player_name], you should help them over."
         uriel "Cause the out figure to helpful be would it, however. Regenerate would body my, stroke a having was I if."
-        n "Aikha rushes out ahead of you. Uriel starts walking backwards before sighing, turning around, and walking backwards towards the door."
+        n "Dr. Aikha rushes out ahead of you. Uriel starts walking backwards before sighing, turning around, and walking backwards towards the door."
+        hide aikha
+        hide uriel
         n "You get to the clinic without much further incident."
+        scene bg clinic reception
         # clinic reception, pan towards actual clinic?
         n "When you enter, you hear the sound of furious rummaging through drawers."
+        scene bg clinic pan right
         n "You see someone you don't recognise. Judging by how dripped out he is, he's probably a member of the Path-Para department."
         n "He's going through drawers while yelling at some poor staff member you've never met."
+        show ace fury
         aikha_unknown "{b}THESE ARE NOT SORTED{/b}."
         unknown "Well we were-"
         aikha_unknown "{b}YOU DID NOT COMPLETE YOUR ASSIGNED TASK{/b}."
@@ -606,21 +611,30 @@ label day_event_fluke_cake:
             player "You know what, I should go check on the others. Make sure that my definitely safe homemade cake wasn't affected by an anomalous box or something."
             n "You dash out of the room before Dr. Ace smashes your sknull in."
             n "Surely those two will be fine."
-            $ update_character_points({"uriel": -1})
+            $ update_character_points({"uriel": -1, "aikha": -1})
+            return
 
         label fc_truth:
             player "I found it on the lounge counter."
-            ace "{b}YOU DISHONORABLE PEST. I AM SURPRISED YOUR INCOMPETENCE REMAINS UNPUNISHED{/b}."
+            ace "{b}...{/b}"
+            ace "{b}YOU DISHONOURABLE PEST. I AM SURPRISED YOUR INCOMPETENCE REMAINS UNPUNISHED{/b}."
             n "You know, he makes a good point. I've been wondering that too."
             n "Uriel starts looking up something on one of the computers as Dr. Ace continues to lecture you."
+            scene bg clinic pan front
             uriel "Solution the be should Jelli, records our to according. Cake fluke the be to seems consumed we what to anomaly closest the."
             player "... what?"
             uriel "Jelli. Solution."
             n "They get the staff member from before to get some Jelli. A few minutes later, he comes back with a bowl that looks like it's full of Jelli powder."
             ace "{b}THIS IS POWDER. WHY DID YOU HAND ME ONLY POWDER?{/b}"
+            show ramace:
+                xalign 0.5
+                yalign 0.1
+                zoom 0.5
             unknown "W-we only carry Jell-E. Th-this is all we have."
             n "Maybe we should just take this task off his hands. You may not know how make Jell-E, but he looks like he's about to break down either screaming or crying, and frankly, your eardrums hurt enough as is."
+            hide ramace
             player "We can take it from here."
+            scene bg clinic pan back
             n "Uriel goes to put the bowl in the fridge and sets a timer."
             n "I wonder how long it takes to actually make Jelli, or Jell-E?"
             n "Actually, looking at the instructions-"
@@ -630,12 +644,14 @@ label day_event_fluke_cake:
             n "They open up the kettle and-"
             ace "{b}YOU{/b}- what are you doing."
             uriel "Water boiling."
-            n "They pour the water in, which sizzles and steams up, burning them. They startle and drop the pitcher onto the foot of that poor staff member. It might be a good idea to learn his name if he definitely wasn't leaving after today's experience."
+            n "They pour the water in, which sizzles and steams up, burning them. They startle and drop the pitcher onto the foot of that poor staff member."
+            n "It might be a good idea to learn his name if he definitely wasn't leaving after today's experience."
             n "Ace looks over and, looking resigned, properly boils water and gets on with actually making Jell-E."
             uriel "Arrangement effective more much a is this, you thank."
             ace "Understood."
             n "Well, you've managed to calm things down, kind of, and the solution is close at hand. All in all, not a horrible turn of events for you."
             $ update_character_points({"uriel": 1})
+            return
 
         #
 

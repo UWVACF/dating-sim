@@ -216,6 +216,38 @@ image bg aikha office dark close = "images/bgs/aikha office/ai office dark close
 image bg aikha office dark= "images/bgs/aikha office/ai office dark.png"
 image bg aikha office leave= "images/bgs/aikha office/ai office leave.png"
 
+image bg clinic bed = "images/bgs/clinic/clinic bed.png"
+image bg clinic bedside = "images/bgs/clinic/clinic bedside.png"
+image bg clinic checkup bed = "images/bgs/clinic/clinic checkup bed.png"
+image bg clinic checkup bedside door = "images/bgs/clinic/clinic checkup bedside door.png"
+image bg clinic checkup bedside = "images/bgs/clinic/clinic checkup bedside.png"
+image bg clinic checkup computer = "images/bgs/clinic/clinic checkup computer.png"
+image bg clinic checkup door = "images/bgs/clinic/clinic checkup door.png"
+image bg clinic checkup enter = "images/bgs/clinic/clinic checkup enter.png"
+image bg clinic checkup full = "images/bgs/clinic/clinic checkup full.png"
+image bg clinic checkup pan = "images/bgs/clinic/clinic checkup pan.png"
+image bg clinic containment capture = "images/bgs/clinic/clinic containment capture.png"
+image bg clinic containment door = "images/bgs/clinic/clinic containment door.png"
+image bg clinic containment window = "images/bgs/clinic/clinic containment window.png"
+image bg clinic pan back = "images/bgs/clinic/clinic pan back.png"
+image bg clinic pan front = "images/bgs/clinic/clinic pan front.png"
+image bg clinic pan left = "images/bgs/clinic/clinic pan left.png"
+image bg clinic pan right = "images/bgs/clinic/clinic pan right.png"
+image bg clinic reception computer = "images/bgs/clinic/clinic reception computer.png"
+image bg clinic reception left = "images/bgs/clinic/clinic reception left.png"
+image bg clinic reception = "images/bgs/clinic/clinic reception.png"
+
+image bg observation = "images/bgs/observation/observation.png"
+image bg observation far = "images/bgs/observation/observation far.png"
+image bg observation close = "images/bgs/observation/observation close.png"
+
+image bg containment cam = "images/bgs/containment/containment cam.png"
+image bg containment corner = "images/bgs/containment/containment corner.png"
+image bg containment door = "images/bgs/containment/containment door.png"
+image bg containment mirror = "images/bgs/containment/containment mirror.png"
+image bg containment overall = "images/bgs/containment/containment overall.png"
+image bg containment side = "images/bgs/containment/containment side.png"
+
 # cgs will be defined in the respective event rpy
 
 # other images and transforms related to them
