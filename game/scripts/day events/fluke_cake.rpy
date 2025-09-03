@@ -457,7 +457,7 @@ label day_event_fluke_cake:
         player "Well then!"
         $ shake_screen()
         hide syg
-        n "Suddenly, you hear a loud \"CRACK!\" and you feel the room shake."
+        n "Suddenly, you hear a loud \"SNAP!\" and you feel the room shake."
         n "When the shaking stops, you look around and see..."
         # show cg
         show syg happy at appear
@@ -538,9 +538,26 @@ label day_event_fluke_cake:
         aikha "Got a business card?"
         n "That probably wasn't enough information to implicate your involvement."
         egg "I know a few people you can contact from my times at Harvard."
-        n "Its phone rings."
-        egg "Oh, that's them now."
-
+        n "Suddenly, you hear a loud cracking sound."
+        n "The Egg's phone rings."
+        egg "Oh, that's them now. I'll put them on speaker."
+        unknown "Hello, we're calling from Harvard University. Is this the Egg or his assigned eggcessibility aide?"
+        egg "This is the Egg speaking."
+        unknown "We regret to inform you that due to a miscommunication, you are actually missing an assignment from one of your required courses. Until this error is fixed, your law degree has been revoked."
+        unknown "Learn to change the world! Goodbye."
+        n "Dr. Aikha and Uriel look at each other in confusion."
+        aikha "Well that's unfortunate."
+        aikha "Still have that business card?"
+        n "A \"ding!\" sound comes from Uriel."
+        uriel "Currently me on it have probably I."
+        aikha "Pardon?"
+        aikha "Are you having a stroke? Put your hands up."
+        n "Their arms don't move."
+        aikha "You might be having a stroke. Let's get you checked into the clinic. [player_name], you should help them over."
+        n "Aikha rushes out ahead of you. Uriel starts walking backwards before sighing, turning around, and walking backwards towards the door."
+        n "You get to the clinic without much further incident."
+        # clinic reception, pan towards actual clinic?
+        n "When you enter, you hear the sound of furious rummaging through drawers."
         #
 
         #
