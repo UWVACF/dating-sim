@@ -103,7 +103,7 @@ label day_event_fluke_cake:
     n "You feel a bead of sweat slide down from your forehead. You're starting to have a bad feeling about this."
     josh "[player_name], since you made it, you should be the one to cut this! Tell us what flavours are there!"
     n "You reluctantly shuffle over in front of the cake. The crowd forms an organized line behind you."
-    $ cake_list = ["Blood Velvet", "Dirt (organic topsoil)", "Eyeball (filling)", "Turnip", "Egg", "Strawberry Tallcake", "Sponge (the washing kind) cake", "Cinco Leche (almond, soy, woolly mammoth, walnut, expired)", "Angel Dust (cocaine)", "Sheet cake (papersheets)", "Black Forest (with wood, sawdust and rice crispies)", "Ice Cube cake (now just water)", "Invisible And Incorporeal cake (air)", "Pineapple Right-side-up cake", "Pop cake (with jam filling and a popsticle stick)", "Chocolate Coke Cake (the other coke)", "Dehydrated cake (0% water)", "Bun cake (a bun that is cake shaped)", "Butter cake (a block of unsalted butter)", "Pound cake (british currency)", "Catepilliar cake (no catepilliars are harmed in the process of making this)", "Cheesecake (a wheel of brie, not for those latose intolerant)", "Coffee cake (just coffee grounds with whipped cream on top)", "Marble cake (hollow cake with round marble filling)", "Singlular confetti cake (with a singular sprinkle)"]
+    $ cake_list = ["Blood Velvet", "Dirt (organic topsoil)", "Eyeball (filling)", "Turnip", "Egg", "Strawberry Tallcake", "Sponge (the washing kind) cake", "Cinco Leche (almond, soy, woolly mammoth, walnut, expired)", "Angel Dust (cocain)", "Sheet cake (papersheets)", "Black Forest (with wood, sawdust and rice crispies)", "Ice Cube cake (now just water)", "Invisible And Incorporeal cake (air)", "Pineapple Right-side-up cake", "Pop cake (with jam filling and a popsticle stick)", "Chocolate Coke Cake (the other coke)", "Dehydrated cake (0% water)", "Bun cake (a bun that is cake shaped)", "Butter cake (a block of unsalted butter)", "Pound cake (british currency)", "Catepilliar cake (no catepilliars are harmed in the process of making this)", "Cheesecake (a wheel of brie, not for those latose intolerant)", "Coffee cake (just coffee grounds with whipped cream on top)", "Marble cake (hollow cake with round marble filling)", "Singlular confetti cake (with a singular sprinkle)"]
     $ cake_this_list = random.sample(cake_list, 5)
     n "You cut a slice. It perfectly seperates a slice of flavour. Weird."
     player "This is... [cake_this_list[0]!l]?"
@@ -554,88 +554,10 @@ label day_event_fluke_cake:
         aikha "Are you having a stroke? Put your hands up."
         n "Their arms don't move."
         aikha "You might be having a stroke. Let's get you checked into the clinic. [player_name], you should help them over."
-        uriel "Cause the out figure to helpful be would it, however. Regenerate would body my, stroke a having was I if."
         n "Aikha rushes out ahead of you. Uriel starts walking backwards before sighing, turning around, and walking backwards towards the door."
         n "You get to the clinic without much further incident."
         # clinic reception, pan towards actual clinic?
         n "When you enter, you hear the sound of furious rummaging through drawers."
-        n "You see someone you don't recognise. Judging by how dripped out he is, he's probably a member of the Path-Para department."
-        n "He's going through drawers while yelling at some poor staff member you've never met."
-        aikha_unknown "{b}THESE ARE NOT SORTED{/b}."
-        unknown "Well we were-"
-        aikha_unknown "{b}YOU DID NOT COMPLETE YOUR ASSIGNED TASK{/b}."
-        unknown "I'm so sorry, we'll get started on that right away."
-        n "That poor staff member is barely audible through his sobbing. This feels a lot like an episode of Kitchen Nightmares."
-        n "I'm not sure if this is going to be conducive to fixing anything."
-        player "Where is Dr. Aikha?"
-        unknown "They were here, and then there was this \"KRK\" sound, and then he was here."
-        n "The new guy smashes a drawer shut. There's been a lot of odd sound effects today."
-        aikha_unknown "Please take a seat."
-        uriel "Office medical the in you are why, and you are who?"
-        aikha_unknown "...Dr. Ace... we were just in the lounge together."
-        player "Are you going to try to figure out what happened with Uriel?"
-        ace "Do not interrupt me."
-        n "Okay, so absolutely no indication of whether we can trust this guy. He seems to be checking Uriel's condition, and, other than traumatizing an employee, he hasn't done anything harmful."
-        ace "Your vitals are clear."
-        ace "Tell me where you got that cake, recruit."
-        menu:
-            n "You don't want people to know you weren't prepared for Josh's birthday party. On the other hand, do you really want to risk lying to Dr. Ace?"
-            "Lie. You can't let anyone know you're a horrible coworker.":
-                jump fc_lie
-            "Just tell him. You don't want to end up like that drawer.":
-                jump fc_truth
-        label fc_lie:
-            player "I made it myself. I wanted to make it special for Josh."
-            uriel "..."
-            ace "..."
-            uriel "Baker a of awful that just you are, or somehow ingredients anomalous procure you did?"
-            ace "{b}I fail to believe you did not intend to harm anyone{/b}."
-            n "Well you definitely didn't intend to {i}harm{/i} anyone, but will this guy really believe you?"
-            player "Hey, I just brought a cake. It's not like I hid knives in it or something."
-            ace "{b}How filthy is your kitchen?{/b}"
-            uriel "Something with cake the lace you did?"
-            player "I would never risk the safety of the foundation for a birthday party."
-            ace "{b}As is expected of you.{/b}"
-            ace "{b}But that doesn't explain the anomalous cake...{/b}"
-            ace "{b}THE FLUKE CAKE.{/b}"
-            ace "{b}YOU RECKLESS WORM.{/b}"
-            n "Uh oh, you may be in danger."
-            uriel "It of hold a get intern the would how but. Found foundation the cake anomalous the?"
-            n "Maybe you should've questioned the mysterious cake, but it looks like it's a little too late for that now."
-            player "You know what, I should go check on the others. Make sure that my definitely safe homemade cake wasn't affected by an anomalous box or something."
-            n "You dash out of the room before Dr. Ace smashes your sknull in."
-            n "Surely those two will be fine."
-            $ update_character_points({"uriel": -1})
-
-        label fc_truth:
-            player "I found it on the lounge counter."
-            ace "{b}YOU DISHONORABLE PEST. I AM SURPRISED YOUR INCOMPETENCE REMAINS UNPUNISHED{/b}."
-            n "You know, he makes a good point. I've been wondering that too."
-            n "Uriel starts looking up something on one of the computers as Dr. Ace continues to lecture you."
-            uriel "Solution the be should Jelli, records our to according. Cake fluke the be to seems consumed we what to anomaly closest the."
-            player "... what?"
-            uriel "Jelli. Solution."
-            n "They get the staff member from before to get some Jelli. A few minutes later, he comes back with a bowl that looks like it's full of Jelli powder."
-            ace "{b}THIS IS POWDER. WHY DID YOU HAND ME ONLY POWDER?{/b}"
-            unknown "W-we only carry Jell-E. Th-this is all we have."
-            n "Maybe we should just take this task off his hands. You may not know how make Jell-E, but he looks like he's about to break down either screaming or crying, and frankly, your eardrums hurt enough as is."
-            player "We can take it from here."
-            n "Uriel goes to put the bowl in the fridge and sets a timer."
-            n "I wonder how long it takes to actually make Jelli, or Jell-E?"
-            n "Actually, looking at the instructions-"
-            player "Uriel, shouldn't you be boiling the water first?"
-            uriel "Issue reversal the around work to have I, right, yes."
-            n "Uriel turns on the kettle, and fills a pitcher with water."
-            n "They open up the kettle and-"
-            ace "{b}YOU{/b}- what are you doing."
-            uriel "Water boiling."
-            n "They pour the water in, which sizzles and steams up, burning them. They startle and drop the pitcher onto the foot of that poor staff member. It might be a good idea to learn his name if he definitely wasn't leaving after today's experience."
-            n "Ace looks over and, looking resigned, properly boils water and gets on with actually making Jell-E."
-            uriel "Arrangement effective more much a is this, you thank."
-            ace "Understood."
-            n "Well, you've managed to calm things down, kind of, and the solution is close at hand. All in all, not a horrible turn of events for you."
-            $ update_character_points({"uriel": 1})
-
         #
 
         #
