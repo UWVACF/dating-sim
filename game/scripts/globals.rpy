@@ -202,7 +202,7 @@ image bg lobby entrence = "images/bgs/lobby/lobby entrence.png"
 image bg lobby wall = "images/bgs/lobby/lobby wall.png"
 
 image bg cubicle inside = "images/bgs/cubicle/cubicle inside.png"
-image bg cubicle out = "images/bgs/cubicle/cubicle out.png"
+image bg cubicle outside = "images/bgs/cubicle/cubicle outside.png"
 
 image bg caf counter = "images/bgs/caf/caf counter.png"
 image bg caf opening = "images/bgs/caf/caf opening.png"
@@ -288,6 +288,43 @@ image haze black strong = At("haze white strong", white_to_black)
 image haze orange = At("haze white", white_to_orange)
 image haze orange strong = At("haze white", white_to_orange)
 
+# i think it's pretty self explanatory
+image explosion:
+    "images/cgs/explosion/frame_00_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_01_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_02_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_03_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_04_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_05_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_06_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_07_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_08_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_09_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_10_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_11_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_12_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_13_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_14_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_15_delay-0.1s.png"
+    pause 0.1
+    "images/cgs/explosion/frame_16_delay-0.1s.png"
+    pause 0.1
+    Solid("#00000000")
 
 # return a Wal No. XX
 # init python early:

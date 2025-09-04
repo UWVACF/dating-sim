@@ -32,10 +32,10 @@ label day_init:
             elif type_of_event == "ending":
                 today_event_label = renpy.input("Choose an ending event label to see:")
                 while not today_event_label or not filter_events(events = ending_events, label = today_event_label):
-                    renpy.notify("Event not found (don't include \"day_event_\")")
+                    renpy.notify("Event not found (don't include \"ending_event_\")")
                     today_event_label = renpy.input("Choose an ending event label to see:")
                 
-                today_event = filter_events(label = today_event_label)[0]
+                today_event = filter_events(events = ending_events, label = today_event_label)[0]
                 today_event_label = "ending_event_" + today_event_label
                 if today_event.intro_label:
                     today_intro_label = today_event.intro_label

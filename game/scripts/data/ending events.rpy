@@ -6,8 +6,11 @@ init python:
             label="aikha_1",
         ),
         Event(
+            label="alex_1",
+        ),
+        Event(
             label="neutral_ending",
-        )
+        ),
     ]
 
     # replace all spaces in labels with underscores
