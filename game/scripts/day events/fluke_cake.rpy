@@ -7,8 +7,8 @@ screen fluke_cake_lounge_topdown:
     fixed:
         image "images/cgs/lounge_topdown.png":
             zoom 0.8
-            xpos 112
-            ypos -25
+            xpos 110
+            ypos -20
         image "images/cgs/lounge_topdown_ah.png":
             zoom 0.8
             xpos 112
@@ -42,10 +42,10 @@ screen fluke_cake_lounge_topdown:
             unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
         button: # ai uriel
             background None
-            xpos 1130
-            ypos 500
+            xpos 790
+            ypos 480
             xsize 400
-            ysize 170
+            ysize 180
             action Jump("fluke_AU")
             hovered SetVariable("fc_topdown_dialogue", "Sit with Dr. Aikha and Uriel.")
             unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
