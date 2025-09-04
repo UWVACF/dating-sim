@@ -189,6 +189,7 @@ image bg room hall = "images/bgs/misc/room hall.png"
 image bg containment = "images/bgs/misc/containment.png"
 image bg court main = "images/bgs/misc/count_main.png"
 image bg court side = "images/bgs/misc/count_side.png"
+image bg teaparty meeting = "images/bgs/misc/tea party meeting.png"
 
 image bg office desk close = "images/bgs/office/office desk close.png"
 image bg office desk = "images/bgs/office/office desk.png"
