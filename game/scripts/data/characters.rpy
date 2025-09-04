@@ -37,9 +37,9 @@ image aikha panic = At("images/personnel/aikha/aikha panic.png", sprite_highligh
 image aikha fury = At("images/personnel/aikha/aikha fury.png", sprite_highlight("aikha"), aikha_transform)
 image aikha pensive = At("images/personnel/aikha/aikha pensive.png", sprite_highlight("aikha"), aikha_transform)
 image aikha unique = At("images/personnel/aikha/aikha unique.png", sprite_highlight("aikha"), aikha_transform)
-image ace fury = At("images/personnel/aikha/ace fury.png", sprite_highlight("aikha"), aikha_transform)
-image ace upset = At("images/personnel/aikha/ace upset.png", sprite_highlight("aikha"), aikha_transform)
-image ace neutral = At("images/personnel/aikha/ace neutral.png", sprite_highlight("aikha"), aikha_transform)
+image ace fury = At("images/personnel/aikha/ace fury.png", sprite_highlight("ace"), aikha_transform)
+image ace upset = At("images/personnel/aikha/ace upset.png", sprite_highlight("ace"), aikha_transform)
+image ace neutral = At("images/personnel/aikha/ace neutral.png", sprite_highlight("ace"), aikha_transform)
 
 
 transform alex_transform:
@@ -366,8 +366,10 @@ define helco = Character("Dr. Helco", kind=base_char, color="#fffda1", cb_name="
 define helco_unknown = Character("???", kind=helco)
 
 define aikha = Character("Dr. Aikha", kind=base_char, color="#8f76ff", cb_name="aikha", image="aikha")
-define ace = Character("Dr. Ace", kind=base_char, color="#8f76ff", cb_name="Dr. Ace", image="aikha")
 define aikha_unknown = Character("???", kind=aikha)
+
+define ace = Character("Dr. Ace", kind=base_char, color="#8f76ff", cb_name="ace", image="ace")
+define ace_unknown = Character("???", kind=ace)
 
 define plutoes = Character("Plutoes", kind=base_char, color="#62ff58", cb_name="plutoes", image="plutoes", what_color="#ff2d00", what_bold = True)
 define plutoes_unknown = Character("???", kind=plutoes)
@@ -389,7 +391,7 @@ define ethy = Character("Ethy", kind=chan, color="#000000")
 define lee = Character("Dr. Lee", kind=base_char, color="#ff0000", cb_name="lee", image="lee")
 define lee_unknown = Character("???", kind=lee)
 
-define b6 = Character("b6c5b6", kind=base_char, color="#364036", cb_name="b6", image="b6")
+define b6 = Character("b6", kind=base_char, color="#364036", cb_name="b6", image="b6")
 define b6_unknown = Character("???", kind=b6)
 
 define paul = Character("Paul Demure Johnson", kind=base_char, color="#6e7f55", cb_name="paul", image="paul")
@@ -428,7 +430,7 @@ define trickster = Character("?", kind=base_char, color="#095a10", cb_name="tric
 
 define n = Character("", kind=base_char, cb_name="") # narrator, required to unhighlight characters whenever narration is occurring
 define unknown = Character("???", kind=base_char, color="#000000", cb_name="???")
-define speaker = Character("Security Speakers", kind=base_char, color="#000000", cb_name="Speakers")
-define crowd = Character("Crowd", kind=base_char, color="#000000", cb_name="Crowd")
-define person = Character("Person", kind=base_char, color="#000000", cb_name="Person")
-define josh = Character("Josh", kind=base_char, color="#000000", cb_name="Josh")
+define speaker = Character("Security Speakers", kind=base_char, color="#000000", cb_name="speaker")
+define crowd = Character("Crowd", kind=base_char, color="#000000", cb_name="crowd")
+define person = Character("Person", kind=base_char, color="#000000", cb_name="person")
+define josh = Character("Josh", kind=base_char, color="#000000", cb_name="josh")

@@ -1,4 +1,5 @@
 image ramace = "images/cgs/ramace.png"
+
 init python:
     fc_topdown_dialogue = "Who do you want to sit with?"
 
@@ -6,8 +7,8 @@ screen fluke_cake_lounge_topdown:
     fixed:
         image "images/cgs/lounge_topdown.png":
             zoom 0.8
-            xpos 112
-            ypos -25
+            xpos 110
+            ypos -20
         image "images/cgs/lounge_topdown_ah.png":
             zoom 0.8
             xpos 112
@@ -41,10 +42,10 @@ screen fluke_cake_lounge_topdown:
             unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
         button: # ai uriel
             background None
-            xpos 1130
-            ypos 500
+            xpos 790
+            ypos 480
             xsize 400
-            ysize 170
+            ysize 180
             action Jump("fluke_AU")
             hovered SetVariable("fc_topdown_dialogue", "Sit with Dr. Aikha and Uriel.")
             unhovered SetVariable("fc_topdown_dialogue", "Who do you want to sit with?")
@@ -56,6 +57,7 @@ screen fluke_cake_lounge_topdown:
 
 label day_event_fluke_cake:
     scene bg hallway
+    image ramace = "images/cgs/ramace.png"
     n "You're on your way back after a conference when you hear loud cheering from the direction of your office."
     $ shake_screen(duration=1.0, preset="rumble", persist=2)
     crowd "HAPPY BIRTHDAY!!!"
@@ -529,112 +531,142 @@ label day_event_fluke_cake:
 
     label fluke_AU:
         n "You decide to hang out with Dr. Aikha and Uriel."
-        show aikha at appear(x_align = 0.2)
-        show uriel at appear(x_align = 0.8)
-        aikha "So a friend of mine's company needs to skirt some legislation."
+        show aikha:
+            xzoom -1.0
+            appear(x_align = 0.1)
+        show uriel at appear(x_align = 0.9)
+        aikha happy "So a friend of mine's company needs to skirt some legislation."
         uriel "Was it already passed or do they need lobbying help?"
-        uriel "I know some people who are good at...covering things up."
+        uriel pensive "I know some people who are good at...covering things up."
         aikha "..."
         uriel "..."
-        aikha "Got a business card?"
+        aikha neutral "Got a business card?"
         n "That probably wasn't enough information to implicate your involvement, yet."
         egg "I know a few people you can contact from my times at Harvard."
+        show egg at appear
         n "Suddenly, you hear a loud cracking sound."
         n "The Egg's phone rings."
         egg "Oh, that's them now. I'll put them on speaker."
         unknown "Hello, we're calling from Harvard University. Is this the Egg or his assigned eggcessibility aide?"
         egg "This is the Egg speaking."
-        unknown "We regret to inform you that due to a miscommunication, you are actually missing an assignment from one of your required courses. Until this error is fixed, your law degree has been revoked."
+        unknown "We regret to inform you that, due to a miscommunication, you are actually missing an assignment from one of your required courses. Until this error is fixed, your law degree has been revoked."
         unknown "Learn to change the world! Goodbye."
-        n "Dr. Aikha and Uriel look at each other in confusion."
-        aikha "Well that's unfortunate."
-        aikha "Still have that business card?"
+        egg "..."
+        show egg at disappear
+        show egg unique at appear as egg2
+        show uriel surprise
+        show aikha surprise
+        egg "NOOOOOO"
+        show egg unique as egg2:
+            0.4
+            alpha 0.0
+        $ shake_screen()
+        show explosion:
+            xalign 0.5
+            yalign 0.1
+            zoom 4.0
+        pause 1.0
+        aikha neutral "Well that's unfortunate."
+        hide explosion
+        hide egg2
+        aikha happy "Still have that business card?"
         n "A \"ding!\" sound comes from Uriel."
-        uriel "Currently me on it have probably I."
-        aikha "Pardon?"
-        aikha "Are you having a stroke? Put your hands up."
+        uriel pensive "Currently me on it have probably I."
+        aikha surprise "Pardon?"
+        aikha neutral "Are you having a stroke? Put your hands up."
         n "Their arms don't move."
-        aikha "You might be having a stroke. Let's get you checked into the clinic. [player_name], you should help them over."
+        aikha pensive "You might be having a stroke. Let's get you checked into the clinic."
+        aikha neutral "[player_name], you should help them over."
         uriel "Cause the out figure to helpful be would it, however. Regenerate would body my, stroke a having was I if."
         n "Dr. Aikha rushes out ahead of you. Uriel starts walking backwards before sighing, turning around, and walking backwards towards the door."
-        hide aikha
-        hide uriel
-        n "You get to the clinic without much further incident."
-        scene bg clinic reception
+        show aikha at disappear
+        show uriel at disappear
+        show bg clinic reception
         # clinic reception, pan towards actual clinic?
-        n "When you enter, you hear the sound of furious rummaging through drawers."
-        scene bg clinic pan right
+        n "When you enter, you hear the sound of someone rummaging furiously through drawers."
+        show bg clinic pan right
         n "You see someone you don't recognise. Judging by how dripped out he is, he's probably a member of the Path-Para department."
         n "He's going through drawers while yelling at some poor staff member you've never met."
-        show ace fury
-        aikha_unknown "{b}THESE ARE NOT SORTED{/b}."
+        show ace fury at appear
+        ace_unknown "{b}THESE ARE NOT SORTED.{/b}"
         unknown "Well we were-"
-        aikha_unknown "{b}YOU DID NOT COMPLETE YOUR ASSIGNED TASK{/b}."
+        ace_unknown "{b}YOU DID NOT COMPLETE YOUR ASSIGNED TASK.{/b}"
         unknown "I'm so sorry, we'll get started on that right away."
         n "That poor staff member is barely audible through his sobbing. This feels a lot like an episode of Kitchen Nightmares."
         n "I'm not sure if this is going to be conducive to fixing anything."
         player "Where is Dr. Aikha?"
-        unknown "They were here, and then there was this \"KRK\" sound, and then he was here."
+        unknown "They were here before! But there was this \"KRK\" sound, and then {i}he{/i} appeared."
         n "The new guy smashes a drawer shut. There's been a lot of odd sound effects today."
-        aikha_unknown "Please take a seat."
-        uriel "Office medical the in you are why, and you are who?"
-        aikha_unknown "...Dr. Ace... we were just in the lounge together."
+        ace_unknown neutral "Please take a seat." 
+        uriel "Office medical the in you are why and, you are who?"
+        ace_unknown "...Dr. Ace... we were just in the lounge together."
         player "Are you going to try to figure out what happened with Uriel?"
-        ace "Do not interrupt me."
-        n "Okay, so absolutely no indication of whether we can trust this guy. He seems to be checking Uriel's condition, and, other than traumatizing an employee, he hasn't done anything harmful."
-        ace "Your vitals are clear."
+        ace upset "Do not interrupt me."
+        n "Okay, so absolutely no indication of whether we can trust this guy."
+        n "But he seems to be checking Uriel's condition, and, other than traumatizing an employee, he hasn't done anything harmful."
+        ace neutral "Your vitals are clear."
+        n "He turns to you."
         ace "Tell me where you got that cake, recruit."
+        n "You don't want people to know you weren't prepared for Josh's birthday party. On the other hand, do you really want to risk lying to Dr. Ace?"
         menu:
-            n "You don't want people to know you weren't prepared for Josh's birthday party. On the other hand, do you really want to risk lying to Dr. Ace?"
+            n "What do you say?"
             "Lie. You can't let anyone know you're a horrible coworker.":
                 jump fc_lie
             "Just tell him. You don't want to end up like that drawer.":
                 jump fc_truth
         label fc_lie:
             player "I made it myself. I wanted to make it special for Josh."
+            show ace fury at move_to(x_align= 0.2)
+            show uriel at appear(x_align = 0.8)
             uriel "..."
             ace "..."
-            uriel "Baker a of awful that just you are, or somehow ingredients anomalous procure you did?"
-            ace "{b}I fail to believe you did not intend to harm anyone{/b}."
-            n "Well you definitely didn't intend to {i}harm{/i} anyone, but will this guy really believe you?"
+            uriel upset "Baker a of awful that just you are, or somehow ingredients anomalous procure you did?"
+            ace "{b}I fail to believe you did not intend to harm anyone.{/b}"
+            n "Well, you definitely didn't intend to {i}harm{/i} anyone, but will this guy really believe you?"
             player "Hey, I just brought a cake. It's not like I hid knives in it or something."
             ace "{b}How filthy is your kitchen?{/b}"
-            uriel "Something with cake the lace you did?"
+            uriel neutral "Something with cake the lace you did?"
             player "I would never risk the safety of the foundation for a birthday party."
-            ace "{b}As is expected of you.{/b}"
+            ace upset "{b}As is expected of you.{/b}"
             ace "{b}But that doesn't explain the anomalous cake...{/b}"
-            ace "{b}THE FLUKE CAKE.{/b}"
+            ace fury "{b}THE FLUKE CAKE.{/b}"
             ace "{b}YOU RECKLESS WORM.{/b}"
-            n "Uh oh, you may be in danger."
-            uriel "It of hold a get intern the would how but. Found foundation the cake anomalous the?"
+            n "Uh oh. You might be in danger."
+            uriel pensive "It of hold a get intern the would how but. Found foundation the cake anomalous the was that?"
             n "Maybe you should've questioned the mysterious cake, but it looks like it's a little too late for that now."
             player "You know what, I should go check on the others. Make sure that my definitely safe homemade cake wasn't affected by an anomalous box or something."
-            n "You dash out of the room before Dr. Ace smashes your sknull in."
+            show bg hallway
+            show ace fury at disappear
+            show uriel pensive at disappear
+            n "You dash out of the room before Dr. Ace smashes your skull in."
             n "Surely those two will be fine."
-            $ update_character_points({"uriel": -1, "aikha": -1})
+            $ update_character_points({"uriel": -1})
             return
 
         label fc_truth:
             player "I found it on the lounge counter."
             ace "{b}...{/b}"
-            ace "{b}YOU DISHONOURABLE PEST. I AM SURPRISED YOUR INCOMPETENCE REMAINS UNPUNISHED{/b}."
+            ace "{b}YOU DISHONOURABLE PEST. I AM SURPRISED YOUR INCOMPETENCE REMAINS UNPUNISHED.{/b}"
             n "You know, he makes a good point. I've been wondering that too."
             n "Uriel starts looking up something on one of the computers as Dr. Ace continues to lecture you."
-            scene bg clinic pan front
+            show bg clinic pan front
+            show ace fury at move_to(x_align = 0.2)
+            show uriel at appear(x_align = 0.8)
             uriel "Solution the be should Jelli, records our to according. Cake fluke the be to seems consumed we what to anomaly closest the."
-            player "... what?"
+            player "...What?"
             uriel "Jelli. Solution."
-            n "They get the staff member from before to get some Jelli. A few minutes later, he comes back with a bowl that looks like it's full of Jelli powder."
+            n "They ask the staff member from before to get some Jelli. A few minutes later, he comes back with a bowl that looks like it's full of Jelli powder."
             ace "{b}THIS IS POWDER. WHY DID YOU HAND ME ONLY POWDER?{/b}"
-            show ramace:
+            show ramace onlayer top:
                 xalign 0.5
                 yalign 0.1
                 zoom 0.5
             unknown "W-we only carry Jell-E. Th-this is all we have."
-            n "Maybe we should just take this task off his hands. You may not know how make Jell-E, but he looks like he's about to break down either screaming or crying, and frankly, your eardrums hurt enough as is."
-            hide ramace
+            n "Maybe we should just take this task off his hands."
+            n "You may not know how to make Jell-E, but he looks like he's about to break down either screaming or crying, and frankly, your eardrums hurt enough as is."
+            hide ramace onlayer top
             player "We can take it from here."
-            scene bg clinic pan back
+            show bg clinic pan back
             n "Uriel goes to put the bowl in the fridge and sets a timer."
             n "I wonder how long it takes to actually make Jelli, or Jell-E?"
             n "Actually, looking at the instructions-"
@@ -644,10 +676,10 @@ label day_event_fluke_cake:
             n "They open up the kettle and-"
             ace "{b}YOU{/b}- what are you doing."
             uriel "Water boiling."
-            n "They pour the water in, which sizzles and steams up, burning them. They startle and drop the pitcher onto the foot of that poor staff member."
-            n "It might be a good idea to learn his name if he definitely wasn't leaving after today's experience."
-            n "Ace looks over and, looking resigned, properly boils water and gets on with actually making Jell-E."
-            uriel "Arrangement effective more much a is this, you thank."
+            show uriel panic
+            n "They pour the water in, which sizzles and steams up, burning them. Startled, they drop the pitcher onto the foot of that poor staff member."
+            n "Ace looks over and, looking resigned, properly boils water and starts actually making Jell-E."
+            uriel happy "Arrangement effective more much a is this, you thank."
             ace "Understood."
             n "Well, you've managed to calm things down, kind of, and the solution is close at hand. All in all, not a horrible turn of events for you."
             $ update_character_points({"uriel": 1})
