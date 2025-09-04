@@ -1,9 +1,9 @@
 label ending_event_alex_1:
-    scene bg cubicle
+    scene bg cubicle outside
     with default_fade
     n "Well. That's it."
     n "Your time here at the foundation is done."
-    n "The time passed so fast, but your internship ends."
+    n "The time passed so fast, but your internship ends today."
     n "You're giving yourself a small, imaginary pat on the back for surviving all the horrors when you get a notification on your work phone."
     n "It's from Founder Alex."
     n "\"Hello, [player_name]!\""
@@ -23,9 +23,9 @@ label ending_event_alex_1:
     alex neutral "I'm quite well, thank you."
     alex happy "[player_name], I wanted to discuss your internship."
     alex "I must say, I've been {i}extraordinarily{/i} impressed by your performance here."
-    alex "You're able to handle everything from interpersonal disputes to anomaly outbreaks!"
+    alex "You were able to handle everything from interpersonal disputes to anomaly outbreaks!"
     player "Thank you, sir."
-    alex neutral "And it's because of your performance that I'm giving you an offer at a full-time position at VAC Foundation!"
+    alex neutral "And it's because of your performance that I'm offering you a full-time position at VAC Foundation!"
     player "Are you serious?"
     alex happy "Of course!"
     alex "Your job will be a little different from what you're used to, however."
@@ -47,11 +47,13 @@ label ending_event_alex_1:
     alex "Here's to many more years to come!"
     player "Yeah...cheers..."
     show bg hallway
+    show alex at disappear
     n "You quietly excuse yourself from the office."
     n "The thought of the six-figure salary has caused your eyes to glaze over."
     n "You stumble your way back to your cubicle, drooling over the virtually infinite supply of coffee a six-figure salary would net you."
     show bg office_alex
     with default_fade
+    show alex at appear
     n "And thus, you worked under Founder Alex."
     n "You did nothing but sit around, drink coffee and occassionally punt the snail from one end of the facility to the other."
     n "Founder Alex had you follow him everywhere, from his office to his home to a vacation in Egypt."

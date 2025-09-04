@@ -115,18 +115,19 @@ init python:
         shake_obj.update(duration=0.0, strength=0.0, preset="", persist=0.0, delay=0.0, repeat=0, interval=0.0, timeline=None)
         for layer in config.layers:
             renpy.show_layer_at(null_transform, layer=layer, reset = True)
-            renpy.scene(layer=layer)
+            # renpy.scene(layer=layer)
 
+    # TODO: FIX
     # shows the personnel with appear animation only if they aren't already present
-    def appear_if_absent(personnel, tags="", x_align=0.5, layer=None):
-        if not renpy.showing(personnel, layer):
-            renpy.show(tags, at_list=[appear(x_align)], what=personnel)
+    # def appear_if_absent(personnel, tags="", x_align=0.5, layer=None):
+    #     if not renpy.showing(personnel, layer):
+    #         renpy.show(tags, at_list=[appear(x_align)], what=personnel)
     
     # shows the personnel with disappear animation only if they're already on screen
     # does not actually hide the sprite, just makes it alpha 0.0
-    def disappear_if_present(personnel, tags="", layer=None):
-        if renpy.showing(personnel, layer):
-            renpy.show(tags, at_list[disappear()], what=personnel)
+    # def disappear_if_present(personnel, tags="", layer=None):
+    #     if renpy.showing(personnel, layer):
+    #         renpy.show(tags, at_list[disappear()], what=personnel)
 
     # Raise the character points of personnel
     # takes in a dictionary: {"personnel1": points1, "personnel2": points2}
