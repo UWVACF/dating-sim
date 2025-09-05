@@ -53,17 +53,17 @@ label day_event_tea_party:
     show jessie at disappear
     n "You gaze around the room. Some familiar faces are also here."
     hide jessie
-    n "In particular, you notice Founder Alex, whom is supposed to lead the metting that is happening in about...one minute."
-    n "He's sat eating a red pepper muffin leisurely while humming a little tune." 
+    n "In particular, you notice Founder Alex, who is supposed to lead the metting that is happening in about...one minute."
+    n "He's sat down eating a red pepper muffin leisurely while humming a little tune." 
     show alex at appear (x_align=0.75)
     alex happy "Oho! More guests!" 
-    alex upset "Do not take from this plate of muffins, I called dips on these."
+    alex upset "Do not take from this plate of muffins, I called dibs on these."
     player "Founder Alex, don't we have a meeting in...30 seconds?"
     alex neutral "..."
     alex "Well, you see, I am unfortunately occupied with an anomalous incident here."
     alex "It's only natural that I cannot make it to the meeting as I, the benevolent founder, am lending a hand in resolving anomaly outbreaks."
     show alex happy
-    n "He dips a cookie in the tea and takes a crisp bite out of it, then makes a slow sip of the pepper tea. He doesn't seem at all urgent in resolving the situation."
+    n "He dips a cookie in the tea and takes a crisp bite out of it, then takes a slow sip of the pepper tea. He doesn't seem at all urgent in resolving the situation."
     show alex happy at disappear
     n "Sitting opposite to the Founder is someone you would never expect in such a setting."
     hide alex
@@ -86,7 +86,7 @@ label day_event_tea_party:
     b6 "Fool."
     n "His humming completely stops."
     show b6 at disappear
-    n "Seeing how enjoyable the Founder and b6 seems to find the snacks, you take a curious piece and try it."
+    n "Seeing how enjoyable the Founder and b6 seem to find the snacks, you take a curious piece and try it."
     hide b6
     hampter_unknown "UAUGHHHHHHHHHH."
     n "It tastes..."
@@ -103,7 +103,7 @@ label day_event_tea_party:
     player "If you don't like it, can't you leave?"
     hampter "I wish I could! Watch!"
     show hampter upset at disappear
-    n "Hampter stands up and hop off the chair."
+    n "Hampter stands up and hops off the chair."
     $ shake_screen(duration=0.1,strength=4,repeat=True,interval=0)
     unknown "{nw}{sc}SCREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEDOOOOOOOOO{/sc}"
     show purple onlayer top:
@@ -151,7 +151,7 @@ label day_event_tea_party:
         xalign 0.5
         yalign 1.0
 
-    n "You look around again. Surely Hampter don't mean Dr. Jessie or Dr. Alex or b6, right?"
+    n "You look around again. Surely Hampter doesn't mean Dr. Jessie or Dr. Alex or b6, right?"
     n "Unless...She meant you..?"
     hide alex
     hide jessie
@@ -178,7 +178,7 @@ label day_event_tea_party:
     n "The flowers land on Paul Demure Johnson, who's evidently the source of the smell. The flowers wilt upon contact with him."
     show haze green onlayer top:
         linear 1 alpha 0.1
-    n "It appears that Hampter has attemped to contain him with chair and flowers."
+    n "It appears that Hampter has attemped to contain him with chairs and flowers."
     hide haze green onlayer top
     show hampter upset at appear
     hampter "[player_name]! Please help me shut this down! You're the only one who can freely move right now!"
@@ -226,21 +226,21 @@ label day_event_tea_party:
         jessie surprise "No, no! It's okay! Do not worry, we {i}will{/i} have a tea party!"
         show jessie at disappear
         show giant at disappear
-        n "Dr. Jessie panicly pours more tea for the anomaly to try to calm it down."
+        n "Dr. Jessie panickedly pours more tea for the anomaly to try to calm it down."
         hide jessie
         hide giant
         show hampter happy at move_to(x_align = 0.5)
         hampter happy "Yippie! Time to crash this pathetic party!"
         hampter neutral "I have a plan, [player_name]. And I'll need your help for it."
         hampter "I need you to distract it while I teleport out to get my flamethrower."
-        hampter pensive "I forgot where I put it, so I'll need some time to find it before it comes and kidnap me again."
+        hampter pensive "I forgot where I put it, so I'll need some time to find it before it comes and kidnaps me again."
         hampter happy "Then I'll set this party on fire! {i}That'll{/i} shut it down for good!"
         n "You have never felt so much rage in a hamster. She must {i}really{/i} dislike the red peppers and Johnson."
         show hampter neutral
         n "You look back at Dr. Jessie, who's trying her best to comfort the anomaly. The anomaly seems more content now and is drinking the tea poured for it, despite not having a mouth."
         n "The tea spills onto the ground and it desperately tries to clean it up with the ends of Dr. Jessie's labcoat."
         n "You feel a little bad, looking at the neat decorations the anomaly put up around the room."
-        n "You look back at hampter, who's looking at you with hope in her big, cute eyes. You also feel a bit bad for her, having been stuck here for five hours."
+        n "You look back at Hampter, who's looking at you with hope in her big, cute eyes. You also feel a bit bad for her, having been stuck here for five hours."
         menu:
             hampter "So, are you ready?"
             "Become Hampter's accomplice in Arson.":
@@ -292,7 +292,7 @@ label day_event_tea_party:
                     appear(x_align = 0.5, y_align = 0.0)
                 n "A moment later, it's back, with Hampter in its arms."
                 hampter fury "Ough! I got got!"
-                unknown "DONT...LEAVE...PARTY!!!"
+                unknown "{sc}DONT...LEAVE...PARTY!!!{/sc}"
                 jessie "Oh, I'm so sorry, Hampter. I'm still trying to teach it consent."
                 show jessie neutral
                 hampter upset "I couldn't find my flamethrower in time...but I got something else!"
@@ -309,7 +309,7 @@ label day_event_tea_party:
                 speaker "{color=#F54927}{nw}WEEEEEEEEEEEEEEEEEEE-WOOOOOOOOOOOOOOOOOO-WEEEEEEEEEEEEEEEEEEE-WOOOOOOOOOOOOOOOOO{/color}"
                 n "The emergency alarm rings. You didn't know this classifies as an emergency."
                 speaker "{color=#F54927}HEALTHCODE VIOLATION DETECTED. NEUTRALIZATION PROTOCOL INITIATED FOR TARGET ROOM.{/color}"
-                n "Fire sprinklers on the celing begin to release an unknown mist that smells like disinfectant."
+                n "Fire sprinklers on the ceiling begin to release an unknown mist that smells like disinfectant."
                 show shock onlayer top:
                     alpha 0.0
                 $ shake_screen(duration=0.1,strength=4,repeat=True,interval=0)   
@@ -321,10 +321,10 @@ label day_event_tea_party:
                 show alex fury at appear(x_align = 1.1)
                 alex "My cookies!!!!"
                 hide giant
-                n "He attempts to bag as many as he could into the teapot before dashing out with it."
+                n "He attempts to bag as many as he can into the teapot before dashing out with it."
                 show jessie upset
                 show alex upset at disappear
-                hampter happy "Well, health inspectors say that the will be here in a minutes. Can't be caught here as a rodent!"
+                hampter happy "Well, health inspectors say that they will be here in a minute. Can't be caught here as a rodent!"
                 show hampter at disappear
                 n "Hampter teleports away in a blink."
                 jessie "Ah. Now all my progress is undone."
@@ -337,7 +337,7 @@ label day_event_tea_party:
                 hide alex
                 n "On your way out of the room, you see a very {i}pristine{/i} figure by the corner."
                 #cg, maybe
-                n "Surrounded by chairs and flowers, a very {i}clean{/i} Johnson sits sedately. You can almost the air around him smells good."
+                n "Surrounded by chairs and flowers, a very {i}clean{/i} Johnson sits sedately. You can almost say the air around him smells good."
                 n "Well, at least someone got something good out of this havoc."
                 #$ update_character_points({"hampter":1, "alex" -1, "jessie": -1})
                 return
@@ -369,6 +369,7 @@ label day_event_tea_party:
                 show jessie neutral
                 n "Next time...?"
                 n "Just as you are about to suggest a better substitution for red peppers, you hear tiny footsteps behind you."
+                jump tp_arson_end
 
             label tp_arson_guests:
                 n "You think back to what Hampter complained about earlier. Right, the guests."
@@ -397,7 +398,9 @@ label day_event_tea_party:
                 player "...I see."
                 n "You're out of things to say. You can see \"Friendly's\" attention starts to shift off you and towards the tea table."
                 n "Then you hear small rapid footsteps come up behind you."
+                jump tp_arson_end
 
+        label tp_arson_end:
             show hampter happy at appear(x_align = 0.25)
             show haze orange onlayer top:
                 alpha 0.0
@@ -422,7 +425,7 @@ label day_event_tea_party:
             show alex fury at appear(x_align = 0.8)
             alex "My tea party!"
             alex sad "Why is this happening to me!"
-            n "You watch Dr. Alex shoves as many cookies as possible into his labcoat jacket."
+            n "You watch Dr. Alex shove as many cookies as possible into his labcoat pocket."
             n "He sighs as he walks towards the exit, not before taking the teapot with him."
             show alex sad at disappear
             n "Well, that should wrap things up. Hamp and Dr. Alex are gone, and you're sure Dr. Jessie can take care of herself."
@@ -430,7 +433,7 @@ label day_event_tea_party:
             n "You also make your way towards the exit when an explosion goes off behind you. Uh oh."
             show paul at appear(x_align = 0.8)
             n "You turn and realize you have forgotten about the two other personnel in the room."
-            "The air around Johnson seems to be {i}extra{/i} flammable. The chairs were all blew away in the explosion, yet he sits unbothered in the sea of fire."
+            "The air around Johnson seems to be {i}extra{/i} flammable. The chairs were all blown away in the explosion, yet he sits unbothered in the sea of fire."
             show b6:
                 xzoom -1.0
                 appear(x_align = 0.2)

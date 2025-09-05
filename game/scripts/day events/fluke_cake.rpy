@@ -1,5 +1,3 @@
-image ramace = "images/cgs/ramace.png"
-
 init python:
     fc_topdown_dialogue = "Who do you want to sit with?"
 
@@ -58,6 +56,9 @@ screen fluke_cake_lounge_topdown:
 label day_event_fluke_cake:
     scene bg hallway
     image ramace = "images/cgs/ramace.png"
+    image ramace spill = "images/cgs/ramace spill.png"
+    image jellya = "images/cgs/jelly_alex.png"
+    image jellyh = "images/cgs/jelly_hamp.png"
     n "You're on your way back after a conference when you hear loud cheering from the direction of your office."
     $ shake_screen(duration=1.0, preset="rumble", persist=2)
     crowd "HAPPY BIRTHDAY!!!"
@@ -89,7 +90,7 @@ label day_event_fluke_cake:
         xzoom -1.0
         appear(x_align = -0.05)
     show uriel at appear(x_align = 1.05)
-    person "Ohh!! Is that cake you brought, [player_name]?"
+    unknown "Ohh!! Is that cake you brought, [player_name]?"
     show aikha pensive
     player "...Yep!!"
     n "You feel Dr. Aikha's forty-six pairs of eyes scan you and squint. You do your best to ignore it."
@@ -101,7 +102,7 @@ label day_event_fluke_cake:
     n "You flash Josh a smile as you watch them make their way to the cake. You will now be remembered as a great person."
     # cake slice cg 
     n "Josh cuts the cake and the crowd gasps."
-    josh "Wow, you must have put in a ton of effort into making this! What a variety flavours!!"
+    josh "Wow, you must have put in a ton of effort into making this! What a variety of flavours!!"
     josh "No wonder you said it's birthday cake flavour! It was a surprise all along!"
     n "You feel a bead of sweat slide down from your forehead. You're starting to have a bad feeling about this."
     josh "[player_name], since you made it, you should be the one to cut this! Tell us what flavours there are!"
@@ -146,7 +147,7 @@ label day_event_fluke_cake:
     hampter surprise "Oh!"
     show hampter surprise at disappear
     # dr alex on the floor cg
-    n "You see Hampter hop towards Dr. Alex, still ragdolled and hyperventillating."
+    n "You see Hampter hops towards Dr. Alex, still ragdolled and hyperventillating."
     n "She jumps right over his head and lands next to the plate of unfinished birthday cake."
     show hampter happy at appear
     hampter "Don't mind if I do!"
@@ -277,6 +278,17 @@ label day_event_fluke_cake:
                 n "After another minute or two, the centrifuge lets out a little \"Ding!\" and pops open."
                 n "You glance inside eagerly and see..."
                 n "...Two jellies."
+                #jelly cgs
+                image jellya = "images/cgs/jelly_alex.png"
+                image jellyh = "images/cgs/jelly_hamp.png"
+                show jellya:
+                    xalign 0.1
+                    yalign 0.3
+                    zoom 0.3
+                show jellyh:
+                    xalign 0.9
+                    yalign 0.3
+                    zoom 0.3
                 n "One has a mustache with a mug on top, and the other has small ears. They both wobble in your general direction."
                 alex_quotes "{bt}HELP ME! HELP ME!!!{/bt}"
                 hampter_quotes "{bt}Where am I? What happened?{/bt}"
@@ -287,7 +299,11 @@ label day_event_fluke_cake:
                 n "Logically speaking, the best way to cure them is to feed them the opposite of Jelli."
                 n "...Which would be cake."
                 n "Unfortunately, the last slice was eaten long ago."
+                show jellya at disappear
+                show jellyh at disappear
                 n "You leave the lounge in search for more cake."
+                hide jellya
+                hide jellyh
                 $ update_character_points({"alex": 1, "hampter": -1})
                 return
         
@@ -565,7 +581,7 @@ label day_event_fluke_cake:
             xalign 0.5
             yalign 0.1
             zoom 4.0
-        pause 1.0
+        pause 2.0
         aikha neutral "Well that's unfortunate."
         hide explosion
         hide egg2
@@ -588,23 +604,29 @@ label day_event_fluke_cake:
         n "You see someone you don't recognise. Judging by how dripped out he is, he's probably a member of the Path-Para department."
         n "He's going through drawers while yelling at some poor staff member you've never met."
         show ace fury at appear
+        $ shake_screen(strength=3, persist=0.5)
         ace_unknown "{b}THESE ARE NOT SORTED.{/b}"
         unknown "Well we were-"
+        $ shake_screen(strength=3, persist=0.5)
         ace_unknown "{b}YOU DID NOT COMPLETE YOUR ASSIGNED TASK.{/b}"
         unknown "I'm so sorry, we'll get started on that right away."
         n "That poor staff member is barely audible through his sobbing. This feels a lot like an episode of Kitchen Nightmares."
         n "I'm not sure if this is going to be conducive to fixing anything."
         player "Where is Dr. Aikha?"
         unknown "They were here before! But there was this \"KRK\" sound, and then {i}he{/i} appeared."
+        $ shake_screen()
         n "The new guy smashes a drawer shut. There's been a lot of odd sound effects today."
-        ace_unknown neutral "Please take a seat." 
+        ace_unknown upset "Please take a seat." 
+        show ace neutral
         uriel "Office medical the in you are why and, you are who?"
-        ace_unknown "...Dr. Ace... we were just in the lounge together."
+        ace_unknown upset "...Dr. Ace... we were just in the lounge together."
+        show ace neutral
         player "Are you going to try to figure out what happened with Uriel?"
         ace upset "Do not interrupt me."
+        show ace neutral
         n "Okay, so absolutely no indication of whether we can trust this guy."
         n "But he seems to be checking Uriel's condition, and, other than traumatizing an employee, he hasn't done anything harmful."
-        ace neutral "Your vitals are clear."
+        ace upset "Your vitals are clear."
         n "He turns to you."
         ace "Tell me where you got that cake, recruit."
         n "You don't want people to know you weren't prepared for Josh's birthday party. On the other hand, do you really want to risk lying to Dr. Ace?"
@@ -617,6 +639,7 @@ label day_event_fluke_cake:
         label fc_lie:
             player "I made it myself. I wanted to make it special for Josh."
             show ace fury at move_to(x_align= 0.2)
+            pause 0.3
             show uriel at appear(x_align = 0.8)
             uriel "..."
             ace "..."
@@ -629,15 +652,15 @@ label day_event_fluke_cake:
             player "I would never risk the safety of the foundation for a birthday party."
             ace upset "{b}As is expected of you.{/b}"
             ace "{b}But that doesn't explain the anomalous cake...{/b}"
+            $ shake_screen(strength=3, persist=0.5)
             ace fury "{b}THE FLUKE CAKE.{/b}"
+            $ shake_screen(strength=3, persist=0.5)
             ace "{b}YOU RECKLESS WORM.{/b}"
             n "Uh oh. You might be in danger."
             uriel pensive "It of hold a get intern the would how but. Found foundation the cake anomalous the was that?"
             n "Maybe you should've questioned the mysterious cake, but it looks like it's a little too late for that now."
             player "You know what, I should go check on the others. Make sure that my definitely safe homemade cake wasn't affected by an anomalous box or something."
-            show bg hallway
-            show ace fury at disappear
-            show uriel pensive at disappear
+            scene bg hallway
             n "You dash out of the room before Dr. Ace smashes your skull in."
             n "Surely those two will be fine."
             $ update_character_points({"uriel": -1})
@@ -645,26 +668,46 @@ label day_event_fluke_cake:
 
         label fc_truth:
             player "I found it on the lounge counter."
-            ace "{b}...{/b}"
+            ace fury "{b}...{/b}"
+            $ shake_screen(strength=3, persist=0.5)
             ace "{b}YOU DISHONOURABLE PEST. I AM SURPRISED YOUR INCOMPETENCE REMAINS UNPUNISHED.{/b}"
             n "You know, he makes a good point. I've been wondering that too."
             n "Uriel starts looking up something on one of the computers as Dr. Ace continues to lecture you."
+            hide ace fury
+            hide uriel
             show bg clinic pan front
-            show ace fury at move_to(x_align = 0.2)
-            show uriel at appear(x_align = 0.8)
+            show ace fury:
+                xalign 0.2
+            show uriel:
+                xalign 0.8
+                yalign 1.0
             uriel "Solution the be should Jelli, records our to according. Cake fluke the be to seems consumed we what to anomaly closest the."
             player "...What?"
             uriel "Jelli. Solution."
             n "They ask the staff member from before to get some Jelli. A few minutes later, he comes back with a bowl that looks like it's full of Jelli powder."
-            ace "{b}THIS IS POWDER. WHY DID YOU HAND ME ONLY POWDER?{/b}"
-            show ramace onlayer top:
+            show uriel:
+                alpha 0.0
+            show ace:
+                alpha 0.0
+            show ramace:
                 xalign 0.5
-                yalign 0.1
-                zoom 0.5
+                yalign 0.0
+                zoom 0.62
+            $ shake_screen(strength=3, persist=0.5)
+            ace "{b}THIS IS POWDER. WHY DID YOU HAND ME ONLY POWDER?{/b}"
             unknown "W-we only carry Jell-E. Th-this is all we have."
+            hide ramace
+            show ramace spill:
+                xalign 0.5
+                yalign 0.0
+                zoom 0.62
             n "Maybe we should just take this task off his hands."
             n "You may not know how to make Jell-E, but he looks like he's about to break down either screaming or crying, and frankly, your eardrums hurt enough as is."
-            hide ramace onlayer top
+            hide ramace spill
+            show uriel:
+                alpha 1.0
+            show ace:
+                alpha 1.0
             player "We can take it from here."
             show bg clinic pan back
             n "Uriel goes to put the bowl in the fridge and sets a timer."
@@ -677,6 +720,7 @@ label day_event_fluke_cake:
             ace "{b}YOU{/b}- what are you doing."
             uriel "Water boiling."
             show uriel panic
+            $ shake_screen()
             n "They pour the water in, which sizzles and steams up, burning them. Startled, they drop the pitcher onto the foot of that poor staff member."
             n "Ace looks over and, looking resigned, properly boils water and starts actually making Jell-E."
             uriel happy "Arrangement effective more much a is this, you thank."

@@ -32,9 +32,9 @@ label day_event_trial_and_error:
     #$ tne_syg_backup = tne_syg_backup.strip()=="True"
 
     # for showcase
-    $ tne_chan_backup = True
-    $ tne_syg_backup = False
-    $ hampter_witness = True
+    #$ tne_chan_backup = True
+    #$ tne_syg_backup = False
+    #$ hampter_witness = True
 
     scene bg court main
     $ trial_credibility_you = 0
@@ -473,7 +473,7 @@ label day_event_trial_and_error:
         $ trial_credibility_you += -0.5
         chan "...[player_sub_be!c] still lying."
         deceased "Yo what is this intern doing!?" #fury or something
-        deceased "Aha! I get it! I get it! Ethy sensed dishonestly because you {i}don't feel guilty at all!{/i} What a cold-hearted criminal!"
+        deceased "Aha! I get it! I get it! Ethy sensed dishonesty because you {i}don't feel guilty at all!{/i} What a cold-hearted criminal!"
         deceased "Judge {i}Urinal{/i}, I say we should just throw [player_obj] into the dungeons-"
         uriel fury "{size=+10}Such contempt! I will not have this in my courtroom!{/size}"
         uriel "You will be charged with the crimes of contemning the court!"
@@ -562,8 +562,8 @@ label day_event_trial_and_error:
             scene bg room hall
             scene onlayer master2
             with default_fade
-            n "You've escaped! Though you've probably lost your job."
-            n "From the [day_number - 1] days you've been here, you can confidently assume that this incident will be forgotten within a matter of days."
+            n "You've escaped! Though you've probably lost your job." #days
+            n "From the 10 days you've been here, you can confidently assume that this incident will be forgotten within a matter of days."
             n "In other words, you're basically free as long as you make it out of the building and don't come back."
             n "Seems all clear. Now run for it-"
             venture_unknown "[player_name]!"
@@ -902,7 +902,7 @@ label day_event_trial_and_error:
             venture "Now the {b}[player_name]{/b} who {b}[player_name]ed{/b} Dr. Ralex is deceased, {b}[player_name]ed{/b} by {b}[player_name].{/b}"
             deceased "..."
             deceased happy "Okay then! As long as [player_name] doesn't take my identity."
-            n "You don't know how you feel about your name being used as a euphamism for murder, but if it gets Dr. Deceased off you back, you'll happily take it."
+            n "You don't know how you feel about your name being used as a euphamism for murder, but if it gets Dr. Deceased off your back, you'll happily take it."
             show deceased happy at disappear
             n "Dr. Deceased happily skips away. "
             venture "See? Problem solved!"
