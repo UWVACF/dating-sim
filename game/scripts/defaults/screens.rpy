@@ -105,6 +105,9 @@ screen say(who, what):
                 text who id "who"
 
         text what id "what"
+        window:
+            style "chibi" 
+            background Frame(If(renpy.exists(f"images/chibis/{speaking_char}.png"), f"images/chibis/{speaking_char}.png", Solid("#00000000")))
 
 
     ## If there's a side image, display it above the text. Do not display on the
@@ -143,6 +146,12 @@ style namebox:
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
+
+style chibi:
+    xpos 252
+    ypos -100
+    xsize 200
+    ysize 200
 
 style namebox_label:
     yalign 0.5
@@ -242,6 +251,40 @@ style choice_button_text is default:
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
 ## menus.
 
+screen hud():
+    zorder 100
+    window:
+        background Frame("gui/location_hud.png")
+        xanchor 0.0
+        yanchor 0.0
+        ypos 20
+        xpos 40
+        xsize 251
+        ysize 112
+        hbox:
+            xpos 100
+            ypos 0
+            xsize 151
+            ysize 112
+            text f"{current_bg}":
+                color "#ffffff"
+                xalign 0.4
+                yalign 0.52
+    
+    window:
+        background Frame("gui/day_hud.png")
+        xanchor 0.0
+        yanchor 0.0
+        xpos 1641
+        ypos 40
+        xsize 239
+        ysize 84
+        text f"Day {day_number}":
+            color "#ffffff"
+            xalign 0.3
+            yalign 0.52
+
+
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
@@ -253,7 +296,7 @@ screen quick_menu():
             style_prefix "quick"
 
             xalign 0.5
-            yalign 1.0
+            yalign 0.993
 
             textbutton _("Back") action Rollback()
             textbutton _("History") action ShowMenu('history')
@@ -269,6 +312,7 @@ screen quick_menu():
 ## the player has not explicitly hidden the interface.
 init python:
     config.overlay_screens.append("quick_menu")
+    config.overlay_screens.append("hud")
 
 default quick_menu = True
 
@@ -276,10 +320,14 @@ style quick_button is default
 style quick_button_text is button_text
 
 style quick_button:
-    properties gui.button_properties("quick_button")
+    properties gui.button_properties("choice_button")
+    color "#ffffff"
+    xsize 105
+    ysize 70
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
+    xalign 0.5
 
 
 ################################################################################

@@ -22,9 +22,13 @@ init python:
 
 
     # ----- CONSTANTS -----
+
+
+
     # the default pause times after certain punctuation marks
     # note to developers: prefix a dialogue line with /no_pause to disable these pauses for that line
     # default_text_speed = 30
+
 
     punctuation_pauses = {
         "comma": 0.2,
@@ -50,6 +54,15 @@ init python:
 
 
     # ----- VARIABLES -----
+    current_bg = ""
+
+    def new_show(attr, layer='master', what=None, zorder=0, tag=None, **kwargs):
+        global current_bg
+        if attr and attr[0] == "bg":
+            current_bg = attr[1].capitalize()
+        return renpy.show(attr, layer=layer, what=what, zorder=zorder, tag=tag, **kwargs)
+
+    config.show = new_show
     
     # TODO: determine this value procedurally
     # array of top three personnel from honing survey, in no particular order
