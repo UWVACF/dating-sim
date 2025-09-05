@@ -1,6 +1,10 @@
 init python:
     fc_topdown_dialogue = "Who do you want to sit with?"
 
+image fluke_cake_viii = "images/cgs/viii.png"
+
+define audio.explosion = "audio/sfx/explosion.mp3"
+
 screen fluke_cake_lounge_topdown:
     fixed:
         image "images/cgs/lounge_topdown.png":
@@ -173,22 +177,23 @@ label day_event_fluke_cake:
 
     label fluke_HA:
         n "You're still worried for the Founder, so you decided to stay with Hampter and Dr. Alex."
+        show hampter at appear(x_align = 0.5)
         alex "Help me..."
         n "He's still splayed out on the floor, while Hampter is happily licking the crumbs of the cake off her fur."
-        hampter "Yum yum!"
+        hampter neutral "Yum yum!"
         alex "Augh..."
         n "Suddenly, you hear a loud \"pop!\""
         n "You see Hampter stand up on two legs, front paws interlaced."
-        hampter_quotes "Huzzah! I have defeated my sprinkles allergy!"
-        alex_quotes "HELP ME!!!"
-        hampter_quotes "Wait a moment. Why are you so big?"
+        hampter_quotes happy "Huzzah! I have defeated my sprinkles allergy!"
+        alex_quotes panic "HELP ME!!!"
+        hampter_quotes pensive "Wait a moment. Why are you so big?"
         player "Uh..."
-        hampter_quotes "Why am I so small?"
+        hampter_quotes panic "Why am I so small?"
         alex_quotes "HELP!!! {i}*cough cough*{/i} HELP ME!!!"
         hampter_quotes "[player_name]! What is going on?"
         alex_quotes "AAAAAAAAAA"
         n "This is bad. It seems the cake caused Founder Alex and Hampter to switch bodies."
-        n "Logically speaking, the best way to cure them is to feed them the opposite of cake."
+        n "Logically speaking, the best way to cure them would be to feed them the opposite of cake."
         n "Unfortunately for you, you don't know what is."
         n "You turn to the most reliable resource on the Internet, Wroteit."
         n "You find a post from about a year ago. \"Having a debate with my mom and daughter and extended it to friends.\""
@@ -198,12 +203,14 @@ label day_event_fluke_cake:
         n "\"The opposite of frogs is cinnamon.\""
         n "...You have neither frogs nor cinnamon right now."
         alex_quotes "HELPMHELPHMEHLMPEHLMPEHPHELPME {i}*cough*{/i} HELPPPPP"
-        hampter_quotes "Why do I have the sudden urge to eat wires??"
+        hampter_quotes pensive "Why do I have the sudden urge to eat wires??"
         n "Your time is running low. You skim faster."
         n "You finally find a post by u/Interesting-Swimmer1, who claims the opposite of cake would be Jelli."
         n "Seems reasonable enough. One is baked in the oven, one is cooled in the fridge."
         n "At the very least, it's better than rocks. Or frogs."
         n "You rush over to the pantry in search of some Jelli powder."
+        show hampter pensive at disappear
+        show bg lounge fridge
         n "Sitting at the very back of the top shelf is a box of Zero Sugar Jelli, apricot flavoured."
         n "You look over the box. It expired 12 years ago."
         n "Surely Jelli doesn't expire. It's all chemicals, anyways."
@@ -214,12 +221,15 @@ label day_event_fluke_cake:
             n "What's the first step?"
             "Preheat the oven.":
                 $ fluke_cake_jelli_minigame_step = "oven"
+                show bg lounge oven
                 n "You preheat the oven to 190 degrees Celsius."
             "Boil some water.":
                 $ fluke_cake_jelli_minigame_step = "water"
+                show bg lounge kitchen cook
                 n "You grab a pot from the cupboards and fill it with a few cups of water before placing it onto the stove."
             "Preheat the microwave.":
                 $ fluke_cake_jelli_minigame_step = "microwave"
+                show bg lounge oven
                 n "You unplug the microwave and place it into the oven, taking extra care to place it on the middle rack."
                 n "You then preheat the oven to 190 degrees Celsius."
 
@@ -242,21 +252,23 @@ label day_event_fluke_cake:
                 n "You manage to swallow all the powder."
                 n "...Oh shit. You were supposed to give Founder Alex and Hampter the Jelli to cure them of their circumstances."
                 n "You walk over to them and offer them whatever remains: the faded packaging."
+                show bg lounge
+                show hampter at appear
                 alex_quotes "AHHHHHHHHHHHHHHHHHH"
-                hampter_quotes "What? What is this?"
+                hampter_quotes surprise "What? What is this?"
                 player "It's Jelli. Well, the packaging, at least."
-                hampter_quotes "What do I do with this?"
+                hampter_quotes neutral "What do I do with this?"
                 player "...Eat it?"
-                hampter_quotes "Oho! Okay!"
+                hampter_quotes happy "Oho! Okay!"
                 n "You watch in half-horror, half-amazement as Hampter Alex unhinges his jaw and devours the entire cardboard packaging."
                 player "Does it taste good?"
-                hampter_quotes "No! And it doesn't seem to have done anything, either."
+                hampter_quotes pensive "No! And it doesn't seem to have done anything, either."
                 n "You glance over at Founder Hampter and see her still writhing in anaphylactic shock."
-                hampter_quotes "At the very least, I've been cured of my sprinkles allergy! Huzzah!"
+                hampter_quotes happy "At the very least, I've been cured of my sprinkles allergy! Huzzah!"
                 hampter_quotes "[player_name], could you do me a favour and get a cupcake FILLED with sprinkles?"
                 # show hampter happy
-                hampter_quotes "I've been dying to try them out!"
-                hampter_quotes "Haha! Dying! Get it?"
+                hampter_quotes neutral "I've been dying to try them out!"
+                hampter_quotes happy "Haha! Dying! Get it?"
                 $ update_character_points({"alex": 1, "hampter": -1}) 
                 return
 
@@ -267,28 +279,35 @@ label day_event_fluke_cake:
                 n "Hmm. Nothing happens."
                 n "You notice another conveniently placed centrifuge next to the original, this time large enough to fit both a certain Founder and a Hampter inside."
                 n "This gives you an idea. Maybe you could mix Founder Alex and Hamp together and like, rescramble their consciousnesses or something. It's still a work in progress."
+                show bg lounge
+                show hampter at appear
                 n "You walk over to them. Alex is gnawing on spoons, and Hampter is still writhing in endless agony."
                 alex_quotes "AHHHHHHHHHHHHHHHHHHHHHHH"
-                hampter_quotes "Delicious. Quite delicious."
+                hampter_quotes happy "Delicious. Quite delicious."
+                show bg kitchen cook
                 n "You casually drag them both over to the centrifuge and throw them in."
+                show hampter panic
                 alex_quotes "?????????????"
+                show hampter panic at disappear
                 n "You retrieve the Jelli powder from the smaller centrifuge, pour the powder in, and press the start button."
                 n "You're about 30 seconds in when it hits you that centrifuges are for {i}separating{/i}, not for {i}mixing{/i}."
                 n "Eh. It should be fine."
                 n "After another minute or two, the centrifuge lets out a little \"Ding!\" and pops open."
                 n "You glance inside eagerly and see..."
-                n "...Two jellies."
-                #jelly cgs
                 image jellya = "images/cgs/jelly_alex.png"
                 image jellyh = "images/cgs/jelly_hamp.png"
-                show jellya:
-                    xalign 0.1
-                    yalign 0.3
-                    zoom 0.3
-                show jellyh:
-                    xalign 0.9
-                    yalign 0.3
-                    zoom 0.3
+                hide hampter
+                hide alex
+                show jellya at appear:
+                    xalign 0.4
+                    yalign 0.6
+                    zoom 0.15
+                show jellyh at appear:
+                    xalign 0.6
+                    yalign 0.6
+                    zoom 0.15
+                n "...Two jellies."
+                
                 n "One has a mustache with a mug on top, and the other has small ears. They both wobble in your general direction."
                 alex_quotes "{bt}HELP ME! HELP ME!!!{/bt}"
                 hampter_quotes "{bt}Where am I? What happened?{/bt}"
@@ -296,14 +315,10 @@ label day_event_fluke_cake:
                 alex_quotes "{bt}AHHHHHHHH{/bt}"
                 n "...And feel pain!"
                 hampter_quotes "At the very least, I've been cured of my sprinkles allergy! Huzzah!"
-                n "Logically speaking, the best way to cure them is to feed them the opposite of Jelli."
-                n "...Which would be cake."
-                n "Unfortunately, the last slice was eaten long ago."
-                show jellya at disappear
-                show jellyh at disappear
-                n "You leave the lounge in search for more cake."
-                hide jellya
-                hide jellyh
+                n "Logically speaking, the best way to cure them would be to feed them the opposite of Jelli."
+                n "Which would be..."
+                n "Cake."
+                n "Hmm."
                 $ update_character_points({"alex": 1, "hampter": -1})
                 return
         
@@ -313,14 +328,14 @@ label day_event_fluke_cake:
                 "Turn the heat up.":
                     if fluke_cake_jelli_minigame_step == "oven":
                         n "You raise the oven temperature to 225 degrees Celsius."
-                        n "The burning smell has become more prominent."
+                        n "The burning smell becomes more prominent."
                         n "After a few minutes, you see flames erupt from the powder."
                         n "You frantically turn the oven off, and when the flames die down, you retrieve your now-charred Jelli powder."
                         n "It's probably best to serve while still hot. You make your way over to Founder Alex and Hampter."
                         jump fluke_cake_serve
                     elif fluke_cake_jelli_minigame_step == "microwave":
                         n "You raise the oven temperature to 225 degrees Celsius."
-                        n "The burning smell has become more prominent."
+                        n "The burning smell becomes more prominent."
                         n "After a few minutes, you hear a small explosion come from within the oven."
                         n "...That's not good. You open the oven and are greeted with a face full of black smoke."
                         n "Coughing and sputtering, you manage to retrieve the burned ashes of your Jelli powder."
@@ -342,34 +357,42 @@ label day_event_fluke_cake:
                     else:
                         n "You take the pot of ashes out of the oven and place it into the fridge. They're bound to look more appetizing chilled, right?"
                         n "You have some time to kill while the ashes cool, so you decide to check in on the two."
+                    show bg lounge
+                    show hampter happy at appear
                     n "Founder Hampter is, as expected, still suffocating on the floor, while Hampter Alex is happily gnawing on everything in sight."
-                    hampter_quotes "This cupboard's wood is of most excellent quality! I must remember to order more..."
+                    hampter_quotes happy "This cupboard's wood is of most excellent quality! I must remember to order more..."
                     alex_quotes "{i}*hack{/i}* AUGHHHHHH"
                     player "Don't worry guys! I have some Jelli cooling in the fridge. Once it solidifies, you guys can go back to normal!"
-                    hampter_quotes "Jelli? Why Jelli?"
+                    hampter_quotes surprise "Jelli? Why Jelli?"
                     player "Because it's the opposite of cake, obviously."
-                    hampter_quotes "...That makes no sense. Wouldn't the opposite of cake be savoury?"
+                    hampter_quotes pensive "...That makes no sense. Wouldn't the opposite of cake be savoury?"
                     player "Hm?"
                     hampter_quotes "Cake is a sweet solid. Thus, it only makes sense that the opposite of cake would be a savoury liquid. Soup, for example."
                     player "That's not what they said on Wroteit!"
                     hampter_quotes "Wroteit? When was Wroteit a reliable source? You should be using Basefook!"
                     player "Basefook? That's so outdated!"
-                    hampter_quotes "Old but reliable! Wroteit is anything but!"
-                    hampter_quotes "I'll even prove it to you. I'll prove that Jelli isn't the opposite of cake by eating it right now!"
+                    hampter_quotes neutral "Old but reliable! Wroteit is anything but!"
+                    hampter_quotes fury "I'll even prove it to you. I'll prove that Jelli isn't the opposite of cake by eating it right now!"
+                    show hampter fury at move_to(x_align = 2.0)
                     n "Before you can stop him, he bolts past you towards the fridge."
+                    show bg lounge fridge
+                    hide hampter
                     if fluke_cake_jelli_minigame_step == "water":
                         n "By the time you catch up to him, he's already standing in the middle of the pot of half-solid Jelli with a defiant look on his face."
-                        hampter_quotes "I'll eat this, and nothing will happen! Watch!"
+                        show hampter happy at appear
+                        hampter_quotes happy "I'll eat this, and nothing will happen! Watch!"
                         n "He devours the entire pot of Jelli. He finishes it in mere seconds, before standing up on his hind legs, placing his front legs on his hips and looking at you smugly."
                     else:
                         n "By the time you catch up to him, he's already standing in the middle of the pot of burnt Jelli ashes with a defiant look on his face."
-                        hampter_quotes "I'll eat this, and nothing will happen! Watch!"
+                        show hampter happy at appear
+                        hampter_quotes happy "I'll eat this, and nothing will happen! Watch!"
                         n "He devours the entire pot. He finishes it in mere seconds, before standing up on his hind legs, placing his front legs on his hips and looking at you smugly."
-                    hampter_quotes "Huzzah! Basefook reigns sup-"
+                    hampter_quotes happy "Huzzah! Basefook reigns sup-"
                     n "Suddenly, you hear a loud \"POP\", and before you know it, Hampter is back on all fours, while Founder Alex's cries grow more agonized."
                     alex "NOOOOOOOOOO {i}*cough*{/i} NOT AGAIN-"
-                    hampter "Huh? What am I doing here?"
-                    n "Hampter looks around, confused, before noticing the pot she's standing in. Her eyes light up as she devours it whole."
+                    hampter surprise "Huh? What am I doing here?"
+                    n "Hampter looks around, confused, before she notices the pot she's standing in. Her eyes light up as she devours it whole."
+                    show hampter happy
                     n "You walk over to Founder Alex, who is once more convulsing on the floor."
                     player "...Wroteit wins!"
                     $ update_character_points({"alex": -1, "hampter": 1})
@@ -390,6 +413,7 @@ label day_event_fluke_cake:
                         jump fluke_cake_serve
         
         label fluke_cake_serve:
+            show bg lounge
             if fluke_cake_jelli_minigame_step == "water":
                 alex_quotes "HELPHEHLEPHEPHLEPHL {i}*cough cough*{/i}"
                 hampter_quotes "Oh? What's this?"
@@ -456,8 +480,9 @@ label day_event_fluke_cake:
 
     label fluke_CM:
         n "You decide to hang out with \"Dr.\" Caffi and Meme."
-        show caffi at appear(x_align = 0.33)
-        show meme happy at appear(x_align = 0.66)
+        show caffi at appear(x_align = 0.15):
+            xzoom -1
+        show meme happy at appear(x_align = 0.85)
         meme happy "Hey Caffi! Are you interested in a one-of-a-kind never-before-seen deal?"
         caffi "I'm listening."
         meme "It's simple, really! We're selling a brand new product: Demonic Rejuvenating Ultimate Glorious Stimulants!"
@@ -478,27 +503,33 @@ label day_event_fluke_cake:
         hide syg
         n "Suddenly, you hear a loud \"SNAP!\" and you feel the room shake."
         n "When the shaking stops, you look around and see..."
-        # show cg
-        show syg happy at appear
+        show viii at appear:
+            xalign 0.5
+            yalign 0.5
         n "Dr. Syg."
         n "He looks remarkably... bonita."
         n "This feels terribly wrong."
-        syg happy "HELLOOOOO [player_name!u]!!!"
+        syg "HELLOOOOO [player_name!u]!!!"
         player "...Hi?"
-        n "He happily runs over to the pantry and pulls out a box of strawberry Bocky's."
-        syg happy "Do you want one?"
+        n "He happily runs over to the pantry and pulls out a box of strawberry flavoured Bocky's."
+        syg "Do you want one?"
         n "You mumble some half-assed excuse, anxious to get away from whatever the hell possessed Dr. Syg."
-        show syg happy at disappear
+        show viii at disappear
         n "Unfortunately, this leads you straight into Caffi and Meme."
-        show meme happy at appear(x_align = 0.35)
-        show caffi pensive at appear(x_align = 0.65)
+        show caffi pensive at appear(x_align = 0.15)
+        show meme happy at appear(x_align = 0.85)
         meme "🚨⚠️TRADE OFFER⚠️🚨\nI RECEIVE: Your money!\nYOU RECEIVE: Demonic Rejuvenating Ultimate Glorious Stimulants!"
-        caffi "{cps=*0.8}Speak up. These ears don't work like they used to.{/cps}"
-        meme "But! You also need to make sure you find three other people willing to join the scheme- err, business.\nBottom text"
+        caffi old "Speak up. These ears don't work like they used to."
+        meme "But! You also need to make sure you find three other people willing to join the scheme- err, business."
+        player "..."
+        meme "..."
+        meme "Bottom text"
+        n "It seems whatever possessed Dr. Syg back there has also possessed these two."
+        n "You're honestly this close to going back to Dr. Syg."
         n "Caffi turns to you slowly, squinting and slightly hunched over."
-        caffi "{cps=*0.8}Youngster. I don't understand what they're saying. Could you be a dear and help me out?{/cps}"
-        meme "Yo [player_name]! Help me "
-        meme "Bruh, am I not clear enough? Chat, is this real?"
+        caffi "Youngster. I don't understand what they're saying. Could you be a dear and help me out?"
+        meme "What the helly?"
+        meme "Yo [player_name]! Help me out here! I'll getcha coffee if ya do!"
         menu:
             n "What will you do?"
             "Help Meme sell their D.R.U.G.S.":
@@ -509,32 +540,64 @@ label day_event_fluke_cake:
         label fc_drugs:
             player "They're saying that if you sign your name in that box, you'll get a free cruise trip to the Bahamas."
             meme "Get [player_name] a \"True!\""
-            caffi "{cps=*0.8}Eh? The Bahamas? Let me tell you a story{/cps}"
-            caffi "{cps=*0.8}I remember back in 1968 when I went with my lads to the Bahamas.{/cps}"
-            caffi "{cps=*0.8}It was crazy, I'll tell you that much! We...{/cps}"
+            caffi "Eh? The Bahamas? That brings me back."
+            caffi "Let me tell you fine lads a story."
+            caffi "I remember back in 1968 when I went with my buddies to the Bahamas."
+            caffi "It was crazy, I'll tell you that much! We..."
             n "Caffi embarks on a long tangent about how she and her mates stole a ceiling light from Malwart."
-            n "You have a feeling most of this isn't true..."
-            caffi "{cps=*0.8}And then the cops showed up, and I thought we were goners! But then-{/cps}"
-            meme fury "SYBAU. SYBAU. So do you want to buy it or not??"
-            caffi "{cps=*0.8}Hmmm...{/cps}"
-            caffi "{cps=*0.8}What say you, youngster?{/cps}"
+            n "You have a feeling most of this is made up."
+            caffi "And then the cops showed up, and I thought we were goners! But then-"
+            meme fury "SYBAU. So do you want to buy it or not??"
+            caffi "Hmmm..."
+            caffi "What say you, youngster?"
             player "I think you should buy it."
-            caffi "{cps=*0.8}Well, if the kind lad says so. Where do I sign?{/cps}"
-            meme happy ""
+            caffi "Well, if the kind lad says so. Where do I sign?"
+            meme happy "Finally, bruv. Here, just fill in your details on this cheque."
+            n "Caffi takes the cheque from Meme and begins slowly filling in her banking information."
+            n "Meanwhile, Meme is literally bouncing with joy at the prospect of scamming an innocent old grandma of her money."
+            meme "Yippee!! Yippee!!"
+            caffi "Here you go, dear."
+            show meme at move_to(x_align = 10.0)
+            n "Meme rips the cheque out of Caffi's hands and sprints out the room, almost running into Dr. Chan, who was just entering."
+            hide meme
+            show chan at appear(x_align = 0.85):
+                xzoom -1.0
+            chan fury "NO RUNNING IN FACILITY GROUNDS!"
+            show chan:
+                xzoom 1.0
+            chan neutral "Hello, [player_name], Caffi."
+            caffi "Why hello there, Chan darling."
+            chan surprise "???"
+            caffi "My my, you've grown so tall!"
+            chan "??????"
+            caffi "So when are you getting married?"
+            chan "????????????????????????????"
+            caffi "Oh my, you've been putting on weight, Channy dear!"
+            n "You start to feel vaguely uncomfortable and decide to quietly remove yourself from this situation."
+            caffi "I've been telling you, you need to start exercising more!!!"
+            chan "?????????????????????????????????????????????????????????????????????????????????????????????????"
+            n "You're gonna need a lot of coffee to heal yourself from what you just saw."
             $ update_character_points({"meme": 1, "caffi": -1})
             return
             
         label fc_avoid:
-            
+            player "This is obviously a Ponzi scheme."
+            meme neutral "No. You're capping."
+            caffi "What's a Ponzi scheme?"
+            player "So it's basically..."
+            n "You explain what a Ponzi scheme is to Caffi."
+            caffi "Oh. That's not good."
+            meme "..."
+            player "Yeah."
+            meme fury "Screw you [player_name]!"
+            n "Caffi whips out her cane and starts wagging it in Meme's face."
+            n "...Where did she get a cane?"
+            show meme neutral at move_to(x_align = 3.0)
+            show caffi old at move_to(x_align = 2.5)
+            caffi "YOU WHIPPERSNAPPER! YOU GREEN BEAN! YOU LILY-LIVERED BRAT!"
+            meme "[player_name!u] WHEN I GET YOU!!"
             $ update_character_points({"meme": -1, "caffi": 1})
             return
-
-        caffi "Is this more effective than coffee?"
-        meme "Definitely! But if you want coffee, we're also offering a discount on our Premium Shroom Blend! Only $9.98 per cup!"
-        caffi "Uh huh."
-        caffi "So back to the... \"Goodness Simulant\" or whatever. You're saying I just need to get other people to sell it under me to get a reward?"
-        meme "Mhm!"
-
 # ```
 # trade offer
 # bottom text
@@ -577,6 +640,7 @@ label day_event_fluke_cake:
             0.4
             alpha 0.0
         $ shake_screen()
+        play sound explosion
         show explosion:
             xalign 0.5
             yalign 0.1

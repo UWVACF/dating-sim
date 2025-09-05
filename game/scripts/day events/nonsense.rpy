@@ -63,11 +63,11 @@ label day_event_nonsense:
         n "Alright. Just pass on the message from Dr. Firewal and you can go back to drinking coffee and whatever else it is that you do all day."
         menu:
             player "Founder Alex, I've come to warn you about an anomaly that..."
-            "is trying to steal mugs.":
+            "...is trying to steal mugs.":
                 jump nonsense_mug_thief
-            "is trying to free other anomalies from containment.":
+            "...is trying to free other anomalies from containment.":
                 jump nonsense_jailbreak
-            "can move through walls and looks kind of like a snail.":
+            "...can move through walls and looks kind of like a snail.":
                 jump nonsense_snail
 
         label nonsense_mug_thief:

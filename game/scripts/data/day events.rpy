@@ -1,6 +1,6 @@
 # this file is for storing the metadata of day events and other related variables: day.rpy is for the code
 
-init python:
+init 10 python:
     # arrays
     # when declaring events, you can omit fields
     day_events = [
@@ -145,15 +145,25 @@ init python:
 
     remaining_day_events = copy.deepcopy(day_events)
 
+    # aikha route
     showcase_events = [
-        filter_events(label="the_big_chase")[0],
-        filter_events(label="ethics_presentation")[0],
-        filter_events(label="the_bingo_card_1")[0],
-        filter_events(label="staring_contest")[0],
-        filter_events(label="the_common_fridge")[0],
-        filter_events(label="pokanom")[0],
-        filter_events(label="the_bingo_card_2")[0],
-        filter_events(label="in_the_dark")[0],
-        filter_events(label="fire")[0],
-        filter_events(label="didnt_do_it")[0],
+        filter_events(label="fluke_cake")[0],
+        filter_events(label="yuri")[0],
+        filter_events(label="aikha_flare")[0],
+        filter_events(events=fixed_events, label="company_issued_gun")[0],
+        filter_events(label="dr_ryz_and_the_goose")[0],
+        filter_events(label="anendophasia")[0],
+        filter_events(label="fin")[0],
+        filter_events(events=ending_events, label="alex_1")[0]
     ]
+
+    # alex route
+    # showcase_events = [
+    #     filter_events(label="lamp")[0],
+    #     filter_events(label="didnt_do_it")[0],
+    #     filter_events(label="trial_and_error")[0],
+    #     filter_events(events=fixed_events, label="company_issued_gun")[0],
+    #     filter_events(label="tea_party")[0],
+    #     filter_events(label="nonsense")[0],
+    #     filter_events(events=ending_events, label="aikha_1")[0]
+    # ]

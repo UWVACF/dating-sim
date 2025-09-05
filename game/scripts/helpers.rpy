@@ -145,6 +145,7 @@ init -500 python:
             honing_points[person] += points
         return True
 
+    # TODO: change this so it works even if cps was changed before (using regex)
     # Automatically adds pauses after punctuations
     # this is some really weird ass reg-ex shit please do not ask me what it means i will not know - ryan
     def auto_pause(text):
