@@ -1,6 +1,6 @@
 # This folder consists of Python helper functions
 
-init python:
+init -500 python:
     import re
     import pygame
     # from threading import Timer

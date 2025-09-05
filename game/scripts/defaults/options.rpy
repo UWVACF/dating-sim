@@ -158,6 +158,9 @@ define config.save_directory = "prototype-1745970057"
 
 define config.window_icon = "gui/window_icon.png"
 
+# define config.quit_callbacks = [clear_screen_transforms]
+define config.after_default_callbacks  = [clear_screen_transforms]
+
 
 ## Build configuration #########################################################
 ##

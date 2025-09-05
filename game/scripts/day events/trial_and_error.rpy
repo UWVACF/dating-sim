@@ -1,3 +1,15 @@
+image judge overlay = "images/cgs/court_main_overlay.png"
+image defendant overlay= "images/cgs/court_main_overlay2.png"
+image front defendant overlay = "images/cgs/court_main_overlay3.png"
+image side overlay = "images/cgs/court_side_overlay.png"
+image shock = "images/cgs/shock effect.png"
+image trial start = "images/cgs/trial_start.png"
+image emote cool = "images/cgs/cool_emote.png"
+image emote angry = "images/cgs/angry_emote.png"
+
+define audio.trial_and_error = "audio/music/trial and error.ogg"
+define audio.unsheath = "audio/sfx/unsheath.mp3"
+
 label day_event_trial_and_error:
 #    For court main:
 #        master:
@@ -12,14 +24,7 @@ label day_event_trial_and_error:
 #            person
 #            stage (zorder 90)
     
-    image judge overlay = "images/cgs/court_main_overlay.png"
-    image defendant overlay= "images/cgs/court_main_overlay2.png"
-    image front defendant overlay = "images/cgs/court_main_overlay3.png"
-    image side overlay = "images/cgs/court_side_overlay.png"
-    image shock = "images/cgs/shock effect.png"
-    image trial start = "images/cgs/trial_start.png"
-    image emote cool = "images/cgs/cool_emote.png"
-    image emote angry = "images/cgs/angry_emote.png"
+    
 
     # to remove when not testing
     #$ tne_chan_backup = renpy.input("Ture or False for Chan on your side (did not lie in I didn't do it)")
@@ -60,18 +65,21 @@ label day_event_trial_and_error:
     ethy "AA."
     chan "Ethy will help me determine if the prosecutor or the defendant are lying."
     uriel "The court session will now start."
+    play sound unsheath
     $ shake_screen(layers="all", duration=0.3, strength=3)
     pause 0.1
     $ shake_screen(layers="all", duration=0.6, strength=7)
-    show trial start onlayer top:
+    show trial start onlayer top at appear(duration=0.2,y_offset=30):
         yalign 0.5
         xalign 0.5
         zoom 1.7
     n ""
-    hide trial start onlayer top
+    play music trial_and_error loop
+    show trial start onlayer top at disappear
     show chan neutral
     uriel sad "Our co-founder, Dr. Ralex was found dead earlier during lunch in the lounge."
-    uriel upset "After {i}thorough{/i} investigation, the security department has determined that the intern, [player_name] is the most likely suspect to this crime."
+    hide trial start onlayer top
+    uriel upset "After {i}thorough{/i} investigation, the security department has determined that the intern, [player_name], is the most likely suspect to this crime."
     uriel "Evidence suggests that [player_name] met with Dr. Ralex to discuss a full time position offer, and resorted to murder when [player_sub] got rejected."
     uriel neutral "Hence, it is concluded that [player_name] shall be charged with first degree murder. [player_name], do you plead guilty to these charges?"
     menu:
@@ -96,7 +104,7 @@ label day_event_trial_and_error:
                 deceased "SPECULATION! Do you have evidence?"
                 uriel pensive "It is not your turn to speak, Dr. Deceased."
                 uriel neutral "The defendant's statement is rejected due to lack of evidence. Also, for being irrelevant to my question."
-                deceased "{size=3}Yadayada.{/size}"
+                deceased "{size=-15}Yadayada.{/size}"
                 uriel "We will proceed with presenting evidence. Dr. Deceased, you may speak."
                 jump objection_time
 
@@ -109,6 +117,7 @@ label day_event_trial_and_error:
                 uriel upset "...Silence, Dr. Deceased. It is not your turn to speak."
                 deceased "..." #angry
                 uriel neutral "Since the defendant does not plead guilty, we will proceed with presenting evidence. Dr. Deceased, {i}now{/i} you may speak."
+                n "{nw}"
                 jump objection_time
 
     label objection_time:
@@ -125,12 +134,13 @@ label day_event_trial_and_error:
             xzoom 1.4
             zoom 1.3
         show shock onlayer master2
+
         $ shake_screen(layers="master2", duration=0.1, strength=4, repeat=True)
         deceased "OBJECTION!"
         show shock onlayer master2:
             alpha 0.0
         uriel "Nevermind. I suppose Dr. Deceased will not be speaking."
-        deceased "Wait no! I have a point I promise!"
+        deceased "Wait no! I promise I have a point!"
         show shock onlayer master2:
             alpha 1.0
         deceased "I have evidence that this is an orchestrated murder!"
