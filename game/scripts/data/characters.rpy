@@ -332,7 +332,10 @@ image egg unique = At("images/personnel/egg/egg png.png", sprite_highlight("egg"
 
 
 transform hampter_transform:
-    base_char_transform
+    xsize 200
+    ysize 300
+    xoffset 0
+    yoffset -300
 
 image hampter = At(ConditionSwitch("speaking_char == 'hampter'", "images/personnel/hampter/hampter talk.png", "True", "images/personnel/hampter/hampter neutral.png"), sprite_highlight("hampter"), hampter_transform)
 image hampter neutral = "hampter"
@@ -434,3 +437,4 @@ define speaker = Character("Security Speakers", kind=base_char, color="#000000",
 define crowd = Character("Crowd", kind=base_char, color="#000000", cb_name="crowd")
 define person = Character("Person", kind=base_char, color="#000000", cb_name="person")
 define josh = Character("Josh", kind=base_char, color="#000000", cb_name="josh")
+define friendly = Character("\"Friendly\"", kind=base_char, color="#000000", cb_name="friendly")
