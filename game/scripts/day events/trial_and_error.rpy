@@ -358,6 +358,7 @@ label day_event_trial_and_error:
             n "..."
             uriel happy "It seems that you do not have any of those. That is tragic."
         
+        stop music fadeout 1.0
         uriel neutral "We shall decide on the verdict now, then."
         if trial_credibility_you > 2:
             uriel "[player_name], you are found..."
@@ -568,6 +569,7 @@ label day_event_trial_and_error:
             show uriel upset:
                 xzoom 1
             show chan neutral
+            stop music fadeout 1.0
             
             scene bg room hall
             scene onlayer master2

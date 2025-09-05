@@ -217,6 +217,7 @@ image caffi panic = At("images/personnel/caffi/caffi panic.png", sprite_highligh
 image caffi fury = At("images/personnel/caffi/caffi fury.png", sprite_highlight("caffi"), caffi_transform)
 image caffi pensive = At("images/personnel/caffi/caffi pensive.png", sprite_highlight("caffi"), caffi_transform)
 image caffi unique = At("images/personnel/caffi/caffi unique.png", sprite_highlight("caffi"), caffi_transform)
+image caffi old = At("images/personnel/caffi/caffi old.png", sprite_highlight("caffi"), caffi_transform)
 
 
 transform paul_transform:
