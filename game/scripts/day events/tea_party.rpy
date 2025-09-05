@@ -339,7 +339,7 @@ label day_event_tea_party:
                 #cg, maybe
                 n "Surrounded by chairs and flowers, a very {i}clean{/i} Johnson sits sedately. You can almost say the air around him smells good."
                 n "Well, at least someone got something good out of this havoc."
-                #$ update_character_points({"hampter":1, "alex" -1, "jessie": -1})
+                $ update_character_points({"hampter":1, "alex":-1, "jessie":-1})
                 return
          
             label tp_arson_snacks:
@@ -439,7 +439,7 @@ label day_event_tea_party:
                 appear(x_align = 0.2)
             n "b6 remains unresponsive in the face of the rising flames. Still savouring that chili pepper, perhaps."
             n "You switch on the water sprinkler before leaving the room. Surely they'll be fine, right?"
-            #$ update_character_points({"hampter":1, "alex" -1, "jessie": -1})
+            $ update_character_points({"hampter":1, "alex":-1, "jessie":-1})
             show haze orange onlayer top:
                 linear 0.25 alpha 0.5
                 linear 0.25 alpha 0.0
@@ -463,26 +463,173 @@ label day_event_tea_party:
                 alpha 1.0
             show jessie fury
             n "Dr. Jessie glares at you."
-            jessie upset "Can we help you, [player_name]?"
+            jessie "Can we help you, [player_name]?"
             player "Hampter wants to leave the tea party."
-            jessie "Oh, right."
-            jessie "[player_name], come over for a second. {i}Friendly{/i}, I'll be back in just a second, okay?"
+            show jessie neutral
+            unknown "{sc}LEAVEEEEEEEEEEEEEEEEEEEEEEEE?{/sc}"
+            unknown "{sc}DO...NOT...LEAVEEEEEEEEEEEEEEE{/sc}"
+            unknown "{nw}{sc}SCREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE{/sc}"
+            n "You feel sadness radiating from the anomaly. Is it...sobbing?"
+            jessie "There, there, {i}Friendly{/i}. It's okay."
+            unknown "!!!"
             show giant at disappear
-            n "Dr. Jessie took you to the end of the room."
-            jessie neutral ""
+            show jessie surprise
+            n "Suddenly, the anomaly disappears."
+            n "You look around to see that Hampter is gone as well. Another soon-to-be-failed escape attempt."
+            jessie upset "Please be gentle with Friendly, [player_name]."
+            jessie "Since it can teleport, regular containment methods can't really restrain it."
+            jessie neutral "So I've been trying to get it to trust me, and to teach it to not cause trouble."
+            jessie "It's not an evil entity. In fact, it's pretty {i}friendly{/i}. Quite innocent, too."
+            jessie fury "And it was going so well until you threatened to shut down its tea party!"
+            player "But, you can't just kidnap people for a tea party."
+            jessie sad "I know, I know. I've been trying to teach it consent. It's not easy, you know."
+            jessie "...At least it's not force feeding the food down your throat anymore. Or dangling you by your legs when grabbing you."
+            n "You can see the fatigue behind Dr. Jessie's eyes. You gain an appreciation for her work."
+            jessie happy "So just hold on for a bit longer, yeah?"
+            jessie neutral "I'll get it under control soon."
+            jessie "I hope."
+            show hampter upset at appear(x_align = 0.4)
+            show giant behind hampter:
+                zoom 0.5
+                appear(x_align = 0.5, y_align = 0.0)
+            show jessie surprise
+            n "Friendly reappears, with Hampter in their grasp."
+            hampter "NOOOOOOOOOOO"
+            show hampter at disappear
+            n "Friendly places an unwilling Hampter into her seat. She lies face down on the chair, defeated."
+            show jessie upset
+            n "You hear a light sigh from Dr. Jessie. Perhaps you can help her."
+            menu:
+                n "You think of what to say to Friendly."
+                "Compliment the tea party.":
+                    show jessie neutral
+                    player "I like the tea party. The decorations are very, uh, cute."
+                    friendly "!!!"
+                    n "You feel like it's blushing."
+                    n "It takes a flower off the wall and hands it to you."
+                    friendly "Friend...nice..."
+                "Give feedback on the snacks":
+                    show jessie neutral
+                    player "The pepper snacks...are interesting."
+                    friendly "!!!"
+                    n "The anomaly bobs excitedly."
+                    jessie happy "Oh! I made them! But Friendly was the one who picked the red bell peppers and also taste tested them!"
+                    player "...How does it eat?"
+                    jessie neutral "..."
+                    jessie "Don't worry about it!"
+            menu:
+                n "It seems interested with you. What's next?"
+                "Ask it why it hosted this tea party":
+                    player "So why did you host this tea party?"
+                    friendly "{sc}Feel...lonely...{/sc}"
+                    friendly "{sc}See...other...lonely...{/sc}"
+                    friendly "{sc}Many...lonely...many...friends...!{/sc}"
+                    jessie "It's been in our foundation for quite a long time. Only recently did I get permission to let it socialize."
+                "Take its snacks.":
+                    n "The snacks suddenly look very appetizing."
+                    show jessie surprise
+                    n "You take the cookies placed in front of the anomalies. It's not eating them anyways."
+                    n 'You regret it the moment your taste buds feel the peppers. You can\'t help but cough.'
+                    friendly "!!!!"
+                    n "The anomaly brings you something to drink. It's pepper tea. You cough more."
+                    show jessie sad
+                    friendly "Snacks...bad..?"
+            menu:
+                n "Now, to wrap it up."
+                "Tell it that it's wrong for kidnapping people.":
+                    show jessie neutral
+                    player "But, it's wrong to kidnap people and force them to stay."
+                    friendly "..?"
+                    friendly "But...tea...party...!"
+                    player "What if I don't want a tea party, so I kidnap you and won't let you be here?"
+                    jessie upset "Hey, [player_name]-!"
+                    friendly "!!!"
+                    n "The anomaly seems to be in thoughts."
+                    n "It reluctantly shakes it head."
+                    n "Friendly lets out a sad {sc}scree{/sc} as it begins to pack up the cups and teapot."
+                    show giant at disappear
+                    jessie surprise "Woah."
+                    jessie happy "I can't believe that worked."
+                    jessie "Maybe I was too nice to it, haha."
+                    jessie neutral "You're pretty good at this, [player_name]. Are you interested in more husbandry work?"
+                    n "You look back and forth between the anomaly and a very tired Dr. Jessie."
+                    player "I think I'm alright. Thanks for the offer."
+                    jessie happy "Okay then! Let me know if you change your mind anytime!"
+                    show jessie at disappear
+                    n "She joins Friendly at tidying up the party."
+                    show alex at appear(x_align = 0.8)
+                    alex panic "Hey! Why are you taking my food?"
+                    player "The party is over, Dr. Alex."
 
+                "Distract it with hide and sneak.":
+                    show jessie neutral
+                    player "Wanna play a game?"
+                    friendly "?"
+                    player "I'll be the seeker, and you hide so that I don't find you."
+                    friendly "!!"
+                    n "The anomaly looks very excited."
+                    player "Okay, I'll start counting."
+                    player "3...2...1..."
+                    show giant at disappear
+                    show jessie surprise
+                    jessie "Oh no! Where did Friendly go?"
+                    player "To hide, probably."
+                    jessie "But that doesn't help it! I still need to teach it consent!"
+                    jessie neutral "...But I suppose that solves our tea party problem."
+                    n "The fatigue seems to be catching up to Dr. Jessie. She sits back down in her chair."
+                    jessie "Maybe I'll take a quick nap...Surely I can just go look for Friendly later."
+                    show jessie at disappear
+                    n "She passes out the moment her head is on the table."
+                    show alex at appear(x_align = 0.8)
+                    alex "Dr. Jessie! I finished the snacks. Can I have more?"
+                    jessie "..."
+                    alex pensive "Dr. Jessie?"
+                    player "She's asleep."
+                    alex "Oh? Then what about the anomaly? \"Frenzy\", was it?"
+                    player "It's Friendly. It has gone to play hide and sneak."
 
-
-
-        # either shut down the party by force (hamp :D, alex D:, jessie D:), or talk it out with the anomaly [not fast enough/hamp runs out of patient/paul escapes containment] (hamp D:, alex D:, jessie :D)
-        
-        
+            alex panic "What?"
+            player "...Dr. Alex, we have a meeting."
+            alex "Huh? Didn't I say I'm dealing with an anomaly?"
+            player "There's no more anomaly."
+            show alex fury
+            alex "..."
+            alex "Very well!"
+            show alex fury at disappear
+            n "You watch as Founder Alex storms out of the room."
+            n "Finally! You can get your preminum coffee from that meeting."
+            $ shake_screen(strength=4)
+            n "You skip after Founder Alex when a tea cup misses your head by an inch."
+            show haze green onlayer top:
+                alpha 0.0
+                linear 1 alpha 0.3
+            n "You instintively cover your head. An awful smell suddenly hits your nose."
+            show paul at appear(x_align = 0.9)
+            show hampter fury at appear(x_align = 0.2)
+            n "You turn to see that Johnson has broken free of his containment of chairs and flowers. Perhaps he got up when the anomaly no longer screeches at people leaving their seats."
+            hampter "FIEND! STAY AWAY!"
+            $ shake_screen(strength=4, interval=0.8, repeat=3)
+            n "Hampter chucks another teacup at Johnson. Then a teapot. And then a chair."
+            n "Johnson on the other hand doesn't seem bothered at all, as he makes his way towards the other exit that Hampter just so happens to be in front of."
+            n "In fact, you can almost swear he walks with pride in the new red pepper tea stain on his blazar."
+            show hampter fury at disappear
+            show paul at disappear
+            n "Right before you escape the room, you see a poor b6 from the corner of your eye. He lies unresponsive on the ground, with a teapot next to his head."
+            n "You turn the other way and run after Dr. Alex."
+            n "As far as events at the foundation go, this went pretty well."
+            $ update_character_points({"hampter":-1, "alex":-1, "jessie":1})
+            hide haze green onlayer top
             return
 
 
-
     label tp_be:
-        n "hehe"
+        show jessie neutral
+        show alex neutral
+        show hampter upset
+        n "You give them a shrug. It's not really up to you whether this tea party runs or not."
+        n "You're just a powerless intern, after all."
+
+
         # either leave party [hamp unable you left her there, alex don't care, hurt anomaly's feelings] or stay and chill [hamp explodes, alex is chill, anomaly is chill]
         
         
@@ -497,21 +644,3 @@ label day_event_tea_party:
         
         
         return
-
-n "You think back to what Hampter complained about earlier. Right, the guests."
-player "So why was I \'invited\' here?"
-jessie neutral "Hm? I'm not sure, actually."
-jessie "Friendly, why did you invite [player_name]?"
-friendly "Looks...lonely..."
-player "..."
-n "You can't help but feel a little offended, again."
-friendly "many...lonely...many...friends...!"
-player "...I'm not lonely. I'm at work."
-friendly "Work...suffer...lonely..."
-n "There's no reasoning with \"friendly\", is there? Though, it's not exactly wrong."
-friendly "Tea...party...lonely...you?"
-player "Uh, I'm okay."
-n "The anomaly looks content and smiles at you with its eyes."
-player "...So, can I go? I kinda have work to get back to."
-friendly "!!!!"
-friendly "{nw}{sc}NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO{/sc}"
