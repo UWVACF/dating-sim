@@ -106,7 +106,7 @@ label day_event_fluke_cake:
     n "You flash Josh a smile as you watch them make their way to the cake. You will now be remembered as a great person."
     # cake slice cg 
     n "Josh cuts the cake and the crowd gasps."
-    josh "Wow, you must have put in a ton of effort into making this! What a variety of flavours!!"
+    josh "Wow, you must have put a ton of effort into making this! What a variety of flavours!!"
     josh "No wonder you said it's birthday cake flavour! It was a surprise all along!"
     n "You feel a bead of sweat slide down from your forehead. You're starting to have a bad feeling about this."
     josh "[player_name], since you made it, you should be the one to cut this! Tell us what flavours there are!"
