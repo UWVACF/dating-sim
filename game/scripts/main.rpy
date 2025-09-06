@@ -55,16 +55,10 @@ label day_init:
                     today_outro_label = today_event.outro_label
         elif game_mode == "showcase_no_intro" or game_mode == "showcase_intro":
             if showcase_events:
-                today_event = showcase_events[0]
-                today_event_label = "day_event_" + today_event.label
-                if today_event.intro_label:
-                    today_intro_label = today_event.intro_label
-                if today_event.outro_label:
-                    today_outro_label = today_event.outro_label
-                
+                today_event_label = showcase_events[0]
                 showcase_events.pop(0)
             else:
-                Jump("ending_event_neutral_ending")
+                Jump("day_event_credits")
         else:
             # call a chain event
             # assumptions: all prerequisites of the chain event are satisfied/are placed under the head of the chain
@@ -153,27 +147,30 @@ label day_init:
         day_number += 1
         seen_events.append(today_event_label)
 
-        for tag in today_event.tags:
-            if tag not in current_tags:
-                current_tags[tag] = 0
-            current_tags[tag] += 1
+        # TODO: UNCOMMENT THIS
+        # for tag in today_event.tags:
+        #     if tag not in current_tags:
+        #         current_tags[tag] = 0
+        #     current_tags[tag] += 1
+
         # for person in today_event.personnel: # automatically add points to characters
         #     characters[person]["points"] += 1
 
         # check if an ending has been reached
-        if current_ending is None:
-            for person, dic in characters.items():
-                first_label = person + "_1"
-                if first_label not in seen_events and characters[person]["has_route"] and characters[person]["points"] >= character_point_threshold:
-                    # first ending label should be ending_event_(person)_1
-                    current_ending = first_label
-                    break
+        
+        # if current_ending is None:
+        #     for person, dic in characters.items():
+        #         first_label = person + "_1"
+        #         if first_label not in seen_events and characters[person]["has_route"] and characters[person]["points"] >= character_point_threshold:
+        #             # first ending label should be ending_event_(person)_1
+        #             current_ending = first_label
+        #             break
     
     # jump day_init
-    if day_number < day_threshold:
-        jump day_init
-    else:
-        jump ending_event_neutral_ending
+    # if day_number < day_threshold:
+    jump day_init
+    # else:
+    #     jump ending_event_neutral_ending
 
 label default_intro:
     scene bg cubicle

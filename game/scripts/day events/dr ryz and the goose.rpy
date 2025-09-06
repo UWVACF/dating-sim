@@ -33,7 +33,7 @@ label day_event_dr_ryz_and_the_goose:
     label enter_passcode:
         $ dratg_numbers_entered = 0
         $ dratg_code = ""
-        while numbers_entered < 5:
+        while dratg_numbers_entered < 5:
             menu:
                 n "You've entered: [dratg_code]{fast}"
                 "Up":
@@ -114,20 +114,20 @@ label day_event_dr_ryz_and_the_goose:
     if dratg_times_tried < 20:
         $ dratg_numbers_entered = 0
         $ dratg_code = ""
-        while numbers_entered < 5:
+        while dratg_numbers_entered < 5:
             menu:
                 n "The door combination was: [dratg_code]{fast}"
                 "Up":
-                    $ numbers_entered += 1
+                    $ dratg_numbers_entered += 1
                     $ dratg_code += "U"
                 "Left":
-                    $ numbers_entered += 1
+                    $ dratg_numbers_entered += 1
                     $ dratg_code += "L"
                 "Down":
-                    $ numbers_entered += 1
+                    $ dratg_numbers_entered += 1
                     $ dratg_code += "D"
                 "Right":
-                    $ numbers_entered += 1
+                    $ dratg_numbers_entered += 1
                     $ dratg_code += "R"
         
         player "It was [dratg_code]."
@@ -143,7 +143,7 @@ label day_event_dr_ryz_and_the_goose:
             $ update_character_points({"ryz": 1})
         
         ryz "...Nope. You've had enough bread already."
-        pebbles angry "HONK HONK!"
+        pebbles upset "HONK HONK!"
         n "You decide to leave before the argument gets too intense."
         n "As you close the door, you hear Dr. Ryz and the goose arguing through the wall."
         ryz "...Was that Shakespeare? Don't you quote Shakespeare at me."

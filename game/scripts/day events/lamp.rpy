@@ -4,7 +4,7 @@ label day_event_lamp:
     $ lamp_moneyy = False
     $ lamp_memoriess = False
 
-    scene bg cubicle
+    scene bg cubicle inside
     n "You return to your desk after a small walk."
     n "Time to get back to work!"
     n "You notice a new addition to your cubicle. A tall lamp stands in the corner of your already cramped space."

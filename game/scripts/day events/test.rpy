@@ -26,9 +26,9 @@ init python:
 label day_event_test:
     scene bg lounge
     with default_fade
-    show ryz at appear(x_align = 0.5)
-    show pebbles at appear(x_align = 0.0)
-    show hampter at appear(x_align = 1.0)
+    show chan at appear(x_align = 0.5)
+    show b6 at appear(x_align = 0.0)
+    show aikha at appear(x_align = 1.0)
     n ""
     uriel "asdasd"
     n ""

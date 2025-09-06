@@ -148,7 +148,3 @@ label day_event_nonsense:
                 n "\"Your failure to provide proper information or warning has led to the total loss of the Founder's prized mug collection. Although we understand that your injury may have affected your judgement, we are disappointed in your performance.\""
                 $ update_character_points({"firewal": -1, "alex": -1})
             return
-
-
-
-        

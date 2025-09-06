@@ -1,3 +1,4 @@
+image alex_ending = "images/cgs/alex_ending.png"
 label ending_event_alex_1:
     scene bg cubicle outside
     with default_fade
@@ -15,7 +16,7 @@ label ending_event_alex_1:
     with default_fade
     n "You arrive in front of his office and knock on the door."
     alex "Come in!"
-    show bg office_alex
+    show bg office enter
     show alex at appear
     alex happy "Ah! [player_name]! Take a seat."
     alex "How are you?"
@@ -51,16 +52,18 @@ label ending_event_alex_1:
     n "You quietly excuse yourself from the office."
     n "The thought of the six-figure salary has caused your eyes to glaze over."
     n "You stumble your way back to your cubicle, drooling over the virtually infinite supply of coffee a six-figure salary would net you."
-    show bg office_alex
+    show bg office enter
     with default_fade
     show alex at appear
     n "And thus, you worked under Founder Alex."
     n "You did nothing but sit around, drink coffee and occassionally punt the snail from one end of the facility to the other."
     n "Founder Alex had you follow him everywhere, from his office to his home to a vacation in Egypt."
-    # show cg
+    show alex_ending:
+        xalign 0.5
+        yalign 0.3
+        zoom 0.5
     n "There were a few close calls, but the snail didn't pose much of a threat otherwise."
     n "You accumulated vast amounts of wealth, and spent it all on coffee thanks to your lack of ambition elsewhere."
     n "It was a slow life..."
     n "...But it was a comfortable life."
-    # FIN cg
-    return
+    jump day_event_credits

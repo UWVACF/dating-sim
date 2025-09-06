@@ -1,5 +1,5 @@
 label day_event_showcase:
-    scene bg tea_party
+    scene bg teaparty meeting
     label showcase:
 
     # --- Group 1: jessie, firewal, helco ---

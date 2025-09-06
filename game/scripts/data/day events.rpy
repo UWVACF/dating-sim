@@ -142,6 +142,11 @@ init 10 python:
             personnel=[],
             tags=["personnel"]
         ),
+        Event(
+            label="credits",
+            personnel=[],
+            tags=["personnel"]
+        ),
 
     ]
 
@@ -152,24 +157,19 @@ init 10 python:
     remaining_day_events = copy.deepcopy(day_events)
 
     # aikha route
-    showcase_events = [
-        filter_events(label="fluke_cake")[0],
-        filter_events(label="yuri")[0],
-        filter_events(label="aikha_flare")[0],
-        filter_events(events=fixed_events, label="company_issued_gun")[0],
-        filter_events(label="dr_ryz_and_the_goose")[0],
-        filter_events(label="anendophasia")[0],
-        filter_events(label="fin")[0],
-        filter_events(events=ending_events, label="alex_1")[0]
-    ]
+    # showcase_events = [
+    #     "day_event_dr_ryz_and_the_goose",
+    #     "day_event_anendophasia",
+    #     "day_event_fin",
+    #     "ending_event_alex_1",
+    # ]
 
     # alex route
-    # showcase_events = [
-    #     filter_events(label="lamp")[0],
-    #     filter_events(label="didnt_do_it")[0],
-    #     filter_events(label="trial_and_error")[0],
-    #     filter_events(events=fixed_events, label="company_issued_gun")[0],
-    #     filter_events(label="tea_party")[0],
-    #     filter_events(label="nonsense")[0],
-    #     filter_events(events=ending_events, label="aikha_1")[0]
-    # ]
+    showcase_events = [
+        "day_event_lamp",
+        "day_event_didnt_do_it",
+        "day_event_trial_and_error",
+        "day_event_tea_party",
+        "ending_event_aikha_1",
+    ]
+    

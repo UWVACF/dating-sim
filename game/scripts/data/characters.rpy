@@ -275,7 +275,7 @@ image venture unique = At("images/personnel/venture/venture unique.png", sprite_
 
 
 transform b6_transform:
-    base_char_transform(y = 950)
+    base_char_transform(y = 900, yoff = 50)
 
 image b6 = At(ConditionSwitch("speaking_char == 'b6'", "images/personnel/b6/b6 talk.png", "True", "images/personnel/b6/b6 neutral.png"), sprite_highlight("b6"), b6_transform)
 image b6 neutral = "b6"

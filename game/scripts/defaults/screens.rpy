@@ -107,7 +107,7 @@ screen say(who, what):
         text what id "what"
         window:
             style "chibi" 
-            background Frame(If(renpy.exists(f"images/chibis/{speaking_char}.png"), f"images/chibis/{speaking_char}.png", Solid("#00000000")))
+            background Frame(If(speaking_char == player_name, true="images/chibis/player.png", false=If(renpy.exists(f"images/chibis/{speaking_char}.png"), true=f"images/chibis/{speaking_char}.png", false=Solid("#00000000"))))
 
 
     ## If there's a side image, display it above the text. Do not display on the

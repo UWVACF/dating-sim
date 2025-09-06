@@ -351,7 +351,7 @@ label day_event_anendophasia:
         chan "MY OFFICE. NOW."
         show ryz at disappear
         show helco at disappear
-        show bg office_chan
+        show bg office enter
         chan "Intern. I'm very disappointed in your behaviour. Very, very disappointed."
         hide ryz
         hide helco

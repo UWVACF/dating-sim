@@ -174,9 +174,3 @@ label day_event_pokanom:
             $ update_character_points({"uriel": 1, "chan": -1})
             #egg shows up?
             return
-
-
-
-
-
-
