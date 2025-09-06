@@ -191,7 +191,7 @@ label day_event_trial_and_error:
                 player "There are other dangerous weapons at the foundation! A knife is nothing!"
                 n "To prove your point, you pull out from your pockets: a ceremonial dagger from the demonics department, radioactive materials from Dr. Lee, six brass knuckles for spider legs-"
                 n "-a nuclear warhead from a Wal, two taser traps from the Extraterrestial department, a blend of fifteen espresso shots and ten Red Bulls (not exactly a weapon but should be considered one)-"
-                roose "HONK HONK HONK??? HONK HONK HONK!??"
+                pebbles "HONK HONK HONK??? HONK HONK HONK!??"
                 n "Oh, and that goose. That one in particular. I'm most scared of that one."
                 n "{i}How{/i} did you get all that???"
                 show shock onlayer master2:

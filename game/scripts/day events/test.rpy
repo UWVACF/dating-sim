@@ -26,6 +26,13 @@ init python:
 label day_event_test:
     scene bg lounge
     with default_fade
-    show screen lounge_topdown
-    n "Who do you want to sit with?"
-    chan "Hello, intern."
+    show ryz at appear(x_align = 0.5)
+    show pebbles at appear(x_align = 0.0)
+    show hampter at appear(x_align = 1.0)
+    n ""
+    uriel "asdasd"
+    n ""
+    n ""
+    n ""
+    n ""
+    n ""

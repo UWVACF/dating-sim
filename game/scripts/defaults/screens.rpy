@@ -259,16 +259,16 @@ screen hud():
         yanchor 0.0
         ypos 20
         xpos 40
-        xsize 251
+        xsize 281
         ysize 112
         hbox:
             xpos 100
             ypos 0
-            xsize 151
+            xsize 181
             ysize 112
             text f"{current_bg}":
                 color "#ffffff"
-                xalign 0.4
+                xalign 0.5
                 yalign 0.52
     
     window:
