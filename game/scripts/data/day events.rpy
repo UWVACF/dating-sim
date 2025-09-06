@@ -136,7 +136,13 @@ init 10 python:
             label="nonsense",
             personnel=["aikha", "plutoes", "firewal", "alex"],
             tags=["personnel"]
-        )
+        ),
+        Event(
+            label="showcase",
+            personnel=[],
+            tags=["personnel"]
+        ),
+
     ]
 
     # replace all spaces in labels with underscores

@@ -59,7 +59,20 @@ init python:
     def new_show(attr, layer='master', what=None, zorder=0, tag=None, **kwargs):
         global current_bg
         if attr and attr[0] == "bg":
-            current_bg = attr[1].capitalize()
+            current_bg = ""
+            temp = attr[1].capitalize()
+            capitalize_flag = False
+            for c in temp:
+                if capitalize_flag:
+                    c = c.upper()
+                if c == '_':
+                    capitalize_flag = True
+                    c = " "
+                else:
+                    capitalize_flag = False
+                current_bg += c
+                
+        
         return renpy.show(attr, layer=layer, what=what, zorder=zorder, tag=tag, **kwargs)
 
     config.show = new_show

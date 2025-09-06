@@ -4,16 +4,16 @@ label day_event_dr_ryz_and_the_goose:
     player "So I just need to deliver this box of samples to Dr. Ryz? Should be simple."
     n "As you approach the door to Dr. Ryz's office, you hear the sounds of shouting and furious honking."
     show caffi at appear(x_align = 0.33)
-    show roose upset at appear(x_align = 0.66)
+    show pebbles upset at appear(x_align = 0.66)
     caffi "RIZZ!"
-    roose "HISSSSS!"
+    pebbles "HISSSSS!"
     caffi "IT'S DR. \"RIZZ\"!"
-    roose "HONK HONK! HONK HONK!"
+    pebbles "HONK HONK! HONK HONK!"
     caffi "I'M RIGHT! I'M LITERALLY RIGHT!"
     n "This wasn't in the job description. You decide to ignore...whatever is going on and follow your objective."
     player "Have you seen Dr. Ryz?"
     n "Your question was directed at Caffi, but for some reason, the goose turns to you. His beady eyes lock onto the box in your hands, and he starts flapping his wings in excitement."
-    roose talk "Honk! Honk!"
+    pebbles talk "Honk! Honk!"
     n "He runs out the door and pulls you out towards the hallway. Seems like he's trying to lead you to Dr. Ryz."
     player "Well, see you then, Caffi."
     caffi "IT'S PRONOUNCED RIZZ! IT'S PRONOUNCED- "
@@ -21,13 +21,13 @@ label day_event_dr_ryz_and_the_goose:
     n "You calmly shut the door and leave."
     
     scene bg hallway
-    show roose at center
+    show pebbles at center
     with default_fade
     n "You follow the goose down a dimly lit hallway. He leads you to a metal door with a keypad beside it."
     n "The keypad has four buttons arranged in a diamond shape."
-    roose "Honk! Honk!"
+    pebbles "Honk! Honk!"
     n "You're not sure how you're supposed to open the door. You don't exactly have the passcode."
-    roose "Honk honk hooonk! Honk! Honk!"
+    pebbles "Honk honk hooonk! Honk! Honk!"
     n "...Seems like the goose doesn't care. Might as well punch a random code in."
     $ dratg_times_tried = 0
     label enter_passcode:
@@ -62,7 +62,7 @@ label day_event_dr_ryz_and_the_goose:
                     else:
                         goose_reply += "Hiss! "
             
-            roose "[goose_reply]"
+            pebbles "[goose_reply]"
 
             if dratg_times_tried == 0:
                 n "Is the goose giving you feedback on your guess?"
@@ -87,12 +87,12 @@ label day_event_dr_ryz_and_the_goose:
     
     n "You follow the goose into the room."
     scene bg secret_room
-    show roose at center
+    show pebbles at center
     n "It begins to devour the loaves of bread sitting in the corner."
     n "You glance around but see no sign of Dr. Ryz. Maybe he's out."
-    show roose at disappear
+    show pebbles at disappear
     n "You do, however, find various sticky notes pinned to a bulletin board."
-    hide roose
+    hide pebbles
     n "They read:"
     n "\"It looks like the others are unable to understand Pebbles. Interesting.\""
     n "\"In any case, the goose is intelligent enough to recognize whenever this is the case and react accordingly.\""
@@ -103,10 +103,10 @@ label day_event_dr_ryz_and_the_goose:
     ryz "Oh, hey. What are you doing in here?"
     n "You quickly explain the situation and pass him the samples. You'd really rather not get a complaint filed against you for breaking and entering."
     n "As you finish, the goose honks in affirmation of your story."
-    show roose at appear(x_align = 0.66)
-    roose "Honk! Honk!"
+    show pebbles at appear(x_align = 0.66)
+    pebbles "Honk! Honk!"
     ryz happy "As expected. Pebbles is a smart one."
-    roose "Honk! Honk!"
+    pebbles "Honk! Honk!"
     n "Dr. Ryz tosses a cracker at the goose, who catches it mid-air and gobbles it up."
     player "I'll be off, then."
     n "As you turn to leave, Dr. Ryz calls you once more."
@@ -134,7 +134,7 @@ label day_event_dr_ryz_and_the_goose:
         if dratg_code == dratg_correct_code:
             ryz "Oh, nice. You remembered."
             ryz "I've been meaning to change it, but I forgot the old code. I owe you one."
-            roose "Honk!!"
+            pebbles "Honk!!"
             ryz "Yeah, yeah, I know you know it. You're free to leave, intern."
             $ update_character_points({"ryz": 2})
         else:
@@ -143,7 +143,7 @@ label day_event_dr_ryz_and_the_goose:
             $ update_character_points({"ryz": 1})
         
         ryz "...Nope. You've had enough bread already."
-        roose angry "HONK HONK!"
+        pebbles angry "HONK HONK!"
         n "You decide to leave before the argument gets too intense."
         n "As you close the door, you hear Dr. Ryz and the goose arguing through the wall."
         ryz "...Was that Shakespeare? Don't you quote Shakespeare at me."

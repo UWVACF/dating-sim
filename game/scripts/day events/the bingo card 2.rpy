@@ -337,7 +337,7 @@ label bc2_continue:
             $ shake_screen(duration=0)
             hide ryz_through_the_wall
             show bg hallway
-            show roose upset:
+            show pebbles upset:
                 xalign 0.55
                 zoom 0.3
                 yalign 0.65
@@ -352,7 +352,7 @@ label bc2_continue:
             n "You turn around and see an equally angry Pebbles honking and charging at you."
 
             $ shake_screen(duration=0.1, strength=7, interval=0.5, repeat=True)
-            show roose upset:
+            show pebbles upset:
                 block:
                     easeout 0.1 zoom 2.1
                     linear 0.1 zoom 2.0
