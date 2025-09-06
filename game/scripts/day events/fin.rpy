@@ -1,7 +1,7 @@
 label day_event_fin:
     image overlay_ai_1 = At("images/day events/overlay ai 1.png", base_overlay_transform)
     
-    scene bg cubicle
+    scene bg cubicle inside
     n "You let out a long yawn. Today is one of those few uneventful and slow days at work."
     n "Really, you should appreciate such peaceful days."
     n "But all you feel is mind-numbing boredom as you comb through the old files and type them into the system."

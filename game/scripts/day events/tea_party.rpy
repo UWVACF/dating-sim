@@ -53,7 +53,7 @@ label day_event_tea_party:
     show jessie at disappear
     n "You gaze around the room. Some familiar faces are also here."
     hide jessie
-    n "In particular, you notice Founder Alex, who is supposed to lead the metting that is happening in about...one minute."
+    n "In particular, you notice Founder Alex, who is supposed to lead the meeting that is happening in about...one minute."
     n "He's sat down eating a red pepper muffin leisurely while humming a little tune." 
     show alex at appear (x_align=0.75)
     alex happy "Oho! More guests!" 

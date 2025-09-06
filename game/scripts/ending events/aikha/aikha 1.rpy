@@ -1,7 +1,7 @@
 image aikha_ending = "images/cgs/aikha_ending.png"
 
 label ending_event_aikha_1:
-    scene bg cubicle
+    scene bg cubicle outside
     with default_fade
     n "57...58...59..."
     n "The clock hits 5:00! You're finally free."

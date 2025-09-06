@@ -178,7 +178,7 @@ label day_event_trial_and_error:
                 player "I found the knife in the fridge! It's not mine!"
                 chan "...No reaction from Ethy."
                 deceased "Consider this: [player] simply forgot [player_sub] put it there! This happens all the time to me!"
-                uriel "...Dr. Deceased, how mnay knives have you left around foundation grounds?"
+                uriel "...Dr. Deceased, how many knives have you left around foundation grounds?"
                 deceased "How am I supposed to remember all that?"
             "The protocol Dr. Deceased mentioned must be false - here are other dangerous weapons.":
                 $ trial_credibility_you += -1
@@ -406,7 +406,7 @@ label day_event_trial_and_error:
             show black_screen onlayer top:
                 alpha 0.0
                 linear 1.0 alpha 0.1
-            scene bg containment
+            scene bg containment corner
             hide venture onlayer master2
             hide deceased onlayer master2
             hide defendant overlay onlayer master2
@@ -420,6 +420,7 @@ label day_event_trial_and_error:
             n "Meaning, the only thing you will be putting on your resume for this internship is \'jail time\'."
             n "Perhaps, \'experience in containment\' will sound better."
             n "You begin drafting your resume update with the fog you breathe on the glass wall when Dr. Venture walks in."
+            show bg containment door
             show venture at appear
             venture "...Are you kissing the glass?"
             venture "Sorry, I didn't expect this incident to cause you this much...distress."

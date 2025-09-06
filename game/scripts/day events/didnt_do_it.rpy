@@ -266,7 +266,7 @@ label day_event_didnt_do_it:
 
         
     label ddi_jail:
-        scene bg containment
+        scene bg containment corner
         n "You stare out the thick, anomaly-secured glass. Is this what anomalies feel like when contained?"
         n "It's not too bad. You wager this containment room is larger than any jail cell."
         n "You were about to gaslight yourself into acceptance when the door opens and Dr. Syg walks in. Your first prison visit!"
@@ -306,7 +306,7 @@ label day_event_didnt_do_it:
         
         label ddi_jailtwo:
             #can we make the fade in a bit slower
-            scene bg containment
+            scene bg containment corner
             with Fade(2.0, 2.0, 2.0)
             n "You stare out the thick, anomaly-secured glass. Is this what anomalies feel like when contained?"
             n "It's not too bad. You wager this containment room is larger than any jail cell."

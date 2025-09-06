@@ -86,7 +86,7 @@ label day_event_dr_ryz_and_the_goose:
                 
     
     n "You follow the goose into the room."
-    scene bg secret_room
+    scene bg aikha office dark
     show pebbles at center
     n "It begins to devour the loaves of bread sitting in the corner."
     n "You glance around but see no sign of Dr. Ryz. Maybe he's out."
