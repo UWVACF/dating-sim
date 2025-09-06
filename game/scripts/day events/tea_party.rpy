@@ -628,19 +628,310 @@ label day_event_tea_party:
         show hampter upset
         n "You give them a shrug. It's not really up to you whether this tea party runs or not."
         n "You're just a powerless intern, after all."
+        show hampter upset at disappear
+        n "Hampter shoots you a disapproving look before teleporting out."
+        show giant at disappear
+        n "The anomaly immediately teleports out after her."
+        show jessie happy
+        show alex happy
+        n "Dr. Jessie pours you another cup of tea. Founder Alex continues to munch on the snacks."
+        show jessie happy at disappear
+        show alex happy at disappear
+        n "Your phone vibrates. You turn on the screen to see the notification for the meeting you're supposed to attend."
+        n "It's been postponed by ten minutes. You can still make it if you leave now. The premium coffee awaits."
+        n "You look up to find Dr. Jessie and the anomaly staring warmly at you. Hampter has been recaptured and is now back in the chair opposite to you."
+        n "Or maybe you can stay. You don't {i}really{/i} want to go back to work, do you?"
+        menu:
+            n "To stay or to leave, that is the question."
+            "Stay":
+                n "You decide to stay. This tea party beats sitting at your cubicle and staring at old files for the next 4 hours."
+                n "You sit down in your designated seat. The anomaly beams at you, and pours you another cup of red bell pepper tea."
+                n "You now have four cups in front of you."
+                n "You pick a up a pepper muffin and take a small bite out of it."
+                n "It's not actually {i}that{/i} bad, if you wash it down with the tea."
+                n "Ooh. Nevermind. There's also pepper in the tea."
+                n "Surely you can get use to it if you eat more. You continue to torture your tastebuds."
+            
+                with default_fade
+                n "So it's been...5 hours."
+                n "You have gotten used to the taste of bell peppers snacks."
+                n "And by \"gotten used to\" I mean \"became numb to the taste of\"."
+                n "You gaze out the window. It's dark."
+                n "You check your phone. It's 10:36 pm."
+                n "You should probably go home now, if you still want to sleep more than four hours before work tomorrow."
+                n "You dust off the crumbs on your coat and stand up from your seat."
+                show giant behind hampter:
+                    alpha 0.0
+                    xalign 0.5
+                    yalign 0.0
+                    zoom 0.5
+                    easein 0.9 alpha 1.0
+                show purple onlayer top:
+                    alpha 0.0
+                    block:
+                        linear 2.0 alpha 0.35
+                        linear 2.0 alpha 0.1
+                        repeat
+                unknown "{sc}SCREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE{/sc}"
+                unknown "{sc}DONT...LEAVE!!!{/sc}"
+                show purple onlayer top:
+                    linear 0.5 alpha 0.0
+                n "You quickly sit back down. Nope. Your eardrums can't take that."
+                show giant at disappear
+                n "Just as you're wondering what you should do, you hear shuffling next to you."
+                show alex at appear(x_align = 0.7)
+                n "You watch as the Founder pulls out a sleeping bag from his inner pocket."
+                n "He has lined up six chairs so that he can lie comfortably across them in his sleeping bag."
+                alex "Goodnight, everyone!"
+                show alex at disappear
+                n "He puts on an eye mask (over his goggles) and snuggles into his pouch."
+                n "You look around. Dr. Jessie is already asleep on the table. She seems exhausted."
+                n "Hampter is also passed out on her chair. Teleporting must take a lot of energy."
+                n "b6 is still sat in his seat. He has not moved an inch this entire time."
+                n "Johnson is...you can't really see him, since he's still behind the wall of chairs."
+                show giant behind hampter:
+                    alpha 0.0
+                    xalign 0.5
+                    yalign 0.0
+                    zoom 0.5
+                    alpha 1.0
+                n "The anomaly, though, seems as awake as ever. It notices you and Dr. Alex."
+                unknown "{sc}Need...lights...off...?{/sc}"
+                show giant at disappear
+                n "It mindfully waddles over to the light switch and turns it off."
+                show black_screen onlayer master:
+                    alpha 0.6
+                n "Guess you're spending the night here. Company sleepover!"
+                n "You pull four nearby chairs side next to yours and lie down across them."
+                n "It's not very comfortable, but the pepper snacks and pepper water in your stomache is making your drowsy."
+                show black_screen onlayer master:
+                    linear 3 alpha 1.0
+                n "You shut your eyes. You can feel your conciousness drifting away."
+                show haze green onlayer top:
+                    alpha 0.0
+                    linear 5 alpha 0.15
+                n "..."
+                show haze green onlayer top:
+                    linear 5 alpha 0.25
+                n "Something doesn't feel right."
+                n "You were never one to sleep earlier than 12:00. You shouldn't be sleepy right now."
+                show haze green onlayer top:
+                    linear 5 alpha 0.35
+                n "You didn't even do much today, so you can't be tired."
+                n "This isn't post food coma either. You literally took a nap for that an hour ago."
+                show haze green onlayer top:
+                    linear 5 alpha 0.5
+                n "Something feels {i}very{/i} wrong."
+                n "You wince your nose."
+                n "Wait. Your nose."
+                n "You haven't been able to smell anything since a few hours ago."
+                n "The peppers snacks must have numbed your sense of smell, too."
+                n "But now that you've stopped eating, your senses are coming back."
+                n "You can now {i}very strongly{/i} smell an atrocious scent from a certain corner."
+                show black_screen onlayer master:
+                    alpha 0.6
+                n "Your eyes shoot open, but it is already too late."
+                n "You can barely see through the drowsiness and dizziness from the combination of the smell and the food in your stomache."
+                show black_screen onlayer master:
+                    alpha 0.6
+                    linear 40 alpha 1.0
+                n "Hampter and Jessie did not pass out from tiredness; they were taken out by the smell after Hampter ceased maintaining her containment cell for Johnson."
+                n "The Founder was spared because of his immortality."
+                n "And you were saved temporarily by the peppers, but now it is too late."
+                n "You lament that you gave up the premium coffee for this awful end."
+                $ update_character_points({"hampter":-1, "alex":1, "jessie":-1})
+                return
 
+            "Leave":
+                n "You decide to leave. This party really isn't for you."
+                n "Since you haven't sat down, surely the anomaly wouldn't screech and re-kidnap you if you leave, right?"
+                n "You confidently walk out of the room."
+                jessie "Wait, [player_name]-!"
+                n "{nw}"
+                scene bg room hall
+                n "You give yourself a pat on the back for being a hardworking employee."
+                show purple onlayer top:
+                    alpha 0.0
+                    easein 0.9 alpha 1.0
+                pause 0.5
+                scene bg teaparty meeting
+                show giant:
+                    alpha 0.0
+                    xalign 0.5
+                    yalign 0.0
+                    zoom 0.5
+                    alpha 1.0
+                show purple onlayer top:
+                    alpha 1.0
+                    easein 1.5 alpha 0.0 
+                n "Dammit."
+                unknown "{sc}DONT...LEAVE...{/sc}"
+                n "Nuh uh. You're leaving."
+                show giant at disappear
+                n "You run out the room again."
+                show purple onlayer top:
+                    alpha 0.0
+                    easein 0.9 alpha 1.0
+                pause 0.5
+                scene bg teaparty meeting
+                show giant:
+                    alpha 0.0
+                    xalign 0.5
+                    yalign 0.0
+                    zoom 0.5
+                    alpha 1.0
+                show purple onlayer top:
+                    alpha 1.0
+                    easein 1.5 alpha 0.0 
+                n "Dammit. Again."
+                player "Hey, I need to go back to work."
+                unknown "{sc}DONT...LEAVE...{/sc}"
+                n "It's like a broken record."
+                n "You see across the table that Hampter has just teleported out."
+                player "Look! Hampter is gone!"
+                unknown "!!!"
+                show giant at disappear
+                n "Perfect. The anomaly should be occupied with Hampter."
+                n "You dash out of the tea party room, once again."
+                scene bg room hall
+                n "Your plan seems to have worked. You're already three turns away from that cursed room."
+                n "The meeting is just on the left. You're almost the-"
+                show purple onlayer top:
+                    alpha 0.0
+                    easein 0.9 alpha 1.0
+                pause 0.5
+                scene bg teaparty meeting
+                show giant:
+                    alpha 0.0
+                    xalign 0.5
+                    yalign 0.0
+                    zoom 0.5
+                    alpha 1.0
+                show purple onlayer top:
+                    alpha 1.0
+                    easein 1.5 alpha 0.0 
+                n "..."
+                unknown "{sc}DONT...LEAVE-{/sc}"
+                player "SHUT UP."
+                show jessie fury at appear(x_align = 0.8)
+                jessie "Hey!"
+                show alex:
+                    xzoom -1.0
+                    yalign 1.0
+                    appear(x_align = 0.3)
+                alex "...One must imagine Sisyphus happy-"
+                player "I am NOT Sisiphus. OR happy."
+                alex "...Live laugh love, my dear Sisyphus."
+                alex pensive "You know what, come over here. I'll offer you a deal."
+                show giant at disappear
+                show jessie at disappear
+                player "You go up to Founder Alex. Still sipping his tea, he turns towards you."
+                alex "Seeing you're so desperate to get out, I'll lend you a hand."
+                alex "Because I am the great and benevolent Founder Alex."
+                player "You stare at him to continue."
+                alex "So I wasn't completely prepared when I first came to the tea party."
+                alex "I am missing my favourite \"#1 Best Majestic Regal Benevolent Founder Alex mug\". It's in my office."
+                alex "If you can find it and bring it to me, I'll help you leave."
+                player "How will I have enough time to get it?"
+                alex "Hohoho. I will distract the anomaly. Watch."
+                n "Founder Alex climbs onto the table."
+                show jessie surprise at appear(x_align = 0.8)
+                show giant behind jessie:
+                    alpha 0.0
+                    xalign 0.5
+                    yalign 0.0
+                    zoom 0.5
+                    alpha 1.0
+                jessie "Founder Alex???"
+                alex unique "HOHOHO! I declear this the best tea party in the name of Founder Alex!"
+                unknown "??"
+                jessie "Dr. Alex, can you please get off the table???"
+                n "Founder Alex grabs a few muffins and starts juggling. He's not the best at it, though."
+                n "Everytime he drops a muffin, he grabs another. When he ran out of muffins in his immediate vicinity, he starts grabbing teacups."
+                jessie upset "Dr. Alex, please!"
+                show jessie upset at disappear
+                show alex unique at disappear
+                show giant at disappear
+                n "You take this chance to escape the room."
 
-        # either leave party [hamp unable you left her there, alex don't care, hurt anomaly's feelings] or stay and chill [hamp explodes, alex is chill, anomaly is chill]
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        return
+    label tp_mug_minigame:            
+        scene bg office enter
+        n "You actually made it into Dr. Alex's office. You don't want to think about what he must be doing right now to keep the anomaly entertained."
+        n "You found a drawer that is labeled in huge, bold text: {size=*3.5}{b}MUGS{/b}{/size}"
+        n "You open the drawer. There are about fifty mugs."
+        n "Time is of essence. Which mug do you take?"
+        $ tp_mug = False
+        menu:
+            n "Pick a mug."
+            "#1 Best Amazing Benevolent Founder in the world":
+                jump tp_continue
+            "#1 Best Glorious Majestic Regal Founder Alex":
+                jump tp_continue
+            "#1 Best Majestic Regal Benevolent Founder Alex":
+                $ tp_mug = True
+                jump tp_continue
+            "#1 Best Miraculous Regal Beautiful Founder Alex":
+                jump tp_continue
+                    
+        label tp_continue:
+            n "You barely have time to grab the mug when your vision became a purple blur again."
+            show purple onlayer top:
+                alpha 0.0
+                easein 0.9 alpha 1.0
+            pause 0.5
+            scene bg teaparty meeting
+            show giant:
+                alpha 0.0
+                xalign 0.5
+                yalign 0.0
+                zoom 0.5
+                alpha 1.0
+            show purple onlayer top:
+                alpha 1.0
+                easein 1.5 alpha 0.0 
+            unknown "{sc}DONT...LEAVE-{/sc}"
+            player "Founder Alex, I got your mug!"
+            show alex happy at appear(x_align = 0.8)
+            alex "Wonderful!"
+            show giant at disappear
+            n "He grabs the mug off your hand and inspects it."
+            if tp_mug == False:
+                alex pensive "This isn't the right mug."
+                player "Huh?"
+                alex "I wanted my \"#1 Best Majestic Regal Benevolent Founder Alex mug\"."
+                player "Oh."
+                alex "Tch. Go get the right mug!"
+                show alex unique at disappear
+                n "He climbs onto the table again."
+                n "You better get going."
+                jump tp_mug_minigame
+            else:
+                alex happy "Oho! You're actually capable!"
+                player "Can I leave now?"
+                alex neutral "Of course, of course."
+                show alex at disappear
+                n "Dr. Alex, with his new mug in hand, got off his chair and walks over to the one appointed as yours."
+                $ shake_screen()
+                n "He grabs the chair and yeets it out the window."
+                show jessie surprise at appear(x_align = 0.5)
+                jessie "Dr. Alex!!!!"
+                show alex at appear(x_align = 0.8)
+                alex "Whoops. My hands slipped."
+                jessie upset "..."
+                show jessie upset at disappear
+                player "...So what does that do?"
+                alex "Hm? Well, you have no more chair, so you cannot be at this tea party!"
+                player "Is it that simple?"
+                alex pensive "Well, that anomaly is simple."
+                player "I could've done that myself."
+                alex neutral "Nope. That would be property damage. Your paycheck for the entire internship doesn't even cover a quarter of that window."
+                player "..."
+                alex "Well then, off you go!"
+                show alex at disappear
+                n "Founder Alex turn back and continue enjoying his food."
+                n "You turn and leave, half expecting to be teleported again."
+                scene bg room hall
+                n "But you made it all the way outside. No screeching, no teleports."
+                n "You quickly run to the meeting, hoping there are still that premium coffee left."
+                $ update_character_points({"hampter":-1, "alex":1, "jessie":-1})
+                return
