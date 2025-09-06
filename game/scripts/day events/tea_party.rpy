@@ -48,7 +48,7 @@ label day_event_tea_party:
     jessie "Oh, hey [player_name]! I see you've been invited!" 
     player "Uh...What's going on?" 
     jessie "A tea party, of course!"
-    jessie happy "Would you like some red peppers tea? Or some red peppers cookies? Or red peppers muffins?"
+    jessie happy "Would you like some red pepper tea? Or some red pepper cookies? Or red pepper muffins?"
     player "Uh, I'm good for now."
     show jessie at disappear
     n "You gaze around the room. Some familiar faces are also here."
@@ -138,7 +138,7 @@ label day_event_tea_party:
     player "...The pepper snacks aren't {i}that{/i} bad-"
     show shock onlayer top:
         alpha 0.8
-    hampter "Not only is its taste in snack awful, the guests it invites are also atrocious!"
+    hampter "Not only is its taste in snacks awful, the guests it invites are also atrocious!"
     hide hampter
     show b6:
         xzoom -1.0
@@ -208,7 +208,7 @@ label day_event_tea_party:
             jump tp_be
     
     label tp_shut:
-        n "You're resolved to shut this tea party down."
+        n "You've resolved to shut this tea party down."
         n "You have a feeling that Dr. Alex would stay here forever at this tea party if he could."
         n "But you really want that premium coffee they offer at the meeting."
         n "And to have that meeting, you need to get Dr. Alex to host it."
@@ -235,7 +235,7 @@ label day_event_tea_party:
         hampter "I need you to distract it while I teleport out to get my flamethrower."
         hampter pensive "I forgot where I put it, so I'll need some time to find it before it comes and kidnaps me again."
         hampter happy "Then I'll set this party on fire! {i}That'll{/i} shut it down for good!"
-        n "You have never felt so much rage in a hamster. She must {i}really{/i} dislike the red peppers and Johnson."
+        n "You have never felt so much rage from a hamster. She must {i}really{/i} dislike the red peppers and Johnson."
         show hampter neutral
         n "You look back at Dr. Jessie, who's trying her best to comfort the anomaly. The anomaly seems more content now and is drinking the tea poured for it, despite not having a mouth."
         n "The tea spills onto the ground and it desperately tries to clean it up with the ends of Dr. Jessie's labcoat."
@@ -301,7 +301,7 @@ label day_event_tea_party:
                 hampter pensive "If I can't shut this party down myself, I'll just get someone else to do it!"
                 show jessie surprise
                 n "She dials a number quickly with her paws."
-                hampter neutral "Hello yes, inspector? I've encounter an event with healthcode violations!"
+                hampter neutral "Hello yes, inspector? I've encountered an event with healthcode violations!"
                 hampter "{b}There are rodents at this tea party!!!{/b}"
                 show shock onlayer top:
                     alpha 0.6
@@ -518,7 +518,7 @@ label day_event_tea_party:
                     jessie neutral "..."
                     jessie "Don't worry about it!"
             menu:
-                n "It seems interested with you. What's next?"
+                n "It seems interested in you. What's next?"
                 "Ask it why it hosted this tea party":
                     player "So why did you host this tea party?"
                     friendly "{sc}Feel...lonely...{/sc}"
@@ -528,8 +528,8 @@ label day_event_tea_party:
                 "Take its snacks.":
                     n "The snacks suddenly look very appetizing."
                     show jessie surprise
-                    n "You take the cookies placed in front of the anomalies. It's not eating them anyways."
-                    n 'You regret it the moment your taste buds feel the peppers. You can\'t help but cough.'
+                    n "You take the cookies placed in front of the anomaly. It's not eating them anyways."
+                    n "You regret it the moment your taste buds feel the peppers. You can't help but cough."
                     friendly "!!!!"
                     n "The anomaly brings you something to drink. It's pepper tea. You cough more."
                     show jessie sad
@@ -544,7 +544,7 @@ label day_event_tea_party:
                     player "What if I don't want a tea party, so I kidnap you and won't let you be here?"
                     jessie upset "Hey, [player_name]-!"
                     friendly "!!!"
-                    n "The anomaly seems to be in thoughts."
+                    n "The anomaly seems to be lost in thought."
                     n "It reluctantly shakes it head."
                     n "Friendly lets out a sad {sc}scree{/sc} as it begins to pack up the cups and teapot."
                     show giant at disappear
@@ -556,7 +556,7 @@ label day_event_tea_party:
                     player "I think I'm alright. Thanks for the offer."
                     jessie happy "Okay then! Let me know if you change your mind anytime!"
                     show jessie at disappear
-                    n "She joins Friendly at tidying up the party."
+                    n "She joins Friendly in tidying up the party."
                     show alex at appear(x_align = 0.8)
                     alex panic "Hey! Why are you taking my food?"
                     player "The party is over, Dr. Alex."
